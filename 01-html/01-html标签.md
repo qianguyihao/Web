@@ -4,12 +4,8 @@
 
 ## 本文主要内容
 
-<br>
-- 头标签
-- 排版标签：`<p>` &nbsp; &nbsp;&nbsp;`<br>` &nbsp;&nbsp;&nbsp; `<hr>` &nbsp;&nbsp;&nbsp; `<center>` &nbsp;&nbsp;&nbsp; `<pre>` &nbsp;&nbsp;&nbsp; `<div>` &nbsp;&nbsp;&nbsp; `<span>`
-- 字体标记：`<h1>`&nbsp;&nbsp;&nbsp; `<font>`&nbsp;&nbsp;&nbsp; `<b>`&nbsp;&nbsp;&nbsp; `<u>` &nbsp;&nbsp;&nbsp;`<sup>` &nbsp;&nbsp;&nbsp;`<sub>`
-- 超链接
-- 图片标签	
+
+
 
 
 
