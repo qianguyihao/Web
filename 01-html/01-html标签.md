@@ -5,7 +5,11 @@
 ## 本文主要内容
 
 
-
+- 头标签
+- 排版标签：`<p>` &nbsp; &nbsp;&nbsp;`<br>` &nbsp;&nbsp;&nbsp; `<hr>` &nbsp;&nbsp;&nbsp; `<center>` &nbsp;&nbsp;&nbsp; `<pre>` &nbsp;&nbsp;&nbsp; `<div>` &nbsp;&nbsp;&nbsp; `<span>`
+- 字体标记：`<h1>`&nbsp;&nbsp;&nbsp; `<font>`&nbsp;&nbsp;&nbsp; `<b>`&nbsp;&nbsp;&nbsp; `<u>` &nbsp;&nbsp;&nbsp;`<sup>` &nbsp;&nbsp;&nbsp;`<sub>`
+- 超链接
+- 图片标签	
 
 
 
@@ -178,10 +182,11 @@ PS：后缀名不能决定文件格式，只能决定打开文件打开的方式
 
 
 ## 二、HTML的规范
- - HTML是一个弱势语言
- - HTML不区分大小写
- - HTML页面的后缀名是html或者htm(有一些系统不支持后缀名长度超过3个字符，比如dos系统)
- - HTML的结构：
+
+- HTML是一个弱势语言
+- HTML不区分大小写
+- HTML页面的后缀名是html或者htm(有一些系统不支持后缀名长度超过3个字符，比如dos系统)
+- HTML的结构：
 声明部分：主要作用是用来告诉浏览器这个页面使用的是那个标准。<!doctype html>是HTML5标准。
 head部分： 不会显示在页面上，作用是告诉服务器一些页面的额外信息。
 body部分：我们所写的代码必须放在此标签內。
@@ -189,6 +194,7 @@ body部分：我们所写的代码必须放在此标签內。
 目前，IE浏览器是完全不支持H5的，支持最好的是Opera浏览器，可以支持95%以上；其次是google，可以支持一部分H5。
 
 ## 三、HTML的各种标签
+
 > 备注：
 > - 所有的浏览器默认情况下都会忽略空格和空行
 > - 每个标签都有私有属性。也都有公有属性。
@@ -202,6 +208,7 @@ HTML标签通常是成对出现的（<font color="blue">**双边标记**</font>�
 
 
 ## 1、头标签
+
 头标签都放在<head></head>头部分之间。包括：`<title>`、`<base>`、`<meta>`、`<link>`
 
  - `<title>`：指定整个网页的标题，在浏览器最上方显示。
@@ -237,7 +244,7 @@ HTML标签通常是成对出现的（<font color="blue">**双边标记**</font>�
 ```
 上面这个标签的意思是说，3秒之后，自动跳转到百度页面。
 
-### `<body>`标签的属性
+#### `<body>`标签的属性
 其属性有：
  - `bgcolor`：设置整个网页的背景颜色。
  - `background`：设置整个网页的背景图片。
@@ -261,16 +268,19 @@ HTML标签通常是成对出现的（<font color="blue">**双边标记**</font>�
 
 ## 2、排版标签
 
-### 注释标签
+#### 注释标签
+
 ```html
 <!-- 注释  -->
 ```
 <br>
-### 段落标签`<p>`
+#### 段落标签`<p>`
+
 ```html
 <p>This is a paragraph</p>
 <p>This is another paragraph</p>
 ```
+
 属性：
  - `align="属性值"`：对齐方式。属性值包括left center right。
 举例：
@@ -278,7 +288,9 @@ HTML标签通常是成对出现的（<font color="blue">**双边标记**</font>�
 ![Paste_Image.png](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-01-cnblogs_html166440-1dcd2ad6e6353559.png)
 
 <br>
-### 换行标签`<br>`
+
+#### 换行标签`<br>`
+
 当你打算结束一行，而又不想开始一个新段落时，`<br> `标签就派上用场了。无论你将它置于何处，`<br> `标签都会产生一个强制的换行。
 ```html
 This <br> is a para<br>graph with line breaks
@@ -291,7 +303,9 @@ This <br> is a para<br>graph with line breaks
 注意`<br>` 没有结束标签，把`<br>`标签写为 `<br/>` 是经得起未来考验的做法，XHTML 和 XML 都接受在打开的标签内部来关闭标签的做法。
 
 <br>
-### 水平线标签`<hr>`
+
+#### 水平线标签`<hr>`
+
 水平分隔线（horizontal rule）可以在视觉上将文档分隔成各个部分。
 效果如下：
 
@@ -308,7 +322,9 @@ This <br> is a para<br>graph with line breaks
 ![Paste_Image.png](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-01-cnblogs_html_05.png)
 
 <br>
-### 内容居中标签`<center>`
+
+#### 内容居中标签 `<center>`
+
 此时center代表是一个标签，而不是一个属性值了。只要是在这个标签里面的内容，都会居于浏览器的中间。
 效果演示：
 
@@ -317,7 +333,9 @@ This <br> is a para<br>graph with line breaks
 到了H5里面，center标签不建议使用。
 
 <br>
-### 预定义（预格式化）标签：`<pre>`
+
+#### 预定义（预格式化）标签：`<pre>`
+
 含义：将保留其中的所有的空白字符(空格、换行符)，原封不动的输出结果（告诉浏览器不要忽略空格和空行）
 说明：真正排网页过程中，`<pre>`标签几乎用不着。但在PHP中用于打印一个数组时使用。
 
@@ -332,14 +350,14 @@ This <br> is a para<br>graph with line breaks
 好吧，其实这个标签也用的比较少。
 
 <br>
-### 块级标签 `<div>`
+#### 块级标签 `<div>`
 把标签中的额内容作为一个块儿来对待(division)。必须单独占据一行。
 
 属性：
  - `align="属性值"`：设置块儿的位置。属性值可选择：left right center。
 
 <br>
-### 块级标签 `<span>`
+#### 块级标签 `<span>`
 `<span>`和`<div>`唯一的区别在于：`<span>`是不换行的，而`<div>`是换行的。如果单独在网页中插入这两个元素，不会对页面产生任何的影响。这两个元素是专门为定义CSS样式而生的或者说，DIV+CSS来实现各种样式。。
 
 效果举例：
