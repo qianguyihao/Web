@@ -350,14 +350,18 @@ This <br> is a para<br>graph with line breaks
 好吧，其实这个标签也用的比较少。
 
 <br>
+
 #### 块级标签 `<div>`
+
 把标签中的额内容作为一个块儿来对待(division)。必须单独占据一行。
 
 属性：
  - `align="属性值"`：设置块儿的位置。属性值可选择：left right center。
 
 <br>
+
 #### 块级标签 `<span>`
+
 `<span>`和`<div>`唯一的区别在于：`<span>`是不换行的，而`<div>`是换行的。如果单独在网页中插入这两个元素，不会对页面产生任何的影响。这两个元素是专门为定义CSS样式而生的或者说，DIV+CSS来实现各种样式。。
 
 效果举例：
@@ -365,6 +369,7 @@ This <br> is a para<br>graph with line breaks
 ![Paste_Image.png](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-01-cnblogs_html_08.png)
 
 ## 3、字体标签
+
 ### 标题
 标题使用`<h1>`至`<h6>`标签进行定义。`<h1>`定义最大的标题，`<h6>`定义最小的标题。具有align属性，属性值可以是：left、center、right。
 效果演示：
@@ -388,6 +393,7 @@ This <br> is a para<br>graph with line breaks
 ![Paste_Image.png](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-01-cnblogs_html_10.png)
 
 ### 特殊字符
+
  - `&nbsp;`：空格
  - `&lt;`：小于号
  -  `&gt;`：大于号 
@@ -435,7 +441,9 @@ http://7sby7r.com1.z0.glb.clouddn.com/2015-10-01-cnblogs_html_13.png)
 
 
 <br>
+
 ### 粗体标签`<b>`或`<strong>`
+
 效果：
 
 ![Paste_Image.png](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-01-cnblogs_html_14.png)
@@ -443,13 +451,17 @@ http://7sby7r.com1.z0.glb.clouddn.com/2015-10-01-cnblogs_html_13.png)
 ### 下划线标记 `<u>`   中划线标记`<s>`
 
 <br>
+
 ### 斜体标记  `<i>`或`<em>`
+
 效果：
 
 ![Paste_Image.png](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-01-cnblogs_html_15.png)
 
 <br>
+
 ### 上标`<sup>`   下标`<sub>`
+
 上小标这两个标签容易混淆，怎么记呢？这样记：`b`的意思是`bottom：底部`
 举例：
 ```html
@@ -460,6 +472,7 @@ O<sup>2</sup>    5<sub>3</sub>
 ![Paste_Image.png](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-01-cnblogs_html_16.png)
 
 ## 4、超链接
+
 超链接有三种形式：
 **1、外部链接**：链接到外部文件。举例：
 ```html
@@ -591,7 +604,9 @@ img: 代表的就是一张图片。是单边标记。
 （2）如果想实现图文混排的效果，请使用align属性，取值为left或right。
 
 <br>
+
 ### 热点问题
+
 指的是对图片的**局部区域**加超链接。
 我们知道，如果给图片加一个超链接，那个点击这个图片的任意区域，都会跳转到新的位置。举例：
 ```html
@@ -635,7 +650,7 @@ img: 代表的就是一张图片。是单边标记。
 
 怎么？还没看够？且看下文：[HTML标签----图文详解（二）](http://www.cnblogs.com/smyhvae/p/4852863.html)
 
-##我的公众号
+## 我的公众号
 
 下图是我的微信公众号（生命团队id：`vitateam`），欢迎有心人关注。<font color=#0000ff>**博客园分享技术，公众号分享心智**</font>。
 
