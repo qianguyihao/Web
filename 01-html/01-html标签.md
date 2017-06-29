@@ -3,18 +3,19 @@
 国庆节快乐，还在加班的童鞋，良辰必有重谢！
 
 ## 本文主要内容
+
 <br>
- - 头标签
+- 头标签
  - 排版标签：`<p>` &nbsp; &nbsp;&nbsp;`<br>` &nbsp;&nbsp;&nbsp; `<hr>` &nbsp;&nbsp;&nbsp; `<center>` &nbsp;&nbsp;&nbsp; `<pre>` &nbsp;&nbsp;&nbsp; `<div>` &nbsp;&nbsp;&nbsp; `<span>`
- - 字体标记：`<h1>`&nbsp;&nbsp;&nbsp; `<font>`&nbsp;&nbsp;&nbsp; `<b>`&nbsp;&nbsp;&nbsp; `<u>` &nbsp;&nbsp;&nbsp;`<sup>` &nbsp;&nbsp;&nbsp;`<sub>`
- - 超链接
- - 图片标签	
+- 字体标记：`<h1>`&nbsp;&nbsp;&nbsp; `<font>`&nbsp;&nbsp;&nbsp; `<b>`&nbsp;&nbsp;&nbsp; `<u>` &nbsp;&nbsp;&nbsp;`<sup>` &nbsp;&nbsp;&nbsp;`<sub>`
+- 超链接
+- 图片标签	
 
 
 
-#### 前言
+## 前言
 
-#### web标准
+### web标准
 
 web标准介绍：
 
@@ -32,7 +33,7 @@ web标准总结：
 
 
 
-#### 浏览器介绍
+### 浏览器介绍
 
 浏览器是网页运行的平台，常用的浏览器有IE、火狐（Firefox）、谷歌（Chrome）、猎豹浏览器、Safari和Opera等。如下图所示：
 
@@ -51,7 +52,7 @@ PS：「浏览器内核」也就是浏览器所采用的「渲染引擎」，渲
 
 
 
-#### Sublime Text 的使用
+### Sublime Text 的使用
 
 详情请移步至：[Sublime Text使用技巧](https://github.com/smyhvae/tools/blob/master/02-Sublime%20Text%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7.md)
 
@@ -63,6 +64,7 @@ PS：「浏览器内核」也就是浏览器所采用的「渲染引擎」，渲
 
 
 ## 一、HTML的介绍
+
 ### 1、HTML的概述：
 **html**全称为HyperText Mackeup Language，译为<font color=#0000ff>**超文本标记语言**</font>，不是一种编程语言，是一种描述性的标记语言，用于描述超文本中内容的显示方式。比如字体什么颜色，大小等。
  - 超文本：音频，视频，图片称为超文本。
