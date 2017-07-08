@@ -9,7 +9,7 @@
 
 
 - 头标签
-- 排版标签：`<p>` &nbsp; &nbsp;&nbsp;`<br>` &nbsp;&nbsp;&nbsp; `<hr>` &nbsp;&nbsp;&nbsp; `<center>` &nbsp;&nbsp;&nbsp; `<pre>` &nbsp;&nbsp;&nbsp; `<div>` &nbsp;&nbsp;&nbsp; `<span>`
+- 排版标签：`<p>` &nbsp;&nbsp;&nbsp; `<div>` &nbsp;&nbsp;&nbsp; `<span>``<br>` &nbsp;&nbsp;&nbsp; `<hr>` &nbsp;&nbsp;&nbsp; `<center>` &nbsp;&nbsp;&nbsp; `<pre>`
 - 字体标记：`<h1>`&nbsp;&nbsp;&nbsp; `<font>`&nbsp;&nbsp;&nbsp; `<b>`&nbsp;&nbsp;&nbsp; `<u>` &nbsp;&nbsp;&nbsp;`<sup>` &nbsp;&nbsp;&nbsp;`<sub>`
 - 超链接
 - 图片标签	
@@ -40,7 +40,7 @@ web标准总结：
 
 浏览器是网页运行的平台，常用的浏览器有IE、火狐（Firefox）、谷歌（Chrome）、猎豹浏览器、Safari和Opera等。如下图所示：
 
-![](http://img.smyhvae.com/20170628_1350.png)
+![](http://img.smyhvae.com/20170628_1351.png)
 
 
 
@@ -590,9 +590,70 @@ PS：Chrome浏览器是世界上HTML5支持最好的浏览器。提供了非常�
 
 
 
+### 块级标签 `<div>`和`<span>`
+
+> div和span是非常重要的标签，div的语义是division“分割”； span的语义就是span“范围、跨度”。
+
+>CSS课程中你将知道，这两个东西，都是最最重要的“盒子”。
+
+div：把标签中的额内容作为一个块儿来对待(division)。必须单独占据一行。
+
+div标签的属性：
+ - `align="属性值"`：设置块儿的位置。属性值可选择：left right center。
+
+<br>
+
+`<span>`和`<div>`唯一的区别在于：`<span>`是不换行的，而`<div>`是换行的。如果单独在网页中插入这两个元素，不会对页面产生任何的影响。这两个元素是专门为定义CSS样式而生的或者说，DIV+CSS来实现各种样式。。
+
+效果举例：
+
+![Paste_Image.png](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-01-cnblogs_html_08.png)
+
+div在浏览器中，默认是不会增加任何的效果改变的，但是语义变了，div中的所有元素是一个小区域。
+div标签是一个**容器级**标签，里面什么都能放，甚至可以放div自己。
+
+span也是表达“小区域、小跨度”的标签，但是是一个**文本级**的标签。
+就是说，span里面只能放置文字、图片、表单元素。 span里面不能放p、h、ul、dl、ol、div。
 
 
-### 换行标签`<br>`
+span里面是放置小元素的，div里面放置大东西的。举例如下：
+
+span举例：
+
+```html
+			<p>
+				简介简介简介简介简介简介简介简介
+				<span>
+					<a href="">详细信息</a>
+					<a href="">购买</a>
+				</span>
+			</p>
+
+```
+
+div举例：
+
+```html
+	<div class="header">
+		<div class="logo"></div>
+		<div class="nav"></div>
+	</div>
+	<div class="content">
+		<div class="guanggao"></div>
+		<div class="dongxi"></div>
+	</div>
+	<div class="footer"></div>
+
+```
+
+所以，我们亲切的称呼这种模式叫做“**div+css**”。**div标签负责布局，负责结构，负责分块。css负责样式**。
+
+
+
+
+
+
+### 换行标签`<br>`（已废弃）
 
 当你打算结束一行，而又不想开始一个新段落时，`<br> `标签就派上用场了。无论你将它置于何处，`<br> `标签都会产生一个强制的换行。
 ```html
@@ -607,7 +668,7 @@ This <br> is a para<br>graph with line breaks
 
 <br>
 
-### 水平线标签`<hr>`
+### 水平线标签`<hr>`（已废弃）
 
 水平分隔线（horizontal rule）可以在视觉上将文档分隔成各个部分。
 效果如下：
@@ -652,24 +713,7 @@ This <br> is a para<br>graph with line breaks
 
 好吧，其实这个标签也用的比较少。
 
-<br>
 
-### 块级标签 `<div>`
-
-把标签中的额内容作为一个块儿来对待(division)。必须单独占据一行。
-
-属性：
- - `align="属性值"`：设置块儿的位置。属性值可选择：left right center。
-
-<br>
-
-### 块级标签 `<span>`
-
-`<span>`和`<div>`唯一的区别在于：`<span>`是不换行的，而`<div>`是换行的。如果单独在网页中插入这两个元素，不会对页面产生任何的影响。这两个元素是专门为定义CSS样式而生的或者说，DIV+CSS来实现各种样式。。
-
-效果举例：
-
-![Paste_Image.png](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-01-cnblogs_html_08.png)
 
 ## 3、字体标签
 
@@ -686,7 +730,7 @@ c
 
 
 
-### 字体标签`<font>`
+### 字体标签`<font>`（已废弃）
 
 属性：
  - `color="红色"`或`color="#ff00cc"`或`color="new rgb(0,0,255)"`：设置字体颜色。
@@ -704,15 +748,18 @@ c
 
 ### 特殊字符
 
- - `&nbsp;`：空格
- - `&lt;`：小于号
- -  `&gt;`：大于号 
- - `&amp;`：符号`&`
- - `&quot;`：双引号
- - `&apos;`：单引号
- - `&copy;`：版权`©`
- - `&trade;`：商标`™`
- -  `&#32464;`：文字`绐`。其实，`#32464`是汉字`绐`的unicode编码。
+- `&nbsp;`：空格	（non-breaking spacing，不断打空格）
+- `&lt;`：小于号（less than）
+-  `&gt;`：大于号（greater than）
+- `&amp;`：符号`&`
+- `&quot;`：双引号
+- `&apos;`：单引号
+- `&copy;`：版权`©`
+- `&trade;`：商标`™`
+-  `&#32464;`：文字`绐`。其实，`#32464`是汉字`绐`的unicode编码。
+
+要求背诵的特殊字符有：`&nbsp;`、`&lt;`、`&gt;`、`&copy;`。
+
 
 比如说，你想把`<p>`作为一个文本在页面上显示，直接写`<p>`是肯定不行的，因为这代表的是一个段落标签，所以这里需要用到转义字符。应该这么写：
 ```html
@@ -752,17 +799,17 @@ http://7sby7r.com1.z0.glb.clouddn.com/2015-10-01-cnblogs_html_13.png)
 
 <br>
 
-### 粗体标签`<b>`或`<strong>`
+### 粗体标签`<b>`或`<strong>`（已废弃）
 
 效果：
 
 ![Paste_Image.png](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-01-cnblogs_html_14.png)
 
-### 下划线标记 `<u>`   中划线标记`<s>`
+### 下划线标记 `<u>`   中划线标记`<s>`（已废弃）
 
 <br>
 
-### 斜体标记  `<i>`或`<em>`
+### 斜体标记  `<i>`或`<em>`（已废弃）
 
 效果：
 
@@ -780,6 +827,8 @@ O<sup>2</sup>    5<sub>3</sub>
 效果：
 
 ![Paste_Image.png](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-01-cnblogs_html_16.png)
+
+
 
 ## 4、超链接
 
