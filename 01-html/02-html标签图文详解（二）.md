@@ -3,10 +3,6 @@
 > 本文最初于2015-10-02发表于[博客园](http://www.cnblogs.com/smyhvae/p/4852863.html)，并在[GitHub](https://github.com/smyhvae/Web)上持续更新。以下是正文。
 
 
-HTML标签超详细的图文演示再来一波~~~
-
-如果还没有看过昨天的福利的，那可要抓紧喽，传送门：[HTML标签----图文详解](http://www.cnblogs.com/smyhvae/p/4850684.html)
-
 ## 本文主要内容
 
  - 列表标签：`<ul>`、`<OL>`、`<dl>`
