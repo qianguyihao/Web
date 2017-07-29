@@ -977,7 +977,7 @@ div  p  h1  span   a   img   ul   ol    dl    input
 知道每个标签的特殊用法、属性。比如a标签，img的属性。
 
 
-##我的公众号
+## 我的公众号
 
 下图是我的微信公众号（生命团队id：`vitateam`），欢迎有心人关注。<font color=#0000ff>**博客园分享技术，公众号分享心智**</font>。
 
