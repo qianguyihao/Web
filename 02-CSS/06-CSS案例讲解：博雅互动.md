@@ -43,6 +43,148 @@
 
 我们起个名字叫`class=jrwm`是没有问题的，这在工作当中很常见，如果写成`class=join_us`反倒很别扭。
 
+暂时我们的做法是：
+
+- （1）给`class=jrwm_box`这个div里放一个`class=jrwm`的div。`class=jrwm`用来放绿色的背景图片。
+- （2）在`class=jrwm`里放一个超链接，并将超链接转为块级元素。
+
+最终，导航栏的代码如下：
+
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		*{
+			margin: 0px;
+			padding: 0px;
+		}
+		body{
+			font-size: 14px;
+			font-family: "Microsoft YaHei","SimSun";
+			height: 8888px;
+		}		
+		.header{
+			height: 58px;
+			background-color: #191D3A;
+		}
+		/*版心*/
+		.inner_c{
+			width: 1000px;
+			margin: 0 auto; /*让导航条、内容区域等部分的版心在父亲里居中*/
+		}
+		/*导航条的logo*/
+		.header .logo{
+			float: left;
+			margin-right: 40px;
+		}
+		.header .nav{
+			float: left;
+		}
+		.header .nav ul{
+			list-style: none; /*去掉列表前面的圆点*/
+		}
+		.header .nav ul li{
+			float: left;
+			width: 100px;
+			line-height: 58px; /*让行高等于这一行的高度，保证里面的文字垂直居中*/
+			border-left: 1px solid #252947; /*每个li之间有间隔线*/
+		}
+		.header .nav ul li.last{
+			border-right: 1px solid #252947;
+		}
+		.header .nav ul li a{
+			display: block; /*将超链接转为块儿，可以保证其霸占父亲的整行*/
+			height: 58px;
+			text-decoration: none; /*去掉超链的下划线*/
+			color:#818496;
+			text-align: center;  /*让这个div内部的文本居中*/
+		}
+		.header .nav ul li a.current{
+			color:white;	
+			background: #252947;		
+		}
+		.header .nav ul li a:hover{
+			color: white;
+			background: #252947;
+		}
+
+		.header .jrwm_box{
+			float: left;
+			height: 58px;
+			width: 100px;
+			padding-left: 48px;
+			padding-top: 12px;			
+
+		}
+		.header .jrwm_box .jrwm{
+			height: 34px;
+			background-image: url(images/jrwm.png);
+			background-repeat: no-repeat;
+			text-align: center; /*让这个div内部的超链接居中*/
+		}
+		.header .jrwm_box .jrwm a{
+			display: block; /*将超链接转为块儿，可以保证其霸占父亲的整行*/
+			line-height: 34px; /*让行高为背景图片的高度，可以保证超链接的文字在背景图片里垂直居中*/
+			text-decoration: none; /*去掉超链的下划线*/
+			color: white;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="header">
+		<div class="inner_c">
+			<div class="logo">
+				<img src="images/logo.png " alt="">
+			</div>
+			<div class="nav">
+				<ul>
+					<li><a href="#" class="current">首页</a></li>
+					<li><a href="#">博雅游戏</a></li>
+					<li><a href="#">博雅新闻</a></li>
+					<li><a href="#">关于我们</a></li>
+					<li><a href="#">客服中心</a></li>
+					<li class="last"><a href="#">投资者关系</a></li>
+				</ul>
+			</div>
+			<div class="jrwm_box">
+				<div class="jrwm">
+					<a href="">加入我们</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+```
+
+
+
+
+## banenr图
+
+> 因为涉及到 js 的内容，这里先不讲内容区域**轮播图**的效果。
+
+我们首先在导航条和banner图之间加一道墙，即`class=cl`，然后采用隔墙法对其设置`clear: both;`的属性。
+
+
+然后设置banner的背景图片属性，添加banner图。
+
+
+## 内容区域的制作
+
+
+
+
+
+
+
+
+
 
 
 
