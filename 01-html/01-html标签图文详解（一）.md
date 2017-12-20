@@ -122,7 +122,7 @@ XHTML是<font color="blue">**严格的、纯净的**</font>HTML。
 （3）所有的标记都必须关闭。
 
 - 双边标记：`<span></span>`
-- 单边标记：`<br>` 转成 `<br />`   `<hr>` 转成 `<hr />`还有`<img src=“URL” />`
+- 单边标记：`<br>` 转成 `<br />`   `<hr>` 转成 `<hr />`，还有`<img src=“URL” />`
 
 （4）所有的属性值必须加引号。`<font  color="red"></font>`
 
@@ -1015,7 +1015,7 @@ aaa/../bbb/1.jpg
 上方代码的意思是说，当前页面有一个并列的文件夹`images`，在文件夹`images`中存放了一张图片`1.jpg`
 效果：
 
-![Paste_Image.png](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-01-cnblogs_html_19.png)
+![Paste_Image.png](http://img.smyhvae.com/20151001_19.jpg)
 
 
 相对路径的面试题。现有如下文件层级图：
