@@ -237,6 +237,8 @@ HTML中所有的文字之间，如果有空格、换行、tab都将被折叠为�
 
 ![](http://img.smyhvae.com/20170629_2244.jpg)
 
+![](http://img.smyhvae.com/20170629_2230.jpg)
+
 
 ## 三、HTML的各种标签
 
