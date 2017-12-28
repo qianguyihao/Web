@@ -1,6 +1,6 @@
 
 
-> 本文最初于2015-10-01发表于[博客园](http://www.cnblogs.com/smyhvae/category/740114.html)，并在[GitHub](https://github.com/smyhvae/Web)上持续更新。以下是正文。
+> 本文最初于2015-10-01发表于[博客园](http://www.cnblogs.com/smyhvae/p/4850684.html)，并在[GitHub](https://github.com/smyhvae/Web)上持续更新。以下是正文。
 
 
 国庆节快乐，还在加班的童鞋，良辰必有重谢！
@@ -236,13 +236,6 @@ HTML中所有的文字之间，如果有空格、换行、tab都将被折叠为�
 标签不封闭的举例如下：
 
 ![](http://img.smyhvae.com/20170629_2244.jpg)
-
-呵呵
-
-![](http://img.smyhvae.com/20170629_2244.jpg)
-
-
-哈哈
 
 
 
