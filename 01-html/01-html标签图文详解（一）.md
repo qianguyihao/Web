@@ -1,6 +1,8 @@
 
 
-> 本文最初于2015-10-01发表于[博客园](http://www.cnblogs.com/smyhvae/p/4850684.html)，并在[GitHub](https://github.com/smyhvae/Web)上持续更新。以下是正文。
+> 本文最初于2015-10-01发表于[博客园](http://www.cnblogs.com/smyhvae/p/4850684.html)，并在[GitHub](https://github.com/smyhvae/Web)上持续更新。欢迎在GitHub上关注我，一起学习前端的系列文章。
+
+> 以下是正文。
 
 
 国庆节快乐，还在加班的童鞋，良辰必有重谢！
@@ -238,7 +240,7 @@ HTML中所有的文字之间，如果有空格、换行、tab都将被折叠为�
 ![](http://img.smyhvae.com/20170629_2244.jpg)
 
 
-
+![](http://img.smyhvae.com/20170629_2245.jpg)
 
 
 ## 三、HTML的各种标签
@@ -1183,7 +1185,7 @@ aaa/../bbb/1.jpg
 
 ## 我的公众号
 
-下图是我的微信公众号（生命团队id：`vitateam`），欢迎有心人关注。<font color=#0000ff>**博客园分享技术，公众号分享心智**</font>。
+下图是我的微信公众号（生命团队id：`vitateam`），欢迎有心人关注。<font color=#0000ff>**博客园分享技术，公众号分享技能**。</font>。
 
 我会很感激第一批关注我的人。**此时，年轻的我和你，一无所有；而后，富裕的你和我，满载而归。**
 
