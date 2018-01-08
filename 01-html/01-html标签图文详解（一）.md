@@ -400,7 +400,7 @@ HTML5中极大的简化了DTD，也就是说HTML5中就没有XHTML了（W3C自�
 
 
 
-## 2、头标签
+### 2、头标签
 
 头标签都放在<head></head>头部分之间。包括：`<title>`、`<base>`、`<meta>`、`<link>`
 
@@ -607,7 +607,7 @@ HTML标签是分等级的，HTML将所有的标签分为两种：
 网页效果如下：
 
 
-![](http://img.smyhvae.com/20170630_1100.png)
+![](http://img.smyhvae.com/20170630_1102.png)
 
 上图显示，浏览器不允许你这么做，我们使用Chrome的F12审查元素发现，浏览器自己把p封闭掉了，不让你去包裹h1。
 
@@ -752,11 +752,6 @@ This <br> is a para<br>graph with line breaks
 效果演示：
 
 ![Paste_Image.png](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-01-cnblogs_html_09.png)
-
-qa
-b
-c
-
 
 
 ### 字体标签`<font>`（已废弃）
