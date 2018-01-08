@@ -1038,7 +1038,7 @@ aaa/../bbb/1.jpg
 
 相对路径的面试题。现有如下文件层级图：
 
-![](http://img.smyhvae.com/20170630_1132.png)
+![](http://img.smyhvae.com/20170630_1133.png)
 
 问题：如果想在index.html中插入1.png，那么对应的img语句是？
 
