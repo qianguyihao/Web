@@ -1,4 +1,11 @@
+
+> 本文最初于2015-10-03发表于[博客园](http://www.cnblogs.com/smyhvae/p/4853995.html)，并在[GitHub](https://github.com/smyhvae/Web)上持续更新**前端的系列文章**。欢迎在GitHub上关注我，一起入门和进阶前端。
+
+
+
+
 ## 主要内容
+
  - CSS的单位
  - 字体属性
  - 文本属性
@@ -6,11 +13,11 @@
  - 列表属性
  - 盒子模型
  - 定位属性：position、float、overflow、z-index等
- - 导航栏的制作
  - 鼠标的属性cursor
  - 滤镜的介绍
 	
 ## CSS的单位
+
 html中的单位只有一种，那就是像素px，所以单位是可以省略的，但是在CSS中不一样。
 <font color="#0000FF">**CSS中的单位是必须要写的**，因为它没有默认单位。</font>
  - **绝对单位：**1 `in`=2.54`cm`=25.4`mm`=72`pt`=6`pc`。
