@@ -1,8 +1,7 @@
 
-> 本文最初于2015-10-03发表于[博客园](http://www.cnblogs.com/smyhvae/p/4853995.html)，并在[GitHub](https://github.com/smyhvae/Web)上持续更新**前端的系列文章**。欢迎在GitHub上关注我，一起入门和进阶前端。
+> 本文最初于2015-10-03发表于[博客园](http://www.cnblogs.com/smyhvae/p/4855106.html)，并在[GitHub](https://github.com/smyhvae/Web)上持续更新**前端的系列文章**。欢迎在GitHub上关注我，一起入门和进阶前端。
 
-
-
+> 以下是正文。
 
 ## 主要内容
 
@@ -12,24 +11,29 @@
  - 背景属性
  - 列表属性
  - 盒子模型
- - 定位属性：position、float、overflow、z-index等
+ - 定位属性：position、float、overflow等
  - 鼠标的属性cursor
  - 滤镜的介绍
-	
+
 ## CSS的单位
 
 html中的单位只有一种，那就是像素px，所以单位是可以省略的，但是在CSS中不一样。
 <font color="#0000FF">**CSS中的单位是必须要写的**，因为它没有默认单位。</font>
- - **绝对单位：**1 `in`=2.54`cm`=25.4`mm`=72`pt`=6`pc`。
+
+ - **绝对单位：**
+
+ 1 `in`=2.54`cm`=25.4`mm`=72`pt`=6`pc`。
+
 各种单位的含义：
-`in`：英寸Inches (1 英寸 = 2.54 厘米)
-`cm`：厘米Centimeters
-`mm`：毫米Millimeters
-`pt`：点Points，或者叫英镑 (1点 = 1/72英寸)
-`pc`：皮卡Picas (1 皮卡 = 12 点)
+
+- `in`：英寸Inches (1 英寸 = 2.54 厘米)
+- `cm`：厘米Centimeters
+- `mm`：毫米Millimeters
+- `pt`：点Points，或者叫英镑 (1点 = 1/72英寸)
+- `pc`：皮卡Picas (1 皮卡 = 12 点)
 
  - **相对单位：**
-`px`：像素 
+`px`：像素
 `em`：印刷单位相当于12个点
 `%`：百分比，相对周围的文字的大小
 
@@ -43,6 +47,7 @@ html中的单位只有一种，那就是像素px，所以单位是可以省略�
 ## 字体属性
 
 css样式中，常见的字体属性有以下几种：
+
 ```html
 p{
 	font-size:50px; 		/*字体大小*/
@@ -52,17 +57,19 @@ p{
 	font-variant:small-caps;  /*小写变大写*/
 }
 ```
+
 另外还有一个`font`属性，它是一个简写属性。指的是：可以将上面的多个属性写在一个声明里面，个人不太喜欢这种写法。
 
 ## 文本属性
 
 CSS样式中，常见的文本属性有以下几种：
+
  - `letter-spacing:0.5cm ;`  单个字母之间的间距
  - `word-spacing:1cm;`   单词之间的间距
- - `text-decoration:overline;` 字体修饰：underline下划线、line-through中划线、overline上划线
+ - `text-decoration:underline;` 字体修饰：**underline下划线**、line-through中划线、overline上划线
  - `text-transform:lowercase;`  单词字体大小写。uppercase大写、lowercase小写
- - `color:red;` 字体颜色 
- - `text-align="属性值;"` 在当前容器中的对齐的方式。属性值可以是：left、right、center（<font color="#0000FF">**在当前容器的中间**</font>）、justify 
+ - `color:red;` 字体颜色
+ - `text-align="属性值;"` 在当前容器中的对齐的方式。属性值可以是：left、right、center（<font color="#0000FF">**在当前容器的中间**</font>）、justify
  - `text-transform:lowercase;` 单词的字体大小写。属性值可以是：`uppercase`（单词大写）、`lowercase`（单词小写）、`capitalize`（每个单词的首字母大写）
 
 这里来一张表格的图片吧，一览无遗：
@@ -72,15 +79,6 @@ CSS样式中，常见的文本属性有以下几种：
 ## 背景属性
 
 CSS样式中，常见的背景属性有以下几种：（经常用到，要记住）
-
-
-
-
-
-
-
-
-现在，我们把上面的比较重要的属性挑选出来，如下：
 
 - `background-color:#ff99ff;`  设置元素的背景颜色。
 
@@ -122,7 +120,9 @@ PS：padding的区域也是有背景图的。
 
 ![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-03-css-21.png)
 
-其实这种属性的作用还是很广的。举个例子，设计师设计一张宽度只有1px、颜色纵向渐变的图片，然后我们通过这个属性将其进行水平方向的平铺，就可以看到整个页面都是渐变的了。在搜索引擎上搜“平铺背景”，就可以发现，周期性的图片可以采用此种方法进行平铺。
+其实这种属性的作用还是很广的。举个例子，设计师设计一张宽度只有1px、颜色纵向渐变的图片，然后我们通过这个属性将其进行水平方向的平铺，就可以看到整个页面都是渐变的了。
+
+在搜索引擎上搜“**平铺背景**”，就可以发现，**周期性的图片**可以采用此种方法进行平铺。
 
 （4）属性值为`repeat-y`（纵向平铺）时：
 
@@ -148,9 +148,11 @@ PS：padding的区域也是有背景图的。
 
 举例如下：
 
-20170812_1643.png
+![](http://img.smyhvae.com/20170812_1643.png)
 
-20170812_1645.png
+
+![](http://img.smyhvae.com/20170812_1645.png)
+
 
 
 **2、用单词描述属性值：**
@@ -172,11 +174,12 @@ PS：padding的区域也是有背景图的。
 
 打开“暗黑3 台湾”的官网<https://tw.battle.net/d3/zh/>，可以看到官网的效果是比较炫的：
 
-20170812_1945.png
+![](http://img.smyhvae.com/20170812_1945.jpg)
+
 
 检查网页后，找到网站背景图片的url：<https://tw.battle.net/d3/static/images/layout/bg-repeat.jpg>。背景图如下：
 
-20170812_1950.jpg
+![](http://img.smyhvae.com/20170812_1950.jpg)
 
 实际上，我们是通过把这张图片作为网站的背景图来达到显示效果的。只需要给body标签加如下属性即可：
 
@@ -194,7 +197,10 @@ PS：padding的区域也是有背景图的。
 
 很多网站的首页都会有banner图（网站最上方的全屏大图叫做「**通栏banner**」），这种图要求横向的宽度特别大。比如说，设计师给你一张1920*465的超大banner图，如果我们把这个banner图作为img标签直接插入网页中，会有问题的：首先，图片不在网页的中间；其次，肯定会出现横向滚动条。如下图所示：
 
-20170813_1102.gif
+![](http://img.smyhvae.com/20170813_1102.gif)
+
+
+
 
 正确的做法是，将banner图作为div的背景图，这样的话，背景图超出div的部分，会自动移溢出。需要给div设置的属性如下：
 
@@ -207,12 +213,11 @@ PS：padding的区域也是有背景图的。
         }
 ```
 
-上方代码中，我们给div设置height（高度为banner图的高度），不需要设置宽度（因为宽度会霸占整行）。效果如下：
+上方代码中，我们给div设置height（高度为banner图的高度），不需要设置宽度（让宽度自动霸占整行即可）。效果如下：
 
-20170813_1119.gif
+![](http://img.smyhvae.com/20170813_1119.gif)
 
-上图可以看出，将banner图作为div的背景后，banner图会永远处于网页的正中间（水平方向）。
-
+上图可以看出，将banner图作为div的背景后，banner图会永远处于网页的正中间（水平方向来看）。
 
 
 ### background-attachment属性
@@ -221,11 +226,9 @@ PS：padding的区域也是有背景图的。
 	- `fixed`（背景就会被固定住，不会被滚动条滚走）。
 	- `scroll`（与fixed属性相反，默认属性）
 
-
 `background-attachment:fixed;`的效果如下：
 
-20170813_1158.gif
-
+![](http://img.smyhvae.com/20170813_1158.gif)
 
 
 ### background综合属性
@@ -347,7 +350,7 @@ IE盒子模型：
 	</style>
 
  </head>
- 
+
  <body>
 
 	<div>有生之年</div>
@@ -358,6 +361,7 @@ IE盒子模型：
 </html>
 
 ```
+
 上面的代码中，我们对div标签设置了边距等信息。打开google浏览器，按住F12，显示效果如下：
 
 ![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-03-css-27.png)
@@ -384,6 +388,7 @@ padding:20 30 40 50;
 定位属性position的属性值可以是absolute、relative。
 
 position定位分为绝对定位和相对定位：
+
  - `position:absolute;`  <font color="#0000FF">**绝对定位**</font>：定义横纵坐标，原点在父容器的左上角。<font color="#0000FF">**脱离了本身的顺序流**</font>。横坐标用left表示，纵坐标用top表示。
 
 
@@ -433,7 +438,7 @@ position定位分为绝对定位和相对定位：
 
 			width: 200px;
 			height: 200px;
-			border: 1px solid red;	
+			border: 1px solid red;
 		}
 	</style>
  </head>
@@ -477,10 +482,11 @@ position定位分为绝对定位和相对定位：
 ### 4、overflow属性：超出范围的内容要怎么处理
 
 `overflow`属性的属性值可以是：
+
  - `auto`：浏览器自己解决。在必需时裁切对象多余的内容或显示滚动条。一般采用这个属性值。
  - `visible`：默认值。多余的内容不剪切也不添加滚动条，会全部显示出来。
  - `hidden`：不显示超过对象尺寸的内容。
-对象将以包含对象的 window 或 frame 的尺寸进行裁切，并且 clip 属性设置将失效。 
+对象将以包含对象的 window 或 frame 的尺寸进行裁切，并且 clip 属性设置将失效。
  - `scroll`：总是显示滚动条。
 
 针对上面的不同的属性值，我们来看一下效果：
@@ -533,6 +539,7 @@ position定位分为绝对定位和相对定位：
 ```
 
 效果：
+
 ![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-03-css-31.png)
 
 
@@ -554,11 +561,13 @@ position定位分为绝对定位和相对定位：
 ## 鼠标的属性cursor
 
 鼠标的属性`cursor`有以下几个属性值：
- - `auto`：默认值。浏览器根据当前情况自动确定鼠标光标类型。 
- - `pointer`：IE6.0，竖起一只手指的手形光标。就像通常用户将光标移到超链接上时那样。 
+
+ - `auto`：默认值。浏览器根据当前情况自动确定鼠标光标类型。
+ - `pointer`：IE6.0，竖起一只手指的手形光标。就像通常用户将光标移到超链接上时那样。
  - `hand`：和`pointer`的作用一样：竖起一只手指的手形光标。就像通常用户将光标移到超链接上时那样。
 
 比如说，我想让鼠标放在那个标签上时，光标显示手状，代码如下：
+
 ```html
 p:hover{
 	cursor: pointer;
@@ -566,23 +575,24 @@ p:hover{
 ```
 
 另外还有以下的属性：（不用记，需要的时候查一下就行了）
-all-scroll      :　 IE6.0  有上下左右四个箭头，中间有一个圆点的光标。用于标示页面可以向上下左右任何方向滚动。 
-col-resize      :　 IE6.0  有左右两个箭头，中间由竖线分隔开的光标。用于标示项目或标题栏可以被水平改变尺寸。 
-crosshair       :　  简单的十字线光标。 
-default         :　  客户端平台的默认光标。通常是一个箭头。 
-hand            :　  竖起一只手指的手形光标。就像通常用户将光标移到超链接上时那样。 
-move            :　  十字箭头光标。用于标示对象可被移动。 
-help            :　  带有问号标记的箭头。用于标示有帮助信息存在。 
-no-drop         :　 IE6.0  带有一个被斜线贯穿的圆圈的手形光标。用于标示被拖起的对象不允许在光标的当前位置被放下。 
-not-allowed     :　 IE6.0  禁止标记(一个被斜线贯穿的圆圈)光标。用于标示请求的操作不允许被执行。 
-progress        :　 IE6.0  带有沙漏标记的箭头光标。用于标示一个进程正在后台运行。 
-row-resize      :　 IE6.0  有上下两个箭头，中间由横线分隔开的光标。用于标示项目或标题栏可以被垂直改变尺寸。 
-text            :　  用于标示可编辑的水平文本的光标。通常是大写字母 I 的形状。 
-vertical-text   :　 IE6.0  用于标示可编辑的垂直文本的光标。通常是大写字母 I 旋转90度的形状。 
-wait            :　  用于标示程序忙用户需要等待的光标。通常是沙漏或手表的形状。 
-*-resize        :　  用于标示对象可被改变尺寸方向的箭头光标。
-                     w-resize | s-resize | n-resize | e-resize | ne-resize | sw-resize | se-resize | nw-resize 
-url ( url )     :　 IE6.0  用户自定义光标。使用绝对或相对 url 地址指定光标文件(后缀为 .cur 或者 .ani )。 
+
+- all-scroll      :　 IE6.0  有上下左右四个箭头，中间有一个圆点的光标。用于标示页面可以向上下左右任何方向滚动。
+- col-resize      :　 IE6.0  有左右两个箭头，中间由竖线分隔开的光标。用于标示项目或标题栏可以被水平改变尺寸。
+- crosshair       :　  简单的十字线光标。
+- default         :　  客户端平台的默认光标。通常是一个箭头。
+- hand            :　  竖起一只手指的手形光标。就像通常用户将光标移到超链接上时那样。
+- move            :　  十字箭头光标。用于标示对象可被移动。
+- help            :　  带有问号标记的箭头。用于标示有帮助信息存在。
+- no-drop         :　 IE6.0  带有一个被斜线贯穿的圆圈的手形光标。用于标示被拖起的对象不允许在光标的当前位置被放下。
+- not-allowed     :　 IE6.0  禁止标记(一个被斜线贯穿的圆圈)光标。用于标示请求的操作不允许被执行。
+- progress        :　 IE6.0  带有沙漏标记的箭头光标。用于标示一个进程正在后台运行。
+- row-resize      :　 IE6.0  有上下两个箭头，中间由横线分隔开的光标。用于标示项目或标题栏可以被垂直改变尺寸。
+- text            :　  用于标示可编辑的水平文本的光标。通常是大写字母 I 的形状。
+- vertical-text   :　 IE6.0  用于标示可编辑的垂直文本的光标。通常是大写字母 I 旋转90度的形状。
+- wait            :　  用于标示程序忙用户需要等待的光标。通常是沙漏或手表的形状。
+- *-resize        :　  用于标示对象可被改变尺寸方向的箭头光标。
+-                      w-resize | s-resize | n-resize | e-resize | ne-resize | sw-resize | se-resize | nw-resize
+- url ( url )     :　 IE6.0  用户自定义光标。使用绝对或相对 url 地址指定光标文件(后缀为 .cur 或者 .ani )。
 
 ## 滤镜
 
@@ -623,7 +633,7 @@ url ( url )     :　 IE6.0  用户自定义光标。使用绝对或相对 url �
 
 
 
-## 导航栏的制作（本段内容忽略）
+## 导航栏的制作（本段内容请忽略）
 
 现在，我们利用float浮动属性来把无序列表做成一个简单的导航栏吧，效果如下：
 
@@ -641,7 +651,7 @@ url ( url )     :　 IE6.0  用户自定义光标。使用绝对或相对 url �
   <meta name="Keywords" content="">
   <meta name="Description" content="">
   <title>Document</title>
-  
+
 	<style type="text/css">
 		ul{
 			list-style: none;/*去掉列表前面的圆点*/

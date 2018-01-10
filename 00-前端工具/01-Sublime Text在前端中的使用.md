@@ -44,6 +44,12 @@
 
 
 
+## 推荐阅读
+
+
+- [Sublime Text使用技巧](https://github.com/smyhvae/tools/blob/master/01-%E4%B8%AA%E4%BA%BA%E6%95%B4%E7%90%86/Sublime%20Text%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7.md)
+
+我自己整理的。
 
 
 
