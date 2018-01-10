@@ -1,5 +1,4 @@
 
-
 > 本文最初于2015-10-02发表于[博客园](http://www.cnblogs.com/smyhvae/p/4852863.html)，并在[GitHub](https://github.com/smyhvae/Web)上持续更新**前端的系列文章**。欢迎在GitHub上关注我，一起入门和进阶前端。
 
 > 以下是正文。
@@ -107,7 +106,7 @@
 例如：
 
 ```html
-<ol >	
+<ol >
 	<li>呵呵哒1</li>
 	<li>呵呵哒2</li>
 	<li>呵呵哒3</li>
@@ -124,25 +123,25 @@
 举例：
 
 ```html
-<ol type="1">	
+<ol type="1">
 	<li>呵呵</li>
 	<li>呵呵</li>
 	<li>呵呵</li>
 </ol>
 
-<ol type="a">	
+<ol type="a">
 	<li>嘿嘿</li>
 	<li>嘿嘿</li>
 	<li>呵呵</li>
 </ol>
 
-<ol type="i" start="4">	
+<ol type="i" start="4">
 	<li>哈哈</li>
 	<li>哈哈</li>
 	<li>哈哈</li>
 </ol>
 
-<ol type="I" start="10">	
+<ol type="I" start="10">
 	<li>么么</li>
 	<li>么么</li>
 	<li>么么</li>
@@ -503,7 +502,7 @@ int leixing de bianliang guocheng shi yizhon
 
  - `bordercolor="#00FF00"`：给框架的边框定义颜色。这个属性在框架集合`<frameset>`中同样适用。
 颜色这个属性在IE浏览器中生效，但是在google浏览器中无效，不知道为啥。
- - `frameborder="0"`或`frameborder="1"`：隐藏或显示边框（框架线）。 
+ - `frameborder="0"`或`frameborder="1"`：隐藏或显示边框（框架线）。
 
  - `name`：给框架起一个名字。
 利用`name`这个属性，我们可以在框架里进行超链。
@@ -633,7 +632,7 @@ POST方式：
 		昵称：<input value="哈哈" readonly=""><br>
 		名字：<input type="text" value="name" disabled=""><br>
 		密码：<input type="password" value="pwd" size="50"><br>
-		性别：<input type="radio" name="gender" value="male" checked="">男 
+		性别：<input type="radio" name="gender" value="male" checked="">男
 			  <input type="radio" name="gender" value="female" >女<br>
 		爱好：<input type="checkbox" name="love" value="eat">吃饭
 			  <input type="checkbox" name="love" value="sleep">睡觉
@@ -769,7 +768,7 @@ text就是“文本”，area就是“区域”。
 
 		<fieldset>
 		<legend>其他信息</legend>
-		性别：<input type="radio" name="gender" value="male" checked="">男 
+		性别：<input type="radio" name="gender" value="male" checked="">男
 			  <input type="radio" name="gender" value="female" >女<br>
 		爱好：<input type="checkbox" name="love" value="eat">吃饭
 			  <input type="checkbox" name="love" value="sleep">睡觉
@@ -816,7 +815,7 @@ text就是“文本”，area就是“区域”。
 
 ```html
 <input type="checkbox" id="kk" />
-<label for="kk">10天内免登陆</label>  
+<label for="kk">10天内免登陆</label>
 ```
 
 
