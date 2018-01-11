@@ -3,17 +3,14 @@
 
 > 以下是正文。
 
-## 主要内容
+## 本文重要内容
 
  - CSS的单位
  - 字体属性
  - 文本属性
  - 背景属性
- - 列表属性
  - 盒子模型
  - 定位属性：position、float、overflow等
- - 鼠标的属性cursor
- - 滤镜的介绍
 
 ## CSS的单位
 
@@ -64,13 +61,13 @@ p{
 
 CSS样式中，常见的文本属性有以下几种：
 
- - `letter-spacing:0.5cm ;`  单个字母之间的间距
- - `word-spacing:1cm;`   单词之间的间距
- - `text-decoration:underline;` 字体修饰：**underline下划线**、line-through中划线、overline上划线
- - `text-transform:lowercase;`  单词字体大小写。uppercase大写、lowercase小写
+ - `letter-spacing: 0.5cm ;`  单个字母之间的间距
+ - `word-spacing: 1cm;`   单词之间的间距
+ - `text-decoration: underline;` 字体修饰：**underline下划线**、line-through中划线、overline上划线
+ - `text-transform: lowercase;`  单词字体大小写。uppercase大写、lowercase小写
  - `color:red;` 字体颜色
- - `text-align="属性值;"` 在当前容器中的对齐的方式。属性值可以是：left、right、center（<font color="#0000FF">**在当前容器的中间**</font>）、justify
- - `text-transform:lowercase;` 单词的字体大小写。属性值可以是：`uppercase`（单词大写）、`lowercase`（单词小写）、`capitalize`（每个单词的首字母大写）
+ - `text-align: center;` 在当前容器中的对齐方式。属性值可以是：left、right、center（<font color="#0000FF">**在当前容器的中间**</font>）、justify
+ - `text-transform: lowercase;` 单词的字体大小写。属性值可以是：`uppercase`（单词大写）、`lowercase`（单词小写）、`capitalize`（每个单词的首字母大写）
 
 这里来一张表格的图片吧，一览无遗：
 
@@ -83,6 +80,11 @@ CSS样式中，常见的背景属性有以下几种：（经常用到，要记�
 - `background-color:#ff99ff;`  设置元素的背景颜色。
 
 - `background-image:url(images/2.gif);` 将图像设置为背景。
+
+-  `background-repeat: no-repeat;`  设置背景图片是否重复及如何重复，默认平铺满。（重要）
+	- `no-repeat`不要平铺；
+	- `repeat-x`横向平铺；
+	- `repeat-y`纵向平铺。
 
 - `background-position:center top;` 设置背景图片在当前容器中的位置。
 
@@ -233,7 +235,7 @@ PS：padding的区域也是有背景图的。
 
 ### background综合属性
 
-background属性和border一样，是一个综合属性，可以将多个属性写在一起。
+background属性和border一样，是一个综合属性，可以将多个属性写在一起。(在盒子模型这篇文章中会专门讲border)
 
 举例1:
 
@@ -263,7 +265,7 @@ background属性和border一样，是一个综合属性，可以将多个属性�
 
 效果如下：
 
-20170813_1515.png
+![](http://img.smyhvae.com/20170813_1515.png)
 
 
 PS：以后的CSS3内容中，将学习更多background属性： background-origin、background-clip、background-size（在CSS2.1背景图片是不能调整尺寸，IE9开始兼容）、多背景。
