@@ -9,7 +9,6 @@
  - 字体属性
  - 文本属性
  - 背景属性
- - 盒子模型
  - 定位属性：position、float、overflow等
 
 ## CSS的单位
@@ -297,82 +296,6 @@ ul li{
 
 ![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-03-css-26.png)
 
-## 盒子模型（重要）
-
-之前我们是把标签看做是一个对象。从现在开始，我们要把标签理解成一个盒子。
-
-标准盒子模型：
-
-![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-03-css-27.jpg)
-
-IE盒子模型：
-
-![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-03-css-30.jpg)
-
-上图显示：
-
-
-
-
-
- - 在 CSS 盒子模型 (Box Model) 规定了元素处理元素的几种方式：  <font color="#0000FF">**内容、内边距、边框、外边距**</font>。
- - 在 CSS的<font color="#0000FF">**标准盒子模型**</font>中，<font color="#0000FF">**width 和 height 指的是内容区域**</font>的宽度和高度。增加内边距、边框和外边距不会影响内容区域的尺寸，但是会增加元素框的总尺寸。<font color="#0000FF">**IE盒子模型**</font>中，<font color="#0000FF">**width 和 height 指的是内容区域+border+padding**</font>的宽度和高度。
- 注：Android中也有margin和padding的概念，意思是差不多的，如果你会一点Android，应该比较好理解吧。区别在于，Android中没有bording这个东西，而且在Android中，margin并不是控件的一部分，我觉得这样做更合理一些，呵呵。
-<br>
-
-![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-03-css-29.jpg)
-
-例如，上图所示：假设框的每个边上有10个像素的外边距和5个像素的内边距。如果希望这个元素框达到100个像素，就需要将内容的宽度设置为70像素。
-
-
-
-`<body>`标签有必要强调一下。很多人以为`<body>`标签占据的是整个页面的全部区域，其实是错误的，正确的理解是这样的：整个网页最大的盒子是`<document>`，即浏览器。而`<body>`是`<document>`的儿子。浏览器给`<body>`默认的margin大小是8个像素，此时`<body>`占据了整个页面的一大部分区域，而不是全部区域。来看一段代码。
-
-```html
-<!doctype html>
-<html lang="en">
- <head>
-  <meta charset="UTF-8">
-  <meta name="Generator" content="EditPlus®">
-  <meta name="Author" content="">
-  <meta name="Keywords" content="">
-  <meta name="Description" content="">
-  <title>Document</title>
-
-	<style type="text/css">
-
-		div{
-			width: 100px;
-			height: 100px;
-			border: 1px solid red;
-			padding: 20px;
-			margin: 30px;
-		}
-
-	</style>
-
- </head>
-
- <body>
-
-	<div>有生之年</div>
-	<div>狭路相逢</div>
-
- </body>
-
-</html>
-
-```
-
-上面的代码中，我们对div标签设置了边距等信息。打开google浏览器，按住F12，显示效果如下：
-
-![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-03-css-27.png)
-
-补充一下，如果我在css样式中这样写：
-```html
-padding:20 30 40 50;
-```
-上方代码的设置边距的顺序是：上、右、下、左（顺时针方向）。margin的道理是一样的。
 
 
 ## 定位属性(position,float,overflow,z-index)
