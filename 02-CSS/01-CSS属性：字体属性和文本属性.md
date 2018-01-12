@@ -42,19 +42,139 @@ html中的单位只有一种，那就是像素px，所以单位是可以省略�
 
 ## 字体属性
 
-css样式中，常见的字体属性有以下几种：
+### 行高
+
+CSS中，所有的行，都有行高。盒子模型的padding，绝对不是直接作用在文字上的，而是作用在“行”上的。
+
+如下图所示：
+
+![](http://img.smyhvae.com/20170808_2216.png)
+
+上图中，我们设置行高为30px，30px * 5 = 150px，通过查看审查元素，这个p标签的高度果然为150px。而且我们发现，我们并没有给这个p标签设置高度，显然是内容将其撑高的。
+
+垂直方向来看，文字在自己的行里是居中的。比如，文字是14px，行高是24px，那么padding就是5px：
+
+![](http://img.smyhvae.com/20170808_2220.png)
+
+为了严格保证字在行里面居中，我们的工程师有一个约定： **行高、字号，一般都是偶数**。这样可以保证，它们的差一定偶数，就能够被2整除。
+
+
+### 如何让单行文本垂直居中
+
+小技巧：如果一段文本只有一行，如果此时设置**行高 = 盒子高**，就可以保证单行文本垂直居中。这个很好理解。
+
+上面这个小技巧，只适用于单行文本垂直居中，不适用于多行。如果想让多行文本垂直居中，还需要计算盒子的padding。计算方式如下：
+
+![](http://img.smyhvae.com/20170808_2240.png)
+
+### font字体属性
+
+css样式中，字体属性有以下几种：
 
 ```html
 p{
 	font-size:50px; 		/*字体大小*/
+	line-height: 30px;      /*行高*/
+	font-family:幼圆,黑体; 	/*字体类型：如果没有幼圆就显示黑体，没有黑体就显示默认*/
 	font-style:italic ;		/*斜体*/
 	font-weight:bold;	/*粗体：属性值写成bolder也可以*/
-	font-family:幼圆,黑体; 	/*字体类型：如果没有幼圆就显示黑体，没有黑体就显示默认*/
 	font-variant:small-caps;  /*小写变大写*/
 }
 ```
 
-另外还有一个`font`属性，它是一个简写属性。指的是：可以将上面的多个属性写在一个声明里面，个人不太喜欢这种写法。
+上面这些属性中，字号、行高、字体这三个属性是最常见的。我们继续看。
+
+**1、字号、行高、字体三大属性：**
+
+（1）字号：
+
+```
+	font-size:14px;
+```
+
+（2）行高：
+
+```
+	line-height:24px;
+```
+
+（3）字体：（font-family就是“字体”，family是“家庭”的意思）
+
+```
+	font-family:"宋体";
+```
+
+上面这三个属性，我们可以使用一行代码来实现：（字号 font-size、行高 line-height、字体 font-family）
+
+```
+	font: 14px/24px “宋体”;
+```
+
+**2、字体属性的说明：**
+
+（1）网页中不是所有字体都能用，因为这个字体要看用户的电脑里面装没装，比如你设置：
+
+```
+	font-family: "华文彩云";
+```
+
+上方代码中，如果用户电脑里面没有这个字体，那么就会变成宋体。
+
+页面中，中文我们只使用：微软雅黑、宋体、黑体。英文使用：Arial、Times New Roman。页面中如果需要其他的字体，就需要切图。
+
+（2）为了防止用户电脑里，没有微软雅黑这个字体。就要用英语的逗号，隔开备选字体。如下：（可以备选多个）
+
+```
+	font-family: "微软雅黑","宋体";
+```
+
+上方代码表示：如果用户电脑里没有安装微软雅黑字体，那么就是宋体。
+
+
+（3）我们须将英语字体放在最前面，这样所有的中文，就不能匹配英语字体，就自动的变为后面的中文字体：
+
+```
+	font-family: "Times New Roman","微软雅黑","宋体";
+```
+
+上方代码的意思是，英文会采用Times New Roman字体，而中文会采用微软雅黑字体（因为美国人设计的Times New Roman字体并不针对中文，所以中文会采用后面的微软雅黑）。比如说，对于`smyhvae哈哈哈`这段文字，`smyhvae`会采用Times New Roman字体，而`哈哈哈`会采用微软雅黑字体。
+
+可是，如果我们把中文字体写在前面：(错误写法)
+
+```
+	font-family: "微软雅黑","Times New Roman","宋体";
+```
+
+上方代码会导致，中文和英文都会采用微软雅黑字体。
+
+（4）所有的中文字体，都有英语别名。
+
+微软雅黑的英语别名：
+
+```
+	font-family: "Microsoft YaHei";
+```
+
+宋体的英语别名：
+
+```
+	font-family: "SimSun";
+```
+
+于是，当我们把字号、行高、字体这三个属性合二为一时，也可以写成：
+
+```
+	font:12px/30px  "Times New Roman","Microsoft YaHei","SimSun";
+```
+
+（5）行高可以用百分比，表示字号的百分之多少。
+
+一般来说，百分比都是大于100%的，因为行高一定要大于字号。
+
+比如说， `font:12px/200% “宋体”`等价于`font:12px/24px “宋体”`。`200%`可以理解成word里面的2倍行高。
+
+反过来， `font:16px/48px “宋体”;`等价于`font:16px/300% “宋体”`。
+
 
 ## 文本属性
 
@@ -72,208 +192,8 @@ CSS样式中，常见的文本属性有以下几种：
 
 ![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-03-css-18.png)
 
-## 背景属性
-
-CSS样式中，常见的背景属性有以下几种：（经常用到，要记住）
-
-- `background-color:#ff99ff;`  设置元素的背景颜色。
-
-- `background-image:url(images/2.gif);` 将图像设置为背景。
-
--  `background-repeat: no-repeat;`  设置背景图片是否重复及如何重复，默认平铺满。（重要）
-	- `no-repeat`不要平铺；
-	- `repeat-x`横向平铺；
-	- `repeat-y`纵向平铺。
-
-- `background-position:center top;` 设置背景图片在当前容器中的位置。
-
-- `background-attachment:scroll;` 设置背景图片是否跟着滚动条一起移动。
-属性值可以是：`scroll`（背景图片不动）、`fixed`（背景图片跟着滚动条一起移动）。注意属性值的含义不要搞反了，它的含义是根据滚动条来定义的。
-
-- 另外还有一个简写属性叫做`background`，它的作用是：将上面的多个属性写在一个声明中。
-
-上面这几个属性经常用到，需要记住。现在我们逐个进行讲解。
-
-
-### `background-repeat`属性（重要）
-
-`background-repeat:no-repeat;`设置背景图片是否重复及如何重复，默认平铺满。属性值可以是：
-
-- `no-repeat`（不要平铺）
-- `repeat-x`（横向平铺）
-- `repeat-y`（纵向平铺）
-
-
-
-这个属性在开发的时候也是经常用到的。我们通过设置不同的属性值来看一下效果吧：
-
-（1）不加这个属性时：（即默认时）（背景图片会被平铺满）
-
-![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-03-css-19.png)
-
-PS：padding的区域也是有背景图的。
-
-（2）属性值为`no-repeat`（不要平铺）时：
-
-![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-03-css-20.png)
-
-（3）属性值为`repeat-x`（横向平铺）时：
-
-![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-03-css-21.png)
-
-其实这种属性的作用还是很广的。举个例子，设计师设计一张宽度只有1px、颜色纵向渐变的图片，然后我们通过这个属性将其进行水平方向的平铺，就可以看到整个页面都是渐变的了。
-
-在搜索引擎上搜“**平铺背景**”，就可以发现，**周期性的图片**可以采用此种方法进行平铺。
-
-（4）属性值为`repeat-y`（纵向平铺）时：
-
-![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-03-css-22.png)
-
-
-### `background-position`属性
-
-`background-position`属性指的是**背景定位**属性。公式如下：
-
-
-在描述属性值的时候，有两种方式：用像素描述、用单词描述。下面分别介绍。
-
-**1、用像素值描述属性值：**
-
-格式如下：
-
-```
-	background-position:向右偏移量 向下偏移量;
-```
-
-属性值可以是正数，也可以是负数。比如：`100px 200px`、`-50px -120px`。
-
-举例如下：
-
-![](http://img.smyhvae.com/20170812_1643.png)
-
-
-![](http://img.smyhvae.com/20170812_1645.png)
-
-
-
-**2、用单词描述属性值：**
-
-格式如下：
-
-```
-	background-position: 描述左右的词 描述上下的词;
-```
-
-- 描述左右的词：left、center、right
-- 描述上下的词：top 、center、bottom
-
-比如说，`right center`表示将图片放到右边的中间；`center center`表示将图片放到正中间。
-
-位置属性有很多使用场景的。我们来举两个例子。
-
-场景1：（大背景图）
-
-打开“暗黑3 台湾”的官网<https://tw.battle.net/d3/zh/>，可以看到官网的效果是比较炫的：
-
-![](http://img.smyhvae.com/20170812_1945.jpg)
-
-
-检查网页后，找到网站背景图片的url：<https://tw.battle.net/d3/static/images/layout/bg-repeat.jpg>。背景图如下：
-
-![](http://img.smyhvae.com/20170812_1950.jpg)
-
-实际上，我们是通过把这张图片作为网站的背景图来达到显示效果的。只需要给body标签加如下属性即可：
-
-```
-        body{
-            background-image: url(/Users/smyhvae/Dropbox/img/20170812_1950.jpg);
-            background-repeat: no-repeat;
-            background-position: center top;
-        }
-```
-
-上方代码中，如果没加`background-position`这个属性，背景图会默认处于浏览器的左上角（显得很丑）；加了此属性之后，图片在水平方向就位于浏览器的中间了。
-
-场景2：（通栏banner）
-
-很多网站的首页都会有banner图（网站最上方的全屏大图叫做「**通栏banner**」），这种图要求横向的宽度特别大。比如说，设计师给你一张1920*465的超大banner图，如果我们把这个banner图作为img标签直接插入网页中，会有问题的：首先，图片不在网页的中间；其次，肯定会出现横向滚动条。如下图所示：
-
-![](http://img.smyhvae.com/20170813_1102.gif)
-
-
-
-
-正确的做法是，将banner图作为div的背景图，这样的话，背景图超出div的部分，会自动移溢出。需要给div设置的属性如下：
-
-```css
-        div{
-            height: 465px;
-            background-image: url(http://img.smyhvae.com/20170813_1053.jpg);
-            background-position: center top;
-            background-repeat: no-repeat;
-        }
-```
-
-上方代码中，我们给div设置height（高度为banner图的高度），不需要设置宽度（让宽度自动霸占整行即可）。效果如下：
-
-![](http://img.smyhvae.com/20170813_1119.gif)
-
-上图可以看出，将banner图作为div的背景后，banner图会永远处于网页的正中间（水平方向来看）。
-
-
-### background-attachment属性
-
-- `background-attachment:scroll;` 设置背景图片是否固定。属性值可以是：
-	- `fixed`（背景就会被固定住，不会被滚动条滚走）。
-	- `scroll`（与fixed属性相反，默认属性）
-
-`background-attachment:fixed;`的效果如下：
-
-![](http://img.smyhvae.com/20170813_1158.gif)
-
-
-### background综合属性
-
-background属性和border一样，是一个综合属性，可以将多个属性写在一起。(在盒子模型这篇文章中会专门讲border)
-
-举例1:
-
-```
-	background:red url(1.jpg) no-repeat 100px 100px fixed;
-```
-
-等价于：
-
-```
-	background-color:red;
-	background-image:url(1.jpg);
-	background-repeat:no-repeat;
-	background-position:100px 100px;
-	background-attachment:fixed;
-```
-
-以后，我们可以用小属性层叠掉大属性。
-
-上面的属性中，可以任意省略其中的一部分。
-
-比如说，对于下面这样的属性：
-
-```
-	background: blue url(images/wuyifan.jpg) no-repeat 100px 100px;
-```
-
-效果如下：
-
-![](http://img.smyhvae.com/20170813_1515.png)
-
-
-PS：以后的CSS3内容中，将学习更多background属性： background-origin、background-clip、background-size（在CSS2.1背景图片是不能调整尺寸，IE9开始兼容）、多背景。
-
-
-
 
 ## 列表属性
-
 
 ```html
 ul li{
@@ -297,18 +217,9 @@ ul li{
 ![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-03-css-26.png)
 
 
-
 ## 定位属性(position,float,overflow,z-index)
 
-> 这一段涉及到**浮动**的知识，我们在[浮动]()这篇文章中会专门讲解。本段只做简单介绍。
-
-在讲之前，有个概念叫顺序流，需要强调一下。
-
-<font color="#0000FF">**顺序流**</font>：所有的标签的初始排列顺序就称为顺序流。
-
-有两种情况会脱离本身的顺序流：
- - 1、控件的位置设置为绝对定位。
- - 2、设置控件的float属性。
+> 这一段涉及到**浮动**的知识，我们在[浮动](https://github.com/smyhvae/Web/blob/master/02-CSS/05-%E6%B5%AE%E5%8A%A8.md)这篇文章中会专门讲解。本段只做简单介绍。
 
 ### 1、pisition属性：
 
@@ -317,7 +228,6 @@ ul li{
 position定位分为绝对定位和相对定位：
 
  - `position:absolute;`  <font color="#0000FF">**绝对定位**</font>：定义横纵坐标，原点在父容器的左上角。<font color="#0000FF">**脱离了本身的顺序流**</font>。横坐标用left表示，纵坐标用top表示。
-
 
 绝对定位的举例：
 
@@ -469,9 +379,6 @@ position定位分为绝对定位和相对定位：
 
 ![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-03-css-31.png)
 
-
-
-
 ### 5、z-index属性：属性值大的位于上层，属性值小的位于下层
 
 这句话可能比较难理解。我们来看例子吧。
@@ -483,7 +390,6 @@ position定位分为绝对定位和相对定位：
 现在加一个`z-index`属性，要求效果如下：
 
 ![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-03-css-33.png)
-
 
 ## 鼠标的属性cursor
 
@@ -556,8 +462,6 @@ p:hover{
 ![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-03-css-38.png)
 
 爆料一下，表示博主有两年多的平面设计经验，我做设计的时间其实比写代码的时间要长，嘿嘿···
-
-
 
 
 ## 导航栏的制作（本段内容请忽略）
