@@ -66,7 +66,7 @@
 			font-size: 14px;
 			font-family: "Microsoft YaHei","SimSun";
 			height: 8888px;
-		}		
+		}
 		.header{
 			height: 58px;
 			background-color: #191D3A;
@@ -104,8 +104,8 @@
 			text-align: center;  /*让这个div内部的文本居中*/
 		}
 		.header .nav ul li a.current{
-			color:white;	
-			background: #252947;		
+			color:white;
+			background: #252947;
 		}
 		.header .nav ul li a:hover{
 			color: white;
@@ -117,7 +117,7 @@
 			height: 58px;
 			width: 100px;
 			padding-left: 48px;
-			padding-top: 12px;			
+			padding-top: 12px;
 
 		}
 		.header .jrwm_box .jrwm{
