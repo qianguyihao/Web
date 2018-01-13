@@ -8,7 +8,6 @@
  - CSS的单位
  - 字体属性
  - 文本属性
- - 背景属性
  - 定位属性：position、float、overflow等
 
 ## CSS的单位
