@@ -852,6 +852,182 @@ p,h1,#mytitle,.one{
 
 
 
+## 一些 CSS3 选择器
+
+> 所有的css3选择器，我们放在HTML5和CSS3课上介绍。暂时先接触一部分。
+
+PS：我们可以用`IETester`这个软件测一下CSS在各个版本IE浏览器上的显示效果。
+
+
+
+### 浏览器的兼容性问题
+
+IE： 微软的浏览器，随着操作系统安装的。所以每个windows都有IE浏览器。各版本如下：
+
+- windows xp 	操作系统安装的IE6
+- windows vista 操作系统安装的IE7
+- windows 7 	操作系统安装的IE8
+- windows 8 	操作系统安装的IE9
+- windows10 	操作系统安装的edge
+
+浏览器兼容问题，要出，就基本上就是出在IE6、7身上，这两个浏览器是非常低级的浏览器。
+
+为了测试浏览器CSS 3的兼容性，我们可以在网上搜"css3 机器猫"关键字，然后在不同的浏览器中打开如下链接：
+
+- <http://www1.pconline.com.cn/pcedu/specialtopic/css3-doraemon/>
+
+测试结果如下：
+
+
+
+![](http://img.smyhvae.com/20170711_1939.png)
+
+
+
+我们可以在[百度统计](http://tongji.baidu.com/data/)里查看浏览器的市场占有率：
+
+- IE9	5.94%
+- IE8 21.19%
+- IE7 4.79%
+- IE6 4.11%
+
+我们可以在<http://html5test.com/results/desktop.html>中查看
+
+![](http://img.smyhvae.com/20170711_1948.png)
+
+我们要知道典型的IE6兼容问题（面试要问），但是做项目我们兼容到IE8即可。不解决IE8以下的兼容问题，目的在于：培养更高的兴趣和眼光，别天天的跟IE6较劲。
+
+我们可以用「IETester」软件看看css在各个浏览器中的显示效果。
+
+
+### 1.儿子选择器，用符号`>`表示
+
+> IE7开始兼容，IE6不兼容。
+
+```css
+div>p{
+	color:red;
+}
+```
+
+div的儿子p。和div的后代p的截然不同。
+
+能够选择：
+
+```html
+	<div>
+		<p>我是div的儿子</p>
+	</div>
+```
+
+不能选择：
+
+```html
+	<div>
+		<ul>
+			<li>
+				<p>我是div的重孙子</p>
+			</li>
+		</ul>
+	</div>
+```
+
+
+### 2.序选择器
+
+> IE8开始兼容；IE6、7都不兼容
+
+设置无序列表`<ul>`中的第一个`<li>`为红色：
+
+```html
+	<style type="text/css">
+		ul li:first-child{
+			color:red;
+		}
+	</style>
+```
+
+设置无序列表`<ul>`中的最后一个`<li>`为红色：
+
+```css
+		ul li:last-child{
+			color:blue;
+		}
+```
+
+序选择器还有更复杂的用法，以后再讲。
+
+由于浏览器的更新需要过程，所以现在如果公司还要求兼容IE6、7，那么就要自己写类名：
+
+```html
+	<ul>
+		<li class="first">项目</li>
+		<li>项目</li>
+		<li>项目</li>
+		<li>项目</li>
+		<li>项目</li>
+		<li>项目</li>
+		<li>项目</li>
+		<li>项目</li>
+		<li>项目</li>
+		<li class="last">项目</li>
+	</ul>
+```
+
+用类选择器来选择第一个或者最后一个：
+
+```html
+		ul li.first{
+			color:red;
+		}
+
+		ul li.last{
+			color:blue;
+		}
+```
+
+
+### 3.下一个兄弟选择器
+
+> IE7开始兼容，IE6不兼容。
+
+`+`表示选择下一个兄弟
+
+```html
+	<style type="text/css">
+		h3+p{
+			color:red;
+		}
+	</style>
+```
+
+上方的选择器意思是：选择的是h3元素后面紧挨着的第一个兄弟。
+
+```html
+    <h3>我是一个标题</h3>
+	<p>我是一个段落</p>
+	<p>我是一个段落</p>
+	<p>我是一个段落</p>
+	<h3>我是一个标题</h3>
+	<p>我是一个段落</p>
+	<p>我是一个段落</p>
+	<p>我是一个段落</p>
+	<h3>我是一个标题</h3>
+	<p>我是一个段落</p>
+	<p>我是一个段落</p>
+	<p>我是一个段落</p>
+	<h3>我是一个标题</h3>
+```
+
+
+效果如下：
+
+![](http://img.smyhvae.com/20170711_1950.png)
+
+
+这种选择器作用不大。
+
+
 
 ##我的公众号
 
