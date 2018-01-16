@@ -9,7 +9,7 @@
 
 首页的**版心**如下：
 
-20170813_1535.png
+![](http://img.smyhvae.com/20170813_1535.png)
 
 这里我们要普及一个概念，叫“[版心](https://baike.baidu.com/item/%E7%89%88%E5%BF%83)”。**版心是页面中主要内容所在的区域。**
 
@@ -165,8 +165,7 @@
 
 导航栏的效果如下：
 
-20180114_1332.gif
-
+![](http://img.smyhvae.com/20180114_1332.gif)
 
 
 ## banenr图
@@ -393,15 +392,111 @@
 </html>
 ```
 
-
 代码解释：
 
 
+（1）导航栏，左侧的logo：
+
+**错误的写法：**
+
+可能会有人直接将img标签作为logo的布局：
 
 
-最终实现的效果如下：
+```html
+    <div class="logo">
+        <img src="images/logo.png " alt="">
+    </div>
+```
 
-20180114_1405.png
+然后将img的样式设置为：
+
+```css
+    .header .logo{
+        float: left;
+        margin-right: 40px;
+    }
+```
+
+
+这样写虽然视觉效果上达到了，但是搜索引擎是搜不到图片的，不利于SEO。
+
+**正确的写法：**
+
+正确的写法是将超链接作为logo的布局，里面放入文字（文字可以被SEO）：
+
+```html
+			<h1 class="logo">
+				<a href="#">
+					博雅互动-世界上最好的游戏公司
+				</a>
+			</h1>
+```
+
+
+然后将**logo设置为背景图**：
+
+```css
+		.header .logo{
+			float: left;
+			padding-left: 12px;
+			margin-right: 39px;
+			width: 174px;
+			height: 58px;
+		}
+		.header .logo a{
+			display: block;
+			width: 174px;
+			height: 58px;
+			background:url(images/logo.png) no-repeat;
+			text-indent: -999em;
+		}
+
+```
+
+由于搜索引擎是搜不到图片的，所以一定要把“博雅互动”这几个文字加上去，**然后通过`text-indent`缩进的属性把文字赶走到视线以外的地方**。这是做搜索引擎优化的一个重要的技巧。
+
+另外，背景要放在里层的a标签里，不要放在外层的h1标签里。假设背景图放在h1里，那么不管h1的padding有多大，背景图的位置都不会变。
+
+（1）内容区域，“点击播放”右侧的小三角形：
+
+
+我们在“点击播放”的右侧放了一个三角形。这个很有技巧。
+
+![](http://img.smyhvae.com/20180115_1356.png)
+
+
+
+代码截取如下：
+
+
+
+```css
+		.content .product ul li p.djbf a{
+			font-size: 12px;
+			color:#38B774;
+			text-decoration: none;
+			background:url(images/sanjiaoxing.png) no-repeat right center;
+			padding-right: 12px;
+		}
+```
+
+上方代码中，我们在第6行给“点击播放”这个超链接加一个右padding（很关键），然后在第5行把小三角这个背景图放在右padding的位置，就能达到想要的视觉效果。
+
+
+
+（2）
+
+
+导航栏+banner+内容区域的效果如下：
+
+
+![](http://img.smyhvae.com/20180114_1405.png)
+
+
+
+
+
+
 
 
 
