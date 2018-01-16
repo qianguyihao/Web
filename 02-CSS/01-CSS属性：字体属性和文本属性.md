@@ -216,106 +216,8 @@ ul li{
 ![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-03-css-26.png)
 
 
-## 定位属性(position,float,overflow,z-index)
 
-> 这一段涉及到**浮动**的知识，我们在[浮动](https://github.com/smyhvae/Web/blob/master/02-CSS/05-%E6%B5%AE%E5%8A%A8.md)这篇文章中会专门讲解。本段只做简单介绍。
-
-### 1、pisition属性：
-
-定位属性position的属性值可以是absolute、relative。
-
-position定位分为绝对定位和相对定位：
-
- - `position:absolute;`  <font color="#0000FF">**绝对定位**</font>：定义横纵坐标，原点在父容器的左上角。<font color="#0000FF">**脱离了本身的顺序流**</font>。横坐标用left表示，纵坐标用top表示。
-
-绝对定位的举例：
-
-```html
-	<style type="text/css">
-		div{
-				position: absolute;/*绝对定位*/
-					left: 10px;/*横坐标*/
-					top: 20px;/*纵坐标*/
-		}
-	</style>
-```
-
-- `position:relative;`  <font color="#0000FF">**相对定位**</font>：相对于自己原来的位置。
-
-相对定位的举例：
-
-```html
-<!doctype html>
-<html lang="en">
- <head>
-  <meta charset="UTF-8">
-  <meta name="Generator" content="EditPlus®">
-  <meta name="Author" content="">
-  <meta name="Keywords" content="">
-  <meta name="Description" content="">
-  <title>Document</title>
-
-	<style type="text/css">
-
-		body{
-			margin: 0px;
-		}
-
-		#div1{
-			width: 200px;
-			height: 200px;
-			border: 1px solid red;
-		}
-
-		#div2{
-			position: relative;/*相对定位：相对于自己原来的位置*/
-				left: 50px;/*横坐标：正值表示向右偏移，负值表示向左偏移*/
-				top: 50px;/*纵坐标：正值表示向下偏移，负值表示向上偏移*/
-
-			width: 200px;
-			height: 200px;
-			border: 1px solid red;
-		}
-	</style>
- </head>
-
- <body>
-
-	<div id="div1">有生之年</div>
-	<div id="div2">狭路相逢</div>
-
- </body>
-
-</html>
-```
-
-效果：
-
-![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-03-css-28.png)
-
-
-### 2、float属性：浮动
-
-`float`属性会让元素脱离原来的顺序流，它的属性值可以是：
- - `none`：默认值，对象不漂浮
- - `left`：文本流向对象的右边
- - `right`：文本流向对象的左边
-
-举例：
-
-![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-03-css-29.png)
-
-我们知道，在默认情况下，两个div标签是上下进行排列的。现在由于float属性让上图中的两个`<div>`标签出现了浮动，于是这里两个标签在另外一个层面上水平排列了。而`<p>`标签还在自己的层面上遵从顺序流进行排列。
-
-### 3、clear属性：禁止浮动
-
-`clear`属性的属性值可以是：
- - `none`：默认值，允许两边都可以有浮动对象
- - `left`：不允许左边有浮动对象
- - `right`：不允许右边有浮动对象
- - `both`：不允许有浮动对象
-
-### 4、overflow属性：超出范围的内容要怎么处理
+## overflow属性：超出范围的内容要怎么处理
 
 `overflow`属性的属性值可以是：
 
@@ -378,17 +280,10 @@ position定位分为绝对定位和相对定位：
 
 ![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-03-css-31.png)
 
-### 5、z-index属性：属性值大的位于上层，属性值小的位于下层
 
-这句话可能比较难理解。我们来看例子吧。
 
-这是默认情况下的例子：（div2在上层，div1在下层）
 
-![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-03-css-32.png)
 
-现在加一个`z-index`属性，要求效果如下：
-
-![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-03-css-33.png)
 
 ## 鼠标的属性cursor
 
