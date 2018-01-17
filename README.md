@@ -25,12 +25,12 @@
 
 - [07-浮动](./02-CSS/07-浮动.md)
 
-- [08-CSS属性：定位属性](./03-JavaScript/08-CSS属性：定位属性.md)
+- [08-CSS属性：定位属性](./02-CSS/08-CSS属性：定位属性.md)
 
 
 ## JavaScript基础
 
-- [01-JavaScript语法基础：JS简介&变量](01-JavaScript语法基础：JS简介&变量.md)
+- [01-JavaScript语法基础：JS简介&变量](./03-JavaScript/01-JavaScript语法基础：JS简介&变量.md)
 
 
 
