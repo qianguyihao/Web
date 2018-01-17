@@ -23,6 +23,46 @@
 参考链接：[Sublime Text 新建文件快速生成Html【头部信息】和【代码补全】、【汉化】](http://www.jianshu.com/p/f44e91bf9dfb)
 
 
+
+## 常用插件
+
+### SublimeCodeIntel： JavaScript代码自动提示（不好用）
+
+安装完成后，通过路径Perferences->Package Settings->SublimeCodeIntel->Setting - Defalut打开配置文件。
+
+将
+
+```
+"codeintel_selected_catalogs": ["jQuery"]
+
+```
+
+改为：
+
+```
+"codeintel_selected_catalogs": ["JavaScript"]
+```
+
+保存后重启软件。
+
+
+参考链接：[#](http://blog.csdn.net/hehexiaoxia/article/details/54134756)
+
+
+
+### sublime javascript complet：JavaScript代码自动提示
+
+
+- [官网链接](https://packagecontrol.io/packages/JavaScript%20Completions)
+
+- [GitHub链接](https://github.com/pichillilorenzo/JavaScript-Completions)
+
+在google上搜关键字"sublime javascript complete"找到的。另外还搜到一个[SublimeAllAutocomplete](https://github.com/alienhard/SublimeAllAutocomplete)
+
+
+
+
+
 ## sublime text 快捷键
 
 | Win快捷键 | Mac快捷键 |作用 | 备注 |
