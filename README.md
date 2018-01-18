@@ -32,10 +32,9 @@
 
 - [01-JavaScript语法基础：JS简介&变量](./03-JavaScript/01-JavaScript语法基础：JS简介&变量.md)
 
+- [02-JavaScript语法基础：运算符和表达式](./03-JavaScript/02-JavaScript语法基础：运算符和表达式.md)
 
-
-
-
+- [03-JavaScript语法基础：if语句&for循环&函数](./03-JavaScript/03-JavaScript语法基础：if语句&for循环&函数.md)
 
 
 
