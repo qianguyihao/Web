@@ -26,7 +26,7 @@
 
 ## 常用插件
 
-### SublimeCodeIntel： JavaScript代码自动提示（不好用）
+### JavaScript代码自动提示：SublimeCodeIntel（不好用）
 
 安装完成后，通过路径Perferences->Package Settings->SublimeCodeIntel->Setting - Defalut打开配置文件。
 
@@ -45,12 +45,10 @@
 
 保存后重启软件。
 
-
 参考链接：[#](http://blog.csdn.net/hehexiaoxia/article/details/54134756)
 
 
-
-### sublime javascript complet：JavaScript代码自动提示
+### JavaScript代码自动提示：javascript complet
 
 
 - [官网链接](https://packagecontrol.io/packages/JavaScript%20Completions)
@@ -59,6 +57,13 @@
 
 在google上搜关键字"sublime javascript complete"找到的。另外还搜到一个[SublimeAllAutocomplete](https://github.com/alienhard/SublimeAllAutocomplete)
 
+
+### JS代码格式化：JsFormat
+
+
+快捷键是：选中JS代码，然后按ctrl+alt+f。
+
+或者，先用快捷键打开命令面板 “ctrl + shift + p”, 再输入 “Format: Javascript” 就可以使用格式化命令
 
 
 
