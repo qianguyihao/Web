@@ -14,7 +14,8 @@
 
 常见的数学运算符有以下几种：
 
-![](http://img.smyhvae.com/20180117_1650.png)
+![](http://img.smyhvae.com/20180117_1651.png)
+
 
 **求余的举例**：
 
