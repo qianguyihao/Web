@@ -14,7 +14,7 @@
 - 排版标签：`<p>` &nbsp;&nbsp;&nbsp; `<div>` &nbsp;&nbsp;&nbsp; `<span>``<br>` &nbsp;&nbsp;&nbsp; `<hr>` &nbsp;&nbsp;&nbsp; `<center>` &nbsp;&nbsp;&nbsp; `<pre>`
 - 字体标记：`<h1>`&nbsp;&nbsp;&nbsp; `<font>`&nbsp;&nbsp;&nbsp; `<b>`&nbsp;&nbsp;&nbsp; `<u>` &nbsp;&nbsp;&nbsp;`<sup>` &nbsp;&nbsp;&nbsp;`<sub>`
 - 超链接
-- 图片标签	
+- 图片标签
 
 
 
@@ -32,7 +32,7 @@ web标准介绍：
 
 web标准总结：
 
-- 结构标准：相当于人的身体。html就是用来制作网页的。   
+- 结构标准：相当于人的身体。html就是用来制作网页的。
 - 表现标准： 相当于人的衣服。css就是对网页进行美化的。
 - 行为标准： 相当于人的动作。JS就是让网页动起来，具有生命力的。
 
@@ -84,7 +84,7 @@ PS：「浏览器内核」也就是浏览器所采用的「渲染引擎」，渲
 
 **作用**：HTML是负责描述文档**语义**的语言。
 
-**注意**：HTML语言不是一个编程语言(有编译过程)，而是一个**标记语言**(<font color=#0000ff>**没有编译过程**</font>)，HTML页面直接由浏览器解析执行。 
+**注意**：HTML语言不是一个编程语言(有编译过程)，而是一个**标记语言**(<font color=#0000ff>**没有编译过程**</font>)，HTML页面直接由浏览器解析执行。
 
 
 
@@ -102,11 +102,11 @@ html是一个纯本文文件（就是用txt文件改名而成），用一些标�
 - 错误答案：给文字加粗、加黑、变大。
 
 
-    
+
 ### 2、HTML的历史
 
 ![html中标签发展趋势.png](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-01-cnblogs_html166440-5b780bdc6b80a5fb.png)
- 
+
 我们专门来对XHTML做一个介绍。
 
 **XHTML介绍：**
@@ -259,7 +259,7 @@ PS：后缀名不能决定文件格式，只能决定打开文件打开的方式
 （6）XHTML文档开头必须要有DTD文档类型定义
 
 
-  
+
 
 
 ### 2、HTML的基本语法特性
@@ -319,7 +319,7 @@ HTML标签通常是成对出现的（<font color="blue">**双边标记**</font>�
 	<title>Document</title>
 </head>
 <body>
-	
+
 </body>
 </html>
 ```
@@ -334,7 +334,7 @@ HTML标签通常是成对出现的（<font color="blue">**双边标记**</font>�
 	<title>Document</title>
 </head>
 <body>
-	
+
 </body>
 </html>
 ```
@@ -405,7 +405,7 @@ HTML5中极大的简化了DTD，也就是说HTML5中就没有XHTML了（W3C自�
 头标签都放在<head></head>头部分之间。包括：`<title>`、`<base>`、`<meta>`、`<link>`
 
  - `<title>`：指定整个网页的标题，在浏览器最上方显示。
- - `<base>`：为页面上的所有链接规标题栏显示的内容定默认地址或默认目标。 
+ - `<base>`：为页面上的所有链接规标题栏显示的内容定默认地址或默认目标。
  - `<meta>`：提供有关页面的基本信息
  - `<body>`：用于定义HTML文档所要显示的内容，也称为主体标签。我们所写的代码必须放在此标签內。
  - `<link>`：定义文档与外部资源的关系。
@@ -426,7 +426,7 @@ HTML5中极大的简化了DTD，也就是说HTML5中就没有XHTML了（W3C自�
   <title>Document</title>
  </head>
  <body>
-  
+
  </body>
 </html>
 ```
@@ -518,7 +518,7 @@ title也是有助于SEO搜索引擎优化的。
 		<title>Document</title>
 	</head>
 	<body>
-		
+
 	</body>
 	</html>
 ```
@@ -586,7 +586,7 @@ title也是有助于SEO搜索引擎优化的。
 
 HTML标签是分等级的，HTML将所有的标签分为两种：
 
-- **文本级标签**：p、span、a、b、i、u、em。文本级标签里只能放**文字、图片、表单元素**。
+- **文本级标签**：p、span、a、b、i、u、em。文本级标签里只能放**文字、图片、表单元素**。（a标签里不能放a和input）
 
 - **容器级标签**：div、h系列、li、dt、dd。容器级标签里可以放置任何东西。
 
@@ -759,7 +759,7 @@ This <br> is a para<br>graph with line breaks
 属性：
  - `color="红色"`或`color="#ff00cc"`或`color="new rgb(0,0,255)"`：设置字体颜色。
 	设置方式：单词 \  #ff00cc \   rgb(0,0,255)
- - `size`：设置字体大小。 取值范围只能是：1至7。取值时，如果取值大于7那就按照7来算，如果取值小于1那就按照1来算。如果想要更大的字体，那就只能通过css样式来解决。  
+ - `size`：设置字体大小。 取值范围只能是：1至7。取值时，如果取值大于7那就按照7来算，如果取值小于1那就按照1来算。如果想要更大的字体，那就只能通过css样式来解决。
 设置：用’+2’代表值是5 或直接给值
  - `face="微软雅黑"`：设置字体类型。注意在写字体时，“微软雅黑”这个字不能写错。
 举例：
@@ -821,23 +821,35 @@ http://7sby7r.com1.z0.glb.clouddn.com/2015-10-01-cnblogs_html_13.png)
 |³|立方3（上标3）|`&sup3;`|
 
 
-<br>
+### 一些小标签/小标记
+
+- `<u>`：下划线标记
+
+- `<s>`或`<del>`：中划线标记（删除线）
+
+- `<i>`或`<em>`：斜体标记
+
+效果：
+
+![Paste_Image.png](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-01-cnblogs_html_15.png)
+
+
+
+上面的这几个标签，常用于做一些小装饰、小图标。比如：
+
+20180118_2340.png
+
+这张图中，我们通过查看京东网站的代码发现，箭头处的小图标都是用的标签`<i>`。
+
+
+div的主要目的是用来布局，而小装饰却可以用来
+
 
 ### 粗体标签`<b>`或`<strong>`（已废弃）
 
 效果：
 
 ![Paste_Image.png](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-01-cnblogs_html_14.png)
-
-### 下划线标记 `<u>`   中划线标记`<s>`（已废弃）
-
-<br>
-
-### 斜体标记  `<i>`或`<em>`（已废弃）
-
-效果：
-
-![Paste_Image.png](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-01-cnblogs_html_15.png)
 
 <br>
 
@@ -1007,7 +1019,7 @@ img是自封闭标签，也称为单标签。
 ```html
 <!-- 当前目录中的图片 -->
 <img src="2.jpg">
-<img src=".\2.jpg"> 
+<img src=".\2.jpg">
 <!-- 上一级目录中的图片 -->
 <img src="..\2.jpg">
 ```
