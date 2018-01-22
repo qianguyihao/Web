@@ -55,7 +55,7 @@
 
 - [GitHub链接](https://github.com/pichillilorenzo/JavaScript-Completions)
 
-在google上搜关键字"sublime javascript complete"找到的。另外还搜到一个[SublimeAllAutocomplete](https://github.com/alienhard/SublimeAllAutocomplete)
+在google上搜关键字"sublime javascript complete"找到的。另外还搜到一个[SublimeAllAutocomp lete](https://github.com/alienhard/SublimeAllAutocomplete)
 
 
 ### JS代码格式化：JsFormat
@@ -64,6 +64,33 @@
 快捷键是：选中JS代码，然后按ctrl+alt+f。
 
 或者，先用快捷键打开命令面板 “ctrl + shift + p”, 再输入 “Format: Javascript” 就可以使用格式化命令
+
+
+
+### 代码快速生成
+
+
+（1）`>`符号的技巧：
+
+
+输入`ul>li*9`，然后按tab键，生成的代码如下；（符号`>`是包含的关系）
+
+```html
+        <div>
+            <li>a</li>
+            <li>a</li>
+            <li>a</li>
+            <li>a</li>
+            <li>a</li>
+            <li>a</li>
+            <li>a</li>
+            <li>a</li>
+            <li>a</li>
+        </div>
+    </div>
+```
+
+
 
 
 
