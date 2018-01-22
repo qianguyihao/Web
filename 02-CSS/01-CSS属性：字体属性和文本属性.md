@@ -75,7 +75,7 @@ p{
 	font-size:50px; 		/*字体大小*/
 	line-height: 30px;      /*行高*/
 	font-family:幼圆,黑体; 	/*字体类型：如果没有幼圆就显示黑体，没有黑体就显示默认*/
-	font-style:italic ;		/*斜体*/
+	font-style:italic ;		/*italic表示斜体，normal表示不倾斜*/
 	font-weight:bold;	/*粗体：属性值写成bolder也可以*/
 	font-variant:small-caps;  /*小写变大写*/
 }
@@ -103,11 +103,27 @@ p{
 	font-family:"宋体";
 ```
 
-上面这三个属性，我们可以使用一行代码来实现：（字号 font-size、行高 line-height、字体 font-family）
+是否加粗属性以及上面这三个属性，我们可以连写：（是否加粗、字号 font-size、行高 line-height、字体 font-family）
+
+格式：
+
 
 ```
-	font: 14px/24px “宋体”;
+	font: 加粗 字号/行高/ 字体
+
 ```
+
+举例：
+
+```
+	font: 400 14px/24px “宋体”;
+```
+
+PS：400是nomal，700是bold。
+
+上面这几个属性可以连写，但是有一个要求，font属性连写至少要有**字号和字体**，否则连写是不生效的（相当于没有这一行代码）。
+
+
 
 **2、字体属性的说明：**
 
@@ -181,7 +197,7 @@ CSS样式中，常见的文本属性有以下几种：
 
  - `letter-spacing: 0.5cm ;`  单个字母之间的间距
  - `word-spacing: 1cm;`   单词之间的间距
- - `text-decoration: underline;` 字体修饰：**underline下划线**、line-through中划线、overline上划线
+ - `text-decoration: none;` 字体修饰：none去掉下划线、**underline下划线**、line-through中划线、overline上划线、
  - `text-transform: lowercase;`  单词字体大小写。uppercase大写、lowercase小写
  - `color:red;` 字体颜色
  - `text-align: center;` 在当前容器中的对齐方式。属性值可以是：left、right、center（<font color="#0000FF">**在当前容器的中间**</font>）、justify
