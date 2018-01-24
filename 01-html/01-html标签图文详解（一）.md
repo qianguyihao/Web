@@ -770,7 +770,7 @@ This <br> is a para<br>graph with line breaks
 
 ![Paste_Image.png](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-01-cnblogs_html_10.png)
 
-### 特殊字符
+### 特殊字符（转义字符）
 
 - `&nbsp;`：空格	（non-breaking spacing，不断打空格）
 - `&lt;`：小于号（less than）
