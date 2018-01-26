@@ -14,6 +14,19 @@ Web前端有三层：
 
 - JavaScript：从交互的角度，描述**行为**（提升用户体验）
 
+
+JavaScript是世界上用的最多的**脚本语言**。
+
+补充：
+
+- 编译执行：把代码编译成CPU认识的语言(文件)，然后整体的执行。
+
+
+- **脚本语言：不需要编译**，直接在运行时**边解析边执行**的语言。
+
+- 弱类型语言：简单定义一个变量，可以有多种数据类型。（var temp）
+
+
 ### JavaScript历史背景介绍
 
 布兰登 • 艾奇（Brendan Eich，1961年～），1995年在网景公司，发明的JavaScript。
@@ -75,6 +88,33 @@ ECMAScript在2015年6月，发布了ECMAScript 6版本，语言的能力更强�
 
 - JavaScript不用关心其他的一些事情（比如内存的释放、指针等），更关心自己的业务。
 
+### 浏览器工作原理
+
+
+20180124_1700.png
+
+1、User Interface  用户界面，我们所看到的浏览器
+
+2、Browser engine  浏览器引擎，用来查询和操作渲染引擎
+
+3、Rendering engine 用来显示请求的内容，负责解析HTML、CSS
+
+4、Networking   网络，负责发送网络请求
+
+5、JavaScript Interpreter(解析者)   JavaScript解析器，负责执行JavaScript的代码
+
+6、UI Backend   UI后端，用来绘制类似组合框和弹出窗口
+
+7、Data Persistence(持久化)  数据持久化，数据存储  cookie、HTML5中的sessionStorage
+
+
+
+参考链接：<https://www.2cto.com/kf/201202/118111.html>
+
+
+
+
+
 ### JavaScript是前台语言
 
 JavaScript是前台语言，而不是后台语言。
@@ -105,7 +145,9 @@ PS：JS机械重复性的劳动几乎为0，基本都是创造性的劳动。而
 
 ## 开始写第一行JavaScript代码
 
-### 写JavaScript代码的位置
+### JavaScript代码的书写位置
+
+（1）内嵌的方式：
 
 页面中，我们可以在`<body>`标签里放入`<script type=”text/javascript”></script>`标签对儿，并在`<script>`里书写JavaScript程序：
 
@@ -118,6 +160,13 @@ PS：JS机械重复性的劳动几乎为0，基本都是创造性的劳动。而
 text表示纯文本，因为JavaScript也是一个纯文本的语言。
 
 PS：在Sublime Text里，输入`<sc`后，按tab键，可以自动补齐。
+
+（2）外链式：引入外部JavaScript文件（放到body标签里，可以和内嵌的js代码并列）
+
+```
+	<script src="tool.js"></script>
+```
+
 
 ### alert语句
 
@@ -247,7 +296,7 @@ PS：在Sublime Text里，输入`<sc`后，按tab键，可以自动补齐。
 
 ### 用户输入：prompt()语句
 
-`prompt()`就是专门用来弹出能够让用户输入的对话框。
+`prompt()`就是专门用来弹出能够让用户输入的对话框。用得少，测试的时候可能会用。
 
 JS代码如下：
 
@@ -271,9 +320,9 @@ JS代码如下：
 	var a = prompt("请输入一个数字");   // 必须用一个变量，来接收用户输入的值
 ```
 
-## 直接量：数字和字符串
+## 字面量：数字和字符串
 
-“直接量”即**常量**，也称为“字面量”。看见什么，它就是什么。
+“字面量”即**常量**，是固定值。看见什么，它就是什么。
 
 简单的直接量有2种：数字、字符串。
 
@@ -358,9 +407,33 @@ implements、import、int、interface、long、native、package、private、prot
 ```
 
 
+我们来整理一下变量的命名规则：
+
+驼峰命名规则：getElementById/matherAndFather/aaaOrBbbAndCcc
+
+
+1.变量命名必须以字母或是下标符号”_”或者”$”为开头。
+2.变量名长度不能超过255个字符。
+3.变量名中不允许使用空格，首个字不能为数字。
+4.不用使用脚本语言中保留的关键字及保留符号作为变量名。
+5.变量名区分大小写。(javascript是区分大小写的语言)
+6.汉语可以作为变量名。但是不建议使用，因为 low
+
+
 ## 变量的类型
 
 变量里面能够存储数字、字符串等。变量会自动的根据存储内容的类型不同，来决定自己的类型。
+
+
+- **简单数据类型（值类型）**：字符串 String、数字 Number、布尔 Boolean、未定义 undefined、空 null。
+
+- **复杂数据类型（引用类型）**：Object、function、Array、Date、RegExp、Error...
+
+
+简单数据类型：参数赋值的时候，传数值
+
+复杂数据类型：参数赋值的时候，传地址（修改的同一片内存空间）
+
 
 ### 数值型：number
 
@@ -384,6 +457,54 @@ typeof 变量
 ```
 
 **在JavaScript中，只要是数，就是数值型(number)的**。无论整浮、浮点数（即小数）、无论大小、无论正负，都是number类型的。
+
+**数值范围：**
+
+由于内存的限制，ECMAScript 并不能保存世界上所有的数值。
+- 最小值：Number.MIN_VALUE，这个值为： 5e-324
+
+- 最大值：Number.MAX_VALUE，这个值为： 1.7976931348623157e+308
+
+- 无穷大：Infinity
+
+- 无穷小：-Infinity
+
+
+**NaN和isNaN()函数：**
+
+（1）NaN：Not a Number，非数值。
+
+```
+	console.log(“abc”/18);  //结果是NaN
+```
+
+Undefined和任何数值计算为NaN。NaN 与任何值都不相等，包括 NaN 本身。
+
+（2）isNaN() :任何不能被转换为数值的值都会导致这个函数返回 true。
+
+
+```
+	isNaN(NaN);// true
+	isNaN(“blue”); // true
+	isNaN(123); // false
+
+```
+
+
+### undefined和null
+
+
+null和undefined有最大的相似性。看看null == undefined的结果(true)也就更加能说明这点。
+
+但是null ===undefined的结果(false)。不过相似归相似，还是有区别的，就是和数字运算时，10 + null结果为：10；10 + undefined结果为：NaN。
+
+
+- 任何数据类型和undefined运算都是NaN;
+
+- 任何值和null运算，null可看做0运算。
+
+
+
 
 ### 字符串型：string
 
@@ -644,6 +765,8 @@ typeof 变量
 	10
 ```
 
+（3）带两个参数时，表示进制转换。
+
 
 ### 字符串转为浮点数（小数）：`parseFloat()`：
 
@@ -652,7 +775,7 @@ typeof 变量
 
 ### 隐式转换
 
-我们知道，`"2"+1`得到的结果其实是字符串，但是`"2"-1`得到的结果却是数值1。，这是因为计算机自动帮我们进行了“**隐式转换**”。
+我们知道，`"2"+1`得到的结果其实是字符串，但是`"2"-1`得到的结果却是数值1，这是因为计算机自动帮我们进行了“**隐式转换**”。
 
 
 也就是说，`-`、`*`、`/`、`%``这几个符号会自动进行隐式转换。例如：
@@ -669,6 +792,27 @@ typeof 变量
 ```
 
 虽然程序可以对`-`、`*`、`/`、`%``这几个符号自动进行“隐式转换”；但作为程序员，我们最好自己完成转换，方便程序的可读性。
+
+
+### 4.1	任何简单类型转换成String
+
+（1）方法1：变量+“” 或者 变量+“abc”
+
+（2）方法2：
+
+```
+String(变量)
+```
+
+（3）方法三：
+
+```
+变量.toSting()
+```
+
+注意：undefined和null无toString方法，所以它们不能用方法三。
+
+Null和undefined无toString方法。
 
 
 
