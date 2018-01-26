@@ -34,7 +34,14 @@
 
 - [02-JavaScript语法基础：运算符和表达式](./03-JavaScript/02-JavaScript语法基础：运算符和表达式.md)
 
-- [03-JavaScript语法基础：if语句&for循环&函数](./03-JavaScript/03-JavaScript语法基础：if语句&for循环&函数.md)
+- [03-JavaScript语法基础：循环控制（if语句&for循环）](./03-JavaScript/03-JavaScript语法基础：循环控制（if语句&for循环）.md)
+
+- [04-JavaScript语法基础：数组](./03-JavaScript/04-JavaScript语法基础：数组.md)
+
+- [05-JavaScript语法基础：函数](./03-JavaScript/05-JavaScript语法基础：函数.md)
+
+- [06-JavaScript语法基础：面向对象和内置对象](./03-JavaScript/06-JavaScript语法基础：面向对象和内置对象.md)
+
 
 
 ## 前端基础练习
