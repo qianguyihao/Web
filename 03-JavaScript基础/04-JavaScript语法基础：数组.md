@@ -70,7 +70,7 @@ Array数组是属于**内置对象**，我们可以在下面的网站上查询�
 
 - MDN（开发者网站）：<https://developer.mozilla.org/zh-CN/>
 
-Array有各种api接口（Application Programming Interface，应用程序编程接），下面分别介绍。
+Array有各种api接口（Application Programming Interface，应用程序编程接口），下面分别介绍。
 
 （1）判断是否为数组：instanceof
 
