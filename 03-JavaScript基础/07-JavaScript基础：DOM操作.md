@@ -1,5 +1,5 @@
 
-> 本文最初发表于[博客园]()，并在[GitHub](https://github.com/smyhvae/Web)上持续更新**前端的系列文章**。欢迎在GitHub上关注我，一起入门和进阶前端。
+> 本文最初发表于[博客园](http://www.cnblogs.com/smyhvae/p/8366012.html)，并在[GitHub](https://github.com/smyhvae/Web)上持续更新**前端的系列文章**。欢迎在GitHub上关注我，一起入门和进阶前端。
 
 > 以下是正文。
 
@@ -224,6 +224,7 @@ JavaScript基础分为三个部分：
             position: relative;
         }
         img {
+            display: block;
             width: 1210px;
             height: 80px;
             background-color: blue;
@@ -266,8 +267,8 @@ JavaScript基础分为三个部分：
         //3.书写事件驱动程序
         //类控制
 //        topBanner.className += " hide"; //保留原类名，添加新类名
-        topBanner.className = "hide";//替换旧类名
-//        topBanner.style.display = "none";
+        topBanner.className = "hide";//替换旧类名（方式一）
+//        topBanner.style.display = "none"; //方式二：与上一行代码的效果相同
     }
 
 </script>
@@ -301,16 +302,14 @@ JavaScript基础分为三个部分：
 
             //1.获取事件源
             var img = document.getElementById("box");
-            //2.绑定事件(悬停事件：鼠标进入到事件源中立即出发事件)
+            //2.绑定事件(悬停事件：鼠标进入到事件源中，立即触发事件)
             img.onmouseover = function () {
                 //3.书写事件驱动程序(修改src)
                 img.src = "image/jd2.png";
 //                this.src = "image/jd2.png";
             }
 
-            //1.获取事件源
-            var img = document.getElementById("box");
-            //2.绑定事件(悬停事件：鼠标进入到事件源中立即出发事件)
+            //2.绑定事件(悬停事件：鼠标进入到事件源中，立即触发事件)
             img.onmouseout = function () {
                 //3.书写事件驱动程序(修改src)
                 img.src = "image/jd1.png";
@@ -320,9 +319,8 @@ JavaScript基础分为三个部分：
 </head>
 <body>
 
-    <img id="box" src="image/jd1.png" style="cursor: pointer;border: 1px solid #ccc;"/>
+<img id="box" src="image/jd1.png" style="cursor: pointer;border: 1px solid #ccc;"/>
 
-</body>
 </html>
 ```
 
@@ -331,7 +329,7 @@ JavaScript基础分为三个部分：
 
 ### 什么是DOM
 
-DOM：文档对象模型。DOM 为文档提供了结构化表示，并定义了如何通过脚本来访问文档结构。目的其实就是为了能让js操作html元素而制定的一个规范。
+DOM：Document Object Model，文档对象模型。DOM 为文档提供了结构化表示，并定义了如何通过脚本来访问文档结构。目的其实就是为了能让js操作html元素而制定的一个规范。
 
 DOM就是由节点组成的。
 
@@ -527,17 +525,8 @@ JS中的**父子兄**访问关系：
 	子节点数组 = 父节点.children;   //获取所有节点。用的最多。
 ```
 
-### nodeType
 
-这里讲一下nodeType。
-
-- **nodeType == 1  表示的是元素节点**（标签） 。记住：元素就是标签。
-
-- nodeType == 2  表示是属性节点   了解
-
-- nodeType == 3  是文本节点   了解
-
-## DOM节点操作（重要）
+## DOM节点的操作（重要）
 
 上一段的内容：节点的**访问关系**都是**属性**。
 
@@ -591,7 +580,7 @@ JS中的**父子兄**访问关系：
 解释：
 
 - 在参考节点前插入一个新的节点。
-- 如果参考节点为null，那么他将在父节点最后插入一个子节点。
+- 如果参考节点为null，那么他将在父节点里面的最后插入一个子节点。
 
 ![](http://img.smyhvae.com/20180127_1257.png)
 
@@ -602,6 +591,31 @@ JS中的**父子兄**访问关系：
 ![](http://img.smyhvae.com/20180127_1302.png)
 
 我们可以看到，b1标签被插入到了box1标签的里面，和a1标签并列，在a1标签的前面。
+
+
+
+
+**特别强调：**
+
+关于方式1的appendChild方法，这里要强调一下。比如，现在有下面这样一个div结构：
+
+```html
+<div class="box11">
+    <div class="box12">生命壹号</div>
+</div>
+
+<div class="box21">
+    <div class="box22">永不止步</div>
+
+</div>
+```
+
+
+上方结构中，子盒子box12是在父亲box11里的，子盒子box22是在父亲box21里面的。现在，如果我调用方法`box11.appendChild(box22)`，**最后产生的结果是：box22会跑到box11中**（也就是说，box22不在box21里面了）。这是一个很神奇的事情：
+
+20180129_2125.png
+
+
 
 ### 删除节点
 
@@ -682,7 +696,7 @@ JS中的**父子兄**访问关系：
 
 ![](http://img.smyhvae.com/20180127_1340.png)
 
-方式2：（推荐）
+方式2：
 
 ```javascript
 	元素节点.getAttribute("属性名称");
@@ -711,7 +725,7 @@ JS中的**父子兄**访问关系：
     myNode.className = "image2-box";  //修改class的name
 ```
 
-方式2：（推荐）
+方式2：
 
 ```javascript
 	元素节点.setAttribute(属性名, 新的属性值);
@@ -724,6 +738,7 @@ JS中的**父子兄**访问关系：
     myNode.setAttribute("class","image3-box");
     myNode.setAttribute("id","你好");
 ```
+
 
 ### 3、删除节点的属性
 
@@ -739,6 +754,154 @@ JS中的**父子兄**访问关系：
     myNode.removeAttribute("class");
     myNode.removeAttribute("id");
 ```
+
+
+
+**总结：**
+
+获取节点的属性值和设置节点的属性值，都有两种方式，但这两种方式是有区别的。
+
+- 方式一的`元素节点.属性`和`元素节点[属性]`:绑定的属性值不会出现在标签上。
+
+- 方式二的`get/set/removeAttribut`: 绑定的属性值会出现在标签上。
+
+这其实很好理解，方式一操作的是属性而已，方式二操作的是标签本身。
+
+另外，需要注意的是：**这两种方式不能交换使用**，get值和set值必须使用用一种方法。
+
+举例：
+
+```html
+<body>
+<div id="box" title="主体" class="asdfasdfadsfd">我爱你中国</div>
+<script>
+
+    var div = document.getElementById("box");
+
+    //采用方式一进行set
+    div.aaaa = "1111";
+    console.log(div.aaaa);    //打印结果：1111。可以打印出来，但是不会出现在标签上
+
+    //采用方式二进行set
+    div.setAttribute("bbbb","2222");    //bbbb作为新增的属性，会出现在标签上
+
+    console.log(div.getAttribute("aaaa"));   //打印结果：null。因为方式一的set，无法采用方式二进行get。
+    console.log(div.bbbb);                   //打印结果：undefined。因为方式二的set，无法采用方式一进行get。
+
+</script>
+</body>
+```
+
+
+
+## DOM对象的属性
+
+DOM对象的属性和HTML的标签属性几乎是一致的。例如：src、title、className、href等。
+
+### innerHTML和innerText的区别
+
+- value：标签的value属性。
+
+- **innerHTML**：双闭合标签里面的内容（识别标签）。
+
+- **innerText**：双闭合标签里面的内容（不识别标签）。（老版本的火狐用textContent）
+
+
+**获取内容举例：**
+
+如果我们想获取innerHTML和innerText里的内容，看看会如何：
+
+![](http://img.smyhvae.com/20180127_1652.png)
+
+上图显示，因为innerText识别不出标签，所以把标签也给获取到了。
+
+
+**修改内容举例：**
+
+![](http://img.smyhvae.com/20180127_1657.png)
+
+上图显示，因为innerText识别不出标签，所以把标签也给添加进去了。
+
+### nodeType属性
+
+这里讲一下nodeType属性。
+
+- **nodeType == 1  表示的是元素节点**（标签） 。记住：元素就是标签。
+
+- nodeType == 2  表示是属性节点。
+
+- nodeType == 3  是文本节点。
+
+### nodeType、nodeName、nodeValue
+
+我们那下面这个标签来举例：
+
+```html
+<div id="box" value="111">
+    生命壹号
+</div>
+```
+
+上面这个标签就包含了三种节点：
+
+- 元素节点（标签）
+
+- 属性节点
+
+- 文本节点
+
+获取这三个节点的方式如下：
+
+```javascript
+    var element = document.getElementById("box1");  //获取元素节点（标签）
+    var attribute = element.getAttributeNode("id"); //获取box1的属性节点
+    var txt = element.firstChild;                   //获取box1的文本节点
+
+    var value = element.getAttribute("id");         //获取id的属性值
+
+    console.log(element);
+    console.log("--------------");
+    console.log(attribute);
+    console.log("--------------");
+    console.log(txt);
+    console.log("--------------");
+    console.log(value);
+```
+
+打印结果如下：
+
+![](http://img.smyhvae.com/20180128_1935.png)
+
+既然这三个都是节点，如果我想获取它们的nodeType、nodeName、nodeValue，代码如下：
+
+```javascript
+    var element = document.getElementById("box1");  //获取元素节点（标签）
+    var attribute = element.getAttributeNode("id"); //获取box1的属性节点
+    var txt = element.firstChild;                   //获取box1的文本节点
+
+    //获取nodeType
+    console.log(element.nodeType);       //1
+    console.log(attribute.nodeType);     //2
+    console.log(txt.nodeType);           //3
+
+    console.log("--------------");
+
+    //获取nodeName
+    console.log(element.nodeName);       //DIV
+    console.log(attribute.nodeName);     //id
+    console.log(txt.nodeName);           //#text
+
+    console.log("--------------");
+
+    //获取nodeValue
+    console.log(element.nodeValue);     //null
+    console.log(attribute.nodeValue);   //box1
+    console.log(txt.nodeValue);         //生命壹号
+```
+
+打印结果如下：
+
+![](http://img.smyhvae.com/20180128_1939.png)
 
 
 ## 我的公众号
