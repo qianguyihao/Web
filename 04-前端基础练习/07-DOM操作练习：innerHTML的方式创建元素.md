@@ -42,7 +42,7 @@ document.write();
 
 效果如下：
 
-20180129_1908.png
+![](http://img.smyhvae.com/20180129_1908.png)
 
 
 **方式二：**innerHTML
@@ -77,7 +77,7 @@ document.write();
 
 效果如下：
 
-20180129_2017.png
+![](http://img.smyhvae.com/20180129_2017.png)
 
 
 
@@ -109,7 +109,9 @@ document.write();
 
 现在要做下面这样一个页面：
 
-20180129_2151.png
+
+![](http://img.smyhvae.com/20180129_2151.png)
+
 
 上图的意思是，每次刷新页面，都从服务器获取最新的在线人数的名单（我们先用本地的数组来模拟服务器上的数据）。
 
@@ -334,12 +336,17 @@ document.write();
 </html>
 ```
 
+工程文件：
+
+- [2018-02-01-获取在线用户列表demo.rar](http://download.csdn.net/download/smyhvae/10237611)
+
+
 
 ## innerHTML举例2：模拟百度搜索的下方提示
 
 要求实现的效果如下：
 
-20180201_2030.gif
+![](http://img.smyhvae.com/20180201_2030.gif)
 
 在这之前，我们先实现这样一个例子：**判断字符串以某个字符串为开头**。
 
