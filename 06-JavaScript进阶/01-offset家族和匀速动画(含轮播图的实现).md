@@ -21,7 +21,7 @@ JS动画的主要内容如下：
 
 4、正则
 
-## offset家族简介
+## offset 家族的组成
 
 我们知道，三大家族包括：offset/scroll/client。今天来讲一下offset，以及与其相关的匀速动画。
 
