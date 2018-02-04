@@ -405,4 +405,101 @@ style的常用属性包括：
 20180129_1525.gif
 
 
+## js 访问css属性
+
+访问行内的css样式，有两种方式：
+
+方式一：
+
+```javascript
+    box.style.width
+
+    box.style.top
+```
+
+方式二：
+
+```javascript
+    元素.style["属性"];  //格式
+
+    box.style["width"];  //举例
+```
+
+方式二最大的优点是：可以给属性传递参数。
+
+
+### 获取css的样式
+
+上面的内容中，我们通过`box1.style.属性`只能获得**行内样式**的属性。可如果我们想获取**内嵌或者外链**的样式，该怎么办呢？
+
+（1）w3c的做法：
+
+```javascript
+    window.getComputedStyle("元素", "伪类");
+```
+
+两个参数都是必须要有的，如果没有伪类就用 null 代替。
+
+
+（2）IE和opera的做法：
+
+```javascript
+    obj.currentStyle;
+```
+
+于是，就有了一种兼容性的写法，同时将其封装。代码举例如下：
+
+```html
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div {
+            background-color: pink;
+            /*border: 1px solid #000;*/
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div style="width: 100px;height: 100px;"></div>
+
+<script>
+
+    //赋值：div.style.....
+    var div1 = document.getElementsByTagName("div")[0];
+
+    console.log(getStyle(div1, "width"));
+    console.log(getStyle(div1, "padding"));
+    console.log(getStyle(div1, "background-color"));
+
+    //兼容方法获取元素样式
+    function getStyle(ele, attr) {
+        if (window.getComputedStyle) {
+            return window.getComputedStyle(ele, null)[attr];
+        }
+        return ele.currentStyle[attr];
+    }
+
+</script>
+</body>
+</html>
+```
+
+
+打印结果：
+
+20180204_1425.png
+
+
+
+
+
+
+
+
+
 
