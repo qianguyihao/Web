@@ -181,7 +181,7 @@ console.log(o);
 
 20180125_1834.png
 
-**json的介绍：**
+### json的介绍
 
 > 对象字面量和json比较像，这里我们对json做一个简单介绍。
 
@@ -206,6 +206,31 @@ json举例：
 
 另外，对象和json没有长度，json.length的打印结果是undefined。于是乎，自然也就不能用for循环遍历（因为便利时需要获取长度length）。
 
+**json遍历的方法：**
+
+json 采用 `for...in...`进行遍历，和数组的遍历方式不同。如下：
+
+
+```html
+<script>
+    var myJson = {
+        "name": "smyhvae",
+        "aaa": 111,
+        "bbb": 222
+    };
+
+    //json遍历的方法：for...in...
+    for (var key in myJson) {
+        console.log(key);   //获取 键
+        console.log(myJson[key]); //获取 值（第二种属性绑定和获取值的方法）
+        console.log("------");
+    }
+</script>
+```
+
+打印结果：
+
+20180203_1518.png
 
 
 ## 类和对象
