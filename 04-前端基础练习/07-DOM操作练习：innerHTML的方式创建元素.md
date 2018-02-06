@@ -4,9 +4,9 @@
 
 - `document.write();` 不常用，因为容易覆盖原来的页面。
 
-- `innerHTML;` 用的比较多。绑定属性和内容比较方便。(节点套节点)
+- `innerHTML = ();` 用的比较多。绑定属性和内容比较方便。(节点套节点)
 
-- `document.createElement;` 用得也比较多，指定数量的时候一般用它。
+- `document.createElement();` 用得也比较多，指定数量的时候一般用它。
 
 
 **1、方式一：**
