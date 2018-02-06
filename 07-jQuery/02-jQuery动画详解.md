@@ -516,6 +516,82 @@ PS：参数如果都不写，默认两个都是false。实际工作中，直接�
 
 注意：如果元素动画还没有执行完，此时调用sotp()方法，那么动画将会停止。并且动画没有执行完成，那么回调函数也不会被执行。
 
+
+## 举例：右下角的弹出广告
+
+代码实现：
+
+```html
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        .ad {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            width: 230px;
+            height: 120px;
+            background-image: url(images/ad.jpg);
+            display: none;
+        }
+
+        .ad span {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 40px;
+            height: 18px;
+            background-image: url(images/h.jpg);
+            cursor: pointer;
+        }
+    </style>
+    <script src="jquery-1.11.1.js"></script>
+    <script>
+        $(function () {
+            //需求：然广告ad部分，先滑入，在滑出，在淡入。然后绑定事件，点击span弹出
+            //步骤：
+            $(".ad").slideDown(1000).slideUp(1000).fadeIn(1000).children("span").click(function () {
+                $(this).parent().fadeOut(1000);
+            });
+
+
+            //第二种写法
+//            $(".ad").slideDown(1000, function () {
+//                $(".ad").slideUp(1000, function () {
+//                    $(".ad").fadeIn(1000, function () {
+//                        $(".ad").children("span").click(function () {
+//                            $(this).parent().fadeOut(1000, function () {
+//                                alert("执行完毕！");
+//                            });
+//                        });
+//                    });
+//                });
+//            })
+        })
+    </script>
+</head>
+
+<body>
+
+<div class="ani">我是内容</div>
+<div class="ad">
+    <span></span>
+</div>
+
+</body>
+</html>
+
+```
+
+效果如下：
+
+20180205_2000.gif
+
+
 ## 我的公众号
 
 想学习<font color=#0000ff>**代码之外的软技能**</font>？不妨关注我的微信公众号：**生命团队**（id：`vitateam`）。
