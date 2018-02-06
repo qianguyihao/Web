@@ -6,7 +6,6 @@
 
 
 
-
 ### 新建文件时快速生成Html
 
 **安装如下插件：**
@@ -26,7 +25,7 @@
 
 ## 常用插件
 
-### JavaScript代码自动提示：SublimeCodeIntel（不好用）
+### SublimeCodeIntel：JavaScript代码自动提示（不好用）
 
 安装完成后，通过路径Perferences->Package Settings->SublimeCodeIntel->Setting - Defalut打开配置文件。
 
@@ -48,7 +47,7 @@
 参考链接：[#](http://blog.csdn.net/hehexiaoxia/article/details/54134756)
 
 
-### JavaScript代码自动提示：javascript complet
+### javascript complet：JavaScript代码自动提示
 
 
 - [官网链接](https://packagecontrol.io/packages/JavaScript%20Completions)
@@ -58,7 +57,7 @@
 在google上搜关键字"sublime javascript complete"找到的。另外还搜到一个[SublimeAllAutocomp lete](https://github.com/alienhard/SublimeAllAutocomplete)
 
 
-### JS代码格式化：JsFormat
+### JsFormat：JS代码格式化
 
 
 快捷键是：选中JS代码，然后按ctrl+alt+f。
@@ -66,8 +65,24 @@
 或者，先用快捷键打开命令面板 “ctrl + shift + p”, 再输入 “Format: Javascript” 就可以使用格式化命令
 
 
+### Sublime Server
 
-### 代码快速生成
+我们如果右键在浏览器中打开html网页，其实是以**文件路径**的方式打开的，导致很多api无法操作。最好的办法是：将html在服务器上打开。
+
+我们如果安装 `Sublime Server`，就可以让网页在本地的服务器上打开。
+
+安装成功之后，使用步骤如下：
+
+（1）选择菜单栏"Tools --> SublimeServer --> Start SublimeServer"启动服务器。
+
+（2）在html文档里，右键选择 "View in SublimeServer"。
+
+如果想关闭服务器，直接把Sublime Text 整个软件关掉就好。其他的关闭方式容易导致软件卡死。
+
+
+
+
+## 代码快速生成
 
 
 （1）`>`符号的技巧：
