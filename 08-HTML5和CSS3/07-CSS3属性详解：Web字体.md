@@ -4,7 +4,7 @@
 ## 前言
 
 
-开发人员可以为自已的网页指定特殊的字体（将指定字体提前下载到站点中），无需考虑用户电脑上是否安装了此特殊字体。从此，把特殊字体处理成图片的方式便成为了过去。 
+开发人员可以为自已的网页指定特殊的字体（将指定字体提前下载到站点中），无需考虑用户电脑上是否安装了此特殊字体。从此，把特殊字体处理成图片的方式便成为了过去。
 
 支持程度比较好，甚至 IE 低版本的浏览器也能支持。
 
@@ -156,13 +156,13 @@ woff字体是Web字体中最佳格式，他是一个开放的TrueType/OpenType�
 - [2018-02-20-WebFont举例.zip](http://download.csdn.net/download/smyhvae/10253565)
 
 
-## 字体图标
+## 字体图标（阿里的 iconfont 网站举例）
 
 我们其实可以把图片制作成字体。常见的做法是：把网页中一些小的图标，借助工具生成一个字体包，然后就可以像使用文字一样使用图标了。这样做的优点是：
 
-- 将所有图标打包成字体库，减少请求； 
+- 将所有图标打包成字体库，减少请求；
 
-- 具有矢量性，可保证清晰度； 
+- 具有矢量性，可保证清晰度；
 
 - 使用灵活，便于维护。
 
@@ -315,6 +315,7 @@ SVG素材：
 
 
 
+
 ## 360浏览器网站案例
 
 暂略。
@@ -326,11 +327,47 @@ SVG素材：
 - 相关说明:http://www.dowebok.com/77.html
 
 
+## 使用 Bootstrap 网站的图标字体
+
+打开如下网站：<http://www.bootcss.com/p/font-awesome/>。
+
+20180223_2100.png
+
+如上图所示，下载字体后，进行解压：
+
+20180223_2105.png
+
+使用步骤如下：
+
+（1）如图只是想要字体的话，可以把`css`和`font`这两个文件夹拷贝到项目里。
+
+（2）在html文档中的 <head> 标签里，引入 font-awesome.min.css 文件：
+
+```html
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+```
+
+（3）想在哪个标签里用这个图标，直接在这个标签里加className就行（className都在[网站](http://www.bootcss.com/p/font-awesome/)上列出来了）。
 
 
+完整版代码如下：
 
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <style>
 
-
+    </style>
+</head>
+<body>
+    <span class="icon-play">播放</span>
+</body>
+</html>
+```
 
 
 
