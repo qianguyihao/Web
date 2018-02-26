@@ -1,9 +1,8 @@
 
 
-> 本文最初发表于[博客园]()，并在[GitHub](https://github.com/smyhvae/Web)上持续更新**前端的系列文章**。欢迎在GitHub上关注我，一起入门和进阶前端。
+> 本文最初发表于[博客园](http://www.cnblogs.com/smyhvae/p/8470657.html)，并在[GitHub](https://github.com/smyhvae/Web)上持续更新**前端的系列文章**。欢迎在GitHub上关注我，一起入门和进阶前端。
 
 > 以下是正文。
-
 
 ## Bootstrap 介绍
 
@@ -74,7 +73,7 @@ V4版本：
 
 进入[中文官网](https://v3.bootcss.com/)，下载 `用于生产环境的 Bootstrap`，如下图所示：
 
-![](http://img.smyhvae.com/20180225_1051.png)
+![](http://img.smyhvae.com/20180225_1052.png)
 
 下载之后，解压 `bootstrap-3.3.7-dist` ，有三个文件夹：
 
@@ -91,7 +90,7 @@ PS：`dist`表示编译之后的文件，这在库文件中是很常见的。
 
 [Bootstrap](https://v3.bootcss.com/getting-started/)官网提供了基本模板，如下图所示：
 
-![](http://img.smyhvae.com/20180225_1118.png)
+![](http://img.smyhvae.com/20180225_1119.png)
 
 其完整版代码 copy 如下：
 
@@ -337,7 +336,7 @@ body{
 
 截图如下：
 
-![](http://img.smyhvae.com/20180225_1719.png)
+![](http://img.smyhvae.com/20180225_1720.png)
 
 **作用**：用于定义一个固定宽度且居中的版心。只不过，这个版心的宽度具有**响应式**的效果。
 
@@ -364,7 +363,7 @@ body{
 
 栅格参数如下：
 
-![](http://img.smyhvae.com/20180225_1731.png)
+![](http://img.smyhvae.com/20180225_1732.png)
 
 我们尤其要记住各个屏幕的尺寸和**类前缀**。
 
@@ -386,7 +385,7 @@ JS 组件在[官网](https://v3.bootcss.com/javascript/)有介绍：
 
 这里面包含了很多带交互的组件。比如轮播图：
 
-![](http://img.smyhvae.com/20180225_1840.png)
+![](http://img.smyhvae.com/20180225_1841.png)
 
 ## 博主提供的下载链接
 
