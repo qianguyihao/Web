@@ -567,6 +567,86 @@ JSON(JavaScript Object Notation)：是ECMAScript的子集。作用是进行数�
 
 ![](http://img.smyhvae.com/20180228_1740.gif)
 
+
+
+
+## jQuery 中的 Ajax
+
+
+JQuery作为最受欢迎的js框架之一，常见的Ajax已经帮助我们封装好了，只需要调用即可。更为详细的api文档可以查阅：[w3cSchool_JQueryAjax](http://www.w3school.com.cn/jquery/jquery_ref_ajax.asp)
+
+格式举例：
+
+```javascript
+$.ajax({
+        url:'01.php',//请求地址
+        data:'name=fox&age=18',//发送的数据
+        type:'GET',//请求的方式
+        success:function (argument) {},// 请求成功执行的方法
+        beforeSend:function (argument) {},// 在发送请求之前调用,可以做一些验证之类的处理
+        error:function (argument) {console.log(argument);},//请求失败调用
+    })
+```
+
+
+
+代码举例：
+
+（1）index.html
+
+```html
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jquery-ajax</title>
+</head>
+<body>
+<input type="button" value="点击" id="btn">
+<div id="showInfo"></div>
+<script type="text/javascript" src="jquery-1.11.2.js"></script>
+<script type="text/javascript">
+	$(function(){
+
+		$("#btn").click(function(){
+			$.ajax({
+				url:"data.php",
+				dataType:"text",
+				type:"get",
+				success:function(data){
+					alert(data);
+					//$("#showInfo").html(data);
+				},
+				error:function(e){
+					console.log(e);
+				}
+			});
+		});
+
+
+
+	});
+
+</script>
+</body>
+</html>
+```
+
+（2）data.php：
+
+```php
+<?php
+
+$text = 'hello world';
+
+echo $text;
+
+ ?>
+
+```
+
+
+
 ## 我的公众号
 
 想学习<font color=#0000ff>**代码之外的软技能**</font>？不妨关注我的微信公众号：**生命团队**（id：`vitateam`）。
@@ -574,7 +654,4 @@ JSON(JavaScript Object Notation)：是ECMAScript的子集。作用是进行数�
 扫一扫，你将发现另一个全新的世界，而这将是一场美丽的意外：
 
 ![](http://img.smyhvae.com/2016040102.jpg)
-
-
-
 
