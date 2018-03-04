@@ -139,4 +139,9 @@
 我自己整理的。
 
 
+## 参考链接
+
+- [像 Sublime Text 一样使用 Chrome DevTools](https://chinagdg.org/2015/12/%E5%83%8F-sublime-text-%E4%B8%80%E6%A0%B7%E4%BD%BF%E7%94%A8-chrome-devtools/)
+
+
 

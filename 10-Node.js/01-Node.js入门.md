@@ -1,5 +1,5 @@
 
-> 本文最初发表于[博客园]()，并在[GitHub](https://github.com/smyhvae/Web)上持续更新**前端的系列文章**。欢迎在GitHub上关注我，一起入门和进阶前端。
+> 本文最初发表于[博客园](http://www.cnblogs.com/smyhvae/p/8492713.html)，并在[GitHub](https://github.com/smyhvae/Web)上持续更新**前端的系列文章**。欢迎在GitHub上关注我，一起入门和进阶前端。
 
 > 以下是正文。
 
@@ -58,7 +58,13 @@ Node.js 是一个基于 **Chrome V8** 引擎的 JavaScript 运行环境。 Node.
 
 **总结：**
 
-Node.js 是一个 JavaScript 的运行环境（平台），不是一门语言，也不是 JavaScript 的框架。
+**Node.js 是一个 JavaScript 的运行环境（平台）**，不是一门语言，也不是 JavaScript 的框架。
+
+- 与PHP、JSP、Python、Perl、Ruby的“既是语言，也是平台”不同，Node.js的使用JavaScript进行编程，运行在 Chrome 的 V8 引擎上。
+
+- 与PHP、JSP等相比（PHP、JSP、.net都需要运行在服务器程序上，Apache、Naginx、Tomcat、IIS。
+），Node.js跳过了Apache、Naginx、IIS等HTTP服务器，它自己不用建设在任何服务器软件之上。Node.js的许多设计理念与经典架构（LAMP = Linux + Apache + MySQL + PHP）有着很大的不同，可以提供强大的伸缩能力。Node.js没有web容器。
+
 
 ### Node 的历史
 
@@ -135,40 +141,12 @@ Node.js 是一个 JavaScript 的运行环境（平台），不是一门语言，
 
 ## Node.js的特点
 
-### 部署简单方便
-
-- 环境配置简单，只需要安装Node.js即可
-
-- 注重约定
-
-- 项目所需要扩展、插件、资源相对独立，不易冲突
+### 单线程
 
 
 
-### 事件驱动
-
-根据当前出现的事件，调动资源进行相关的处理。
 
 
-### 异步编程
-
-![](http://img.smyhvae.com/20180302_1259.png)
-
-异步的实现方式：
-
-- 回调函数
-
-- 事件监听
-
-- 订阅/发布
-
-
-
-### 高效与性能
-
-### 单线程与多进程
-
-### Node.js的缺点
 
 
 ## Node.js 的环境配置
@@ -258,25 +236,6 @@ proxy
 
 如果 node 安装失败，可以参考上面这个链接。
 
-
-### Mac 下安装 NVM
-
-打开 终端.app，输入：
-
-```
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | bash
-
-source ~/.nvm/nvm.sh
-```
-
-安装以后，nvm的执行脚本，每次使用前都要激活，建议将其加入~/.bashrc文件（假定使用Bash）。激活后，就可以安装指定版本的Node。
-
-也可以使用 Homebrew 安装（更方便，维护更简单）：
-
-```
-brew install nvm
-```
-
 ### NVM 的常用命令
 
 安装指定版本的node：
@@ -303,6 +262,8 @@ nvm use 版本号 [arch]
 
 ```
 nvm -v
+
+nvm --version
 ```
 
 查看本地安装的所有的 node 版本：
@@ -313,7 +274,7 @@ nvm list|ls
 
 ### Node 的常用命令
 
-在 查看 node 的版本：
+查看 node 的版本：
 
 ```
 $ node -v
@@ -355,6 +316,7 @@ REPL 的全称：Read、Eval、 Print、Loop。类似于浏览器的控制台。
 如果要退出 REPL 环境，可以输入`.exit` 或 `process.exit() `。
 
 在 VS Code 里，我们可以在菜单栏选择“帮助->切换开发人员工具”，打开console控制台。
+
 
 
 ## 包和 NPM
@@ -464,6 +426,110 @@ nrm use taobao  // 使用淘宝的镜像
 推荐的国内加速镜像：<https://npm.taobao.org/>
 
 
+## Node 的使用
+
+我们可以输入`node`命令，然后在里面写 js 的代码，也可以 通过 node 运行 js 文件。比如，编写好一个 js文件`01.js`，然后在命令行输入：
+
+```
+	node 01.js
+```
+
+就可以执行  js 程序。
+
+
+## Mac 下的环境安装
+
+
+### Mac 下安装 NVM
+
+（1）打开 终端.app，输入：
+
+```
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash
+```
+
+安装成功的界面：
+
+20180302_2126.png
+
+完成后，nvm就被安装在了`~/.nvm`下。
+
+
+如果发现安装失败：
+
+20180302_2111.png
+
+原因：Xcode 软件进行过更新。
+
+解决办法：打开 Xcode 软件，同意相关内容即可。
+
+
+（2）配置环境变量：
+
+打开文件：
+
+```
+open  ～／.bash_profile
+```
+
+在最后一行输入：
+
+```
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
+```
+
+
+如果你发现文件中已经存在了上面这行代码，就不用往里面加了。
+
+
+PS：NVM 现在已经不支持 Homebrew 的方式来安装了。
+
+
+参考链接：<https://www.jianshu.com/p/a3f8778bc0a1>
+
+
+### Mac 下安装 Node
+
+和Windows下一样，也是执行如下命令：
+
+```
+nvm install 6.0.0
+
+```
+
+网速有点慢，要稍等。
+
+20180302-2148.png
+
+输入 `node -v`，查看当前使用的 node 版本。
+
+npm 也会自动安装的，输入 `npm -v`，查看 npm 的版本。
+
+
+### 安装cnpm
+
+安装cnpm替换npm（npm由于源服务器在国外，下载node包速度较慢，cnpm使用国内镜像）：
+
+```bash
+npm install -g cnpm --registry=https://registry.npm.taobao.org
+```
+
+
+
+20180302_2204.png
+
+
+
+如果我们需要通过 cnpm 去安装一个包时，举例如下：
+
+```
+	cnpm i vue
+```
+
+
+解释： i  指的就是 install。
+
 ## 我的公众号
 
 想学习<font color=#0000ff>**代码之外的软技能**</font>？不妨关注我的微信公众号：**生命团队**（id：`vitateam`）。
@@ -471,7 +537,6 @@ nrm use taobao  // 使用淘宝的镜像
 扫一扫，你将发现另一个全新的世界，而这将是一场美丽的意外：
 
 ![](http://img.smyhvae.com/2016040102.jpg)
-
 
 
 
