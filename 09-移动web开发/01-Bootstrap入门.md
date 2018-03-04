@@ -100,7 +100,7 @@ PS：`dist`表示编译之后的文件，这在库文件中是很常见的。
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <title>我的网站</title>
 
@@ -389,7 +389,7 @@ JS 组件在[官网](https://v3.bootcss.com/javascript/)有介绍：
 
 ## 博主提供的下载链接
 
-空结构的工程文件的下载地址：(lib文件夹里包含了各种库和 Bootstrap 中文文档)
+空结构的工程文件的下载地址：(lib文件夹里包含了Bootstrap相关的各种库和中文文档)
 
 - [2018-02-25-BootstrapDemo及文档.rar](http://download.csdn.net/download/smyhvae/10258718)
 
