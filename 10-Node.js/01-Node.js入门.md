@@ -530,6 +530,7 @@ npm install -g cnpm --registry=https://registry.npm.taobao.org
 
 解释： i  指的就是 install。
 
+
 ## 我的公众号
 
 想学习<font color=#0000ff>**代码之外的软技能**</font>？不妨关注我的微信公众号：**生命团队**（id：`vitateam`）。
