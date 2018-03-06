@@ -15,7 +15,7 @@
 
 一个盒子中主要的属性就5个：width、height、padding、border、margin。如下：
 
-- width和height：内容的宽度、高度（不是盒子的宽度、高度）。
+- width和height：**内容**的宽度、高度（不是盒子的宽度、高度）。
 - padding：内边距。
 - border：边框。
 - margin：外边距。
@@ -38,7 +38,7 @@
 注意：**宽度和真实占有宽度，不是一个概念！**来看下面这例子。
 
 
-### 标准盒子模型和IE盒子模型
+### 标准盒模型和IE盒模型
 
 > 我们目前所学习的知识中，以标准盒子模型为准。
 
@@ -53,8 +53,20 @@ IE盒子模型：
 上图显示：
 
 
- - 在 CSS 盒子模型 (Box Model) 规定了元素处理元素的几种方式：  <font color="#0000FF">**内容、内边距、边框、外边距**</font>。
- - 在 CSS的<font color="#0000FF">**标准盒子模型**</font>中，<font color="#0000FF">**width 和 height 指的是内容区域**</font>的宽度和高度。增加内边距、边框和外边距不会影响内容区域的尺寸，但是会增加元素框的总尺寸。<font color="#0000FF">**IE盒子模型**</font>中，<font color="#0000FF">**width 和 height 指的是内容区域+border+padding**</font>的宽度和高度。
+在 CSS 盒子模型 (Box Model) 规定了元素处理元素的几种方式：
+
+
+- width和height：**内容**的宽度、高度（不是盒子的宽度、高度）。
+- padding：内边距。
+- border：边框。
+- margin：外边距。
+
+CSS盒模型和IE盒模型的区别：
+
+ - 在 <font color="#0000FF">**标准盒子模型**</font>中，<font color="#0000FF">**width 和 height 指的是内容区域**</font>的宽度和高度。增加内边距、边框和外边距不会影响内容区域的尺寸，但是会增加元素框的总尺寸。
+
+ - <font color="#0000FF">**IE盒子模型**</font>中，<font color="#0000FF">**width 和 height 指的是内容区域+border+padding**</font>的宽度和高度。
+
 
  注：Android中也有margin和padding的概念，意思是差不多的，如果你会一点Android，应该比较好理解吧。区别在于，Android中没有border这个东西，而且在Android中，margin并不是控件的一部分，我觉得这样做更合理一些，呵呵。
 <br>
@@ -270,7 +282,6 @@ padding: 20px;
 
 
 ![](http://img.smyhvae.com/20170728_1100.png)
-
 
 
 **题目3**：现在给你一个盒子模型图，请写出代码，试着用最最简单的方法写。

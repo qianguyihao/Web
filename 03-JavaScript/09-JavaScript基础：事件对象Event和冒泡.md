@@ -5,13 +5,23 @@
 > 以下是正文。
 
 
-## 绑定事件的两种方式
+## 绑定事件的两种方式/DOM事件的级别
 
 我们在上一篇文章 [DOM操作详解](http://www.cnblogs.com/smyhvae/p/8366012.html) 中已经讲过事件的概念。这里讲一下注册事件的两种方式，我们以onclick事件为例。
 
-### 方式一：onclick
+### DOM0的写法：onclick
+
+
+
+```javascript
+    element.onclick = function () {
+
+    }
+```
+
 
 举例：
+
 
 ```html
 <body>
@@ -41,15 +51,24 @@
 
 我们可以看到，这种绑定事件的方式，会层叠掉之前的事件。
 
-### 方式二：addEventListener
+### DOM2的写法：addEventListener
 
-addEventListener()里的参数：
+
+
+```javascript
+    element.addEventListener('click', function () {
+
+    }, false);
+```
+
+
+参数解释：
 
 - 参数1：事件名(注意，没有on)
 
 - 参数2：事件名(执行函数)
 
-- 参数3：事件名(捕获或者冒泡)
+- 参数3：**true表示捕获阶段触发，false表示冒泡阶段触发（默认）**。如果不写，则默认为false。【重要】
 
 举例：
 
@@ -522,7 +541,7 @@ function scroll() {  // 开始封装自己的scrollTop
 
 暂略。
 
-## 事件冒泡
+## DOM事件流
 
 事件传播的三个阶段是：事件捕获、事件冒泡和目标。
 
@@ -539,7 +558,95 @@ function scroll() {  // 开始封装自己的scrollTop
 PS：这个概念类似于 Android 里的 **touch 事件传递**。
 
 
-### 事件冒泡的概念
+### 事件捕获
+
+addEventListener可以捕获事件：
+
+```javascript
+    box1.addEventListener("click", function () {
+        alert("捕获 box3");
+    }, true);
+```
+
+上面的方法中，参数为true，代表事件在捕获阶段执行。
+
+代码演示：
+
+```javascript
+    //参数为true，代表捕获；参数为false或者不写参数，代表冒泡
+    box3.addEventListener("click", function () {
+        alert("捕获 child");
+    }, true);
+
+    box2.addEventListener("click", function () {
+        alert("捕获 father");
+    }, true);
+
+    box1.addEventListener("click", function () {
+        alert("捕获 grandfather");
+    }, true);
+
+    document.addEventListener("click", function () {
+        alert("捕获 body");
+    }, true);
+```
+
+效果演示：
+
+![](http://img.smyhvae.com/20180204_1100.gif)
+
+**说明**：捕获阶段，事件依次传递的顺序是：window --> document --> html--> body --> 父元素、子元素、目标元素。
+
+PS1：第一个接收到事件的对象是 **window**（有人会说body，有人会说html，这都是错误的）。
+
+PS2：JS中涉及到DOM对象时，有两个对象最常用：window、doucument。它们俩也是最先获取到事件的。
+
+
+事件捕获阶段的完整写法是：
+
+```javascript
+    window.addEventListener("click", function () {
+        alert("捕获 window");
+    }, true);
+
+    document.addEventListener("click", function () {
+        alert("捕获 document");
+    }, true);
+
+    document.documentElement.addEventListener("click", function () {
+        alert("捕获 html");
+    }, true);
+
+    document.body.addEventListener("click", function () {
+        alert("捕获 body");
+    }, true);
+
+    fatherBox.addEventListener("click", function () {
+        alert("捕获 father");
+    }, true);
+
+    childBox.addEventListener("click", function () {
+        alert("捕获 child");
+    }, true);
+
+```
+
+
+**补充一个知识点：**
+
+在 js中：
+
+- 如果想获取 `html`节点，方法是`document.documentElement`。
+
+- 如果想获取 `body` 节点，方法是：`document.body`。
+
+二者不要混淆了。
+
+
+
+
+
+### 事件冒泡
 
 **事件冒泡**: 当一个元素上的事件被触发的时候（比如说鼠标点击了一个按钮），同样的事件将会在那个元素的所有**祖先元素**中被触发。这一过程被称为事件冒泡；这个事件从原始元素开始一直冒泡到DOM树的最上层。
 
@@ -572,6 +679,8 @@ PS：这个概念类似于 Android 里的 **touch 事件传递**。
 
 上图显示，当我点击儿子 box3的时候，它的父亲box2、box1、body都依次被触发了。即使我改变代码的顺序，也不会影响效果的顺序。
 
+当然，上面的代码中，我们用 addEventListener 这种 DOM2的写法也是可以的，但是第三个参数要写 false，或者不写。
+
 **冒泡顺序**：
 
 一般的浏览器: （除IE6.0之外的浏览器）
@@ -582,50 +691,13 @@ IE6.0：
 
 - div -> body -> html -> document
 
-### 事件捕获
-
-addEventListener可以捕获事件：
-
-```javascript
-    box1.addEventListener("click", function () {
-        alert("捕获 box3");
-    }, true);
-```
-
-上面的方法中，参数为true，代表捕获；参数为false或者不写参数，代表冒泡。
-
-代码演示：
-
-```javascript
-    //参数为true，代表捕获；参数为false或者不写参数，代表冒泡
-    box3.addEventListener("click", function () {
-        alert("捕获 child");
-    }, true);
-
-    box2.addEventListener("click", function () {
-        alert("捕获 father");
-    }, true);
-
-    box1.addEventListener("click", function () {
-        alert("捕获 grandfather");
-    }, true);
-
-    document.addEventListener("click", function () {
-        alert("捕获 body");
-    }, true);
-```
-
-效果演示：
-
-![](http://img.smyhvae.com/20180204_1100.gif)
-
 ### 不是所有的事件都能冒泡
 
 以下事件不冒泡：blur、focus、load、unload、onmouseenter、onmouseleave。意思是，事件不会往父元素那里传递。
 
 我们检查一个元素是否会冒泡，可以通过事件的以下参数：
 
-```
+```javascript
     event.bubbles
 ```
 
@@ -646,19 +718,19 @@ addEventListener可以捕获事件：
 
 w3c的方法：（火狐、谷歌、IE11）
 
-```javascipt
+```javascript
     event.stopPropagation();
 ```
 
 IE10以下则是：
 
-```javascipt
+```javascript
 event.cancelBubble = true
 ```
 
 兼容代码如下：
 
-```javascipt
+```javascript
    box3.onclick = function (event) {
 
         alert("child");
@@ -680,13 +752,71 @@ event.cancelBubble = true
 
 事件委托，通俗地来讲，就是把一个元素响应事件（click、keydown......）的函数委托到另一个元素。
 
-比如说有一个列表 ul，列表之中有大量的列表项 li，我们需要在点击列表项li的时候响应一个事件。如果给每个列表项一一都绑定一个函数，那对于内存消耗是非常大的，效率上需要消耗很多性能。
+比如说有一个列表 ul，列表之中有大量的列表项 li：
 
-因此，比较好的方法就是把这个点击事件绑定到他的父层，也就是 `ul` 上，然后在执行事件的时候再去匹配判断目标元素。
+```html
+<ul id="parent-list">
+    <li id="li-1">Item 1</li>
+    <li id="li-2">Item 2</li>
+    <li id="li-3">Item 3</li>
+    <li id="li-4">Item 4</li>
+    <li id="li-5">Item 5</li>
+    <li id="li-6">Item 6</li>
+</ul>
+```
 
-所以事件委托可以减少大量的内存消耗，节约效率。
 
-事件委托的参考链接：[JavaScript 事件委托详解](https://zhuanlan.zhihu.com/p/26536815)
+当我们的鼠标移到Li上的时候，需要获取此Li的相关信息并飘出悬浮窗以显示详细信息，或者当某个Li被点击的时候需要触发相应的处理事件。我们通常的写法，是为每个Li都绑定类似onMouseOver或者onClick之类的事件监听：
+
+
+```javascript
+    //每个 li 中做的事情
+    function addListeners4Li(liNode){
+        liNode.onclick = function clickHandler(){...};
+        liNode.onmouseover = function mouseOverHandler(){...}
+    }
+
+    window.onload = function(){
+        var ulNode = document.getElementById("parent-list");
+        var liNodes = ulNode.getElementByTagName("Li");
+        for(var i=0, l = liNodes.length; i < l; i++){
+            addListeners4Li(liNodes[i]);
+        }
+    }
+```
+
+但是，上面的做法会消耗内存和性能。
+
+
+因此，比较好的方法就是把这个点击事件绑定到他的父层，也就是 `ul` 上，然后在执行事件的时候再去匹配判断目标元素。如下：
+
+
+
+```javascript
+    // 获取父节点，并为它注册click事件。 false 表示事件在冒泡阶段触发（默认）
+    document.getElementById("parent-list").addEventListener("click", function (e) {
+        // event.target 代表的是子元素。toUpperCase 指的是转换为大写字母
+        if (e.target && e.target.nodeName.toUpperCase == "LI") {
+            // 真正的处理过程在这里
+            console.log("List item ", e.target.id, " was clicked!");
+        }
+    }, false);
+
+```
+
+
+上方代码，为父节点注册click事件，当子节点被点击的时候，click事件会从子节点开始**向上冒泡**。**父节点捕获到事件**之后，开始执行方法体里的内容：通过判断 e.target 拿到了被点击的子节点li。从而可以获取到相应的信息，并作处理。
+
+换而言之，事件是在父节点上注册的，参数为false，说明事件是在冒泡阶段触发（往上传递），那就只有父节点能拿到事件，子节点是不可能拿到事件的。
+
+所以事件委托可以减少大量的内存消耗，提高效率。
+
+事件委托的参考链接：
+
+- [荐 | JavaScript事件代理和委托（Delegation）](https://www.cnblogs.com/owenChen/archive/2013/02/18/2915521.html)
+
+- [JavaScript 事件委托详解](https://zhuanlan.zhihu.com/p/26536815)
+
 
 
 ## 我的公众号
