@@ -54,11 +54,11 @@ Ajax：Asynchronous Javascript And XML（异步 JavaScript 和 XML）。它并�
 
 （1）创建异步对象。即 XMLHttpRequest 对象。
 
-（2）设置请求的参数。包括：请求的方法、请求的url。
+（2）使用open方法设置请求的参数。open(method, url, async)。参数解释：请求的方法、请求的url、是否异步。
 
 （3）发送请求。
 
-（4）注册事件。 onreadystatechange事件，状态改变时就会调用。
+（4）注册事件。 注册onreadystatechange事件，状态改变时就会调用。
 
 如果要在数据完整请求回来的时候才调用，我们需要手动写一些判断的逻辑。
 
