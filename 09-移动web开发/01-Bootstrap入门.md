@@ -136,26 +136,33 @@ PS：`dist`表示编译之后的文件，这在库文件中是很常见的。
 
 **（2）viewport 视口**：
 
+
 ```html
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 ```
 
 解释：声明当前网页在移动端浏览器中展示的相关设置。我们在做移动 web 开发时，就用上面这行代码设置 viewport。
 
 视口的作用：在移动浏览器中，当页面宽度超出设备，浏览器内部虚拟的一个页面容器，将页面容器缩放到设备这么大，然后展示。
 
+
 需要注意的是：
 
 - 目前大多数手机浏览器的视口（承载页面的容器）宽度都是980；
-- 视口的宽度可以通过meta标签设置。
-- 此属性为移动端页面视口设置，上方代码设置的值，表示在移动端页面的宽度为设备的宽度，并且不缩放（缩放级别为1）
-	- width:视口的宽度
-    - initial-scale：初始化缩放
-    - user-scalable:是否允许用户自行缩放（值可以写成yes/no，也可以写成1/0）
-    - minimum-scale:最小缩放。
-    - maximum-scale:最大缩放。
+- 此属性为移动端页面视口设置，上方代码设置的值，表示在移动端页面的宽度为设备的宽度，并且不缩放（缩放级别为1）。
+
+属性解释：
+
+- width:设置viewport的宽度。
+- initial-scale：初始化缩放比例。
+- minimum-scale:最小缩放比例。
+- maximum-scale:最大缩放比例。
+- user-scalable:是否允许用户手动缩放（值可以写成yes/no，也可以写成1/0）
+
 
 PS：如果设置了不允许用户缩放，那么最小缩放和最大缩放就没有意义了。二者是矛盾的。
+
+
 
 **（3）条件注释**：
 
