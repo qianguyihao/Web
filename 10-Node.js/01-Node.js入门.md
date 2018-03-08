@@ -238,6 +238,14 @@ proxy
 
 ### NVM 的常用命令
 
+
+查看本地安装的所有的 node 版本：
+
+```
+nvm list|ls
+```
+
+
 安装指定版本的node：
 
 ```
@@ -264,12 +272,6 @@ nvm use 版本号 [arch]
 nvm -v
 
 nvm --version
-```
-
-查看本地安装的所有的 node 版本：
-
-```
-nvm list|ls
 ```
 
 ### Node 的常用命令
@@ -423,7 +425,7 @@ nrm use taobao  // 使用淘宝的镜像
 ![](http://img.smyhvae.com/20180302_1215.png)
 
 
-推荐的国内加速镜像：<https://npm.taobao.org/>
+推荐的国内加速镜像淘宝：<https://npm.taobao.org/>
 
 
 ## Node 的使用
@@ -489,7 +491,7 @@ PS：NVM 现在已经不支持 Homebrew 的方式来安装了。
 参考链接：<https://www.jianshu.com/p/a3f8778bc0a1>
 
 
-### Mac 下安装 Node
+### Mac 下安装 Node（通过nvm安装）
 
 和Windows下一样，也是执行如下命令：
 
@@ -504,17 +506,16 @@ nvm install 6.0.0
 
 输入 `node -v`，查看当前使用的 node 版本。
 
-npm 也会自动安装的，输入 `npm -v`，查看 npm 的版本。
+安装好 `Node` 之后，`npm` 也会自动安装的，输入 `npm -v`，查看 npm 的版本。
 
 
 ### 安装cnpm
 
-安装cnpm替换npm（npm由于源服务器在国外，下载node包速度较慢，cnpm使用国内镜像）：
+安装`cnpm`替换npm（npm由于源服务器在国外，下载node包速度较慢，cnpm使用国内镜像）：
 
 ```bash
 npm install -g cnpm --registry=https://registry.npm.taobao.org
 ```
-
 
 
 20180302_2204.png
