@@ -1,5 +1,7 @@
 
 
+- [Get全栈技能点 Vue2.0/Node.js/MongoDB 打造商城系统](https://coding.imooc.com/class/chapter/113.html)
+
 ## 前端的各种框架
 
 ### Vue、React、AngularJS
@@ -10,12 +12,12 @@ AngularJS 提供更多的是一套解决方案，更像是一个生态。
 
 ### Vue 和 React 的对比
 
-20180302_1623.png
+![](http://img.smyhvae.com/20180302_1623.png)
 
 
 ### Vue 和 React 的相同点
 
-20180302_1636.png
+![](http://img.smyhvae.com/20180302_1636.png)
 
 国内的很多开发者喜欢 Vue；国外的开发者更喜欢 React，可以做大型网站。
 
@@ -31,13 +33,13 @@ Vue1.0没有虚拟DOM，Vue2.0改成了基于虚拟DOM。
 
 ### 前端框架回顾
 
-20180302_1645.png
+![](http://img.smyhvae.com/20180302_1645.png)
 
 
-20180302_1651.png
+![](http://img.smyhvae.com/20180302_1651.png)
 
 
-20180302_1652.png
+![](http://img.smyhvae.com/20180302_1652.png)
 
 
 
@@ -48,7 +50,7 @@ Vue框架中，没有控制器。
 
 ### 发展历史
 
-20180302_1655.png
+![](http://img.smyhvae.com/20180302_1655.png)
 
 2016.10发布2.0版本。
 
@@ -63,7 +65,7 @@ Vue框架中，没有控制器。
 
 
 
-20180302_1658.png
+![](http://img.smyhvae.com/20180302_1658.png)
 
 上方截图的时间：2018-03-02。
 
@@ -76,7 +78,7 @@ Vue框架中，没有控制器。
 渐进式框架图：
 
 
-20180302_1701.png
+![](http://img.smyhvae.com/20180302_1701.png)
 
 
 - 声明式渲染：当我们在页面里，通过 new 一个 view 的事例时，
@@ -90,13 +92,13 @@ Vue框架中，没有控制器。
 
 - 扩展功能：路由、ajax、数据流等。
 
-20180302_1750.png
+![](http://img.smyhvae.com/20180302_1750.png)
 
-20180302_1751.png
+![](http://img.smyhvae.com/20180302_1751.png)
 
-20180302_1752.png
+![](http://img.smyhvae.com/20180302_1752.png)
 
-20180302_1753.png
+![](http://img.smyhvae.com/20180302_1753.png)
 
 ## Vue 的环境搭建
 
@@ -157,14 +159,14 @@ $ cnpm i vue --save
 
 我们可以看到 vue.js 的安装目录：
 
-20180302_2252.png
+![](http://img.smyhvae.com/20180302_2252.png)
 
-20180302_2255.png
+![](http://img.smyhvae.com/20180302_2255.png)
 
 此时在 src 中需要引入的路径是：
 
 
-20180302_2106.png
+![](http://img.smyhvae.com/20180302_2106.png)
 
 上图中的引入方式，不是很理解。
 
@@ -208,17 +210,17 @@ $ vue init webpack-simple VueDemo01
 
 ```
 
-然后根据提示输入 project name（要求小写），description 默认即可：
+然后根据提示输入 project name（**要求小写**），description 默认即可：
 
 
-20180303_0850.png
+![](http://img.smyhvae.com/20180303_0850.png)
 
 
 上方截图中，`npm install `指的是下载各种依赖包，`npm run dev`指的是打开发包，`npm run build`指的是打生产包。
 
 我们可以看到这个项目的结构：
 
-20180303_0851.png
+![](http://img.smyhvae.com/20180303_0851.png)
 
 - src：项目源码
 
@@ -247,7 +249,7 @@ cnpm run dev
 这个空的项目就可以在浏览器上跑起来：
 
 
-20180303_0853.png
+![](http://img.smyhvae.com/20180303_0853.png)
 
 如果是在webstorm中开发这个项目，会有点卡，因为依赖的包比较多，重启软件即可。
 
@@ -263,13 +265,13 @@ $ vue init webpack VueDemo02
 
 然后根据提示依次输入：
 
--  project name：要求小写。
+-  project name：**要求小写**。
 
 - description：默认即可。
 
 - vue-router：需要。
 
-- ESlint：语法检查，初学者暂时不需要。
+- ESlint：语法检查，初学者可以暂时不需要。
 
 - 单元测试：暂时也不需要。
 
@@ -297,15 +299,15 @@ cnpm run dev
 
 这个空的项目就可以在浏览器上跑起来。
 
-20180303_0911.png
+![](http://img.smyhvae.com/20180303_0915.png)
 
-20180303_0913.png
+![](http://img.smyhvae.com/20180303_0913.png)
 
 
 
 ## vue 项目结构分析
 
-20180303_1010.png
+![](http://img.smyhvae.com/20180303_1010.png)
 
 - buid：打包配置的文件夹
 
@@ -331,8 +333,6 @@ cnpm run dev
 
 
 
-
-
 ### 图片的base64编码
 
 默认是10k以下，建议都通过 base64编码。在配置文件`webpack.base.conf.js`中进行修改：
@@ -349,15 +349,15 @@ cnpm run dev
 
 ## Vue 基础语法
 
-20180303_1130.png
+![](http://img.smyhvae.com/20180303_1130.png)
 
-20180303_1135.png
+![](http://img.smyhvae.com/20180303_1135.png)
 
-20180303_1145.png
+![](http://img.smyhvae.com/20180303_1145.png)
 
-20180303_1146.png
+![](http://img.smyhvae.com/20180303_1146.png)
 
-20180303_1150.png
+![](http://img.smyhvae.com/20180303_1150.png)
 
 
 
