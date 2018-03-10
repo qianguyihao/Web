@@ -94,27 +94,30 @@ CSS盒模型和IE盒模型的区别：
 
 这种方式有局限性，但应该了解。
 
-### 方式二（IE独有的）
+
+
+### 方式二（通用型）
+
+
+```javascript
+    window.getComputedStyle(element).width/height;
+```
+
+
+方式二能兼容 Chrome、火狐。是通用型方式。
+
+
+### 方式三（IE独有的）
 
 
 ```javascript
 	element.currentStyle.width/height;
 ```
 
-获取到的即时运行完之后的宽高（三种css样式都可以获取）。但这种方式只有IE独有。
+和方式二相同，但这种方式只有IE独有。获取到的即时运行完之后的宽高（三种css样式都可以获取）。
 
 
-### 方式三（通用型）
-
-
-```javascript
-	window.getComputedStyle(element).width/height;
-```
-
-
-方式三和方式二一样。只不过，方式三能兼容 Chrome、火狐。是通用型方式。
-
-### 方式4
+### 方式四
 
 
 ```javascript
@@ -242,7 +245,7 @@ BFC（Block Formatting Context）：块级格式化上下文。你可以把它�
 
 BFC 的原理，其实也就是 BFC 的渲染规则（能说出以下四点就够了）。包括：
 
-- （1）BFC **里面的**元素，在垂直方向，**边距会发生重叠**。
+- （1）BFC **内部的**子元素，在垂直方向，**边距会发生重叠**。
 
 - （2）BFC在页面中是独立的容器，外面的元素不会影响里面的元素，反之亦然。（稍后看`举例1`）
 
