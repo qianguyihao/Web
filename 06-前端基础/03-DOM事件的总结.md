@@ -87,7 +87,7 @@ DOM3中，增加了很多事件类型，比如鼠标事件、键盘事件等。
 
 PS：为何事件没有DOM1的写法呢？因为，DOM1标准制定的时候，没有涉及与事件相关的内容。
 
-**总结：**关于“DOM事件的级别”，能回答出以上内容即可，不会出题目让你做。
+**总结**：关于“DOM事件的级别”，能回答出以上内容即可，不会出题目让你做。
 
 
 ## DOM事件模型、DOM事件流
@@ -307,127 +307,6 @@ IE10以下则是：
 
 - [JavaScript基础：事件对象Event和冒泡](https://github.com/smyhvae/Web/blob/master/03-JavaScript/09-JavaScript%E5%9F%BA%E7%A1%80%EF%BC%9A%E4%BA%8B%E4%BB%B6%E5%AF%B9%E8%B1%A1Event%E5%92%8C%E5%86%92%E6%B3%A1.md)
 
-
-
-
-
-
-
-
-
-```javascript
-
-```
-
-
-
-
-
-
-
-```javascript
-
-```
-
-
-
-
-
-
-
-
-```javascript
-
-```
-
-
-
-
-
-
-
-
-
-
-
-```javascript
-
-```
-
-
-
-
-
-
-
-
-
-
-
-
-```javascript
-
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-```javascript
-
-```
-
-
-
-
-
-
-
-
-
-
-
-
-```javascript
-
-```
-
-
-
-
-
-
-
-
-
-
-
-
-```javascript
-
-```
-
-
-
-
-
-
-
-
-
-
-
-```javascript
-
-```
 
 
 
