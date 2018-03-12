@@ -292,7 +292,9 @@ $ node -e 'console.log("Hello World")'
 
 ```
 $ node index.js
+
 $ node path/index.js
+
 $ node path/index
 ```
 
