@@ -41,7 +41,7 @@
 CSS3在布局方面做了非常大的改进，使得我们对**块级元素**的布局排列变得十分灵活，适应性非常强。其强大的伸缩性，在响应式开中可以发挥极大的作用。
 
 
-20180219_2035.png
+![](http://img.smyhvae.com/20180219_2035.png)
 
 如上图所示，有几个概念需要了解一下：
 
@@ -71,8 +71,8 @@ PS：主轴和侧轴并不是固定不变的，通过flex-direction可以互换�
 
 - `flex-direction: row;` 设置**主轴方向**，默认是水平方向。属性值可以是：
     - `row` 水平方向（默认值）
-    - `reverse-row` 反转 
-    - `column` 垂直方向 
+    - `reverse-row` 反转
+    - `column` 垂直方向
     - `reverse-column` 反转列
 
 
@@ -354,7 +354,7 @@ PS：主轴和侧轴并不是固定不变的，通过flex-direction可以互换�
     - `flex-start` 从侧轴开始的方向对齐
     - `flex-end` 从侧轴结束的方向对齐
     - `baseline` 基线 默认同flex-start
-    - `center` 中间对齐 
+    - `center` 中间对齐
     - `stretch` 拉伸
 
 
