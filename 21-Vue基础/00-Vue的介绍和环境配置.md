@@ -2,6 +2,14 @@
 
 - [Get全栈技能点 Vue2.0/Node.js/MongoDB 打造商城系统](https://coding.imooc.com/class/chapter/113.html)
 
+## MVVM模式
+
+- Model：负责数据存储
+
+- View：负责页面展示
+
+- View Model：负责业务逻辑处理（比如Ajax请求等），对数据进行加工后交给视图展示
+
 ## 前端的各种框架
 
 ### Vue、React、AngularJS
@@ -58,9 +66,20 @@ Vue框架中，没有控制器。
 
 - [中文官网](https://cn.vuejs.org/)
 
-- GitHub地址：<https://github.com/vuejs/vue>
 
 - [vuejs官方论坛](https://forum.vuejs.org/)
+
+- GitHub地址：<https://github.com/vuejs/vue>
+
+
+- Vue1.0 在线文档：<http://v1-cn.vuejs.org/guide/>
+
+- Vue2.x 在线文档：<https://cn.vuejs.org/v2/guide/>
+
+- Vue1下载地址：http://v1-cn.vuejs.org/js/vue.js
+
+- Vue2下载地址：https://unpkg.com/vue@2.2.1/dist/vue.js
+
 
 
 

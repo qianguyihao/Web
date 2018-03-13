@@ -51,7 +51,7 @@
 
 浏览器端规范：
 
-- [**AMD**](https://github.com/amdjs/amdjs-api)：是 **[RequireJS](http://requirejs.org/)** 在推广过程中对模块化定义的规范化产出。
+- [**AMD规范**](https://github.com/amdjs/amdjs-api)：是 **[RequireJS](http://requirejs.org/)** 在推广过程中对模块化定义的规范化产出。
 
 ```
 - 异步加载模块；
@@ -61,7 +61,7 @@
 - define 定义模块：define([`require`,`foo`],function(){return});
 ```
 
-- **[CMD](https://github.com/amdjs/amdjs-api)**：是 **[SeaJS](http://seajs.org/)** 在推广过程中对模块化定义的规范化产出。淘宝团队开发。
+- **[CMD规范](https://github.com/amdjs/amdjs-api)**：是 **[SeaJS](http://seajs.org/)** 在推广过程中对模块化定义的规范化产出。淘宝团队开发。
 
 ```
 
