@@ -41,9 +41,9 @@ cookie用于存储时的缺点：
 
 - `foreach`用于遍历数组，是数组的一个方法。不支持 return。
 
-- `for ... in`获取的是index索引值。
+- `for ... in`获取的对象是index索引值。
 
-- `for ... of`获取的是数组里的值。
+- `for ... of`获取的是对象里的值。
 
 
 
