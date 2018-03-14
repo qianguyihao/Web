@@ -441,9 +441,9 @@ implements、import、int、interface、long、native、package、private、prot
 复杂数据类型：参数赋值的时候，传地址（修改的同一片内存空间）
 
 
-### 数值型：number
+### 数值型：Number
 
-如果一个变量中，存放了数字，那么这个变量就是数值型的。
+如果一个变量中，存放了数字（包括整数和浮点数），那么这个变量就是数值型的。
 
 ```javascript
 	var a = 100;			//定义了一个变量a，并且赋值100
@@ -456,7 +456,7 @@ implements、import、int、interface、long、native、package、private、prot
 number
 ```
 
-**typeof()**表示“**获取变量的类型**”，语法为：
+**typeof()**表示“**获取变量的类型**”，返回的是小写，语法为：
 
 ```
 typeof 变量
@@ -478,7 +478,9 @@ typeof 变量
 
 **NaN和isNaN()函数：**
 
-（1）NaN：Not a Number，非数值。
+（1）NaN是一个特殊的数字，表示Not a Number，非数值。
+
+注意：`typeof NaN`的返回值是number。
 
 ```
 	console.log(“abc”/18);  //结果是NaN
@@ -495,19 +497,6 @@ Undefined和任何数值计算为NaN。NaN 与任何值都不相等，包括 NaN
 	isNaN(123); // false
 
 ```
-
-
-### undefined和null
-
-
-null和undefined有最大的相似性。看看null == undefined的结果(true)也就更加能说明这点。
-
-但是null ===undefined的结果(false)。不过相似归相似，还是有区别的，就是和数字运算时，10 + null结果为：10；10 + undefined结果为：NaN。
-
-
-- 任何数据类型和undefined运算都是NaN;
-
-- 任何值和null运算，null可看做0运算。
 
 
 
@@ -590,6 +579,33 @@ null和undefined有最大的相似性。看看null == undefined的结果(true)�
 ```
 
 于是我们明白了，在变量中加入字符串进行连接，可以被同化为字符串。
+
+
+
+### 布尔值：Boolean
+
+true 和 fase。
+
+
+### null和undefined
+
+
+- `null`：Null类型的值只有一个，就是null。比如：`var a = null`。专门用来表示一个为空的对象。使用 typeof 检查一个null值时，会返回object。
+
+
+- `undefined`：**声明一个变量，但是没有赋值**，此时它的值就是undefined。例如：`var a;`使用 type of 检查一个undefined时，会返回undefined。
+
+
+
+null和undefined有最大的相似性。看看null == undefined的结果(true)也就更加能说明这点。
+
+但是null ===undefined的结果(false)。不过相似归相似，还是有区别的，就是和数字运算时，10 + null结果为：10；10 + undefined结果为：NaN。
+
+
+- 任何数据类型和undefined运算都是NaN;
+
+- 任何值和null运算，null可看做0运算。
+
 
 
 ## 变量值的传递（赋值）
@@ -809,6 +825,11 @@ null和undefined有最大的相似性。看看null == undefined的结果(true)�
 ```
 String(变量)
 ```
+
+
+使用String()函数做强制类型转换时，对于Number和Boolean而言，实际上是调用的toString()方法。
+
+
 
 （3）方法三：
 
