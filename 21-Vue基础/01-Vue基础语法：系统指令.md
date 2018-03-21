@@ -40,9 +40,9 @@
 如果我们在控制台输入`myVue.data+='123'`，页面会**自动更新**name的值。
 
 
-## Vue的系统指令
+下面来讲一下Vue的系统指令
 
-### v-on：注册事件
+## v-on：注册事件
 
 ```html
 <!DOCTYPE html>
@@ -89,7 +89,7 @@
 
 
 
-### 插值表达式 {{}}
+## 插值表达式 {{}}
 
 数据绑定最常见的形式就是使用 “Mustache” 语法（双大括号）的文本插值。例如：
 
@@ -124,7 +124,7 @@ Mustache 标签将会被替代为对应数据对象上 msg 属性（msg定义在
 ```
 
 
-### v-text
+## v-text
 
 v-text可以将一个变量的值渲染到指定的元素中。例如：
 
@@ -162,7 +162,7 @@ v-text可以将一个变量的值渲染到指定的元素中。例如：
 
 20180313_1645.png
 
-### v-html
+## v-html
 
 
 `v-text`是纯文本，而`v-html`会被解析成html元素。
@@ -170,7 +170,7 @@ v-text可以将一个变量的值渲染到指定的元素中。例如：
 注意：使用v-html渲染数据可能会非常危险，因为它很容易导致 XSS（跨站脚本） 攻击，使用的时候请谨慎，能够使用{{}}或者v-text实现的不要使用v-html。
 
 
-### v-cloak
+## v-cloak
 
 `v-cloak`：保持和元素实例的关联，直到结束编译后自动消失。
 
@@ -184,12 +184,13 @@ v-text可以将一个变量的值渲染到指定的元素中。例如：
 <head>
   <meta charset="UTF-8">
   <title>Title</title>
+  <script src="vue.js"></script>
   <style>
 
     /*网络很慢时，在span上加上 v-cloak和css样式控制以后，浏览器在加载时会先把span隐藏起来。
     直到 Vue实例化完毕以后，v-cloak 会自动消失，那么对应的css样式就会失去作用，最终将span中的内容呈现给用户 */
     [v-cloak] {
-      display: block;
+      display: none;
     }
   </style>
 </head>
@@ -217,8 +218,7 @@ v-text可以将一个变量的值渲染到指定的元素中。例如：
 
 
 
-
-### v-bind
+## v-bind
 
 `v-bind`：给html元素或者组件**动态绑定**一个或多个特性，例如动态绑定style和class。
 
@@ -285,6 +285,61 @@ v-text可以将一个变量的值渲染到指定的元素中。例如：
 效果：
 
 20180313_1745.png
+
+
+
+## v-model：双向数据绑定
+
+上面的一段中，我们通过v-bind，给`<input>`标签绑定了`data`对象里的`name`属性。当`data -> name`的值发生改变时，`<input>`标签里的内容会自动更新。
+
+可我现在要做的是：我在`<input>`标签里修改内容，要求`data -> name`的值自动更新。从而实现双向数据绑定。该怎么做呢？这就可以利用`v-model`这个属性。
+
+代码举例如下：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+<div id="app">
+
+    <form action="#">
+        <input type="text" id="username" v-model="myAccount.username">
+        <input type="password" id="pwd" v-model="myAccount.userpwd">
+
+        <input type="submit" v-on:click="submit1" value="注册">
+
+    </form>
+</div>
+</body>
+
+<script>
+    var vm = new Vue({
+        el: '#app',
+        //采用v-model进行双向数据绑定，数据会自动更新到data里面来
+        data: {
+            name: 'smyhvae',
+            myAccount: {username: '', userpwd: ''}
+        },
+        //绑定方法，根据业务需要进行操作
+        methods: {
+            submit1: function () {
+                alert(this.myAccount.username + "  pwd=" + this.myAccount.userpwd);
+            }
+        }
+    });
+</script>
+
+</html>
+```
+
+
+
+
 
 
 
