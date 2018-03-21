@@ -2,12 +2,14 @@
 
 
 
+
+
 ## JavaScript
 
-### 存储相关：请描述以下cookie、localStorage、sessionStorage的区别。
+### 存储相关：请描述以下cookie、localStorage、sessionStorage的区别
 
 
-在H5之前，cookie一直都是本地存储的一个重要的方法。直到后面的两个出现了， 就开始用后面的两个做本地存储。
+> 在H5之前，cookie一直都是本地存储的一个重要的方法。直到后面的两个出现了， 就开始用后面的两个做本地存储。
 
 
 **1、cookie**：
@@ -29,9 +31,31 @@ cookie用于存储时的缺点：
 
 
 
+## HTML5
+
+### HTML5新增了哪些内容或API？使用过哪些？
+
+新元素：
+
+- `<section>`、`<footer>` 和 `<header>`等
+
+
+新的api：
+
+- 网络存储: sessionStorage 和 localStorage
 
 
 
+参考链接：
+
+- [笔记：阿里、网易、滴滴共十次前端面试碰到的问题](https://zhoukekestar.github.io/notes/2017/06/07/interview-answers.html)
+
+
+## CSS
+
+### 如何让一个div元素隐藏？你能想到的方式有几种？
+
+-
 
 
 
@@ -44,6 +68,43 @@ cookie用于存储时的缺点：
 - `for ... in`获取的对象是index索引值。
 
 - `for ... of`获取的是对象里的值。
+
+
+
+## 网络相关
+
+### 浏览器输入url到显示内容，有哪些过程
+
+
+（1）浏览器解析url。包括：协议、域名、端口号、资源路径、参数查询
+
+（2）DNS解析
+
+（3）TCP握手
+
+（4）HTTP请求
+
+（5）服务器处理请求
+
+（6）浏览器渲染：DOM tree、CSS rule tree、render tree。
+
+（7）display
+
+
+参考链接：
+
+
+- [笔记：阿里、网易、滴滴共十次前端面试碰到的问题](https://zhoukekestar.github.io/notes/2017/06/07/interview-answers.html)
+
+- [what-happens-when-zh_CN](https://github.com/skyline75489/what-happens-when-zh_CN#dns)
+
+
+- [码农翻身 | 小白科普：从输入网址到最后浏览器呈现页面内容，中间发生了什么？](https://mp.weixin.qq.com/s/3_DZKSP492uq9RfQ3eW4_A)
+
+- 从输入URL到页面加载发生了什么：<https://segmentfault.com/a/1190000006879700>
+
+
+
 
 
 
@@ -67,11 +128,6 @@ cookie用于存储时的缺点：
 
 
 
-## 浏览器输入hrl，有哪些过程
-
-- [码农翻身 | 小白科普：从输入网址到最后浏览器呈现页面内容，中间发生了什么？](https://mp.weixin.qq.com/s/3_DZKSP492uq9RfQ3eW4_A)
-
-- 从输入URL到页面加载发生了什么：<https://segmentfault.com/a/1190000006879700>
 
 
 
