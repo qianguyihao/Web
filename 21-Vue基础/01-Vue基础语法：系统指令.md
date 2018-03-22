@@ -40,7 +40,7 @@
 如果我们在控制台输入`myVue.data+='123'`，页面会**自动更新**name的值。
 
 
-下面来讲一下Vue的系统指令
+下面来讲一下Vue的各种系统指令。
 
 ## v-on：注册事件
 
@@ -320,12 +320,12 @@ v-text可以将一个变量的值渲染到指定的元素中。例如：
 <script>
     var vm = new Vue({
         el: '#app',
-        //采用v-model进行双向数据绑定，数据会自动更新到data里面来
+        //上面的标签中采用v-model进行双向数据绑定，数据会自动更新到data里面来
         data: {
             name: 'smyhvae',
             myAccount: {username: '', userpwd: ''}
         },
-        //绑定方法，根据业务需要进行操作
+        //在methods里绑定各种方法，根据业务需要进行操作
         methods: {
             submit1: function () {
                 alert(this.myAccount.username + "  pwd=" + this.myAccount.userpwd);
