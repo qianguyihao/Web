@@ -63,3 +63,13 @@ apm install --check
 - <https://atom-china.org/t/atom/984>
 
 - <https://zhenyong.github.io/2016/08/03/starting-atom/>
+
+
+
+
+## 相关设置
+
+### 显示缩进线
+
+settings -->Editor --> Show Indent Guide
+
