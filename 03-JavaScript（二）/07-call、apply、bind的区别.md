@@ -8,6 +8,7 @@
 
 ## call()和apply()
 
+### 介绍
 
 这两个方法都是函数对象的方法，需要通过函数对象来调用。
 
@@ -19,7 +20,43 @@
 - 第一个参数都是this要指向的对象（函数执行时，this将指向这个对象），后续参数传实参。
 
 
-**call()和apply()的区别：**
+
+### 显式绑定this
+
+JS提供的绝大多数函数以及我们自己创建的所有函数，都可以使用call 和apply方法。
+
+它们的第一个参数是一个对象。因为你可以直接指定 this 绑定的对象，因此我们称之为显式绑定。
+
+
+例1：
+
+```javascript
+    function foo() {
+        console.log(this.a);
+    }
+
+    var obj = {
+        a: 2
+    };
+
+    foo.apply(obj);//打印结果：2
+```
+
+
+### 第一个参数的传递
+
+1、thisObj不传或者为null、undefined时，函数中的this会指向window对象（非严格模式）。
+
+2、传递一个别的函数名时，函数中的this将指向这个**函数的引用**。
+
+3、传递的值为数字、布尔值、字符串时，this会指向这些基本类型的包装对象Number、Boolean、String。
+
+4、传递一个对象时，函数中的this则指向传递的这个对象。
+
+创建函数创建函数bar的奶鹅绒和变量的创建的ffunciont
+
+
+### call()和apply()的区别
 
 
 call()和apply()方法都可以将实参在对象之后依次传递，但是apply()方法需要将实参封装到一个**数组**中统一传递。
@@ -79,16 +116,6 @@ call()和apply()方法都可以将实参在对象之后依次传递，但是appl
 
 - 实现继承。Father.call(this)
 
-
-## 参数的传递
-
-1、使用call的时候，thisObj不传或者为null、undefined时，函数中的this会指向window对象。
-
-2、传递一个别的函数名时，函数中的this将指向这个**函数的引用**。
-
-3、传递的值为数字、布尔值、字符串，this会指向这些基本类型的包装对象Number、Boolean、String。
-
-4、传递一个对象，函数中的this则指向传递的这个对象。
 
 
 ## bind()

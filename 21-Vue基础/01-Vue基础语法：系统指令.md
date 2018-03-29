@@ -35,7 +35,7 @@
 
 显示效果：
 
-20180313_0955.png
+![](http://img.smyhvae.com/20180313_0955.png)
 
 如果我们在控制台输入`myVue.data+='123'`，页面会**自动更新**name的值。
 
@@ -43,6 +43,8 @@
 下面来讲一下Vue的各种系统指令。
 
 ## v-on：注册事件
+
+### v-on 的用法举例
 
 ```html
 <!DOCTYPE html>
@@ -73,6 +75,7 @@
     data: { //data就是MVVM中的 module
       name: 'smyhvae'
     },
+    //注意，下方这个 `methods` 是Vue中定义方法的关键字，不能改
     methods: {
       change: function() { //上面的button按钮的点击事件
         this.name += '1';
@@ -87,6 +90,133 @@
 
 上方代码中，我们给button按钮绑定了点击事件。注意，这个button标签要写在div区域里（否则点击事件不生效），因为下方的View module接管的是div区域。
 
+
+### `v-on`的简写形式
+
+例如：
+
+```html
+    <button v-on:click="change">改变name的值</button>
+```
+
+可以简写成：
+
+```html
+    <button @click="change">改变name的值</button>
+```
+
+
+### v-on的常用事件
+
+- v-on:click
+
+- v-on:keydown
+
+- v-on:keyup
+
+- v-on:mousedown
+
+- v-on:mouseover
+
+- v-on:submit
+
+- ....
+
+### v-on的事件修饰符
+
+`v-on` 提供了很多事件修饰符来辅助实现一些功能。事件修饰符有如下：
+
+- `.stop`  阻止冒泡。本质是调用 event.stopPropagation()。
+
+`.prevent`  阻止默认事件。本质是调用 event.preventDefault()。
+
+`.capture`  添加事件监听器时，使用 capture 模式。
+
+`.self`  只有当事件是从侦听器绑定的元素本身触发时，才触发回调。
+
+``.{keyCode | keyAlias}`   只当事件是从侦听器绑定的元素本身触发时，才触发回调。
+
+``.native` 监听组件根元素的原生事件。
+
+写法示范：
+
+```html
+          <!-- click事件 -->
+        <button v-on:click="doThis"></button>
+
+        <!-- 缩写 -->
+        <button @click="doThis"></button>
+
+        <!-- 内联语句 -->
+        <button v-on:click="doThat('hello', $event)"></button>
+
+        <!-- 阻止冒泡 -->
+        <button @click.stop="doThis"></button>
+
+        <!-- 阻止默认行为 -->
+        <button @click.prevent="doThis"></button>
+
+        <!-- 阻止默认行为，没有表达式 -->
+        <form @submit.prevent></form>
+
+        <!--  串联修饰符 -->
+        <button @click.stop.prevent="doThis"></button>
+```
+
+
+**举例**：（`.prevent`的用法举例）
+
+现在有一个form表单：
+
+```html
+    <form action="http://www.baidu.com">
+      <input type="submit" value="表单提交">
+    </form>
+```
+
+
+我们知道，上面这个表单因为`type="submit"`，因此它是一个提交按钮，点击按钮后，这个表单就会被提交到form标签的action属性中指定的那个页面中去。这是表单的默认行为。
+
+现在，我们可以用`.prevent`来阻止这种默认行为。修改为：点击按钮后，不提交到服务器，而是执行我们自己想要的事件（在submit方法中另行定义）。如下：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="vue2.5.16.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 阻止表单中submit的默认事件 -->
+    <form @submit.prevent action="http://www.baidu.com">
+      <!-- 执行自定义的click事件 -->
+      <input type="submit" @click="mySubmit" value="表单提交">
+    </form>
+
+  </div>
+</body>
+
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+    },
+    methods: {
+      mySubmit: function() {
+        alert('ok');
+      }
+    }
+  });
+</script>
+
+</html>
+```
+
+上方代码中，我们通过`.prevent`阻止了提交按钮的默认事件，点击按钮后，执行的是`mySubmit()`方法里的内容。这个方法名是可以随便起的，我们甚至可以起名为`submit`，反正默认的submit已经失效了。
 
 
 ## 插值表达式 {{}}
@@ -160,7 +290,7 @@ v-text可以将一个变量的值渲染到指定的元素中。例如：
 结果：
 
 
-20180313_1645.png
+![](http://img.smyhvae.com/20180313_1645.png)
 
 ## v-html
 
@@ -215,7 +345,6 @@ v-text可以将一个变量的值渲染到指定的元素中。例如：
 </html>
 
 ```
-
 
 
 ## v-bind
@@ -284,7 +413,7 @@ v-text可以将一个变量的值渲染到指定的元素中。例如：
 
 效果：
 
-20180313_1745.png
+![](http://img.smyhvae.com/20180313_1745.png)
 
 
 
@@ -338,13 +467,251 @@ v-text可以将一个变量的值渲染到指定的元素中。例如：
 ```
 
 
+此时，便可实现我们刚刚要求的双向数据绑定的效果。
+
+## v-for：for循环
+
+**作用**：根据数组中的元素遍历指定模板内容生成内容。
+
+### 引入
+
+比如说，如果我想给一个`ul`中的多个`li`分别赋值1、2、3...。如果不用循环，就要挨个赋值：
+
+
+```html
+<body>
+  <div id="app">
+    <ul>
+      <li>{{list[0]}}</li>
+      <li>{{list[1]}}</li>
+      <li>{{list[2]}}</li>
+    </ul>
+  </div>
+</body>
+
+<script>
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      list: [1, 2, 3]
+    }
+
+  });
+</script>
+```
+
+效果：
+
+![](http://img.smyhvae.com/20180329_1713.png)
+
+为了实现上面的效果，如果我用`v-for`进行赋值，代码就简洁很多了：
+
+
+```html
+<body>
+  <div id="app">
+    <ul>
+      <!-- 使用v-for对多个li进行遍历赋值 -->
+      <li v-for="item in list">{{item}}</li>
+    </ul>
+  </div>
+</body>
+
+<script>
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      list: [1, 2, 3]
+    }
+
+  });
+</script>
+```
+
+接下来，我们详细讲一下`v-for`的用法。需要声明的是，Vue 1.0的写法和Vue 2.0的写法是不一样的。本文全部采用Vue 2.0的写法
+
+
+### 数组的遍历赋值
+
+针对下面这样的数组：
+
+
+```html
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      arr1: [2, 5, 3, 1, 1],
+    }
+  });
+</script>
+```
+
+
+将数组中的**值**赋给li：
+
+```html
+      <li v-for="item in arr1">{{item}}</li>
+```
+
+
+将数组中的**值和index**赋给li：
+
+
+```html
+      <!-- 括号里如果写两个参数：第一个参数代表值，第二个参数代表index -->
+      <li v-for="(item,index) in arr1">值：{{item}} --- 索引：{{index}}</li>
+```
+
+
+效果如下：
+
+![](http://img.smyhvae.com/20180329_1856.png)
 
 
 
+### 对象的遍历赋值
 
 
+针对下面这样的对象：
+
+```html
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      obj1: {
+        name: 'smyhvae',
+        age: '26',
+        gender: '男'
+      }
+    }
+  });
+</script>
+```
+
+将上面的`obj1`对象的数据赋值给li，写法如下：
 
 
+```html
+<body>
+  <div id="app">
+    <ul>
+      <!-- 括号里如果写两个参数：则第一个参数代表value，第二个参数代表key -->
+      <li v-for="(value,key) in obj1">值：{{value}} --- 键：{{key}} </li>
+
+      <h3>---分隔线---</h3>
+
+      <!-- 括号里如果写三个参数：则第一个参数代表value，第二个参数代表key，第三个参数代表index -->
+      <li v-for="(value,key,index) in obj1">值：{{value}} --- 键：{{key}} --- index：{{index}} </li>
+    </ul>
+  </div>
+</body>
+
+```
+
+效果如下：
+
+![](http://img.smyhvae.com/20180329_1850.png)
+
+
+## v-if：设置元素的显示和隐藏
+
+**作用**：根据表达式的值的真假条件，来决定是否渲染元素，如果为false则不渲染（达到隐藏元素的目的），如果为true则渲染。
+
+在切换时，元素和它的数据绑定会被销毁并重建。
+
+举例如下：（点击按钮时，切换和隐藏盒子）
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <button v-on:click="toggle">显示/隐藏</button>
+    <div v-if="isShow">我是盒子</div>
+  </div>
+</body>
+
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      isShow: true
+    },
+    methods: {
+      toggle: function() {
+        this.isShow = !this.isShow;
+      }
+    }
+  });
+</script>
+
+</html>
+```
+
+效果如下：
+
+![](http://img.smyhvae.com/20180329_1920.gif)
+
+
+## v-show：设置元素的显示和隐藏
+
+**作用**：根据表达式的真假条件，来切换元素的 display 属性。如果为false，则在元素上添加 `display:none`属性；否则移除`display:none`属性。
+
+举例如下：（点击按钮时，切换和隐藏盒子）
+
+我们直接把上一段代码中的`v-if`改成`v-show`就可以了：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <button v-on:click="toggle">显示/隐藏</button>
+    <div v-show="isShow">我是盒子</div>
+  </div>
+</body>
+
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      isShow: true
+    },
+    methods: {
+      toggle: function() {
+        this.isShow = !this.isShow;
+      }
+    }
+  });
+</script>
+
+</html>
+
+```
+
+效果如下：
+
+![](http://img.smyhvae.com/20180329_2040.gif)
+
+**v-if和v-show的区别**：
+
+`v-if`和`v-show`都能够实现对一个元素的隐藏和显示操作。但是`v-if`是添加/删除DOM元素，而`v-show`是在这个元素上添加/移除`style="display:none"`属性。
 
 
 
