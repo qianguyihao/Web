@@ -227,6 +227,8 @@ PS：在Sublime Text里，输入`<sc`后，按tab键，可以自动补齐。
 
 如果你用的是搜狗拼音，**建议不要用shift切换中英文**（可以在搜狗软件里进行设置），不然很容易输入中文的分号；建议用ctrl+space切换中英文输入法。
 
+（3）严格区分大小写
+
 ### 注释
 
 我们不要把html、CSS、JavaScript三者的注释格式搞混淆了。
@@ -357,7 +359,7 @@ JS代码如下：
 
 ![](http://img.smyhvae.com/20180116_2020.png)
 
-var是英语“variant”变量的缩写。后面要加一个空格，空格后面的东西就是“变量名”，
+var是英语“variant”变量的缩写。后面要加一个空格，空格后面的东西就是“变量名”：
 
 - 定义变量：var就是一个**关键字**，用来定义变量。所谓关键字，就是有特殊功能的小词语。关键字后面一定要有空格隔开。
 
@@ -426,19 +428,70 @@ implements、import、int、interface、long、native、package、private、prot
 6.汉语可以作为变量名。但是不建议使用，因为 low
 
 
-## 变量的类型
+## 变量的数据类型
 
 变量里面能够存储数字、字符串等。变量会自动的根据存储内容的类型不同，来决定自己的类型。
 
-
-- **简单数据类型（值类型）**：字符串 String、数字 Number、布尔 Boolean、未定义 undefined、空 null。
-
-- **复杂数据类型（引用类型）**：Object、function、Array、Date、RegExp、Error...
+数据类型指的就是字面量的类型，在JS中一共有六种数据类型：
 
 
-简单数据类型：参数赋值的时候，传数值
 
-复杂数据类型：参数赋值的时候，传地址（修改的同一片内存空间）
+
+- **基本数据类型（值类型）**：String 字符串、Number 数值、Boolean 布尔值、Null 空值、Undefined 未定义。
+
+- **引用数据类型（引用类型）**：Object 对象。
+
+
+PS：内置对象function、Array、Date、RegExp、Error等都是属于Object。
+
+
+基本数据类型：参数赋值的时候，传数值。
+
+引用数据类型：参数赋值的时候，传地址（修改的同一片内存空间）。
+
+
+
+
+
+### String 字符串
+
+来看个示例。现有如下代码：
+
+```javascript
+	var a = "abcde";
+	var b = "生命壹号";
+	var c = "123123";
+	var d = "哈哈哈哈哈";
+	var e = "";     //空字符串
+
+	console.log(typeof a);
+	console.log(typeof b);
+	console.log(typeof c);
+	console.log(typeof d);
+	console.log(typeof e);
+```
+
+控制台输出如下：
+
+```
+	sting
+	sting
+	sting
+	sting
+	sting
+```
+
+注意事项：
+
+（1）在JS中，字符串需要使用引号引起来。使用双引号或单引号都可以，但是不要混着用。比如下面这样写是不可以的：
+
+```
+	var str = `hello";
+```
+
+
+
+
 
 
 ### 数值型：Number
@@ -498,36 +551,6 @@ Undefined和任何数值计算为NaN。NaN 与任何值都不相等，包括 NaN
 
 ```
 
-
-
-
-### 字符串型：string
-
-现有如下代码：
-
-```javascript
-	var a = "abcde";
-	var b = "传智播客";
-	var c = "123123";
-	var d = "哈哈哈哈哈";
-	var e = "";     //空字符串
-
-	console.log(typeof a);
-	console.log(typeof b);
-	console.log(typeof c);
-	console.log(typeof d);
-	console.log(typeof e);
-```
-
-控制台输出如下：
-
-```
-	sting
-	sting
-	sting
-	sting
-	sting
-```
 
 ### 连字符和加号的区别
 
