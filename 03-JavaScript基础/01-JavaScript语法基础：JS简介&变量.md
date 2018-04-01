@@ -436,11 +436,9 @@ implements、import、int、interface、long、native、package、private、prot
 
 
 
-
 - **基本数据类型（值类型）**：String 字符串、Number 数值、Boolean 布尔值、Null 空值、Undefined 未定义。
 
 - **引用数据类型（引用类型）**：Object 对象。
-
 
 PS：内置对象function、Array、Date、RegExp、Error等都是属于Object。
 
@@ -449,9 +447,7 @@ PS：内置对象function、Array、Date、RegExp、Error等都是属于Object�
 
 引用数据类型：参数赋值的时候，传地址（修改的同一片内存空间）。
 
-
-
-
+接下来，我们讲一下基本数据类型。
 
 ### String 字符串
 
@@ -490,13 +486,14 @@ PS：内置对象function、Array、Date、RegExp、Error等都是属于Object�
 ```
 
 
+（2）引号不能嵌套：双引号里不能再放双引号，单引号里不能再放单引号。但是单引号里可以嵌套双引号：
 
 
 
 
 ### 数值型：Number
 
-如果一个变量中，存放了数字（包括整数和浮点数），那么这个变量就是数值型的。
+在JS中所有的数值都是Number类型，包括整数和浮点数（小数）。
 
 ```javascript
 	var a = 100;			//定义了一个变量a，并且赋值100
@@ -509,6 +506,8 @@ PS：内置对象function、Array、Date、RegExp、Error等都是属于Object�
 number
 ```
 
+**补充知识：**
+
 **typeof()**表示“**获取变量的类型**”，返回的是小写，语法为：
 
 ```
@@ -520,36 +519,59 @@ typeof 变量
 **数值范围：**
 
 由于内存的限制，ECMAScript 并不能保存世界上所有的数值。
-- 最小值：Number.MIN_VALUE，这个值为： 5e-324
 
-- 最大值：Number.MAX_VALUE，这个值为： 1.7976931348623157e+308
+- 最大值：`Number.MAX_VALUE`，这个值为： 1.7976931348623157e+308
 
-- 无穷大：Infinity
+- 最小值：`Number.MIN_VALUE`，这个值为： 5e-324
 
-- 无穷小：-Infinity
+如果使用Number表示的变量超过了最大值，则会返回Infinity。
 
+- 无穷大（正无穷）：Infinity
+
+- 无穷小（负无穷）：-Infinity
+
+注意，使用typeof检查Infinity也会返回number。
 
 **NaN和isNaN()函数：**
 
-（1）NaN是一个特殊的数字，表示Not a Number，非数值。
+（1）NaN：是一个特殊的数字，表示Not a Number，非数值。比如：
 
-注意：`typeof NaN`的返回值是number。
 
+```javascript
+    console.log("abc" / 18);  //结果是NaN
+
+    console.log("abc" * "abcd"); //按理说，字符串相乘是没有结果的，但如果你非要让JS去算，它就一定会给你一个结果。结果是结果是NaN
 ```
-	console.log(“abc”/18);  //结果是NaN
-```
 
-Undefined和任何数值计算为NaN。NaN 与任何值都不相等，包括 NaN 本身。
+注意：`typeof NaN`的返回结果是number。
+
+Undefined和任何数值计算的结果为NaN。NaN 与任何值都不相等，包括 NaN 本身。
 
 （2）isNaN() :任何不能被转换为数值的值都会导致这个函数返回 true。
 
 
-```
+```javascript
 	isNaN(NaN);// true
-	isNaN(“blue”); // true
+	isNaN("blue"); // true
 	isNaN(123); // false
 
 ```
+
+
+**浮点数的运算**：
+
+在JS中，整数的运算可以很精确，但是**小数的运算，可能会得到一个不精确的结果**。所以，千万不要使用JS进行对精确度要求比较高的运算。
+
+如下：
+
+```javascript
+    var a = 0.1 + 0.2;
+    console.log(a);  //打印结果：0.30000000000000004
+```
+
+上方代码中，打印结果并不是0.3，而是0.30000000000000004。
+
+我们知道，所有的运算都要转换成二进制去计算，然而，二进制是无法精确表示1/10的。因此存在小数的计算不精确的问题。
 
 
 ### 连字符和加号的区别
@@ -613,10 +635,22 @@ true 和 fase。
 ### null和undefined
 
 
-- `null`：Null类型的值只有一个，就是null。比如：`var a = null`。专门用来表示一个为空的对象。使用 typeof 检查一个null值时，会返回object。
+**`null`**：空值
+
+- Null类型的值只有一个，就是null。比如：`var a = null`。
+
+- 专门用来表示一个为空的**对象**。（注意，专门用来表示**空对象**）
+
+- 使用 typeof 检查一个null值时，会返回object。
 
 
-- `undefined`：**声明一个变量，但是没有赋值**，此时它的值就是undefined。例如：`var a;`使用 type of 检查一个undefined时，会返回undefined。
+**`undefined`**：未定义
+
+- Undefined类型的值只有一个，就是undefind
+
+- **声明**一个变量，但是没有**赋值**，此时它的值就是undefined。例如：`var a;`
+
+- 使用 type of 检查一个undefined时，会返回undefined。
 
 
 
@@ -720,8 +754,6 @@ null和undefined有最大的相似性。看看null == undefined的结果(true)�
 			b = b + a;       //"21"       "221"
 			console.log(a);  //21
 			console.log(b)   //221
-
-
 ```
 
 
@@ -730,7 +762,6 @@ null和undefined有最大的相似性。看看null == undefined的结果(true)�
 ```
 	21
 	221
-
 ```
 
 举例5：（这个例子比较特殊，字符串减去数字）
@@ -749,44 +780,107 @@ null和undefined有最大的相似性。看看null == undefined的结果(true)�
 ```
 
 
-## 数据类型转换
+## 强制类型转换
 
-### 用户的输入
+强制类型转换：将一个数据类型强制转换为其他的数据类型。
+
+类型转换主要指，将其他的数据类型，转换为：String、Number、Boolean。
+
+### prompt()：用户的输入
 
 我们在上面的内容里讲过，`prompt()`就是专门用来弹出能够让用户输入的对话框。重要的是：用户不管输入什么，都是字符串。
 
-### `parseInt()`：字符串转数字
+### 任何简单类型转换成String
 
-**parseInt()可以将字符串转数字**。parse表示“转换”，Int表示“整数”（注意`Int`的拼写）。例如：
+**方法1**：变量+"" 或者 变量+"abc"
 
-字符串转数字的方法：
+**方法二：**调用toString()方法。如下：
 
 ```
-	parseInt(“5”);
+变量.toSting()
+```
+
+该方法**不会影响到原变量**，它会将转换的结果返回。当然我们还可以直接写成`a = a.toString()`，这样的话，就是直接修改原变量。
+
+注意：null和undefined这两个值没有toString()方法，所以它们不能用方法二。如果调用，会报错。
+
+
+**方法三**：调用String()函数。如下：
+
+```
+String(变量)
+```
+
+使用String()函数做强制类型转换时：
+
+- 对于Number和Boolean而言，实际上就是调用toString()方法。
+
+- 但是对于null和undefined，就不会调用toString()方法。它会将 null 直接转换为 "null"。将 undefined 直接转换为 "undefined"。
+
+
+### Number()函数：其他的数据类型 --> Number
+
+情况一：字符串 --> 数字
+
+- 1.如果字符串中是纯数字，则直接将其转换为数字。
+
+- 2.如果字符串中有非数字的内容，则转换为NaN。（此处可以看到Number()函数的局限性）
+
+- 3.如果字符串是一个空串或者是一个全是空格的字符串，则转换为0。
+
+
+情况二：布尔 --> 数字
+
+- true 转成 1
+
+- false 转成 0
+
+情况三：null --> 数字
+
+- 结果为：0
+
+
+情况四：undefined --> 数字
+
+- 结果为：NaN
+
+
+
+
+
+
+### `parseInt()`：字符串 --> 数字
+
+> `parseInt()`是专门用来对付字符串的。
+
+**parseInt()的作用是将字符串转为数字**。parse表示“转换”，Int表示“整数”（注意`Int`的拼写）。例如：
+
+
+```
+	parseInt("5");
 ```
 
 得到的结果是数字5。
 
 **parseInt()还具有以下特性**：
 
-（1）带有自动净化的功能；**只保留字符串最开头的数字**，后面的中文自动消失。例如：
+（1）**只保留字符串最开头的数字**，后面的中文自动消失。例如：
 
 ```
-	console.log(parseInt("2017年在公众号上写了6篇文章");
+    console.log(parseInt("2017在公众号上写了6篇文章"));  //打印结果：2017
+
+    console.log(parseInt("2017.01在公众号上写了6篇文章"));  //打印结果仍是：2017   （说明只会取整数）
+
+    console.log(parseInt("aaa2017.01在公众号上写了6篇文章"));  //打印结果：NaN
 ```
 
-控制台输出：
-
-```
-	2017
-```
 
 （2）自动带有截断小数的功能：**取整，不四舍五入**。
 
 例1：
 
 
-```
+```javascript
 	var a = parseInt(5.8) + parseInt(4.7);
 	console.log(a);
 ```
@@ -799,21 +893,41 @@ null和undefined有最大的相似性。看看null == undefined的结果(true)�
 
 例2：
 
-```
+```javascript
 	var a = parseInt(5.8 + 4.7);
 	console.log(a);
 ```
 
 控制台输出：
 
-```
+```javascript
 	10
 ```
 
-（3）带两个参数时，表示进制转换。
+（3）如果对非String使用parseInt()或parseFloat()，它会先将其转换为String然后再操作。
+
+比如：
+
+```javascript
+    var a = true;
+    console.log(parseInt(a));  //打印结果：NaN （因为是先将a转为字符串"true"，然后然后再操作）
+
+    var b = undefined;
+    console.log(parseInt(b));  //打印结果：NaN  （因为是先将b转为字符串"undefined"，然后然后再操作）
+
+    var c = 168.23;
+    console.log(parseInt(c));  //打印结果：168  （因为是先将c转为字符串"168.23"，然后然后再操作）
+
+```
+
+（4）带两个参数时，表示进制转换。
 
 
-### 字符串转为浮点数（小数）：`parseFloat()`：
+
+### `parseFloat()`：字符串 --> 浮点数（小数）
+
+> `parseFloat()`是专门用来对付字符串的。
+
 
 道理同上。
 
@@ -837,32 +951,6 @@ null和undefined有最大的相似性。看看null == undefined的结果(true)�
 ```
 
 虽然程序可以对`-`、`*`、`/`、`%``这几个符号自动进行“隐式转换”；但作为程序员，我们最好自己完成转换，方便程序的可读性。
-
-
-### 4.1	任何简单类型转换成String
-
-（1）方法1：变量+“” 或者 变量+“abc”
-
-（2）方法2：
-
-```
-String(变量)
-```
-
-
-使用String()函数做强制类型转换时，对于Number和Boolean而言，实际上是调用的toString()方法。
-
-
-
-（3）方法三：
-
-```
-变量.toSting()
-```
-
-注意：undefined和null无toString方法，所以它们不能用方法三。
-
-Null和undefined无toString方法。
 
 
 
