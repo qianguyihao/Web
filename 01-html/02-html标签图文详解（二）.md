@@ -339,7 +339,7 @@ dt、dd都是容器级标签，想放什么都可以。所以，现在就应该�
 
 **`<table>`的属性：**
  - `border`：边框。像素为单位。
- - `style="border-collapse:collapse;"`：单元格的线和表格的边框线合并
+ - `style="border-collapse:collapse;"`：单元格的线和表格的边框线合并（表格的两边框合并为一条）
  - `width`：宽度。像素为单位。
  - `height`：高度。像素为单位。
  - `bordercolor`：表格的边框颜色。

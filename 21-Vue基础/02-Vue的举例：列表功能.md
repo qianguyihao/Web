@@ -1,2 +1,342 @@
 
 
+## 列表功能举例
+
+### 步骤 1：列表功能
+
+代码如下：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .table {
+            width: 800px;
+            margin: 20px auto;
+            border-collapse: collapse; /*这一行，不能少：表格的两边框合并为一条*/
+        }
+
+        .table th {
+            background: #0094ff;
+            color: white;
+            font-size: 16px;
+            border: 1px solid black;
+            padding: 5px;
+
+        }
+
+        .table tr td {
+            text-align: center;
+            font-size: 16px;
+            padding: 5px;
+            border: 1px solid black;
+        }
+    </style>
+
+    <script src="vue2.5.16.js"></script>
+</head>
+
+<body>
+
+<div id="app">
+
+    <table class="table">
+        <th>编号</th>
+        <th>名称</th>
+        <th>创建时间</th>
+        <th>操作</th>
+        <tr v-for="item in list">
+            <td>{{item.id}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.ctime}}</td>
+            <td><a href="#">删除</a></td>
+        </tr>
+    </table>
+</div>
+
+</body>
+
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            list: [{id: 1, name: '奔驰', ctime: new Date}, {id: 2, name: '大众', ctime: new Date}]
+        }
+    })
+
+</script>
+
+</html>
+```
+
+**代码分析**：数据是存放在data的list中的，将data中的数据通过`v-for`遍历给表格。
+
+
+上方代码运行的效果：
+
+20180401_1517.png
+
+
+### 步骤 2：无数据时，增加提示
+
+如果list中没有数据，那么表格中就会只显示表头`<th>`，这样显然不太好看。
+
+为此，我们需要增加一个`v-if`判断：当数据为空时，显示提示。如下：
+
+```html
+			<tr v-show="list.length == 0">
+				<td colspan="4">列表无数据</td>
+			</tr>
+```
+
+代码解释：`colspan="4"`指的是让当前这个`<td>`横跨4个单元格的位置。如下：
+
+20180401_1535.png
+
+### 步骤 3：item的添加
+
+具体实现步骤如下：
+
+（1）用户填写的数据单独存放在data属性里，并采用`v-module`进行双向绑定。
+
+（2）用户把数据填好后，点击add按钮。此时需要增加一个点击事件的方法，将data中的数据放到list中（同时，清空文本框中的内容）。
+
+（3）将数据展示出来。`v-for`有个特点：当list数组发生改变后，vue.js就会自动调用`v-for`重新将数据生成，这样的话，就实现了数据的自动刷新。
+
+
+
+代码如下：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .table {
+            width: 800px;
+            margin: 20px auto;
+            border-collapse: collapse; /*这一行，不能少：表格的两边框合并为一条*/
+        }
+
+        .table th {
+            background: #0094ff;
+            color: white;
+            font-size: 16px;
+            border: 1px solid black;
+            padding: 5px;
+        }
+
+        .table tr td {
+            text-align: center;
+            font-size: 16px;
+            padding: 5px;
+            border: 1px solid black;
+        }
+
+        .form {
+            width: 800px;
+            margin: 20px auto;
+        }
+
+        .form button {
+            margin-left: 10px;
+        }
+    </style>
+
+    <script src="vue2.5.16.js"></script>
+</head>
+
+<body>
+
+<div id="app">
+
+    <div class="form">
+
+        编号：<input type="text" v-model="formData.id">
+        名称：<input type="text" v-model="formData.name">
+
+        <button v-on:click="addData">添加</button>
+    </div>
+
+    <table class="table">
+        <th>编号</th>
+        <th>名称</th>
+        <th>创建时间</th>
+        <th>操作</th>
+        <tr v-show="list.length == 0">
+            <td colspan="4">列表无数据</td>
+        </tr>
+        <tr v-for="item in list">
+            <td>{{item.id}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.ctime}}</td>
+            <td><a href="#">删除</a></td>
+        </tr>
+    </table>
+</div>
+
+</body>
+
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            list: [{id: 1, name: '奔驰', ctime: new Date}, {id: 2, name: '大众', ctime: new Date}],
+            //用户添加的数据
+            formData: {
+                id: 0,
+                name: ""
+            }
+        },
+
+        methods: {
+            addData: function () {
+                //将数据追加到list中
+                var p = {id: this.formData.id, name: this.formData.name, ctime: new Date()};
+                this.list.push(p);
+
+                //清空页面上的文本框中的数据
+                this.formData.id = 0;
+                this.formData.name = '';
+            }
+        }
+    });
+
+</script>
+
+</html>
+
+```
+
+
+### 步骤 4：item的删除
+
+html部分：
+
+```html
+            <!--绑定delete事件，根据括号里的参数进行删除-->
+            <td><a href="#" v-on:click="delData(item.id)">删除</a></td>
+```
+
+
+js部分：
+
+```javascript
+            delData: function (id) {
+                // 0 提醒用户是否要删除数据
+                if (!confirm('是否要删除数据?')) {
+                    //当用户点击的取消按钮的时候，应该阻断这个方法中的后面代码的继续执行
+                    return;
+                }
+
+                // 1 调用list.findIndex()方法根据传入的id获取到这个要删除数据的索引值
+                var index = this.list.findIndex(function (item) {
+                    return item.id == id
+                });
+
+                // 2.0 调用方法：list.splice(待删除的索引, 删除的元素个数)
+                this.list.splice(index, 1);
+            }
+```
+
+
+代码解释：`find()`和`findIndex()`是ES6中为数组新增的函数。详细解释如下：
+
+```javascript
+    // 根据id得到下标
+
+    // 默认去遍历list集合，将集合中的每个元素传入到function的item里，
+    var index = this.list.findIndex(function(item){
+    //根据item中的id属性来判断这个item是否是上面id中对应的数据，
+    //如果是则返回true ；否返回false,继续下面的一条数据的遍历，以此类推
+    return item.id ==id; //如果返回true，那么findIndex方法会将这个item对应的id返回到外面接受
+    });
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

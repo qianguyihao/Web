@@ -26,7 +26,7 @@ JavaScript是世界上用的最多的**脚本语言**。
 
 ### JavaScript和ECMAScript的关系
 
-ECMAScript是一种由Ecma国际（前身为欧洲计算机制造商协会,英文名称是European Computer Manufacturers Association）制定的标准。
+ECMAScript是一种由Ecma国际（前身为欧洲计算机制造商协会,英文名称是European Computer Manufacturers Association）制定和发布的脚本语言规范。
 
 JavaScript是由公司开发而成的，问题是不便于其他的公司拓展和使用。所以欧洲的这个ECMA的组织，牵头制定JavaScript的标准，取名为ECMAScript。
 
@@ -111,9 +111,9 @@ JavaScript基础分为三个部分：
 
 - ECMAScript：JavaScript的语法标准。包括变量、表达式、运算符、函数、if语句、for语句等。
 
-- **DOM**：操作**网页上的元素**的API。比如让盒子移动、变色、轮播图等。
+- **DOM**：文档对象模型，操作**网页上的元素**的API。比如让盒子移动、变色、轮播图等。
 
-- **BOM**：操作**浏览器部分功能**的API。比如让浏览器自动滚动。
+- **BOM**：浏览器对象模型，操作**浏览器部分功能**的API。比如让浏览器自动滚动。
 
 PS：JS机械重复性的劳动几乎为0，基本都是创造性的劳动。而不像HTML、CSS中margin、padding都是机械重复劳动。
 
