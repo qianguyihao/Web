@@ -157,6 +157,7 @@ sqrt即“square 开方”。比如：
 
 ```
 	console.log("6" == 6);		//true
+	console.log(0 == -0);       //true
 ```
 
 如果要保证**完全等于**，我们就要用三个等号`===`。例如：
