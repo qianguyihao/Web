@@ -246,7 +246,7 @@ nvm list|ls
 ```
 
 
-安装指定版本的node：
+**安装指定版本的node：**
 
 ```
 nvm install 版本号 [arch]
