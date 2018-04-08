@@ -8,7 +8,7 @@
 - [JavaScript基础：事件对象Event和冒泡](https://github.com/smyhvae/Web/blob/master/03-JavaScript/09-JavaScript%E5%9F%BA%E7%A1%80%EF%BC%9A%E4%BA%8B%E4%BB%B6%E5%AF%B9%E8%B1%A1Event%E5%92%8C%E5%86%92%E6%B3%A1.md)
 
 
-知识难度不大，只是大家没有系统地学习。
+知识难度不大，只是大家需要系统地学习。
 
 **知识点主要包括以下几个方面：**
 
