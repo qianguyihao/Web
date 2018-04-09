@@ -58,20 +58,20 @@ sass引擎是用Ruby语言开发的（但是两者的语法没有关系），因
 
 安装时，记得勾选“环境变量”：
 
-20180407_2022.png
+![](http://img.smyhvae.com/20180407_2022.png)
 
 安装完ruby之后，在命令行中输入`ruby -v`，查看ruby的的版本：
 
-20180407_2039.png
+![](http://img.smyhvae.com/20180407_2039.png)
 
 
 ### 关于Mac下的Ruby
 
 刚刚说了，Mac下自带Ruby，但是版本肯定很老：
 
-20180407_2145.png
+![](http://img.smyhvae.com/20180407_2145.png)
 
-有的时候，我们可能需要使用特定版本的ruby，或者在不同的ruby版本之间进行切换，所以，推荐大家安装`rvm`，它是ruby的版本管理工具。官网是：<https://rvm.io>
+有的时候，我们可能需要使用特定版本的ruby，或者在不同的ruby版本之间进行切换，所以，大家可以尝试安装`rvm`，它是ruby的版本管理工具。官网是：<https://rvm.io>
 
 ### 第二步：安装 Sass
 
@@ -97,7 +97,7 @@ PS：我测试了一下，Win 7 不支持https，Mac支持https。
 	gem sources -l
 ```
 
-20180407_2050.png
+![](http://img.smyhvae.com/20180407_2050.png)
 
 （3）安装sass：
 
@@ -127,10 +127,9 @@ PS：我测试了一下，Win 7 不支持https，Mac支持https。
 	sass -h
 ```
 
-20180407_2100.png
+![](http://img.smyhvae.com/20180407_2100.png)
 
 参考链接：<https://www.w3cplus.com/sassguide/install.html>
-
 
 ## Compass 简介和安装
 
@@ -140,7 +139,7 @@ PS：我测试了一下，Win 7 不支持https，Mac支持https。
 	sass main.scss main.css
 ```
 
-然而，真正的项目开发中，我们很少直接使用 sass 命令，一般是使用 Compass。
+然而，真正的项目开发中，我们不一定是直接使用 sass 命令，而是使用 Compass。
 
 ### Compass 简介
 
@@ -162,12 +161,14 @@ Compass 是开源的CSS书写框架。
 	compass -v
 ```
 
-
-20180407_2208.png
+![](http://img.smyhvae.com/20180407_2208.png)
 
 compass可以直接用来搭建前端项目的样式部分，但并不是常用的方法。
 
 ### Compass的简单使用
+
+通过 Compass 创建工程目录：
+
 
 ```
 cd workspace
@@ -191,13 +192,25 @@ compass create CompassDemo
 
 
 
+为了能够让文件实时编译，我们可以通过 copass watch 监听sass文件的变化：
+
+```
+	cd CompassDemo
+
+	compass watch
+```
+
+当.scss文件改动时，会自动生成对应的.css文件。
+
+
+
 ## Sass的语法
 
 ### 两种后缀名（两种语法）
 
 sass 有两种后缀名文件：
 
-（1）sass：对空格敏感。不使用大括号和分号，所以每个属性之间是通过换行来分隔。
+（1）`.sass`：对空格敏感。不使用大括号和分号，所以每个属性之间是通过换行来分隔。
 
 比如：
 
@@ -211,8 +224,7 @@ h1
 
 
 
-
-（2）scss：是css语法的超级，可以使用大括号和分号。
+（2）`.scss`：是css语法的超级，可以使用大括号和分号。
 
 比如：
 
@@ -225,6 +237,113 @@ h1 {
 
 
 注意：一个项目中可以混合使用两种语法，但是一个文件中不能同时使用两种语法。
+
+
+**两种格式之间的转换：**
+
+我们在工程目录下新建`main.scss`，输入如下代码：
+
+```
+*{
+    margin: 0;
+    padding: 0;
+}
+```
+
+然后输入如下命令，就可以将上面的`main.scss`转化为`main.sass`：
+
+```bash
+	sass-convert main.scss main.sass
+```
+
+
+打开生成的`main.sass`，内容如下：
+
+```
+*
+  margin: 0
+  padding: 0
+
+```
+
+
+### 变量语法
+
+Sass 是通过`$`符号来声明变量。
+
+（1）我们新建一个文件`_variables.scss`，这个文件专门用来存放变量，然后在其他的文件中引入`_variables.scss`即可。
+
+因为这个文件只需要存储变量，并不需要它编译出对应的 css 文件，所以我们给文件名的前面加了**下划线**，意思是声明为**局部文件**。
+
+我们在这个文件中，声明两个字体变量：
+
+```css
+$font1: Braggadocio, Arial, Verdana, Helvetica, sans-serif;
+
+$font2: Arial, Verdana, Helvetica, sans-serif;
+```
+
+
+（2）新建文件main.scss，在里面引入步骤（1）中的变量文件：
+
+```
+@import "variables";    // 引入变量文件
+
+.div1{
+    font-family: $font1;
+}
+
+.div2{
+    font-family: $font2;
+}
+```
+
+基于 Sass 的既定规则：
+
+- 没有文件后缀名时，Sass 会自动添加 .scss 或者 .sass 的后缀（具体要看已经存在哪个后缀的文件）。
+
+- 同一目录下，局部文件和非局部文件不能重名。
+
+对应生成的main.css文件如下：
+
+main.css
+
+```css
+/* line 9, ../sass/main.scss */
+.div1 {
+  font-family: Braggadocio, Arial, Verdana, Helvetica, sans-serif;
+}
+
+/* line 13, ../sass/main.scss */
+.div2 {
+  font-family: Arial, Verdana, Helvetica, sans-serif;
+}
+
+```
+
+
+
+### 注释语法
+
+单行注释：
+
+```
+//我是单行注释
+```
+
+块级注释：
+
+```
+/*
+	我是块级注释
+	哈哈
+*/
+
+```
+
+
+
+二者的区别是：单行注释不会出现在自动生成的css文件中。
 
 
 
