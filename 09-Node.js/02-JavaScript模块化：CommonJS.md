@@ -92,7 +92,7 @@
 
 服务器端规范：
 
-- [**CommonJS**](http://www.commonjs.org/)：是 Node.js 使用的模块化规范。
+- [**CommonJS规范**](http://www.commonjs.org/)：是 Node.js 使用的模块化规范。
 
 CommonJS 就是一套约定标准，不是技术。用于约定我们的代码应该是怎样的一种结构。
 
@@ -174,7 +174,6 @@ PS：暴露的关键词是`exports`，不是`export`。
 
 
 
-
 ### 引入模块的方式
 
 ```
@@ -239,9 +238,9 @@ app.js
 ```
 
 
-### 2、导入第三方包举例
+### 2、导入第三方包
 
-`uniq`这个第三方包的作用是保证唯一性。我们在当前工程目录下，输入如下命令进行安装：
+`uniq`这个第三方包的作用是保证唯一性（我们拿它来举例）。我们在当前工程目录下，输入如下命令进行安装：
 
 ```
 	npm install uniq
@@ -273,7 +272,7 @@ app.js
 
 可以看出，这个包可以起到数组去重的作用。
 
-### 代码演示
+### 3、自定义模块 & 代码运行
 
 （1）module1.js：
 
@@ -363,25 +362,173 @@ module3 中的 foo2 方法
 ```
 
 
-```javascript
+## CommonJS 基于浏览器端的实现举例
+
+
+### 1、初始化项目
+
+在工程文件中新建如下目录和文件：
+
+```
+js
+    dist //打包生成文件的目录
+    src //源码所在的目录
+      | module1.js
+      | module2.js
+      | module3.js
+      | app.js //应用主源文件
+index.html    //因为CommonJS是基于浏览器端，js文件要跑在浏览器的页面上，所以要有这个html页面
+```
+
+然后在根目录下新建如下命令：
+
+```
+  npm init
+```
+
+
+然后根据提示，依次输入如下内容：
+
+- **包名**：可以自己起包名，也可以用默认的包名。注意，包名里不能有中文，不能有大写。
+
+- **版本**：可以用默认的版本 1.0.0，也可以自己修改包名。
+
+其他的参数，一路回车即可。
+
+于是，根目录下会自动生成`package.json`这个文件。点进去看一下：
+
+```json
+{
+  "name": "commonjs_browser",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
 
 
 ```
 
 
+### 2、下载第三方包：Browserify
+
+这里需要用到[Browserify](http://browserify.org/)这个工具进行编译打包。Browserify 称为 CommonJS 的浏览器端的打包工具。
+
+输入如下命令进行安装：（两个命令都要输入）
 
 
+```javascript
+    npm install browserify -g          //全局
+    npm install browserify --save-dev  //局部。
+```
+
+上面的代码中，`-dev`表示开发依赖。这里解释一下相关概念：
+
+- 开发依赖：当前这个包，只在开发环境下使用。
+
+- 运行依赖：当前这个包，是在生产环境下使用。
 
 
+### 3、自定义模块 & 代码运行
+
+（1）module1.js：
+
+```javascript
+//暴露方式一：module.exports = value
+
+//暴露一个对象出去
+module.exports = {
+    name: '我是 module1',
+    foo(){
+        console.log(this.name);
+    }
+}
+
+//我们不能再继续写 module.exports = xxx。因为重新赋值，会把之前的赋值覆盖掉。
+
+```
+
+（2）module2.js：
+
+```javascript
+//暴露方式一：module.exports = value
+
+//暴露一个函数出去
+module.exports = function(){
+    console.log('我是 module2');
+}
+```
+
+注意，此时暴露出去的 exports 对象 等价于整个函数。
+
+（3）module3.js：
+
+```javascript
+//暴露方式二：exports.xxx = value
+
+//可以往export对象中不断地添加属性，进行暴露
+
+exports.foo1 = function(){
+    console.log('module3 中的 foo1 方法');
+}
+
+exports.foo2 = function(){
+    console.log('module3 中的 foo2 方法');
+}
+```
+
+（4）app.js：（将其他模块汇集到主模块）
+
+```javascript
+let module1 = require('./module1');  // ./ 指的是当前路径
+let module2 = require('./module2');
+let module3 = require('./module3');
+
+module1.foo();
+module2();
+module3.foo1();
+module3.foo2();
+```
+
+到此，我们的主要代码就写完了。
+
+但是，如果我们直接在index.html中，像下面这样写，是不行的：（因为浏览器不认识 require 关键字）
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="./js/src/app.js"></script>
+</body>
+</html>
+
+```
 
 
+为了能够让index.html引入app.js，我们需要输入如下命令：
+
+打包处理js:
+
+```
+    browserify js/src/app.js -o js/dist/bundle.js
+```
 
 
+然后在index.html中引入打包后的文件：
 
-## CommonJS 在浏览器端的实现
-
-这里可以用到[Browserify](http://browserify.org/)这个工具进行编译打包。Browserify 称为 CommonJS 的浏览器端的打包工具。
-
+```html
+    <script type="text/javascript" src="js/dist/bundle.js"></script>
+```
 
 
 
@@ -413,11 +560,6 @@ GitHub：<https://github.com/seajs/seajs>
 
 
 20180303_2107.png
-
-
-
-
-
 
 
 
