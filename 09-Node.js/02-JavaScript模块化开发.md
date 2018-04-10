@@ -49,6 +49,9 @@
 
 - [**CommonJS**](http://www.commonjs.org/)：是 Node.js 使用的模块化规范。
 
+CommonJS 就是一套约定标准，不是技术。用于约定我们的代码应该是怎样的一种结构。
+
+
 浏览器端规范：
 
 - [**AMD规范**](https://github.com/amdjs/amdjs-api)：是 **[RequireJS](http://requirejs.org/)** 在推广过程中对模块化定义的规范化产出。
