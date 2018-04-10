@@ -239,6 +239,16 @@ proxy
 ### NVM 的常用命令
 
 
+
+查看当前使用的 nvm 版本：
+
+```
+nvm -v
+
+nvm --version
+```
+
+
 查看本地安装的所有的 node 版本：
 
 ```
@@ -264,14 +274,6 @@ nvm uninstall 版本号
 
 ```
 nvm use 版本号 [arch]
-```
-
-查看当前使用的 nvm 版本：
-
-```
-nvm -v
-
-nvm --version
 ```
 
 ### Node 的常用命令
