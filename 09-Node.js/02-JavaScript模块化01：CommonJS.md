@@ -73,7 +73,7 @@
 
 - 请求过多：引入十个js文件，就有十次http请求。
 
-- 依赖模糊：不同的js文件可能会相互依赖，如果该其中的一个文件，另外一个文件可能会报错。
+- 依赖模糊：不同的js文件可能会相互依赖，如果改其中的一个文件，另外一个文件可能会报错。
 
 以上两点，最终导致：**难以维护**。
 
@@ -113,11 +113,11 @@ CommonJS 就是一套约定标准，不是技术。用于约定我们的代码�
 
 ```
 
-	同步加载模块；
+  同步加载模块；
 
-	依赖就近，延迟执行：require(./a) 直接引入。或者Require.async 异步引入。   //依赖就近：执行到这一部分的时候，再去加载对应的文件。
+  依赖就近，延迟执行：require(./a) 直接引入。或者Require.async 异步引入。   //依赖就近：执行到这一部分的时候，再去加载对应的文件。
 
-	define 定义模块， export 导出：define(function(require, export, module){});
+  define 定义模块， export 导出：define(function(require, export, module){});
 ```
 
 
@@ -151,7 +151,7 @@ PS：面试时，经常会问AMD 和 CMD 的区别。
 **方式一**：
 
 ```javascript
-	module.exports = value
+  module.exports = value
 ```
 
 这个 value 可以是任意的数据类型。
@@ -159,7 +159,7 @@ PS：面试时，经常会问AMD 和 CMD 的区别。
 **方式二**：
 
 ```javascript
-	exports.xxx = value
+  exports.xxx = value
 ```
 
 
@@ -206,7 +206,7 @@ app.js
 然后在根目录下新建如下命令：
 
 ```
-	npm init
+  npm init
 ```
 
 
@@ -243,7 +243,7 @@ app.js
 `uniq`这个第三方包的作用是保证唯一性（我们拿它来举例）。我们在当前工程目录下，输入如下命令进行安装：
 
 ```
-	npm install uniq
+  npm install uniq
 ```
 
 安装成功后，根目录下会自动生成相应的文件：
@@ -262,11 +262,11 @@ app.js
 我们去[官网](https://www.npmjs.com/package/uniq)看一下`uniq`的用法：
 
 ```javascript
-	let uniq = require('uniq');
+  let uniq = require('uniq');
 
-	let arr = [1, 1, 2, 2, 3, 5];
-	uniq(arr);
-	console.log(arr);  //输出结果：[ 1, 2, 3, 5 ]
+  let arr = [1, 1, 2, 2, 3, 5];
+  uniq(arr);
+  console.log(arr);  //输出结果：[ 1, 2, 3, 5 ]
 
 ```
 
@@ -494,6 +494,11 @@ module3.foo1();
 module3.foo2();
 ```
 
+引入的路径解释：
+
+- `./`是相对路径，指的是当前路径（app.js的当前路径是src）
+
+
 到此，我们的主要代码就写完了。
 
 但是，如果我们直接在index.html中，像下面这样写，是不行的：（因为浏览器不认识 require 关键字）
@@ -514,7 +519,6 @@ module3.foo2();
 
 ```
 
-
 为了能够让index.html引入app.js，我们需要输入如下命令：
 
 打包处理js:
@@ -523,16 +527,11 @@ module3.foo2();
     browserify js/src/app.js -o js/dist/bundle.js
 ```
 
-
 然后在index.html中引入打包后的文件：
 
 ```html
     <script type="text/javascript" src="js/dist/bundle.js"></script>
 ```
-
-
-
-
 
 
 
@@ -568,44 +567,32 @@ GitHub：<https://github.com/seajs/seajs>
 1、RequireJS 和 AMD：
 
 
-AMD 是 RequireJS 在推广过程中对模块化定义的规范化产出。
-
-
 20180303_1653.png
-
 
 异步模块定义，特点是依赖前置。
 
 
 2、SeaJS 和 CMD：
 
-CMD 是 SeaJS 在推广过程中对模块化定义的规范化产出
 
 
 同步模块定义。
 
 ```javascript
-	// 所有模块都通过 define 来定义
-	define(funtion(require, exports, module) {
+  // 所有模块都通过 define 来定义
+  define(funtion(require, exports, module) {
 
         //通过 require 引入依赖
 
         var $ require(`jquery`);
 
         var Spinning = require(`./spinning`);
-	})
+  })
 ```
-
-SeaJS 是淘宝开发团队做的，知名度不如 RequireJS。
 
 3、CommonJS：
 
-CommonJS 的规范：module.exports
-
-服务器端的 Node.js 推荐使用 CommonJS 规范，来定义模块化开发。前端浏览器不支持 CommonJS 规范。
-
 20180303_1701.png
-
 
 以上三个都是 ES5里面的规范。
 
