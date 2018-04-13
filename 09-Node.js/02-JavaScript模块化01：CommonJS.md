@@ -109,7 +109,7 @@ CommonJS 就是一套约定标准，不是技术。用于约定我们的代码�
 - define 定义模块：define([`require`,`foo`],function(){return});
 ```
 
-- **[CMD规范](https://github.com/amdjs/amdjs-api)**：是 **[SeaJS](http://seajs.org/)** 在推广过程中对模块化定义的规范化产出。淘宝团队开发。
+- **[CMD规范]()**：是 **[SeaJS](http://seajs.org/)** 在推广过程中对模块化定义的规范化产出。淘宝团队开发。
 
 ```
 
