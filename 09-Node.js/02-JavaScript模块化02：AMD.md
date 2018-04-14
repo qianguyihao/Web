@@ -41,8 +41,6 @@ define(['module1', 'module2'], function (m1, m2) {
 
 - 第二个参数是function，里面带了形参 m1 和 m2，分别代表了 module1 和 module2。这个形参的作用是，前面依赖的模块一旦声明了，就可以一一对应地注入到 function中去，从而在 function 内部使用依赖的模块。这种方式称之为**显式声明依赖注入**。
 
-
-
 ### 引入模块的方式
 
 在主模块中引入其他的模块：
@@ -57,20 +55,15 @@ require(['module1', 'module2'], function (m1, m2) {
 })
 ```
 
-
 ### RequireJS：是AMD的实现
 
 - <http://www.requirejs.org/>
 
 - <http://www.ruanyifeng.com/blog/2012/11/require_js.html>
 
-
-
 ## RequireJS的使用举例（自定义模块）
 
-
 ### 1、创建项目结构
-
 
 在工程文件中新建如下目录：
 
@@ -87,10 +80,9 @@ js
 index.html
   ```
 
-
 所有的代码写完之后，项目结构如下：
 
-20180411_1331.png
+![](http://img.smyhvae.com/20180411_1331.png)
 
 
 ### 2、下载require.js，并导入
@@ -101,12 +93,11 @@ index.html
 
 在官网下载`require.js`文件：
 
-20180411_1127.png
+![](http://img.smyhvae.com/20180411_1127.png)
 
 然后将`require.js`文件拷贝到项目的`js/libs/`目录中。
 
 这样的话，就导入成功了。
-
 
 ### 3、自定义模块
 
@@ -127,7 +118,6 @@ define(function () {
 
 
 这模块没有依赖。
-
 
 （2）alerter.js：
 
@@ -166,13 +156,14 @@ requirejs(['myAlerter'], function (alerter) {
 })();
 ```
 
-
 这个模块，依赖了`myAlerter`这个模块，模块名是我自己起的。并且，我们在文件的上方做了映射，将`myAlerter`这个名字和`alerter.js`文件关联了起来。
 
 
 我们来讲一下最上方的几行代码（即`requirejs.config`里的内容）的意思：
 
-目前为止，我们可以看到：文件（3）依赖了文件（2），文件（2）依赖了文件（1）。`paths`里做的就是映射：将键`myDataService`和`dataService.js`进行关联，将键`myAlerter`和`alerter.js`文件进行关联。
+- 我们可以看到，文件（3）依赖了文件（2），文件（2）依赖了文件（1）。
+
+- `paths`里做的就是映射：将键`myDataService`和文件`dataService.js`进行关联，将键`myAlerter`和文件`alerter.js`进行关联。
 
 另外，再讲一下注释里的`baseUrl`的用法：如果没有这个注释，那么`paths`里的路径，是从**当前这个文件**（main.js）的角度出发的；如果加了一行`baseUrl`，表明它是 paths 里所有路径的最开头的部分，`baseUrl`的路径是从**项目的根目录**的角度出发的。
 
@@ -204,65 +195,9 @@ requirejs(['myAlerter'], function (alerter) {
 
 运行 index.html，打印结果如下：
 
-20180411_1740.png
+![](http://img.smyhvae.com/20180411_1740.png)
 
 项目源码：[2018-04-11-RequireJSDemo](https://download.csdn.net/download/smyhvae/10341963)
-
-
-
-
-
-
-
-
-
-
-
-
-```javascript
-
-```
-
-
-
-
-
-
-
-
-```javascript
-
-```
-
-
-
-
-
-
-
-
-
-```javascript
-
-```
-
-
-
-
-
-
-
-
-```javascript
-
-```
-
-
-
-
-
-
-
 
 
 

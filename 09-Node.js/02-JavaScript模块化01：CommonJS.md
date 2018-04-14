@@ -218,7 +218,7 @@ app.js
 
 其他的参数，一路回车即可。效果如下：
 
-20180410_1425.png
+![](http://img.smyhvae.com/20180410_1425.png)
 
 于是，根目录下会自动生成`package.json`这个文件。点进去看一下：
 
@@ -248,12 +248,12 @@ app.js
 
 安装成功后，根目录下会自动生成相应的文件：
 
-20180410_1450.png
+![](http://img.smyhvae.com/20180410_1450.png)
 
 
 需要说明的是，我的node版本是 v8.10.0（v8以上），对应的 npm 版本是 v5.6.0，版本比较高，因此，当我输入完`npm install uniq`之后，`package.json`中就会自动添加`uniq`包的依赖：
 
-20180410_18-55.png
+![](http://img.smyhvae.com/20180410_1855.png)
 
 
 如果有些童鞋的npm版本较低，就需要手动去添加依赖；另一种方式是，可以使用`npm install uniq --save`命令，这个多出来的`--save`就可以自动添加依赖。
@@ -272,7 +272,7 @@ app.js
 
 可以看出，这个包可以起到数组去重的作用。
 
-### 3、自定义模块 & 代码运行
+### 3、自定义模块
 
 （1）module1.js：
 
@@ -309,7 +309,7 @@ module.exports = function(){
 ```javascript
 //暴露方式二：exports.xxx = value
 
-//可以往export对象中不断地添加属性，进行暴露
+//可以往 export 对象中不断地添加属性，进行暴露
 
 exports.foo1 = function(){
     console.log('module3 中的 foo1 方法');
@@ -557,23 +557,17 @@ GitHub：<https://github.com/seajs/seajs>
 
 - 自然直观的代码组织方式。
 
-
-20180303_2107.png
-
-
+![](http://img.smyhvae.com/20180303_2107.png)
 
 ### RequireJS（AMD）、SeaJS（CDM）、CommonJS、ES6 的对比
 
 1、RequireJS 和 AMD：
 
-
-20180303_1653.png
+![](http://img.smyhvae.com/20180303_1653.png)
 
 异步模块定义，特点是依赖前置。
 
-
 2、SeaJS 和 CMD：
-
 
 
 同步模块定义。
@@ -592,7 +586,7 @@ GitHub：<https://github.com/seajs/seajs>
 
 3、CommonJS：
 
-20180303_1701.png
+![](http://img.smyhvae.com/20180303_1701.png)
 
 以上三个都是 ES5里面的规范。
 
@@ -600,7 +594,7 @@ GitHub：<https://github.com/seajs/seajs>
 
 ES6的特性：export/import
 
-20180303_1704.png
+![](http://img.smyhvae.com/20180303_1704.png)
 
 
 
