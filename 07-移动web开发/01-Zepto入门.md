@@ -74,11 +74,87 @@ zepto是轻量级的JavaScript库，专门为移动端定制的框架。
 
 （2）代码演示：
 
+```html
+<!DOCTYPE html>
+<html lang="en">
 
-注意，我们要将浏览器切换到手机模式，才能看到`touchstart`事件的效果；否则端，在浏览器上点来点去，是没有反应的。
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #btn {
+            width: 200px;
+            height: 200px;
+            background: pink;
+            margin: 10px auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="btn">我是 div</div>
+    <script src="libs/zepto1.2.0.js"></script>
+    <script src="libs/touch.js"></script>
+    <script>
+        $(function () {
+            $('#btn').on('touchstart', function () {
+                alert('hello world');
+            });
+        });
+
+    </script>
+</body>
+
+</html>
+```
+
+上方代码实现的效果是，当手在div上滑动时，就会弹出 alert窗。可以看出，这里面代码的写法和 jQuery 是一致的。
+
+注意，我们要将浏览器切换到手机模式，才能看到`touchstart`事件的效果；否则，在浏览器上点来点去，是没有反应的。
+
+## Zepto 和 jQuery 相同的  api
+
+> 意思是，jQuery 和 Zepto 有哪些共同点。
 
 
+###  jQuery 的主要特性
 
+下面来讲一下 jQuery 的主要特性（jQuery 的核心函数`$`、jQuery 对象），它们对 Zepto 来说，同样适用。
+
+**1、jQuery 的核心函数`$`**:
+
+作为函数使用（参数）：
+
+-  function
+
+-  html字符串
+
+-  DOM code
+
+-  选择器字符串
+
+作为对象调用(方法)：
+
+- $.ajax() $.get() $.post()
+
+- $.isArray()      $.each()      $.isFunction()      $.trim()
+
+**2、jQuery 对象**：
+
+概念：jquery核心函数$()调用返回的对象就是jquery对象的数组（可能有只有一个）。
+
+使用举例：
+
+- addClass()
+
+- removeClass()
+
+- show()
+
+- find()
 
 
 
