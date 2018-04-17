@@ -44,10 +44,7 @@ zepto是轻量级的JavaScript库，专门为移动端定制的框架。
 - 同jQuery一样，都是以`$`符号为核心函数。
 
 
-
 ### 不同点
-
-
 
 
 ## Zepto 的初体验
@@ -69,7 +66,6 @@ zepto是轻量级的JavaScript库，专门为移动端定制的框架。
 - 后面没有打钩的那些api，如果需要用它们，必须单独下载响应的文件。
 
 比如说，移动端的 touch 事件是很常见的，我们可以将`touch.js`这个文件下载，稍后用。
-
 
 
 （2）代码演示：
@@ -146,7 +142,7 @@ zepto是轻量级的JavaScript库，专门为移动端定制的框架。
 
 概念：jquery核心函数$()调用返回的对象就是jquery对象的数组（可能有只有一个）。
 
-使用举例：
+使用列举：
 
 - addClass()
 
@@ -156,6 +152,90 @@ zepto是轻量级的JavaScript库，专门为移动端定制的框架。
 
 - find()
 
+### 代码举例
+
+1、`$.each()`方法举例：（遍历数组）
+
+```html
+    <script src="libs/zepto-1.2.0.js"></script>
+    <script src="libs/zepto-1.2.0.js"></script>
+    <script>
+        var arr = [2, 4, 6, 8];
+
+        $.each(arr, function (index, item) {
+            console.log(index, item);
+        });
+    </script>
+
+```
+
+打印结果：
+
+20180416_1145.png
+
+2、`append()`举例：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box1 {
+            width: 200px;
+            height: 200px;
+            background: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box1"></div>
+
+    <script src="libs/zepto-1.2.0.js"></script>
+    <script src="libs/touch.js"></script>
+    <script>
+        $('.box1').on('touchstart', function () {
+            $('.box1').append('<p>我是新添加的元素</p>');
+
+        });
+    </script>
+</body>
+
+</html>
+```
+
+上方代码实现的效果是：每次，当手在box1上滑动时，会在 box1 中新添加一个元素。
+
+
+4、`find()`方法举例：
+
+```javascript
+        $('.box1').on('touchstart', function () {
+            console.log('touch');
+            $(this).find('p').css('background', 'red');
+        });
+```
+
+代码解释：找到 box1 中的 p 标签， 给 p 标签设置背景色。
+
+注意，代码里的`$(this).find()`相当于`this.find`，只不过this没有find方法，而$有find方法。
+
+
+
+5、`show()`方法举例：
+
+```javascript
+        $(`.box1`).on('touchstart', function () {
+            $('.box2').show();
+        });
+```
+
+假设 box2 一开始是隐藏的，事件中，让 box2 显示出来。
 
 
 
