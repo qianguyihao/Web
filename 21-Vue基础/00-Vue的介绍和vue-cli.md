@@ -1,8 +1,9 @@
 
 
-- [Get全栈技能点 Vue2.0/Node.js/MongoDB 打造商城系统](https://coding.imooc.com/class/chapter/113.html)
 
 ## MVVM模式
+
+20180420_2150.png
 
 - Model：负责数据存储
 
@@ -380,6 +381,10 @@ cnpm run dev
 
 
 
+
+本文参考链接：
+
+- [Get全栈技能点 Vue2.0/Node.js/MongoDB 打造商城系统](https://coding.imooc.com/class/chapter/113.html)
 
 
 

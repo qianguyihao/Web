@@ -74,7 +74,7 @@
 
 - vue的双向绑定怎么实现的？我是说怎么实现？
 
-我当时是回答MVVM模式。其实还需要答出Object.defineProperty( )的细节。
+我当时是回答MVVM模式。其实还需要答出Object.defineProperty( )的细节，以及虚拟DOM。
 
 
 - Vue里还有什么呢？
