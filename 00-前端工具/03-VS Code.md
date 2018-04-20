@@ -1,5 +1,19 @@
 
 
+## 常见操作
+
+### 如何查看代码结构
+
+- 方法一：「Cmd + Shift + O」
+
+- 方法二：安装插件`Code Outline`
+
+参考链接：<https://www.zhihu.com/question/264045094>
+
+
+
+
+
 ## 常用插件
 
 方式一：打开VS Code，左侧有五个按钮，点击最下方的按钮，然后就可以开始安装相应的插件了。
@@ -61,9 +75,26 @@
 Sass 文件格式化。
 
 
+### Code Outline：显示代码结构
 
+
+安装好插件「Code Outline」后，可以在左侧的资源管理器中，显示当前文件的代码结构：
+
+![](http://img.smyhvae.com/20180420_0925.png)
 
 参考链接：
+
+- <https://www.zhihu.com/question/50273450>
+
+- <http://itopic.org/vscode.html>
+
+- <https://github.com/varHarrie/varharrie.github.io/issues/10>
+
+
+
+
+
+### 参考链接
 
 - <https://www.jianshu.com/p/0724921285d4>
 
