@@ -3,9 +3,7 @@
 
 ## Vue 2.0的生命周期函数
 
-20180420_2305.png
-
-
+![](http://img.smyhvae.com/20180422_1650.png)
 
 ```html
 <!DOCTYPE html>
@@ -51,10 +49,8 @@
 </html>
 ```
 
-
 打印结果：
 
-20180420_2302.png
-
+![](http://img.smyhvae.com/20180420_2302.png)
 
 
