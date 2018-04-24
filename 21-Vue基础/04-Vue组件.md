@@ -591,7 +591,62 @@ img.png
 
 我们要记住：子组件通过**事件触发**的形式，向父组件传值。
 
-**案例**：给两个相同的子组件定义计数器，每点击一次，数值加1。然后在父组件中求和。
+
+
+
+**案例1:**子组件给父组件传递数据
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="vue2.5.16.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        <!-- 在外层监听`mysend`事件，进而出发外层的 getData 方法 -->
+        <counter v-on:mysend="getData"> </counter>
+    </div>
+
+    <script>
+
+        Vue.component('counter', {
+            template: '<div @click = "addClick">发送数据给父组件</div>',  //当组件被点击时，触发 addClick 方法
+
+            methods: {
+                addClick: function () {
+                    //第一个参数为键(注意，要小写，不能大写)，第二个参数为值
+                    this.$emit('mysend', 'smyhvae'); //通过键`mysend`事件通知外面，将值`smyhvae`传给父组件
+                }
+            }
+        });
+
+        new Vue({
+            el: '#app',
+            methods: {
+                getData: function (input) { //通过括号里的参数，获取子组件传递过来的值
+                    console.log(input);   //打印结果：smyhvae
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
+
+```
+
+
+**案例2**：获取子组件的DOM对象
+
+题目：给两个相同的子组件定义计数器，每点击一次，数值加1。然后在父组件中求和。
 
 步骤（1）：给两个相同的子组件定义计数器，每点击一次，数值加1。代码如下：
 
@@ -716,7 +771,7 @@ img.png
 <body>
 
     <div id="app">
-        <!-- 在外层监听`change`事件，进而出发外层的 myClick 方法 -->
+        <!-- 在外层监听`change`事件，进而触发外层的 myMethod 方法 -->
         <counter ref="one" @change="myMethod"> </counter>
         <counter ref="two" @change="myMethod"> </counter>
         <div>{{totalData}}</div>
@@ -725,7 +780,7 @@ img.png
     <script>
 
         Vue.component('counter', {
-            template: '<div @click = "addClick">当前计数：{{number}}</div>',  //当组件被点击时，
+            template: '<div @click = "addClick">当前计数：{{number}}</div>',  //当组件被点击时，触发 addClick方法
 
             data: function () {
                 return {
