@@ -12,6 +12,11 @@
 
 
 
+### 在新的窗口中打开文件
+
+```json
+"workbench.editor.enablePreview": false,
+```
 
 
 ## 常用插件
@@ -105,14 +110,26 @@ Sass 文件格式化。
 
 ## 常用快捷键
 
+
+| Win快捷键 |Mac快捷键| 作用 | 备注 |
+|:-------------|:-------------|:-----|:-----|
+| Shift + Alt + F |Shift + option + F| 代码格式化 |  |
+| Ctrl + Shift + N | |在当前行上面增加一行并跳至该行  |   |
+|  **Ctrl + Shift + D** | |复制当前行到下一行  |   | 
+
+
+
+
+
+
 ### 代码格式化
 
-Shift + Alt + F
+
 
 ### 如何同时打开多个窗口
 
 
-Ctrl + Shift + N
+
 
 
 
