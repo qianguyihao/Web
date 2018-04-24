@@ -2,6 +2,17 @@
 
 ## 常见操作
 
+### 自动保存
+
+```
+ "files.autoSave": "onFocusChange"
+```
+
+参考链接：<https://blog.csdn.net/WestLonly/article/details/78048049>
+
+
+
+
 ### 如何查看代码结构
 
 - 方法一：「Cmd + Shift + O」
