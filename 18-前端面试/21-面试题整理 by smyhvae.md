@@ -96,7 +96,7 @@ cookie用于存储时的缺点：
 
 - [笔记：阿里、网易、滴滴共十次前端面试碰到的问题](https://zhoukekestar.github.io/notes/2017/06/07/interview-answers.html)
 
-- [what-happens-when-zh_CN](https://github.com/skyline75489/what-happens-when-zh_CN#dns)
+- [what-happens-when-zh_CN](https://github.com/skyline75489/what-happens-when-zh_CN)
 
 
 - [码农翻身 | 小白科普：从输入网址到最后浏览器呈现页面内容，中间发生了什么？](https://mp.weixin.qq.com/s/3_DZKSP492uq9RfQ3eW4_A)
