@@ -304,7 +304,7 @@ $ vue init webpack VueDemo02
 ```
 cd /Users/smyhvae/Dropbox/workspace/Mac/VueDemo02
 
-cnpm install
+npm install
 ```
 
 备注：我们在 GitHub上下载的任何Vue有关的项目并没有包含 `node_modules`，第一步都是要首先执行 cnpm install，把 `node_modules`里的包下载下来。我们发给同事的工程文件，建议也不要包含 `node_modules`。
@@ -314,7 +314,7 @@ cnpm install
 （3）让项目跑起来：
 
 ```
-cnpm run dev
+npm run dev
 ```
 
 这个空的项目就可以在浏览器上跑起来。
@@ -327,7 +327,7 @@ cnpm run dev
 
 ## vue 项目结构分析
 
-![](http://img.smyhvae.com/20180303_1010.png)
+![](http://img.smyhvae.com/20180501_2100.png)
 
 - buid：打包配置的文件夹
 
@@ -378,7 +378,6 @@ cnpm run dev
 ![](http://img.smyhvae.com/20180303_1146.png)
 
 ![](http://img.smyhvae.com/20180303_1150.png)
-
 
 
 
