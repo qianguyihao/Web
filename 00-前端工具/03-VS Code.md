@@ -106,7 +106,40 @@ Sass 文件格式化。
 
 - <https://github.com/varHarrie/varharrie.github.io/issues/10>
 
+### vscode-fileheader：添加顶部注释模板
 
+（1）安装插件vscode -fileheader，并重启。
+
+（2）在首选项-》设置-》中搜索fileheader，找到头部模板修改。
+
+默认的快捷键是：「Ctrl + option + I」。
+
+参考链接：
+
+- <https://www.zhihu.com/question/62385647>
+
+
+
+
+### Vue 相关的插件
+
+- vetur：vue 文件的基本语法高亮
+
+安装完 vetur 后还需要加上这样一段配置下：
+
+```
+"emmet.syntaxProfiles": {
+  "vue-html": "html",
+  "vue": "html"
+}
+```
+
+参考链接：
+
+- <https://www.clarencep.com/2017/03/18/edit-vue-file-via-vscode/>
+
+
+- <https://github.com/varHarrie/varharrie.github.io/issues/10>
 
 
 
