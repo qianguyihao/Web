@@ -65,7 +65,7 @@ webpack.config.js : 是一个node模块，返回一个 json 格式的配置信�
 {
     "name": "webpackdemo",
     "version": "1.0.0"
-}s
+}
 ```
 
 
