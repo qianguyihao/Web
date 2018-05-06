@@ -73,6 +73,24 @@ PS：上面这两个链接，指向的的是同一个学习资源。
 
 ### Vue相关
 
+**1、传智黑马 | 2018年Vue.js深入浅出教程**：
+
+
+我在网上找了很多 Vue2.0 入门的视频，但是一直没有找到满意的。但这套视频还不错，可惜官方一直都只公布了一小部分。终于在2018-05-03的时候，更新了11天的全部视频，真实太激动了。
+
+上面这个视频资源，相关链接如下：
+
+
+- 在线视频链接：<http://yun.itheima.com/course/335.html>
+
+- 视频资源：<https://pan.baidu.com/s/1bUdzAkPVHJrJPcBuOgKpgA>
+
+- 源码和笔记：<https://pan.baidu.com/s/1Uwja4t4ZE7cmm-l0xufkFg>  密码：8v9c
+
+
+
+
+
 
 
 
