@@ -29,6 +29,23 @@
 "workbench.editor.enablePreview": false,
 ```
 
+### 在本地开启服务器
+
+```bash
+# 安装
+npm install -g live-server
+
+# 启动
+live-server
+```
+
+
+参考链接：[Visual Studio Code + live-server编辑和浏览HTML网页](http://www.cnblogs.com/1zhk/p/5699379.html)
+
+
+
+
+
 
 ## 常用插件
 
@@ -160,7 +177,6 @@ Sass 文件格式化。
 | Shift + Alt + F |Shift + option + F| 代码格式化 |  |
 | Ctrl + Shift + N | |在当前行上面增加一行并跳至该行  |   |
 |  **Ctrl + Shift + D** | |复制当前行到下一行  |   | 
-
 
 
 
