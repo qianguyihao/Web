@@ -260,6 +260,7 @@
 
         var name = "全局的name属性";
         //obj.sayName();
+        
         //以函数形式调用，this是window
         //fun();       //可以理解成 window.fun()
 
