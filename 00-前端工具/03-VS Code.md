@@ -123,7 +123,7 @@ Sass 文件格式化。
 
 - <https://github.com/varHarrie/varharrie.github.io/issues/10>
 
-### vscode-fileheader：添加顶部注释模板
+### vscode-fileheader：添加顶部注释模板(签名)
 
 （1）安装插件vscode -fileheader，并重启。
 
