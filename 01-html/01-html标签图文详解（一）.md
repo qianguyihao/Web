@@ -908,7 +908,7 @@ href是英语`hypertext reference`超文本地址的缩写。读作“喝瑞夫�
 
 如果我们将上图中的第28行代码写成：
 ```html
-<a href="a.hhml#name1">回到顶部</a>
+<a href="a.html#name1">回到顶部</a>
 ```
 那就表示，点击之后，跳转到`a.html`页面的`name1锚点`中去。
 
