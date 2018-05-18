@@ -366,7 +366,6 @@ CSS的写法：
 ```html
 style="border-collapse:collapse;"
 ```
-int leixing de bianliang guocheng shi yizhon
 
 ### `<tr>`：行
 一个表格就是一行一行组成的嘛。
