@@ -78,7 +78,7 @@ JavaScript基础分为三个部分：
 ```javascript
     var div1 = document.getElementById("box1");      //方式一：通过id获取单个标签
 
-	var arr1 = document.getElementsByTagName("div1");     //方式二：通过 标签名 获得 标签数组，所以有s
+	var arr1 = document.getElementsByTagName("div");     //方式二：通过 标签名 获得 标签数组，所以有s
 
 	var arr2 = document.getElementsByClassName("hehe");  //方式三：通过 类名 获得 标签数组，所以有s
 ```
