@@ -172,7 +172,7 @@ CSS盒模型和IE盒模型的区别：
 #### padding区域也有颜色
 
 
-padding就是内边距。padding的区域有背景颜色，css2.1前提下，并且背景颜色一定和内容区域的相同。也就是说，background-color将填充**所有boder以内的区域。**
+padding就是内边距。padding的区域有背景颜色，css2.1前提下，并且背景颜色一定和内容区域的相同。也就是说，background-color将填充**所有border以内的区域。**
 
 效果如下：
 
