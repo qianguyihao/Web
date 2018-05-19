@@ -279,7 +279,7 @@ PS：padding的区域也是有背景图的。
 
 ### background 综合属性
 
-background属性和border一样，是一个综合属性，可以将多个属性写在一起。(在[盒子模型](http://www.cnblogs.com/smyhvae/p/7256371.html)这篇文章中专门讲到boder)
+background属性和border一样，是一个综合属性，可以将多个属性写在一起。(在[盒子模型](http://www.cnblogs.com/smyhvae/p/7256371.html)这篇文章中专门讲到border)
 
 举例1:
 
