@@ -169,7 +169,7 @@ JavaScript基础分为三个部分：
 上方代码的注意事项：
 
 - 在js里写属性值时，要用引号
-- 在js里写属性名时，是`backgroundColor`，不是CSS里面的`background-Color`。
+- 在js里写属性名时，是`backgroundColor`，不是CSS里面的`background-color`。
 
 实现效果如下：
 
