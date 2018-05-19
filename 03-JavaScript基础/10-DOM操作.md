@@ -161,7 +161,7 @@ JavaScript基础分为三个部分：
     div1.onclick = function () {
         div1.style.width = "200px";   //属性值要写引号
         div1.style.height = "200px";
-        div1.style.backgroundColor = "red";   //属性名是backgroundColor，不是background-Color
+        div1.style.backgroundColor = "red";   //属性名是backgroundColor，不是background-color
     }
 </script>
 ```
