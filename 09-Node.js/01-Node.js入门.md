@@ -262,7 +262,7 @@ nvm list|ls
 nvm install 版本号 [arch]
 ```
 
-比如：`nvm install 4.2.2`。
+比如：`nvm install 8.10.0`。
 
 卸载指定版本node：
 
@@ -418,7 +418,7 @@ NPM 默认安装到当前正在使用 Node 版本所在目录下。我们建议�
 - npm run [script]
 
 
-## NRM的安装
+## NRM的安装(Win 和 Mac 通用)
 
 由于 NPM 的资源都在国外，有时候会被墙，导致无法下载或者很慢。此时可以用到NRM。
 
@@ -537,6 +537,8 @@ export NVM_DIR="$HOME/.nvm"
 如果你发现文件中已经存在了上面这行代码，就不用往里面加了。
 
 
+最后，重启终端软件，输入`nvm`试试。
+
 PS：NVM 现在已经不支持 Homebrew 的方式来安装了。
 
 
@@ -548,8 +550,7 @@ PS：NVM 现在已经不支持 Homebrew 的方式来安装了。
 和Windows下一样，也是执行如下命令：
 
 ```
-nvm install 6.0.0
-
+nvm install 8.10.0
 ```
 
 网速有点慢，要稍等。
