@@ -205,7 +205,7 @@
             img.src = this.href;  //this指的是函数调用者，和i并无关系，所以不会出错。
 //            img.src = aArr[i].href;   注意，上面这一行代码不要写成这样
             des.innerHTML = this.title;
-            return false;    //retrun false表示：阻止继续执行下面的代码。
+            return false;    //return false表示：阻止继续执行下面的代码。
         }
     }
 
@@ -222,7 +222,7 @@
 
 （3）【重要】书写事件驱动程序：这里是用`img.src = this.href`，而不是用`img.src = aArr[i].href`。因为this指的是函数的调用者。如果写成后者，等i变成了4，就会一直是4。显然不能达到效果。
 
-（4）代码的最后一行：`retrun false`表示：阻止继续执行下面的代码。
+（4）代码的最后一行：`return false`表示：阻止继续执行下面的代码。
 
 实现的效果如下：
 
