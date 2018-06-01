@@ -235,7 +235,7 @@
 
     $(selector).off("click");   // 解绑匹配元素的所有click事件
 
-    $(selector).off( “click”, "**" );   // 解绑所有代理的click事件，元素本身的事件不会被解绑
+    $(selector).off("click", "**" );   // 解绑所有代理的click事件，元素本身的事件不会被解绑
 ```
 
 ## jQuery的事件对象
