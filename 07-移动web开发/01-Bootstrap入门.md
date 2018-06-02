@@ -8,7 +8,7 @@
 
 Bootstrap 是非常流行的前端框架。特点是：灵活简洁、代码优雅、美观大方。它是由Twitter的两名工程师 Mark Otto 和 Jacob Thornton 在2011年开发的。
 
-简单来说，Bootstrap 让 Web 开发**更简单、更快捷**。使用 Bootstrap 框架并不代表我们再开发时不用自己写 CSS 样式，而是不用谢绝大多数常见的样式。
+简单来说，Bootstrap 让 Web 开发**更简单、更快捷**。使用 Bootstrap 框架并不代表我们再开发时不用自己写 CSS 样式，而是不用写绝大多数常见的样式。
 
 PS：[Amaze UI](http://amazeui.org/) 这个框架其实跟 Bootstrap 很像。
 
