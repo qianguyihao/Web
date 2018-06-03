@@ -37,6 +37,7 @@
         for (var i = 0; i < myDiv.length; i++) {
             myDiv[i].onclick = function () {
                 console.log(i);
+                console.log(this.id);
             }
         }
 
@@ -45,10 +46,10 @@
 </script>
 <section>
     <div id="div0"> div0</div>
-    <div id="div0"> div1</div>
-    <div id="div0"> div2</div>
-    <div id="div0"> div3</div>
-    <div id="div0"> div4</div>
+    <div id="div1"> div1</div>
+    <div id="div2"> div2</div>
+    <div id="div3"> div3</div>
+    <div id="div4"> div4</div>
 </section>
 
 
@@ -58,7 +59,7 @@
 ```
 
 
-点击其中的任何一个元素后，上方代码的正确打印结果是5。你可能会觉得很惊讶。我们来解释一下：
+点击其中的任何一个元素后，`i`的打印结果是5。你可能会觉得很惊讶。我们来解释一下：
 
 当代码执行完毕后，i已经等于5了。因为一旦运行程序，for循环已经执行完了，此时i等于5。
 
