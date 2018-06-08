@@ -26,7 +26,7 @@
     }
 
     h4{
-        /* 设置跨列：让h4这标题位于整个文本的标题，而不是处在某一列之中*/
+        /* 设置跨列：让h4这标题位于整个文flex-wrap本的标题，而不是处在某一列之中*/
         -webkit-column-span: all;
         text-align: center;
     }
