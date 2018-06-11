@@ -79,14 +79,14 @@ live-server
     "username": "", //用户名
     "password": "", //密码
     "protocol": "sftp", //模式
-    "agent": null,  
+    "agent": null,
     "privateKeyPath": null,
     "passphrase": null,
     "passive": false,
     "interactiveAuth": false,
     "remotePath": "/root/node/build/",  //服务器上的文件地址
     "context": "./server/build",        //本地的文件地址
-    
+
     "uploadOnSave": true,   //监听保存并上传
     "syncMode": "update",
     "watcher": {            //监听外部文件
@@ -136,11 +136,25 @@ Sass 文件格式化。
 - <https://www.zhihu.com/question/62385647>
 
 
+### Express
+
+在本地开启Node服务器：
+
+20180611_2230.png
+
+然后在浏览器的地址栏输入`http://localhost/` + 文件的相对路径，就可以通过服务器的形式打开这个文件。
+
+### Copy Relative Path
+
+复制文件的相对路径：（相对于根路径而言）
+
+20180611_2235.png
 
 
-### Vue 相关的插件
 
-- vetur：vue 文件的基本语法高亮
+## Vue 相关的插件
+
+### vetur：vue 文件的基本语法高亮
 
 安装完 vetur 后还需要加上这样一段配置下：
 
@@ -176,7 +190,7 @@ Sass 文件格式化。
 |:-------------|:-------------|:-----|:-----|
 | Shift + Alt + F |Shift + option + F| 代码格式化 |  |
 | Ctrl + Shift + N | |在当前行上面增加一行并跳至该行  |   |
-|  **Ctrl + Shift + D** | |复制当前行到下一行  |   | 
+|  **Ctrl + Shift + D** | |复制当前行到下一行  |   |
 
 
 
