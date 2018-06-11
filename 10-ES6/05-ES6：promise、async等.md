@@ -209,12 +209,9 @@ Symbol是函数，但并不是构造函数。创建一个Symbol数据类型：
     console.log(mySymbol);         //打印结果：Symbol()
 ```
 
-
 打印结果：
 
-20180317_1134.png
-
-
+![](http://img.smyhvae.com/20180317_1134.png)
 
 下面来讲一下Symbol的使用。
 
@@ -234,10 +231,9 @@ Symbol是函数，但并不是构造函数。创建一个Symbol数据类型：
     console.log(obj);
 ```
 
-
 上面的代码中，我们尝试给obj添加一个Symbol类型的属性值，但是添加的时候，不能采用`.`这个符号，而是应该用`属性选择器`的方式。打印结果：
 
-20180317_1145.png
+![](http://img.smyhvae.com/20180317_1134.png)
 
 现在我们用for in尝试对上面的obj进行遍历：
 
@@ -261,10 +257,9 @@ Symbol是函数，但并不是构造函数。创建一个Symbol数据类型：
 
 打印结果：
 
-20180317_1817.png
+![](http://img.smyhvae.com/20180317_1134.png)
 
 从打印结果中可以看到：for in、for of 遍历时不会遍历Symbol属性。
-
 
 ### 创建Symbol属性值时，传参作为标识
 
@@ -279,14 +274,13 @@ Symbol是函数，但并不是构造函数。创建一个Symbol数据类型：
     console.log(mySymbol2);         //打印结果：Symbol()
 ```
 
-20180317_1733.png
+![](http://img.smyhvae.com/20180317_1134.png)
 
 上面代码中，倒数第三行的打印结果也就表明了，二者的值确实是不相等的。
 
 最后两行的打印结果却发现，二者的打印输出，肉眼看到的却相同。那该怎么区分它们呢？
 
 既然Symbol()是函数，函数就可以传入参数，我们可以通过参数的不同来作为**标识**。比如：
-
 
 
 ```javascript
@@ -302,19 +296,16 @@ Symbol是函数，但并不是构造函数。创建一个Symbol数据类型：
 
 打印结果：
 
-20180317_1739.png
+![](http://img.smyhvae.com/20180317_1134.png)
 
 ### 定义常量
 
 Symbol 可以用来定义常量：
 
 
-
-
 ```javascript
     const MY_NAME = Symbol('my_name');
 ```
-
 
 
 ### 内置的 Symbol 值
@@ -324,7 +315,6 @@ Symbol 可以用来定义常量：
 - `Symbol.iterator`属性
 
 对象的`Symbol.iterator`属性，指向该对象的默认遍历器方法。
-
 
 
 ## async函数（异步函数）
