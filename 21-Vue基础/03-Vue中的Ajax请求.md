@@ -1,21 +1,34 @@
 
 
-## vue-resource
+
+## vue-resource的介绍
+
+`vue-resource`是Vue高度集成的第三方包。
 
 官网链接：
 
-- http相关：<https://github.com/pagekit/vue-resource/blob/master/docs/http.md>
+- 文档（http相关）：<https://github.com/pagekit/vue-resource/blob/master/docs/http.md>
 
-按照先后顺序，导入vue.js和vue-resource.js文件。
+vue-resource 依赖于 Vue。所以，我们要按照先后顺序，导入vue.js和vue-resource.js文件。
+
+**解释**：
+
+`vue.js`文件向Windows对象暴露了`Vue`这个关键词；`vue-resource.js`向Vue身上挂载了`this.$http`这个属性。于是，我们可以直接写`this.$http.get`或者`this.$http.post`或者`this.$http.jsonp`来调用。
+
+## vue-resource 发送Ajax请求
+
+常见的数据请求类型包括：get、post、jsonp。下面我们分别讲一讲。
+
 
 ### get 请求
 
-**格式**：
+**格式举例**：
 
 ```javascript
     this.$http.get(url)
-        .then(function (response) {
-            var data = response.body;  //response.body是要获取的数据
+        .then(function (result) { // 当发起get请求之后，通过 .then 来设置成功的回调函数
+            console.log(result.body); // response.body就是服务器返回的成功的数据
+            var result = result.body;
         },
             function (err) {
                 //err是异常数据
@@ -135,17 +148,18 @@
 
 ![](http://img.smyhvae.com/20180422_2152.png)
 
-如果我直接在浏览器中输入请求的url，获取的json数据如下：（这种方式获取的是相同的数据）
+如果我直接在浏览器中输入请求的url，获取的json数据如下：（可以看到，这种方式获取的是相同的数据）
 
 ![](http://img.smyhvae.com/20180422_2150.png)
 
 
 ### post请求
 
-**格式**：
+**格式举例**：
 
 ```javascript
-    // 调用 $http.post(url, 传给服务器的请求体中的数据， {emulateJSON:true})
+    // 方法：$http.post(url, 传给服务器的请求体中的数据， {emulateJSON:true})
+    // 通过 post 方法的第三个参数{ emulateJSON: true } ，来设置 提交的内容类型 为 普通表单数据格式
     this.$http.post(url, { name: '奔驰' }, { emulateJSON: true })
         .then(function (response) {
             alert(response.body.message);
@@ -425,6 +439,9 @@
 
 ![](http://img.smyhvae.com/20180420_2250.png)
 
+
+**格式举例**：
+
 ```javascript
     // 利用vue-resource中的jsonp方法实现跨域请求数据，这里要注意的是：
     // url后面不需要跟callback=fn这个参数了，jsonp方法会自动加上
@@ -441,5 +458,26 @@
 ![](http://img.smyhvae.com/20180420_2256.png)
 
 
+## JSONP的实现原理
 
+由于浏览器的安全性限制，默认不允许Ajax发起跨域（协议不同、域名不同、端口号不同）的请求。浏览器认为这种访问不安全。
+
+**JSONP的实现原理**：通过动态创建script标签的形式，用script标签的src属性，代表api接口的url，因为script标签不存在跨域限制，这种数据获取方式，称作JSONP（注意：根据JSONP的实现原理，知晓，JSONP只支持Get请求）。
+
+
+ 具体实现过程：
+
+
+- 先在客户端定义一个回调方法，预定义对数据的操作
+
+- 再把这个回调方法的名称，通过URL传参的形式，提交到服务器的api接口；
+
+- 服务器api接口组织好要发送给客户端的数据，再拿着客户端传递过来的回调方法名称，拼接出一个调用这个方法的字符串，发送给客户端去解析执行；
+
+- 客户端拿到服务器返回的字符串之后，当作Script脚本去解析执行，这样就能够拿到JSONP的数据了
+
+
+## axios
+
+除了 vue-resource 之外，还可以使用 `axios` 的第三方包实现实现数据的请求。
 
