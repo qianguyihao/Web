@@ -257,7 +257,7 @@ BFC 的原理，其实也就是 BFC 的渲染规则（能说出以下四点就�
 
 有以下几种方法：
 
-- 方法1：overflow: 不为vidible，可以让属性是 hidden、auto。【最常用】
+- 方法1：overflow: 不为visible，可以让属性是 hidden、auto。【最常用】
 
 - 方法2：浮动中：float的属性值不为none。意思是，只要设置了浮动，当前元素就创建了BFC。
 
