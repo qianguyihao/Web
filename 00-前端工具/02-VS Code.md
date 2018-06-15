@@ -151,6 +151,48 @@ Sass 文件格式化。
 20180611_2235.png
 
 
+### open in browser
+
+在浏览器中打开。
+
+
+### Auto Rename Tag
+
+适用于 JSX、Vue、HTML。在修改标签名时，能在你修改开始（结束）标签的时候修改对应的结束（开始）标签，帮你减少 50% 的击键。
+
+
+###Project Manager
+
+项目管理，让我们方便的在命令面板中切换项目文件夹，当然，你也可以直接打开包含多个项目的父级文件夹，但这样可能会让 VSCode 变慢。
+
+
+
+### highlight-icemode：选中相同的代码时，让高亮显示更加明显
+
+VSCode自带的高亮显示，实在是不够显眼。用插件支持一下吧。
+
+所用了这个插件之后，VS Code自带的高亮就可以关掉了：
+
+在用户设置里添加`"editor.selectionHighlight": false`即可。
+
+
+参考链接：[vscode 选中后相同内容高亮插件推荐](https://blog.csdn.net/palmer_kai/article/details/79548164)
+
+
+### highlight-words：全局高亮（跨文件多色彩）
+
+
+参考链接：[Visual Studio Code全局高亮着色插件(跨文件多色彩)经验纪要](https://zhuanlan.zhihu.com/p/31163793)
+
+
+
+
+
+
+
+
+
+
 
 ## Vue 相关的插件
 
@@ -218,3 +260,22 @@ Sass 文件格式化。
 问题1
 
 解决；You can kill the Microsoft.VSCode.Cpp.IntelliSense.Msvc process to save the file successfully. 也就是 IntelliSense 这个进程。
+
+
+
+
+## 参考链接
+
+- [能让你开发效率翻倍的 VSCode 插件配置（上）](https://zhuanlan.zhihu.com/p/30976584)
+
+
+### 某网友的VS Code 插件截图
+
+20180611_2255.png
+
+
+
+
+
+
+

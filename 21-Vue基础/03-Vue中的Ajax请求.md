@@ -270,7 +270,7 @@ vue-resource 依赖于 Vue。所以，我们要按照先后顺序，导入vue.js
 
                     this.pname = '';
 
-                    // 3、直接将列表数据重新加载一次，即可刷新页面上的数据
+                    // 3、添加完成后，只需要手动再调用一次getlist（将列表数据重新加载一次），即可刷新页面上的数据
                     this.getlist();
 
                 });
@@ -480,4 +480,72 @@ vue-resource 依赖于 Vue。所以，我们要按照先后顺序，导入vue.js
 ## axios
 
 除了 vue-resource 之外，还可以使用 `axios` 的第三方包实现实现数据的请求。
+
+
+## 通过Vue全局配置api接口的url地址
+
+api接口的url地址包括：绝对路径+相对路径。
+
+我们在做Ajax请求的时候，所填写的url建议填**相对路径**，然后把**绝对路径**放在全局的位置。
+
+Vue就提供了这个功能。举例如下：
+
+```html
+
+  <script>
+    // 如果我们通过全局配置了，请求的数据接口 根域名，则 ，在每次单独发起 http 请求的时候，请求的 url 路径，应该以相对路径开头，前面不能带 /  ，否则 不会启用根路径做拼接；
+    Vue.http.options.root = 'http://smyhvae/';
+    // 全局启用 emulateJSON 选项
+    Vue.http.options.emulateJSON = true;
+
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        name: '',
+        list: [ // 存放所有品牌列表的数组
+        ]
+      },
+      created() { // 当 vm 实例 的 data 和 methods 初始化完毕后，vm实例会自动执行created 这个生命周期函数
+        this.getAllList()
+      },
+      methods: {
+        getAllList() { // 获取所有的品牌列表
+          // 分析：
+          // 1. 由于已经导入了 Vue-resource这个包，所以 ，可以直接通过  this.$http 来发起数据请求
+          // 2. 根据接口API文档，知道，获取列表的时候，应该发起一个 get 请求
+          // 3. this.$http.get('url').then(function(result){})
+          // 4. 当通过 then 指定回调函数之后，在回调函数中，可以拿到数据服务器返回的 result
+          // 5. 先判断 result.status 是否等于0，如果等于0，就成功了，可以 把 result.message 赋值给 this.list ; 如果不等于0，可以弹框提醒，获取数据失败！
+
+          this.$http.get('api/getprodlist').then(result => {
+            // 注意： 通过 $http 获取到的数据，都在 result.body 中放着
+            var result = result.body
+            if (result.status === 0) {
+              // 成功了
+              this.list = result.message
+            } else {
+              // 失败了
+              alert('获取数据失败！')
+            }
+          })
+        }
+      }
+    });
+  </script>
+
+```
+
+如上方代码所示，第一步是在全局的位置写**绝对路径**：
+
+```javascript
+    Vue.http.options.root = 'http://smyhvae/';
+```
+
+第二步是在Ajax请求的url中写**相对路径**：（注意，前面不要带`/`）
+
+```javascript
+this.$http.get('api/getprodlist')
+```
+
+
 
