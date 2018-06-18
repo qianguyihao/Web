@@ -763,6 +763,80 @@ Vue.component('myComponent', myAccount); //第一个参数是组件的名称（�
 ![](http://img.smyhvae.com/20180617_1957.gif)
 
 
+## 多个组件切换时，通过mode属性添加过渡的动画
+
+
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="vue2.5.16.js"></script>
+    <style>
+        .v-enter,
+        .v-leave-to {
+            opacity: 0;
+            transform: translateX(150px);
+        }
+
+        .v-enter-active,
+        .v-leave-active {
+            transition: all 0.5s ease;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <a href="" @click.prevent="comName='login'">登录</a>
+        <a href="" @click.prevent="comName='register'">注册</a>
+
+        <!-- 通过 mode 属性,设置组件切换时候的 过渡动画 -->
+        <!-- 【重点】亮点是 mode="out-in" 这句话 -->
+        <transition mode="out-in">
+            <component :is="comName"></component>
+        </transition>
+
+    </div>
+
+    <script>
+        // 组件名称是 字符串
+        Vue.component('login', {
+            template: '<h3>登录组件</h3>'
+        })
+
+        Vue.component('register', {
+            template: '<h3>注册组件</h3>'
+        })
+
+        // 创建 Vue 实例，得到 ViewModel
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                comName: 'login' // 当前 component 中的 :is 绑定的组件的名称
+            },
+            methods: {}
+        });
+    </script>
+</body>
+
+</html>
+```
+
+运行效果：
+
+20180618_2240.gif
+
+如上方代码所示，多个组件切换时，如果要设置动画，可以用`<transition>`把组件包裹起来。需要注意的是，我给`<transition>`标签里添加了`mode="out-in"`这种模式，它表示第一个组件消失之后，第二个组件才会出现。如果没有这个mode属性，效果如下：（第一个组件准备消失的时候，第二个组件马上就准备出现，这不是我们想要的效果）
+
+20180618_2245.gif
+
+
 ## 我的公众号
 
 想学习<font color=#0000ff>**代码之外的软技能**</font>？不妨关注我的微信公众号：**生命团队**（id：`vitateam`）。
