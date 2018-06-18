@@ -501,7 +501,7 @@ animate.css网址：
 
 <body>
     <div id="app">
-        <input type="button" value="快到碗里来" @click="flag=!flag">
+        <input type="button" value="加入购物车" @click="flag=!flag">
         <!-- 1. 使用 transition 元素把 小球包裹起来 -->
         <transition @before-enter="beforeEnter" @enter="enter" @after-enter="afterEnter">
             <div class="ball" v-show="flag"></div>
@@ -536,7 +536,8 @@ animate.css网址：
                 afterEnter(el) {
                     // 动画完成之后，会调用 afterEnter
                     // console.log('ok')
-                    this.flag = !this.flag  //动画结束后，让小球消失（直接让 flag 取反即可）
+                    // 动画结束后，让小球消失（直接让 flag 取反即可）
+                    this.flag = !this.flag  // 因为最开始的时候，小球就是处于消失的状态，这行代码可以让小球的动画重新开始
                 }
             }
         });
@@ -548,7 +549,7 @@ animate.css网址：
 ```
 
 
-运行效果如下：
+运行效果如下：（我们可以用这种动画效果，做类似于“加入购物车”的动画效果）
 
 ![](http://img.smyhvae.com/20180616_1618.gif)
 
