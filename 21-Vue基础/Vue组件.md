@@ -1,261 +1,45 @@
 
 
 
-## 组件的定义和注册
 
-组件`Component`是 Vue.js 最强大的功能之一。组件可以扩展 HTML 元素，封装可重用的代码。
 
-### 写法一
 
-写法一：使用Vue.extend方法定义组件，使用 Vue.component方法注册组件。
 
-代码举例：
 
-```html
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <script src="vue2.5.16.js"></script>
-</head>
 
-<body>
-    <div id="app">
-        <account> </account>
-    </div>
 
-    <script>
-        //第一步：定义组件
-        var myAccount = Vue.extend({
-            template: '<div><h2>登录页面</h2> <h3>注册页面</h3></div>'    // template 是 Vue 中的关键字，不能改。
-        });
-        //第二步：注册组件
-        Vue.component('account', myAccount); //第一个参数是标签名，第二个参数是组件的定义
 
-        new Vue({
-            el: '#app'
-        });
-    </script>
-</body>
 
-</html>
-```
 
-上方代码中，绿框部分的内容，就是我想定义的整个组件。
 
-在注册组件时，第一个参数是标签名，第二个参数是组件的定义。
 
-运行结果如下：
 
-![](http://img.smyhvae.com/20180422_2230.png)
 
-代码截图如下：
 
-![](http://img.smyhvae.com/20180422_2223.png)
 
-上图中，注意两点：
 
-1、红框部分，要保证二者的名字是一致的。
 
-2、绿框部分，一定要用一个大的根元素（例如`<div>`）包裹起来。如果我写成下面这样，就没有预期的效果：
 
-```
-            template: '<h2>登录页面</h2> <h3>注册页面</h3>'
-```
 
-结果如下：（并非预期的效果）
 
-![](http://img.smyhvae.com/20180422_2232.png)
 
-### 写法二
 
-写法二：Vue.component方法定义、注册组件（一步到位）。
 
-代码如下：
 
-```html
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <script src="vue2.5.16.js"></script>
-</head>
 
-<body>
-    <div id="app">
-        <account> </account>
-    </div>
 
-    <script>
 
-        //定义、注册组件（第一个参数是标签名，第二个参数是组件的定义）
-        Vue.component('account', {
-            template: '<div><h2>登录页面</h2> <h3>注册页面</h3></div>'   // template 是 Vue 中的关键字，不能改。
-        });
 
-        new Vue({
-            el: '#app'
-        });
-    </script>
-</body>
 
-</html>
-```
 
-代码截图如下：
 
-![](http://img.smyhvae.com/20180422_2251.png)
 
-上图中，同样注意两点：
 
-1、红框部分，要保证二者的名字是一致的。
 
-2、绿框部分，一定要用一个大的根元素（例如`<div>`）包裹起来。如果我写成下面这样，就没有预期的效果：
 
-```
-            template: '<h2>登录页面</h2> <h3>注册页面</h3>'
-```
 
-结果如下：（并非预期的效果）
-
-![](http://img.smyhvae.com/20180422_2232.png)
-
-
-### 写法三
-
-写法三：将组件内容定义到template标签中去。
-
-代码如下：
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <script src="vue2.5.16.js"></script>
-</head>
-
-<body>
-    <!-- 定义模板 -->
-    <template id="myAccount">
-        <div>
-            <h2>登录页面</h2>
-            <h3>注册页面</h3>
-        </div>
-    </template>
-
-    <div id="app">
-        <account> </account>
-    </div>
-
-    <script>
-
-        //定义、注册组件
-        Vue.component('account', {
-            template: '#myAccount'    // template 是 Vue 中的关键字，不能改。
-        });
-
-        new Vue({
-            el: '#app'
-        });
-    </script>
-</body>
-
-</html>
-```
-
-代码截图如下：
-
-![](http://img.smyhvae.com/20180422_2256.png)
-
-写法三其实和方法二差不多，无非是把绿框部分的内容，单独放在了`<template>`标签中而已，这样有利于 html 标签的书写。
-
-## 为组件添加 data 和 method
-
-既然组件是一个页面，那么，页面中可能会有一些功能要**动态展示**。因此，我们有必要为组件添加 data 和 method。
-
-代码举例如下：
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <script src="vue2.5.16.js"></script>
-</head>
-
-<body>
-    <!-- 定义组件的模板 -->
-    <template id="myAccount">
-        <div>
-            {{myData}}       <!-- 在组件的模板中，调用本组件中的data -->
-            <a href="#" v-on:click="login">登录1</a>
-            <h2>登录页面</h2>
-            <h3>注册页面</h3>
-
-        </div>
-    </template>
-
-    <div id="app">
-        <!-- 第一次调用组件 -->
-        <account> </account>
-        <!-- 第二次调用组件 -->
-        <account> </account>
-    </div>
-
-    <script>
-
-        //定义、注册组件
-        Vue.component('account', {
-            template: '#myAccount',
-            //组件中的 data
-            //注意，组件中的data，是一个方法，而不是对象，否则无效果
-            data: function () {
-                return {
-                    myData: 'smyhvae'
-                }
-            },
-            //组件中的 method
-            methods: {
-                login: function () {
-                    alert('login操作');
-                }
-            }
-        });
-
-        new Vue({
-            el: '#app'
-        });
-    </script>
-</body>
-
-</html>
-
-```
-
-上方代码所示，我们在`account`组件中添加的data 和 method，其**作用域**只限于`account`组件里，保证独立性。
-
-注意，在为组件添加数据时，data不再是对象了，而是function，而且要通过 return的形式进行返回；否则，页面上是无法看到效果的。通过 function返回对象的形式来定义data，作用是：
-
-- 上方代码中，组件`<account>`被调用了两次（不像根组件那样只能调用一次），但是每个组件里的数据 myData是**各自独立**的，不产生冲突。
-
-- 换而言之，通过函数返回对象的目的，是为了让每个子组件都有自己**独立的数据存储**，而不应该共享一套数据。
 
 
 ## 子组件的定义和注册
