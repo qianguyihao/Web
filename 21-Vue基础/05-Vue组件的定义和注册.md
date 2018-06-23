@@ -90,8 +90,13 @@ Vue.component('myComponent', myAccount); //第一个参数是组件的名称（�
 
 ```
 
+所以，为了避免名字不一致的问题，我们注册组件时，组件的名称可以直接写成`my-component`。比如：（避免驼峰不一致的建议写法）
 
-`Vue.component('my')`
+```javascript
+    Vue.component('my-component', myAccount);
+```
+
+
 
 **注意2**、绿框部分，一定要用一个大的根元素（例如`<div>`）包裹起来。如果我写成下面这样，就没有预期的效果：
 
@@ -161,7 +166,7 @@ Vue.component('myComponent', myAccount); //第一个参数是组件的名称（�
 ![](http://img.smyhvae.com/20180422_2232.png)
 
 
-### 写法三
+### 写法三【荐】
 
 > 上面的写法一、写法二并不是很智能，因为在定义模板的时候，没有智能提示和高亮，容易出错。我们不妨来看看写法三。
 
