@@ -341,6 +341,165 @@
 
 ## 案例：发表评论功能的实现
 
+> 该案例需要完善，目前只是为了演示 localStorage
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="vue2.5.16.js"></script>
+    <link rel="stylesheet" href="bootstrap3.3.7.css">
+</head>
+
+<body>
+    <div id="app">
+
+
+        <cmt-box @func="loadComments"></cmt-box>
+
+
+        <ul class="list-group">
+            <li class="list-group-item" v-for="item in list" :key="item.id">
+                <span class="badge">评论人： {{ item.user }}</span>
+                {{ item.content }}
+            </li>
+        </ul>
+
+
+    </div>
+
+
+    <template id="tmpl">
+        <div>
+
+            <div class="form-group">
+                <label>评论人：</label>
+                <input type="text" class="form-control" v-model="user">
+            </div>
+
+            <div class="form-group">
+                <label>评论内容：</label>
+                <textarea class="form-control" v-model="content"></textarea>
+            </div>
+
+            <div class="form-group">
+                <input type="button" value="发表评论" class="btn btn-primary" @click="postComment">
+            </div>
+
+        </div>
+    </template>
+
+    <script>
+
+        var commentBox = {
+            data() {
+                return {
+                    user: '',
+                    content: ''
+                }
+            },
+            template: '#tmpl',
+            methods: {
+                postComment() { // 发表评论的方法
+                    // 分析：发表评论的业务逻辑
+                    // 提示：评论数据存到哪里去？？？   存放到了 localStorage 中  localStorage.setItem('cmts', '')
+                    // 1. 先组织出一个最新的评论数据对象
+                    // 2. 想办法，把 第一步中，得到的评论对象，保存到 localStorage 中（注意：localStorage 只支持存放字符串数据， 因此要先调用 JSON.stringify）
+                    //  2.1 在保存 最新的 评论数据之前，要先从 localStorage 获取到之前的评论数据（string）， 转换为 一个  数组对象， 然后，把最新的评论， push 到这个数组
+                    //         注意：如果获取到的 localStorage 中的 评论字符串，为空不存在， 则  可以 返回一个 '[]'
+                    //  2.2  把 最新的  评论列表数组，再次调用 JSON.stringify 转为  数组字符串，然后调用 localStorage.setItem()
+
+                    var comment = { id: Date.now(), user: this.user, content: this.content }
+
+                    // 第一步：一开始，从 localStorage 中获取已存在的评论
+                    var list = JSON.parse(localStorage.getItem('cmts') || '[]') //获取已存在的评论数据。【重要】需要考虑空字符串的可能性，否则返回的是undefined
+                    // 第二步：添加新的评论item
+                    list.unshift(comment)
+                    // 第三步：重新保存最新的 评论数据 到 localStorage 中
+                    localStorage.setItem('cmts', JSON.stringify(list))
+
+                    this.user = this.content = ''
+
+                    // this.loadComments() // ?????
+                    this.$emit('func')
+                }
+            }
+        }
+
+        // 创建 Vue 实例，得到 ViewModel
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                list: [
+                    { id: Date.now(), user: '李白', content: '天生我材必有用' },
+                    { id: Date.now(), user: '江小白', content: '劝君更尽一杯酒' },
+                    { id: Date.now(), user: '小马', content: '我姓马， 风吹草低见牛羊的马' }
+                ]
+            },
+            beforeCreate() { // 注意：这里不能调用 loadComments 方法，因为在执行这个钩子函数的时候，data 和 methods 都还没有被初始化好
+
+            },
+            created() {
+                //页面一开始加载的时候，就去读取 localStorage 中已存在的评论list
+                this.loadComments()
+            },
+            methods: {
+                loadComments() { // 从本地的 localStorage 中，加载评论列表
+                    
+                    var list = JSON.parse(localStorage.getItem('cmts') || '[]')
+                    this.list = list
+                }
+            },
+            components: {
+                'cmt-box': commentBox
+            }
+        });
+    </script>
+</body>
+
+</html>
+```
+
+
+上面的代码中，父组件定义了`loadComments()`方法，作用是**加载 localStorage 中的评论列表**。我们可以看到，页面在一开始加载的时候，就在create()生命周期中调用了`loadComments()`；当自组件中添加了评论之后，再次调用了`loadComments()`。
+
+**待改进**：
+
+不过，这段代码还有些问题：页面一开始加载的时候，读取的是 localStorage 中的评论列表。如果一开始的时候，从网络获取了已存在的列表，岂不是读不到了？
+
+正确的做法应该是：父组件和子组件共享 list数据，每当在子组件中 添加了一条评论之后，就往 list 中添加一条 item。
+
+
+## 在Vue中，通过 ref 属性获取DOM元素
+
+我们当然可以使用JS原生的做法（document.getElementById）或者 jQuery 来获取DOM，但是这种做法却在无形中操作了DOM，在Vue框架中并不推荐这种做法。
+
+
+
+
+### 使用 ref 属性获取整个子组件
+
+根据上面的例子，我们可以得出**规律**：只要`ref`属性加在了DOM元素身上，我们就可以获取这个DOM元素。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
