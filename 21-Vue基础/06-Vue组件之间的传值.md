@@ -5,7 +5,7 @@
 
 我们可以这样理解：Vue实例就是一个**父组件**，而我们自定义的组件（包括全局组件、私有组件）就是**子组件**。
 
-需要注意的是，子组件不能直接使用父组件中的数据。**父组件可以通过`props`属性向子组件传值**。
+【重点】需要注意的是，子组件不能直接使用父组件中的数据。**父组件可以通过`props`属性向子组件传值**。
 
 ### 父组件向子组件传值的代码举例
 
@@ -23,8 +23,9 @@
 
 <body>
     <div id="app">
-        <!--第三步：父组件在引用子组件的时候， 通过 属性绑定（v-bind:）的形式, 把 需要传递给 子组件的数据，以属性绑定的形式，传递到子组件内部，供子组件使用 -->
-        <component1 v-bind:parent-msg="msg"></component1> 
+        <!-- 第三步：父组件在引用子组件的时候， 通过 属性绑定（v-bind:）的形式,  -->
+        <!--   把 需要传递给 子组件的数据，以属性绑定的形式，传递到子组件内部，供子组件使用 -->
+        <component1 v-bind:parent-msg="msg"></component1>
     </div>
 
     <!-- 定义子组件的模板 -->
@@ -36,10 +37,10 @@
     <script>
         // 创建 Vue 实例，得到 ViewModel
         var vm = new Vue({
-            el: '#app', 
+            el: '#app',
             data: {
                 msg: '父组件中的数据123'
-            }, 
+            },
             methods: {},
             components: {
                 // 子组件默认无法访问到 父组件中的 data 中的数据 和 methods 中的方法
@@ -51,17 +52,17 @@
                             title: '子组件私有的数据 title',
                             content: '子组件私有的数据 content'
                         }
-                    }, 
+                    },
                     // 注意： 组件中的 所有 props 中的数据，都是通过 父组件 传递给子组件的
-                    // props 中的数据，都是只读的，无法重新赋值（也就是说，）
-                    props: ['parentMsg'], // 第一步：把父组件传递过来的 parentmsg 属性，先在 props 数组中，定义一下，这样，才能使用这个数据
+                    // props 中的数据，都是只读的，无法重新赋值
+                    props: ['parentMsg'], // 第一步：把父组件传递过来的 parentMsg 属性，先在 props 数组中，定义一下，这样，才能使用这个数据
                     directives: {},
                     filters: {},
                     components: {},
                     methods: {
                         change() {
                             // 下面这行会报错，因为子组件不要直接修改父组件中的data数据
-                            // this.parentmsg = '被修改了'
+                            // this.parentMsg = '被修改了'
                         }
                     }
                 }
@@ -76,11 +77,11 @@
 
 效果如下：
 
-20180618_2350.png
+![](http://img.smyhvae.com/20180618_2350.png)
 
 代码截图如下：
 
-20180618_2355.png
+![](http://img.smyhvae.com/20180618_2355.png)
 
 
 **父组件给子组件传值的步骤**：
@@ -123,7 +124,8 @@
 
 <body>
     <div id="app">
-        <!-- 父组件向子组件 传递 方法，是通过 事件绑定机制； v-on。当我们自定义了 一个 事件属性 parent-show（这个地方不能用驼峰命名）之后，那么，子组件就能够，通过 emit 来调用 传递进去的 这个 方法了 -->
+        <!-- 父组件向子组件 传递 方法，是通过 事件绑定机制； v-on。当我们自定义了 一个 事件属性 parent-show（这个地方不能用驼峰命名）之后，-->
+        <!-- 那么，子组件就能够，通过 emit 来调用 传递进去的 这个 方法了 -->
         <!-- 【第一步】。意思是说，`show`是父组件的方法名，`parent-show`是自定义的时间属性，稍后要在子组件中用到 -->
         <component1 @parent-show='show'></component1>
     </div>
@@ -131,7 +133,7 @@
     <!-- 定义子组件的模板 -->
     <template id="myTemplate">
         <!-- 【第二步】按照正常的写法来：点击按钮，调用子组件的方法 -->
-        <h2 @click="childClick">我是子组件，点击调用父组件的方法</h2>
+        <div @click="childClick">我是子组件，点击调用父组件的方法</div>
     </template>
 
     <script>
@@ -177,10 +179,9 @@
 
 效果如下：（点击子组件，触发了父组件的方法）
 
-
+![](http://img.smyhvae.com/20180701_1800.png)
 
 根据上面的代码，我们可以总结出，父组件将方法传递给子组件，分为三步，具体可以看上方代码的注释。
-
 
 
 ## 子组件向父组件传值
@@ -257,7 +258,7 @@
 
 运行结果：（点击`<h2>`之后）
 
-20180623_1640.png
+![](http://img.smyhvae.com/20180623_1640.png)
 
 **代码举例2**：（将子组件中的data数据传递给父组件，存放到父组件的data中）
 
@@ -336,7 +337,7 @@
 运行结果：（点击`<h2>`之后）
 
 
-20180623_1655.png
+![](http://img.smyhvae.com/20180623_1655.png)
 
 
 ## 案例：发表评论功能的实现
@@ -450,7 +451,7 @@
             },
             methods: {
                 loadComments() { // 从本地的 localStorage 中，加载评论列表
-                    
+
                     var list = JSON.parse(localStorage.getItem('cmts') || '[]')
                     this.list = list
                 }
@@ -479,7 +480,94 @@
 
 我们当然可以使用JS原生的做法（document.getElementById）或者 jQuery 来获取DOM，但是这种做法却在无形中操作了DOM，在Vue框架中并不推荐这种做法。
 
+我们可以通过`ref`属性获取DOM元素。
 
+`ref`的英文单词是**reference**，表示**引用**。我们平时可以经常看到控制台会报错**referenceError**的错误，就和引用类型的数据有关。
+
+
+**在Vue中，通过 ref 属性获取DOM元素**的步骤：
+
+（1）第一步：在标签中给 DOM 元素设置 ref 属性。
+
+```html
+    <h3 id="myH3" ref="myTitle"> 今天天气太好了</h3>
+```
+
+（2）第二步：通过 this.this.$refs.xxx 获取 DOM 元素
+
+```javascript
+console.log(this.$refs.myTitle.innerText)
+```
+
+**举例如下**：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="vue2.5.16.js"></script>
+</head>
+
+<body>
+    <div id="app">
+
+        <!-- 第一步：在标签中给 DOM 元素设置 ref 属性 -->
+        <h3 id="myH3" ref="myTitle"> 今天天气太好了</h3>
+
+        <input type="button" value="按钮元素" @click="getElement" ref="myBtn">
+
+
+    </div>
+
+    <script>
+
+        var login = {
+            template: '<h1>登录组件</h1>',
+            data() {
+                return {
+                    msg: 'son msg'
+                }
+            },
+            methods: {
+                show() {
+                    console.log('调用了子组件的方法')
+                }
+            }
+        }
+
+        // 创建 Vue 实例，得到 ViewModel
+        var vm = new Vue({
+            el: '#app',
+            data: {},
+            methods: {
+                getElement() {
+                    // 原生js获取DOM元素
+                    // console.log(document.getElementById('myTitle').innerText)
+
+                    // 第二步：通过 this.this.$refs.xxx 获取 DOM 元素
+                    console.log(this.$refs.myTitle.innerText)
+
+
+                }
+            },
+            components: {
+                login
+            }
+        });
+    </script>
+</body>
+
+</html>
+```
+
+运行上方代码，然后我们在控制台输入`vm`，就可以看到：
+
+![](http://img.smyhvae.com/20180701_1640.png)
 
 
 ### 使用 ref 属性获取整个子组件
@@ -487,25 +575,76 @@
 根据上面的例子，我们可以得出**规律**：只要`ref`属性加在了DOM元素身上，我们就可以获取这个DOM元素。
 
 
+那我们可以通过ref属性获取整个**Vue子组件**吗？当然可以。这样做的意义是：**在父组件中通过`ref`属性拿到了子组件之后，就可以进一步拿到子组件中的data和method。
 
 
 
 
+举例：
 
+```html
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="vue2.5.16.js"></script>
+</head>
 
+<body>
+    <div id="app">
 
+        <input type="button" value="点击按钮" @click="getElement">
 
+        <login-component ref="loginTemplate"></login-component>
+    </div>
 
+    <script>
 
+        // 创建 Vue 实例，得到 ViewModel
+        var vm = new Vue({
+            el: '#app',
+            data: {},
+            methods: {
+                getElement() {
 
+                    //在父组件中，通过ref获取整个子组件，进而获取子组件的data
+                    console.log(this.$refs.loginTemplate.myData)
 
+                    //在父组件中，通过ref获取整个子组件，进而获取子组件的method
+                    this.$refs.loginTemplate.showMethod()
+                }
+            },
+            components: {
+                'login-component': {
+                    template: '<h1>登录组件</h1>',
+                    data() {
+                        return {
+                            myData: '子组件的data'
+                        }
+                    },
+                    methods: {
+                        showMethod() {
+                            console.log('调用子组件的method')
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
 
+</html>
+```
 
+运行代码，点击按钮后，效果如下：
 
+![](http://img.smyhvae.com/20180701_1735.png)
 
+我们直接在控制台输入`vm`，可以看到：
 
-
-
-
+![](http://img.smyhvae.com/20180701_1740.png)
 
