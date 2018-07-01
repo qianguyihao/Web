@@ -271,7 +271,7 @@ Vue.component('myComponent', myAccount); //第一个参数是组件的名称（�
 
 ![](http://img.smyhvae.com/20180617_1809.png)
 
-当然，我们还可以把**模板的定义**存放在`<template>`标签中，这样的话，模板里的html标签就可以出现智能提示和高亮，避免出错。如下：
+【荐】当然，我们还可以把**模板的定义**存放在`<template>`标签中，这样的话，模板里的html标签就可以出现智能提示和高亮，避免出错。如下：
 
 
 ```html
@@ -315,6 +315,34 @@ Vue.component('myComponent', myAccount); //第一个参数是组件的名称（�
 ```
 
 运行效果不变。
+
+上方代码中，如果在注册私有组件时，组件的名称是**驼峰命名**，比如：
+
+```javascript
+            components: { // 定义、注册Vue实例内部的私有组件
+                myLogin: {
+                    template: '#loginTmp'
+                }
+            }
+```
+
+那么，在标签中使用组件时，需要把大写的驼峰改为小写的字母，同时两个单词之间使用`-`进行连接：
+
+```html
+        <my-login></my-login>
+```
+
+所以，为了避免名字不一致的问题，我们注册组件时，组件的名称可以直接写成`my-login`。比如：（避免驼峰不一致的建议写法）
+
+
+```javascript
+            components: { // 定义、注册Vue实例内部的私有组件
+                `my-login`: {
+                    template: '#loginTmp'
+                }
+            }
+```
+
 
 
 ## 为组件添加 data 和 methods
