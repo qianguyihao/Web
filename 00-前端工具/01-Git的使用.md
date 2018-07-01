@@ -128,6 +128,24 @@ git自动合并成功。不管是git自动合并成功，还是在人工解决�
 
 
 
+
+### 修改已经push的某次commit的作者信息
+
+已经push的记录，如果要修改作者信息的话，只能 通过--force命令。
+
+参考链接：
+
+
+- [git 修改已提交的某一次的邮箱和用户信息](https://segmentfault.com/q/1010000006999861)
+
+看最后一条答案。
+
+- [修改 git repo 历史提交的 author](http://baurine.github.io/2015/08/22/git_update_author.html)
+
+
+
+
+
 ### 将 `branch1`的某个`commit1`合并到`branch2`当中
 
 切换到branch2中，然后执行如下命令：
