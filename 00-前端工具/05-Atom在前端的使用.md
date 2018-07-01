@@ -65,6 +65,24 @@ apm install --check
 - <https://zhenyong.github.io/2016/08/03/starting-atom/>
 
 
+## Markdown相关
+
+### 在编辑器中预览
+
+2018-06-JD日记.md
+
+Packages -> Markdown Preview -> Toggle Preview
+
+快捷键：Shift + Ctrl + M
+
+
+
+### 参考链接：
+
+- [使用Atom打造无懈可击的Markdown编辑器](http://www.cnblogs.com/fanzhidongyzby/p/6637084.html)
+
+
+
 
 
 ## 相关设置
