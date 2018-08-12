@@ -379,6 +379,22 @@ Undefined和任何数值计算的结果为NaN。NaN 与任何值都不相等，�
 
 true 和 fase。
 
+布尔值直接使用就可以了，千万不要加上引号。
+
+代码：
+
+```javascript
+	var a = true;
+	console.log(typeof a);
+```
+
+控制台输出结果：
+
+```
+	boolean
+```
+
+
 ## null和undefined
 
 ### `null`：空值
@@ -544,6 +560,23 @@ null和undefined有最大的相似性。看看null == undefined的结果(true)�
 【重要】该方法**不会影响到原变量**，它会将转换的结果返回。当然我们还可以直接写成`a = a.toString()`，这样的话，就是直接修改原变量。
 
 注意：null和undefined这两个值没有toString()方法，所以它们不能用方法二。如果调用，会报错。
+
+
+
+另外，Number类型的变量，在调用toString()时，可以在方法中传递一个整数作为参数。此时它将会把数字转换为指定的进制，如果不指定则默认转换为10进制。例如：
+
+```javascript
+        var a = 255;
+
+        //对于Number调用toString()时可以在方法中传递一个整数作为参数
+        //此时它将会把数字转换为指定的进制,如果不指定则默认转换为10进制
+        a = a.toString(2);
+
+        console.log(a);        // 11111111
+        console.log(typeof a); // string
+```
+
+
 
 **方法三**：调用String()函数。如下：
 
