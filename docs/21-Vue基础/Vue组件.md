@@ -1,47 +1,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ## 子组件的定义和注册
 
 我们在本文的第一段中，通过`Vue.component`形式定义的是**全局组件**。这一段中，我们来讲一下**子组件**。
@@ -216,7 +175,7 @@
         <counter number="1+2"> </counter>
         <counter number="10+20"> </counter>
     </div>
-
+{% raw %}
     <script>
         var myCounter = {
             //【重要】这里是子组件的范围，无法直接获取父组件中的 number
@@ -230,7 +189,7 @@
             }
         });
     </script>
-
+{% endraw %}
 </body>
 
 </html>
@@ -264,7 +223,7 @@
         <counter :number="1+2"> </counter>
         <counter :number="10+20"> </counter>
     </div>
-
+{% raw %}
     <script>
         var myCounter = {
             //这里是子组件的范围
@@ -279,7 +238,7 @@
             }
         });
     </script>
-
+{% endraw %}
 </body>
 
 </html>
@@ -296,6 +255,7 @@
 一般人可能会这样写：（不推荐的写法：子组件直接修改父组件中的数据）
 
 ```javascript
+{% raw %}
         var myCounter = {
             //这里是子组件的范围
             props: ['number'], //通过 props 属性将父亲的数据传递给子组件
@@ -307,6 +267,7 @@
 
             }
         }
+{% endraw %}
 ```
 
 上方代码的写法不推荐，因为不建议直接操作父组件中的数据。虽然数据操作成功，但是控制台会报错：
@@ -338,7 +299,7 @@ img.png
         <counter :number="1+2"> </counter>
         <counter :number="10+20"> </counter>
     </div>
-
+{% raw %}
     <script>
         var myCounter = {
             //这里是子组件的范围
@@ -366,7 +327,7 @@ img.png
 
         });
     </script>
-
+{% endraw %}
 </body>
 
 </html>
@@ -454,7 +415,7 @@ img.png
         <counter> </counter>
         <counter> </counter>
     </div>
-
+{% raw %}
     <script>
 
         Vue.component('counter', {
@@ -476,6 +437,7 @@ img.png
             el: '#app'
         });
     </script>
+{% endraw %}
 </body>
 
 </html>
@@ -502,7 +464,7 @@ img.png
         <counter @change="myMethod"> </counter>
         <counter @change="myMethod"> </counter>
     </div>
-
+{% raw %}
     <script>
 
         Vue.component('counter', {
@@ -530,6 +492,7 @@ img.png
             }
         });
     </script>
+{% endraw %}
 </body>
 
 </html>
@@ -553,7 +516,7 @@ img.png
     <title>Document</title>
     <script src="vue2.5.16.js"></script>
 </head>
-
+{% raw %}
 <body>
 
     <div id="app">
@@ -601,7 +564,7 @@ img.png
         });
     </script>
 </body>
-
+{% endraw %}
 </html>
 
 ```

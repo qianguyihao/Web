@@ -111,7 +111,7 @@ PS：数据发生变化时，会触发这两个方法。不过，我们一般用
     <title>Title</title>
     <script src="vue2.5.16.js"></script>
 </head>
-
+{% raw %}
 <body>
     <!--这个div区域就是MVVM中的 View-->
     <div id="app">
@@ -154,7 +154,7 @@ PS：数据发生变化时，会触发这两个方法。不过，我们一般用
     });
 
 </script>
-
+{% endraw %}
 </html>
 ```
 

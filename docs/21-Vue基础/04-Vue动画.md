@@ -626,7 +626,7 @@ Vue官方文档的解释是这样：
         }
     </style>
 </head>
-
+{% raw %}
 <body>
     <div id="app">
 
@@ -679,7 +679,7 @@ Vue官方文档的解释是这样：
         });
     </script>
 </body>
-
+{% endraw %}
 </html>
 ```
 
@@ -731,7 +731,7 @@ Vue官方文档的解释是这样：
         }
     </style>
 </head>
-
+{% raw %}
 <body>
     <div id="app">
 
@@ -787,7 +787,7 @@ Vue官方文档的解释是这样：
         });
     </script>
 </body>
-
+{% endraw %}
 </html>
 
 ```
@@ -847,7 +847,7 @@ Vue官方文档的解释是这样：
         }
     </style>
 </head>
-
+{% raw %}
 <body>
     <div id="app">
 
@@ -903,7 +903,7 @@ Vue官方文档的解释是这样：
         });
     </script>
 </body>
-
+{% endraw %}
 </html>
 ```
 
@@ -962,7 +962,7 @@ Vue官方文档的解释是这样：
         }
     </style>
 </head>
-
+{% raw %}
 <body>
     <div id="app">
 
@@ -1020,7 +1020,7 @@ Vue官方文档的解释是这样：
         });
     </script>
 </body>
-
+{% endraw %}
 </html>
 ```
 
@@ -1083,7 +1083,7 @@ Vue官方文档的解释是这样：
         }
     </style>
 </head>
-
+{% raw %}
 <body>
     <div id="app">
 
@@ -1141,7 +1141,7 @@ Vue官方文档的解释是这样：
         });
     </script>
 </body>
-
+{% endraw %}
 </html>
 ```
 

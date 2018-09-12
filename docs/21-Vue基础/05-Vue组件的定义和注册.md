@@ -354,7 +354,7 @@ Vue.component('myComponent', myAccount); //第一个参数是组件的名称（�
 ```html
 <!DOCTYPE html>
 <html lang="en">
-
+{% raw %}
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -409,7 +409,7 @@ Vue.component('myComponent', myAccount); //第一个参数是组件的名称（�
         });
     </script>
 </body>
-
+{% endraw %}
 </html>
 
 ```
@@ -439,7 +439,7 @@ Vue.component('myComponent', myAccount); //第一个参数是组件的名称（�
     <title>Document</title>
     <script src="vue2.5.16.js"></script>
 </head>
-
+{% raw %}
 <body>
     <div id="app">
         <!-- 第一次调用组件 -->
@@ -482,7 +482,7 @@ Vue.component('myComponent', myAccount); //第一个参数是组件的名称（�
         });
     </script>
 </body>
-
+{% endraw %}
 </html>
 ```
 
@@ -508,7 +508,7 @@ Vue.component('myComponent', myAccount); //第一个参数是组件的名称（�
     <title>Document</title>
     <script src="vue2.5.16.js"></script>
 </head>
-
+{% raw %}
 <body>
     <div id="app">
         <counter></counter>
@@ -550,7 +550,7 @@ Vue.component('myComponent', myAccount); //第一个参数是组件的名称（�
         });
     </script>
 </body>
-
+{% raw %}
 </html>
 
 ```

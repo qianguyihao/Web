@@ -13,10 +13,10 @@
 ```html
 <!-- v-model里的内容是变量，变量里的值可能是 true 后者 false -->
 <input type="checkbox" v-model="isSelected">
-
+{% raw %}
 <!-- 选中时，值为 true。未选中时，值为 false -->
 <span>{{isSelected}}</span>
-
+{% endraw %}
 
 <!-- 选中时，显示文字。未选中时，隐藏文字 -->
 <span v-if="isSelected">haha</span>

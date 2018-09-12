@@ -643,7 +643,7 @@ Vue官方文档的解释是这样：
 
             <input type="button" value="添加" @click="add">
         </div>
-
+{% raw %}
         <!-- <ul> -->
         <!-- 在实现列表过渡的时候，如果需要过渡的元素，是通过 v-for 循环渲染出来的，不能使用 transition 包裹，需要使用 transitionGroup -->
         <!-- 如果要为 v-for 循环创建的元素设置动画，必须为每一个 元素 设置 :key 属性 -->
@@ -653,7 +653,7 @@ Vue官方文档的解释是这样：
             </li>
         </transition-group>
         <!-- </ul> -->
-
+{% endraw %}
     </div>
 
     <script>
@@ -748,7 +748,7 @@ Vue官方文档的解释是这样：
 
             <input type="button" value="添加" @click="add">
         </div>
-
+{% raw %}
         <!-- <ul> -->
         <!-- 在实现列表过渡的时候，如果需要过渡的元素，是通过 v-for 循环渲染出来的，不能使用 transition 包裹，需要使用 transitionGroup -->
         <!-- 如果要为 v-for 循环创建的元素设置动画，必须为每一个 元素 设置 :key 属性 -->
@@ -758,7 +758,7 @@ Vue官方文档的解释是这样：
             </li>
         </transition-group>
         <!-- </ul> -->
-
+{% endraw %}
     </div>
 
     <script>
@@ -864,7 +864,7 @@ Vue官方文档的解释是这样：
 
             <input type="button" value="添加" @click="add">
         </div>
-
+{% raw %}
         <!-- <ul> -->
         <!-- 在实现列表过渡的时候，如果需要过渡的元素，是通过 v-for 循环渲染出来的，不能使用 transition 包裹，需要使用 transitionGroup -->
         <!-- 如果要为 v-for 循环创建的元素设置动画，必须为每一个 元素 设置 :key 属性 -->
@@ -874,7 +874,7 @@ Vue官方文档的解释是这样：
             </li>
         </transition-group>
         <!-- </ul> -->
-
+{% endraw %}
     </div>
 
     <script>
@@ -979,7 +979,7 @@ Vue官方文档的解释是这样：
 
             <input type="button" value="添加" @click="add">
         </div>
-
+{% raw %}
         <ul>
             <!-- 在实现列表过渡的时候，如果需要过渡的元素，是通过 v-for 循环渲染出来的，不能使用 transition 包裹，需要使用 transitionGroup -->
             <!-- 如果要为 v-for 循环创建的元素设置动画，必须为每一个 元素 设置 :key 属性 -->
@@ -991,7 +991,7 @@ Vue官方文档的解释是这样：
                 </li>
             </transition-group>
         </ul>
-
+{% endraw %}
     </div>
 
     <script>
@@ -1100,7 +1100,7 @@ Vue官方文档的解释是这样：
 
             <input type="button" value="添加" @click="add">
         </div>
-
+{% raw %}
         <!-- <ul> -->
         <!-- 在实现列表过渡的时候，如果需要过渡的元素，是通过 v-for 循环渲染出来的，不能使用 transition 包裹，需要使用 transitionGroup -->
         <!-- 如果要为 v-for 循环创建的元素设置动画，必须为每一个 元素 设置 :key 属性 -->
@@ -1112,7 +1112,7 @@ Vue官方文档的解释是这样：
             </li>
         </transition-group>
         <!-- </ul> -->
-
+{% endraw %}
     </div>
 
     <script>

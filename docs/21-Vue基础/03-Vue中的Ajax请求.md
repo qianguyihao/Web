@@ -81,7 +81,7 @@ vue-resource 依赖于 Vue。所以，我们要按照先后顺序，导入vue.js
     <script src="../vue.js"></script>
     <script src="../vue-resource121.js"></script>
 </head>
-
+{% raw %}
 <body>
     <div id="app">
         <input type="text" v-model="id">
@@ -136,7 +136,7 @@ vue-resource 依赖于 Vue。所以，我们要按照先后顺序，导入vue.js
     }
  });
 </script>
-
+{% endraw %}
 </html>
 
 ```
@@ -218,7 +218,7 @@ vue-resource 依赖于 Vue。所以，我们要按照先后顺序，导入vue.js
     <script src="vue.js"></script>
     <script src="vue-resource121.js"></script>
 </head>
-
+{% raw %}
 <body>
     <div id="app">
         <input type="text" v-model="pname">
@@ -294,7 +294,7 @@ vue-resource 依赖于 Vue。所以，我们要按照先后顺序，导入vue.js
         }
     });
 </script>
-
+{% endraw %}
 </html>
 ```
 
@@ -338,7 +338,7 @@ vue-resource 依赖于 Vue。所以，我们要按照先后顺序，导入vue.js
     <script src="vue.js"></script>
     <script src="vue-resource121.js"></script>
 </head>
-
+{% raw %}
 <body>
     <div id="app">
         <input type="text" v-model="pname">
@@ -429,7 +429,7 @@ vue-resource 依赖于 Vue。所以，我们要按照先后顺序，导入vue.js
         }
     });
 </script>
-
+{% endraw %}
 </html>
 
 ```

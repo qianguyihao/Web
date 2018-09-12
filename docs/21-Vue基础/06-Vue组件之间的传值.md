@@ -20,7 +20,7 @@
     <title>Document</title>
     <script src="vue2.5.16.js"></script>
 </head>
-
+{% raw %}
 <body>
     <div id="app">
         <!-- 第三步：父组件在引用子组件的时候， 通过 属性绑定（v-bind:）的形式,  -->
@@ -70,7 +70,7 @@
         });
     </script>
 </body>
-
+{% endraw %}
 </html>
 ```
 
@@ -356,7 +356,7 @@
     <script src="vue2.5.16.js"></script>
     <link rel="stylesheet" href="bootstrap3.3.7.css">
 </head>
-
+{% raw %}
 <body>
     <div id="app">
 
@@ -462,7 +462,7 @@
         });
     </script>
 </body>
-
+{% endraw %}
 </html>
 ```
 
