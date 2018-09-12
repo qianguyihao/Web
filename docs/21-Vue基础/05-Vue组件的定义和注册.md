@@ -354,7 +354,7 @@ Vue.component('myComponent', myAccount); //第一个参数是组件的名称（�
 ```html
 <!DOCTYPE html>
 <html lang="en">
-{% raw %}
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -362,7 +362,7 @@ Vue.component('myComponent', myAccount); //第一个参数是组件的名称（�
     <title>Document</title>
     <script src="vue2.5.16.js"></script>
 </head>
-
+{% raw %}
 <body>
     <!-- 定义组件的模板 -->
     <template id="myAccount">
@@ -382,7 +382,7 @@ Vue.component('myComponent', myAccount); //第一个参数是组件的名称（�
         <!-- 第二次调用组件 -->
         <account> </account>
     </div>
-
+{% endraw %}
     <script>
 
         //定义、注册组件
@@ -409,7 +409,7 @@ Vue.component('myComponent', myAccount); //第一个参数是组件的名称（�
         });
     </script>
 </body>
-{% endraw %}
+
 </html>
 
 ```
@@ -439,7 +439,7 @@ Vue.component('myComponent', myAccount); //第一个参数是组件的名称（�
     <title>Document</title>
     <script src="vue2.5.16.js"></script>
 </head>
-{% raw %}
+
 <body>
     <div id="app">
         <!-- 第一次调用组件 -->
@@ -449,7 +449,7 @@ Vue.component('myComponent', myAccount); //第一个参数是组件的名称（�
         <!-- 第二次调用组件 -->
         <counter></counter>
     </div>
-
+{% raw %}
     <!-- 定义模板 -->
     <template id="tmpl">
         <div>
@@ -457,7 +457,7 @@ Vue.component('myComponent', myAccount); //第一个参数是组件的名称（�
             <h3>{{count}}</h3>
         </div>
     </template>
-
+{% endraw %}
     <script>
         var dataObj = { count: 0 }
 
@@ -482,7 +482,7 @@ Vue.component('myComponent', myAccount); //第一个参数是组件的名称（�
         });
     </script>
 </body>
-{% endraw %}
+
 </html>
 ```
 
@@ -508,7 +508,7 @@ Vue.component('myComponent', myAccount); //第一个参数是组件的名称（�
     <title>Document</title>
     <script src="vue2.5.16.js"></script>
 </head>
-{% raw %}
+
 <body>
     <div id="app">
         <counter></counter>
@@ -517,14 +517,14 @@ Vue.component('myComponent', myAccount); //第一个参数是组件的名称（�
         <hr>
         <counter></counter>
     </div>
-
+{% raw %}
     <template id="tmpl">
         <div>
             <input type="button" value="让count加1" @click="increment">
             <h3>{{count}}</h3>
         </div>
     </template>
-
+{% endraw %}
     <script>
         var dataObj = { count: 0 }
 
@@ -550,7 +550,7 @@ Vue.component('myComponent', myAccount); //第一个参数是组件的名称（�
         });
     </script>
 </body>
-{% raw %}
+
 </html>
 
 ```

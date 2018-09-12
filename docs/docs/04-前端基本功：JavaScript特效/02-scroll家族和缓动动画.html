@@ -1,0 +1,4114 @@
+<!DOCTYPE HTML>
+<html lang="">
+<head>
+    <meta charset="UTF-8">
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <title>02-scroll家族和缓动动画 · GitBook</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="description" content="">
+    <meta name="generator" content="GitBook 3.2.3">
+
+
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+
+    <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+
+
+    <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+
+
+    <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+
+
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152"
+          href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+
+    <link rel="next" href="03-client家族(可视区"/>
+
+
+    <link rel="prev" href="01-offset家族和匀速动画(含轮播图的实现"/>
+
+
+</head>
+<body>
+
+<div class="book">
+    <div class="book-summary">
+
+
+        <div id="book-search-input" role="search">
+            <input type="text" placeholder="Type to search"/>
+        </div>
+
+
+        <nav role="navigation">
+
+
+            <ul class="summary">
+
+
+                <li class="chapter " data-level="1.1" data-path="../">
+
+                    <a href="../">
+
+
+                        Introduction
+
+                    </a>
+
+
+                </li>
+
+                <li class="chapter " data-level="1.2">
+            
+                <span>
+            
+                    
+                    00-前端工具
+            
+                </span>
+
+
+                    <ul class="articles">
+
+
+                        <li class="chapter " data-level="1.2.1" data-path="../00-前端工具/01-Git的使用.html">
+
+                            <a href="../00-前端工具/01-Git的使用.html">
+
+
+                                01-Git的使用
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.2.2" data-path="../00-前端工具/02-VS-Code.html">
+
+                            <a href="../00-前端工具/02-VS-Code.html">
+
+
+                                02 VS Code
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.2.3" data-path="../00-前端工具/03-Sublime-Text在前端中的使用.html">
+
+                            <a href="../00-前端工具/03-Sublime-Text在前端中的使用.html">
+
+
+                                03-Sublime-Text在前端中的使用
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.2.4" data-path="../00-前端工具/04-WebStorm的使用.html">
+
+                            <a href="../00-前端工具/04-WebStorm的使用.html">
+
+
+                                04-WebStorm的使用
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.2.5" data-path="../00-前端工具/05-Atom在前端的使用.html">
+
+                            <a href="../00-前端工具/05-Atom在前端的使用.html">
+
+
+                                05-Atom在前端的使用
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.2.6" data-path="../00-前端工具/chrome浏览器.html">
+
+                            <a href="../00-前端工具/chrome浏览器.html">
+
+
+                                chrome浏览器
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.2.7" data-path="../00-前端工具/iconMoon.html">
+
+                            <a href="../00-前端工具/iconMoon.html">
+
+
+                                Icon Moon
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.2.8" data-path="../00-前端工具/iTerm2-OhMyZsh-agnoster搭建.html">
+
+                            <a href="../00-前端工具/iTerm2-OhMyZsh-agnoster搭建.html">
+
+
+                                iTerm2-OhMyZsh-agnoster 搭建
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.2.9" data-path="../00-前端工具/whistle网络抓包.html">
+
+                            <a href="../00-前端工具/whistle网络抓包.html">
+
+
+                                whistle网络抓包
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.2.10" data-path="../00-前端工具/推荐链接.html">
+
+                            <a href="../00-前端工具/推荐链接.html">
+
+
+                                推荐链接
+
+                            </a>
+
+
+                        </li>
+
+
+                    </ul>
+
+                </li>
+
+                <li class="chapter " data-level="1.3">
+            
+                <span>
+            
+                    
+                    01 Html
+            
+                </span>
+
+
+                    <ul class="articles">
+
+
+                        <li class="chapter " data-level="1.3.1" data-path="../01-html/01-html标签图文详解（一）.html">
+
+                            <a href="../01-html/01-html标签图文详解（一）.html">
+
+
+                                01-html标签图文详解（一）
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.3.2" data-path="../01-html/02-html标签图文详解（二）.html">
+
+                            <a href="../01-html/02-html标签图文详解（二）.html">
+
+
+                                02-html标签图文详解（二）
+
+                            </a>
+
+
+                        </li>
+
+
+                    </ul>
+
+                </li>
+
+                <li class="chapter " data-level="1.4">
+            
+                <span>
+            
+                    
+                    02 CSS
+            
+                </span>
+
+
+                    <ul class="articles">
+
+
+                        <li class="chapter " data-level="1.4.1" data-path="../02-CSS/01-CSS属性：字体属性和文本属性.html">
+
+                            <a href="../02-CSS/01-CSS属性：字体属性和文本属性.html">
+
+
+                                01-CSS属性：字体属性和文本属性
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.4.2" data-path="../02-CSS/02-CSS属性：背景属性.html">
+
+                            <a href="../02-CSS/02-CSS属性：背景属性.html">
+
+
+                                02-CSS属性：背景属性
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.4.3" data-path="../02-CSS/03-CSS样式表和选择器.html">
+
+                            <a href="../02-CSS/03-CSS样式表和选择器.html">
+
+
+                                03-CSS样式表和选择器
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.4.4" data-path="../02-CSS/04-CSS选择器：伪类.html">
+
+                            <a href="../02-CSS/04-CSS选择器：伪类.html">
+
+
+                                04-CSS选择器：伪类
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.4.5" data-path="../02-CSS/05-CSS样式表的继承性和层叠性.html">
+
+                            <a href="../02-CSS/05-CSS样式表的继承性和层叠性.html">
+
+
+                                05-CSS样式表的继承性和层叠性
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.4.6" data-path="../02-CSS/06-CSS盒模型详解.html">
+
+                            <a href="../02-CSS/06-CSS盒模型详解.html">
+
+
+                                06-CSS盒模型详解
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.4.7" data-path="../02-CSS/07-浮动.html">
+
+                            <a href="../02-CSS/07-浮动.html">
+
+
+                                07-浮动
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.4.8" data-path="../02-CSS/08-CSS属性：定位属性.html">
+
+                            <a href="../02-CSS/08-CSS属性：定位属性.html">
+
+
+                                08-CSS属性：定位属性
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.4.9" data-path="../02-CSS/09-CSS案例讲解：博雅互动.html">
+
+                            <a href="../02-CSS/09-CSS案例讲解：博雅互动.html">
+
+
+                                09-CSS案例讲解：博雅互动
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.4.10" data-path="../02-CSS/10-CSS的一些小知识.html">
+
+                            <a href="../02-CSS/10-CSS的一些小知识.html">
+
+
+                                10-CSS的一些小知识
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.4.11" data-path="../02-CSS/浏览器的兼容性问题.html">
+
+                            <a href="../02-CSS/浏览器的兼容性问题.html">
+
+
+                                浏览器的兼容性问题
+
+                            </a>
+
+
+                        </li>
+
+
+                    </ul>
+
+                </li>
+
+                <li class="chapter " data-level="1.5">
+            
+                <span>
+            
+                    
+                    02-CSS进阶
+            
+                </span>
+
+
+                    <ul class="articles">
+
+
+                        <li class="chapter " data-level="1.5.1" data-path="../02-CSS进阶/Sass入门.html">
+
+                            <a href="../02-CSS进阶/Sass入门.html">
+
+
+                                Sass入门
+
+                            </a>
+
+
+                        </li>
+
+
+                    </ul>
+
+                </li>
+
+                <li class="chapter " data-level="1.6">
+            
+                <span>
+            
+                    
+                    03-JavaScript基础
+            
+                </span>
+
+
+                    <ul class="articles">
+
+
+                        <li class="chapter " data-level="1.6.1"
+                            data-path="../03-JavaScript基础/01-JavaScript语法基础：JS简介.html">
+
+                            <a href="../03-JavaScript基础/01-JavaScript语法基础：JS简介.html">
+
+
+                                01-JavaScript语法基础：JS简介
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.6.2"
+                            data-path="../03-JavaScript基础/02-JavaScript语法基础：变量(smyhvae-PC的冲突副本2018-08-10">
+            
+                <span>
+            
+                    
+                    02-JavaScript语法基础：变量 (smyhvae-PC 的冲突副本 2018-08-10)
+
+                    </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.6.3"
+                            data-path="../03-JavaScript基础/02-JavaScript语法基础：变量.html">
+
+                            <a href="../03-JavaScript基础/02-JavaScript语法基础：变量.html">
+
+
+                                02-JavaScript语法基础：变量
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.6.4"
+                            data-path="../03-JavaScript基础/03-JavaScript语法基础：运算符和表达式.html">
+
+                            <a href="../03-JavaScript基础/03-JavaScript语法基础：运算符和表达式.html">
+
+
+                                03-JavaScript语法基础：运算符和表达式
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.6.5"
+                            data-path="../03-JavaScript基础/04-JavaScript语法基础：循环控制（if语句&for循环）.html">
+
+                            <a href="../03-JavaScript基础/04-JavaScript语法基础：循环控制（if语句&for循环）.html">
+
+
+                                04-JavaScript语法基础：循环控制（if语句&for循环）
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.6.6" data-path="../03-JavaScript基础/05-函数.html">
+
+                            <a href="../03-JavaScript基础/05-函数.html">
+
+
+                                05-函数
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.6.7" data-path="../03-JavaScript基础/05-对象简介.html">
+
+                            <a href="../03-JavaScript基础/05-对象简介.html">
+
+
+                                05-对象简介
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.6.8" data-path="../03-JavaScript基础/06-对象、作用域和this.html">
+
+                            <a href="../03-JavaScript基础/06-对象、作用域和this.html">
+
+
+                                06-对象、作用域和this
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.6.9" data-path="../03-JavaScript基础/07-对象的创建、构造函数和原型.html">
+
+                            <a href="../03-JavaScript基础/07-对象的创建、构造函数和原型.html">
+
+
+                                07-对象的创建、构造函数和原型
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.6.10" data-path="../03-JavaScript基础/08-数组.html">
+
+                            <a href="../03-JavaScript基础/08-数组.html">
+
+
+                                08-数组
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.6.11" data-path="../03-JavaScript基础/09-内置对象.html">
+
+                            <a href="../03-JavaScript基础/09-内置对象.html">
+
+
+                                09-内置对象
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.6.12" data-path="../03-JavaScript基础/10-DOM操作.html">
+
+                            <a href="../03-JavaScript基础/10-DOM操作.html">
+
+
+                                10-DOM操作
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.6.13" data-path="../03-JavaScript基础/12-事件对象Event和冒泡.html">
+
+                            <a href="../03-JavaScript基础/12-事件对象Event和冒泡.html">
+
+
+                                12-事件对象Event和冒泡
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.6.14" data-path="../03-JavaScript基础/13-BOM的常见内置方法和内置对象.html">
+
+                            <a href="../03-JavaScript基础/13-BOM的常见内置方法和内置对象.html">
+
+
+                                13-BOM的常见内置方法和内置对象
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.6.15" data-path="../03-JavaScript基础/13-事件委托.html">
+
+                            <a href="../03-JavaScript基础/13-事件委托.html">
+
+
+                                13-事件委托
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.6.16" data-path="../03-JavaScript基础/14-原型链.html">
+
+                            <a href="../03-JavaScript基础/14-原型链.html">
+
+
+                                14-原型链
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.6.17" data-path="../03-JavaScript基础/21-常见代码解读.html">
+
+                            <a href="../03-JavaScript基础/21-常见代码解读.html">
+
+
+                                21-常见代码解读
+
+                            </a>
+
+
+                        </li>
+
+
+                    </ul>
+
+                </li>
+
+                <li class="chapter " data-level="1.7">
+            
+                <span>
+            
+                    
+                    03-JavaScript进阶
+            
+                </span>
+
+
+                    <ul class="articles">
+
+
+                        <li class="chapter " data-level="1.7.1" data-path="../03-JavaScript进阶/06-作用域和闭包.html">
+
+                            <a href="../03-JavaScript进阶/06-作用域和闭包.html">
+
+
+                                06-作用域和闭包
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.7.2"
+                            data-path="../03-JavaScript进阶/07-call、apply、bind的区别.html">
+
+                            <a href="../03-JavaScript进阶/07-call、apply、bind的区别.html">
+
+
+                                07-call、apply、bind的区别
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.7.3" data-path="../03-JavaScript进阶/this.html">
+
+                            <a href="../03-JavaScript进阶/this.html">
+
+
+                                This
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.7.4" data-path="../03-JavaScript进阶/创建对象和继承.html">
+
+                            <a href="../03-JavaScript进阶/创建对象和继承.html">
+
+
+                                创建对象和继承
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.7.5" data-path="../03-JavaScript进阶/浅拷贝和深拷贝.html">
+
+                            <a href="../03-JavaScript进阶/浅拷贝和深拷贝.html">
+
+
+                                浅拷贝和深拷贝
+
+                            </a>
+
+
+                        </li>
+
+
+                    </ul>
+
+                </li>
+
+                <li class="chapter " data-level="1.8">
+            
+                <span>
+            
+                    
+                    04-前端基本功：CSS和DOM练习
+            
+                </span>
+
+
+                    <ul class="articles">
+
+
+                        <li class="chapter " data-level="1.8.1"
+                            data-path="../04-前端基本功：CSS和DOM练习/01-CSS基础练习：JD首页的制作（顶部和底部）.html">
+
+                            <a href="../04-前端基本功：CSS和DOM练习/01-CSS基础练习：JD首页的制作（顶部和底部）.html">
+
+
+                                01-CSS基础练习：JD首页的制作（顶部和底部）
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.8.2"
+                            data-path="../04-前端基本功：CSS和DOM练习/02-CSS基础练习：JD首页的制作（快捷导航部分）.html">
+
+                            <a href="../04-前端基本功：CSS和DOM练习/02-CSS基础练习：JD首页的制作（快捷导航部分）.html">
+
+
+                                02-CSS基础练习：JD首页的制作（快捷导航部分）
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.8.3" data-path="../04-前端基本功：CSS和DOM练习/03-DOM操作练习：基础练习.html">
+
+                            <a href="../04-前端基本功：CSS和DOM练习/03-DOM操作练习：基础练习.html">
+
+
+                                03-DOM操作练习：基础练习
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.8.4"
+                            data-path="../04-前端基本功：CSS和DOM练习/04-DOM操作练习：Tab栏切换（通过className设置样式）.html">
+
+                            <a href="../04-前端基本功：CSS和DOM练习/04-DOM操作练习：Tab栏切换（通过className设置样式）.html">
+
+
+                                04-DOM操作练习：Tab栏切换（通过className设置样式）
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.8.5"
+                            data-path="../04-前端基本功：CSS和DOM练习/05-DOM操作练习：访问关系的封装.html">
+
+                            <a href="../04-前端基本功：CSS和DOM练习/05-DOM操作练习：访问关系的封装.html">
+
+
+                                05-DOM操作练习：访问关系的封装
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.8.6"
+                            data-path="../04-前端基本功：CSS和DOM练习/06-DOM操作练习：通过style对象设置样式.html">
+
+                            <a href="../04-前端基本功：CSS和DOM练习/06-DOM操作练习：通过style对象设置样式.html">
+
+
+                                06-DOM操作练习：通过style对象设置样式
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.8.7"
+                            data-path="../04-前端基本功：CSS和DOM练习/07-DOM操作练习：innerHTML的方式创建元素.html">
+
+                            <a href="../04-前端基本功：CSS和DOM练习/07-DOM操作练习：innerHTML的方式创建元素.html">
+
+
+                                07-DOM操作练习：innerHTML的方式创建元素
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.8.8"
+                            data-path="../04-前端基本功：CSS和DOM练习/08-JavaScript基础：定时器.html">
+
+                            <a href="../04-前端基本功：CSS和DOM练习/08-JavaScript基础：定时器.html">
+
+
+                                08-JavaScript基础：定时器
+
+                            </a>
+
+
+                        </li>
+
+
+                    </ul>
+
+                </li>
+
+                <li class="chapter " data-level="1.9">
+            
+                <span>
+            
+                    
+                    04-前端基本功：JavaScript特效
+            
+                </span>
+
+
+                    <ul class="articles">
+
+
+                        <li class="chapter " data-level="1.9.1" data-path="01-offset家族和匀速动画(含轮播图的实现">
+            
+                <span>
+            
+                    
+                    01-offset家族和匀速动画(含轮播图的实现)
+
+                    </a>
+
+
+                        </li>
+
+                        <li class="chapter active" data-level="1.9.2" data-path="02-scroll家族和缓动动画.html">
+
+                            <a href="02-scroll家族和缓动动画.html">
+
+
+                                02-scroll家族和缓动动画
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.9.3" data-path="03-client家族(可视区">
+            
+                <span>
+            
+                    
+                    03-client家族(可视区)
+
+                    </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.9.4" data-path="04-JS的小知识.html">
+
+                            <a href="04-JS的小知识.html">
+
+
+                                04-JS的小知识
+
+                            </a>
+
+
+                        </li>
+
+
+                    </ul>
+
+                </li>
+
+                <li class="chapter " data-level="1.10">
+            
+                <span>
+            
+                    
+                    05 J Query
+            
+                </span>
+
+
+                    <ul class="articles">
+
+
+                        <li class="chapter " data-level="1.10.1" data-path="../05-jQuery/01-jQuery的介绍和选择器.html">
+
+                            <a href="../05-jQuery/01-jQuery的介绍和选择器.html">
+
+
+                                01-jQuery的介绍和选择器
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.10.2" data-path="../05-jQuery/02-jQuery动画详解.html">
+
+                            <a href="../05-jQuery/02-jQuery动画详解.html">
+
+
+                                02-jQuery动画详解
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.10.3" data-path="../05-jQuery/03-jQuery操作DOM.html">
+
+                            <a href="../05-jQuery/03-jQuery操作DOM.html">
+
+
+                                03-jQuery操作DOM
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.10.4" data-path="../05-jQuery/04-jQuery的事件机制和其他知识.html">
+
+                            <a href="../05-jQuery/04-jQuery的事件机制和其他知识.html">
+
+
+                                04-jQuery的事件机制和其他知识
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.10.5" data-path="../05-jQuery/11-Zepto入门.html">
+
+                            <a href="../05-jQuery/11-Zepto入门.html">
+
+
+                                11-Zepto入门
+
+                            </a>
+
+
+                        </li>
+
+
+                    </ul>
+
+                </li>
+
+                <li class="chapter " data-level="1.11">
+            
+                <span>
+            
+                    
+                    06-HTML5和CSS3
+            
+                </span>
+
+
+                    <ul class="articles">
+
+
+                        <li class="chapter " data-level="1.11.1" data-path="../06-HTML5和CSS3/01-HTML5详解.html">
+
+                            <a href="../06-HTML5和CSS3/01-HTML5详解.html">
+
+
+                                01-HTML5详解
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.11.2" data-path="../06-HTML5和CSS3/03-CSS3选择器详解.html">
+
+                            <a href="../06-HTML5和CSS3/03-CSS3选择器详解.html">
+
+
+                                03-CSS3选择器详解
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.11.3" data-path="../06-HTML5和CSS3/04-CSS3属性详解（一）.html">
+
+                            <a href="../06-HTML5和CSS3/04-CSS3属性详解（一）.html">
+
+
+                                04-CSS3属性详解（一）
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.11.4" data-path="../06-HTML5和CSS3/05-CSS3属性详解：动画详解.html">
+
+                            <a href="../06-HTML5和CSS3/05-CSS3属性详解：动画详解.html">
+
+
+                                05-CSS3属性详解：动画详解
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.11.5" data-path="../06-HTML5和CSS3/06-CSS3属性详解：flex布局.html">
+
+                            <a href="../06-HTML5和CSS3/06-CSS3属性详解：flex布局.html">
+
+
+                                06-CSS3属性详解：flex布局
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.11.6" data-path="../06-HTML5和CSS3/07-CSS3属性详解：Web字体.html">
+
+                            <a href="../06-HTML5和CSS3/07-CSS3属性详解：Web字体.html">
+
+
+                                07-CSS3属性详解：Web字体
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.11.7" data-path="../06-HTML5和CSS3/08-HTML5举例：简单的视频播放器.html">
+
+                            <a href="../06-HTML5和CSS3/08-HTML5举例：简单的视频播放器.html">
+
+
+                                08-HTML5举例：简单的视频播放器
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.11.8" data-path="../06-HTML5和CSS3/09-HTML5详解（二）.html">
+
+                            <a href="../06-HTML5和CSS3/09-HTML5详解（二）.html">
+
+
+                                09-HTML5详解（二）
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.11.9" data-path="../06-HTML5和CSS3/10-HTML5详解（三）.html">
+
+                            <a href="../06-HTML5和CSS3/10-HTML5详解（三）.html">
+
+
+                                10-HTML5详解（三）
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.11.10" data-path="../06-HTML5和CSS3/CSS3的常见边框汇总.html">
+
+                            <a href="../06-HTML5和CSS3/CSS3的常见边框汇总.html">
+
+
+                                CSS3的常见边框汇总
+
+                            </a>
+
+
+                        </li>
+
+
+                    </ul>
+
+                </li>
+
+                <li class="chapter " data-level="1.12">
+            
+                <span>
+            
+                    
+                    07-移动web开发
+            
+                </span>
+
+
+                    <ul class="articles">
+
+
+                        <li class="chapter " data-level="1.12.1" data-path="../07-移动web开发/01-Bootstrap入门.html">
+
+                            <a href="../07-移动web开发/01-Bootstrap入门.html">
+
+
+                                01-Bootstrap入门
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.12.2" data-path="../07-移动web开发/02-Bootstrap使用.html">
+
+                            <a href="../07-移动web开发/02-Bootstrap使用.html">
+
+
+                                02-Bootstrap使用
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.12.3" data-path="../07-移动web开发/03-Less详解.html">
+
+                            <a href="../07-移动web开发/03-Less详解.html">
+
+
+                                03-Less详解
+
+                            </a>
+
+
+                        </li>
+
+
+                    </ul>
+
+                </li>
+
+                <li class="chapter " data-level="1.13">
+            
+                <span>
+            
+                    
+                    08 Ajax
+            
+                </span>
+
+
+                    <ul class="articles">
+
+
+                        <li class="chapter " data-level="1.13.1" data-path="../08-Ajax/01-服务器分类及PHP入门.html">
+
+                            <a href="../08-Ajax/01-服务器分类及PHP入门.html">
+
+
+                                01-服务器分类及PHP入门
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.13.2" data-path="../08-Ajax/02-Ajax入门和发送http请求.html">
+
+                            <a href="../08-Ajax/02-Ajax入门和发送http请求.html">
+
+
+                                02-Ajax入门和发送http请求
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.13.3"
+                            data-path="../08-Ajax/03-函数封装：Ajax发送http请求（get&post）.html">
+
+                            <a href="../08-Ajax/03-函数封装：Ajax发送http请求（get&post）.html">
+
+
+                                03-函数封装：Ajax发送http请求（get&post）
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.13.4" data-path="../08-Ajax/04-同源和跨域.html">
+
+                            <a href="../08-Ajax/04-同源和跨域.html">
+
+
+                                04-同源和跨域
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.13.5" data-path="../08-Ajax/05-模板引擎.html">
+
+                            <a href="../08-Ajax/05-模板引擎.html">
+
+
+                                05-模板引擎
+
+                            </a>
+
+
+                        </li>
+
+
+                    </ul>
+
+                </li>
+
+                <li class="chapter " data-level="1.14">
+            
+                <span>
+            
+                    
+                    09-Node.js和模块化
+            
+                </span>
+
+
+                    <ul class="articles">
+
+
+                        <li class="chapter " data-level="1.14.1" data-path="../09-Node.js和模块化/01-Node.js入门.html">
+
+                            <a href="../09-Node.js和模块化/01-Node.js入门.html">
+
+
+                                01-Node.js入门
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.14.2"
+                            data-path="../09-Node.js和模块化/02-JavaScript模块化01：CommonJS.html">
+
+                            <a href="../09-Node.js和模块化/02-JavaScript模块化01：CommonJS.html">
+
+
+                                02-JavaScript模块化01：CommonJS
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.14.3"
+                            data-path="../09-Node.js和模块化/02-JavaScript模块化02：AMD.html">
+
+                            <a href="../09-Node.js和模块化/02-JavaScript模块化02：AMD.html">
+
+
+                                02-JavaScript模块化02：AMD
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.14.4"
+                            data-path="../09-Node.js和模块化/02-JavaScript模块化03：CMD.html">
+
+                            <a href="../09-Node.js和模块化/02-JavaScript模块化03：CMD.html">
+
+
+                                02-JavaScript模块化03：CMD
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.14.5"
+                            data-path="../09-Node.js和模块化/02-JavaScript模块化04：ES6.html">
+
+                            <a href="../09-Node.js和模块化/02-JavaScript模块化04：ES6.html">
+
+
+                                02-JavaScript模块化04：ES6
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.14.6" data-path="../09-Node.js和模块化/CommonJS.html">
+
+                            <a href="../09-Node.js和模块化/CommonJS.html">
+
+
+                                Common JS
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.14.7" data-path="../09-Node.js和模块化/ES6.html">
+
+                            <a href="../09-Node.js和模块化/ES6.html">
+
+
+                                ES 6
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.14.8" data-path="../09-Node.js和模块化/Node.js代码举例.html">
+
+                            <a href="../09-Node.js和模块化/Node.js代码举例.html">
+
+
+                                Node.js代码举例
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.14.9" data-path="../09-Node.js和模块化/WebSocket.html">
+
+                            <a href="../09-Node.js和模块化/WebSocket.html">
+
+
+                                Web Socket
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.14.10" data-path="../09-Node.js和模块化/事件驱动和非阻塞机制.html">
+
+                            <a href="../09-Node.js和模块化/事件驱动和非阻塞机制.html">
+
+
+                                事件驱动和非阻塞机制
+
+                            </a>
+
+
+                        </li>
+
+
+                    </ul>
+
+                </li>
+
+                <li class="chapter " data-level="1.15">
+            
+                <span>
+            
+                    
+                    10 ES 6
+            
+                </span>
+
+
+                    <ul class="articles">
+
+
+                        <li class="chapter " data-level="1.15.1" data-path="../10-ES6/01-ES5中的严格模式.html">
+
+                            <a href="../10-ES6/01-ES5中的严格模式.html">
+
+
+                                01-ES5中的严格模式
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.15.2" data-path="../10-ES6/02-ES5中的一些扩展.html">
+
+                            <a href="../10-ES6/02-ES5中的一些扩展.html">
+
+
+                                02-ES5中的一些扩展
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.15.3" data-path="../10-ES6/03-ES6的介绍和环境配置.html">
+
+                            <a href="../10-ES6/03-ES6的介绍和环境配置.html">
+
+
+                                03-ES6的介绍和环境配置
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.15.4" data-path="../10-ES6/04-ES6：变量、函数扩展.html">
+
+                            <a href="../10-ES6/04-ES6：变量、函数扩展.html">
+
+
+                                04-ES6：变量、函数扩展
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.15.5" data-path="../10-ES6/05-ES6：promise、async等.html">
+
+                            <a href="../10-ES6/05-ES6：promise、async等.html">
+
+
+                                05-ES6：promise、async等
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.15.6" data-path="../10-ES6/06-ES6：字符串、数组、对象的扩展.html">
+
+                            <a href="../10-ES6/06-ES6：字符串、数组、对象的扩展.html">
+
+
+                                06-ES6：字符串、数组、对象的扩展
+
+                            </a>
+
+
+                        </li>
+
+
+                    </ul>
+
+                </li>
+
+                <li class="chapter " data-level="1.16">
+            
+                <span>
+            
+                    
+                    16-前端基础
+            
+                </span>
+
+
+                    <ul class="articles">
+
+
+                        <li class="chapter " data-level="1.16.1" data-path="../16-前端基础/ajax相关.html">
+
+                            <a href="../16-前端基础/ajax相关.html">
+
+
+                                ajax相关
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.16.2" data-path="../16-前端基础/css开发相关.html">
+
+                            <a href="../16-前端基础/css开发相关.html">
+
+
+                                css开发相关
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.16.3" data-path="../16-前端基础/html相关.html">
+
+                            <a href="../16-前端基础/html相关.html">
+
+
+                                html相关
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.16.4" data-path="../16-前端基础/json字符串的解析和遍历.html">
+
+                            <a href="../16-前端基础/json字符串的解析和遍历.html">
+
+
+                                json字符串的解析和遍历
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.16.5" data-path="../16-前端基础/json相关.html">
+
+                            <a href="../16-前端基础/json相关.html">
+
+
+                                json相关
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.16.6" data-path="../16-前端基础/UserAgent.html">
+
+                            <a href="../16-前端基础/UserAgent.html">
+
+
+                                User Agent
+
+                            </a>
+
+
+                        </li>
+
+
+                    </ul>
+
+                </li>
+
+                <li class="chapter " data-level="1.17">
+            
+                <span>
+            
+                    
+                    17-前端进阶
+            
+                </span>
+
+
+                    <ul class="articles">
+
+
+                        <li class="chapter " data-level="1.17.1" data-path="../17-前端进阶/01-前端的几道题目.html">
+
+                            <a href="../17-前端进阶/01-前端的几道题目.html">
+
+
+                                01-前端的几道题目
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.17.2" data-path="../17-前端进阶/04-前端监控技术.html">
+
+                            <a href="../17-前端进阶/04-前端监控技术.html">
+
+
+                                04-前端监控技术
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.17.3" data-path="../17-前端进阶/09-lazyload&防抖动和节流阀.html">
+
+                            <a href="../17-前端进阶/09-lazyload&防抖动和节流阀.html">
+
+
+                                09-lazyload&防抖动和节流阀
+
+                            </a>
+
+
+                        </li>
+
+
+                    </ul>
+
+                </li>
+
+                <li class="chapter " data-level="1.18">
+            
+                <span>
+            
+                    
+                    18-前端面试
+            
+                </span>
+
+
+                    <ul class="articles">
+
+
+                        <li class="chapter " data-level="1.18.1" data-path="../18-前端面试/00-准备.html">
+
+                            <a href="../18-前端面试/00-准备.html">
+
+
+                                00-准备
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.18.2" data-path="../18-前端面试/01-页面布局.html">
+
+                            <a href="../18-前端面试/01-页面布局.html">
+
+
+                                01-页面布局
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.18.3" data-path="../18-前端面试/02-CSS盒模型及BFC.html">
+
+                            <a href="../18-前端面试/02-CSS盒模型及BFC.html">
+
+
+                                02-CSS盒模型及BFC
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.18.4" data-path="../18-前端面试/03-DOM事件的总结.html">
+
+                            <a href="../18-前端面试/03-DOM事件的总结.html">
+
+
+                                03-DOM事件的总结
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.18.5" data-path="../18-前端面试/04-HTTP协议.html">
+
+                            <a href="../18-前端面试/04-HTTP协议.html">
+
+
+                                04-HTTP协议
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.18.6" data-path="../18-前端面试/05-01.创建对象和原型链.html">
+
+                            <a href="../18-前端面试/05-01.创建对象和原型链.html">
+
+
+                                05-01.创建对象和原型链
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.18.7" data-path="../18-前端面试/05-02.面向对象：类的定义和继承的几种方式.html">
+
+                            <a href="../18-前端面试/05-02.面向对象：类的定义和继承的几种方式.html">
+
+
+                                05-02.面向对象：类的定义和继承的几种方式
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.18.8" data-path="../18-前端面试/06-跨域通信类.html">
+
+                            <a href="../18-前端面试/06-跨域通信类.html">
+
+
+                                06-跨域通信类
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.18.9" data-path="../18-前端面试/07-安全问题：CSRF和XSS.html">
+
+                            <a href="../18-前端面试/07-安全问题：CSRF和XSS.html">
+
+
+                                07-安全问题：CSRF和XSS
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.18.10" data-path="../18-前端面试/08-算法问题.html">
+
+                            <a href="../18-前端面试/08-算法问题.html">
+
+
+                                08-算法问题
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.18.11" data-path="../18-前端面试/09-01.浏览器渲染机制.html">
+
+                            <a href="../18-前端面试/09-01.浏览器渲染机制.html">
+
+
+                                09-01.浏览器渲染机制
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.18.12" data-path="../18-前端面试/09-02.js运行机制：异步和单线程.html">
+
+                            <a href="../18-前端面试/09-02.js运行机制：异步和单线程.html">
+
+
+                                09-02.js运行机制：异步和单线程
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.18.13" data-path="../18-前端面试/10-01.页面性能优化.html">
+
+                            <a href="../18-前端面试/10-01.页面性能优化.html">
+
+
+                                10-01.页面性能优化
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.18.14" data-path="../18-前端面试/10-02.前端错误监控.html">
+
+                            <a href="../18-前端面试/10-02.前端错误监控.html">
+
+
+                                10-02.前端错误监控
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.18.15" data-path="../18-前端面试/11-00.JavaScript高级面试：前言.html">
+
+                            <a href="../18-前端面试/11-00.JavaScript高级面试：前言.html">
+
+
+                                11-00.JavaScript高级面试：前言
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.18.16" data-path="../18-前端面试/11-01.ES6：模块化的使用和编译环境.html">
+
+                            <a href="../18-前端面试/11-01.ES6：模块化的使用和编译环境.html">
+
+
+                                11-01.ES6：模块化的使用和编译环境
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.18.17" data-path="../18-前端面试/11-02.ES6.html">
+
+                            <a href="../18-前端面试/11-02.ES6.html">
+
+
+                                11-02.ES6
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.18.18" data-path="../18-前端面试/15-虚拟DOM.html">
+
+                            <a href="../18-前端面试/15-虚拟DOM.html">
+
+
+                                15-虚拟DOM
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.18.19" data-path="../18-前端面试/16-01.MVVM.html">
+
+                            <a href="../18-前端面试/16-01.MVVM.html">
+
+
+                                16-01.MVVM
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.18.20" data-path="../18-前端面试/21-面试题整理by-smyhvae.html">
+
+                            <a href="../18-前端面试/21-面试题整理by-smyhvae.html">
+
+
+                                21-面试题整理 by smyhvae
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.18.21" data-path="../18-前端面试/22-网友面经.html">
+
+                            <a href="../18-前端面试/22-网友面经.html">
+
+
+                                22-网友面经
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.18.22" data-path="../18-前端面试/23-面试技巧by-smyhvae.html">
+
+                            <a href="../18-前端面试/23-面试技巧by-smyhvae.html">
+
+
+                                23-面试技巧 by smyhvae
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.18.23" data-path="../18-前端面试/web安全.html">
+
+                            <a href="../18-前端面试/web安全.html">
+
+
+                                web安全
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.18.24" data-path="../18-前端面试/其他.html">
+
+                            <a href="../18-前端面试/其他.html">
+
+
+                                其他
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.18.25" data-path="../18-前端面试/推荐文章.html">
+
+                            <a href="../18-前端面试/推荐文章.html">
+
+
+                                推荐文章
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.18.26" data-path="../18-前端面试/计算机网络.html">
+
+                            <a href="../18-前端面试/计算机网络.html">
+
+
+                                计算机网络
+
+                            </a>
+
+
+                        </li>
+
+
+                    </ul>
+
+                </li>
+
+                <li class="chapter " data-level="1.19">
+            
+                <span>
+            
+                    
+                    19-面试题积累
+            
+                </span>
+
+
+                    <ul class="articles">
+
+
+                        <li class="chapter " data-level="1.19.1" data-path="../19-面试题积累/01-我的面试经历by-smyhvae.html">
+
+                            <a href="../19-面试题积累/01-我的面试经历by-smyhvae.html">
+
+
+                                01-我的面试经历 by smyhvae
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.19.2" data-path="../19-面试题积累/02-HTML和CSS相关.html">
+
+                            <a href="../19-面试题积累/02-HTML和CSS相关.html">
+
+
+                                02-HTML和CSS相关
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.19.3" data-path="../19-面试题积累/03-http.html">
+
+                            <a href="../19-面试题积累/03-http.html">
+
+
+                                03 Http
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.19.4" data-path="../19-面试题积累/03-JS相关.html">
+
+                            <a href="../19-面试题积累/03-JS相关.html">
+
+
+                                03-JS相关
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.19.5" data-path="../19-面试题积累/04-变量提升的题目.html">
+
+                            <a href="../19-面试题积累/04-变量提升的题目.html">
+
+
+                                04-变量提升的题目
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.19.6" data-path="../19-面试题积累/05-BAT爱考的JS面试题.html">
+
+                            <a href="../19-面试题积累/05-BAT爱考的JS面试题.html">
+
+
+                                05-BAT爱考的JS面试题
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.19.7"
+                            data-path="../19-面试题积累/20180116-博客园：一年经验初探阿里巴巴前端社招.html">
+
+                            <a href="../19-面试题积累/20180116-博客园：一年经验初探阿里巴巴前端社招.html">
+
+
+                                20180116-博客园：一年经验初探阿里巴巴前端社招
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.19.8" data-path="../19-面试题积累/函数.html">
+
+                            <a href="../19-面试题积累/函数.html">
+
+
+                                函数
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.19.9" data-path="../19-面试题积累/异步.html">
+
+                            <a href="../19-面试题积累/异步.html">
+
+
+                                异步
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.19.10" data-path="../19-面试题积累/清单.html">
+
+                            <a href="../19-面试题积累/清单.html">
+
+
+                                清单
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.19.11" data-path="../19-面试题积累/面经链接推荐.html">
+
+                            <a href="../19-面试题积累/面经链接推荐.html">
+
+
+                                面经链接推荐
+
+                            </a>
+
+
+                        </li>
+
+
+                    </ul>
+
+                </li>
+
+                <li class="chapter " data-level="1.20">
+            
+                <span>
+            
+                    
+                    20-前端综合
+            
+                </span>
+
+
+                    <ul class="articles">
+
+
+                        <li class="chapter " data-level="1.20.1" data-path="../20-前端综合/2018年-前端日记.html">
+
+                            <a href="../20-前端综合/2018年-前端日记.html">
+
+
+                                2018年-前端日记
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.20.2" data-path="../20-前端综合/2018年Web前端自学路线.html">
+
+                            <a href="../20-前端综合/2018年Web前端自学路线.html">
+
+
+                                2018年Web前端自学路线
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.20.3" data-path="../20-前端综合/前端中的一些概念.html">
+
+                            <a href="../20-前端综合/前端中的一些概念.html">
+
+
+                                前端中的一些概念
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.20.4" data-path="../20-前端综合/前端开发积累.html">
+
+                            <a href="../20-前端综合/前端开发积累.html">
+
+
+                                前端开发积累
+
+                            </a>
+
+
+                        </li>
+
+
+                    </ul>
+
+                </li>
+
+                <li class="chapter " data-level="1.21">
+            
+                <span>
+            
+                    
+                    21-Vue基础
+            
+                </span>
+
+
+                    <ul class="articles">
+
+
+                        <li class="chapter " data-level="1.21.1" data-path="../21-Vue基础/00-Vue的介绍和vue-cli.md">
+            
+                <span>
+            
+                    
+                    00-Vue的介绍和vue-cli
+
+                    </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.21.2" data-path="../21-Vue基础/01-01.Vue的系统指令.md">
+            
+                <span>
+            
+                    
+                    01-01.Vue的系统指令
+
+                    </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.21.3" data-path="../21-Vue基础/01-02.v-on的事件修饰符.md">
+            
+                <span>
+            
+                    
+                    01-02.v-on的事件修饰符
+
+                    </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.21.4" data-path="../21-Vue基础/01-03.Vue的系统指令(二">
+            
+                <span>
+            
+                    
+                    01-03.Vue的系统指令(二)
+
+                    </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.21.5" data-path="../21-Vue基础/01-04.Vue的举例：列表功能.md">
+            
+                <span>
+            
+                    
+                    01-04.Vue的举例：列表功能
+
+                    </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.21.6" data-path="../21-Vue基础/01-05.自定义过滤器：时间格式化举例.md">
+            
+                <span>
+            
+                    
+                    01-05.自定义过滤器：时间格式化举例
+
+                    </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.21.7" data-path="../21-Vue基础/01-06.自定义按键修饰符&自定义指令.md">
+            
+                <span>
+            
+                    
+                    01-06.自定义按键修饰符&自定义指令
+
+                    </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.21.8" data-path="../21-Vue基础/02-Vue实例的生命周期函数.md">
+            
+                <span>
+            
+                    
+                    02-Vue实例的生命周期函数
+
+                    </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.21.9" data-path="../21-Vue基础/03-Vue中的Ajax请求.md">
+            
+                <span>
+            
+                    
+                    03-Vue中的Ajax请求
+
+                    </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.21.10" data-path="../21-Vue基础/04-Vue动画.md">
+            
+                <span>
+            
+                    
+                    04-Vue动画
+
+                    </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.21.11" data-path="../21-Vue基础/05-Vue组件的定义和注册.md">
+            
+                <span>
+            
+                    
+                    05-Vue组件的定义和注册
+
+                    </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.21.12" data-path="../21-Vue基础/06-Vue组件之间的传值.md">
+            
+                <span>
+            
+                    
+                    06-Vue组件之间的传值
+
+                    </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.21.13" data-path="../21-Vue基础/07-Vue-router路由.md">
+            
+                <span>
+            
+                    
+                    07-Vue-router路由
+
+                    </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.21.14" data-path="../21-Vue基础/Vue-router路由.md">
+            
+                <span>
+            
+                    
+                    Vue-router路由
+
+                    </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.21.15" data-path="../21-Vue基础/Vue开发积累.md">
+            
+                <span>
+            
+                    
+                    Vue开发积累
+
+                    </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.21.16" data-path="../21-Vue基础/Vue组件.md">
+            
+                <span>
+            
+                    
+                    Vue组件
+
+                    </a>
+
+
+                        </li>
+
+
+                    </ul>
+
+                </li>
+
+                <li class="chapter " data-level="1.22">
+            
+                <span>
+            
+                    
+                    22-前端工程化
+            
+                </span>
+
+
+                    <ul class="articles">
+
+
+                        <li class="chapter " data-level="1.22.1" data-path="../22-前端工程化/01-Webpack.html">
+
+                            <a href="../22-前端工程化/01-Webpack.html">
+
+
+                                01 Webpack
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.22.2" data-path="../22-前端工程化/01-项目介绍.html">
+
+                            <a href="../22-前端工程化/01-项目介绍.html">
+
+
+                                01-项目介绍
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.22.3" data-path="../22-前端工程化/02-项目设计与原理分析.html">
+
+                            <a href="../22-前端工程化/02-项目设计与原理分析.html">
+
+
+                                02-项目设计与原理分析
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.22.4" data-path="../22-前端工程化/03-京东金融的首页.html">
+
+                            <a href="../22-前端工程化/03-京东金融的首页.html">
+
+
+                                03-京东金融的首页
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.22.5" data-path="../22-前端工程化/08-上线指导.html">
+
+                            <a href="../22-前端工程化/08-上线指导.html">
+
+
+                                08-上线指导
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.22.6" data-path="../22-前端工程化/09-构建工具.html">
+
+                            <a href="../22-前端工程化/09-构建工具.html">
+
+
+                                09-构建工具
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.22.7" data-path="../22-前端工程化/11-面试技巧.html">
+
+                            <a href="../22-前端工程化/11-面试技巧.html">
+
+
+                                11-面试技巧
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.22.8" data-path="../22-前端工程化/Vue-router.html">
+
+                            <a href="../22-前端工程化/Vue-router.html">
+
+
+                                Vue Router
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.22.9" data-path="../22-前端工程化/Vue基础知识.html">
+
+                            <a href="../22-前端工程化/Vue基础知识.html">
+
+
+                                Vue基础知识
+
+                            </a>
+
+
+                        </li>
+
+                        <li class="chapter " data-level="1.22.10" data-path="../22-前端工程化/z商城系统.html">
+
+                            <a href="../22-前端工程化/z商城系统.html">
+
+
+                                z商城系统
+
+                            </a>
+
+
+                        </li>
+
+
+                    </ul>
+
+                </li>
+
+                <li class="chapter " data-level="1.23" data-path="../推荐链接-互联网相关.html">
+
+                    <a href="../推荐链接-互联网相关.html">
+
+
+                        推荐链接-互联网相关
+
+                    </a>
+
+
+                </li>
+
+                <li class="chapter " data-level="1.24" data-path="../推荐链接-前端相关.html">
+
+                    <a href="../推荐链接-前端相关.html">
+
+
+                        推荐链接-前端相关
+
+                    </a>
+
+
+                </li>
+
+
+                <li class="divider"></li>
+
+                <li>
+                    <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                        Published with GitBook
+                    </a>
+                </li>
+            </ul>
+
+
+        </nav>
+
+
+    </div>
+
+    <div class="book-body">
+
+        <div class="body-inner">
+
+
+            <div class="book-header" role="navigation">
+
+
+                <!-- Title -->
+                <h1>
+                    <i class="fa fa-circle-o-notch fa-spin"></i>
+                    <a href="..">02-scroll家族和缓动动画</a>
+                </h1>
+            </div>
+
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+
+                    <div id="book-search-results">
+                        <div class="search-noresults">
+
+                            <section class="normal markdown-section">
+
+                                <h2 id="&#x7F13;&#x52A8;&#x52A8;&#x753B;">&#x7F13;&#x52A8;&#x52A8;&#x753B;</h2>
+                                <h3 id="&#x4E09;&#x4E2A;&#x51FD;&#x6570;">&#x4E09;&#x4E2A;&#x51FD;&#x6570;</h3>
+                                <p>&#x7F13;&#x6162;&#x52A8;&#x753B;&#x91CC;&#xFF0C;&#x6211;&#x4EEC;&#x8981;&#x7528;&#x5230;&#x4E09;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x8FD9;&#x91CC;&#x5148;&#x5217;&#x51FA;&#x6765;&#xFF1A;</p>
+                                <ul>
+                                    <li><p>Math.ceil() &#x5411;&#x4E0A;&#x53D6;&#x6574;</p>
+                                    </li>
+                                    <li><p>Math.floor() &#x5411;&#x4E0B;&#x53D6;&#x6574;</p>
+                                    </li>
+                                    <li><p>Math.round(); &#x56DB;&#x820D;&#x4E94;&#x5165;</p>
+                                    </li>
+                                </ul>
+                                <h3 id="&#x7F13;&#x52A8;&#x52A8;&#x753B;&#x7684;&#x539F;&#x7406;">&#x7F13;&#x52A8;&#x52A8;&#x753B;&#x7684;&#x539F;&#x7406;</h3>
+                                <p>&#x7F13;&#x52A8;&#x52A8;&#x753B;&#x7684;&#x539F;&#x7406;&#x5C31;&#x662F;&#xFF1A;&#x5728;&#x79FB;&#x52A8;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x6B65;&#x957F;&#x8D8A;&#x6765;&#x8D8A;&#x5C0F;&#x3002;</p>
+                                <p>&#x8BBE;&#x7F6E;&#x6B65;&#x957F;&#x4E3A;<strong>&#xFF1A;&#x76EE;&#x6807;&#x4F4D;&#x7F6E;&#x548C;&#x76D2;&#x5B50;&#x5F53;&#x524D;&#x4F4D;&#x7F6E;&#x7684;&#x5341;&#x5206;&#x4E4B;&#x4E00;</strong>&#x3002;&#x7528;&#x516C;&#x5F0F;&#x8868;&#x8FBE;&#xFF0C;&#x5373;&#xFF1A;
+                                </p>
+                                <pre><code>    &#x76D2;&#x5B50;&#x4F4D;&#x7F6E; = &#x76D2;&#x5B50;&#x672C;&#x8EAB;&#x4F4D;&#x7F6E; + (&#x76EE;&#x6807;&#x4F4D;&#x7F6E; - &#x76D2;&#x5B50;&#x672C;&#x8EAB;&#x4F4D;&#x7F6E;)/ 10&#xFF1B;
+</code></pre>
+                                <p>&#x4EE3;&#x7801;&#x4E3E;&#x4F8B;&#xFF1A;</p>
+                                <pre><code class="lang-html"><span class="hljs-meta">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span> <span class="hljs-attr">lang</span>=<span
+        class="hljs-string">&quot;en&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span
+            class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span><span class="hljs-tag">&lt;/<span
+                                            class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+        <span class="hljs-selector-tag">div</span> {
+            <span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;
+            <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;
+            <span class="hljs-attribute">background-color</span>: pink;
+            <span class="hljs-attribute">position</span>: absolute;
+        }
+    </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>&#x8FD0;&#x52A8;&#x5230;left = 400px<span
+                                            class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><span class="hljs-tag">&lt;/<span
+                                            class="hljs-name">div</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+
+    <span class="hljs-keyword">var</span> btn = <span class="hljs-built_in">document</span>.getElementsByTagName(<span
+                                            class="hljs-string">&quot;button&quot;</span>)[<span
+                                            class="hljs-number">0</span>];
+    <span class="hljs-keyword">var</span> div = <span class="hljs-built_in">document</span>.getElementsByTagName(<span
+                                            class="hljs-string">&quot;div&quot;</span>)[<span
+                                            class="hljs-number">0</span>];
+
+    btn.onclick = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span
+                                            class="hljs-params"></span>) </span>{
+        setInterval(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span
+                                            class="hljs-params"></span>) </span>{
+            <span class="hljs-comment">//&#x52A8;&#x753B;&#x539F;&#x7406;&#xFF1A;&#x76D2;&#x5B50;&#x672A;&#x6765;&#x7684;&#x4F4D;&#x7F6E; = &#x76D2;&#x5B50;&#x5F53;&#x524D;&#x7684;&#x4F4D;&#x7F6E;+&#x6B65;&#x957F;</span>
+            div.style.left = div.offsetLeft + (<span class="hljs-number">400</span> - div.offsetLeft) / <span
+                                            class="hljs-number">10</span> + <span
+                                            class="hljs-string">&quot;px&quot;</span>;
+        }, <span class="hljs-number">30</span>);
+    }
+
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre>
+                                <p>&#x6548;&#x679C;&#xFF1A;</p>
+                                <p>20180202_2046.gif</p>
+                                <h3 id="&#x7F13;&#x6162;&#x52A8;&#x753B;&#x7684;&#x5C01;&#x88C5;&#xFF08;&#x89E3;&#x51B3;&#x56DB;&#x820D;&#x4E94;&#x5165;&#x7684;&#x95EE;&#x9898;&#xFF09;">
+                                    &#x7F13;&#x6162;&#x52A8;&#x753B;&#x7684;&#x5C01;&#x88C5;&#xFF08;&#x89E3;&#x51B3;&#x56DB;&#x820D;&#x4E94;&#x5165;&#x7684;&#x95EE;&#x9898;&#xFF09;</h3>
+                                <p>&#x6211;&#x4EEC;&#x53D1;&#x73B0;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x4E0A;&#x56FE;&#x4E2D;&#x7684;&#x76D2;&#x5B50;&#x6700;&#x7EC8;&#x5E76;&#x6CA1;&#x6709;&#x5230;&#x8FBE;400px&#x7684;&#x4F4D;&#x7F6E;&#xFF0C;&#x800C;&#x662F;&#x53EA;&#x5230;&#x4E86;396.04px&#x5C31;&#x505C;&#x4F4F;&#x4E86;&#xFF1A;</p>
+                                <p>20180202_2140.png</p>
+                                <p>&#x539F;&#x56E0;&#x662F;&#xFF1A;JS&#x5728;&#x53D6;&#x6574;&#x7684;&#x8FD0;&#x7B97;&#x65F6;&#xFF0C;&#x8FDB;&#x884C;&#x4E86;&#x56DB;&#x820D;&#x4E94;&#x5165;&#x3002;</p>
+                                <p>&#x6211;&#x4EEC;&#x628A;&#x6253;&#x5370;396.04px&#x8FD9;&#x4E2A;left&#x503C;&#x6253;&#x5370;&#x51FA;&#x6765;&#x770B;&#x770B;&#xFF1A;</p>
+                                <p>20180202_2150.png</p>
+                                <p>&#x6211;&#x4E48;&#x53D1;&#x73B0;&#xFF0C;&#x901A;&#x8FC7;<code>div.style.left</code>&#x83B7;&#x53D6;&#x7684;&#x503C;&#x662F;&#x7CBE;&#x786E;&#x7684;&#xFF0C;&#x901A;&#x8FC7;<code>div.offsetLeft</code>&#x83B7;&#x53D6;&#x7684;left&#x503C;&#x4F1A;&#x8FDB;&#x884C;&#x56DB;&#x820D;&#x4E94;&#x5165;&#x3002;
+                                </p>
+                                <p>&#x6B64;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x8981;&#x7528;&#x5230;&#x53D6;&#x6574;&#x7684;&#x51FD;&#x6570;&#x4E86;&#x3002;</p>
+                                <p>&#x901A;&#x8FC7;&#x5BF9;&#x7F13;&#x52A8;&#x52A8;&#x753B;&#x8FDB;&#x884C;&#x5C01;&#x88C5;&#xFF0C;&#x5B8C;&#x6574;&#x7248;&#x7684;&#x4EE3;&#x7801;&#x5B9E;&#x73B0;&#x5982;&#x4E0B;&#xFF1A;</p>
+                                <pre><code class="lang-html"><span class="hljs-meta">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span> <span class="hljs-attr">lang</span>=<span
+        class="hljs-string">&quot;en&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span
+            class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span><span class="hljs-tag">&lt;/<span
+                                            class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+        <span class="hljs-selector-tag">div</span> {
+            <span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;
+            <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;
+            <span class="hljs-attribute">background-color</span>: pink;
+            <span class="hljs-attribute">position</span>: absolute;
+            <span class="hljs-attribute">left</span>: <span class="hljs-number">0</span>;
+        }
+    </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>&#x8FD0;&#x52A8;&#x5230;200<span
+                                            class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>&#x8FD0;&#x52A8;&#x5230;400<span
+                                            class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><span class="hljs-tag">&lt;/<span
+                                            class="hljs-name">div</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+
+    <span class="hljs-keyword">var</span> btn = <span class="hljs-built_in">document</span>.getElementsByTagName(<span
+                                            class="hljs-string">&quot;button&quot;</span>);
+    <span class="hljs-keyword">var</span> div = <span class="hljs-built_in">document</span>.getElementsByTagName(<span
+                                            class="hljs-string">&quot;div&quot;</span>)[<span
+                                            class="hljs-number">0</span>];
+
+    btn[<span class="hljs-number">0</span>].onclick = <span class="hljs-function"><span
+                                            class="hljs-keyword">function</span> (<span
+                                            class="hljs-params"></span>) </span>{
+        animate(div, <span class="hljs-number">200</span>);
+    }
+
+    btn[<span class="hljs-number">1</span>].onclick = <span class="hljs-function"><span
+                                            class="hljs-keyword">function</span> (<span
+                                            class="hljs-params"></span>) </span>{
+        animate(div, <span class="hljs-number">400</span>);
+    }
+
+    <span class="hljs-comment">//&#x7F13;&#x52A8;&#x52A8;&#x753B;&#x5C01;&#x88C5;</span>
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">animate</span>(<span
+            class="hljs-params">ele, target</span>) </span>{
+        <span class="hljs-comment">//&#x8981;&#x7528;&#x5B9A;&#x65F6;&#x5668;&#xFF0C;&#x5148;&#x6E05;&#x5B9A;&#x65F6;&#x5668;</span>
+        <span class="hljs-comment">//&#x4E00;&#x4E2A;&#x841D;&#x535C;&#x4E00;&#x4E2A;&#x5751;&#x513F;&#xFF0C;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x5BF9;&#x5E94;&#x4E00;&#x4E2A;&#x5B9A;&#x65F6;&#x5668;</span>
+        clearInterval(ele.timer);
+        <span class="hljs-comment">//&#x5B9A;&#x4E49;&#x5B9A;&#x65F6;&#x5668;</span>
+        ele.timer = setInterval(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span
+                                            class="hljs-params"></span>) </span>{
+            <span class="hljs-comment">//&#x83B7;&#x53D6;&#x6B65;&#x957F;</span>
+            <span class="hljs-comment">//&#x6B65;&#x957F;&#x5E94;&#x8BE5;&#x662F;&#x8D8A;&#x6765;&#x8D8A;&#x5C0F;&#x7684;&#xFF0C;&#x7F13;&#x52A8;&#x7684;&#x7B97;&#x6CD5;&#x3002;</span>
+            <span class="hljs-keyword">var</span> step = (target - ele.offsetLeft) / <span class="hljs-number">10</span>;
+            <span class="hljs-comment">//&#x5BF9;&#x6B65;&#x957F;&#x8FDB;&#x884C;&#x4E8C;&#x6B21;&#x52A0;&#x5DE5;(&#x5927;&#x4E8E;0&#x5411;&#x4E0A;&#x53D6;&#x6574;,&#x5C0F;&#x4E8E;0&#x5411;&#x4E0B;&#x53D6;&#x6574;)</span>
+            <span class="hljs-comment">//&#x8FBE;&#x5230;&#x7684;&#x6548;&#x679C;&#x662F;&#xFF1A;&#x6700;&#x540E;10&#x50CF;&#x7D20;&#x7684;&#x65F6;&#x5019;&#x90FD;&#x662F;1&#x50CF;&#x7D20;1&#x50CF;&#x7D20;&#x7684;&#x5411;&#x76EE;&#x6807;&#x4F4D;&#x7F6E;&#x79FB;&#x52A8;&#xFF0C;&#x5C31;&#x80FD;&#x591F;&#x5230;&#x8FBE;&#x6307;&#x5B9A;&#x4F4D;&#x7F6E;&#x3002;</span>
+            step = step &gt; <span class="hljs-number">0</span> ? <span
+                                            class="hljs-built_in">Math</span>.ceil(step) : <span class="hljs-built_in">Math</span>.floor(step);
+            <span class="hljs-comment">//&#x52A8;&#x753B;&#x539F;&#x7406;&#xFF1A; &#x76EE;&#x6807;&#x4F4D;&#x7F6E; = &#x5F53;&#x524D;&#x4F4D;&#x7F6E; + &#x6B65;&#x957F;</span>
+            ele.style.left = ele.offsetLeft + step + <span class="hljs-string">&quot;px&quot;</span>;
+            <span class="hljs-built_in">console</span>.log(step);
+            <span class="hljs-comment">//&#x68C0;&#x6D4B;&#x7F13;&#x52A8;&#x52A8;&#x753B;&#x6709;&#x6CA1;&#x6709;&#x505C;&#x6B62;</span>
+            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;smyhvae&quot;</span>);
+            <span class="hljs-keyword">if</span> (<span class="hljs-built_in">Math</span>.abs(target - ele.offsetLeft) &lt;= <span
+                                            class="hljs-built_in">Math</span>.abs(step)) {
+                <span class="hljs-comment">//&#x5904;&#x7406;&#x5C0F;&#x6570;&#x8D4B;&#x503C;</span>
+                ele.style.left = target + <span class="hljs-string">&quot;px&quot;</span>;
+                clearInterval(ele.timer);
+            }
+        }, <span class="hljs-number">30</span>);
+    }
+
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre>
+                                <p>&#x5B9E;&#x73B0;&#x6548;&#x679C;&#xFF1A;</p>
+                                <p>20180202_2239.gif</p>
+                                <h2 id="scroll-&#x5BB6;&#x65CF;&#x7684;&#x7EC4;&#x6210;">scroll &#x5BB6;&#x65CF;&#x7684;&#x7EC4;&#x6210;</h2>
+                                <p>&#x5F53;&#x6211;&#x4EEC;&#x7528;&#x9F20;&#x6807;&#x6EDA;&#x8F6E;&#xFF0C;&#x6EDA;&#x52A8;&#x7F51;&#x9875;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F1A;&#x89E6;&#x53D1;window.onscroll()&#x65B9;&#x6CD5;&#x3002;&#x6548;&#x679C;&#x5982;&#x4E0B;&#xFF1A;&#xFF08;&#x6CE8;&#x610F;&#x770B;&#x63A7;&#x5236;&#x53F0;&#x7684;&#x6253;&#x5370;&#x7ED3;&#x679C;&#xFF09;</p>
+                                <p>20180202_2258.gif</p>
+                                <h3 id="1&#x3001;scrollwidth-&#x548C;-scrollheight">1&#x3001;ScrollWidth &#x548C;
+                                    scrollHeight</h3>
+                                <p>&#x83B7;&#x53D6;&#x76D2;&#x5B50;&#x7684;&#x5BBD;&#x9AD8;&#x3002;&#x8C03;&#x7528;&#x8005;&#x4E3A;&#x8282;&#x70B9;&#x5143;&#x7D20;&#x3002;&#x4E0D;&#x5305;&#x62EC;
+                                    border&#x548C;margin&#x3002;&#x5982;&#x4E0B;&#xFF1A;</p>
+                                <ul>
+                                    <li><p>scrollWidth = width + padding;</p>
+                                    </li>
+                                    <li><p>scrollHeight = height + padding;</p>
+                                    </li>
+                                </ul>
+                                <p>scrollHeight&#x6709;&#x4E00;&#x4E2A;&#x7279;&#x70B9;&#xFF1A;&#x5982;&#x679C;&#x6587;&#x5B57;&#x8D85;&#x51FA;&#x4E86;&#x76D2;&#x5B50;&#xFF0C;&#x9AD8;&#x5EA6;&#x4E3A;&#x5185;&#x5BB9;&#x7684;&#x9AD8;&#xFF08;&#x5305;&#x62EC;&#x8D85;&#x51FA;&#x7684;&#x5185;&#x5BB9;&#xFF09;&#xFF1B;&#x4E0D;&#x8D85;&#x51FA;&#xFF0C;&#x5219;&#x662F;&#x76D2;&#x5B50;&#x672C;&#x8EAB;&#x9AD8;&#x5EA6;&#x3002;</p>
+                                <p>&#x4E3E;&#x4F8B;&#xFF1A;</p>
+                                <pre><code class="lang-html"><span class="hljs-meta">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span> <span class="hljs-attr">lang</span>=<span
+        class="hljs-string">&quot;en&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span
+            class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span><span class="hljs-tag">&lt;/<span
+                                            class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+        <span class="hljs-selector-tag">div</span> {
+            <span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;
+            <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;
+            <span class="hljs-attribute">padding</span>: <span class="hljs-number">10px</span>;
+            <span class="hljs-attribute">margin</span>: <span class="hljs-number">3px</span>;
+            <span class="hljs-attribute">border</span>: <span class="hljs-number">8px</span> solid red;
+        }
+    </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span
+        class="hljs-string">&quot;box&quot;</span>&gt;</span>
+    &#x9759;&#xFF0C;&#x80FD;&#x5BD2;&#x7A97;&#x82E6;&#x5B88;&#xFF1B;&#x52A8;&#xFF0C;&#x80FD;&#x70B9;&#x77F3;&#x6210;&#x91D1;&#x3002;
+    &#x9759;&#xFF0C;&#x80FD;&#x5BD2;&#x7A97;&#x82E6;&#x5B88;&#xFF1B;&#x52A8;&#xFF0C;&#x80FD;&#x70B9;&#x77F3;&#x6210;&#x91D1;&#x3002;
+    &#x9759;&#xFF0C;&#x80FD;&#x5BD2;&#x7A97;&#x82E6;&#x5B88;&#xFF1B;&#x52A8;&#xFF0C;&#x80FD;&#x70B9;&#x77F3;&#x6210;&#x91D1;&#x3002;
+    &#x9759;&#xFF0C;&#x80FD;&#x5BD2;&#x7A97;&#x82E6;&#x5B88;&#xFF1B;&#x52A8;&#xFF0C;&#x80FD;&#x70B9;&#x77F3;&#x6210;&#x91D1;&#x3002;
+    &#x9759;&#xFF0C;&#x80FD;&#x5BD2;&#x7A97;&#x82E6;&#x5B88;&#xFF1B;&#x52A8;&#xFF0C;&#x80FD;&#x70B9;&#x77F3;&#x6210;&#x91D1;&#x3002;
+    &#x9759;&#xFF0C;&#x80FD;&#x5BD2;&#x7A97;&#x82E6;&#x5B88;&#xFF1B;&#x52A8;&#xFF0C;&#x80FD;&#x70B9;&#x77F3;&#x6210;&#x91D1;&#x3002;
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+
+    <span class="hljs-keyword">var</span> div = <span class="hljs-built_in">document</span>.getElementsByTagName(<span
+                                            class="hljs-string">&quot;div&quot;</span>)[<span
+                                            class="hljs-number">0</span>];
+
+    <span class="hljs-comment">//scrollHeight&#x6709;&#x4E00;&#x4E2A;&#x7279;&#x70B9;&#xFF1A;&#x5982;&#x679C;&#x6587;&#x5B57;&#x8D85;&#x51FA;&#x4E86;&#x76D2;&#x5B50;&#xFF0C;&#x9AD8;&#x5EA6;&#x4E3A;&#x5185;&#x5BB9;&#x7684;&#x9AD8;&#xFF08;&#x5305;&#x62EC;&#x8D85;&#x51FA;&#x7684;&#x5185;&#x5BB9;&#xFF09;&#xFF1B;&#x4E0D;&#x8D85;&#x51FA;&#xFF0C;&#x5219;&#x662F;&#x76D2;&#x5B50;&#x672C;&#x8EAB;&#x9AD8;&#x5EA6;&#x3002;</span>
+    <span class="hljs-comment">//IE8&#x4EE5;&#x4E0B;&#xFF08;&#x4E0D;&#x5305;&#x62EC;IE8&#xFF09;&#xFF0C;&#x4E3A;&#x76D2;&#x5B50;&#x672C;&#x8EAB;&#x5185;&#x5BB9;&#x7684;&#x591A;&#x5C11;&#x3002;</span>
+    <span class="hljs-built_in">console</span>.log(div.scrollWidth);
+    <span class="hljs-built_in">console</span>.log(div.scrollHeight);
+
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre>
+                                <p>&#x6253;&#x5370;&#x7ED3;&#x679C;&#xFF1A;</p>
+                                <p>20180203_1235.png</p>
+                                <h3 id="2&#x3001;scrolltop-&#x548C;-scrollleft">2&#x3001;scrollTop &#x548C;
+                                    scrollLeft</h3>
+                                <p>&#x7F51;&#x9875;&#x88AB;&#x5377;&#x53BB;&#x7684;&#x5934;&#x90E8;&#x548C;&#x5DE6;&#x8FB9;&#x7684;&#x90E8;&#x5206;&#x3002;</p>
+                                <p>&#x6BD4;&#x5982;&#x8BF4;&#xFF0C;&#x4E00;&#x4E2A;&#x7F51;&#x9875;&#x5F80;&#x4E0A;&#x6EDA;&#x52A8;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4E0A;&#x9762;&#x7684;&#x90E8;&#x5206;&#x81EA;&#x7136;&#x88AB;&#x6D4F;&#x89C8;&#x5668;&#x906E;&#x6321;&#x4E86;&#xFF0C;&#x906E;&#x6321;&#x7684;&#x9AD8;&#x5EA6;&#x5C31;&#x662F;scrollTop&#x3002;</p>
+                                <p>scrollTop &#x8FD9;&#x4E2A;&#x5C5E;&#x6027;&#x7684;&#x5199;&#x6CD5;&#x8981;&#x6CE8;&#x610F;&#x517C;&#x5BB9;&#x6027;&#xFF0C;&#x5982;&#x4E0B;&#x3002;</p>
+                                <p>&#xFF08;1&#xFF09;&#x5982;&#x679C;&#x6587;&#x6863;&#x6CA1;&#x6709; DTD &#x58F0;&#x660E;&#xFF0C;&#x5199;&#x6CD5;&#x4E3A;&#xFF1A;</p>
+                                <pre><code class="lang-javascript">    <span class="hljs-built_in">document</span>.body.scrollTop
+</code></pre>
+                                <p>&#x5728;&#x6CA1;&#x6709; DTD &#x58F0;&#x660E;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x662F;&#x8FD9;&#x79CD;&#x5199;&#x6CD5;&#xFF0C;chrome&#x6D4F;&#x89C8;&#x5668;&#x8BA4;&#x4E0D;&#x51FA;&#x6765;&#x3002;</p>
+                                <p>&#xFF08;2&#xFF09;&#x5982;&#x679C;&#x6587;&#x6863;&#x6709; DTD &#x58F0;&#x660E;&#xFF0C;&#x5199;&#x6CD5;&#x4E3A;&#xFF1A;</p>
+                                <pre><code class="lang-javascript">   <span class="hljs-built_in">document</span>.documentElement.scrollTop
+</code></pre>
+                                <p>&#x5728;&#x6709; DTD &#x58F0;&#x660E;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x662F;&#x8FD9;&#x79CD;&#x5199;&#x6CD5;&#xFF0C;IE678&#x8BA4;&#x4E0D;&#x51FA;&#x6765;&#x3002;</p>
+                                <p>&#x7EFC;&#x5408;&#x4E0A;&#x9762;&#x8FD9;&#x4E24;&#x4E2A;&#xFF0C;&#x5C31;&#x8BDE;&#x751F;&#x4E86;&#x4E00;&#x79CD;&#x517C;&#x5BB9;&#x6027;&#x7684;&#x5199;&#x6CD5;&#xFF1A;</p>
+                                <pre><code class="lang-javascript">    <span class="hljs-built_in">document</span>.body.scrollTop || <span
+                                        class="hljs-built_in">document</span>.documentElement.scrollTop <span
+                                        class="hljs-comment">//&#x65B9;&#x5F0F;&#x4E00;</span>
+
+    <span class="hljs-built_in">document</span>.body.scrollTop + <span class="hljs-built_in">document</span>.documentElement.scrollTop  <span
+                                            class="hljs-comment">//&#x65B9;&#x5F0F;&#x4E8C;</span>
+</code></pre>
+                                <p>&#x53E6;&#x5916;&#x8FD8;&#x6709;&#x4E00;&#x79CD;&#x517C;&#x5BB9;&#x6027;&#x7684;&#x5199;&#x6CD5;&#xFF1A;<code>window.pageYOffset</code>
+                                    &#x548C; <code>window.pageXOffset</code>&#x3002;&#x8FD9;&#x79CD;&#x5199;&#x6CD5;&#x65E0;&#x89C6;DTD&#x7684;&#x58F0;&#x660E;&#x3002;&#x8FD9;&#x79CD;&#x5199;&#x6CD5;&#x652F;&#x6301;&#x7684;&#x6D4F;&#x89C8;&#x5668;&#x7248;&#x672C;&#x662F;&#xFF1A;&#x706B;&#x72D0;/&#x8C37;&#x6B4C;/ie9+&#x3002;
+                                </p>
+                                <p>&#x7EFC;&#x5408;&#x4E0A;&#x9762;&#x7684;&#x51E0;&#x79CD;&#x5199;&#x6CD5;&#xFF0C;&#x4E3A;&#x4E86;&#x517C;&#x5BB9;&#xFF0C;&#x4E0D;&#x7BA1;&#x6709;&#x6CA1;&#x6709;DTD&#xFF0C;<strong>&#x6700;&#x7EC8;&#x7248;&#x7684;&#x517C;&#x5BB9;&#x6027;&#x5199;&#x6CD5;&#xFF1A;</strong>
+                                </p>
+                                <pre><code class="lang-javascript">    <span class="hljs-built_in">window</span>.pageYOffset || <span
+                                        class="hljs-built_in">document</span>.body.scrollTop || <span
+                                        class="hljs-built_in">document</span>.documentElement.scrollTop;
+</code></pre>
+                                <h3 id="&#x5224;&#x65AD;&#x662F;&#x5426;&#x5DF2;&#x7ECF;-dtd&#x58F0;&#x660E;">&#x5224;&#x65AD;&#x662F;&#x5426;&#x5DF2;&#x7ECF;
+                                    DTD&#x58F0;&#x660E;</h3>
+                                <p>&#x65B9;&#x6CD5;&#x5982;&#x4E0B;&#xFF1A;</p>
+                                <pre><code class="lang-javascript">    <span class="hljs-built_in">document</span>.compatMode === <span
+                                        class="hljs-string">&quot;CSS1Compat&quot;</span>   <span class="hljs-comment">// &#x5DF2;&#x58F0;&#x660E;</span>
+    <span class="hljs-built_in">document</span>.compatMode === <span class="hljs-string">&quot;BackCompat&quot;</span>   <span
+                                            class="hljs-comment">// &#x672A;&#x58F0;&#x660E;</span>
+</code></pre>
+                                <h3 id="&#x5C06;-scrolltop-&#x548C;-scrollleft&#x5C01;&#x88C5;&#x4E3A;-json">&#x5C06;
+                                    scrollTop &#x548C; scrollLeft&#x5C01;&#x88C5;&#x4E3A; json</h3>
+                                <p>&#x5C06; scrollTop &#x548C; scrollLeft&#x5C01;&#x88C5;&#x4E3A;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#xFF0C;&#x540D;&#x53EB;scroll()&#xFF0C;&#x8FD4;&#x56DE;&#x503C;&#x4E3A;
+                                    json&#x3002;json&#x91CC;&#x7684;&#x952E;&#x4E3A; top &#x548C; left&#x3002;&#x4EE5;&#x540E;&#x5C31;&#x76F4;&#x63A5;&#x8C03;&#x7528;json.top
+                                    &#x548C;json.left&#x5C31;&#x597D;&#x3002;</p>
+                                <p>&#x4EE3;&#x7801;&#x5B9E;&#x73B0;&#xFF1A;</p>
+                                <pre><code class="lang-html"><span class="hljs-tag">&lt;<span
+                                        class="hljs-name">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span> <span class="hljs-attr">lang</span>=<span
+        class="hljs-string">&quot;en&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span
+            class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span><span class="hljs-tag">&lt;/<span
+                                            class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+        <span class="hljs-selector-tag">body</span> {
+            <span class="hljs-attribute">height</span>: <span class="hljs-number">5000px</span>;
+            <span class="hljs-attribute">width</span>: <span class="hljs-number">5000px</span>;
+        }
+    </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+
+    <span class="hljs-comment">//&#x9700;&#x6C42;&#xFF1A;&#x5C01;&#x88C5;&#x4E00;&#x4E2A;&#x517C;&#x5BB9;&#x7684;scroll().&#x8FD4;&#x56DE;&#x503C;&#x662F;json&#xFF0C;&#x7528;scroll().top&#x83B7;&#x53D6;scrollTop&#xFF0C;&#x7528;scroll().left&#x83B7;&#x53D6;scrollLeft</span>
+
+    <span class="hljs-built_in">window</span>.onscroll = <span class="hljs-function"><span
+                                            class="hljs-keyword">function</span> (<span
+                                            class="hljs-params"></span>) </span>{
+<span class="hljs-comment">//        var json = scroll();</span>
+<span class="hljs-comment">//        json.top;</span>
+        <span class="hljs-built_in">console</span>.log(scroll().top);
+        <span class="hljs-built_in">console</span>.log(scroll().left);
+    }
+
+    <span class="hljs-comment">//&#x51FD;&#x6570;&#x5C01;&#x88C5;&#xFF08;&#x7B80;&#x5355;&#x5C01;&#x88C5;&#xFF0C;&#x5B9E;&#x9645;&#x5DE5;&#x4F5C;&#x4F7F;&#x7528;&#xFF09;</span>
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">scroll</span>(<span
+            class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">return</span> { <span class="hljs-comment">//&#x6B64;&#x51FD;&#x6570;&#x7684;&#x8FD4;&#x56DE;&#x503C;&#x662F;json</span>
+            <span class="hljs-string">&quot;top&quot;</span>: <span
+                                            class="hljs-built_in">window</span>.pageYOffset || <span
+                                            class="hljs-built_in">document</span>.body.scrollTop || <span
+                                            class="hljs-built_in">document</span>.documentElement.scrollTop,
+            <span class="hljs-string">&quot;left&quot;</span>: <span class="hljs-built_in">window</span>.pageXOffset || <span
+                                            class="hljs-built_in">document</span>.body.scrollLeft || <span
+                                            class="hljs-built_in">document</span>.documentElement.scrollLeft
+        }
+    }
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre>
+                                <p>&#x4E0A;&#x65B9;&#x4EE3;&#x7801;&#x4E2D;&#xFF0C;&#x51FD;&#x6570;&#x5B9A;&#x4E49;&#x7684;&#x90A3;&#x90E8;&#x5206;&#x5C31;&#x662F;&#x8981;&#x5C01;&#x88C5;&#x7684;&#x4EE3;&#x7801;&#x3002;&#x53E6;&#x5916;&#x8FD8;&#x6709;&#x4E00;&#x79CD;&#x8F83;&#x4E3A;&#x590D;&#x6742;&#x7684;&#x5C01;&#x88C5;&#x65B9;&#x5F0F;&#xFF1A;</p>
+                                <pre><code class="lang-javascript"><span class="hljs-function"><span
+                                        class="hljs-keyword">function</span> <span
+                                        class="hljs-title">scroll</span>(<span
+                                        class="hljs-params"></span>) </span>{  <span class="hljs-comment">// &#x5F00;&#x59CB;&#x5C01;&#x88C5;&#x81EA;&#x5DF1;&#x7684;scrollTop</span>
+    <span class="hljs-keyword">if</span>(<span class="hljs-built_in">window</span>.pageYOffset !== <span
+                                            class="hljs-literal">undefined</span>) {  <span class="hljs-comment">// ie9+ &#x9AD8;&#x7248;&#x672C;&#x6D4F;&#x89C8;&#x5668;</span>
+        <span class="hljs-comment">// &#x56E0;&#x4E3A; window.pageYOffset &#x9ED8;&#x8BA4;&#x7684;&#x662F;  0  &#x6240;&#x4EE5;&#x8FD9;&#x91CC;&#x9700;&#x8981;&#x5224;&#x65AD;</span>
+        <span class="hljs-keyword">return</span> {
+            left: <span class="hljs-built_in">window</span>.pageXOffset,
+            top: <span class="hljs-built_in">window</span>.pageYOffset
+        }
+    }
+    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(<span
+                                            class="hljs-built_in">document</span>.compatMode === <span
+                                            class="hljs-string">&quot;CSS1Compat&quot;</span>) {    <span
+                                            class="hljs-comment">// &#x6807;&#x51C6;&#x6D4F;&#x89C8;&#x5668;   &#x6765;&#x5224;&#x65AD;&#x6709;&#x6CA1;&#x6709;&#x58F0;&#x660E;DTD</span>
+        <span class="hljs-keyword">return</span> {
+            left: <span class="hljs-built_in">document</span>.documentElement.scrollLeft,
+            top: <span class="hljs-built_in">document</span>.documentElement.scrollTop
+        }
+    }
+    <span class="hljs-keyword">return</span> {   <span class="hljs-comment">// &#x672A;&#x58F0;&#x660E; DTD</span>
+        left: <span class="hljs-built_in">document</span>.body.scrollLeft,
+        top: <span class="hljs-built_in">document</span>.body.scrollTop
+    }
+}
+</code></pre>
+                                <h2 id="&#x83B7;&#x53D6;-html-&#x6587;&#x6863;&#x7684;&#x65B9;&#x6CD5;">&#x83B7;&#x53D6;
+                                    html &#x6587;&#x6863;&#x7684;&#x65B9;&#x6CD5;</h2>
+                                <p>&#x83B7;&#x53D6;title&#x3001;body&#x3001;head&#x3001;html&#x6807;&#x7B7E;&#x7684;&#x65B9;&#x6CD5;&#x5982;&#x4E0B;&#xFF1A;</p>
+                                <ul>
+                                    <li><p><code>document.title</code> &#x6587;&#x6863;&#x6807;&#x9898;&#xFF1B;</p>
+                                    </li>
+                                    <li><p><code>document.head</code> &#x6587;&#x6863;&#x7684;&#x5934;&#x6807;&#x7B7E;
+                                    </p>
+                                    </li>
+                                    <li><p><code>document.body</code> &#x6587;&#x6863;&#x7684;body&#x6807;&#x7B7E;&#xFF1B;
+                                    </p>
+                                    </li>
+                                    <li><p><code>document.documentElement</code> &#xFF08;&#x8FD9;&#x4E2A;&#x5F88;&#x91CD;&#x8981;&#xFF09;&#x3002;
+                                    </p>
+                                    </li>
+                                </ul>
+                                <p><code>document.documentElement</code>&#x8868;&#x793A;&#x6587;&#x6863;&#x7684;html&#x6807;&#x7B7E;&#x3002;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x57FA;&#x672C;&#x7ED3;&#x6784;&#x5F53;&#x4E2D;&#x7684;
+                                    <code>html &#x6807;&#x7B7E;</code>&#x800C;&#x662F;&#x901A;&#x8FC7;<code>document.documentElement</code>&#x8BBF;&#x95EE;&#x7684;&#xFF0C;&#x5E76;&#x4E0D;&#x662F;&#x901A;&#x8FC7;
+                                    document.html &#x53BB;&#x8BBF;&#x95EE;&#x7684;&#x3002;</p>
+                                <h2 id="scrolltop-&#x4E3E;&#x4F8B;&#xFF1A;&#x56FA;&#x5B9A;&#x5BFC;&#x822A;&#x680F;">
+                                    scrollTop &#x4E3E;&#x4F8B;&#xFF1A;&#x56FA;&#x5B9A;&#x5BFC;&#x822A;&#x680F;</h2>
+                                <p>&#x5B8C;&#x6574;&#x7248;&#x4EE3;&#x7801;&#x5B9E;&#x73B0;&#xFF1A;</p>
+                                <p>&#xFF08;1&#xFF09;index.html&#xFF1A;</p>
+                                <pre><code class="lang-html"><span class="hljs-meta">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span> <span class="hljs-attr">lang</span>=<span
+        class="hljs-string">&quot;en&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span
+            class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span><span class="hljs-tag">&lt;/<span
+                                            class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+        * {
+            <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+            <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>
+        }
+
+        <span class="hljs-selector-tag">img</span> {
+            <span class="hljs-attribute">vertical-align</span>: top;
+        }
+
+        <span class="hljs-selector-class">.main</span> {
+            <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> auto;
+            <span class="hljs-attribute">width</span>: <span class="hljs-number">1000px</span>;
+            <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">10px</span>;
+
+        }
+
+        <span class="hljs-selector-id">#Q-nav1</span> {
+            <span class="hljs-attribute">overflow</span>: hidden;
+        }
+
+        <span class="hljs-selector-class">.fixed</span> {
+            <span class="hljs-attribute">position</span>: fixed;
+            <span class="hljs-attribute">top</span>: <span class="hljs-number">0</span>;
+            <span class="hljs-attribute">left</span>: <span class="hljs-number">0</span>;
+        }
+    </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+
+    <span class="hljs-comment">&lt;!--&#x5F15;&#x5165;&#x5DE5;&#x5177;js--&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span
+            class="hljs-string">&quot;tools.js&quot;</span>&gt;</span><span class="undefined"></span><span
+                                            class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+        <span class="hljs-built_in">window</span>.onload = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span
+                                            class="hljs-params"></span>) </span>{
+            <span class="hljs-comment">//&#x9700;&#x6C42;1&#xFF1A;&#x5F53;&#x6211;&#x4EEC;&#x6EDA;&#x52A8;&#x754C;&#x9762;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x88AB;&#x5377;&#x66F2;&#x7684;&#x5934;&#x90E8;&#x5982;&#x679C;&#x8D85;&#x8FC7;&#x7B2C;&#x4E8C;&#x4E2A;&#x76D2;&#x5B50;&#x8DDD;&#x79BB;&#x9876;&#x90E8;&#x7684;&#x4F4D;&#x7F6E;&#xFF0C;&#x90A3;&#x4E48;&#x76F4;&#x63A5;&#x7ED9;&#x7B2C;&#x4E8C;&#x4E2A;&#x76D2;&#x5B50;&#x52A0;&#x7C7B;&#x540D;.fixed</span>
+            <span class="hljs-comment">//&#x9700;&#x6C42;2&#xFF1A;&#x5F53;&#x6211;&#x4EEC;&#x6EDA;&#x52A8;&#x754C;&#x9762;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x88AB;&#x5377;&#x66F2;&#x7684;&#x5934;&#x90E8;&#x5982;&#x679C;&#x5C0F;&#x4E8E;&#x7B2C;&#x4E8C;&#x4E2A;&#x76D2;&#x5B50;&#x8DDD;&#x79BB;&#x9876;&#x90E8;&#x7684;&#x4F4D;&#x7F6E;&#xFF0C;&#x90A3;&#x4E48;&#x76F4;&#x63A5;&#x7ED9;&#x7B2C;&#x4E8C;&#x4E2A;&#x76D2;&#x5B50;&#x53D6;&#x6D88;&#x7C7B;&#x540D;.fixed</span>
+
+            <span class="hljs-comment">//1.&#x8001;&#x4E09;&#x6B65;&#x3002;</span>
+            <span class="hljs-keyword">var</span> topDiv = <span
+                                            class="hljs-built_in">document</span>.getElementById(<span
+                                            class="hljs-string">&quot;top&quot;</span>);
+            <span class="hljs-keyword">var</span> height = topDiv.offsetHeight;
+            <span class="hljs-keyword">var</span> middle = <span
+                                            class="hljs-built_in">document</span>.getElementById(<span
+                                            class="hljs-string">&quot;Q-nav1&quot;</span>);
+            <span class="hljs-keyword">var</span> main = <span
+                                            class="hljs-built_in">document</span>.getElementById(<span
+                                            class="hljs-string">&quot;main&quot;</span>);
+
+            <span class="hljs-built_in">window</span>.onscroll = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span
+                                            class="hljs-params"></span>) </span>{
+                <span class="hljs-comment">//2.&#x5224;&#x65AD; &#xFF0C;&#x88AB;&#x5377;&#x66F2;&#x7684;&#x5934;&#x90E8;&#x7684;&#x5927;&#x5C0F;</span>
+                <span class="hljs-keyword">if</span> (scroll().top &gt; height) {
+                    <span class="hljs-comment">//3.&#x6EE1;&#x8DB3;&#x6761;&#x4EF6;&#x6DFB;&#x52A0;&#x7C7B;&#xFF0C;&#x5426;&#x5219;&#x5220;&#x9664;&#x7C7B;</span>
+                    middle.className += <span class="hljs-string">&quot; fixed&quot;</span>;
+                    <span class="hljs-comment">//&#x7B2C;&#x4E8C;&#x4E2A;&#x76D2;&#x5B50;&#x4E5F;&#x8981;&#x5360;&#x4F4D;&#x7F6E;&#xFF0C;&#x4E3A;&#x4E86;&#x907F;&#x514D;&#x91CD;&#x53E0;&#xFF0C;&#x6211;&#x4EEC;&#x7ED9;&#x7B2C;&#x4E09;&#x4E2A;&#x76D2;&#x5B50;&#x4E00;&#x4E2A;&#x4E0A;padding&#x7684;&#x7A7A;&#x95F4;&#xFF0C;&#x628A;&#x8FD9;&#x4E2A;&#x7A7A;&#x95F4;&#x7559;&#x7ED9;&#x7B2C;&#x4E8C;&#x4E2A;&#x76D2;&#x5B50;</span>
+                    main.style.paddingTop = middle.offsetHeight + <span class="hljs-string">&quot;px&quot;</span>;
+                } <span class="hljs-keyword">else</span> {
+                    middle.className = <span class="hljs-string">&quot;&quot;</span>;
+                    <span class="hljs-comment">//&#x6E05;&#x96F6;</span>
+                    main.style.paddingTop = <span class="hljs-number">0</span>;
+                }
+            }
+
+        }
+    </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span
+        class="hljs-string">&quot;top&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;top&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span
+            class="hljs-string">&quot;images/top.png&quot;</span> <span class="hljs-attr">alt</span>=<span
+            class="hljs-string">&quot;&quot;</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span
+        class="hljs-string">&quot;Q-nav1&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span
+            class="hljs-string">&quot;images/nav.png&quot;</span> <span class="hljs-attr">alt</span>=<span
+            class="hljs-string">&quot;&quot;</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span
+        class="hljs-string">&quot;main&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;main&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span
+            class="hljs-string">&quot;images/main.png&quot;</span> <span class="hljs-attr">alt</span>=<span
+            class="hljs-string">&quot;&quot;</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre>
+                                <p>&#x4E0A;&#x65B9;&#x4EE3;&#x7801;&#x4E2D;&#xFF0C;&#x6709;&#x4E00;&#x4E2A;&#x6280;&#x5DE7;&#xFF1A;</p>
+                                <pre><code class="lang-javascript">main.style.paddingTop = middle.offsetHeight + <span
+                                        class="hljs-string">&quot;px&quot;</span>;
+</code></pre>
+                                <p>&#x4ED4;&#x7EC6;&#x770B;&#x6CE8;&#x91CA;&#x5C31;&#x597D;&#x3002;</p>
+                                <p>&#xFF08;2&#xFF09;tools.js&#xFF1A;</p>
+                                <pre><code class="lang-javascript"><span class="hljs-comment">/**
+ * Created by smyhvae on 2018/02/03.
+ */</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">scroll</span>(<span
+        class="hljs-params"></span>) </span>{  <span class="hljs-comment">// &#x5F00;&#x59CB;&#x5C01;&#x88C5;&#x81EA;&#x5DF1;&#x7684;scrollTop</span>
+    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">window</span>.pageYOffset !== <span
+                                            class="hljs-literal">undefined</span>) {  <span class="hljs-comment">// ie9+ &#x9AD8;&#x7248;&#x672C;&#x6D4F;&#x89C8;&#x5668;</span>
+        <span class="hljs-comment">// &#x56E0;&#x4E3A; window.pageYOffset &#x9ED8;&#x8BA4;&#x7684;&#x662F;  0  &#x6240;&#x4EE5;&#x8FD9;&#x91CC;&#x9700;&#x8981;&#x5224;&#x65AD;</span>
+        <span class="hljs-keyword">return</span> {
+            left: <span class="hljs-built_in">window</span>.pageXOffset,
+            top: <span class="hljs-built_in">window</span>.pageYOffset
+        }
+    }
+    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span
+                                            class="hljs-built_in">document</span>.compatMode === <span
+                                            class="hljs-string">&quot;CSS1Compat&quot;</span>) {    <span
+                                            class="hljs-comment">// &#x6807;&#x51C6;&#x6D4F;&#x89C8;&#x5668;   &#x6765;&#x5224;&#x65AD;&#x6709;&#x6CA1;&#x6709;&#x58F0;&#x660E;DTD</span>
+        <span class="hljs-keyword">return</span> {
+            left: <span class="hljs-built_in">document</span>.documentElement.scrollLeft,
+            top: <span class="hljs-built_in">document</span>.documentElement.scrollTop
+        }
+    }
+    <span class="hljs-keyword">return</span> {   <span class="hljs-comment">// &#x672A;&#x58F0;&#x660E; DTD</span>
+        left: <span class="hljs-built_in">document</span>.body.scrollLeft,
+        top: <span class="hljs-built_in">document</span>.body.scrollTop
+    }
+}
+</code></pre>
+                                <p>&#x5B9E;&#x73B0;&#x6548;&#x679C;&#xFF1A;</p>
+                                <p>20180203_1619.gif</p>
+                                <p>&#x5DE5;&#x7A0B;&#x6587;&#x4EF6;&#xFF1A;</p>
+                                <ul>
+                                    <li>2018-02-03-scrollTop&#x56FA;&#x5B9A;&#x5BFC;&#x822A;&#x680F;.rar</li>
+                                </ul>
+                                <h2 id="windowscrollto&#x65B9;&#x6CD5;&#x4E3E;&#x4F8B;&#xFF1A;&#x8FD4;&#x56DE;&#x5230;&#x9876;&#x90E8;&#x5C0F;&#x706B;&#x7BAD;">
+                                    window.scrollTo()&#x65B9;&#x6CD5;&#x4E3E;&#x4F8B;&#xFF1A;&#x8FD4;&#x56DE;&#x5230;&#x9876;&#x90E8;&#x5C0F;&#x706B;&#x7BAD;</h2>
+                                <p>&#xFF08;1&#xFF09;index.html&#xFF1A;</p>
+                                <pre><code class="lang-html"><span class="hljs-meta">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span> <span class="hljs-attr">lang</span>=<span
+        class="hljs-string">&quot;en&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span
+            class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span><span class="hljs-tag">&lt;/<span
+                                            class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+        <span class="hljs-selector-tag">img</span> {
+            <span class="hljs-attribute">position</span>: fixed;
+            <span class="hljs-attribute">bottom</span>: <span class="hljs-number">100px</span>;
+            <span class="hljs-attribute">right</span>: <span class="hljs-number">50px</span>;
+            <span class="hljs-attribute">cursor</span>: pointer;
+            <span class="hljs-attribute">display</span>: none;
+            <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid <span
+                                            class="hljs-number">#000</span>;
+        }
+
+        <span class="hljs-selector-tag">div</span> {
+            <span class="hljs-attribute">width</span>: <span class="hljs-number">1210px</span>;
+            <span class="hljs-attribute">margin</span>: <span class="hljs-number">100px</span> auto;
+            <span class="hljs-attribute">text-align</span>: center;
+            <span class="hljs-attribute">font</span>: <span class="hljs-number">500</span> <span class="hljs-number">26px</span>/<span
+                                            class="hljs-number">35px</span> <span
+                                            class="hljs-string">&quot;simsun&quot;</span>;
+            <span class="hljs-attribute">color</span>: red;
+        }
+    </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span
+            class="hljs-string">&quot;tools.js&quot;</span>&gt;</span><span class="undefined"></span><span
+                                            class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+        <span class="hljs-built_in">window</span>.onload = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span
+                                            class="hljs-params"></span>) </span>{
+            <span class="hljs-comment">//&#x9700;&#x6C42;&#xFF1A;&#x88AB;&#x5377;&#x53BB;&#x7684;&#x5934;&#x90E8;&#x8D85;&#x8FC7;100&#x663E;&#x793A;&#x5C0F;&#x706B;&#x7BAD;&#xFF0C;&#x7136;&#x540E;&#x70B9;&#x51FB;&#x5C0F;&#x706B;&#x7BAD;&#x5C4F;&#x5E55;&#x7F13;&#x6162;&#x79FB;&#x52A8;&#x5230;&#x6700;&#x9876;&#x7AEF;&#x3002;</span>
+            <span class="hljs-comment">//&#x96BE;&#x70B9;&#xFF1A;&#x6211;&#x4EEC;&#x4EE5;&#x524D;&#x662F;&#x79FB;&#x52A8;&#x76D2;&#x5B50;&#xFF0C;&#x73B0;&#x5728;&#x662F;&#x79FB;&#x52A8;&#x5C4F;&#x5E55;&#xFF0C;&#x6211;&#x4EEC;&#x6CA1;&#x6709;&#x5B66;&#x8FC7;&#x5982;&#x4F55;&#x79FB;&#x52A8;&#x5C4F;&#x5E55;&#x3002;</span>
+            <span class="hljs-comment">//      &#x6280;&#x672F;&#x70B9;&#xFF1A;window.scrollTo(x,y);&#x6D4F;&#x89C8;&#x5668;&#x663E;&#x793A;&#x533A;&#x57DF;&#x8DF3;&#x8F6C;&#x5230;&#x6307;&#x5B9A;&#x7684;&#x5750;&#x6807;</span>
+            <span class="hljs-comment">//&#x6B65;&#x9AA4;&#xFF1A;</span>
+            <span class="hljs-comment">//1.&#x8001;&#x4E09;&#x6B65;</span>
+            <span class="hljs-keyword">var</span> img = <span class="hljs-built_in">document</span>.getElementsByTagName(<span
+                                            class="hljs-string">&quot;img&quot;</span>)[<span
+                                            class="hljs-number">0</span>];
+            <span class="hljs-built_in">window</span>.onscroll = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span
+                                            class="hljs-params"></span>) </span>{
+                <span class="hljs-comment">//&#x88AB;&#x5377;&#x53BB;&#x7684;&#x8DDD;&#x79BB;&#x5927;&#x4E8E;200&#x663E;&#x793A;&#x5C0F;&#x706B;&#x7BAD;&#xFF0C;&#x5426;&#x5219;&#x9690;&#x85CF;</span>
+                <span class="hljs-comment">//2.&#x663E;&#x793A;&#x9690;&#x85CF;&#x5C0F;&#x706B;&#x7BAD;</span>
+                <span class="hljs-keyword">if</span> (scroll().top &gt; <span class="hljs-number">1000</span>) {
+                    img.style.display = <span class="hljs-string">&quot;block&quot;</span>;
+                } <span class="hljs-keyword">else</span> {
+                    img.style.display = <span class="hljs-string">&quot;none&quot;</span>;
+                }
+                <span class="hljs-comment">//&#x6BCF;&#x6B21;&#x79FB;&#x52A8;&#x6EDA;&#x52A8;&#x6761;&#x7684;&#x65F6;&#x5019;&#x90FD;&#x7ED9;leader&#x8D4B;&#x503C;&#xFF0C;&#x6A21;&#x62DF;leader&#x83B7;&#x53D6;&#x8DDD;&#x79BB;&#x9876;&#x90E8;&#x7684;&#x8DDD;&#x79BB;</span>
+                leader = scroll().top;
+            }
+            <span class="hljs-comment">//3.&#x7F13;&#x52A8;&#x8DF3;&#x8F6C;&#x5230;&#x9875;&#x9762;&#x6700;&#x9876;&#x7AEF;&#xFF08;&#x5229;&#x7528;&#x6211;&#x4EEC;&#x7684;&#x7F13;&#x52A8;&#x52A8;&#x753B;&#xFF09;</span>
+            <span class="hljs-keyword">var</span> timer = <span class="hljs-literal">null</span>;
+            <span class="hljs-keyword">var</span> target = <span class="hljs-number">0</span>; <span
+                                            class="hljs-comment">//&#x76EE;&#x6807;&#x4F4D;&#x7F6E;</span>
+            <span class="hljs-keyword">var</span> leader = <span class="hljs-number">0</span>; <span
+                                            class="hljs-comment">//&#x663E;&#x793A;&#x533A;&#x57DF;&#x81EA;&#x8EAB;&#x7684;&#x4F4D;&#x7F6E;</span>
+            img.onclick = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span
+                                            class="hljs-params"></span>) </span>{
+                <span class="hljs-comment">//&#x6280;&#x672F;&#x70B9;&#xFF1A;window.scrollTo(0,0);</span>
+                <span class="hljs-comment">//&#x8981;&#x7528;&#x5B9A;&#x65F6;&#x5668;&#xFF0C;&#x5148;&#x6E05;&#x5B9A;&#x65F6;&#x5668;</span>
+                clearInterval(timer);
+                timer = setInterval(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span
+                                            class="hljs-params"></span>) </span>{
+                    <span class="hljs-comment">//&#x83B7;&#x53D6;&#x6B65;&#x957F;</span>
+                    <span class="hljs-keyword">var</span> step = (target - leader) / <span class="hljs-number">10</span>;
+                    <span class="hljs-comment">//&#x4E8C;&#x6B21;&#x5904;&#x7406;&#x6B65;&#x957F;</span>
+                    step = step &gt; <span class="hljs-number">0</span> ? <span class="hljs-built_in">Math</span>.ceil(step) : <span
+                                            class="hljs-built_in">Math</span>.floor(step);
+                    leader = leader + step; <span class="hljs-comment">//&#x5F80;&#x4E0A;&#x79FB;&#x52A8;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;step&#x662F;&#x8D1F;&#x6570;&#x3002;&#x5F53;&#x524D;&#x4F4D;&#x7F6E;&#x51CF;&#x53BB;&#x6B65;&#x957F;&#xFF0C;&#x5C31;&#x7B49;&#x4E8E;&#x4E0B;&#x4E00;&#x6B65;&#x7684;&#x4F4D;&#x7F6E;&#x3002;</span>
+                    <span class="hljs-comment">//&#x663E;&#x793A;&#x533A;&#x57DF;&#x79FB;&#x52A8;</span>
+                    <span class="hljs-built_in">window</span>.scrollTo(<span class="hljs-number">0</span>, leader);
+                    <span class="hljs-comment">//&#x6E05;&#x9664;&#x5B9A;&#x65F6;&#x5668;</span>
+                    <span class="hljs-keyword">if</span> (leader === <span class="hljs-number">0</span>) {
+                        clearInterval(timer);
+                    }
+                }, <span class="hljs-number">25</span>);
+            }
+        }
+    </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span
+        class="hljs-string">&quot;images/Top.jpg&quot;</span>/&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+    &#x6211;&#x662F;&#x6700;&#x9876;&#x7AEF;.....<span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+    &#x751F;&#x547D;&#x58F9;&#x53F7;&#xFF0C;&#x6C38;&#x4E0D;&#x6B62;&#x6B65;.....<span class="hljs-tag">&lt;<span
+                                            class="hljs-name">br</span>&gt;</span>
+    &#x751F;&#x547D;&#x58F9;&#x53F7;&#xFF0C;&#x6C38;&#x4E0D;&#x6B62;&#x6B65;.....<span class="hljs-tag">&lt;<span
+                                            class="hljs-name">br</span>&gt;</span>
+    &#x751F;&#x547D;&#x58F9;&#x53F7;&#xFF0C;&#x6C38;&#x4E0D;&#x6B62;&#x6B65;.....<span class="hljs-tag">&lt;<span
+                                            class="hljs-name">br</span>&gt;</span>
+    &#x751F;&#x547D;&#x58F9;&#x53F7;&#xFF0C;&#x6C38;&#x4E0D;&#x6B62;&#x6B65;.....<span class="hljs-tag">&lt;<span
+                                            class="hljs-name">br</span>&gt;</span>
+    &#x751F;&#x547D;&#x58F9;&#x53F7;&#xFF0C;&#x6C38;&#x4E0D;&#x6B62;&#x6B65;.....<span class="hljs-tag">&lt;<span
+                                            class="hljs-name">br</span>&gt;</span>
+    &#x751F;&#x547D;&#x58F9;&#x53F7;&#xFF0C;&#x6C38;&#x4E0D;&#x6B62;&#x6B65;.....<span class="hljs-tag">&lt;<span
+                                            class="hljs-name">br</span>&gt;</span>
+    &#x751F;&#x547D;&#x58F9;&#x53F7;&#xFF0C;&#x6C38;&#x4E0D;&#x6B62;&#x6B65;.....<span class="hljs-tag">&lt;<span
+                                            class="hljs-name">br</span>&gt;</span>
+    &#x751F;&#x547D;&#x58F9;&#x53F7;&#xFF0C;&#x6C38;&#x4E0D;&#x6B62;&#x6B65;.....<span class="hljs-tag">&lt;<span
+                                            class="hljs-name">br</span>&gt;</span>
+    &#x751F;&#x547D;&#x58F9;&#x53F7;&#xFF0C;&#x6C38;&#x4E0D;&#x6B62;&#x6B65;.....<span class="hljs-tag">&lt;<span
+                                            class="hljs-name">br</span>&gt;</span>
+    &#x751F;&#x547D;&#x58F9;&#x53F7;&#xFF0C;&#x6C38;&#x4E0D;&#x6B62;&#x6B65;.....<span class="hljs-tag">&lt;<span
+                                            class="hljs-name">br</span>&gt;</span>
+    &#x751F;&#x547D;&#x58F9;&#x53F7;&#xFF0C;&#x6C38;&#x4E0D;&#x6B62;&#x6B65;.....<span class="hljs-tag">&lt;<span
+                                            class="hljs-name">br</span>&gt;</span>
+    &#x751F;&#x547D;&#x58F9;&#x53F7;&#xFF0C;&#x6C38;&#x4E0D;&#x6B62;&#x6B65;.....<span class="hljs-tag">&lt;<span
+                                            class="hljs-name">br</span>&gt;</span>
+    &#x751F;&#x547D;&#x58F9;&#x53F7;&#xFF0C;&#x6C38;&#x4E0D;&#x6B62;&#x6B65;.....<span class="hljs-tag">&lt;<span
+                                            class="hljs-name">br</span>&gt;</span>
+    &#x751F;&#x547D;&#x58F9;&#x53F7;&#xFF0C;&#x6C38;&#x4E0D;&#x6B62;&#x6B65;.....<span class="hljs-tag">&lt;<span
+                                            class="hljs-name">br</span>&gt;</span>
+    &#x751F;&#x547D;&#x58F9;&#x53F7;&#xFF0C;&#x6C38;&#x4E0D;&#x6B62;&#x6B65;.....<span class="hljs-tag">&lt;<span
+                                            class="hljs-name">br</span>&gt;</span>
+    &#x751F;&#x547D;&#x58F9;&#x53F7;&#xFF0C;&#x6C38;&#x4E0D;&#x6B62;&#x6B65;.....<span class="hljs-tag">&lt;<span
+                                            class="hljs-name">br</span>&gt;</span>
+    &#x751F;&#x547D;&#x58F9;&#x53F7;&#xFF0C;&#x6C38;&#x4E0D;&#x6B62;&#x6B65;.....<span class="hljs-tag">&lt;<span
+                                            class="hljs-name">br</span>&gt;</span>
+    &#x751F;&#x547D;&#x58F9;&#x53F7;&#xFF0C;&#x6C38;&#x4E0D;&#x6B62;&#x6B65;.....<span class="hljs-tag">&lt;<span
+                                            class="hljs-name">br</span>&gt;</span>
+    &#x751F;&#x547D;&#x58F9;&#x53F7;&#xFF0C;&#x6C38;&#x4E0D;&#x6B62;&#x6B65;.....<span class="hljs-tag">&lt;<span
+                                            class="hljs-name">br</span>&gt;</span>
+    &#x751F;&#x547D;&#x58F9;&#x53F7;&#xFF0C;&#x6C38;&#x4E0D;&#x6B62;&#x6B65;.....<span class="hljs-tag">&lt;<span
+                                            class="hljs-name">br</span>&gt;</span>
+    &#x751F;&#x547D;&#x58F9;&#x53F7;&#xFF0C;&#x6C38;&#x4E0D;&#x6B62;&#x6B65;.....<span class="hljs-tag">&lt;<span
+                                            class="hljs-name">br</span>&gt;</span>
+    &#x751F;&#x547D;&#x58F9;&#x53F7;&#xFF0C;&#x6C38;&#x4E0D;&#x6B62;&#x6B65;.....<span class="hljs-tag">&lt;<span
+                                            class="hljs-name">br</span>&gt;</span>
+    &#x751F;&#x547D;&#x58F9;&#x53F7;&#xFF0C;&#x6C38;&#x4E0D;&#x6B62;&#x6B65;.....<span class="hljs-tag">&lt;<span
+                                            class="hljs-name">br</span>&gt;</span>
+    &#x751F;&#x547D;&#x58F9;&#x53F7;&#xFF0C;&#x6C38;&#x4E0D;&#x6B62;&#x6B65;.....<span class="hljs-tag">&lt;<span
+                                            class="hljs-name">br</span>&gt;</span>
+    &#x751F;&#x547D;&#x58F9;&#x53F7;&#xFF0C;&#x6C38;&#x4E0D;&#x6B62;&#x6B65;.....<span class="hljs-tag">&lt;<span
+                                            class="hljs-name">br</span>&gt;</span>
+    &#x751F;&#x547D;&#x58F9;&#x53F7;&#xFF0C;&#x6C38;&#x4E0D;&#x6B62;&#x6B65;.....<span class="hljs-tag">&lt;<span
+                                            class="hljs-name">br</span>&gt;</span>
+    &#x751F;&#x547D;&#x58F9;&#x53F7;&#xFF0C;&#x6C38;&#x4E0D;&#x6B62;&#x6B65;.....<span class="hljs-tag">&lt;<span
+                                            class="hljs-name">br</span>&gt;</span>
+    &#x751F;&#x547D;&#x58F9;&#x53F7;&#xFF0C;&#x6C38;&#x4E0D;&#x6B62;&#x6B65;.....<span class="hljs-tag">&lt;<span
+                                            class="hljs-name">br</span>&gt;</span>
+    &#x751F;&#x547D;&#x58F9;&#x53F7;&#xFF0C;&#x6C38;&#x4E0D;&#x6B62;&#x6B65;.....<span class="hljs-tag">&lt;<span
+                                            class="hljs-name">br</span>&gt;</span>
+    &#x751F;&#x547D;&#x58F9;&#x53F7;&#xFF0C;&#x6C38;&#x4E0D;&#x6B62;&#x6B65;.....<span class="hljs-tag">&lt;<span
+                                            class="hljs-name">br</span>&gt;</span>
+    &#x751F;&#x547D;&#x58F9;&#x53F7;&#xFF0C;&#x6C38;&#x4E0D;&#x6B62;&#x6B65;.....<span class="hljs-tag">&lt;<span
+                                            class="hljs-name">br</span>&gt;</span>
+    &#x751F;&#x547D;&#x58F9;&#x53F7;&#xFF0C;&#x6C38;&#x4E0D;&#x6B62;&#x6B65;.....<span class="hljs-tag">&lt;<span
+                                            class="hljs-name">br</span>&gt;</span>
+    &#x751F;&#x547D;&#x58F9;&#x53F7;&#xFF0C;&#x6C38;&#x4E0D;&#x6B62;&#x6B65;.....<span class="hljs-tag">&lt;<span
+                                            class="hljs-name">br</span>&gt;</span>
+    &#x751F;&#x547D;&#x58F9;&#x53F7;&#xFF0C;&#x6C38;&#x4E0D;&#x6B62;&#x6B65;.....<span class="hljs-tag">&lt;<span
+                                            class="hljs-name">br</span>&gt;</span>
+    &#x751F;&#x547D;&#x58F9;&#x53F7;&#xFF0C;&#x6C38;&#x4E0D;&#x6B62;&#x6B65;.....<span class="hljs-tag">&lt;<span
+                                            class="hljs-name">br</span>&gt;</span>
+    &#x751F;&#x547D;&#x58F9;&#x53F7;&#xFF0C;&#x6C38;&#x4E0D;&#x6B62;&#x6B65;.....<span class="hljs-tag">&lt;<span
+                                            class="hljs-name">br</span>&gt;</span>
+    &#x751F;&#x547D;&#x58F9;&#x53F7;&#xFF0C;&#x6C38;&#x4E0D;&#x6B62;&#x6B65;.....<span class="hljs-tag">&lt;<span
+                                            class="hljs-name">br</span>&gt;</span>
+    &#x751F;&#x547D;&#x58F9;&#x53F7;&#xFF0C;&#x6C38;&#x4E0D;&#x6B62;&#x6B65;.....<span class="hljs-tag">&lt;<span
+                                            class="hljs-name">br</span>&gt;</span>
+    &#x751F;&#x547D;&#x58F9;&#x53F7;&#xFF0C;&#x6C38;&#x4E0D;&#x6B62;&#x6B65;.....<span class="hljs-tag">&lt;<span
+                                            class="hljs-name">br</span>&gt;</span>
+    &#x751F;&#x547D;&#x58F9;&#x53F7;&#xFF0C;&#x6C38;&#x4E0D;&#x6B62;&#x6B65;.....<span class="hljs-tag">&lt;<span
+                                            class="hljs-name">br</span>&gt;</span>
+    &#x751F;&#x547D;&#x58F9;&#x53F7;&#xFF0C;&#x6C38;&#x4E0D;&#x6B62;&#x6B65;.....<span class="hljs-tag">&lt;<span
+                                            class="hljs-name">br</span>&gt;</span>
+    &#x751F;&#x547D;&#x58F9;&#x53F7;&#xFF0C;&#x6C38;&#x4E0D;&#x6B62;&#x6B65;.....<span class="hljs-tag">&lt;<span
+                                            class="hljs-name">br</span>&gt;</span>
+    &#x751F;&#x547D;&#x58F9;&#x53F7;&#xFF0C;&#x6C38;&#x4E0D;&#x6B62;&#x6B65;.....<span class="hljs-tag">&lt;<span
+                                            class="hljs-name">br</span>&gt;</span>
+    &#x751F;&#x547D;&#x58F9;&#x53F7;&#xFF0C;&#x6C38;&#x4E0D;&#x6B62;&#x6B65;.....<span class="hljs-tag">&lt;<span
+                                            class="hljs-name">br</span>&gt;</span>
+    &#x751F;&#x547D;&#x58F9;&#x53F7;&#xFF0C;&#x6C38;&#x4E0D;&#x6B62;&#x6B65;.....<span class="hljs-tag">&lt;<span
+                                            class="hljs-name">br</span>&gt;</span>
+    &#x751F;&#x547D;&#x58F9;&#x53F7;&#xFF0C;&#x6C38;&#x4E0D;&#x6B62;&#x6B65;.....<span class="hljs-tag">&lt;<span
+                                            class="hljs-name">br</span>&gt;</span>
+    &#x751F;&#x547D;&#x58F9;&#x53F7;&#xFF0C;&#x6C38;&#x4E0D;&#x6B62;&#x6B65;.....<span class="hljs-tag">&lt;<span
+                                            class="hljs-name">br</span>&gt;</span>
+    &#x751F;&#x547D;&#x58F9;&#x53F7;&#xFF0C;&#x6C38;&#x4E0D;&#x6B62;&#x6B65;.....<span class="hljs-tag">&lt;<span
+                                            class="hljs-name">br</span>&gt;</span>
+    &#x751F;&#x547D;&#x58F9;&#x53F7;&#xFF0C;&#x6C38;&#x4E0D;&#x6B62;&#x6B65;.....<span class="hljs-tag">&lt;<span
+                                            class="hljs-name">br</span>&gt;</span>
+    &#x751F;&#x547D;&#x58F9;&#x53F7;&#xFF0C;&#x6C38;&#x4E0D;&#x6B62;&#x6B65;.....<span class="hljs-tag">&lt;<span
+                                            class="hljs-name">br</span>&gt;</span>
+    &#x751F;&#x547D;&#x58F9;&#x53F7;&#xFF0C;&#x6C38;&#x4E0D;&#x6B62;&#x6B65;.....<span class="hljs-tag">&lt;<span
+                                            class="hljs-name">br</span>&gt;</span>
+    &#x751F;&#x547D;&#x58F9;&#x53F7;&#xFF0C;&#x6C38;&#x4E0D;&#x6B62;&#x6B65;.....<span class="hljs-tag">&lt;<span
+                                            class="hljs-name">br</span>&gt;</span>
+    &#x751F;&#x547D;&#x58F9;&#x53F7;&#xFF0C;&#x6C38;&#x4E0D;&#x6B62;&#x6B65;.....<span class="hljs-tag">&lt;<span
+                                            class="hljs-name">br</span>&gt;</span>
+    &#x751F;&#x547D;&#x58F9;&#x53F7;&#xFF0C;&#x6C38;&#x4E0D;&#x6B62;&#x6B65;.....<span class="hljs-tag">&lt;<span
+                                            class="hljs-name">br</span>&gt;</span>
+    &#x751F;&#x547D;&#x58F9;&#x53F7;&#xFF0C;&#x6C38;&#x4E0D;&#x6B62;&#x6B65;.....<span class="hljs-tag">&lt;<span
+                                            class="hljs-name">br</span>&gt;</span>
+    &#x751F;&#x547D;&#x58F9;&#x53F7;&#xFF0C;&#x6C38;&#x4E0D;&#x6B62;&#x6B65;.....<span class="hljs-tag">&lt;<span
+                                            class="hljs-name">br</span>&gt;</span>
+    &#x751F;&#x547D;&#x58F9;&#x53F7;&#xFF0C;&#x6C38;&#x4E0D;&#x6B62;&#x6B65;.....<span class="hljs-tag">&lt;<span
+                                            class="hljs-name">br</span>&gt;</span>
+    &#x751F;&#x547D;&#x58F9;&#x53F7;&#xFF0C;&#x6C38;&#x4E0D;&#x6B62;&#x6B65;.....<span class="hljs-tag">&lt;<span
+                                            class="hljs-name">br</span>&gt;</span>
+    &#x751F;&#x547D;&#x58F9;&#x53F7;&#xFF0C;&#x6C38;&#x4E0D;&#x6B62;&#x6B65;.....<span class="hljs-tag">&lt;<span
+                                            class="hljs-name">br</span>&gt;</span>
+    &#x751F;&#x547D;&#x58F9;&#x53F7;&#xFF0C;&#x6C38;&#x4E0D;&#x6B62;&#x6B65;.....<span class="hljs-tag">&lt;<span
+                                            class="hljs-name">br</span>&gt;</span>
+    &#x751F;&#x547D;&#x58F9;&#x53F7;&#xFF0C;&#x6C38;&#x4E0D;&#x6B62;&#x6B65;.....<span class="hljs-tag">&lt;<span
+                                            class="hljs-name">br</span>&gt;</span>
+    &#x751F;&#x547D;&#x58F9;&#x53F7;&#xFF0C;&#x6C38;&#x4E0D;&#x6B62;&#x6B65;.....<span class="hljs-tag">&lt;<span
+                                            class="hljs-name">br</span>&gt;</span>
+    &#x751F;&#x547D;&#x58F9;&#x53F7;&#xFF0C;&#x6C38;&#x4E0D;&#x6B62;&#x6B65;.....<span class="hljs-tag">&lt;<span
+                                            class="hljs-name">br</span>&gt;</span>
+    &#x751F;&#x547D;&#x58F9;&#x53F7;&#xFF0C;&#x6C38;&#x4E0D;&#x6B62;&#x6B65;.....<span class="hljs-tag">&lt;<span
+                                            class="hljs-name">br</span>&gt;</span>
+    &#x751F;&#x547D;&#x58F9;&#x53F7;&#xFF0C;&#x6C38;&#x4E0D;&#x6B62;&#x6B65;.....<span class="hljs-tag">&lt;<span
+                                            class="hljs-name">br</span>&gt;</span>
+    &#x751F;&#x547D;&#x58F9;&#x53F7;&#xFF0C;&#x6C38;&#x4E0D;&#x6B62;&#x6B65;.....<span class="hljs-tag">&lt;<span
+                                            class="hljs-name">br</span>&gt;</span>
+    &#x751F;&#x547D;&#x58F9;&#x53F7;&#xFF0C;&#x6C38;&#x4E0D;&#x6B62;&#x6B65;.....<span class="hljs-tag">&lt;<span
+                                            class="hljs-name">br</span>&gt;</span>
+    &#x751F;&#x547D;&#x58F9;&#x53F7;&#xFF0C;&#x6C38;&#x4E0D;&#x6B62;&#x6B65;.....<span class="hljs-tag">&lt;<span
+                                            class="hljs-name">br</span>&gt;</span>
+    &#x751F;&#x547D;&#x58F9;&#x53F7;&#xFF0C;&#x6C38;&#x4E0D;&#x6B62;&#x6B65;.....<span class="hljs-tag">&lt;<span
+                                            class="hljs-name">br</span>&gt;</span>
+    &#x751F;&#x547D;&#x58F9;&#x53F7;&#xFF0C;&#x6C38;&#x4E0D;&#x6B62;&#x6B65;.....<span class="hljs-tag">&lt;<span
+                                            class="hljs-name">br</span>&gt;</span>
+    &#x751F;&#x547D;&#x58F9;&#x53F7;&#xFF0C;&#x6C38;&#x4E0D;&#x6B62;&#x6B65;.....<span class="hljs-tag">&lt;<span
+                                            class="hljs-name">br</span>&gt;</span>
+    &#x751F;&#x547D;&#x58F9;&#x53F7;&#xFF0C;&#x6C38;&#x4E0D;&#x6B62;&#x6B65;.....<span class="hljs-tag">&lt;<span
+                                            class="hljs-name">br</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre>
+                                <p>&#xFF08;2&#xFF09;tools.js:</p>
+                                <pre><code class="lang-javascript"><span class="hljs-comment">/**
+ * Created by smyhvae on 2015/12/8.
+ */</span>
+
+<span class="hljs-comment">//&#x51FD;&#x6570;&#xFF1A;&#x83B7;&#x53D6;scrollTop&#x548C;scrollLeft&#x7684;&#x503C;</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">scroll</span>(<span
+        class="hljs-params"></span>) </span>{  <span class="hljs-comment">// &#x5F00;&#x59CB;&#x5C01;&#x88C5;&#x81EA;&#x5DF1;&#x7684;scrollTop</span>
+    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">window</span>.pageYOffset != <span
+                                            class="hljs-literal">null</span>) {  <span class="hljs-comment">// ie9+ &#x9AD8;&#x7248;&#x672C;&#x6D4F;&#x89C8;&#x5668;</span>
+        <span class="hljs-comment">// &#x56E0;&#x4E3A; window.pageYOffset &#x9ED8;&#x8BA4;&#x7684;&#x662F;  0  &#x6240;&#x4EE5;&#x8FD9;&#x91CC;&#x9700;&#x8981;&#x5224;&#x65AD;</span>
+        <span class="hljs-keyword">return</span> {
+            left: <span class="hljs-built_in">window</span>.pageXOffset,
+            top: <span class="hljs-built_in">window</span>.pageYOffset
+        }
+    }
+    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span
+                                            class="hljs-built_in">document</span>.compatMode === <span
+                                            class="hljs-string">&quot;CSS1Compat&quot;</span>) {    <span
+                                            class="hljs-comment">// &#x6807;&#x51C6;&#x6D4F;&#x89C8;&#x5668;   &#x6765;&#x5224;&#x65AD;&#x6709;&#x6CA1;&#x6709;&#x58F0;&#x660E;DTD</span>
+        <span class="hljs-keyword">return</span> {
+            left: <span class="hljs-built_in">document</span>.documentElement.scrollLeft,
+            top: <span class="hljs-built_in">document</span>.documentElement.scrollTop
+        }
+    }
+    <span class="hljs-keyword">return</span> {   <span class="hljs-comment">// &#x672A;&#x58F0;&#x660E; DTD</span>
+        left: <span class="hljs-built_in">document</span>.body.scrollLeft,
+        top: <span class="hljs-built_in">document</span>.body.scrollTop
+    }
+}
+</code></pre>
+                                <p>&#x5B9E;&#x73B0;&#x6548;&#x679C;&#xFF1A;</p>
+                                <p>20180203_1710.gif</p>
+                                <p>&#x5C0F;&#x706B;&#x7BAD;&#x7684;&#x56FE;&#x7247;&#x8D44;&#x6E90;&#xFF1A;<20180203-top.jpg></
+                                20180203-top.jpg></p>
+                                <h2 id="windowscrollto&#x65B9;&#x6CD5;&#x4E3E;&#x4F8B;&#xFF1A;&#x697C;&#x5C42;&#x8DF3;&#x8DC3;&#xFF08;&#x6682;&#x7565;&#xFF09;">
+                                    window.scrollTo()&#x65B9;&#x6CD5;&#x4E3E;&#x4F8B;&#xFF1A;&#x697C;&#x5C42;&#x8DF3;&#x8DC3;&#xFF08;&#x6682;&#x7565;&#xFF09;</h2>
+                                <h2 id="&#x7F13;&#x52A8;&#x6846;&#x67B6;&#x5C01;&#x88C5;">&#x7F13;&#x52A8;&#x6846;&#x67B6;&#x5C01;&#x88C5;</h2>
+                                <h3 id="1&#x3001;&#x7F13;&#x52A8;&#x6846;&#x67B6;&#x5C01;&#x88C5;&#xFF1A;&#x540C;&#x65F6;&#x8BBE;&#x7F6E;&#x591A;&#x4E2A;&#x5C5E;&#x6027;">
+                                    1&#x3001;&#x7F13;&#x52A8;&#x6846;&#x67B6;&#x5C01;&#x88C5;&#xFF1A;&#x540C;&#x65F6;&#x8BBE;&#x7F6E;&#x591A;&#x4E2A;&#x5C5E;&#x6027;</h3>
+                                <p>&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x901A;&#x8FC7;<code>window.getComputedStyle</code>&#x7684;&#x65B9;&#x5F0F;&#x83B7;&#x53D6;&#x5C5E;&#x6027;&#x503C;&#x3002;
+                                </p>
+                                <p><strong>&#x5B8C;&#x6574;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</strong></p>
+                                <pre><code class="lang-html"><span class="hljs-meta">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span> <span class="hljs-attr">lang</span>=<span
+        class="hljs-string">&quot;en&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span
+            class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span><span class="hljs-tag">&lt;/<span
+                                            class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+        <span class="hljs-selector-tag">div</span> {
+            <span class="hljs-attribute">position</span>: absolute;
+            <span class="hljs-attribute">top</span>: <span class="hljs-number">40px</span>;
+            <span class="hljs-attribute">left</span>: <span class="hljs-number">10px</span>;
+            <span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;
+            <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;
+            <span class="hljs-attribute">background-color</span>: pink;
+        }
+    </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>&#x8FD0;&#x52A8;&#x5230;json&#x4E2D;&#x8BBE;&#x7F6E;&#x7684;&#x4F4D;&#x7F6E;<span
+                                            class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><span class="hljs-tag">&lt;/<span
+                                            class="hljs-name">div</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+
+    <span class="hljs-keyword">var</span> btnArr = <span
+                                            class="hljs-built_in">document</span>.getElementsByTagName(<span
+                                            class="hljs-string">&quot;button&quot;</span>);
+    <span class="hljs-keyword">var</span> div = <span class="hljs-built_in">document</span>.getElementsByTagName(<span
+                                            class="hljs-string">&quot;div&quot;</span>)[<span
+                                            class="hljs-number">0</span>];
+
+    btnArr[<span class="hljs-number">0</span>].onclick = <span class="hljs-function"><span
+                                            class="hljs-keyword">function</span> (<span
+                                            class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">var</span> json = {<span class="hljs-string">&quot;left&quot;</span>: <span
+                                            class="hljs-number">100</span>, <span
+                                            class="hljs-string">&quot;top&quot;</span>: <span
+                                            class="hljs-number">200</span>, <span
+                                            class="hljs-string">&quot;width&quot;</span>: <span
+                                            class="hljs-number">300</span>, <span
+                                            class="hljs-string">&quot;height&quot;</span>: <span
+                                            class="hljs-number">300</span>};
+        animate(div, json);
+    }
+
+    <span class="hljs-comment">//&#x53C2;&#x6570;&#x53D8;&#x4E3A;3&#x4E2A;</span>
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">animate</span>(<span
+            class="hljs-params">ele, json</span>) </span>{
+        <span class="hljs-comment">//&#x5148;&#x6E05;&#x5B9A;&#x65F6;&#x5668;</span>
+        clearInterval(ele.timer);
+        ele.timer = setInterval(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span
+                                            class="hljs-params"></span>) </span>{
+            <span class="hljs-comment">//&#x904D;&#x5386;&#x5C5E;&#x6027;&#x548C;&#x503C;&#xFF0C;&#x5206;&#x522B;&#x5355;&#x72EC;&#x5904;&#x7406;json</span>
+            <span class="hljs-comment">//attr == key(&#x952E;)    target == json[key](&#x503C;)</span>
+            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> key <span class="hljs-keyword">in</span> json) {
+                <span class="hljs-comment">//&#x56DB;&#x90E8;</span>
+                <span class="hljs-keyword">var</span> current = <span class="hljs-built_in">parseInt</span>(getStyle(ele, key)) || <span
+                                            class="hljs-number">0</span>;
+                <span class="hljs-comment">//1.&#x83B7;&#x53D6;&#x6B65;&#x957F;</span>
+                <span class="hljs-keyword">var</span> step = (json[key] - current) / <span class="hljs-number">10</span>;
+                <span class="hljs-comment">//2.&#x4E8C;&#x6B21;&#x52A0;&#x5DE5;&#x6B65;&#x957F;</span>
+                step = step &gt; <span class="hljs-number">0</span> ? <span class="hljs-built_in">Math</span>.ceil(step) : <span
+                                            class="hljs-built_in">Math</span>.floor(step);
+                current = current + step;
+                <span class="hljs-comment">//3.&#x8D4B;&#x503C;</span>
+                ele.style[key] = current + <span class="hljs-string">&quot;px&quot;</span>;
+                <span class="hljs-built_in">console</span>.log(<span class="hljs-number">1</span>);
+                <span class="hljs-comment">//4.&#x6E05;&#x9664;&#x5B9A;&#x65F6;&#x5668;</span>
+<span class="hljs-comment">//                    if(Math.abs(json[key]-current)&lt;=Math.abs(step)){</span>
+<span class="hljs-comment">//                        ele.style[key] = json[key] + &quot;px&quot;;</span>
+<span class="hljs-comment">//                        clearInterval(ele.timer);</span>
+<span class="hljs-comment">//                    }</span>
+            }
+        }, <span class="hljs-number">25</span>);
+    }
+
+    <span class="hljs-comment">//&#x517C;&#x5BB9;&#x65B9;&#x6CD5;&#x83B7;&#x53D6;&#x5143;&#x7D20;&#x6837;&#x5F0F;</span>
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span
+            class="hljs-title">getStyle</span>(<span class="hljs-params">ele, attr</span>) </span>{
+        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">window</span>.getComputedStyle) {
+            <span class="hljs-keyword">return</span> <span
+                                            class="hljs-built_in">window</span>.getComputedStyle(ele, <span
+                                            class="hljs-literal">null</span>)[attr];
+        }
+        <span class="hljs-keyword">return</span> ele.currentStyle[attr];
+    }
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre>
+                                <p>&#x5B9E;&#x73B0;&#x6548;&#x679C;&#xFF1A;</p>
+                                <p>20180204_1440.gif</p>
+                                <h3 id="2&#x3001;&#x4E0A;&#x65B9;&#x7684;&#x4EE3;&#x7801;&#x6539;&#x8FDB;&#xFF1A;&#x6E05;&#x9664;&#x5B9A;&#x65F6;&#x5668;">
+                                    2&#x3001;&#x4E0A;&#x65B9;&#x7684;&#x4EE3;&#x7801;&#x6539;&#x8FDB;&#xFF1A;&#x6E05;&#x9664;&#x5B9A;&#x65F6;&#x5668;</h3>
+                                <p>&#x4E0A;&#x65B9;&#x7684;&#x4EE3;&#x7801;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x8FD8;&#x9700;&#x505A;&#x4E00;&#x4E0B;&#x6E05;&#x9664;&#x5B9A;&#x65F6;&#x5668;&#x7684;&#x5224;&#x65AD;&#xFF1A;&#x53EA;&#x6709;&#x6240;&#x6709;&#x7684;&#x53C2;&#x6570;&#x90FD;&#x5230;&#x8FBE;&#x6307;&#x5B9A;&#x4F4D;&#x7F6E;&#x4E86;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x6E05;&#x9664;&#x5B9A;&#x65F6;&#x5668;&#x3002;</p>
+                                <p>&#x5B8C;&#x6574;&#x7248;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+                                <pre><code class="lang-html"><span class="hljs-meta">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span> <span class="hljs-attr">lang</span>=<span
+        class="hljs-string">&quot;en&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span
+            class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span><span class="hljs-tag">&lt;/<span
+                                            class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+        <span class="hljs-selector-tag">div</span> {
+            <span class="hljs-attribute">position</span>: absolute;
+            <span class="hljs-attribute">top</span>: <span class="hljs-number">40px</span>;
+            <span class="hljs-attribute">left</span>: <span class="hljs-number">10px</span>;
+            <span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;
+            <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;
+            <span class="hljs-attribute">background-color</span>: pink;
+        }
+    </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>&#x8FD0;&#x52A8;&#x5230;json&#x4E2D;&#x8BBE;&#x7F6E;&#x7684;&#x4F4D;&#x7F6E;<span
+                                            class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><span class="hljs-tag">&lt;/<span
+                                            class="hljs-name">div</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+
+    <span class="hljs-keyword">var</span> btnArr = <span
+                                            class="hljs-built_in">document</span>.getElementsByTagName(<span
+                                            class="hljs-string">&quot;button&quot;</span>);
+    <span class="hljs-keyword">var</span> div = <span class="hljs-built_in">document</span>.getElementsByTagName(<span
+                                            class="hljs-string">&quot;div&quot;</span>)[<span
+                                            class="hljs-number">0</span>];
+
+    btnArr[<span class="hljs-number">0</span>].onclick = <span class="hljs-function"><span
+                                            class="hljs-keyword">function</span> (<span
+                                            class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">var</span> json = {<span class="hljs-string">&quot;left&quot;</span>: <span
+                                            class="hljs-number">100</span>, <span
+                                            class="hljs-string">&quot;top&quot;</span>: <span
+                                            class="hljs-number">200</span>, <span
+                                            class="hljs-string">&quot;width&quot;</span>: <span
+                                            class="hljs-number">300</span>, <span
+                                            class="hljs-string">&quot;height&quot;</span>: <span
+                                            class="hljs-number">300</span>};
+        animate(div, json);
+    }
+
+    <span class="hljs-comment">//&#x53C2;&#x6570;&#x53D8;&#x4E3A;3&#x4E2A;</span>
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">animate</span>(<span
+            class="hljs-params">ele, json</span>) </span>{
+        <span class="hljs-comment">//&#x5148;&#x6E05;&#x5B9A;&#x65F6;&#x5668;</span>
+        clearInterval(ele.timer);
+        ele.timer = setInterval(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span
+                                            class="hljs-params"></span>) </span>{
+            <span class="hljs-comment">//&#x5F00;&#x95ED;&#x539F;&#x5219;</span>
+            <span class="hljs-keyword">var</span> bool = <span class="hljs-literal">true</span>;
+
+            <span class="hljs-comment">//&#x904D;&#x5386;&#x5C5E;&#x6027;&#x548C;&#x503C;&#xFF0C;&#x5206;&#x522B;&#x5355;&#x72EC;&#x5904;&#x7406;json</span>
+            <span class="hljs-comment">//attr == key(&#x952E;)    target == json[key](&#x503C;)</span>
+            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> key <span class="hljs-keyword">in</span> json) {
+                <span class="hljs-comment">//&#x56DB;&#x90E8;</span>
+                <span class="hljs-keyword">var</span> current = <span class="hljs-built_in">parseInt</span>(getStyle(ele, key)) || <span
+                                            class="hljs-number">0</span>;
+                <span class="hljs-comment">//1.&#x83B7;&#x53D6;&#x6B65;&#x957F;</span>
+                <span class="hljs-keyword">var</span> step = (json[key] - current) / <span class="hljs-number">10</span>;
+                <span class="hljs-comment">//2.&#x4E8C;&#x6B21;&#x52A0;&#x5DE5;&#x6B65;&#x957F;</span>
+                step = step &gt; <span class="hljs-number">0</span> ? <span class="hljs-built_in">Math</span>.ceil(step) : <span
+                                            class="hljs-built_in">Math</span>.floor(step);
+                current = current + step;
+                <span class="hljs-comment">//3.&#x8D4B;&#x503C;</span>
+                ele.style[key] = current + <span class="hljs-string">&quot;px&quot;</span>;
+                <span class="hljs-comment">//4.&#x6E05;&#x9664;&#x5B9A;&#x65F6;&#x5668;</span>
+                <span class="hljs-comment">//&#x5224;&#x65AD;: &#x76EE;&#x6807;&#x503C;&#x548C;&#x5F53;&#x524D;&#x503C;&#x7684;&#x5DEE;&#x5927;&#x4E8E;&#x6B65;&#x957F;&#xFF0C;&#x5C31;&#x4E0D;&#x80FD;&#x8DF3;&#x51FA;&#x5FAA;&#x73AF;</span>
+                <span class="hljs-comment">//&#x4E0D;&#x8003;&#x8651;&#x5C0F;&#x6570;&#x7684;&#x60C5;&#x51B5;&#xFF1A;&#x76EE;&#x6807;&#x4F4D;&#x7F6E;&#x548C;&#x5F53;&#x524D;&#x4F4D;&#x7F6E;&#x4E0D;&#x76F8;&#x7B49;&#xFF0C;&#x5C31;&#x4E0D;&#x80FD;&#x6E05;&#x9664;&#x6E05;&#x9664;&#x5B9A;&#x65F6;&#x5668;&#x3002;</span>
+                <span class="hljs-keyword">if</span> (json[key] !== current) {
+                    bool = <span class="hljs-literal">false</span>;
+                }
+            }
+
+            <span class="hljs-built_in">console</span>.log(<span class="hljs-number">1</span>);
+            <span class="hljs-comment">//&#x53EA;&#x6709;&#x6240;&#x6709;&#x7684;&#x5C5E;&#x6027;&#x90FD;&#x5230;&#x4E86;&#x6307;&#x5B9A;&#x4F4D;&#x7F6E;&#xFF0C;bool&#x503C;&#x624D;&#x4E3A;true&#xFF1B;</span>
+            <span class="hljs-keyword">if</span> (bool) {
+                clearInterval(ele.timer);
+            }
+        }, <span class="hljs-number">25</span>);
+    }
+
+    <span class="hljs-comment">//&#x517C;&#x5BB9;&#x65B9;&#x6CD5;&#x83B7;&#x53D6;&#x5143;&#x7D20;&#x6837;&#x5F0F;</span>
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span
+            class="hljs-title">getStyle</span>(<span class="hljs-params">ele, attr</span>) </span>{
+        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">window</span>.getComputedStyle) {
+            <span class="hljs-keyword">return</span> <span
+                                            class="hljs-built_in">window</span>.getComputedStyle(ele, <span
+                                            class="hljs-literal">null</span>)[attr];
+        }
+        <span class="hljs-keyword">return</span> ele.currentStyle[attr];
+    }
+
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre>
+                                <p>&#x5B9E;&#x73B0;&#x6548;&#x679C;&#x540C;&#x4E0A;&#x3002;</p>
+                                <p><strong>### 3&#x3001;&#x8FDB;&#x4E00;&#x6B65;&#x6DF1;&#x5165;&#xFF1A;&#x5982;&#x679C;&#x6709;&#x8981;&#x540C;&#x65F6;&#x6267;&#x884C;&#x8BB4;&#x591A;&#x4E2A;&#x52A8;&#x753B;&#x65F6;&#xFF0C;&#x5C31;&#x8981;&#x7528;&#x5230;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#xFF08;&#x91CD;&#x8981;&#xFF09;</strong>&#xFF1A;
+                                </p>
+                                <p>&#x4E0A;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x8981;&#x505A;&#x7684;&#x52A8;&#x753B;&#x662F;&#xFF1A;</p>
+                                <pre><code class="lang-javascript">    btnArr[<span class="hljs-number">0</span>].onclick = <span
+                                        class="hljs-function"><span class="hljs-keyword">function</span> (<span
+                                        class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">var</span> json = {<span class="hljs-string">&quot;left&quot;</span>: <span
+                                            class="hljs-number">100</span>, <span
+                                            class="hljs-string">&quot;top&quot;</span>: <span
+                                            class="hljs-number">200</span>, <span
+                                            class="hljs-string">&quot;width&quot;</span>: <span
+                                            class="hljs-number">300</span>, <span
+                                            class="hljs-string">&quot;height&quot;</span>: <span
+                                            class="hljs-number">300</span>};
+        animate(div, json);
+    }
+</code></pre>
+                                <p>&#x4E0A;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x662F;&#x6267;&#x884C;&#x8FD9;&#x4E00;&#x4E2A;&#x52A8;&#x753B;&#xFF0C;&#x53EF;&#x5982;&#x679C;&#x8981;&#x540C;&#x65F6;&#x6267;&#x884C;&#x4E24;&#x4E2A;&#x52A8;&#x753B;&#x5462;&#xFF1F;&#x4E00;&#x822C;&#x4EBA;&#x81EA;&#x7136;&#x60F3;&#x5230;&#x7684;&#x662F;&#x4E0B;&#x9762;&#x7684;&#x5199;&#x6CD5;&#xFF1A;&#xFF08;&#x9519;&#x8BEF;&#x7684;&#x5199;&#x6CD5;&#xFF09;</p>
+                                <pre><code class="lang-javascript">    btnArr[<span class="hljs-number">0</span>].onclick = <span
+                                        class="hljs-function"><span class="hljs-keyword">function</span> (<span
+                                        class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">var</span> json1 = {<span class="hljs-string">&quot;left&quot;</span>: <span
+                                            class="hljs-number">100</span>, <span
+                                            class="hljs-string">&quot;top&quot;</span>: <span
+                                            class="hljs-number">200</span>, <span
+                                            class="hljs-string">&quot;width&quot;</span>: <span
+                                            class="hljs-number">300</span>, <span
+                                            class="hljs-string">&quot;height&quot;</span>: <span
+                                            class="hljs-number">300</span>};
+        <span class="hljs-keyword">var</span> json2 = {<span class="hljs-string">&quot;left&quot;</span>: <span
+                                            class="hljs-number">200</span>, <span
+                                            class="hljs-string">&quot;top&quot;</span>: <span
+                                            class="hljs-number">10</span>, <span
+                                            class="hljs-string">&quot;width&quot;</span>: <span
+                                            class="hljs-number">150</span>, <span
+                                            class="hljs-string">&quot;height&quot;</span>: <span
+                                            class="hljs-number">150</span>};
+        animate(div, json1);
+        animate(div, json2);
+    }
+</code></pre>
+                                <p>&#x4F46;&#x662F;&#x8FD9;&#x6837;&#x5199;&#x7684;&#x8BDD;&#xFF0C;&#x7B2C;&#x4E8C;&#x4E2A;&#x52A8;&#x753B;
+                                    json2 &#x4F1A;&#x628A;&#x7B2C;&#x4E00;&#x4E2A;&#x52A8;&#x753B; json1 <strong>&#x5C42;&#x53E0;&#x6389;</strong>&#x3002;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x7B2C;&#x4E00;&#x4E2A;&#x52A8;&#x753B;&#x76F4;&#x63A5;&#x5C31;&#x4E0D;&#x6267;&#x884C;&#x4E86;&#x3002;&#x6548;&#x679C;&#x5982;&#x4E0B;&#xFF1A;
+                                </p>
+                                <p>20180204_1526.gif</p>
+                                <p>&#x8FD9;&#x663E;&#x7136;&#x4E0D;&#x662F;&#x6211;&#x4EEC;&#x60F3;&#x770B;&#x5230;&#x7684;&#x3002;</p>
+                                <p>&#x5982;&#x679C;&#x6211;&#x4EEC;&#x60F3;&#x5148;&#x6267;&#x884C;&#x7B2C;&#x4E00;&#x4E2A;&#x52A8;&#x753B;fn1()&#xFF0C;&#x518D;&#x6267;&#x884C;&#x7B2C;&#x4E8C;&#x4E2A;&#x52A8;&#x753B;fn2()&#x7684;&#x8BDD;&#xFF0C;&#x5C31;&#x8981;&#x7528;&#x5230;<strong>&#x56DE;&#x8C03;&#x51FD;&#x6570;</strong>&#x3002;&#x610F;&#x601D;&#x662F;&#xFF0C;&#x5C06;&#x7B2C;&#x4E8C;&#x4E2A;&#x52A8;&#x753B;fn2()&#x4F5C;&#x4E3A;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x5373;&#x53EF;&#x3002;
+                                </p>
+                                <p>&#x5B8C;&#x6574;&#x7248;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+                                <pre><code class="lang-html"><span class="hljs-meta">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span> <span class="hljs-attr">lang</span>=<span
+        class="hljs-string">&quot;en&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span
+            class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span><span class="hljs-tag">&lt;/<span
+                                            class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+        <span class="hljs-selector-tag">div</span> {
+            <span class="hljs-attribute">position</span>: absolute;
+            <span class="hljs-attribute">top</span>: <span class="hljs-number">40px</span>;
+            <span class="hljs-attribute">left</span>: <span class="hljs-number">10px</span>;
+            <span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;
+            <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;
+            <span class="hljs-attribute">background-color</span>: pink;
+        }
+    </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>&#x8FD0;&#x52A8;&#x5230; json &#x8BBE;&#x7F6E;&#x7684;&#x4F4D;&#x7F6E;<span
+                                            class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><span class="hljs-tag">&lt;/<span
+                                            class="hljs-name">div</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+
+    <span class="hljs-keyword">var</span> btnArr = <span
+                                            class="hljs-built_in">document</span>.getElementsByTagName(<span
+                                            class="hljs-string">&quot;button&quot;</span>);
+    <span class="hljs-keyword">var</span> div = <span class="hljs-built_in">document</span>.getElementsByTagName(<span
+                                            class="hljs-string">&quot;div&quot;</span>)[<span
+                                            class="hljs-number">0</span>];
+
+    btnArr[<span class="hljs-number">0</span>].onclick = <span class="hljs-function"><span
+                                            class="hljs-keyword">function</span> (<span
+                                            class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">var</span> json1 = {<span class="hljs-string">&quot;left&quot;</span>: <span
+                                            class="hljs-number">100</span>, <span
+                                            class="hljs-string">&quot;top&quot;</span>: <span
+                                            class="hljs-number">200</span>, <span
+                                            class="hljs-string">&quot;width&quot;</span>: <span
+                                            class="hljs-number">300</span>, <span
+                                            class="hljs-string">&quot;height&quot;</span>: <span
+                                            class="hljs-number">300</span>};
+        <span class="hljs-keyword">var</span> json2 = {<span class="hljs-string">&quot;left&quot;</span>: <span
+                                            class="hljs-number">300</span>, <span
+                                            class="hljs-string">&quot;top&quot;</span>: <span
+                                            class="hljs-number">10</span>, <span
+                                            class="hljs-string">&quot;width&quot;</span>: <span
+                                            class="hljs-number">100</span>, <span
+                                            class="hljs-string">&quot;height&quot;</span>: <span
+                                            class="hljs-number">100</span>};
+
+        animate(div, json1, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span
+                                            class="hljs-params"></span>) </span>{ <span class="hljs-comment">//&#x7B2C;&#x4E09;&#x4E2A;&#x53C2;&#x6570;&#x662F;&#x56DE;&#x8C03;&#xFF0C;&#x53EF;&#x4EE5;&#x4FDD;&#x8BC1;json1&#x7684;&#x52A8;&#x753B;&#x6267;&#x884C;&#x7ED3;&#x675F;&#x540E;&#xFF0C;&#x518D;&#x6267;&#x884C;json2&#x7684;&#x52A8;&#x753B;</span>
+            animate(div, json2);
+        })
+    }
+
+    <span class="hljs-comment">//&#x5E26;&#x6709;&#x56DE;&#x8C03;&#x7684;&#x52A8;&#x753B;&#x5C01;&#x88C5;</span>
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">animate</span>(<span
+            class="hljs-params">ele, json, fn</span>) </span>{
+        <span class="hljs-comment">//&#x5148;&#x6E05;&#x5B9A;&#x65F6;&#x5668;</span>
+        clearInterval(ele.timer);
+        ele.timer = setInterval(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span
+                                            class="hljs-params"></span>) </span>{
+            <span class="hljs-comment">//&#x5F00;&#x95ED;&#x539F;&#x5219;</span>
+            <span class="hljs-keyword">var</span> bool = <span class="hljs-literal">true</span>;
+
+
+            <span class="hljs-comment">//&#x904D;&#x5386;&#x5C5E;&#x6027;&#x548C;&#x503C;&#xFF0C;&#x5206;&#x522B;&#x5355;&#x72EC;&#x5904;&#x7406;json</span>
+            <span class="hljs-comment">//attr == key(&#x952E;)    target == json[key](&#x503C;)</span>
+            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> key <span class="hljs-keyword">in</span> json) {
+                <span class="hljs-comment">//&#x56DB;&#x90E8;</span>
+                <span class="hljs-keyword">var</span> current = <span class="hljs-built_in">parseInt</span>(getStyle(ele, key)) || <span
+                                            class="hljs-number">0</span>;
+                <span class="hljs-comment">//1.&#x83B7;&#x53D6;&#x6B65;&#x957F;</span>
+                <span class="hljs-keyword">var</span> step = (json[key] - current) / <span class="hljs-number">10</span>;
+                <span class="hljs-comment">//2.&#x4E8C;&#x6B21;&#x52A0;&#x5DE5;&#x6B65;&#x957F;</span>
+                step = step &gt; <span class="hljs-number">0</span> ? <span class="hljs-built_in">Math</span>.ceil(step) : <span
+                                            class="hljs-built_in">Math</span>.floor(step);
+                current = current + step;
+                <span class="hljs-comment">//3.&#x8D4B;&#x503C;</span>
+                ele.style[key] = current + <span class="hljs-string">&quot;px&quot;</span>;
+                <span class="hljs-comment">//4.&#x6E05;&#x9664;&#x5B9A;&#x65F6;&#x5668;</span>
+                <span class="hljs-comment">//&#x5224;&#x65AD;: &#x76EE;&#x6807;&#x503C;&#x548C;&#x5F53;&#x524D;&#x503C;&#x7684;&#x5DEE;&#x5927;&#x4E8E;&#x6B65;&#x957F;&#xFF0C;&#x5C31;&#x4E0D;&#x80FD;&#x8DF3;&#x51FA;&#x5FAA;&#x73AF;</span>
+                <span class="hljs-comment">//&#x4E0D;&#x8003;&#x8651;&#x5C0F;&#x6570;&#x7684;&#x60C5;&#x51B5;&#xFF1A;&#x76EE;&#x6807;&#x4F4D;&#x7F6E;&#x548C;&#x5F53;&#x524D;&#x4F4D;&#x7F6E;&#x4E0D;&#x76F8;&#x7B49;&#xFF0C;&#x5C31;&#x4E0D;&#x80FD;&#x6E05;&#x9664;&#x6E05;&#x9664;&#x5B9A;&#x65F6;&#x5668;&#x3002;</span>
+                <span class="hljs-keyword">if</span> (json[key] !== current) {
+                    bool = <span class="hljs-literal">false</span>;
+                }
+            }
+
+            <span class="hljs-built_in">console</span>.log(<span class="hljs-number">1</span>);
+            <span class="hljs-comment">//&#x53EA;&#x6709;&#x6240;&#x6709;&#x7684;&#x5C5E;&#x6027;&#x90FD;&#x5230;&#x4E86;&#x6307;&#x5B9A;&#x4F4D;&#x7F6E;&#xFF0C;bool&#x503C;&#x624D;&#x4E0D;&#x4F1A;&#x53D8;&#x6210;false&#xFF1B;</span>
+            <span class="hljs-keyword">if</span> (bool) {
+                clearInterval(ele.timer); <span class="hljs-comment">//&#x5B9A;&#x65F6;&#x5668;&#x7ED3;&#x675F;&#xFF0C;&#x4EE3;&#x8868;&#x7B2C;&#x4E00;&#x4E2A;&#x51FD;&#x6570;fn1()&#x6267;&#x884C;&#x5B8C;&#x6BD5;&#x4E86;&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x53EF;&#x4EE5;&#x6267;&#x884C;&#x56DE;&#x8C03;&#x51FD;&#x6570;fn2()&#x4E86;&#x3002;</span>
+                <span class="hljs-comment">//&#x53EA;&#x6709;&#x4F20;&#x9012;&#x4E86;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#xFF0C;&#x624D;&#x80FD;&#x6267;&#x884C;</span>
+                <span class="hljs-keyword">if</span> (fn) {  <span class="hljs-comment">//&#x3010;&#x91CD;&#x8981;&#x3011;&#x7B2C;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x6267;&#x884C;&#x5B8C;&#x6BD5;&#x4E86;&#xFF0C;&#x5B9A;&#x65F6;&#x5668;&#x4E5F;&#x6E05;&#x9664;&#x4E86;&#x3002;&#x73B0;&#x5728;&#xFF0C;&#x5982;&#x679C;&#x6709;&#x4EBA;&#x9001;&#x4E86;fn()&#x8FD9;&#x4E2A;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x8FC7;&#x6765;&#xFF0C;&#x90A3;&#x5C31;&#x6267;&#x884C;fn()</span>
+                    fn();  <span class="hljs-comment">// &#x51FD;&#x6570;&#x540D;+()&#xFF1A;&#x6267;&#x884C;&#x8BE5;&#x51FD;&#x6570;</span>
+                }
+            }
+        }, <span class="hljs-number">25</span>);
+    }
+
+    <span class="hljs-comment">//&#x517C;&#x5BB9;&#x65B9;&#x6CD5;&#x83B7;&#x53D6;&#x5143;&#x7D20;&#x6837;&#x5F0F;</span>
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span
+            class="hljs-title">getStyle</span>(<span class="hljs-params">ele, attr</span>) </span>{
+        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">window</span>.getComputedStyle) {
+            <span class="hljs-keyword">return</span> <span
+                                            class="hljs-built_in">window</span>.getComputedStyle(ele, <span
+                                            class="hljs-literal">null</span>)[attr];
+        }
+        <span class="hljs-keyword">return</span> ele.currentStyle[attr];
+    }
+
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre>
+                                <p>&#x6548;&#x679C;&#x5982;&#x4E0B;&#xFF1A;</p>
+                                <p>20180204_1600.gif</p>
+                                <p>&#x4E0A;&#x65B9;&#x4EE3;&#x7801;&#x4E2D;&#xFF0C;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x8981;&#x5148;&#x540E;&#x5B8C;&#x6210;&#x4E24;&#x4E2A;&#x52A8;&#x753B;&#xFF0C;&#x6267;&#x884C;&#x7684;&#x4EE3;&#x7801;&#x662F;&#xFF1A;</p>
+                                <pre><code class="lang-javascript">        animate(div, json1, <span
+                                        class="hljs-function"><span class="hljs-keyword">function</span> (<span
+                                        class="hljs-params"></span>) </span>{ <span class="hljs-comment">//&#x7B2C;&#x4E09;&#x4E2A;&#x53C2;&#x6570;&#x662F;&#x56DE;&#x8C03;&#xFF0C;&#x53EF;&#x4EE5;&#x4FDD;&#x8BC1;json1&#x7684;&#x52A8;&#x753B;&#x6267;&#x884C;&#x7ED3;&#x675F;&#x540E;&#xFF0C;&#x518D;&#x6267;&#x884C;json2&#x7684;&#x52A8;&#x753B;</span>
+            animate(div, json2);
+        })
+</code></pre>
+                                <p>&#x5982;&#x679C;&#x60F3;&#x8981;&#x5148;&#x540E;&#x6267;&#x884C;&#x4E24;&#x4E2A;&#x52A8;&#x753B;&#xFF0C;&#x90A3;&#x5C31;&#x4EE5;&#x6B64;&#x7C7B;&#x63A8;&#xFF1A;</p>
+                                <pre><code class="lang-javascript">        animate(div, json1, <span
+                                        class="hljs-function"><span class="hljs-keyword">function</span> (<span
+                                        class="hljs-params"></span>) </span>{ <span class="hljs-comment">//&#x7B2C;&#x4E09;&#x4E2A;&#x53C2;&#x6570;&#x662F;&#x56DE;&#x8C03;&#xFF0C;&#x53EF;&#x4EE5;&#x4FDD;&#x8BC1;json1&#x7684;&#x52A8;&#x753B;&#x6267;&#x884C;&#x7ED3;&#x675F;&#x540E;&#xFF0C;&#x518D;&#x6267;&#x884C;json2&#x7684;&#x52A8;&#x753B;</span>
+            animate(div, json2,<span class="hljs-function"><span class="hljs-keyword">function</span> (<span
+                                            class="hljs-params"></span>) </span>{
+                animate(div,json3);
+            });
+        })
+</code></pre>
+                                <p><strong>&#x4E3E;&#x4F8B;&#xFF1A;&#x4EFF;360&#x7684;&#x53F3;&#x4E0B;&#x89D2;&#x5F00;&#x673A;&#x6548;&#x679C;</strong>
+                                </p>
+                                <p>&#x4EE3;&#x7801;&#x5B9E;&#x73B0;&#xFF1A;</p>
+                                <pre><code class="lang-html"><span class="hljs-meta">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span> <span class="hljs-attr">lang</span>=<span
+        class="hljs-string">&quot;en&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span
+            class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span><span class="hljs-tag">&lt;/<span
+                                            class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+        <span class="hljs-selector-class">.box</span> {
+            <span class="hljs-attribute">width</span>: <span class="hljs-number">322px</span>;
+            <span class="hljs-attribute">position</span>: fixed;
+            <span class="hljs-attribute">bottom</span>: <span class="hljs-number">0</span>;
+            <span class="hljs-attribute">right</span>: <span class="hljs-number">0</span>;
+        }
+
+        <span class="hljs-selector-tag">span</span> {
+            <span class="hljs-attribute">position</span>: absolute;
+            <span class="hljs-attribute">top</span>: <span class="hljs-number">0</span>;
+            <span class="hljs-attribute">right</span>: <span class="hljs-number">0</span>;
+            <span class="hljs-attribute">width</span>: <span class="hljs-number">30px</span>;
+            <span class="hljs-attribute">height</span>: <span class="hljs-number">20px</span>;
+            <span class="hljs-attribute">cursor</span>: pointer;
+        }
+    </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+        <span class="hljs-built_in">window</span>.onload = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span
+                                            class="hljs-params"></span>) </span>{
+            <span class="hljs-comment">//&#x9700;&#x6C42;&#xFF1A;&#x4E0B;&#x9762;&#x7684;&#x76D2;&#x5B50;&#x9AD8;&#x5148;&#x53D8;&#x4E3A;0&#xFF0C;&#x7136;&#x540E;&#x4E0A;&#x9762;&#x7684;&#x5927;&#x76D2;&#x5B50;&#x7684;&#x5BBD;&#x518D;&#x53D8;&#x4E3A;0.</span>
+            <span class="hljs-keyword">var</span> guanbi = <span
+                                            class="hljs-built_in">document</span>.getElementById(<span
+                                            class="hljs-string">&quot;guanbi&quot;</span>);
+            <span class="hljs-keyword">var</span> box = guanbi.parentNode;
+            <span class="hljs-keyword">var</span> b = <span class="hljs-built_in">document</span>.getElementById(<span
+                                            class="hljs-string">&quot;b&quot;</span>);
+
+            guanbi.onclick = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span
+                                            class="hljs-params"></span>) </span>{
+                <span class="hljs-comment">//&#x4E0B;&#x9762;&#x7684;&#x76D2;&#x5B50;&#x9AD8;&#x5EA6;&#x53D8;&#x4E3A;0&#xFF0C;&#x7136;&#x540E;&#x5927;&#x76D2;&#x5B50;&#x7684;&#x5BBD;&#x5728;&#x53D8;&#x4E3A;0.</span>
+                animate(b, {<span class="hljs-string">&quot;height&quot;</span>: <span
+                                            class="hljs-number">0</span>}, <span class="hljs-function"><span
+                                            class="hljs-keyword">function</span> (<span
+                                            class="hljs-params"></span>) </span>{
+                    animate(box, {<span class="hljs-string">&quot;width&quot;</span>: <span class="hljs-number">0</span>});
+                });
+            }
+        }
+
+
+        <span class="hljs-comment">//&#x5C01;&#x88C5;&#x597D;&#x7684;&#x52A8;&#x753B;&#x51FD;&#x6570;</span>
+        <span class="hljs-function"><span class="hljs-keyword">function</span> <span
+                class="hljs-title">animate</span>(<span class="hljs-params">ele, json, fn</span>) </span>{
+            <span class="hljs-comment">//&#x5148;&#x6E05;&#x5B9A;&#x65F6;&#x5668;</span>
+            clearInterval(ele.timer);
+            ele.timer = setInterval(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span
+                                            class="hljs-params"></span>) </span>{
+                <span class="hljs-comment">//&#x5F00;&#x95ED;&#x539F;&#x5219;</span>
+                <span class="hljs-keyword">var</span> bool = <span class="hljs-literal">true</span>;
+
+
+                <span class="hljs-comment">//&#x904D;&#x5386;&#x5C5E;&#x6027;&#x548C;&#x503C;&#xFF0C;&#x5206;&#x522B;&#x5355;&#x72EC;&#x5904;&#x7406;json</span>
+                <span class="hljs-comment">//attr == key(&#x952E;)    target == json[key](&#x503C;)</span>
+                <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> key <span
+                                            class="hljs-keyword">in</span> json) {
+                    <span class="hljs-comment">//&#x56DB;&#x90E8;</span>
+                    <span class="hljs-keyword">var</span> current = <span class="hljs-built_in">parseInt</span>(getStyle(ele, key)) || <span
+                                            class="hljs-number">0</span>;
+                    <span class="hljs-comment">//1.&#x83B7;&#x53D6;&#x6B65;&#x957F;</span>
+                    <span class="hljs-keyword">var</span> step = (json[key] - current) / <span
+                                            class="hljs-number">10</span>;
+                    <span class="hljs-comment">//2.&#x4E8C;&#x6B21;&#x52A0;&#x5DE5;&#x6B65;&#x957F;</span>
+                    step = step &gt; <span class="hljs-number">0</span> ? <span class="hljs-built_in">Math</span>.ceil(step) : <span
+                                            class="hljs-built_in">Math</span>.floor(step);
+                    current = current + step;
+                    <span class="hljs-comment">//3.&#x8D4B;&#x503C;</span>
+                    ele.style[key] = current + <span class="hljs-string">&quot;px&quot;</span>;
+                    <span class="hljs-comment">//4.&#x6E05;&#x9664;&#x5B9A;&#x65F6;&#x5668;</span>
+                    <span class="hljs-comment">//&#x5224;&#x65AD;: &#x76EE;&#x6807;&#x503C;&#x548C;&#x5F53;&#x524D;&#x503C;&#x7684;&#x5DEE;&#x5927;&#x4E8E;&#x6B65;&#x957F;&#xFF0C;&#x5C31;&#x4E0D;&#x80FD;&#x8DF3;&#x51FA;&#x5FAA;&#x73AF;</span>
+                    <span class="hljs-comment">//&#x4E0D;&#x8003;&#x8651;&#x5C0F;&#x6570;&#x7684;&#x60C5;&#x51B5;&#xFF1A;&#x76EE;&#x6807;&#x4F4D;&#x7F6E;&#x548C;&#x5F53;&#x524D;&#x4F4D;&#x7F6E;&#x4E0D;&#x76F8;&#x7B49;&#xFF0C;&#x5C31;&#x4E0D;&#x80FD;&#x6E05;&#x9664;&#x6E05;&#x9664;&#x5B9A;&#x65F6;&#x5668;&#x3002;</span>
+                    <span class="hljs-keyword">if</span> (json[key] !== current) {
+                        bool = <span class="hljs-literal">false</span>;
+                    }
+                }
+
+                <span class="hljs-built_in">console</span>.log(<span class="hljs-number">1</span>);
+                <span class="hljs-comment">//&#x53EA;&#x6709;&#x6240;&#x6709;&#x7684;&#x5C5E;&#x6027;&#x90FD;&#x5230;&#x4E86;&#x6307;&#x5B9A;&#x4F4D;&#x7F6E;&#xFF0C;bool&#x503C;&#x624D;&#x4E0D;&#x4F1A;&#x53D8;&#x6210;false&#xFF1B;</span>
+                <span class="hljs-keyword">if</span> (bool) {
+                    clearInterval(ele.timer);
+                    <span class="hljs-comment">//&#x6240;&#x6709;&#x7A0B;&#x5E8F;&#x6267;&#x884C;&#x5B8C;&#x6BD5;&#x4E86;&#xFF0C;&#x73B0;&#x5728;&#x53EF;&#x4EE5;&#x6267;&#x884C;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x4E86;</span>
+                    <span class="hljs-comment">//&#x53EA;&#x6709;&#x4F20;&#x9012;&#x4E86;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#xFF0C;&#x624D;&#x80FD;&#x6267;&#x884C;</span>
+                    <span class="hljs-keyword">if</span> (fn) {
+                        fn();
+                    }
+                }
+            }, <span class="hljs-number">1</span>);
+        }
+
+        <span class="hljs-comment">/**
+         * &#x83B7;&#x53D6;&#x5143;&#x7D20;&#x6837;&#x5F0F;&#x517C;&#x5BB9;&#x5199;&#x6CD5;
+         * @param ele
+         * @param attr
+         * @returns {*}
+         */</span>
+        <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getStyle</span>(<span
+                class="hljs-params">ele, attr</span>) </span>{
+            <span class="hljs-keyword">if</span> (<span class="hljs-built_in">window</span>.getComputedStyle) {
+                <span class="hljs-keyword">return</span> <span class="hljs-built_in">window</span>.getComputedStyle(ele, <span
+                                            class="hljs-literal">null</span>)[attr];
+            }
+            <span class="hljs-keyword">return</span> ele.currentStyle[attr];
+        }
+
+    </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span
+        class="hljs-string">&quot;box&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">id</span>=<span
+            class="hljs-string">&quot;guanbi&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span
+            class="hljs-string">&quot;hd&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;t&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span
+                class="hljs-string">&quot;images/1.jpg&quot;</span> <span class="hljs-attr">alt</span>=<span
+                class="hljs-string">&quot;&quot;</span>/&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span
+            class="hljs-string">&quot;bd&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;b&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span
+                class="hljs-string">&quot;images/2.jpg&quot;</span> <span class="hljs-attr">alt</span>=<span
+                class="hljs-string">&quot;&quot;</span>/&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre>
+                                <p>&#x6548;&#x679C;&#x5982;&#x4E0B;&#xFF1A;</p>
+                                <p>20180204_1620.gif</p>
+                                <p>&#x5DE5;&#x7A0B;&#x6587;&#x4EF6;&#xFF1A;</p>
+                                <ul>
+                                    <li>2018-02-04-&#x4EFF;360&#x5F00;&#x673A;&#x6548;&#x679C;.rar</li>
+                                </ul>
+                                <h3 id="4&#x3001;&#x5BF9;-opacity&#x548C;-z-index-&#x5C5E;&#x6027;&#x8FDB;&#x884C;&#x5355;&#x72EC;&#x6539;&#x8FDB;">
+                                    4&#x3001;&#x5BF9; opacity&#x548C; z-index &#x5C5E;&#x6027;&#x8FDB;&#x884C;&#x5355;&#x72EC;&#x6539;&#x8FDB;</h3>
+                                <p>&#x6211;&#x4EEC;&#x4EE5;&#x4E0A;&#x7684;&#x4EE3;&#x7801;&#x4E2D;&#xFF0C;&#x5982;&#x679C;&#x8981;&#x8FDB;&#x884C;&#x52A8;&#x753B;&#x53C2;&#x6570;&#x7684;&#x8BBE;&#x7F6E;&#xFF0C;&#x662F;&#x76F4;&#x63A5;&#x628A;&#x53C2;&#x6570;&#x653E;&#x5230;json&#x91CC;&#x9762;&#x53BB;&#x7684;&#x3002;&#x4F8B;&#x5982;&#xFF1A;</p>
+                                <pre><code class="lang-javascript">        <span class="hljs-keyword">var</span> json1 = {<span
+                                        class="hljs-string">&quot;left&quot;</span>: <span
+                                        class="hljs-number">100</span>, <span class="hljs-string">&quot;top&quot;</span>: <span
+                                        class="hljs-number">200</span>, <span
+                                        class="hljs-string">&quot;width&quot;</span>: <span
+                                        class="hljs-number">300</span>, <span
+                                        class="hljs-string">&quot;height&quot;</span>: <span
+                                        class="hljs-number">300</span>};
+        <span class="hljs-keyword">var</span> json2 = {<span class="hljs-string">&quot;left&quot;</span>: <span
+                                            class="hljs-number">300</span>, <span
+                                            class="hljs-string">&quot;top&quot;</span>: <span
+                                            class="hljs-number">10</span>, <span
+                                            class="hljs-string">&quot;width&quot;</span>: <span
+                                            class="hljs-number">100</span>, <span
+                                            class="hljs-string">&quot;height&quot;</span>: <span
+                                            class="hljs-number">100</span>};
+</code></pre>
+                                <p>&#x53EF;&#x662F;&#xFF0C;&#x4E0B;&#x9762;&#x8FD9;&#x4E24;&#x4E2A;&#x5C5E;&#x6027;&#xFF0C;&#x5374;&#x4E0D;&#x80FD;&#x8FD9;&#x6837;&#x653E;&#x5230;json&#x91CC;&#xFF0C;&#x4F1A;&#x51FA;&#x73B0;&#x517C;&#x5BB9;&#x6027;&#x7684;&#x95EE;&#x9898;&#xFF1A;</p>
+                                <pre><code>    opacity: 0.5;  //&#x900F;&#x660E;&#x5EA6;
+    z-index: 1;
+</code></pre>
+                                <p>&#x5982;&#x4F55;&#x6539;&#x8FDB;&#x5462;&#xFF1F;&#x8D5E;&#x7565;&#x3002;</p>
+
+
+                            </section>
+
+                        </div>
+                        <div class="search-results">
+                            <div class="has-results">
+
+                                <h1 class="search-results-title"><span class='search-results-count'></span> results
+                                    matching "<span class='search-query'></span>"</h1>
+                                <ul class="search-results-list"></ul>
+
+                            </div>
+                            <div class="no-results">
+
+                                <h1 class="search-results-title">No results matching "<span class='search-query'></span>"
+                                </h1>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+
+        <a href="01-offset家族和匀速动画(含轮播图的实现" class="navigation navigation-prev "
+           aria-label="Previous page: 01-offset家族和匀速动画(含轮播图的实现)">
+            <i class="fa fa-angle-left"></i>
+        </a>
+
+
+        <a href="03-client家族(可视区" class="navigation navigation-next " aria-label="Next page: 03-client家族(可视区)">
+            <i class="fa fa-angle-right"></i>
+        </a>
+
+
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function () {
+            gitbook.page.hasChanged({
+                "page": {
+                    "title": "02-scroll家族和缓动动画",
+                    "level": "1.9.2",
+                    "depth": 2,
+                    "next": {
+                        "title": "03-client家族(可视区)",
+                        "level": "1.9.3",
+                        "depth": 2,
+                        "path": "04-前端基本功：JavaScript特效/03-client家族(可视区",
+                        "ref": "04-前端基本功：JavaScript特效/03-client家族(可视区",
+                        "articles": []
+                    },
+                    "previous": {
+                        "title": "01-offset家族和匀速动画(含轮播图的实现)",
+                        "level": "1.9.1",
+                        "depth": 2,
+                        "path": "04-前端基本功：JavaScript特效/01-offset家族和匀速动画(含轮播图的实现",
+                        "ref": "04-前端基本功：JavaScript特效/01-offset家族和匀速动画(含轮播图的实现",
+                        "articles": []
+                    },
+                    "dir": "ltr"
+                },
+                "config": {
+                    "gitbook": "*",
+                    "theme": "default",
+                    "variables": {},
+                    "plugins": [],
+                    "pluginsConfig": {
+                        "highlight": {},
+                        "search": {},
+                        "lunr": {"maxIndexSize": 1000000, "ignoreSpecialCharacters": false},
+                        "sharing": {
+                            "facebook": true,
+                            "twitter": true,
+                            "google": false,
+                            "weibo": false,
+                            "instapaper": false,
+                            "vk": false,
+                            "all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+                        },
+                        "fontsettings": {"theme": "white", "family": "sans", "size": 2},
+                        "theme-default": {
+                            "styles": {
+                                "website": "styles/website.css",
+                                "pdf": "styles/pdf.css",
+                                "epub": "styles/epub.css",
+                                "mobi": "styles/mobi.css",
+                                "ebook": "styles/ebook.css",
+                                "print": "styles/print.css"
+                            }, "showLevel": false
+                        }
+                    },
+                    "structure": {
+                        "langs": "LANGS.md",
+                        "readme": "README.md",
+                        "glossary": "GLOSSARY.md",
+                        "summary": "SUMMARY.md"
+                    },
+                    "pdf": {
+                        "pageNumbers": true,
+                        "fontSize": 12,
+                        "fontFamily": "Arial",
+                        "paperSize": "a4",
+                        "chapterMark": "pagebreak",
+                        "pageBreaksBefore": "/",
+                        "margin": {"right": 62, "left": 62, "top": 56, "bottom": 56}
+                    },
+                    "styles": {
+                        "website": "styles/website.css",
+                        "pdf": "styles/pdf.css",
+                        "epub": "styles/epub.css",
+                        "mobi": "styles/mobi.css",
+                        "ebook": "styles/ebook.css",
+                        "print": "styles/print.css"
+                    }
+                },
+                "file": {
+                    "path": "04-前端基本功：JavaScript特效/02-scroll家族和缓动动画.md",
+                    "mtime": "2018-09-12T15:59:13.233Z",
+                    "type": "markdown"
+                },
+                "gitbook": {"version": "3.2.3", "time": "2018-09-12T16:43:42.070Z"},
+                "basePath": "..",
+                "book": {"language": ""}
+            });
+        });
+    </script>
+</div>
+
+
+<script src="../gitbook/gitbook.js"></script>
+<script src="../gitbook/theme.js"></script>
+
+
+<script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+
+
+<script src="../gitbook/gitbook-plugin-search/search.js"></script>
+
+
+<script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+
+
+<script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+
+
+<script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+
+
+<script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+
+
+</body>
+</html>
+

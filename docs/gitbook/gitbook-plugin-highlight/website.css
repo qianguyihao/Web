@@ -10,14 +10,12 @@
   /* Tomorrow Blue */
   /* Tomorrow Purple */
 }
-
 .book .book-body .page-wrapper .page-inner section.normal pre .hljs-comment,
 .book .book-body .page-wrapper .page-inner section.normal code .hljs-comment,
 .book .book-body .page-wrapper .page-inner section.normal pre .hljs-title,
 .book .book-body .page-wrapper .page-inner section.normal code .hljs-title {
   color: #8e908c;
 }
-
 .book .book-body .page-wrapper .page-inner section.normal pre .hljs-variable,
 .book .book-body .page-wrapper .page-inner section.normal code .hljs-variable,
 .book .book-body .page-wrapper .page-inner section.normal pre .hljs-attribute,
@@ -46,7 +44,6 @@
 .book .book-body .page-wrapper .page-inner section.normal code .css .hljs-pseudo {
   color: #c82829;
 }
-
 .book .book-body .page-wrapper .page-inner section.normal pre .hljs-number,
 .book .book-body .page-wrapper .page-inner section.normal code .hljs-number,
 .book .book-body .page-wrapper .page-inner section.normal pre .hljs-preprocessor,
@@ -63,14 +60,12 @@
 .book .book-body .page-wrapper .page-inner section.normal code .hljs-constant {
   color: #f5871f;
 }
-
 .book .book-body .page-wrapper .page-inner section.normal pre .ruby .hljs-class .hljs-title,
 .book .book-body .page-wrapper .page-inner section.normal code .ruby .hljs-class .hljs-title,
 .book .book-body .page-wrapper .page-inner section.normal pre .css .hljs-rules .hljs-attribute,
 .book .book-body .page-wrapper .page-inner section.normal code .css .hljs-rules .hljs-attribute {
   color: #eab700;
 }
-
 .book .book-body .page-wrapper .page-inner section.normal pre .hljs-string,
 .book .book-body .page-wrapper .page-inner section.normal code .hljs-string,
 .book .book-body .page-wrapper .page-inner section.normal pre .hljs-value,
@@ -87,12 +82,10 @@
 .book .book-body .page-wrapper .page-inner section.normal code .xml .hljs-cdata {
   color: #718c00;
 }
-
 .book .book-body .page-wrapper .page-inner section.normal pre .css .hljs-hexcolor,
 .book .book-body .page-wrapper .page-inner section.normal code .css .hljs-hexcolor {
   color: #3e999f;
 }
-
 .book .book-body .page-wrapper .page-inner section.normal pre .hljs-function,
 .book .book-body .page-wrapper .page-inner section.normal code .hljs-function,
 .book .book-body .page-wrapper .page-inner section.normal pre .python .hljs-decorator,
@@ -111,14 +104,12 @@
 .book .book-body .page-wrapper .page-inner section.normal code .coffeescript .hljs-title {
   color: #4271ae;
 }
-
 .book .book-body .page-wrapper .page-inner section.normal pre .hljs-keyword,
 .book .book-body .page-wrapper .page-inner section.normal code .hljs-keyword,
 .book .book-body .page-wrapper .page-inner section.normal pre .javascript .hljs-function,
 .book .book-body .page-wrapper .page-inner section.normal code .javascript .hljs-function {
   color: #8959a8;
 }
-
 .book .book-body .page-wrapper .page-inner section.normal pre .hljs,
 .book .book-body .page-wrapper .page-inner section.normal code .hljs {
   display: block;
@@ -126,7 +117,6 @@
   color: #4d4d4c;
   padding: 0.5em;
 }
-
 .book .book-body .page-wrapper .page-inner section.normal pre .coffeescript .javascript,
 .book .book-body .page-wrapper .page-inner section.normal code .coffeescript .javascript,
 .book .book-body .page-wrapper .page-inner section.normal pre .javascript .xml,
@@ -143,7 +133,6 @@
 .book .book-body .page-wrapper .page-inner section.normal code .xml .hljs-cdata {
   opacity: 0.5;
 }
-
 .book.color-theme-1 .book-body .page-wrapper .page-inner section.normal pre,
 .book.color-theme-1 .book-body .page-wrapper .page-inner section.normal code {
   /*
@@ -159,7 +148,6 @@ Orginal Style from ethanschoonover.com/solarized (c) Jeremy Hull <sourdrums@gmai
   /* Solarized Red */
   /* Solarized Violet */
 }
-
 .book.color-theme-1 .book-body .page-wrapper .page-inner section.normal pre .hljs,
 .book.color-theme-1 .book-body .page-wrapper .page-inner section.normal code .hljs {
   display: block;
@@ -167,7 +155,6 @@ Orginal Style from ethanschoonover.com/solarized (c) Jeremy Hull <sourdrums@gmai
   background: #fdf6e3;
   color: #657b83;
 }
-
 .book.color-theme-1 .book-body .page-wrapper .page-inner section.normal pre .hljs-comment,
 .book.color-theme-1 .book-body .page-wrapper .page-inner section.normal code .hljs-comment,
 .book.color-theme-1 .book-body .page-wrapper .page-inner section.normal pre .hljs-template_comment,
@@ -184,7 +171,6 @@ Orginal Style from ethanschoonover.com/solarized (c) Jeremy Hull <sourdrums@gmai
 .book.color-theme-1 .book-body .page-wrapper .page-inner section.normal code .hljs-javadoc {
   color: #93a1a1;
 }
-
 .book.color-theme-1 .book-body .page-wrapper .page-inner section.normal pre .hljs-keyword,
 .book.color-theme-1 .book-body .page-wrapper .page-inner section.normal code .hljs-keyword,
 .book.color-theme-1 .book-body .page-wrapper .page-inner section.normal pre .hljs-winutils,
@@ -203,7 +189,6 @@ Orginal Style from ethanschoonover.com/solarized (c) Jeremy Hull <sourdrums@gmai
 .book.color-theme-1 .book-body .page-wrapper .page-inner section.normal code .nginx .hljs-title {
   color: #859900;
 }
-
 .book.color-theme-1 .book-body .page-wrapper .page-inner section.normal pre .hljs-number,
 .book.color-theme-1 .book-body .page-wrapper .page-inner section.normal code .hljs-number,
 .book.color-theme-1 .book-body .page-wrapper .page-inner section.normal pre .hljs-command,
@@ -226,7 +211,6 @@ Orginal Style from ethanschoonover.com/solarized (c) Jeremy Hull <sourdrums@gmai
 .book.color-theme-1 .book-body .page-wrapper .page-inner section.normal code .hljs-link_url {
   color: #2aa198;
 }
-
 .book.color-theme-1 .book-body .page-wrapper .page-inner section.normal pre .hljs-title,
 .book.color-theme-1 .book-body .page-wrapper .page-inner section.normal code .hljs-title,
 .book.color-theme-1 .book-body .page-wrapper .page-inner section.normal pre .hljs-localvars,
@@ -247,7 +231,6 @@ Orginal Style from ethanschoonover.com/solarized (c) Jeremy Hull <sourdrums@gmai
 .book.color-theme-1 .book-body .page-wrapper .page-inner section.normal code .css .hljs-function {
   color: #268bd2;
 }
-
 .book.color-theme-1 .book-body .page-wrapper .page-inner section.normal pre .hljs-attribute,
 .book.color-theme-1 .book-body .page-wrapper .page-inner section.normal code .hljs-attribute,
 .book.color-theme-1 .book-body .page-wrapper .page-inner section.normal pre .hljs-variable,
@@ -268,7 +251,6 @@ Orginal Style from ethanschoonover.com/solarized (c) Jeremy Hull <sourdrums@gmai
 .book.color-theme-1 .book-body .page-wrapper .page-inner section.normal code .hljs-link_reference {
   color: #b58900;
 }
-
 .book.color-theme-1 .book-body .page-wrapper .page-inner section.normal pre .hljs-preprocessor,
 .book.color-theme-1 .book-body .page-wrapper .page-inner section.normal code .hljs-preprocessor,
 .book.color-theme-1 .book-body .page-wrapper .page-inner section.normal pre .hljs-preprocessor .hljs-keyword,
@@ -299,24 +281,20 @@ Orginal Style from ethanschoonover.com/solarized (c) Jeremy Hull <sourdrums@gmai
 .book.color-theme-1 .book-body .page-wrapper .page-inner section.normal code .hljs-header {
   color: #cb4b16;
 }
-
 .book.color-theme-1 .book-body .page-wrapper .page-inner section.normal pre .hljs-deletion,
 .book.color-theme-1 .book-body .page-wrapper .page-inner section.normal code .hljs-deletion,
 .book.color-theme-1 .book-body .page-wrapper .page-inner section.normal pre .hljs-important,
 .book.color-theme-1 .book-body .page-wrapper .page-inner section.normal code .hljs-important {
   color: #dc322f;
 }
-
 .book.color-theme-1 .book-body .page-wrapper .page-inner section.normal pre .hljs-link_label,
 .book.color-theme-1 .book-body .page-wrapper .page-inner section.normal code .hljs-link_label {
   color: #6c71c4;
 }
-
 .book.color-theme-1 .book-body .page-wrapper .page-inner section.normal pre .tex .hljs-formula,
 .book.color-theme-1 .book-body .page-wrapper .page-inner section.normal code .tex .hljs-formula {
   background: #eee8d5;
 }
-
 .book.color-theme-2 .book-body .page-wrapper .page-inner section.normal pre,
 .book.color-theme-2 .book-body .page-wrapper .page-inner section.normal code {
   /* Tomorrow Night Bright Theme */
@@ -331,14 +309,12 @@ Orginal Style from ethanschoonover.com/solarized (c) Jeremy Hull <sourdrums@gmai
   /* Tomorrow Blue */
   /* Tomorrow Purple */
 }
-
 .book.color-theme-2 .book-body .page-wrapper .page-inner section.normal pre .hljs-comment,
 .book.color-theme-2 .book-body .page-wrapper .page-inner section.normal code .hljs-comment,
 .book.color-theme-2 .book-body .page-wrapper .page-inner section.normal pre .hljs-title,
 .book.color-theme-2 .book-body .page-wrapper .page-inner section.normal code .hljs-title {
   color: #969896;
 }
-
 .book.color-theme-2 .book-body .page-wrapper .page-inner section.normal pre .hljs-variable,
 .book.color-theme-2 .book-body .page-wrapper .page-inner section.normal code .hljs-variable,
 .book.color-theme-2 .book-body .page-wrapper .page-inner section.normal pre .hljs-attribute,
@@ -367,7 +343,6 @@ Orginal Style from ethanschoonover.com/solarized (c) Jeremy Hull <sourdrums@gmai
 .book.color-theme-2 .book-body .page-wrapper .page-inner section.normal code .css .hljs-pseudo {
   color: #d54e53;
 }
-
 .book.color-theme-2 .book-body .page-wrapper .page-inner section.normal pre .hljs-number,
 .book.color-theme-2 .book-body .page-wrapper .page-inner section.normal code .hljs-number,
 .book.color-theme-2 .book-body .page-wrapper .page-inner section.normal pre .hljs-preprocessor,
@@ -384,14 +359,12 @@ Orginal Style from ethanschoonover.com/solarized (c) Jeremy Hull <sourdrums@gmai
 .book.color-theme-2 .book-body .page-wrapper .page-inner section.normal code .hljs-constant {
   color: #e78c45;
 }
-
 .book.color-theme-2 .book-body .page-wrapper .page-inner section.normal pre .ruby .hljs-class .hljs-title,
 .book.color-theme-2 .book-body .page-wrapper .page-inner section.normal code .ruby .hljs-class .hljs-title,
 .book.color-theme-2 .book-body .page-wrapper .page-inner section.normal pre .css .hljs-rules .hljs-attribute,
 .book.color-theme-2 .book-body .page-wrapper .page-inner section.normal code .css .hljs-rules .hljs-attribute {
   color: #e7c547;
 }
-
 .book.color-theme-2 .book-body .page-wrapper .page-inner section.normal pre .hljs-string,
 .book.color-theme-2 .book-body .page-wrapper .page-inner section.normal code .hljs-string,
 .book.color-theme-2 .book-body .page-wrapper .page-inner section.normal pre .hljs-value,
@@ -408,12 +381,10 @@ Orginal Style from ethanschoonover.com/solarized (c) Jeremy Hull <sourdrums@gmai
 .book.color-theme-2 .book-body .page-wrapper .page-inner section.normal code .xml .hljs-cdata {
   color: #b9ca4a;
 }
-
 .book.color-theme-2 .book-body .page-wrapper .page-inner section.normal pre .css .hljs-hexcolor,
 .book.color-theme-2 .book-body .page-wrapper .page-inner section.normal code .css .hljs-hexcolor {
   color: #70c0b1;
 }
-
 .book.color-theme-2 .book-body .page-wrapper .page-inner section.normal pre .hljs-function,
 .book.color-theme-2 .book-body .page-wrapper .page-inner section.normal code .hljs-function,
 .book.color-theme-2 .book-body .page-wrapper .page-inner section.normal pre .python .hljs-decorator,
@@ -432,14 +403,12 @@ Orginal Style from ethanschoonover.com/solarized (c) Jeremy Hull <sourdrums@gmai
 .book.color-theme-2 .book-body .page-wrapper .page-inner section.normal code .coffeescript .hljs-title {
   color: #7aa6da;
 }
-
 .book.color-theme-2 .book-body .page-wrapper .page-inner section.normal pre .hljs-keyword,
 .book.color-theme-2 .book-body .page-wrapper .page-inner section.normal code .hljs-keyword,
 .book.color-theme-2 .book-body .page-wrapper .page-inner section.normal pre .javascript .hljs-function,
 .book.color-theme-2 .book-body .page-wrapper .page-inner section.normal code .javascript .hljs-function {
   color: #c397d8;
 }
-
 .book.color-theme-2 .book-body .page-wrapper .page-inner section.normal pre .hljs,
 .book.color-theme-2 .book-body .page-wrapper .page-inner section.normal code .hljs {
   display: block;
@@ -447,7 +416,6 @@ Orginal Style from ethanschoonover.com/solarized (c) Jeremy Hull <sourdrums@gmai
   color: #eaeaea;
   padding: 0.5em;
 }
-
 .book.color-theme-2 .book-body .page-wrapper .page-inner section.normal pre .coffeescript .javascript,
 .book.color-theme-2 .book-body .page-wrapper .page-inner section.normal code .coffeescript .javascript,
 .book.color-theme-2 .book-body .page-wrapper .page-inner section.normal pre .javascript .xml,

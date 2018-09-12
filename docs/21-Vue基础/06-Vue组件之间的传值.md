@@ -1,4 +1,4 @@
-
+{% raw %}
 
 ## 父组件向子组件传值
 
@@ -20,20 +20,20 @@
     <title>Document</title>
     <script src="vue2.5.16.js"></script>
 </head>
-{% raw %}
+
 <body>
     <div id="app">
         <!-- 第三步：父组件在引用子组件的时候， 通过 属性绑定（v-bind:）的形式,  -->
         <!--   把 需要传递给 子组件的数据，以属性绑定的形式，传递到子组件内部，供子组件使用 -->
         <component1 v-bind:parent-msg="msg"></component1>
     </div>
-
+{% raw %}
     <!-- 定义子组件的模板 -->
     <template id="myTemplate">
         <!-- 第二步：在子组件的模板中，使用props中的属性 -->
         <h2 @click="change">我是子组件。我想使用父组件中的数据parentMsg： {{ parentMsg }}</h2>
     </template>
-
+{% endraw %}
     <script>
         // 创建 Vue 实例，得到 ViewModel
         var vm = new Vue({
@@ -70,7 +70,7 @@
         });
     </script>
 </body>
-{% endraw %}
+
 </html>
 ```
 
@@ -356,21 +356,21 @@
     <script src="vue2.5.16.js"></script>
     <link rel="stylesheet" href="bootstrap3.3.7.css">
 </head>
-{% raw %}
+
 <body>
     <div id="app">
 
 
         <cmt-box @func="loadComments"></cmt-box>
 
-
+{% raw %}
         <ul class="list-group">
             <li class="list-group-item" v-for="item in list" :key="item.id">
                 <span class="badge">评论人： {{ item.user }}</span>
                 {{ item.content }}
             </li>
         </ul>
-
+{% endraw %}
 
     </div>
 
@@ -462,7 +462,7 @@
         });
     </script>
 </body>
-{% endraw %}
+
 </html>
 ```
 

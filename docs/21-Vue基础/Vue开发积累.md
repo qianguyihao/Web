@@ -16,8 +16,8 @@
 {% raw %}
 <!-- 选中时，值为 true。未选中时，值为 false -->
 <span>{{isSelected}}</span>
-
 {% endraw %}
+
 <!-- 选中时，显示文字。未选中时，隐藏文字 -->
 <span v-if="isSelected">haha</span>
 
