@@ -161,17 +161,17 @@ PS:所有用#开头的值，都是16进制的。
 
 （1）不加这个属性时：（即默认时）（背景图片会被平铺满）
 
-![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-03-css-19.png)
+![](http://img.smyhvae.com/2015-10-03-css-19.png)
 
 PS：padding的区域也是有背景图的。
 
 （2）属性值为`no-repeat`（不要平铺）时：
 
-![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-03-css-20.png)
+![](http://img.smyhvae.com/2015-10-03-css-20.png)
 
 （3）属性值为`repeat-x`（横向平铺）时：
 
-![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-03-css-21.png)
+![](http://img.smyhvae.com/2015-10-03-css-21.png)
 
 其实这种属性的作用还是很广的。举个例子，设计师设计一张宽度只有1px、颜色纵向渐变的图片，然后我们通过这个属性将其进行水平方向的平铺，就可以看到整个页面都是渐变的了。
 
@@ -179,7 +179,7 @@ PS：padding的区域也是有背景图的。
 
 （4）属性值为`repeat-y`（纵向平铺）时：
 
-![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-03-css-22.png)
+![](http://img.smyhvae.com/2015-10-03-css-22.png)
 
 
 ### `background-position`属性

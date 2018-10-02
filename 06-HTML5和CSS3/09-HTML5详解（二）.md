@@ -12,7 +12,8 @@
 
 ## 拖拽
 
-20180223_2130.gif
+
+![](http://img.smyhvae.com/20180223_2130.gif)
 
 如上图所示，我们可以拖拽博客园网站里的图片和超链接。
 
@@ -49,7 +50,7 @@
 
 效果如下：
 
-20180223_2140.gif
+![](http://img.smyhvae.com/20180223_2140.gif)
 
 上图中，我们给 box1 增加了`draggable="true"` 属性之后，发现 box1 是可以拖拽的。但是拖拽之后要做什么事情呢？这就涉及到**事件监听**。
 
@@ -117,11 +118,11 @@
 
 效果如下：
 
-20180223_2201.gif
+![](http://img.smyhvae.com/20180223_2201.gif)
 
 打印结果：
 
-20180223_2213.png
+![](http://img.smyhvae.com/20180223_2213.gif)
 
 
 ### 2、目标元素
@@ -208,11 +209,11 @@
 
 效果演示：
 
-20180223_2240.gif
+![](http://img.smyhvae.com/20180223_2240.gif)
 
 注意，上方代码中，我们加了`event.preventDefault()`这个方法。如果没有这个方法，后面ondrop()方法无法触发。如下图所示：
 
-20180223_2245.gif
+![](http://img.smyhvae.com/20180223_2245.gif)
 
 如上图所示，连光标的形状都提示我们，无法在目标元素里继续操作了。
 
@@ -309,7 +310,7 @@
 
 效果如下：
 
-20180224_2050.gif
+![](http://img.smyhvae.com/20180224_2050.gif)
 
 ## 历史
 
@@ -368,7 +369,7 @@
 
 对不同获取方式的优缺点进行了比较，浏览器会**自动以最优方式**去获取用户地理信息：
 
-20180224_2110.png
+![](http://img.smyhvae.com/20180224_2110.gif)
 
 
 ### 隐私
@@ -597,9 +598,9 @@ HTML5 Geolocation(地理位置定位) 规范提供了一套保护用户隐私的
 <script>
     var box = document.querySelector('.box');
     document.querySelector('.box').onclick = function () {
-//            box.requestFullscreen();   //直接这样写是没有效果的
+    // box.requestFullscreen();   //直接这样写是没有效果的
 
-//            开启全屏显示的兼容写法
+        // 开启全屏显示的兼容写法
         if (box.requestFullscreen) {  //如果支持全屏，那就让元素全屏
             box.requestFullscreen();
         } else if (box.webkitRequestFullScreen) {
@@ -616,7 +617,7 @@ HTML5 Geolocation(地理位置定位) 规范提供了一套保护用户隐私的
 
 效果如下：
 
-20180224_2130.gif
+![](http://img.smyhvae.com/20180224_2130.gif)
 
 
 

@@ -186,7 +186,7 @@ p{color: red;}
 ```
 效果：
 
-![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-03-css-01.png)
+![](http://img.smyhvae.com/2015-10-03-css-01.png)
 
 ### css代码的注释
 
@@ -329,7 +329,7 @@ CSS和HTML的结合方式有3种：
 ```
 效果：
 
-![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-03-css-02.png)
+![](http://img.smyhvae.com/2015-10-03-css-02.png)
 
 ### 2、CSS和HTML结合方式二：内嵌样式表
 
@@ -357,7 +357,7 @@ CSS和HTML的结合方式有3种：
  </body>
 ```
 
-![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-03-css-03.png)
+![](http://img.smyhvae.com/2015-10-03-css-03.png)
 
 ### 3、CSS和HTML结合方式三：引入外部样式表css文件
 
@@ -380,7 +380,7 @@ p{
 上方的css代码中，注意像素要带上px这个单位，不然不生效。
 然后我们在html文件中通过`<link>`标签引入这个css文件就行了。效果如下：
 
-![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-03-css-04.png)
+![](http://img.smyhvae.com/2015-10-03-css-04.png)
 
 这里再讲一个补充的知识：link标签的rel属性
 **`<link>`标签的rel属性：**
@@ -431,7 +431,7 @@ div{
 ```
 上面引入的三个样式表中，后面两个样式表作为备选。注意备选的样式表中，title属性不要忘记写，不然显示不出来效果的。现在来看一下效果：（在IE中打开网页）
 
-![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-03-css-05.gif)
+![](http://img.smyhvae.com/2015-10-03-css-05.gif)
 
 ## CSS的四种基本选择器
 
@@ -466,7 +466,7 @@ p{
 
 效果：
 
-![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-03-css-06.png)
+![](http://img.smyhvae.com/2015-10-03-css-06.png)
 
 
 再比如说，我想让“生命壹号学完了安卓，继续学前端哟”这句话中的“前端”两个变为红色字体，那么我可以用`<span>`标签把“前端”这两个字围起来，然后给`<span>`标签加一个标签选择器。
@@ -514,7 +514,7 @@ p{
 ```
 效果：
 
-![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-03-css-08.png)
+![](http://img.smyhvae.com/2015-10-03-css-08.png)
 
 
 id选择器的选择符是“#”。
@@ -560,7 +560,7 @@ css中用`.`来表示类。举例如下：
 
 效果：
 
-![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-03-css-07.png)
+![](http://img.smyhvae.com/2015-10-03-css-07.png)
 
 
 和id非常相似，任何的标签都可以携带id属性和class属性。class属性的特点：
@@ -660,7 +660,7 @@ css中用`.`来表示类。举例如下：
 
 效果：
 
-![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-03-css-09.png)
+![](http://img.smyhvae.com/2015-10-03-css-09.png)
 
 
 
@@ -719,17 +719,17 @@ css中用`.`来表示类。举例如下：
 
 效果：
 
-![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-03-css-11.png)
+![](http://img.smyhvae.com/2015-10-03-css-11.png)
 
 或者还有下面这种写法：
 
-![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-03-css-12.png)
+![](http://img.smyhvae.com/2015-10-03-css-12.png)
 
 上面的这种写法，`<h3>`标签和`<i>`标签并不是紧挨着的，但他们保持着一种后代关系。
 
 还有下面这种写法：（含类选择器、id选择器都是可以的）
 
-![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-03-css-13.png)
+![](http://img.smyhvae.com/2015-10-03-css-13.png)
 
 我们在开头说了：**后代选择器，描述的是一种祖先结构**。我们举个例子来说明这句话：
 
@@ -847,7 +847,7 @@ p,h1,#mytitle,.one{
 
 效果：
 
-![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-03-css-10.png)
+![](http://img.smyhvae.com/2015-10-03-css-10.png)
 
 
 
@@ -1035,5 +1035,5 @@ div的儿子p。和div的后代p的截然不同。
 
 扫一扫，你将发现另一个全新的世界，而这将是一场美丽的意外：
 
-![](http://7sby7r.com1.z0.glb.clouddn.com/cnblogs/%E7%94%9F%E5%91%BD%E5%9B%A2%E9%98%9F%E5%85%AC%E4%BC%97%E5%8F%B7%E4%BA%8C%E7%BB%B4%E7%A0%81.jpg)
+![](http://img.smyhvae.com/cnblogs/%E7%94%9F%E5%91%BD%E5%9B%A2%E9%98%9F%E5%85%AC%E4%BC%97%E5%8F%B7%E4%BA%8C%E7%BB%B4%E7%A0%81.jpg)
 

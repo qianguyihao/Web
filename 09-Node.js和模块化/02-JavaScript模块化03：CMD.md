@@ -252,32 +252,4 @@ define(function (require) {
 
 打印结果：
 
-20180412_1955.png
-
-
-
-```javascript
-
-
-```
-
-
-
-
-
-
-
-```javascript
-
-
-```
-
-
-
-
-
-
-```javascript
-
-
-```
+![](http://img.smyhvae.com/20180412_1955.png)

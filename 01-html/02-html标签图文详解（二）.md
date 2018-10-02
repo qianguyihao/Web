@@ -38,7 +38,7 @@
 
 效果：
 
-![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-02-cnblogs_html_01.png)
+![](http://img.smyhvae.com/2015-10-02-cnblogs_html_01.png)
 
 注意：
 
@@ -52,11 +52,11 @@
  - `type="属性值"`。属性值可以选： `disc`(实心原点，默认)，`square`(实心方点)，`circle`(空心圆)。
 效果如下：
 
-![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-02-cnblogs_html_02_1.png)
+![](http://img.smyhvae.com/2015-10-02-cnblogs_html_02_1.png)
 
 不光是`<ul>`标签有`type`属性，`<ul>`里面的`<li>`标签也有`type`属性（虽然说这种写法很少见）。效果如下：
 
-![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-02-cnblogs_html_03.png)
+![](http://img.smyhvae.com/2015-10-02-cnblogs_html_03.png)
 
 注意：项目符号可以是图片，但是通过CSS设置<li>标记的背景图片来实现(CSS中讲)。
 
@@ -84,7 +84,7 @@
 ```
 效果：
 
-![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-01-cnblogs_html_40.png)
+![](http://img.smyhvae.com/2015-10-01-cnblogs_html_40.png)
 
 
 #### ul标签实际应用场景
@@ -115,7 +115,7 @@
 
 效果：
 
-![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-02-cnblogs_html_04.png)
+![](http://img.smyhvae.com/2015-10-02-cnblogs_html_04.png)
 
 **属性：**
  - `type="属性值"`。属性值可以是：1(阿拉伯数字，默认)、a、A、i、I。结合`start`属性表示`从几开始`。
@@ -149,7 +149,7 @@
 ```
 
 效果如下：
-![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-02-cnblogs_html_07.png)
+![](http://img.smyhvae.com/2015-10-02-cnblogs_html_07.png)
 
 和无序列表一样，有序列表也是可以嵌套的哦，这里就不举类似的例子了。
 
@@ -200,7 +200,7 @@ ol这个东西用的不多，如果想表达顺序，大家一般也用ul。举�
 
 效果：
 
-![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-02-cnblogs_html_09.png)
+![](http://img.smyhvae.com/2015-10-02-cnblogs_html_09.png)
 
 
 上图可以看出，定义列表表达的语义是两层：
@@ -333,7 +333,7 @@ dt、dd都是容器级标签，想放什么都可以。所以，现在就应该�
 ```
 效果：
 
-![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-02-cnblogs_html_10.png)
+![](http://img.smyhvae.com/2015-10-02-cnblogs_html_10.png)
 
 上图中的表格好像没看到边框呀，不急，接下来看看`<table>`标签的属性。
 
@@ -359,7 +359,7 @@ dt、dd都是容器级标签，想放什么都可以。所以，现在就应该�
 
 单元格带边框的效果：
 
-![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-02-cnblogs_html_11.png)
+![](http://img.smyhvae.com/2015-10-02-cnblogs_html_11.png)
 
 备注：表格中很细表格边线的制作：
 CSS的写法：
@@ -397,11 +397,11 @@ style="border-collapse:collapse;"
  - `rowspan`：纵向合并。例如`rowspan="2"`表示当前单元格在垂直方向上要占据两个单元格的位置。
 效果举例：（横向合并）
 
-![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-02-cnblogs_html_13.png)
+![](http://img.smyhvae.com/2015-10-02-cnblogs_html_13.png)
 
 效果举例：（纵向合并）
 
-![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-02-cnblogs_html_15.png)
+![](http://img.smyhvae.com/2015-10-02-cnblogs_html_15.png)
 
 ### `<th>`：加粗的单元格。相当于`<td>` + `<b>`
  - 属性同`<td>`标签。
@@ -411,7 +411,7 @@ style="border-collapse:collapse;"
  - 属性：`align`，表示标题相对于表格的位置。属性取值可以是：left、center、right、top、bottom
 效果：
 
-![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-02-cnblogs_html_16.png)
+![](http://img.smyhvae.com/2015-10-02-cnblogs_html_16.png)
 
 ### 表格的`<thead>`标签、`<tbody>`标签、`<tfoot>`标签
 这三个标签有与没有的区别：
@@ -459,7 +459,7 @@ style="border-collapse:collapse;"
 
 效果：
 
-![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-02-cnblogs_html_17.png)
+![](http://img.smyhvae.com/2015-10-02-cnblogs_html_17.png)
 
 ## 框架标签
 
@@ -482,11 +482,11 @@ style="border-collapse:collapse;"
 
 效果：
 
-![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-02-cnblogs_html_26.png)
+![](http://img.smyhvae.com/2015-10-02-cnblogs_html_26.png)
 
 上图中，如果删掉页面right.html，显示效果如下：
 
-![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-02-cnblogs_html_27.png)
+![](http://img.smyhvae.com/2015-10-02-cnblogs_html_27.png)
 
 ### `<frame>`：框架
 一个框架显示一个页面。
@@ -507,11 +507,11 @@ style="border-collapse:collapse;"
 利用`name`这个属性，我们可以在框架里进行超链。
 举例：
 
-![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-02-cnblogs_html_28.png)
+![](http://img.smyhvae.com/2015-10-02-cnblogs_html_28.png)
 
 效果：
 
-![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-02-cnblogs_html_gif3.gif)
+![](http://img.smyhvae.com/2015-10-02-cnblogs_html_gif3.gif)
 
 
 
@@ -528,7 +528,7 @@ style="border-collapse:collapse;"
 
 
 效果：
-![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-02-cnblogs_html_29.png)
+![](http://img.smyhvae.com/2015-10-02-cnblogs_html_29.png)
 
 内嵌框架举例：（在内嵌页面中切换显示不同的压面）
 
@@ -548,7 +548,7 @@ style="border-collapse:collapse;"
 ```
 
 效果演示：
-![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-02-cnblogs_html_GIF.gif)
+![](http://img.smyhvae.com/2015-10-02-cnblogs_html_GIF.gif)
 
 
 
@@ -640,7 +640,7 @@ POST方式：
 ```
 效果：
 
-![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-02-cnblogs_html_33.png)
+![](http://img.smyhvae.com/2015-10-02-cnblogs_html_33.png)
 
 四种按钮的举例：
 
@@ -661,7 +661,7 @@ Node.js就是后台语言，到时候我们就知道怎么把表单存储到数�
 
 效果：
 
-![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-02-cnblogs_html_35.png)
+![](http://img.smyhvae.com/2015-10-02-cnblogs_html_35.png)
 
 
 
@@ -718,7 +718,7 @@ select标签和ul、ol、dl一样，都是组标签。
 
 效果：
 
-![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-02-cnblogs_html_32.png)
+![](http://img.smyhvae.com/2015-10-02-cnblogs_html_32.png)
 
 ### `<textare>`标签：多行文本输入框
 
@@ -745,7 +745,7 @@ text就是“文本”，area就是“区域”。
 
 效果：
 
-![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-02-cnblogs_html_34.png)
+![](http://img.smyhvae.com/2015-10-02-cnblogs_html_34.png)
 
 上图的红框部分表示，我在文本区域进行了换行，所以显示的效果也出现了空白。
 
@@ -779,7 +779,7 @@ text就是“文本”，area就是“区域”。
 
 效果：
 
-![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-02-cnblogs_html_36.png)
+![](http://img.smyhvae.com/2015-10-02-cnblogs_html_36.png)
 
 
 
@@ -877,11 +877,11 @@ Flash格式的视频兼容性非常好，Flash格式的文件很小。
 ```
 IE 8中的运行效果：
 
-![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-02-cnblogs_html_37.png)
+![](http://img.smyhvae.com/2015-10-02-cnblogs_html_37.png)
 
 google浏览器中的运行效果：
 
-![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-02-cnblogs_html_38.png)
+![](http://img.smyhvae.com/2015-10-02-cnblogs_html_38.png)
 
 注：在HTML5中新增了`<video>`标签播放视频。
 <br>
@@ -928,7 +928,7 @@ google浏览器中的运行效果：
 
 效果：
 
-![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-02-cnblogs_html_04.gif)
+![](http://img.smyhvae.com/2015-10-02-cnblogs_html_04.gif)
 
 
 
@@ -985,4 +985,4 @@ div  p  h1  span   a   img   ul   ol    dl    input
 
 扫一扫，你将发现另一个全新的世界，而这将是一场美丽的意外：
 
-![](http://7sby7r.com1.z0.glb.clouddn.com/cnblogs/%E7%94%9F%E5%91%BD%E5%9B%A2%E9%98%9F%E5%85%AC%E4%BC%97%E5%8F%B7%E4%BA%8C%E7%BB%B4%E7%A0%81.jpg)
+![](http://img.smyhvae.com/cnblogs/%E7%94%9F%E5%91%BD%E5%9B%A2%E9%98%9F%E5%85%AC%E4%BC%97%E5%8F%B7%E4%BA%8C%E7%BB%B4%E7%A0%81.jpg)

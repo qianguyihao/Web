@@ -40,7 +40,7 @@
 （1）在工程文件中新建如下目录：
 
 
-  ```
+```
 js
     | src
     	| module1.js
@@ -50,7 +50,7 @@ js
 
 
 index.html
-  ```
+```
 
 （2）在工程的根目录下，新建文件`package.json`，内容如下：
 
@@ -241,7 +241,7 @@ babel src -d build      //build目录会自动生成
 
 转化成ES5之后，我们发现，如果直接在 index.html 中加载`build`目录下的ES5文件，也是会报错的，因为浏览器不认识`main.js`里的`require`关键字：
 
-20180414_1410.png
+![](http://img.smyhvae.com/20180414_1410.png)
 
 
 于是，我们还要进行一次转换。
@@ -259,14 +259,15 @@ dist/main.js就是我们需要引入到 index.html 里的文件。
 
 运行效果：
 
-20180414_1615.png
+![](http://img.smyhvae.com/20180414_1615.png)
+
 
 工程文件：
 
 - [2018-04-13-ES6Demo.rar](https://download.csdn.net/download/smyhvae/10348940)
 
 
-## ES6模块化的使用举例（第三方模块）
+## ES6模块化的使用举例（引入第三方模块）
 
 下载 jQuery 包：
 

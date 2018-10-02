@@ -3,7 +3,7 @@
 
 ## MVVM模式
 
-20180420_2150.png
+![](http://img.smyhvae.com/20180420_2150.png)
 
 - Model：负责数据存储
 

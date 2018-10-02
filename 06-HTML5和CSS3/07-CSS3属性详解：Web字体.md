@@ -60,7 +60,7 @@ woff字体是Web字体中最佳格式，他是一个开放的TrueType/OpenType�
 
 打开网站<http://iconfont.cn/webfont#!/webfont/index>，如下：
 
-20180220_1328.png
+![](http://img.smyhvae.com/20180220_1328.png)
 
 上图中，比如我想要「思源黑体-粗」这个字体，那我就点击红框中的「本地下载」。
 
@@ -68,11 +68,11 @@ woff字体是Web字体中最佳格式，他是一个开放的TrueType/OpenType�
 
 解压后如下：
 
-20180220_1336.png
+![](http://img.smyhvae.com/20180220_1336.png)
 
 上图中， 我们把箭头处的html文件打开，里面告诉了我们 webfont 的**使用步骤**：
 
-20180220_1338.png
+![](http://img.smyhvae.com/20180220_1338.png)
 
 （1）第一步：使用font-face声明字体
 
@@ -172,11 +172,11 @@ woff字体是Web字体中最佳格式，他是一个开放的TrueType/OpenType�
 
 打开网站<http://iconfont.cn/>，找到想要的图标，加入购物车。然后下载下来：
 
-20180220_1750.png
+![](http://img.smyhvae.com/20180220_1750.png)
 
 压缩包下载之后，解压，打开里面的demo.html，里面告诉了我们怎样引用这些图标。
 
-20180220_1755.png
+![](http://img.smyhvae.com/20180220_1755.png)
 
 **举例1**：（图标字体引用）
 
@@ -224,7 +224,7 @@ woff字体是Web字体中最佳格式，他是一个开放的TrueType/OpenType�
 
 效果如下：
 
-20180220_1800.png
+![](http://img.smyhvae.com/20180220_1800.png)
 
 
 **举例2**：（伪元素的方式使用图标字体）
@@ -290,7 +290,7 @@ woff字体是Web字体中最佳格式，他是一个开放的TrueType/OpenType�
 
 效果如下：
 
-20180220_1815.png
+![](http://img.smyhvae.com/20180220_1815.png)
 
 
 工程文件：
@@ -331,11 +331,11 @@ SVG素材：
 
 打开如下网站：<http://www.bootcss.com/p/font-awesome/>。
 
-20180223_2100.png
+![](http://img.smyhvae.com/20180223_2100.png)
 
 如上图所示，下载字体后，进行解压：
 
-20180223_2105.png
+![](http://img.smyhvae.com/20180223_2105.png)
 
 使用步骤如下：
 

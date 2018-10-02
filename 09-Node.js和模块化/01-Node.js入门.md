@@ -465,8 +465,7 @@ npm install -g cnpm --registry=https://registry.npm.taobao.org
 ```
 
 
-20180302_2204.png
-
+![](http://img.smyhvae.com/20180302_2204.png)
 
 
 如果我们需要通过 cnpm 去安装一个包时，举例如下：
@@ -504,14 +503,14 @@ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | b
 
 安装成功的界面：
 
-20180302_2126.png
+![](http://img.smyhvae.com/20180302_2126.png)
 
 完成后，nvm就被安装在了`~/.nvm`下。
 
 
 如果发现安装失败：
 
-20180302_2111.png
+![](http://img.smyhvae.com/20180302_2111.png)
 
 原因：Xcode 软件进行过更新。
 
@@ -555,7 +554,7 @@ nvm install 8.10.0
 
 网速有点慢，要稍等。
 
-20180302-2148.png
+![](http://img.smyhvae.com/20180302_2148.png)
 
 输入 `node -v`，查看当前使用的 node 版本。
 

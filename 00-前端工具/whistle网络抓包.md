@@ -29,6 +29,29 @@ whistle安装证书后，可以拦截 https 请求。但是，我现在又不想
 
 
 
+## 移动端调试神器:eruda
 
 
+> 手机连接代理时，如何看console.log的日志信息?
+
+> 现在，代码里有console.log，如果是在电脑浏览器上看，可以直接在控制台查看console.log的内容。但是，如果手机连接代理，在手机上打开网页的话，要怎么查看console.log的内容呢？具体做法如下：
+
+（1）在 whistle中，新建一个名叫`Eruda H5`的代理，代理中的内容是：
+
+```
+http://xxx.com htmlAppend://{eruda.html}
+```
+
+
+(2)新建一个values，里面的内容是：
+
+```html
+<script src="//cdn.bootcss.com/eruda/1.4.3/eruda.min.js"></script>
+<script>
+    eruda.init()
+</script>
+```
+
+
+然后就OK了。
 
