@@ -129,7 +129,7 @@ sessionStorage 的 API 举例：
 
 效果如下：
 
-20180224_2200.gif
+![](http://img.smyhvae.com/20180224_2200.gif)
 
 如上图所示，我们可以在 Storage 选项卡中查看 Session Storage 和Local Storage。
 
@@ -308,7 +308,8 @@ HTML5中我们可以轻松的构建一个离线（无网络状态）应用，只
 
 格式举例1：
 
-20180224_2240.png
+![](http://img.smyhvae.com/20180224_2240.png)
+
 
 格式举例2：
 

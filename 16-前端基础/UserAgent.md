@@ -16,7 +16,7 @@ img
 比如说，我们在控制台输入`navigator.userAgent`，如下：
 
 
-20180425_1656.png
+![](http://img.smyhvae.com/20180425_1656.png)
 
 上图显示，MacOS上的Chrome浏览器的 UserAgent 是：
 

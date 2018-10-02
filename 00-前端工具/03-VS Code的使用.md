@@ -1,8 +1,10 @@
 
 
-## 常见操作
 
-### 自动保存
+## 常见配置
+
+
+**自动保存**：
 
 ```
  "files.autoSave": "onFocusChange"
@@ -10,6 +12,16 @@
 
 参考链接：<https://blog.csdn.net/WestLonly/article/details/78048049>
 
+
+
+**在新的窗口中打开文件**：
+
+```json
+"workbench.editor.enablePreview": false,
+```
+
+
+## 常见操作
 
 
 
@@ -22,12 +34,6 @@
 参考链接：<https://www.zhihu.com/question/264045094>
 
 
-
-### 在新的窗口中打开文件
-
-```json
-"workbench.editor.enablePreview": false,
-```
 
 ### 在本地开启服务器
 
@@ -140,15 +146,17 @@ Sass 文件格式化。
 
 在本地开启Node服务器：
 
-20180611_2230.png
+![](http://img.smyhvae.com/20180611_2230.png)
 
 然后在浏览器的地址栏输入`http://localhost/` + 文件的相对路径，就可以通过服务器的形式打开这个文件。
 
 ### Copy Relative Path
 
+> 这个插件很有用，使用频率很高。
+
 复制文件的相对路径：（相对于根路径而言）
 
-20180611_2235.png
+![](http://img.smyhvae.com/20180611_2235.png)
 
 
 ### open in browser
@@ -238,10 +246,6 @@ VSCode自带的高亮显示，实在是不够显眼。用插件支持一下吧�
 
 
 
-### 代码格式化
-
-
-
 ### 如何同时打开多个窗口
 
 
@@ -271,7 +275,7 @@ VSCode自带的高亮显示，实在是不够显眼。用插件支持一下吧�
 
 ### 某网友的VS Code 插件截图
 
-20180611_2255.png
+![](http://img.smyhvae.com/20180611_2255.png)
 
 
 
