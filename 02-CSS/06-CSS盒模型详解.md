@@ -44,11 +44,11 @@
 
 标准盒子模型：
 
-![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-03-css-27.jpg)
+![](http://img.smyhvae.com/2015-10-03-css-27.jpg)
 
 IE盒子模型：
 
-![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-03-css-30.jpg)
+![](http://img.smyhvae.com/2015-10-03-css-30.jpg)
 
 上图显示：
 
@@ -114,7 +114,7 @@ CSS盒模型和IE盒模型的区别：
 
 上面的代码中，我们对div标签设置了边距等信息。打开google浏览器，按住F12，显示效果如下：
 
-![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-03-css-27.png)
+![](http://img.smyhvae.com/2015-10-03-css-27.png)
 
 
 

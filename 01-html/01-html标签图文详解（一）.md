@@ -105,7 +105,7 @@ html是一个纯本文文件（就是用txt文件改名而成），用一些标�
 
 ### 2、HTML的历史
 
-![html中标签发展趋势.png](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-01-cnblogs_html166440-5b780bdc6b80a5fb.png)
+![html中标签发展趋势](http://img.smyhvae.com/20151001_1001.png)
 
 我们专门来对XHTML做一个介绍。
 
@@ -546,11 +546,11 @@ title也是有助于SEO搜索引擎优化的。
 
 `<body>`标签另外还有一些属性，这里用个例子来解释：
 
-![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-02-cnblogs_html_39.png)
+![](http://img.smyhvae.com/2015-10-02-cnblogs_html_39.png)
 
 上方代码中，当我们对`点我点我`这几个字使用超链时，`link`属性表示默认显示的颜色、`alink`属性表示鼠标点击但是还没有松开时的颜色、`vlink`属性表示点击完成之后显示的颜色。效果如下：
 
-![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-02-cnblogs_html_05.gif)
+![](http://img.smyhvae.com/2015-10-02-cnblogs_html_05.gif)
 
 
 接下来，我们讲一下`<body>`里的各种标签的属性。
@@ -577,7 +577,7 @@ title也是有助于SEO搜索引擎优化的。
  - `align="属性值"`：对齐方式。属性值包括left center right。
 举例：
 
-![Paste_Image.png](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-01-cnblogs_html166440-1dcd2ad6e6353559.png)
+![Paste_Image.png](http://img.smyhvae.com/2015-10-01-cnblogs_html166440-1dcd2ad6e6353559.png)
 
 <br>
 
@@ -635,7 +635,7 @@ div标签的属性：
 
 效果举例：
 
-![Paste_Image.png](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-01-cnblogs_html_08.png)
+![Paste_Image.png](http://img.smyhvae.com/2015-10-01-cnblogs_html_08.png)
 
 div在浏览器中，默认是不会增加任何的效果的，但是语义变了，div中的所有元素是一个小区域。
 div标签是一个**容器级**标签，里面什么都能放，甚至可以放div自己。
@@ -689,7 +689,7 @@ This <br> is a para<br>graph with line breaks
 ```
 效果如下：
 
-![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-01-cnblogs_html03.png)
+![](http://img.smyhvae.com/2015-10-01-cnblogs_html03.png)
 
 上图显示，**`<p>`标签和`<br>`标签的区别在于**：`<p>`标签会在段落的前后自动插入一个空行，而`<br>`标签没有空行；而且`<br>`标签没有属性。
 
@@ -702,7 +702,7 @@ This <br> is a para<br>graph with line breaks
 水平分隔线（horizontal rule）可以在视觉上将文档分隔成各个部分。
 效果如下：
 
-![Paste_Image.png](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-01-cnblogs_html_04.png)
+![Paste_Image.png](http://img.smyhvae.com/2015-10-01-cnblogs_html_04.png)
 
 属性：
  - `align="属性值"`：设定线条置放位置。属性值可选择：left right center。
@@ -712,7 +712,7 @@ This <br> is a para<br>graph with line breaks
  - `noshade`：不要阴影，即设定线条为平面显示。若没有这个属性则表明线条具阴影或立体，这是内定值。
 属性效果演示：
 
-![Paste_Image.png](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-01-cnblogs_html_05.png)
+![Paste_Image.png](http://img.smyhvae.com/2015-10-01-cnblogs_html_05.png)
 
 <br>
 
@@ -721,7 +721,7 @@ This <br> is a para<br>graph with line breaks
 此时center代表是一个标签，而不是一个属性值了。只要是在这个标签里面的内容，都会居于浏览器的中间。
 效果演示：
 
-![Paste_Image.png](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-01-cnblogs_html_06.png)
+![Paste_Image.png](http://img.smyhvae.com/2015-10-01-cnblogs_html_06.png)
 
 到了H5里面，center标签不建议使用。
 
@@ -734,7 +734,7 @@ This <br> is a para<br>graph with line breaks
 
 效果演示：
 
-![Paste_Image.png](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-01-cnblogs_html_07.png)
+![Paste_Image.png](http://img.smyhvae.com/2015-10-01-cnblogs_html_07.png)
 
 上图中，好像红框部分的字体变小了，而且还出现了缩进，好吧， 这个其实是浏览器搞的鬼。
 为什么要有`<pre>`这个标签呢？答案是：
@@ -751,7 +751,7 @@ This <br> is a para<br>graph with line breaks
 标题使用`<h1>`至`<h6>`标签进行定义。`<h1>`定义最大的标题，`<h6>`定义最小的标题。具有align属性，属性值可以是：left、center、right。
 效果演示：
 
-![Paste_Image.png](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-01-cnblogs_html_09.png)
+![Paste_Image.png](http://img.smyhvae.com/2015-10-01-cnblogs_html_09.png)
 
 
 ### 字体标签`<font>`（已废弃）
@@ -768,7 +768,7 @@ This <br> is a para<br>graph with line breaks
 ```
 效果：
 
-![Paste_Image.png](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-01-cnblogs_html_10.png)
+![Paste_Image.png](http://img.smyhvae.com/2015-10-01-cnblogs_html_10.png)
 
 ### 特殊字符（转义字符）
 
@@ -791,16 +791,16 @@ This <br> is a para<br>graph with line breaks
 ```
 正确的效果如下：
 
-![Paste_Image.png](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-01-cnblogs_html_11.png)
+![Paste_Image.png](http://img.smyhvae.com/2015-10-01-cnblogs_html_11.png)
 
 错误的效果如下：
 
-![Paste_Image.png](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-01-cnblogs_html_12.png)
+![Paste_Image.png](http://img.smyhvae.com/2015-10-01-cnblogs_html_12.png)
 
 其实我们只要记住前三个符号就行了，其他的在需要的时候查一下就行了。而且，EditPlus软件中是可以直接点击这些符号进行选择的：
 
 ![Paste_Image.png](
-http://7sby7r.com1.z0.glb.clouddn.com/2015-10-01-cnblogs_html_13.png)
+http://img.smyhvae.com/2015-10-01-cnblogs_html_13.png)
 
 来一张表格，方便需要的时候查询：
 
@@ -831,7 +831,7 @@ http://7sby7r.com1.z0.glb.clouddn.com/2015-10-01-cnblogs_html_13.png)
 
 效果：
 
-![Paste_Image.png](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-01-cnblogs_html_15.png)
+![Paste_Image.png](http://img.smyhvae.com/2015-10-01-cnblogs_html_15.png)
 
 
 
@@ -849,7 +849,7 @@ div的主要目的是用来布局，而小装饰却可以用来
 
 效果：
 
-![Paste_Image.png](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-01-cnblogs_html_14.png)
+![Paste_Image.png](http://img.smyhvae.com/2015-10-01-cnblogs_html_14.png)
 
 <br>
 
@@ -862,7 +862,7 @@ O<sup>2</sup>    5<sub>3</sub>
 ```
 效果：
 
-![Paste_Image.png](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-01-cnblogs_html_16.png)
+![Paste_Image.png](http://img.smyhvae.com/2015-10-01-cnblogs_html_16.png)
 
 
 
@@ -882,7 +882,7 @@ href是英语`hypertext reference`超文本地址的缩写。读作“喝瑞夫�
 
 效果：
 
-![Paste_Image.png](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-01-cnblogs_html_17.png)
+![Paste_Image.png](http://img.smyhvae.com/2015-10-01-cnblogs_html_17.png)
 
 当然，我们也可以直接点进链接，访问一个网址。举例如下；
 
@@ -899,7 +899,7 @@ href是英语`hypertext reference`超文本地址的缩写。读作“喝瑞夫�
 指给超链接起一个名字，作用是**在本页面或者其他页面的的不同位置进行跳转**。比如说，在网页底部有一个向上箭头，点击箭头后回到顶部，这个就是利用到了锚链接。
 首先我们要创建一个**锚点**，也就是说，使用`name`属性或者`id`属性给那个特定的位置起个名字。效果如下：
 
-![Paste_Image.png](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-01-cnblogs_html_18.png)
+![Paste_Image.png](http://img.smyhvae.com/2015-10-01-cnblogs_html_18.png)
 
 上图中解释：
 
@@ -1131,33 +1131,33 @@ aaa/../bbb/1.jpg
 ```
 效果：
 
-![Paste_Image.png](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-01-cnblogs_html_20.png)
+![Paste_Image.png](http://img.smyhvae.com/2015-10-01-cnblogs_html_20.png)
 
 `Alt`属性效果演示：
 
-![Paste_Image.png](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-01-cnblogs_html_21.png)
+![Paste_Image.png](http://img.smyhvae.com/2015-10-01-cnblogs_html_21.png)
 
  - 图片的`align`属性：**图片和周围文字的相对位置**。属性取值可以是：bottom（默认）、center、top、left、right。
 我们来分别看一下这`align`属性的这几个属性值的区别。
 1、`align=""`，图片和文字低端对齐。即默认情况下的显示效果：
 
-![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-02-cnblogs_html_19.png)
+![](http://img.smyhvae.com/2015-10-02-cnblogs_html_19.png)
 
 2、`align="center"`：图片和文字水平方向上居中对齐。显示效果：
 
-![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-02-cnblogs_html_21.png)
+![](http://img.smyhvae.com/2015-10-02-cnblogs_html_21.png)
 
 3、`align="top"`：图片与文字顶端对齐。显示效果：
 
-![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-02-cnblogs_html_22.png)
+![](http://img.smyhvae.com/2015-10-02-cnblogs_html_22.png)
 
 4、`align="left"`：图片在文字的左边。显示效果：
 
-![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-02-cnblogs_html_23.png)
+![](http://img.smyhvae.com/2015-10-02-cnblogs_html_23.png)
 
 5、`align="right"`：图片在文字的右边。显示效果：
 
-![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-02-cnblogs_html_24.png)
+![](http://img.smyhvae.com/2015-10-02-cnblogs_html_24.png)
 
 **注意事项：**
 （1）如果要想保证图片等比例缩放，请只设置width和height中其中一个。
@@ -1175,23 +1175,23 @@ aaa/../bbb/1.jpg
 上方代码表明：给图片加一个超链接，那个点击这个图片的任意区域，都会跳转到新的位置。
 现在，我只想对图片的局部区域加超链接，该怎么做呢？这里的难点在于坐标的确定，此时需要用到Dreamweaver。
 
-![Paste_Image.png](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-01-cnblogs_html_22.png)
+![Paste_Image.png](http://img.smyhvae.com/2015-10-01-cnblogs_html_22.png)
 
 上图中，切换到“设计”标签，然后：
 
-![Paste_Image.png](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-01-cnblogs_html_23.png)
+![Paste_Image.png](http://img.smyhvae.com/2015-10-01-cnblogs_html_23.png)
 
 上图中，点击菜单栏`插入-图像`，导入图片：
 
-![Paste_Image.png](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-01-cnblogs_html_24.png)
+![Paste_Image.png](http://img.smyhvae.com/2015-10-01-cnblogs_html_24.png)
 
 ，在图片上点击右键，选择`属性`，弹出属性面板：
 
-![Paste_Image.png](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-01-cnblogs_html_25.png)
+![Paste_Image.png](http://img.smyhvae.com/2015-10-01-cnblogs_html_25.png)
 
 上图中，我们可以利用红框部分的`地图`绘制需要添加超链接的区域。箭头处表示的是要链接到的文件。蓝框部分表示打开新页面的方式，蓝狂部分的`new`是没有下划线的，它和`_blank`的含义是一样的。
 
-![Paste_Image.png](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-01-cnblogs_html_26.png)
+![Paste_Image.png](http://img.smyhvae.com/2015-10-01-cnblogs_html_26.png)
 局部区域的热点设置完毕后，上图显示，红框部分就是多出的代码，也正是我们需要的代码。多出的代码如下：
 ```html
 <img src="file:///C|/Users/smyhvae/Desktop/html/1.jpg" alt="" width="488" height="730" usemap="#Map"/>
@@ -1203,11 +1203,11 @@ aaa/../bbb/1.jpg
 然后第02至第04行就给出了地图的定义。
 效果演示：
 
-![3.gif](http://7sby7r.com1.z0.glb.clouddn.com/3.gif)
+![3.gif](http://img.smyhvae.com/3.gif)
 
 最后，送上妹子的近照一张。楼主已经仁至义尽了。
 
-![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-01-cnblogs_html_20150219214912_11994.jpg)
+![](http://img.smyhvae.com/2015-10-01-cnblogs_html_20150219214912_11994.jpg)
 
 怎么？还没看够？且看下文：[HTML标签----图文详解（二）](http://www.cnblogs.com/smyhvae/p/4852863.html)
 
@@ -1217,7 +1217,7 @@ aaa/../bbb/1.jpg
 
 扫一扫，你将发现另一个全新的世界，而这将是一场美丽的意外：
 
-![](http://7sby7r.com1.z0.glb.clouddn.com/cnblogs/%E7%94%9F%E5%91%BD%E5%9B%A2%E9%98%9F%E5%85%AC%E4%BC%97%E5%8F%B7%E4%BA%8C%E7%BB%B4%E7%A0%81.jpg)
+![](http://img.smyhvae.com/cnblogs/%E7%94%9F%E5%91%BD%E5%9B%A2%E9%98%9F%E5%85%AC%E4%BC%97%E5%8F%B7%E4%BA%8C%E7%BB%B4%E7%A0%81.jpg)
 
 
 

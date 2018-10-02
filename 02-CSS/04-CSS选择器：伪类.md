@@ -276,7 +276,7 @@ a标签有4种伪类（即对应四种状态），要求背诵。如下：
 
 效果：
 
-![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-03-css-02.gif)
+![](http://img.smyhvae.com/2015-10-03-css-02.gif)
 
 利用这个`hover`属性，我们同样对表格做一个样式的设置：
 表格举例：
@@ -343,7 +343,7 @@ a标签有4种伪类（即对应四种状态），要求背诵。如下：
 
 效果：
 
-![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-03-css-04.gif)
+![](http://img.smyhvae.com/2015-10-03-css-04.gif)
 
 
 ##我的公众号

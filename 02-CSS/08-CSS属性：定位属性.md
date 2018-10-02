@@ -498,11 +498,11 @@ body{
 
 这是默认情况下的例子：（div2在上层，div1在下层）
 
-![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-03-css-32.png)
+![](http://img.smyhvae.com/2015-10-03-css-32.png)
 
 现在加一个`z-index`属性，要求效果如下：
 
-![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-03-css-33.png)
+![](http://img.smyhvae.com/2015-10-03-css-33.png)
 
 第五条分析：
 

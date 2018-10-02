@@ -63,19 +63,20 @@
 
 效果：
 
-20180202_2046.gif
+![](http://img.smyhvae.com/20180202_2046.gif)
+
 
 ### 缓慢动画的封装（解决四舍五入的问题）
 
 我们发现一个问题，上图中的盒子最终并没有到达400px的位置，而是只到了396.04px就停住了：
 
-20180202_2140.png
+![](http://img.smyhvae.com/20180202_2140.png)
 
 原因是：JS在取整的运算时，进行了四舍五入。
 
 我们把打印396.04px这个left值打印出来看看：
 
-20180202_2150.png
+![](http://img.smyhvae.com/20180202_2150.png)
 
 我么发现，通过`div.style.left`获取的值是精确的，通过`div.offsetLeft`获取的left值会进行四舍五入。
 
@@ -152,14 +153,15 @@
 
 实现效果：
 
-20180202_2239.gif
+![](http://img.smyhvae.com/20180202_2239.gif)
 
 
 ## scroll 家族的组成
 
 当我们用鼠标滚轮，滚动网页的时候，会触发window.onscroll()方法。效果如下：（注意看控制台的打印结果）
 
-20180202_2258.gif
+
+![](http://img.smyhvae.com/20180202_2258.gif)
 
 ### 1、ScrollWidth 和 scrollHeight
 
@@ -215,7 +217,7 @@ scrollHeight有一个特点：如果文字超出了盒子，高度为内容的�
 
 打印结果：
 
-20180203_1235.png
+![](http://img.smyhvae.com/20180203_1235.png)
 
 ### 2、scrollTop 和 scrollLeft
 
@@ -473,8 +475,7 @@ function scroll() {  // 开始封装自己的scrollTop
 
 实现效果：
 
-
-20180203_1619.gif
+![](http://img.smyhvae.com/20180203_1619.gif)
 
 
 工程文件：
@@ -674,9 +675,12 @@ function scroll() {  // 开始封装自己的scrollTop
 实现效果：
 
 
-20180203_1710.gif
+![](http://img.smyhvae.com/20180203_1710.gif)
 
-小火箭的图片资源：<20180203-Top.jpg>
+小火箭的图片资源：
+
+
+![](http://img.smyhvae.com/20180203-Top.jpg)
 
 
 
@@ -766,7 +770,7 @@ function scroll() {  // 开始封装自己的scrollTop
 实现效果：
 
 
-20180204_1440.gif
+![](http://img.smyhvae.com/20180204_1440.gif)
 
 
 ### 2、上方的代码改进：清除定时器
@@ -858,7 +862,7 @@ function scroll() {  // 开始封装自己的scrollTop
 ```
 
 
-实现效果同上。
+运行效果同上。
 
 
 **### 3、进一步深入：如果有要同时执行讴多个动画时，就要用到回调函数（重要）**：
@@ -887,7 +891,7 @@ function scroll() {  // 开始封装自己的scrollTop
 但是这样写的话，第二个动画 json2 会把第一个动画 json1 **层叠掉**。也就是说，第一个动画直接就不执行了。效果如下：
 
 
-20180204_1526.gif
+![](http://img.smyhvae.com/20180204_1526.gif)
 
 这显然不是我们想看到的。
 
@@ -989,8 +993,7 @@ function scroll() {  // 开始封装自己的scrollTop
 效果如下：
 
 
-20180204_1600.gif
-
+![](http://img.smyhvae.com/20180204_1600.gif)
 
 
 上方代码中，如果我们要先后完成两个动画，执行的代码是：
@@ -1133,7 +1136,7 @@ function scroll() {  // 开始封装自己的scrollTop
 
 效果如下：
 
-20180204_1620.gif
+![](http://img.smyhvae.com/20180204_1620.gif)
 
 工程文件：
 
@@ -1159,4 +1162,4 @@ function scroll() {  // 开始封装自己的scrollTop
 ```
 
 
-如何改进呢？赞略。
+如何改进呢？暂略。
