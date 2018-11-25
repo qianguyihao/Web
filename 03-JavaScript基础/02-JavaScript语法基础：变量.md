@@ -99,9 +99,9 @@ implements、import、int、interface、long、native、package、private、prot
 	var a = 888;    //变量2
 ```
 
-我们来整理一下变量的命名规则：
+我们来整理一下**变量的命名规则**：
 
-1.驼峰命名规则：getElementById/matherAndFather/aaaOrBbbAndCcc
+1.建议用驼峰命名规则：getElementById/matherAndFather/aaaOrBbbAndCcc
 
 2.变量命名必须以字母或是下标符号”_”或者”$”为开头。
 
@@ -111,16 +111,20 @@ implements、import、int、interface、long、native、package、private、prot
 
 5.不用使用脚本语言中保留的**关键字**及**保留字**作为变量名。
 
-6.变量名区分大小写。(javascript是区分大小写的语言)
+6.变量名区分大小写(javascript是区分大小写的语言)。
 
-7.汉语可以作为变量名。但是不建议使用，因为 low
+7.汉语可以作为变量名。但是不建议使用，因为 low。
 
 
 ## 标识符
 
-**标识符**：在JS中所有的可以由我们自主命名的都可以称之为标识符。
+**标识符**：在JS中所有的可以由我们**自主命名**的都可以称之为标识符。
 
 例如：变量名、函数名、属性名都是属于标识符。
+
+**标识符的命名规则**和变量的命令规则是一样的。看上面一段就可以了。
+
+重点要注意的是：标识符不能使用脚本语言中保留的**关键字**及**保留字**。如下。
 
 **关键字**：
 
@@ -140,18 +144,24 @@ implements、import、int、interface、long、native、package、private、prot
 
 变量里面能够存储数字、字符串等。变量会自动的根据存储内容的类型不同，来决定自己的类型。
 
-数据类型指的就是字面量的类型，**在JS中一共有六种数据类型**：
+**在JS中一共有六种数据类型**：
 
 
 - **基本数据类型（值类型）**：String 字符串、Number 数值、Boolean 布尔值、Null 空值、Undefined 未定义。
 
 - **引用数据类型（引用类型）**：Object 对象。
 
-PS：内置对象function、Array、Date、RegExp、Error等都是属于Object。
+注意：内置对象function、Array、Date、RegExp、Error等都是属于Object类型。也就是说，除了那五种基本数据类型之外，其他的，都称之为 Object类型。
 
-基本数据类型：参数赋值的时候，传数值。
+> 面试问：引用数据类型有几种？
 
-引用数据类型：参数赋值的时候，传地址（修改的同一片内存空间）。
+> 面试答：只有一种，即 Object 类型。
+
+**数据类型之间最大的区别**：
+
+- 基本数据类型：参数赋值的时候，传数值。
+
+- 引用数据类型：参数赋值的时候，传地址（修改的同一片内存空间）。
 
 接下来，我们详细讲一下基本数据类型。
 
@@ -202,7 +212,11 @@ PS：内置对象function、Array、Date、RegExp、Error等都是属于Object�
 
 - `\n` 表示换行
 
+- `\r` 表示回车
+
 - `\t` 表示制表符
+
+- `\b` 表示空格
 
 - `\\` 表示`\`
 
@@ -224,6 +238,38 @@ PS：内置对象function、Array、Date、RegExp、Error等都是属于Object�
 	\\\
 ```
 
+将其他数值转换为字符串有三种方式：
+
+- 拼串
+
+- toString()
+
+- String()
+
+
+### 补充知识：typeof 运算符
+
+`typeof()`表示“**获取变量的类型**”，返回的是小写，语法为：
+
+```
+typeof 变量
+```
+
+**返回结果**：
+
+- `typeof 数值`的返回结果：number
+
+- `typeof 字符串`的返回结果：string
+
+- `typeof 布尔型`的返回结果：boolean
+
+- `typeof undefined`的返回结果：undefined
+
+- `typeof null`的返回结果：object
+
+在JavaScript中，只要是数，就是 number 数值型的。无论整浮、浮点数（即小数）、无论大小、无论正负，都是 number 类型的。
+
+
 ## 数值型：Number
 
 在JS中所有的数值都是Number类型，包括整数和浮点数（小数）。
@@ -239,15 +285,6 @@ PS：内置对象function、Array、Date、RegExp、Error等都是属于Object�
 number
 ```
 
-**补充知识：**
-
-`typeof()`表示“**获取变量的类型**”，返回的是小写，语法为：
-
-```
-typeof 变量
-```
-
-在JavaScript中，只要是数，就是 number 数值型的。无论整浮、浮点数（即小数）、无论大小、无论正负，都是 number 类型的。
 
 **数值范围：**
 
@@ -263,7 +300,8 @@ typeof 变量
 
 - 无穷小（负无穷）：-Infinity
 
-注意，使用`typeof`检查Infinity也会返回number。
+注意：`typeof Infinity`的返回结果是number。
+
 
 **NaN和isNaN()函数：**
 
@@ -272,14 +310,14 @@ typeof 变量
 ```javascript
     console.log("abc" / 18);  //结果是NaN
 
-    console.log("abc" * "abcd"); //按理说，字符串相乘是没有结果的，但如果你非要让JS去算，它就一定会给你一个结果。结果是结果是NaN
+    console.log("abc" * "abcd"); //按理说，字符串相乘是没有结果的，但如果你非要让JS去算，它就一定会给你一个结果。结果是NaN
 ```
 
 注意：`typeof NaN`的返回结果是number。
 
 Undefined和任何数值计算的结果为NaN。NaN 与任何值都不相等，包括 NaN 本身。
 
-（2）isNaN() :任何不能被转换为数值的值都会导致这个函数返回 true。
+（2）isNaN() :任何不能被转换为数值的值，都会让这个函数返回 true。
 
 ```javascript
 	isNaN(NaN);// true
@@ -290,7 +328,7 @@ Undefined和任何数值计算的结果为NaN。NaN 与任何值都不相等，�
 
 **浮点数的运算**：
 
-在JS中，整数的运算可以很精确，但是**小数的运算，可能会得到一个不精确的结果**。所以，千万不要使用JS进行对精确度要求比较高的运算。
+在JS中，整数的运算**基本**可以保证精确；但是**小数的运算，可能会得到一个不精确的结果**。所以，千万不要使用JS进行对精确度要求比较高的运算。
 
 如下：
 
