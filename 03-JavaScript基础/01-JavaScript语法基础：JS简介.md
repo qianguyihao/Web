@@ -4,7 +4,7 @@
 
 > 以下是正文。
 
-## JavaScript简介
+## JavaScript背景
 
 Web前端有三层：
 
@@ -20,7 +20,7 @@ JavaScript是世界上用的最多的**脚本语言**。
 
 JavaScript诞生于**1995年**。布兰登 • 艾奇（Brendan Eich，1961年～），1995年在网景公司，发明的JavaScript。
 
-JavaScript是由**网景**公司发明，起初命名为LiveScript，后来由于SUN公司的介入更名为了JavaScript
+JavaScript是由**网景**公司发明，起初命名为LiveScript，后来由于SUN公司的介入更名为了JavaScript。
 
 > 备注：由于当时Java这个语言特别火，所以为了傍大牌，就改名为JavaScript。如同“北大”和“北大青鸟”的关系。“北大青鸟”就是傍“北大”大牌。
 
@@ -32,15 +32,15 @@ ECMAScript是一种由Ecma国际（前身为欧洲计算机制造商协会,英�
 
 JavaScript是由公司开发而成的，问题是不便于其他的公司拓展和使用。所以欧洲的这个ECMA的组织，牵头制定JavaScript的标准，取名为ECMAScript。
 
-简单来说，**ECMAScript不是一门语言，而是一个标准**。符合这个标准的比较常见的有：JavaScript、Action Script（Flash中用的语言）。就是说，你JavaScript学完了，Flash中的程序也就轻而易举了。
+简单来说，**ECMAScript不是一门语言，而是一个标准**。
 
-ECMAScript在2015年6月，发布了ECMAScript 6版本，语言的能力更强（也包含了很多新特性）。但是，浏览器的厂商不能那么快去追上这个标准。
+ECMAScript在2015年6月，发布了ECMAScript 6版本（ES6），语言的能力更强（也包含了很多新特性）。但是，浏览器的厂商不会那么快去追上这个标准，需要时间。
 
 ### JavaScript的发展：蒸蒸日上
 
-2003年之前，JavaScript被认为“牛皮鲜”，用来制作页面上的广告，弹窗、漂浮的广告。什么东西让人烦，什么东西就是JavaScript开发的。所以浏览器就推出了屏蔽广告功能。
+2003年之前，JavaScript被认为“牛皮鲜”，用来制作页面上的广告，弹窗、漂浮的广告。什么东西让人烦，什么东西就是JavaScript开发的。所以很多浏览器就推出了屏蔽广告功能。
 
-2004年，JavaScript命运开始改变，那一年，**谷歌公司开始带头使用Ajax技术**，Ajax技术就是JavaScript的一个应用。并且，那时候人们逐渐开始提升用户体验了。Ajax有一些应用场景。比如，当我们在百度搜索框搜文字时，输入框下方的智能提示，可以通过Ajax实现。比如，当我们注册网易邮箱时，能够及时发现用户名是否被占用，而不用调到另外一个页面。
+2004年，JavaScript命运开始改变。那一年，**谷歌公司开始带头使用Ajax技术**，Ajax技术就是JavaScript的一个应用。并且，那时候人们逐渐开始提升用户体验了。Ajax有一些应用场景。比如，当我们在百度搜索框搜文字时，输入框下方的智能提示，可以通过Ajax实现。比如，当我们注册网易邮箱时，能够及时发现用户名是否被占用，而不用调到另外一个页面。
 
 2007年乔布斯发布了第一款iPhone，这一年开始，用户就多了上网的途径，就是用移动设备上网。
 **JavaScript在移动页面中，也是不可或缺的**。并且这一年，互联网开始标准化，按照W3C规则三层分离，JavaScript越来越被重视。
@@ -54,13 +54,13 @@ ECMAScript在2015年6月，发布了ECMAScript 6版本，语言的能力更强�
 虽然目前WebApp在功能和性能上的体验远不如Native App，但是“WebApp慢慢取代Native App”很有可能是未来的趋势。
 
 
-## JavaScript编程相关
+## JavaScript介绍
 
 ### JavaScript入门易学性
 
 - JavaScript对初学者比较友好。
 
-- JavaScript是有界面效果的（比如C语言只有白底黑字）。
+- JavaScript是有界面效果的（比如C语言却只有白底黑字）。
 
 - JavaScript是**弱变量类型**的语言，变量只需要用var来声明。而Java中变量的声明，要根据变量的类型来定义。
 
@@ -74,7 +74,7 @@ ECMAScript在2015年6月，发布了ECMAScript 6版本，语言的能力更强�
 	boolean a;
 ```
 
-而JavaScript中，只用定义一个变量：
+而JavaScript中，只需要用一种方式来定义：
 
 ```JavaScript
 	var a;
@@ -318,9 +318,9 @@ JS代码如下：
 
 ## 我的公众号
 
-想学习<font color=#0000ff>**代码之外的软技能**</font>？不妨关注我的微信公众号：**生命团队**（id：`vitateam`）。
+想学习<font color=#0000ff>**代码之外的软技能**</font>？不妨关注我的微信公众号：**千古壹号**（id：`qianguyihao`）。
 
 扫一扫，你将发现另一个全新的世界，而这将是一场美丽的意外：
 
-![](http://img.smyhvae.com/2016040102.jpg)
+![](http://img.smyhvae.com/20160401_01.jpg)
 
