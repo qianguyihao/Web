@@ -20,10 +20,7 @@
 "workbench.editor.enablePreview": false,
 ```
 
-
 ## 常见操作
-
-
 
 ### 如何查看代码结构
 
@@ -47,10 +44,6 @@ live-server
 
 
 参考链接：[Visual Studio Code + live-server编辑和浏览HTML网页](http://www.cnblogs.com/1zhk/p/5699379.html)
-
-
-
-
 
 
 ## 常用插件
