@@ -1207,7 +1207,7 @@ aaa/../bbb/1.jpg
 
 最后，送上妹子的近照一张。楼主已经仁至义尽了。
 
-![](http://img.smyhvae.com/2015-10-01-cnblogs_html_20150219214912_11994.jpg)
+PS：美女图就不放在github上了，这么多 star，放了也不合适。去我的博客园看吧~
 
 怎么？还没看够？且看下文：[HTML标签----图文详解（二）](http://www.cnblogs.com/smyhvae/p/4852863.html)
 
