@@ -37,11 +37,11 @@
 
 标准盒子模型：
 
-![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-03-css-27.jpg)
+![](http://img.smyhvae.com/2015-10-03-css-27.jpg)
 
 IE盒子模型：
 
-![](http://7sby7r.com1.z0.glb.clouddn.com/2015-10-03-css-30.jpg)
+![](http://img.smyhvae.com/2015-10-03-css-30.jpg)
 
 上图显示：
 
