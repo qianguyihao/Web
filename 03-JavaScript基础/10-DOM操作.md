@@ -78,7 +78,7 @@ JavaScript基础分为三个部分：
 ```javascript
     var div1 = document.getElementById("box1");      //方式一：通过id获取单个标签
 
-	var arr1 = document.getElementsByTagName("div1");     //方式二：通过 标签名 获得 标签数组，所以有s
+	var arr1 = document.getElementsByTagName("div");     //方式二：通过 标签名 获得 标签数组，所以有s
 
 	var arr2 = document.getElementsByClassName("hehe");  //方式三：通过 类名 获得 标签数组，所以有s
 ```
@@ -161,7 +161,7 @@ JavaScript基础分为三个部分：
     div1.onclick = function () {
         div1.style.width = "200px";   //属性值要写引号
         div1.style.height = "200px";
-        div1.style.backgroundColor = "red";   //属性名是backgroundColor，不是background-Color
+        div1.style.backgroundColor = "red";   //属性名是backgroundColor，不是background-color
     }
 </script>
 ```
@@ -169,7 +169,7 @@ JavaScript基础分为三个部分：
 上方代码的注意事项：
 
 - 在js里写属性值时，要用引号
-- 在js里写属性名时，是`backgroundColor`，不是CSS里面的`background-Color`。
+- 在js里写属性名时，是`backgroundColor`，不是CSS里面的`background-color`。
 
 实现效果如下：
 
@@ -375,7 +375,7 @@ DOM节点的获取方式其实就是**获取事件源的方式**，在上一段�
 ```javascript
     var div1 = document.getElementById("box1");      //方式一：通过id获取单个标签
 
-	var arr1 = document.getElementsByTagName("div1");     //方式二：通过 标签名 获得 标签数组，所以有s
+	var arr1 = document.getElementsByTagName("div");     //方式二：通过 标签名 获得 标签数组，所以有s
 
 	var arr2 = document.getElementsByClassName("hehe");  //方式三：通过 类名 获得 标签数组，所以有s
 ```

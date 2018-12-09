@@ -5,7 +5,7 @@
 
 ### CMD的概念
 
-**CMD**（Asynchronous Module Definition）：同步模块定义。CMD专门用于浏览器端，模块的加载是同步的。模块在使用时才会加载执行。
+**CMD**（Common Module Definition）：同步模块定义。CMD专门用于浏览器端，模块的加载是同步的。模块在使用时才会加载执行。
 
 [**CMD规范**]()：是 **[SeaJS](http://seajs.org/)** 在推广过程中对模块化定义的规范化产出。
 

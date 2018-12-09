@@ -75,7 +75,7 @@ BOM：Browser Object Model，浏览器对象模型。
 
 - name：新窗口的名称，可以为空
 
-- featurse：属性控制字符串，在此控制窗口的各种属性，属性之间以逗号隔开。
+- features：属性控制字符串，在此控制窗口的各种属性，属性之间以逗号隔开。
 
 - fullscreen= { yes/no/1/0 } 是否全屏，默认no
 
