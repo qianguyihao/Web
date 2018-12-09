@@ -176,8 +176,8 @@ export default {
 //主模块。引入其他的模块
 
 import { foo1, foo2 } from './module1'; //采用解构赋值的形式进行导入。注意，括号里的对象名，要和 module1 中的对象名一致。
-import { fn1, fn2 } from './module2';   //采用解构赋值的形式进行导入。注意，括号里的对象名，要和 module1 中的对象名一致。
-import myModule3 from './module3';   //module3 模块是采用 default 方式进行暴露的，myModule4 这个名字是我随便起的
+import { fn1, fn2 } from './module2';   //采用解构赋值的形式进行导入。注意，括号里的对象名，要和 module2 中的对象名一致。
+import myModule3 from './module3';   //module3 模块是采用 default 方式进行暴露的，myModule3 这个名字是我随便起的
 import myModule4 from './module4';   //module4 模块是采用 default 方式进行暴露的，myModule4 这个名字是我随便起的
 
 //调用module1、module2中的内容
