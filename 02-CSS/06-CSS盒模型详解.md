@@ -114,7 +114,7 @@ CSS盒模型和IE盒模型的区别：
 
 上面的代码中，我们对div标签设置了边距等信息。打开google浏览器，按住F12，显示效果如下：
 
-![](http://img.smyhvae.com/2015-10-03-css-27.png)
+![](http://img.smyhvae.com/20151003_27.png)
 
 
 
