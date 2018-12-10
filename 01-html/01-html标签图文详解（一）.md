@@ -42,7 +42,7 @@ web标准总结：
 
 浏览器是网页运行的平台，常用的浏览器有IE、火狐（Firefox）、谷歌（Chrome）、猎豹浏览器、Safari和Opera等。如下图所示：
 
-![](http://img.smyhvae.com/20170628_1351.jpg)
+![](http://img.smyhvae.com/20170628_1352.png)
 
 
 
