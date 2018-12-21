@@ -7,7 +7,7 @@
 
 
 
-## 任何简单类型转换成String
+## 其他的简单类型 --> String
 
 ### 方法一：变量+"" 或者 变量+"abc"
 
@@ -15,9 +15,12 @@
 举例如下：
 
 ```javascript
-
-
+vat a = 123;  // Number 类型
+console.log(a + '');  // 转换成 String 类型
+console.log(a + 'haha');  // 转换成 String 类型
 ```
+
+上面的例子中，打印的结果，都是字符串类型的数据。
 
 
 ### 方法二：调用toString()方法
@@ -49,7 +52,7 @@
 
 
 
-### 方法三**：调用String()函数。
+### 方法三：使用String()函数
 
 格式如下：
 
@@ -66,11 +69,14 @@ String(变量)
 
 ### prompt()：用户的输入
 
-我们在上面的内容里讲过，`prompt()`就是专门用来弹出能够让用户输入的对话框。重要的是：用户不管输入什么，都是字符串。
+我们在JS基础的第一篇里，就讲过，`prompt()`就是专门用来弹出能够让用户输入的对话框。重要的是：用户不管输入什么，都是字符串。
 
-## Number()函数：其他的数据类型 --> Number
+## 其他的数据类型 --> Number
 
-情况一：字符串 --> 数字
+
+### 方式一：使用Number()函数
+
+**情况一：字符串 --> 数字**
 
 - 1.如果字符串中是纯数字，则直接将其转换为数字。
 
@@ -78,25 +84,25 @@ String(变量)
 
 - 3.如果字符串是一个空串或者是一个全是空格的字符串，则转换为0。
 
-情况二：布尔 --> 数字
+**情况二：布尔 --> 数字**
 
 - true 转成 1
 
 - false 转成 0
 
-情况三：null --> 数字
+**情况三：null --> 数字**
 
 - 结果为：0
 
-情况四：undefined --> 数字
+**情况四：undefined --> 数字**
 
 - 结果为：NaN
 
-### `parseInt()`：字符串 --> 整数【重要】
+### 方式二：`parseInt()`：字符串 -> 整数【重要】
 
 > `parseInt()`是专门用来对付字符串的。
 
-**parseInt()的作用是将字符串转为数字**。parse表示“转换”，Int表示“整数”（注意`Int`的拼写）。例如：
+**parseInt()的作用是将字符串中的有效的整数内容转为数字**。parse表示“转换”，Int表示“整数”（注意`Int`的拼写）。例如：
 
 ```
 	parseInt("5");
@@ -152,11 +158,14 @@ String(变量)
     var a = true;
     console.log(parseInt(a));  //打印结果：NaN （因为是先将a转为字符串"true"，然后然后再操作）
 
-    var b = undefined;
-    console.log(parseInt(b));  //打印结果：NaN  （因为是先将b转为字符串"undefined"，然后然后再操作）
+    var b = null;
+    console.log(parseInt(b));  //打印结果：NaN  （因为是先将b转为字符串"null"，然后然后再操作）    
 
-    var c = 168.23;
-    console.log(parseInt(c));  //打印结果：168  （因为是先将c转为字符串"168.23"，然后然后再操作）
+    var c = undefined;
+    console.log(parseInt(c));  //打印结果：NaN  （因为是先将b转为字符串"undefined"，然后然后再操作）
+
+    var d = 168.23;
+    console.log(parseInt(d));  //打印结果：168  （因为是先将c转为字符串"168.23"，然后然后再操作）
 
 ```
 
@@ -166,11 +175,25 @@ String(变量)
 
 > `parseFloat()`是专门用来对付字符串的。
 
-道理同上。
+
+parseFloat()的作用是：将字符串转换为**浮点数**。
+
+
+parseFloat()和parseInt()的作用类似，不同的是，parseFloat()可以获得有效的小数部分。
+
+
+代码举例：
+
+```javascript
+    var a = '123.456.789px';
+    console.log(parseFloat(a)); // 打印结果：123.456
+```
+
+
 
 ## 转换为Boolean
 
-> 将其他的数据类型转换为Boolean，可以使用Boolean()函数。
+将其他的数据类型转换为Boolean，可以使用**Boolean()**函数。
 
 - 情况一：数字 --> 布尔。除了0和NaN，其余的都是true。
 
@@ -179,6 +202,8 @@ String(变量)
 - 情况三：null和undefined都会转换为false。
 
 - 情况四：对象也会转换为true。
+
+PS：上面的这就种情况，很重要，开发中会经常用到。
 
 ## 其他进制的数字
 
