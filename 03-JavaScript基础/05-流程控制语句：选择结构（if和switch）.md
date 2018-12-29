@@ -2,7 +2,6 @@
 
 > 本文首发于[博客园](http://www.cnblogs.com/smyhvae/p/8310295.html)，并在[GitHub](https://github.com/smyhvae/Web)上持续更新**前端的系列文章**。欢迎在GitHub上关注我，一起入门和进阶前端。
 
-> 以下是正文。
 
 ## 代码块
 
@@ -132,45 +131,45 @@ if语句有以下三种。
 写法1：
 
 ```javascript
-		//第一步，输入身高和体重
-		var height = parseFloat(prompt("请输入身高，单位是米"));
-		var weight = parseFloat(prompt("请输入体重，单位是公斤"));
-		//第二步，计算BMI指数
-		var BMI = weight / Math.pow(height, 2);
-		//第三步，if语句来判断。注意跳楼现象
-		if (BMI < 18.5) {
-			alert("偏瘦");
-		} else if (BMI < 25) {
-			alert("正常");
-		} else if (BMI < 28) {
-			alert("过重");
-		} else if (BMI <= 32) {
-			alert("肥胖");
-		} else {
-			alert("非常肥胖");
-		}
+	//第一步，输入身高和体重
+	var height = parseFloat(prompt("请输入身高，单位是米"));
+	var weight = parseFloat(prompt("请输入体重，单位是公斤"));
+	//第二步，计算BMI指数
+	var BMI = weight / Math.pow(height, 2);
+	//第三步，if语句来判断。注意跳楼现象
+	if (BMI < 18.5) {
+		alert("偏瘦");
+	} else if (BMI < 25) {
+		alert("正常");
+	} else if (BMI < 28) {
+		alert("过重");
+	} else if (BMI <= 32) {
+		alert("肥胖");
+	} else {
+		alert("非常肥胖");
+	}
 ```
 
 写法2：
 
 ```javascript
-		//第一步，输入身高和体重
-		var height = parseFloat(prompt("请输入身高，单位是米"));
-		var weight = parseFloat(prompt("请输入体重，单位是公斤"));
-		//第二步，计算BMI指数
-		var BMI = weight / Math.pow(height, 2);
-		//第三步，if语句来判断。注意跳楼现象
-		if (BMI > 32) {
-			alert("非常肥胖");
-		} else if (BMI >= 28) {
-			alert("肥胖");
-		} else if (BMI >= 25) {
-			alert("过重");
-		} else if (BMI >= 18.5) {
-			alert("正常")
-		} else {
-			alert("偏瘦");
-		}
+	//第一步，输入身高和体重
+	var height = parseFloat(prompt("请输入身高，单位是米"));
+	var weight = parseFloat(prompt("请输入体重，单位是公斤"));
+	//第二步，计算BMI指数
+	var BMI = weight / Math.pow(height, 2);
+	//第三步，if语句来判断。注意跳楼现象
+	if (BMI > 32) {
+		alert("非常肥胖");
+	} else if (BMI >= 28) {
+		alert("肥胖");
+	} else if (BMI >= 25) {
+		alert("过重");
+	} else if (BMI >= 18.5) {
+		alert("正常")
+	} else {
+		alert("偏瘦");
+	}
 ```
 
 ### if语句的嵌套
@@ -190,30 +189,30 @@ if语句有以下三种。
 代码实现如下：
 
 ```javascript
-		//第一步，输入
-		var bianhao = parseInt(prompt("您想加什么油？填写92或者97"));
-		var sheng = parseFloat(prompt("您想加多少升？"));
+	//第一步，输入
+	var bianhao = parseInt(prompt("您想加什么油？填写92或者97"));
+	var sheng = parseFloat(prompt("您想加多少升？"));
 
-		//第二步，判断
-		if (bianhao == 92) {
-			//编号是92的时候做的事情
-			if (sheng >= 20) {
-				var price = sheng * 5.9;
-			} else {
-				var price = sheng * 6;
-			}
-		} else if (bianhao == 97) {
-			//编号是97的时候做的事情
-			if (sheng >= 30) {
-				var price = sheng * 6.95;
-			} else {
-				var price = sheng * 7;
-			}
+	//第二步，判断
+	if (bianhao == 92) {
+		//编号是92的时候做的事情
+		if (sheng >= 20) {
+			var price = sheng * 5.9;
 		} else {
-			alert("对不起，没有这个编号的汽油！");
+			var price = sheng * 6;
 		}
+	} else if (bianhao == 97) {
+		//编号是97的时候做的事情
+		if (sheng >= 30) {
+			var price = sheng * 6.95;
+		} else {
+			var price = sheng * 7;
+		}
+	} else {
+		alert("对不起，没有这个编号的汽油！");
+	}
 
-		alert("价格是" + price);
+	alert("价格是" + price);
 ```
 
 
@@ -225,28 +224,28 @@ switch语句也叫条件分支语句。
 
 ```javascript
 	switch(表达式) {
-      case 值1：
-		语句体1;
-		break;
+		case 值1：
+				语句体1;
+			break;
 
-	    case 值2：
-		语句体2;
-		break;
+		case 值2：
+			语句体2;
+			break;
 
-	    ...
-        ...
+		...
+		...
 
-	    default：	
-		语句体 n+1;
-		break;
-    }
+		default：	
+			语句体 n+1;
+			break;
+	}
 ```
 
 备注1：当所有的比较结果都为false时，则只执行default里的语句。
 
 备注2：break可以省略，但一般不建议。否则结果可能不是你想要的，会出现一个现象：**case穿透**。
 
-**switch语句的执行流程：**
+### switch语句的执行流程
 
 - 首先，计算出表达式的值，和case依次比较，一旦有对应的值，就会执行相应的语句，在执行的过程中，遇到break就会结束。
 
@@ -262,8 +261,85 @@ switch语句也叫条件分支语句。
 我们来举两个例子就明白了。
 
 
+**举例1**：（case穿透的情况）
+
+```javascript
+    var num = 4;
+
+    //switch判断语句
+    switch (num) {
+        case 1:
+            console.log("星期一");
+            break;
+        case 2:
+            console.log("星期二");
+            break;
+        case 3:
+            console.log("星期三");
+            break;
+        case 4:
+            console.log("星期四");
+        //break;
+        case 5:
+            console.log("星期五");
+        //break;
+        case 6:
+            console.log("星期六");
+            break;
+        case 7:
+            console.log("星期日");
+            break;
+        default:
+            console.log("你输入的数据有误");
+            break;
+    }
+
+```
 
 
+上方代码的运行结果，可能会令你感到意外：
+
+
+```
+星期四
+星期五
+星期六
+```
+
+
+上方代码的解释：因为在case 4和case 5中都没有break，那语句走到case 6的break才会停止。
+
+**举例2**：
+
+```javascript
+    //switch判断语句
+    switch (number) {
+        default:
+            console.log("我是defaul语句");
+            // break;
+        case (2):
+            console.log(number);
+            //break;
+        case (3):
+            console.log(number);
+            break;
+        case (4):
+            console.log(number);
+            break;
+    }
+
+```
+
+
+上方代码的运行结果，你也许会意外：
+
+```
+我是defaul语句
+5
+5
+```
+
+上方代码的解释：从这个例子可以看出：switch语句结束与default无关。
 
 
 
@@ -285,10 +361,6 @@ switch语句也叫条件分支语句。
 
 
 
-
-## 算法题练习
-
-暂略。
 
 ## 我的公众号
 
