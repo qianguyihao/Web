@@ -905,28 +905,28 @@ prop方法通常用来影响DOM元素的动态状态，而不是改变的HTML属
                 <input type="checkbox"/>
             </td>
             <td>JavaScript</td>
-            <td>生命团队</td>
+            <td>千古壹号</td>
         </tr>
         <tr>
             <td>
                 <input type="checkbox"/>
             </td>
             <td>css</td>
-            <td>生命团队</td>
+            <td>千古壹号</td>
         </tr>
         <tr>
             <td>
                 <input type="checkbox"/>
             </td>
             <td>html</td>
-            <td>生命团队</td>
+            <td>千古壹号</td>
         </tr>
         <tr>
             <td>
                 <input type="checkbox"/>
             </td>
             <td>jQuery</td>
-            <td>生命团队</td>
+            <td>千古壹号</td>
         </tr>
         </tbody>
     </table>
