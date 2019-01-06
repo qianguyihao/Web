@@ -256,10 +256,71 @@ while语句在执行时，先对条件表达式进行求值判断：
 > 这个知识点非常重要。
 
 
+### break
+
+- break可以用来退出switch语句或**整个**循环语句（循环语句包括for、while。不包括if。if里不能用 break 和 continue，否则会报错）。
+
+- break会立即终止离它**最近**的那个循环语句。
+
+- 可以为循环语句创建一个label，来标识当前的循环（格式：label:循环语句）。使用break语句时，可以在break后跟着一个label，这样break将会结束指定的循环，而不是最近的。
+
+
+**举例1**：通过 break 终止循环语句
+
+```javascript
+    for (var i = 0; i < 5; i++) {
+        console.log('i的值:' + i);
+        if (i == 2) {
+            break;  // 注意，虽然在 if 里 使用了 break，但这里的 break 是服务于外面的 for 循环。
+        }
+    }
+
+```
+
+打印结果： 
+
+```
+i的值:0
+i的值:1
+i的值:2
+```
+
+
+**举例2**：label的使用
+
+```javascript
+    outer:
+    for (var i = 0; i < 5; i++) {
+        console.log("外层循环 i 的值：" + i)
+        for (var j = 0; j < 5; j++) {
+            break outer; // 直接跳出outer所在的外层循环（这个outer是我自定义的label）
+            console.log("内层循环 j 的值:" + j);
+        }
+    }
+
+```
+
+
+打印结果：
+
+```
+外层循环 i 的值：0
+```
+
+
+
+### continue
+
+- continue可以用来跳过**当次**循环。
+
+- 同样，continue默认只会离他**最近**的循环起作用。
+
+
+
 ## 各种练习
 
 
-### 练习一：质数
+### 练习一：质数相关
 
 **题目**：在页面中接收一个用户输入的数字，并判断该数是否是质数。
 
@@ -320,64 +381,7 @@ while语句在执行时，先对条件表达式进行求值判断：
 ```
 
 
-### 练习二：99乘法表
-
-代码实现：
-
-```html
-<!DOCTYPE html>
-<html>
-
-<head>
-	<meta charset="UTF-8">
-	<title></title>
-	<style type="text/css">
-		body {
-			width: 2000px;
-		}
-
-		span {
-			display: inline-block;
-			width: 80px;
-		}
-	</style>
-	<script type="text/javascript">
-
-		/*
-		 * 1.打印99乘法表
-		 * 	 1*1=1
-		 * 	 1*2=2 2*2=4
-		 * 	 1*3=3 2*3=6 3*3=9
-		 * 	 1*4=4 2*4=8 3*4=12 4*4=16
-		 * 						....9*9=81
-		 *
-		 * 2.打印出1-100之间所有的质数
-		 */
-
-		//创建外层循环，用来控制乘法表的高度
-		for (var i = 1; i <= 9; i++) {
-			//创建一个内层循环来控制图形的宽度
-			for (var j = 1; j <= i; j++) {
-				document.write("<span>" + j + "*" + i + "=" + i * j + "</span>");
-			}
-
-			//输出一个换行
-			document.write("<br />");
-		}
-	</script>
-</head>
-
-<body>
-</body>
-
-</html>
-```
-
-页面效果：
-
-![](http://img.smyhvae.com/20181229_1410.png)
-
-### 练习三：质数相关
+### 练习二：质数相关
 
 **题目**：打印1~100之间的所有质数
 
@@ -435,6 +439,65 @@ while语句在执行时，先对条件表达式进行求值判断：
 
 ![](http://img.smyhvae.com/20181229_1415.png)
 
+
+### 练习三：99乘法表
+
+代码实现：
+
+```html
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        body {
+            width: 2000px;
+        }
+
+        span {
+            display: inline-block;
+            width: 80px;
+        }
+    </style>
+    <script type="text/javascript">
+
+        /*
+         * 1.打印99乘法表
+         *   1*1=1
+         *   1*2=2 2*2=4
+         *   1*3=3 2*3=6 3*3=9
+         *   1*4=4 2*4=8 3*4=12 4*4=16
+         *                      ....9*9=81
+         *
+         * 2.打印出1-100之间所有的质数
+         */
+
+        //创建外层循环，用来控制乘法表的高度
+        for (var i = 1; i <= 9; i++) {
+            //创建一个内层循环来控制图形的宽度
+            for (var j = 1; j <= i; j++) {
+                document.write("<span>" + j + "*" + i + "=" + i * j + "</span>");
+            }
+
+            //输出一个换行
+            document.write("<br />");
+        }
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>
+```
+
+页面效果：
+
+![](http://img.smyhvae.com/20181229_1410.png)
+
+
 ## 我的公众号
 
 想学习<font color=#0000ff>**代码之外的技能**</font>？不妨关注我的微信公众号：**千古壹号**（id：`qianguyihao`）。
@@ -442,21 +505,6 @@ while语句在执行时，先对条件表达式进行求值判断：
 扫一扫，你将发现另一个全新的世界，而这将是一场美丽的意外：
 
 ![](http://img.smyhvae.com/2016040102.jpg)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

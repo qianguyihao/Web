@@ -341,25 +341,6 @@ switch语句也叫条件分支语句。
 
 
 
-## break和continue
-
-
-### break
-
-- break可以用来退出switch语句或**整个**循环语句（循环语句包括for、while。不包括if。if里不能用break，否则会报错）。
-
-- break会立即终止离它最近的那个循环语句。
-
-
-### continue
-
-- continue可以用来跳过**当次**循环。
-
-- 同样，continue默认只会离他最近的循环起作用。
-
-
-
-
 ## 我的公众号
 
 想学习<font color=#0000ff>**代码之外的技能**</font>？不妨关注我的微信公众号：**千古壹号**（id：`qianguyihao`）。
