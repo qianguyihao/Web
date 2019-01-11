@@ -275,3 +275,46 @@
 
 ES6中的箭头函数并不会使用上面四条标准的绑定规则，而是会继承外层函数调用的this绑定（无论this绑定到什么）。
 
+## arguments（待定）
+
+在调用函数时，浏览器每次都会传递进两个隐含的参数：
+
+- 1.函数的上下文对象 this
+
+- 2.**封装实参的对象** arguments
+
+例如：
+
+```javascript
+    function foo() {
+        console.log(arguments);
+        console.log(typeof arguments);
+    }
+
+    foo();
+```
+
+
+![](http://img.smyhvae.com/20180315_0903.png)
+
+arguments是一个类数组对象，它也可以通过索引来操作数据，也可以获取长度。
+
+在调用函数时，我们所传递的实参都会在arguments中保存。
+
+arguments.length可以用来获取**实参的长度**。
+
+我们即使不定义形参，也可以通过arguments来使用实参（只不过比较麻烦）：arguments[0] 表示第一个实参、arguments[1] 表示第二个实参...
+
+
+arguments里边有一个属性叫做callee，这个属性对应一个函数对象，就是当前正在指向的函数的对象。
+
+```javascript
+    function fun() {
+
+        console.log(arguments.callee == fun); //打印结果为true
+    }
+
+    fun("hello");
+```
+
+
