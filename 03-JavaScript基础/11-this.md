@@ -14,13 +14,50 @@
 
 - 4.使用call和apply调用时，this是指定的那个对象
 
-针对第1和第2条的举例：
+
+**针对第1条的举例**：
+
+```javascript
+    function fun() {
+        console.log(this);
+        console.log(this.name);
+    }
+
+    var obj1 = {
+        name: "smyh",
+        sayName: fun
+    };
+
+    var obj2 = {
+        name: "vae",
+        sayName: fun
+    };
+
+    var name = "全局的name属性";
+
+    //以函数形式调用，this是window
+    fun();       //可以理解成 window.fun()
+```
+
+
+打印结果：
+
+```
+    Window
+    全局的name属性
+```
+
+
+上面的举例可以看出，this指向的是window对象，所以 this.name 指的是全局的name。
+
+
+**第2条的举例**：
 
 ```javascript
         function fun() {
+            console.log(this);
             console.log(this.name);
         }
-
 
         var obj1 = {
             name: "smyh",
@@ -33,17 +70,20 @@
         };
 
         var name = "全局的name属性";
-        //obj.sayName();
-        
-        //以函数形式调用，this是window
-        //fun();       //可以理解成 window.fun()
 
         //以方法的形式调用，this是调用方法的对象
         obj2.sayName();
 
 ```
 
-打印结果：`vae`。
+打印结果：
+
+```
+    Object
+    vae
+```
+
+上面的举例可以看出，this指向的是 对象 obj2 ，所以 this.name 指的是 obj2.name。
 
 **箭头函数中this的指向**：
 
