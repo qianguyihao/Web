@@ -167,6 +167,15 @@ git cherry-pick commit1
 ```
 
 
+### 20190118-修改GitHub已提交的用户名和邮箱
+
+参考链接：（亲测有效）
+
+- [修改Git全部Commit提交记录的用户名Name和邮箱Email](https://cloud.tencent.com/developer/article/1352623)
+
+- [Mac 运行sh文件，也就是传说中的shell脚本](https://blog.csdn.net/yusufolu9/article/details/53706269)
+
+
 ## git客户端推荐
 
 20180623时，网上看了下Git客户端的推荐排名：
@@ -180,9 +189,6 @@ git cherry-pick commit1
 商业用途收费， 个人用户免费：
 
 ![](http://img.smyhvae.com/20180623_1305.png)
-
-
-
 
 
 
