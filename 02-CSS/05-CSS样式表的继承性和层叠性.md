@@ -133,9 +133,45 @@ PS：不进位，实际上能进位（奇淫知识点：255个标签，等于1�
 ![](http://img.smyhvae.com/20170727_0843.png)
 
 
-另外：**如果大家都是0，那么有一个就近原则：谁描述的近，听谁的**。举例如下：
+另外：**如果大家的权重相同，那么就采用就近原则：谁描述的近，听谁的**。举例如下：(box3 描述得最近，所以采用 box3 的属性)
 
-![](http://img.smyhvae.com/20170727_0845.png)
+![](http://img.smyhvae.com/20190122_1529.png)
+
+上方代码的文字版如下：
+
+```html
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta />
+    <meta />
+    <meta />
+    <title>Document</title>
+    <style>
+      #box1 {
+        color: red;
+      }
+
+      #box2 {
+        color: green;
+      }
+
+      #box3 {
+        color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box1">
+      <div id="box2">
+        <div id="box3"><p>猜猜我是什么颜色</p></div>
+      </div>
+    </div>
+  </body>
+</html>
+
+
+```
 
 
 ### 层叠性：权重计算的问题大总结（非常重要）
