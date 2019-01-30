@@ -809,14 +809,14 @@ DOM对象的属性和HTML的标签属性几乎是一致的。例如：src、titl
 
 **获取内容举例：**
 
-如果我们想获取innerHTML和innerText里的内容，看看会如何：
+如果我们想获取innerHTML和innerText里的内容，看看会如何：（innerHTML会获取到标签本身，而innerText则不会）
 
 ![](http://img.smyhvae.com/20180127_1652.png)
 
 上图显示，因为innerText识别不出标签，所以把标签也给获取到了。
 
 
-**修改内容举例：**
+**修改内容举例：**（innerHTML会修改标签本身，而innerText则不会）
 
 ![](http://img.smyhvae.com/20180127_1657.png)
 
