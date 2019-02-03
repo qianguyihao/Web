@@ -981,7 +981,7 @@ div  p  h1  span   a   img   ul   ol    dl    input
 
 ## 我的公众号
 
-想学习<font color=#0000ff>**代码之外的软技能**</font>？不妨关注我的微信公众号（千古壹号id：`qianguyihao`）。
+想学习<font color=#0000ff>**代码之外的技能**</font>？不妨关注我的微信公众号（千古壹号id：`qianguyihao`）。
 
 扫一扫，你将发现另一个全新的世界，而这将是一场美丽的意外：
 
