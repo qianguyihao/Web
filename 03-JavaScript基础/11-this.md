@@ -89,16 +89,16 @@
 
 ES6中的箭头函数并不会使用上面四条标准的绑定规则，而是会继承外层函数调用的this绑定（无论this绑定到什么）。
 
+## 类数组 arguments
 
-## arguments（待定）
-
-> 这部分，小白可能看不懂。所以，这一段，可以忽略。
+> 这部分，小白可能看不懂。所以，这一段，暂时可以忽略。
 
 在调用函数时，浏览器每次都会传递进两个隐含的参数：
 
 - 1.函数的上下文对象 this
 
 - 2.**封装实参的对象** arguments
+
 
 例如：
 
@@ -111,19 +111,47 @@ ES6中的箭头函数并不会使用上面四条标准的绑定规则，而是�
     foo();
 ```
 
-
 ![](http://img.smyhvae.com/20180315_0903.png)
 
-arguments是一个类数组对象，它也可以通过索引来操作数据，也可以获取长度。
 
-在调用函数时，我们所传递的实参都会在arguments中保存。
+
+arguments是一个类数组对象，它可以通过索引来操作数据，也可以获取长度。
+
+**arguments代表的是实参**。在调用函数时，我们所传递的实参都会在arguments中保存。有个讲究的地方是：arguments**只在函数中使用**。
+
+
+
+
+### 1、返回函数**实参**的个数：arguments.length
+
 
 arguments.length可以用来获取**实参的长度**。
 
+举例：
+
+```javascript
+    fn(2,4);
+    fn(2,4,6);
+    fn(2,4,6,8);
+
+    function fn(a,b) {
+        console.log(arguments);
+        console.log(fn.length);         //获取形参的个数
+        console.log(arguments.length);  //获取实参的个数
+
+        console.log("----------------");
+    }
+```
+
+打印结果：
+
+![](http://img.smyhvae.com/20180125_2140.png)
+
 我们即使不定义形参，也可以通过arguments来使用实参（只不过比较麻烦）：arguments[0] 表示第一个实参、arguments[1] 表示第二个实参...
 
+### 2、返回正在执行的函数：arguments.callee
 
-arguments里边有一个属性叫做callee，这个属性对应一个函数对象，就是当前正在指向的函数的对象。
+arguments里边有一个属性叫做callee，这个属性对应一个函数对象，就是当前正在指向的函数对象。
 
 ```javascript
     function fun() {
@@ -134,6 +162,23 @@ arguments里边有一个属性叫做callee，这个属性对应一个函数对�
     fun("hello");
 ```
 
+在使用函数**递归**调用时，推荐使用arguments.callee代替函数名本身。
+
+### 3、arguments可以修改元素
+
+之所以说arguments是伪数组，是因为：**arguments可以修改元素，但不能改变数组的长短**。举例：
+
+```javascript
+    fn(2,4);
+    fn(2,4,6);
+    fn(2,4,6,8);
+
+    function fn(a,b) {
+        arguments[0] = 99;  //将实参的第一个数改为99
+        arguments.push(8);  //此方法不通过，因为无法增加元素
+    }
+
+```
 
 ## 我的公众号
 
