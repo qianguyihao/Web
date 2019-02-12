@@ -146,7 +146,7 @@ React内部已经帮我们实现了虚拟DOM，初学者掌握如何调用即可
 
 - react-dom.js: 操作DOM的扩展库。这个包，主要封装了和 DOM 操作相关的包（比如，把组件渲染到页面上）。
 
-- babel.min.js: 解析JSX语法代码转为纯JS语法代码的库
+- babel.min.js: 将 JSX语法 解析为 纯JS语法代码。
 
 ### 方式一：本地引入相关的js库
 
@@ -268,6 +268,13 @@ var myDiv = React.createElement('div', { title: 'this is a div', id: 'mydiv' }, 
 
 // ReactDOM.render('要渲染的虚拟DOM元素', '要渲染到页面上的哪个位置');
 ReactDOM.render(myDiv, document.getElementById('app'));
+```
+
+
+上方代码中，createElement()方法介绍如下：
+
+```javascript
+  React.createElement(需要创建的元素类型, 有哪些属性, 子节点)
 ```
 
 
