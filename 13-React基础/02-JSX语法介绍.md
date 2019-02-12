@@ -25,7 +25,7 @@ JSX：JavaScript XML，一种类似于XML的JS扩展语法。也可以理解成�
 	运行 cnpm i babel-preset-react -D
 ```
 
-我们可以通过这个babel包，将 JSX语法 转换为 JS语法。
+这个babel包的作用是：将 JSX语法 转换为 JS语法。
 
 安装完成后，就可以开始使用JSX语法了。
 
@@ -233,7 +233,6 @@ React在解析所有标签的时候，是以标签的首字母来区分的：如
 
 **结论**：组件的首字母必须大写。
 
-
 ### 父组件传值给子组件
 
 代码举例：
@@ -288,19 +287,7 @@ React在解析所有标签的时候，是以标签的首字母来区分的：如
 
 ```
 
-
 上方代码中，我们是想把整个person对象传递给子组件，所以采用了`...Obj 语法`语法。传递给子组件后，子组件获取的数据仅仅只是可读的。
-
-### 以文件夹的形式创建子组件
-
-在实际开发中，我们通常会专门新建一个 components 文件夹，来定义子组件。
-
-文件结构如下：
-
-代码如下：
-
-（1）components/hello.jsx:
-
 
 ## class 关键字的介绍
 
@@ -309,7 +296,6 @@ React在解析所有标签的时候，是以标签的首字母来区分的：如
 ### class的基本用法：使用class创建对象
 
 myclass.js:
-
 
 ```javascript
 // 以前学习的：使用构造函数创建对象
@@ -393,6 +379,9 @@ c1.say();
 
 ```
 
+注意上方 `constructor`处的注释：当使用 extends 关键字实现了继承， 子类的 constructor 构造函数中，必须显示调用 super() 方法，这个 super 表示父类中 constructor 的引用。也就是说，在子类当中，要么不写 constructor，如果写了 constructor，就一定要把 `super()`也加上。
+
+为啥我们要引入 `class`这个功能？就是因为， `class`里，永远都存在着一个 constructor。我们可以利用 `constructor`做很多事情。
 
 ## 创建组件的第二种方式：使用 class 关键字
 
@@ -451,6 +440,92 @@ index.html:
 </html>
 
 ```
+
+### 父组件传值给子组件
+
+代码举例：
+
+index.html:
+
+```html
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta />
+    <meta />
+    <meta />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 引入React相关的js库 -->
+    <script type="text/javascript" src="./libs/react.js"></script>
+    <script type="text/javascript" src="./libs/react-dom.js"></script>
+    <script type="text/javascript" src="./libs/babel.min.js"></script>
+
+    <div id="app"></div>
+
+    <!-- 注意，这一行的 type 是写 "text/babel"，而不是 "text/javascript" -->
+    <script type="text/babel">
+      // 使用 class 创建的类，通过 extends 关键字，继承 `React.Component` 之后，这个类，就是一个组件的模板了。
+      // 如果想要引用这个组件，可以把类的名称以**标签的形式**，导入到 JSX 中使用。
+      class Hello2 extends React.Component {
+        constructor(props) {
+          super(props);
+          console.log(props.name);
+
+          // 注意：`this.state` 是固定写法，表示当前组件实例的私有数据对象，就好比 vue 中，组件实例身上的 data(){ return {} } 函数
+          // 如果想要使用 组件中 state 上的数据，直接通过 this.state.*** 来访问即可
+          this.state = {
+            msg: "这是 Hello2 组件的私有msg数据",
+            info: "永不止步"
+          };
+        }
+        // 在 class 实现的组件内部，必须定义一个 render 函数
+        render() {
+          // 在 render 函数中，还必须 return 一个东西，如果没有什么需要被return 的，则需要 return null
+          return (
+            <div>
+              <h3>这是使用 class 类创建的组件 </h3>
+            </div>
+          );
+        }
+      }
+
+      ReactDOM.render(
+        <div>
+          <Hello2 name="qianguyihao"> </Hello2>
+        </div>,
+        document.getElementById("app")
+      );
+    </script>
+  </body>
+</html>
+
+```
+
+## 方式一和方式二的对比
+
+上面的内容里，我们使用了两种方式创建组件。这两种方式，有着本质的区别，我们来对比一下。
+
+**对比**：
+
+- **方式一**：通过 function构造函数 创建组件。内部没有 state 私有数据，只有 一个 props 来接收外界传递过来的数据。
+
+- **方式二**：通过 class 创建子组件。内部除了有 this.props 这个只读属性之外，还有一个专门用于 存放自己私有数据的 this.state 属性，这个 state 是可读可写的。
+
+基于上面的区别，我们可以为这两种创建组件的方式下定义： 使用 function 创建的组件，叫做【无状态组件】；使用 class 创建的组件，叫做【有状态组件】。
+
+**本质区别**：
+
+有状态组件和无状态组件，最本质的区别，就是有无 state 属性。同时， class 创建的组件，有自己的生命周期函数，但是，function 创建的 组件，没有自己的生命周期函数。
+
+**什么时候使用 有状态组件，什么时候使用无状态组件**：
+
+- （1）如果一个组件需要存放自己的私有数据，或者需要在组件的不同阶段执行不同的业务逻辑，此时，非常适合用 class 创建出来的有状态组件。
+
+- （2）如果一个组件，只需要根据外界传递过来的 props，渲染固定的页面结构即可的话，此时，非常适合使用 function 创建出来的无状态组件。（使用无状态组件的小小好处： 由于剔除了组件的生命周期，所以，运行速度会相对快一点点）。
+
+
 
 
 
