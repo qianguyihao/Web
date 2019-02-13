@@ -3,7 +3,7 @@
 
 ## 组件的生命周期
 
-在组件创建、到加载到页面上运行、以及组件被销毁的过程中，总是伴随着各种各样的事件，这些在组件特定时期，触发的事件，统称为组件的生命周期。
+在组件创建、到加载到页面上运行、以及组件被销毁的过程中，总是伴随着各种各样的事件，这些在组件特定时期，触发的事件统称为组件的生命周期。
 
 ## 生命周期的阶段
 
@@ -50,17 +50,17 @@
 
 >有一个显著的特点，根据组件的state和props的改变，有选择性的触发0次或多次。
 
-- componentWillReceiveProps
+- componentWillReceiveProps()
 
-组件将要接收新属性。当父组件为当前子组件传递了新的属性值，就会触发这个钩子函数。
+组件将要接收新属性。只有当父组件中，通过某些事件，重新修改了 传递给 子组件的 props 数据之后，才会触发这个钩子函数。
 
-- shouldComponentUpdate
+- shouldComponentUpdate()
 
-组件是否需要被更新，此时，组件尚未被更新，但是，state 和 props 肯定是最新的。
+判断组件是否需要被更新。此时，组件尚未被更新，但是，state 和 props 肯定是最新的。
 
-- componentWillUpdate
+- componentWillUpdate()
 
-组件将要被更新，此时，组件还没有被更新，内存中的虚拟DOM树还是旧的。
+组件将要被更新。此时，组件还没有被更新，在进入到这个生命周期函数的时候，内存中的虚拟DOM还是旧的，页面上的 DOM 元素也是旧的。（也就是说，此时操作的是旧的 DOM元素）
 
 - render
 
@@ -86,6 +86,32 @@ React 生命周期的截图如下：
 
 - [React Native 中组件的生命周期](http://www.race604.com/react-native-component-lifecycle/)
 
+## 组件生命周期的执行顺序
 
+1、Mounting：
+
+- constructor()
+
+- componentWillMount()
+
+- render()
+
+- componentDidMount()
+
+2、Updating：
+
+- componentWillReceiveProps(nextProps)
+
+- shouldComponentUpdate(nextProps, nextState)
+
+- componentWillUpdate(nextProps, nextState)
+
+- render()
+
+- componentDidUpdate(prevProps, prevState)
+
+3、Unmounting：
+
+ - componentWillUnmount()
 
 
