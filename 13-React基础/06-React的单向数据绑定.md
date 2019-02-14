@@ -58,7 +58,53 @@ Warning: Failed prop type: You provided a `value` prop to a form field without a
 	<input type="text" value={this.state.msg} readOnly />
 ```
 
-绑定 onChange 的举例如下：（通过onChange方法，实现双向数据绑定）
+**绑定 onChange 的举例如下**：（通过onChange方法，实现双向数据绑定）
+
+(1)index.html:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 容器，通过 React 渲染得到的 虚拟DOM，会呈现到这个位置 -->
+  <div id="app"></div>
+</body>
+
+</html>
+
+```
+
+
+（2）main.js:
+
+```javascript
+// JS打包入口文件
+// 1. 导入包
+import React from "react";
+import ReactDOM from "react-dom";
+
+// 导入组件
+import MyComponent from "./components/MyComponent.jsx";
+
+// 使用 render 函数渲染 虚拟DOM
+ReactDOM.render(
+  <div>
+    <MyComponent></MyComponent>
+  </div>,
+  document.getElementById("app")
+);
+
+```
+
+（3）components/MyComponent.jsx
 
 ```javascript
 import React from "react";
@@ -101,5 +147,19 @@ export default class MyComponent extends React.Component {
 }
 
 ```
+
+
+工程文件：
+
+- [2019-02-13-ReactDemo.zip]()
+
+
+
+
+
+
+
+
+
 
 
