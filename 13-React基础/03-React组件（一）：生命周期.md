@@ -88,7 +88,7 @@ React 生命周期的截图如下：
 
 ## 组件生命周期的执行顺序
 
-1、Mounting：
+**1、Mounting**：
 
 - constructor()
 
@@ -98,11 +98,11 @@ React 生命周期的截图如下：
 
 - componentDidMount()
 
-2、Updating：
+**2、Updating**：
 
-- componentWillReceiveProps(nextProps)
+- componentWillReceiveProps(nextProps)：接收父组件传递过来的属性
 
-- shouldComponentUpdate(nextProps, nextState)
+- shouldComponentUpdate(nextProps, nextState)：一旦调用 setState，就会触发这个方法。方法默认 return true；如果 return false，后续的方法就不会走了。
 
 - componentWillUpdate(nextProps, nextState)
 
@@ -110,7 +110,7 @@ React 生命周期的截图如下：
 
 - componentDidUpdate(prevProps, prevState)
 
-3、Unmounting：
+**3、Unmounting**：
 
  - componentWillUnmount()
 

@@ -1,11 +1,8 @@
 
 
-
-
 ## 虚拟DOM和diff算法
 
 > 在学习 React 之前，我们需要先了解两个概念：虚拟DOM、diff算法。
-
 
 
 ### 虚拟DOM
@@ -54,8 +51,6 @@ React内部已经帮我们实现了虚拟DOM，初学者掌握如何调用即可
  - key：key这个属性，可以把 页面上的 DOM节点 和 虚拟DOM中的对象，做一层关联关系。
 
 
-如何对比两颗新旧
-
 ## React 介绍
 
 ### React 是什么
@@ -72,7 +67,7 @@ React内部已经帮我们实现了虚拟DOM，初学者掌握如何调用即可
 
 - Learn Once, Write Anywhere（支持客户端、服务器端渲染）
 
-- 高效
+- 高效的DOM Diff算法，最小化页面重绘
 
 - 单向数据流
 
@@ -95,6 +90,13 @@ React内部已经帮我们实现了虚拟DOM，初学者掌握如何调用即可
 20190208_1057.png
 
 上方截图中，有一个特性是“Learn Once, Write Anywhere”。这里的 “Anywhere” 其实指的是两个地方：一个是浏览器端，一个是服务器端。后者指的是，**React支持在服务器端渲染页面**。
+
+### 生态介绍
+
+- Vue生态：Vue + Vue-Router + Vuex + Axios + Babel + Webpack
+
+- React生态：React + React-Router + Redux + Axios + Babel + Webpack
+
 
 ## React 模块化、组件化
 
