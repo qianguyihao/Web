@@ -485,7 +485,7 @@ export default class Counter extends React.Component {
 ```
 
 
-（2）main.js:
+（2）main.js:（引入组件）
 
 
 ```javascript
@@ -507,7 +507,7 @@ ReactDOM.render(
 ```
 
 
-（3）TestReceiveProps.jsx
+（3）TestReceiveProps.jsx：（组件的定义）
 
 ```javascript
 import React from "react";

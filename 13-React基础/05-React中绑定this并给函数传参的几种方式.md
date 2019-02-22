@@ -191,7 +191,9 @@ export default class MyComponent extends React.Component {
 上方代码中，需要注意的是：当一个函数调用 bind 改变了this指向后，bind 函数调用的结果，有一个【返回值】，这个值，就是被改变this指向后的函数的引用。也就是说： bind 不会修改 原函数的 this 指向，而是改变了 “函数拷贝”的this指向。
 
 
-## 绑定 this 并给函数传参 的方式三：箭头函数
+## 绑定 this 并给函数传参 的方式三：箭头函数【荐】
+
+第三种方式用得最多。
 
 代码举例：
 
