@@ -12,16 +12,17 @@ Ant Design 是基于 React 实现，开发和服务于企业级后台产品。
 - [Electron](https://electronjs.org/)
 
 
+Electron（原名为Atom Shell）是GitHub开发的一个开源框架。 它允许使用Node.js（作为后端）和Chromium（作为前端）完成桌面GUI应用程序的开发。
+
+很多客户端软件都是基于 Electron 开发的。比如 VS Code。我们打开 VS Code 菜单栏的 “帮助 --> 切换开发人员工具”，就会看到类似于 chrome的调试工具。
+
+
 ### 相关链接
 
 - 官方文档：<https://ant.design/docs/react/introduce-cn>
 
 
-### 关于 Electron
 
-Electron（原名为Atom Shell）是GitHub开发的一个开源框架。 它允许使用Node.js（作为后端）和Chromium（作为前端）完成桌面GUI应用程序的开发。
-
-很多客户端软件都是基于 Electron 开发的。比如 VS Code。我们打开 VS Code 菜单栏的 “帮助 --> 切换开发人员工具”，就会看到类似于 chrome的调试工具。
 
 
 ## andt 的使用
@@ -111,7 +112,9 @@ export default class MyComponent extends React.Component {
 20190217_1500.png
 
 
-## AntD组件：表格
+## AntD组件
+
+### 表格
 
 
 `pagination`属性可以用来分页。
@@ -119,17 +122,23 @@ export default class MyComponent extends React.Component {
 
 ### loading框
 
-在数据显示之前，展示 loading；在数据显示之后，关闭loading。
+需求：在数据显示之前，展示 loading；在数据显示之后，关闭loading。
 
 
 ## 相关问题的链接
 
-- 面包屑层级显示问题：https://github.com/ant-design/ant-design-pro/issues/1584
+
+### AntD pro，跳转到详情页，携带参数
+
+- [ant design列表页，转跳到详情页，携带参数](https://blog.csdn.net/u011613356/article/details/81505883)
+
+- [ant design pro商品页带参数转到详情页](https://blog.csdn.net/ws995339251/article/details/86771701)
 
 
+### 其他问题
 
+- 面包屑层级显示问题：<https://github.com/ant-design/ant-design-pro/issues/1584>
 
-
-
+- from验证input框只能输入数字：<https://blog.csdn.net/zr15829039341/article/details/82745239>
 
 

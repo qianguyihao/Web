@@ -152,7 +152,7 @@ Favicon 图标指的是箭头处这个小图标：
 
 ![](http://img.smyhvae.com/20180118_2013.png)
 
-官网链接<https://www.jd.com/favicon.ico>可以下载这个小图标。
+官网链接<https://www.jx.com/favicon.ico>可以下载这个小图标。
 
 我们把`favicon.ico`图片放到工程文件的根目录，通过下面这种方式进行加载：
 
@@ -420,7 +420,7 @@ css代码解释：
     <div class="serach">
         <div class="w clearfix">
             <div class="search-logo">
-                <a href="http://www.jd.com" title="京西" target="_blank">京东官网</a>
+                <a href="http://www.jx.com" title="京西" target="_blank">京东官网</a>
             </div>
             <div class="search-input">
                 <!--placeholder="运动相机"-->
@@ -838,7 +838,7 @@ css代码如下：
         <div class="footer-copyright">
             <img src="images/guohui.png"/>京公网安备 11000002000088号  |  京ICP证070359号  |  互联网药品信息服务资格证编号(京)-经营性-2014-0008  |  新出发京零 字第大120007号<br>
             互联网出版许可证编号新出网证(京)字150号  |  出版物经营许可证  |  网络文化经营许可证京网文[2014]2148-348号  |  违法和不良信息举报电话：4006561155<br>
-            Copyright © 2004 - 2016  京东JD.com 版权所有  |  消费者维权热线：4006067733<br>
+            Copyright © 2004 - 2016   JX.com 版权所有  |  消费者维权热线：4006067733<br>
             京东旗下网站：京东钱包
         </div>
 
