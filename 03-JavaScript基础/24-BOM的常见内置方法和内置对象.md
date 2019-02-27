@@ -124,7 +124,7 @@ BOM：Browser Object Model，浏览器对象模型。
     var a1 = document.getElementsByTagName("a")[0];
     var a2 = document.getElementsByTagName("a")[1];
     a1.onclick = function () {
-//举例1： window.open("http://www.jd.com","_blank");
+//举例1： window.open("http://www.jx.com","_blank");
         var json = {
             "name": "helloworld",
             "fullscreen": "no",
