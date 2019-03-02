@@ -3,11 +3,25 @@
 
 本次做后台管理系统，采用的是 AntD 框架。涉及到图片的上传，用的是AntD的 [upload](https://ant.design/components/upload-cn/) 组件。
 
-前端做文件上传这个功能，是很有技术难度的。既然框架给我们提供好了，那就直接用呗。结果用的时候，发现 upload 组件的很多bug。
+前端做文件上传这个功能，是很有技术难度的。既然框架给我们提供好了，那就直接用呗。结果用的时候，发现 upload 组件的很多bug。下面来列举几个。
+
+备注：本文写于2019-03-02，使用的 antd 版本是 3.13.6。
 
 ## 使用 AntD 的 upload 组件做图片的上传
 
 因为需要上传多张图片，所以采用的是照片墙的形式。上传成功后的界面如下：
+
+（1）上传中：
+
+![](http://img.smyhvae.com/20190302_1335.png)
+
+（2）上传成功：
+
+![](http://img.smyhvae.com/20190302_1336.png)
+
+（3）图片预览：
+
+![](http://img.smyhvae.com/20190302_1331.png)
 
 按照官方提供的实例，特此整理出项目开发中的完整写法，亲测有效。代码如下：
 
@@ -115,7 +129,7 @@ class PicturesWall extends PureComponent {
     return (
       <div className="clearfix">
         <Form onSubmit={this.handleSubmit} hideRequiredMark style={{ marginTop: 8 }}>
-          <FormItem label="工厂图片" {...formItemLayout}>
+          <FormItem label="图片图片" {...formItemLayout}>
             {getFieldDecorator('myImg')(
               <Upload
                 action="//jsonplaceholder.typicode.com/posts/" // 这个是接口请求
@@ -281,8 +295,9 @@ fileList 的打印结果：
 
 现在有个新的需求：如何编辑现有的页面呢？也就是说说，现有的页面中，是默认有几张图片的。当我编辑这个页面时，可以对现有的图片做增删，也能增加新的图片。
 
-我的model层代码，是用 redux 写的。实现思路如下：
+我看到upload 组件有提供 `defaultFileList` 的属性。我试了下，这个`defaultFileList` 的属性根本没法儿用。
 
+那就只要手动实现了。我的model层代码，是用 redux 写的。实现思路如下：
 
 （1）PicturesWall.js：
 
@@ -409,7 +424,7 @@ class PicturesWall extends PureComponent {
     return (
       <div className="clearfix">
         <Form onSubmit={this.handleSubmit} hideRequiredMark style={{ marginTop: 8 }}>
-          <FormItem label="工厂图片" {...formItemLayout}>
+          <FormItem label="图片上传" {...formItemLayout}>
             {getFieldDecorator('myImg')(
               <Upload
                 action="//jsonplaceholder.typicode.com/posts/" // 这个是接口请求
@@ -578,6 +593,11 @@ export default {
 本文感谢 ld 同学的支持。
 
 
+## 最后一段
+
+有人说，前端开发，连卖菜的都会。可如果真的遇到技术难题，还是得找个靠谱的前端同学才行。这不，来看看前端码农日常：
+
+![](http://img.smyhvae.com/20190302_1339.png)
 
 
 
