@@ -128,12 +128,18 @@ export default class MyComponent extends React.Component {
 ## 相关问题的链接
 
 
+
+
 ### AntD pro，跳转到详情页，携带参数
 
 - [ant design列表页，转跳到详情页，携带参数](https://blog.csdn.net/u011613356/article/details/81505883)
 
 - [ant design pro商品页带参数转到详情页](https://blog.csdn.net/ws995339251/article/details/86771701)
 
+
+### AntD pro ，必填项前面，显示星号
+
+- [表单必填项label上的红色*号是怎么出现的](https://github.com/ant-design/ant-design-pro/issues/2044)
 
 ### 其他问题
 
