@@ -260,7 +260,7 @@ fileList 的打印结果：
 
 （1）`response` 字段里面的数据，就是请求接口后，后台返回给前端的数据，里面包含了图片的url链接。
 
-（2）`status` 字段里存放的是图片上传的实时状态。
+（2）`status` 字段里存放的是图片上传的实时状态，包括上传中、上传完成、上传失败。
 
 （3）`thumbUrl`字段里面存放的是图片的base64编码。
 
@@ -273,14 +273,14 @@ fileList 的打印结果：
     console.log(JSON.stringify(file)); // file 是当前正在上传的 单个 img
     console.log(JSON.stringify(fileList)); // fileList 是已上传的全部 img 列表
 
-    if (file && file.response && file.response.retCode == 0) {
-      console.log('图片上传成功');
-      fileList.forEach(item => {
-        // 【重要】将 图片的base64替换为图片的url。 这一行一定不会能少。
-        // 图片上传成功后，fileList数组中的 thumbUrl 中保存的是图片的base64字符串，这种情况，导致的问题是：图片上传成功后，点击图片缩略图，浏览器会会卡死。而下面这行代码，可以解决该bug。
-        item.thumbUrl = item.response.imgUrl;
-      });
-    }
+
+    // 【重要】将 图片的base64替换为图片的url。 这一行一定不会能少。
+    // 图片上传成功后，fileList数组中的 thumbUrl 中保存的是图片的base64字符串，这种情况，导致的问题是：图片上传成功后，点击图片缩略图，浏览器会会卡死。而下面这行代码，可以解决该bug。
+    fileList.forEach(imgItem => {
+      if (imgItem && imgItem.status == 'done' && imgItem.response && imgItem.response.imgUrl) {
+        imgItem.thumbUrl = imgItem.response.imgUrl;
+      }
+    });
 
     this.setState({
       imgList: fileList,
@@ -291,13 +291,13 @@ fileList 的打印结果：
 
 ## 新需求：编辑现有页面
 
-上面一段的代码中，我们是在新建的页面中，从零开始上传页面。
+上面一段的代码中，我们是在新建的页面中，从零开始上传图片。
 
-现在有个新的需求：如何编辑现有的页面呢？也就是说说，现有的页面中，是默认有几张图片的。当我编辑这个页面时，可以对现有的图片做增删，也能增加新的图片。
+现在有个新的需求：如何编辑现有的页面呢？也就是说，现有的页面在初始化时，是默认有几张图片的。当我编辑这个页面时，可以对现有的图片做增删，也能增加新的图片。
 
 我看到upload 组件有提供 `defaultFileList` 的属性。我试了下，这个`defaultFileList` 的属性根本没法儿用。
 
-那就只要手动实现了。我的model层代码，是用 redux 写的。实现思路如下：
+那就只要手动实现了。我的model层代码，是用 redux 写的。整体的实现思路如下：（这个也是在真正在实战中用到的代码）
 
 （1）PicturesWall.js：
 
@@ -325,14 +325,13 @@ class PicturesWall extends PureComponent {
 
   handleChange = ({ file, fileList }) => {
     const { dispatch } = this.props;
-    if (file && file.response && file.response.retCode == 0) {
-      console.log('图片上传成功');
-      fileList.forEach(item => {
-        // 【重要】将 图片的base64替换为图片的url。 这一行一定不会能少。
-        // 图片上传成功后，fileList数组中的 thumbUrl 中保存的是图片的base64字符串，这种情况，导致的问题是：图片上传成功后，点击图片缩略图，浏览器会会卡死。而下面这行代码，可以解决该bug。
-        item.thumbUrl = item.response.imgUrl;
-      });
-    }
+    // 【重要】将 图片的base64替换为图片的url。 这一行一定不会能少。
+    // 图片上传成功后，fileList数组中的 thumbUrl 中保存的是图片的base64字符串，这种情况，导致的问题是：图片上传成功后，点击图片缩略图，浏览器会会卡死。而下面这行代码，可以解决该bug。
+    fileList.forEach(imgItem => {
+      if (imgItem && imgItem.status == 'done' && imgItem.response && imgItem.response.imgUrl) {
+        imgItem.thumbUrl = imgItem.response.imgUrl;
+      }
+    });
 
     dispatch({
       type: 'mymodel/setImgList',
@@ -398,9 +397,26 @@ class PicturesWall extends PureComponent {
   handleSubmit = e => {
     const { dispatch, form } = this.props;
     e.preventDefault();
+
+    const {
+      mymodel: { imgList }, // 从props中拿默认的图片数据
+    } = this.props;
+
     form.validateFieldsAndScroll((err, values) => {
       // values 是form表单里的参数
       // 点击按钮后，将表单提交给后台
+
+
+      // start 问题描述：当编辑现有页面时，如果针对已经存在的默认图片不做修改，则不会触发 upload 的 onChange方法。此时提交表单，表单里的 myImg 字段是空的。
+      // 解决办法：如果发现存在默认图片，则追加到表单中
+      if (!values.myImg) {
+
+        values.myImg = { fileList: [] };
+
+        values.myImg.fileList = imgList;
+      }
+      // end
+
       dispatch({
         type: 'mymodel/submitFormData',
         payload: values,
@@ -467,20 +483,13 @@ export default PicturesWall;
 import { routerRedux } from 'dva/router';
 import { message, Modal } from 'antd';
 import {
-  getTuanList,
-  getAllFactory,
-  getAllFactGoods,
-  createFactShop,
-  updateFactShop,
-  deleteFactShop,
-  updateFactGoodsStatus,
-  queryShopDetail,
-  createFactGoods,
+  getGoodsInfo,
+  getAllGoods,
 } from '../services/api';
 import { trim, getCookie } from '../utils/utils';
 
 export default {
-  namespace: 'factory',
+  namespace: 'mymodel',
 
   state: {
     form: {},
@@ -520,7 +529,7 @@ export default {
       let params = {};
       params = payload;
 
-      const response = yield call(getAllFactory, params);
+      const response = yield call(getGoodsInfo, params);
 
       console.log('smyhvae response:' + JSON.stringify(response));
       if (response.error) return;
@@ -561,7 +570,7 @@ export default {
     },
 
     *setImgList({ payload }, { call, put }) {
-      console.log('smyhvae model setImgList');
+      console.log('model setImgList');
       yield put({
         type: 'getImgList',
         payload,
@@ -589,20 +598,17 @@ export default {
 
 大功告成。
 
-
 本文感谢 ld 同学的支持。
 
+## 其他问题
+
+- [beforeUpload返回false后，文件仍然为上传中的状态](https://github.com/ant-design/ant-design/issues/8779)
 
 ## 最后一段
 
 有人说，前端开发，连卖菜的都会。可如果真的遇到技术难题，还是得找个靠谱的前端同学才行。这不，来看看前端码农日常：
 
 ![](http://img.smyhvae.com/20190302_1339.png)
-
-
-
-
-
 
 
 
