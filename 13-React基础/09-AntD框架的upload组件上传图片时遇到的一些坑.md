@@ -76,7 +76,7 @@ class PicturesWall extends PureComponent {
     const isLt2M = file.size / 1024 / 1024 < 2;
     if (!isLt2M) {
       Modal.error({
-        title: '超过2M限制 不允许上传~',
+        title: '超过2M限制，不允许上传~',
       });
       return;
     }
@@ -163,7 +163,6 @@ export default PicturesWall;
 
 ```
 
-
 ## 上传后，点击图片预览，浏览器卡死的问题
 
 依据上方的代码，通过 Antd 的 upload 组件将图片上传成功后，点击图片的缩略图，理应可以在当前页面弹出  Modal，预览图片。但实际的结果是，浏览器一定会卡死。
@@ -171,7 +170,6 @@ export default PicturesWall;
 定位问题发现，原因竟然是：图片上传成功后， upload 会将其转为 base64编码。base64这个字符串太大了，点击图片预览的时候，浏览器在解析一大串字符串，然后就卡死了。详细过程描述如下。
 
 上方代码中，我们可以把 handleChange(file, fileList)方法中的 `file`、以及 `fileList`打印出来看看。 `file`指的是当前正在上传的 单个 img，`fileList`是已上传的全部 img 列表。 当我上传完 两张图片后， 打印结果如下：
-
 
 file的打印的结果如下：
 
@@ -200,7 +198,6 @@ file的打印的结果如下：
         }
     }
 ```
-
 
 fileList 的打印结果：
 
@@ -255,7 +252,6 @@ fileList 的打印结果：
 ]
 ```
 
-
 上方的json数据中，需要做几点解释：
 
 （1）`response` 字段里面的数据，就是请求接口后，后台返回给前端的数据，里面包含了图片的url链接。
@@ -293,7 +289,7 @@ fileList 的打印结果：
 
 上面一段的代码中，我们是在新建的页面中，从零开始上传图片。
 
-现在有个新的需求：如何编辑现有的页面呢？也就是说，现有的页面在初始化时，是默认有几张图片的。当我编辑这个页面时，可以对现有的图片做增删，也能增加新的图片。
+现在有个新的需求：如何编辑现有的页面呢？也就是说，现有的页面在初始化时，是默认有几张图片的。当我编辑这个页面时，可以对现有的图片做增删，也能增加新的图片。而且要保证：新建页面和编辑现有页面，是共用一套代码。
 
 我看到upload 组件有提供 `defaultFileList` 的属性。我试了下，这个`defaultFileList` 的属性根本没法儿用。
 
@@ -355,20 +351,29 @@ class PicturesWall extends PureComponent {
     const isJPEG = file.type === 'image/jpeg';
     const isGIF = file.type === 'image/gif';
     const isPNG = file.type === 'image/png';
+    const isLt2M = file.size / 1024 / 1024 < 2;
+
     if (!(isJPG || isJPEG || isGIF || isPNG)) {
       Modal.error({
         title: '只能上传JPG 、JPEG 、GIF、 PNG格式的图片~',
       });
-      return;
-    }
-    const isLt2M = file.size / 1024 / 1024 < 2;
-    if (!isLt2M) {
+    } else if (!isLt2M) {
       Modal.error({
-        title: '超过2M限制 不允许上传~',
+        title: '超过2M限制，不允许上传~',
       });
-      return;
     }
-    return (isJPG || isJPEG || isGIF || isPNG) && isLt2M && this.checkImageWH(file);
+
+  }
+
+    // 参考链接：https://github.com/ant-design/ant-design/issues/8779
+    return new Promise((resolve, reject) => {
+      if (!(isJPG || isJPEG || isGIF || isPNG)) {
+        reject(file);
+      } else {
+        resolve(file && this.checkImageWH(file));
+      }
+    });
+
   };
 
   //返回一个 promise：检测通过则返回resolve；失败则返回reject，并阻止图片上传
@@ -596,9 +601,9 @@ export default {
 
 ```
 
-大功告成。
+上面的代码，可以规避 upload 组件的一些bug；而且可以在上传前，通过校验图片的尺寸、大小等，如果不满足条件，则弹出modal弹窗，阻止上传。
 
-本文感谢 ld 同学的支持。
+大功告成。本文感谢 ld 同学的支持。
 
 ## 其他问题
 
@@ -609,8 +614,5 @@ export default {
 有人说，前端开发，连卖菜的都会。可如果真的遇到技术难题，还是得找个靠谱的前端同学才行。这不，来看看前端码农日常：
 
 ![](http://img.smyhvae.com/20190302_1339.png)
-
-
-
 
 
