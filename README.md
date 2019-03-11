@@ -15,7 +15,7 @@
 
 ### 项目指引
 
-如果你发现文中的图片加载不出来，不妨[看这里](https:s//github.com/qianguyihao/Web/issues/20#issue-390074432)。
+如果你发现文中的图片加载不出来，不妨[看这里](https://github.com/qianguyihao/Web/issues/20#issue-390074432)。
 
 如果你发现本项目有内容上的错误，欢迎提交 issues 进行指正。
 
