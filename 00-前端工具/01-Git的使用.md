@@ -4,7 +4,7 @@
 
 ## 常见操作
 
-### 配置用户信息
+### 全局配置用户信息
 
 ```
 git config --global user.name "smyhvae"
@@ -121,9 +121,7 @@ Git 没有简单地把分支指针右移，而是对三方合并的结果作一�
 这个时候在对两个分支合并，git不会产生冲突，因为两个分支是修改同一文件的不同位置。
 git自动合并成功。不管是git自动合并成功，还是在人工解决冲突下合并成功，提交之前，都要对代码进行测试。
 
-
 ## 日常操作积累
-
 
 ### 修改密码（曲线救国）
 
@@ -182,14 +180,13 @@ git cherry-pick commit1
 
 ![](http://img.smyhvae.com/20180623_1210.png)
 
-上面的Git客户端我基本都用过了，我最推荐的一款Git客户端是：**Tower**。
+上面的Git客户端我基本都用过了，我最推荐的一款Git客户端是：[Tower](https://www.git-tower.com) 或者 [Fork](https://git-fork.com)。
 
 **SmartGit**：
 
 商业用途收费， 个人用户免费：
-
+s
 ![](http://img.smyhvae.com/20180623_1305.png)
-
 
 
 ## 推荐书籍
