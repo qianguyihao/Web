@@ -41,7 +41,7 @@ VS Code 的全称是 Visual Studio Code，是一款开源的、免费的、高�
 
 - VS Code 官网：<https://code.visualstudio.com>
 
-VS Code 的安装很简单，直接去官网下载安装包即可。
+VS Code 的安装很简单，直接去官网下载安装包，然后双击安装即可。
 
 ![](http://img.smyhvae.com/20190313_1750.png)
 
@@ -138,20 +138,7 @@ VS Code自带的对比功能并不够强大，我们可以安装插件`compareit
 
 ## 常见主题推荐
 
-## 常用快捷键
 
-### 编辑
-
-
-**删除文字**：
-
-
-| 快捷键 | 作用 | 备注 |
-|:-------------|:-----|:-----|
-|delete|删除光标的前一个字符|相当于 Windows 键盘上的退格键|
-|fn + delete|删除光标的后一个字符||
-|**option + delete**|删除光标之前的一个单词|英文有效|
-|**command + delete**|删除光标之前的整行内容|【荐】|
 
 
 ## 参考链接

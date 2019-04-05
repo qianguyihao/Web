@@ -593,7 +593,8 @@ addEventListener可以捕获事件：
 
 效果演示：
 
-![](http://img.smyhvae.com/20180204_1100.gif)
+![](http://img.smyhvae.com/20180204_1101.gif)
+
 
 **说明**：捕获阶段，事件依次传递的顺序是：window --> document --> html--> body --> 父元素、子元素、目标元素。
 
