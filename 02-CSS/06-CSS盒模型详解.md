@@ -1,6 +1,6 @@
 
 
-> 本文最初发表于[博客园](http://www.cnblogs.com/smyhvae/p/7256371.html)，并在[GitHub](https://github.com/smyhvae/Web)上持续更新。以下是正文。
+> 本文最初发表于[博客园](http://www.cnblogs.com/smyhvae/p/7256371.html)，并在[GitHub](https://github.com/qianguyihao/Web)上持续更新。以下是正文。
 
 ## 盒子模型
 

@@ -1,6 +1,6 @@
 
 
-> 本文首发于[博客园](http://www.cnblogs.com/smyhvae/p/8310295.html)，并在[GitHub](https://github.com/smyhvae/Web)上持续更新**前端的系列文章**。欢迎在GitHub上关注我，一起入门和进阶前端。
+> 本文首发于[博客园](http://www.cnblogs.com/smyhvae/p/8310295.html)，并在[GitHub](https://github.com/qianguyihao/Web)上持续更新**前端的系列文章**。欢迎在GitHub上关注我，一起入门和进阶前端。
 
 
 ## 代码块
@@ -233,7 +233,7 @@ switch语句也叫条件分支语句。
 		...
 		...
 
-		default：	
+		default：
 			语句体 n+1;
 			break;
 	}
