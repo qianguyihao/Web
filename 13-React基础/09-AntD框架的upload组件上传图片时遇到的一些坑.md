@@ -132,7 +132,7 @@ class PicturesWall extends PureComponent {
           <FormItem label="图片图片" {...formItemLayout}>
             {getFieldDecorator('myImg')(
               <Upload
-                action="//jsonplaceholder.typicode.com/posts/" // 这个是接口请求
+                action="//jsonplaceholder.typicode.com/posts/" // 这个是图片上传的接口请求，实际开发中，要替换成你自己的业务接口
                 data={file => ({ // data里存放的是接口的请求参数
                   param1: myParam1,
                   param2: myParam2,
@@ -448,7 +448,7 @@ class PicturesWall extends PureComponent {
           <FormItem label="图片上传" {...formItemLayout}>
             {getFieldDecorator('myImg')(
               <Upload
-                action="//jsonplaceholder.typicode.com/posts/" // 这个是接口请求
+                action="//jsonplaceholder.typicode.com/posts/" // 这个是图片上传的接口请求，实际开发中，要替换成你自己的业务接口
                 data={file => ({
                   // data里存放的是接口的请求参数
                   param1: myParam1,
