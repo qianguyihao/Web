@@ -180,13 +180,15 @@ git cherry-pick commit1
 
 ![](http://img.smyhvae.com/20180623_1210.png)
 
-上面的Git客户端我基本都用过了，我最推荐的一款Git客户端是：[Tower](https://www.git-tower.com) 或者 [Fork](https://git-fork.com)。
-
 **SmartGit**：
 
 商业用途收费， 个人用户免费：
 s
 ![](http://img.smyhvae.com/20180623_1305.png)
+
+
+上面的Git客户端我基本都用过了，我最推荐的一款Git客户端是：[Tower](https://www.git-tower.com) 或者 [Fork](https://git-fork.com)。
+
 
 
 ## 推荐书籍
