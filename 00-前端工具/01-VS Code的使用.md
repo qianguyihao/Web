@@ -1,7 +1,7 @@
 
 ## 前言
 
-> 本文首发于[博客园](https://www.cnblogs.com/qianguyihao/p/10732375.html)。最新内容将在[GitHub](https://github.com/qianguyihao/Web/blob/master/00-%E5%89%8D%E7%AB%AF%E5%B7%A5%E5%85%B7/01-VS%20Code%E7%9A%84%E4%BD%BF%E7%94%A8.md)上实时更新。
+> 本文最新内容将在[GitHub](https://github.com/qianguyihao/Web/blob/master/00-%E5%89%8D%E7%AB%AF%E5%B7%A5%E5%85%B7/01-VS%20Code%E7%9A%84%E4%BD%BF%E7%94%A8.md)上实时更新。
 
 VS Code  本来是前端人员专用，但由于它实在是太好用了，于是，各种开发方向的码农也正在用 VS Code 作为他们的主力编程工具。甚至是一些写作的同学，也把 VS Code 作为 markdown 写作工具。
 
@@ -33,9 +33,7 @@ VS Code 的全称是 Visual Studio Code，是一款开源的、免费的、跨�
 
 ### 前端利器之争： VS Code 与 IntelliJ IDEA
 
-前端小白最喜欢问的一个问题是：那个编辑器/IDE 好用？是VS Code还是 IntelliJ IDEA？
-
-如果你以后还这么问，那就真有些掉底了。我来做个对比：
+前端小白最喜欢问的一个问题是：哪个编辑器/IDE 好用？是VS Code还是 IntelliJ IDEA？我来做个对比：
 
 - **哪个更酷**：显然 VS Code 更酷。
 
@@ -221,7 +219,7 @@ VS Code 会根据你所打开的文件来决定该使用空格还是制表。也
 
 ![](http://img.smyhvae.com/20190417_2213.png)
 
-我觉得这个配置项保持默认就好，不用修改。
+我觉得这个配置项保持默认就好，不用打钩。
 
 ### 新建文件后的默认文件类型
 
@@ -237,7 +235,7 @@ VS Code 会根据你所打开的文件来决定该使用空格还是制表。也
 
 ![](http://img.smyhvae.com/20190418_1758.png)
 
-我建议这个默认设置项可以保留，不用修改。
+我建议这个设置项保持默认的打钩就好，不用修改。删除文件前的弹窗提示，也是为了安全考虑，万一手贱不小心删了呢？
 
 ## 命令面板的使用
 
