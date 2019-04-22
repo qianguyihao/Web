@@ -464,7 +464,7 @@ GitLens 在 Git 管理上有很多强大的功能，比如：
 
 `Bracket Pair Colorizer 2`插件：以不同颜色显示括号并用连线标注括号范围
 
-![](https://i.bmp.ovh/imgs/2019/04/f477ca774f70b9ca.png)
+![](https://i.bmp.ovh/imgs/2019/04/ac84a997c5498d28.png)
 
 ### indent-rainbow：突出显示缩进
 
