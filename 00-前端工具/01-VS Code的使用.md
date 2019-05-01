@@ -86,7 +86,7 @@ VS Code用得熟不熟，首先就看你是否会用快捷键。以下列出的�
 | option + delete |  Ctrl + delete  | 删除光标之后的一个单词 |  |
 | **Cmd + delete** |   | 删除光标之前的整行内容 | 很常用 |
 | Cmd + delete |   | 删除光标之后的整行内容 |  |
-| Cmd + shift + K |  Ctrl + Shift + K | 删除整行| 按「Cmd + X」也可以删除整行，虽然它的作用是剪切 |
+| Cmd + shift + K |  Ctrl + Shift + K | 删除整行| 「Cmd + X」的作用是剪切，但也可以删除整行 |
 
 备注：上面所讲到的移动光标、删除操作的快捷键，在其他编辑器里，也是同样的操作。
 
