@@ -187,7 +187,7 @@
 
 字符串的截取有好几个方法，下面分别讲解。
 
-1、 slice()方法：
+1、 **slice()**方法：
 
 格式：
 
@@ -195,7 +195,7 @@
     字符串 = str.slice(索引1，索引2); //两个参数都是索引值。
 ```
 
-上面的参数，包左不包右。如下：
+上面的参数，包左不包右。参数举例如下：
 
 
 - (2,5) 表示正常，包左不包右。
@@ -206,7 +206,7 @@
 
 - (5,2) 表示前面的大，后面的小，返回值为空。
 
-2、substr()方法：
+2、**substr()**方法：
 
 格式：
 
@@ -214,7 +214,7 @@
    字符串 = srt.substr(索引值, 长度);
 ```
 
-参数解释：
+参数举例：
 
 - (2,4)：从索引值为2的字符开始，截取4个字符。
 
@@ -271,11 +271,9 @@
 
 ![](http://img.smyhvae.com/20180202_1503.png)
 
-
 ### 大小写转换
 
 举例：
-
 
 ```javascript
     var str = "abcdEFG";
@@ -285,8 +283,6 @@
     //转换成大写
     console.log(str.toUpperCase());
 ```
-
-
 
 ## html方法
 
@@ -326,7 +322,6 @@
 
 代码实现：
 
-
 ```javascript
     var str2 = "abcoefoxyozzopp";
     for(var i=0;i<str2.length;i++){
@@ -338,10 +333,7 @@
     }
 ```
 
-
-
 **练习2：**判断一个字符串中出现次数最多的字符，统计这个次数
-
 
 ```html
 <script>
@@ -383,44 +375,73 @@
 </script>
 ```
 
-
 打印结果：
 
 ![](http://img.smyhvae.com/20180202_1540.png)
 
-
 ## 内置对象 Math
 
-内置对象 Math的常见方法：
+### 内置对象 Math 的常见方法
 
-- Math.abs();       **取绝对值**
+| 方法 | 描述 | 备注 |
+|:-------------|:-------------|:-------------|
+| Math.abs() |  **返回绝对值** |  |
+| Math.floor() | **向下取整**（向小取） |  |
+| Math.ceil() | **向上取整**（向大取） |  |
+| Math.round() | 四舍五入取整（正数四舍五入，负数五舍六入） |  |
+| Math.random() | 生成0-1之间的随机数 | 不包含0和1 |
+| Math.max(x, y, z)  | 返回多个数中的最大值 |  |
+| Math.min(x, y, z)  | 返回多个数中的最小值 |  |
+| Math.pow(x,y) | 返回 x 的 y 次幂 |  |
+| Math.sqrt() | 对一个数进行开方运算 |  |
 
-- Math.floor();      **向下取整**（向小取）
+Math 和其他的对象不同，它不是一个构造函数，不需要创建对象。
 
-- Math.ceil();       **向上取整**（向大取）
+Math属于一个工具类，里面封装了数学运算相关的属性和方法。
 
-- Math.round();     四舍五入取整（正数四舍五入，负数五舍六入）
-
-- Math.random();   随机数0-1
-
-
-举例：
+**举例**：
 
 ```javascript
     var num = -0.6;
 
     console.log(Math.abs(num));        //取绝对值
+
     console.log(Math.floor(num));      //向下取整，向小取
+
     console.log(Math.ceil(num));       //向上取整，向大取
+
     console.log(Math.round(num));      //四舍五入取整（正数四舍五入，负数五舍六入）
-    console.log(Math.random());        //随机数 0-1
+
+    console.log(Math.random());        //生成0-1之间的随机数
 ```
 
-![](http://img.smyhvae.com/20180202_1601.png)
+运行结果：
 
+```
+0.6
 
+-1
 
+-0
 
+-1
+
+0.6453756205275165
+```
+
+### Math.random()方法举例：生成 x-y 之间的随机数
+
+生成 0-x 之间的随机数：
+
+```javascript
+    Math.round(Math.random()*x)
+```
+
+生成 x-y 之间的随机数：
+
+```javascript
+    Math.round(Math.random()*(y-x)+x)
+```
 
 
 ## url 编码和解码
@@ -434,8 +455,6 @@ URI (Uniform ResourceIdentifiers,通用资源标识符)进行编码，以便发�
 ```
 
 举例：
-
-
 
 
 ```javascript
