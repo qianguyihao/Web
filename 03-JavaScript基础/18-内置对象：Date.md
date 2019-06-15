@@ -269,5 +269,7 @@ Date对象 还有如下方法：
 
 扫一扫，你将发现另一个全新的世界，而这将是一场美丽的意外：
 
-![](http://img.smyhvae.com/2016040102.jpg)
+![](http://img.smyhvae.com/20190101.png)
+
+
 
