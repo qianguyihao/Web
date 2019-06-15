@@ -1,34 +1,29 @@
 
+## 前言
 
+> 在日常开发中，String对象的使用频率是最高的。所以有必要详细介绍。
 
+### 基本数据类型不能绑定属性和方法
 
-## 内置对象String
+**1、基本数据类型：**
 
-### 简单数据类型、复杂数据类型
-
-**1、简单数据类型：**
-
-注意，之前学习的简单数据类型`string`是**无法绑定属性和方法**的。比如说：
-
+注意，简单数据类型`string`是**无法绑定属性和方法**的。比如说：
 
 ```javascript
-    var str = "smyhvae";
+    var str = "qianguyihao";
 
     str.aaa = 12;
     console.log(typeof str);  //打印结果为：string
     console.log(str.aaa);     //打印结果为：undefined
 ```
 
-上方代码中，当我们尝试打印`str.aaa`的时候，会发现打印结果为：undefined。
+上方代码中，当我们尝试打印`str.aaa`的时候，会发现打印结果为：undefined。也就是说，不能给 `string` 绑定属性和方法。
 
-当然，我们可以打印str.length、srt.indexOf("m")等等。因为这两个方法的底层做了数据类型转换。
+当然，我们可以打印str.length、str.indexOf("m")等等。因为这两个方法的底层做了数据类型转换（**临时**将 `string` 字符串转换为 `String` 对象，然后再调用内置方法），也就是我们在上一篇文章中讲到的**包装类**。
 
+**2、引用数据类型：**
 
-**2、复杂数据类型：**
-
-复杂数据类型`String`是可以绑定属性和方法的。如下：
-
-
+引用数据类型`String`是可以绑定属性和方法的。如下：
 
 
 ```javascript
@@ -43,11 +38,6 @@
 
 ![](http://img.smyhvae.com/20180202_1351.png)
 
-```
-
-```
-
-
 同理，内置对象Number也有一些自带的方法，比如：
 
 - Number.MAX_VALUE;
@@ -56,32 +46,35 @@
 
 内置对象Boolean也有一些自带的方法，但是用的不多。
 
+### 在底层，字符串以字符数组的形式保存
 
-下面讲一下内置对象String的常见方法。
-
-
-### charAt/charCodeAt：1.2.1 给索引查字符
-
+在底层，字符串是以字符数组的形式保存的。代码举例：
 
 ```javascript
-    字符 = Str.charAt(索引值);
+	var str = "smyhvae";
+	console.log(str.length); // 获取字符串的长度
+	console.log(str[2]); // 获取字符串中的第2个字符
 ```
 
-解释：获取相应位置的字符。
+上方代码中，`smyhvae`这个字符串在底层是以`["s", "m", "y", "h", "v", "a", "e"]`的形式保存的。因此，我们既可以获取字符串的长度，也可以获取指定索引index位置的单个字符。这很像数组中的操作。
 
-字符串中第一个字符的下标是 0。如果参数 index 不在 0 与 string.length 之间，该方法将返回一个空字符串。
+## 内置对象 String 的常见方法
 
+### charAt()
 
+`charAt`：返回字符串指定位置的字符。不会修改原字符串。
 
+语法：
 
 ```javascript
-    字符编码 = Str.charCodeAt(索引值);
+    字符 = str.charAt(index);
 ```
 
-解释： 获取相应位置的Unicode字符编码。
+解释：字符串中第一个字符的下标是 0。如果参数 index 不在 [0, string.length) 之间，该方法将返回一个空字符串。
 
+而且，这里的 `str.charAt(index)`和`str[index]`的效果是一样的。
 
-举例1：
+**代码举例**：
 
 ```javascript
    var str = new String("smyhvae");
@@ -97,7 +90,17 @@
 
 上面这个例子一般不用。一般打印数组和json的时候用索引，打印String不建议用索引。
 
-举例2：打印字符串的占位长度
+### charCodeAt()
+
+`charCodeAt`：返回字符串指定位置的字符的 Unicode 编码。不会修改原字符串。
+
+语法：
+
+```javascript
+    字符 = str.charCodeAt(index);
+```
+
+**代码举例**：打印字符串的占位长度
 
 提示：一个英文占一个位置，一个中文占两个位置。
 
@@ -145,19 +148,61 @@
 
 另外，sort()方法其实底层也是用到了charCodeAt()，因为用到了Unicode编码。
 
+### String.fromCharCode()
 
-### indexOf/lastIndexOf：给字符查索引
+`String.fromCharCode()`：根据字符的 Unicode 编码获取字符。
+
+代码举例：
 
 ```javascript
-索引值 = str.indexOf/(想要查询的字符);
+	var result1 = String.fromCharCode(72);
+	var result2 = String.fromCharCode(20013);
 
+	console.log(result1); // 打印结果：H
+	console.log(result2); // 打印结果：中
 ```
 
-解释：从前向后索引字符串的位置。
+### concat()
+
+`concat()`：字符串的连接。
+
+语法：
+
+```javascript
+    新字符串 = str1.concat(str2)； //链接两个字符串
+```
+
+这种方法基本不用，直接把两个字符串相加就好。
+
+是的，你会发现，数组中也有`concat()`方法，用于数组的连接。这个方法在数组中用的挺多的。
+
+代码举例：
+
+```javascript
+    var str1 = 'qiangu';
+    var str2 = 'yihao';
+
+    var result = str1.concat(str2);
+    console.log(result); // 打印结果：qianguyihao
+```
+
+### indexOf()/lastIndexOf()
+
+`indexOf()/lastIndexOf()`：获取指定字符的索引。
+
+语法：
+
+```javascript
+    索引值 = str.indexOf(想要查询的字符);
+```
+
+解释：`indexOf()` 是从前向后索引字符串的位置。同理，`lastIndexOf()`是从后向前寻找。
+
+**作用**：可以检索一个字符串中是否含有指定内容。如果字符串中含有该内容，则会返回其**第一次出现**的索引；如果没有找到指定的内容，则返回 -1。
 
 因此可以得出一个技巧：**如果获取的索引值为0，说明字符串是以查询的参数为开头的**。
 
-同理，lastIndexOf()是从后向前寻找。
+**代码举例1**：
 
 ```javascript
     var str = "abcdea";
@@ -168,20 +213,23 @@
 
     console.log(str.indexOf("a"));
     console.log(str.lastIndexOf("a"));
+
 ```
 
 打印结果：
 
 ![](http://img.smyhvae.com/20180202_1420.png)
 
-### concat：字符串的链接
-
+**代码举例2**：（两个参数时，需要特别注意）
 
 ```javascript
-    新字符串 = str1.concat(str2)； 链接两个字符串
+    var str = 'qianguyihao';
+    result = str.indexOf('a', 3); // 从第三个位置开始查找 'a'这个字符 【重要】
+
+    console.log(result); // 打印结果：9
 ```
 
-这种方法基本不用，直接两个字符串相加就好。
+上方代码中，`indexOf()`方法中携带了两个参数，具体解释请看注释。
 
 ### 字符串的截取（重要）
 
@@ -192,11 +240,10 @@
 格式：
 
 ```javascript
-    字符串 = str.slice(索引1，索引2); //两个参数都是索引值。
+    字符串 = str.slice(索引1, 索引2); //两个参数都是索引值。
 ```
 
 上面的参数，包左不包右。参数举例如下：
-
 
 - (2,5) 表示正常，包左不包右。
 
@@ -254,7 +301,6 @@
 ```
 
 3、split()：字符串变数组。
-
 
 ```javascript
     //split()方法：字符串变数组
@@ -318,7 +364,7 @@
 
 ## 字符串练习
 
-**练习1：**"smyhvaevaesmyh"查找字符串中所有m出现的位置。
+**练习1**："smyhvaevaesmyh"查找字符串中所有m出现的位置。
 
 代码实现：
 
@@ -333,7 +379,7 @@
     }
 ```
 
-**练习2：**判断一个字符串中出现次数最多的字符，统计这个次数
+**练习2**：判断一个字符串中出现次数最多的字符，统计这个次数
 
 ```html
 <script>
@@ -379,95 +425,12 @@
 
 ![](http://img.smyhvae.com/20180202_1540.png)
 
-## 内置对象 Math
+## 我的公众号
 
-### 内置对象 Math 的常见方法
+想学习**代码之外的技能**？不妨关注我的微信公众号：**千古壹号**（id：`qianguyihao`）。
 
-| 方法 | 描述 | 备注 |
-|:-------------|:-------------|:-------------|
-| Math.abs() |  **返回绝对值** |  |
-| Math.floor() | **向下取整**（向小取） |  |
-| Math.ceil() | **向上取整**（向大取） |  |
-| Math.round() | 四舍五入取整（正数四舍五入，负数五舍六入） |  |
-| Math.random() | 生成0-1之间的随机数 | 不包含0和1 |
-| Math.max(x, y, z)  | 返回多个数中的最大值 |  |
-| Math.min(x, y, z)  | 返回多个数中的最小值 |  |
-| Math.pow(x,y) | 返回 x 的 y 次幂 |  |
-| Math.sqrt() | 对一个数进行开方运算 |  |
+扫一扫，你将发现另一个全新的世界，而这将是一场美丽的意外：
 
-Math 和其他的对象不同，它不是一个构造函数，不需要创建对象。
-
-Math属于一个工具类，里面封装了数学运算相关的属性和方法。
-
-**举例**：
-
-```javascript
-    var num = -0.6;
-
-    console.log(Math.abs(num));        //取绝对值
-
-    console.log(Math.floor(num));      //向下取整，向小取
-
-    console.log(Math.ceil(num));       //向上取整，向大取
-
-    console.log(Math.round(num));      //四舍五入取整（正数四舍五入，负数五舍六入）
-
-    console.log(Math.random());        //生成0-1之间的随机数
-```
-
-运行结果：
-
-```
-0.6
-
--1
-
--0
-
--1
-
-0.6453756205275165
-```
-
-### Math.random()方法举例：生成 x-y 之间的随机数
-
-生成 0-x 之间的随机数：
-
-```javascript
-    Math.round(Math.random()*x)
-```
-
-生成 x-y 之间的随机数：
-
-```javascript
-    Math.round(Math.random()*(y-x)+x)
-```
-
-
-## url 编码和解码
-
-URI (Uniform ResourceIdentifiers,通用资源标识符)进行编码，以便发送给浏览器。有效的URI中不能包含某些字符，例如空格。而这URI编码方法就可以对URI进行编码，它们用特殊的UTF-8编码替换所有无效的字符，从而让浏览器能够接受和理解。
-
-```javascript
-    encodeURIComponent();   //把字符串作为 URI 组件进行编码
-    decodeURIComponent();   //把字符串作为 URI 组件进行解码
-
-```
-
-举例：
-
-
-```javascript
-    var url = "http://www.cnblogs.com/smyhvae/";
-
-    var str = encodeURIComponent(url);
-    console.log(str);                           //打印url的编码
-    console.log(decodeURIComponent(str));       //对url进行编码后，再解码，还原为url
-```
-
-打印结果：
-
-![](http://img.smyhvae.com/20180202_1432.png)
-
+![](http://img.smyhvae.com/20190101.png)
 
 
