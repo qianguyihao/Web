@@ -1,6 +1,4 @@
 
-
-
 ## MVVM模式
 
 ![](http://img.smyhvae.com/20180420_2150.png)
@@ -11,7 +9,6 @@
 
 - View Model：负责业务逻辑处理（比如Ajax请求等），对数据进行加工后交给视图展示
 
-
 ## 关于框架
 
 
@@ -19,26 +16,13 @@
 
 **1、企业为了提高开发效率**：在企业中，时间就是效率，效率就是金钱；企业中，使用框架，能够提高开发的效率。
 
-
 **提高开发效率的发展历程**：
 
-原生JS -> Jquery之类的类库 -> 前端模板引擎 -> Angular.js / Vue.js（能够帮助我们减少不必要的DOM操作；提高渲染效率；双向数据绑定的概念【通过框架提供的指令，我们前端程序员只需要关心数据的业务逻辑，不再关心DOM是如何渲染的了】）
+原生JS -> Jquery之类的类库 -> 前端模板引擎 -> Angular.js / Vue.js（能够帮助我们减少不必要的DOM操作；提高渲染效率；双向数据绑定的概念）
 
-
-2、在Vue中，一个核心的概念，就是让用户不再操作DOM元素，解放了用户的双手，让程序员可以更多的时间去关注业务逻辑。
-
-
-
-**3、增强自己就业时候的竞争力**： 
-
-- 人无我有，人有我优。
-
-- 你平时不忙的时候，都在干嘛？
-
-
+2、在Vue中，一个核心的概念就是：数据驱动，避免手动操作DOM元素。这样的话，可以让前端程序员可以更多的时间去关注数据的业务逻辑，而不是关心 DOM 是如何渲染的了。
 
 ### 框架和库的区别
-
 
 **框架**：
 
@@ -46,10 +30,7 @@
 
 对项目的**侵入性**较大，项目如果需要更换框架，则需要重新架构整个项目。但是优点也很明显：功能完善、提供了一整套的解决方案。
 
-
-
-
-**库（插件）**
+**库（插件）**：
 
 只是提供某一个小功能。
 
@@ -61,32 +42,27 @@
 
 - 从 EJS 切换到 art-template
 
-
-
 ## 前端的各种框架
 
-### Vue、React、AngularJS
+### Vue.js、React、AngularJS
 
 AngularJS 提供更多的是一套解决方案，更像是一个生态。
 
  Vue 和 React目前都是用了 Virtual Dom。
 
-### Vue 和 React 的对比
-
-![](http://img.smyhvae.com/20180302_1623.png)
-
-
-Vue.js 是目前最火的一个前端框架，React是最流行的一个前端框架。
-
-Vue.js 是一套构建用户界面的框架，**只关注视图层**。
-
-
-
 ### Vue 和 React 的相同点
 
-![](http://img.smyhvae.com/20180302_1636.png)
+- 利用虚拟DOM实现快速渲染
 
-国内的很多开发者喜欢 Vue；国外的开发者更喜欢 React，适合做大型网站。
+- 轻量级
+
+- 响应式组件
+
+- 支持服务器端渲染
+
+- 易于集成路由工具、打包工具以及状态管理工具
+
+PS：Vue 在国内很受欢迎；React 在国内和国外都很受欢迎，适合做大型网站。
 
 ### 什么是虚拟 DOM
 
@@ -94,37 +70,33 @@ Vue.js 是一套构建用户界面的框架，**只关注视图层**。
 
 我们可以在 JS 的内存里构建类似于DOM的对象，去拼装数据，拼装完整后，把数据整体解析，一次性插入到html里去。这就形成了虚拟 DOM。
 
-
 Vue1.0没有虚拟DOM，Vue2.0改成了基于虚拟DOM。
-
 
 ### 前端框架回顾
 
 ![](http://img.smyhvae.com/20180302_1645.png)
 
-
 ![](http://img.smyhvae.com/20180302_1651.png)
-
 
 ![](http://img.smyhvae.com/20180302_1652.png)
 
-
-
 Vue框架中，没有控制器。
-
 
 ## Vue 框架
 
 ### 发展历史
 
-![](http://img.smyhvae.com/20180302_1655.png)
+- 2013年底作为尤雨溪个人实验项目开始开发
 
-2016.10发布2.0版本。
+- 2014年2月公开发布。
+
+- 2014年11月发布0.11版本
+
+- 2016年10月发布2.0版本。
 
 ### 相关网址
 
 - [中文官网](https://cn.vuejs.org/)
-
 
 - [vuejs官方论坛](https://forum.vuejs.org/)
 
@@ -139,15 +111,9 @@ Vue框架中，没有控制器。
 
 - Vue2下载地址：<https://cdn.jsdelivr.net/npm/vue/>
 
-
-
-
-
 ![](http://img.smyhvae.com/20180302_1658.png)
 
 上方截图的时间：2018-03-02。
-
-
 
 ### 介绍
 
@@ -155,28 +121,19 @@ Vue框架中，没有控制器。
 
 渐进式框架图：
 
-
 ![](http://img.smyhvae.com/20180302_1701.png)
 
+### Vue框架的特点
 
-- 声明式渲染：当我们在页面里，通过 new 一个 view 的事例时，
+- 模板渲染：基于 html 的模板语法，学习成本低。
 
+- 响应式的更新机制：数据改变之后，视图会自动刷新。【重要】
 
-### Vue 的特点
-
-- 模板渲染
+- 渐进式框架
 
 - 组件化/模块化
 
-- 扩展功能：路由、ajax、数据流等。
-
-![](http://img.smyhvae.com/20180302_1750.png)
-
-![](http://img.smyhvae.com/20180302_1751.png)
-
-![](http://img.smyhvae.com/20180302_1752.png)
-
-![](http://img.smyhvae.com/20180302_1753.png)
+- 轻量：开启 gzip压缩后，可以达到 20kb 大小。（React 达到 35kb，AngularJS 达到60kb）。
 
 ## Vue 的环境搭建
 
@@ -200,7 +157,7 @@ Vue框架中，没有控制器。
 
 ### 引用 Vue.js 文件
 
-1、**方式一**：（引用的方式）
+1、**方式一**：（CDN的方式进行引用）
 
 ```html
 <!DOCTYPE html>
@@ -208,7 +165,7 @@ Vue框架中，没有控制器。
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
 </head>
 <body>
 
@@ -217,12 +174,11 @@ Vue框架中，没有控制器。
 </html>
 ```
 
-
 2、方式二：（下载 vue.js 文件）
 
-去网站<https://cdn.jsdelivr.net/npm/vue/>下载 vue.js 文件，直接放到工程文件里，然后引用。
+去网站 <https://cdn.jsdelivr.net/npm/vue/> 下载 vue.js 文件，直接放到工程文件里，然后引用。
 
-3、方式三：（npm安装vue）
+3、方式三：（NPM的方式安装vue）
 
 ```bash
 # 最新稳定版
@@ -243,62 +199,56 @@ $ cnpm i vue --save
 
 此时在 src 中需要引入的路径是：
 
-
 ![](http://img.smyhvae.com/20180302_2106.png)
 
-上图中的引入方式，不是很理解。
-
-### 安装 vue-cli（命令行工具）
+## 利用 vue-cli 新建一个空的项目
 
 Vue 提供一个官方命令行工具，可用于快速搭建大型单页应用。该工具为现代化的前端开发工作流提供了开箱即用的构建配置。只需几分钟即可创建并启动一个带热重载、保存时静态检查以及可用于生产环境的构建配置的项目。
+
+### 官方代码参考
+
+```
+  npm install -g @vue/cli
+
+  vue create my-app
+
+  cd my-app
+
+  npm run serve
+```
+
+我们根据上方的参考代码，来看看“利用 vue-cli 新建一个空的项目”的步骤。
+
+### 安装 vue-cli（命令行工具）
 
 安装命令如下：
 
 ```bash
 # 全局安装 vue-cli
-$ npm install -g vue-cli
+$ npm install -g @vue/cli
 ```
 
-以下代码来自官网，仅供阅读：
-
-```
-# 创建一个基于 webpack 模板的简单的新项目【荐】
-$ vue init webpack-simple demo01
-
-# 创建一个基于 webpack 模板的完整的新项目
-$ vue init webpack demo02
-
-
-# 安装依赖，走你
-$ cd my-project
-$ npm install
-$ npm run dev
-```
-
-## 利用 vue-cli 新建一个空的项目
-
-### 构建一个 simple 项目
-
-我们利用 vue-cli 来构建一个 SPA 应用：
+### 初始化一个 simple 项目
 
 （1）首先执行：
 
 ```
-$ vue init webpack-simple VueDemo01
-
+  vue create my-app
 ```
 
-然后根据提示输入 project name（**要求小写**），description 默认即可：
+输入上方命令后，会弹出一个选项：
 
+20190624_163626.png
 
-![](http://img.smyhvae.com/20180303_0850.png)
+如果是初学者，直接选`default`就行。之后会自动生成一个空的初始化项目，包含了项目目录、以及项目依赖的脚本。
 
+这个空项目的工程文件如下：（请务必仔细研究这个项目的写法和目录结构）
 
-上方截图中，`npm install `指的是下载各种依赖包，`npm run dev`指的是打开发包，`npm run build`指的是打生产包。
+- [2019-06-21-vue-my-app.zip]()
 
 我们可以看到这个项目的结构：
 
-![](http://img.smyhvae.com/20180303_0851.png)
+20190624_160725.png
 
 - src：项目源码
 
@@ -306,42 +256,35 @@ $ vue init webpack-simple VueDemo01
 
 - index.html：单页面的入口
 
+上方截图中，`npm install `指的是下载各种依赖包，`npm run dev`指的是打开发包，`npm run build`指的是打生产包。
 
-（2）Mac环境，安装各种依赖包，执行如下命令：
-
-```
-cd /Users/smyhvae/Dropbox/workspace/Mac/VueDemo01
-
-cnpm install
-```
-
-备注：我们在 GitHub上下载的任何Vue有关的项目，第一步都是要首先执行 cnpm install。
-
-
-（3）让项目跑起来：
+（2）本地运行项目：
 
 ```
-cnpm run dev
+  cd my-app
+
+  npm run serve
 ```
 
-这个空的项目就可以在浏览器上跑起来：
+浏览器输入`http://localhost:8080/`，就可以让这个空的项目在本地跑起来：
 
+20190624_160228.png
 
-![](http://img.smyhvae.com/20180303_0853.png)
-
-如果是在webstorm中开发这个项目，会有点卡，因为依赖的包比较多，重启软件即可。
+备注：我们在 GitHub上下载的任何Vue有关的项目，第一步都是要首先执行 npm install，安装依赖的 mode_modules，然后再运行。我们发给同事的工程文件，建议不要包含 `node_modules`。
 
 ### 构建一个 非 simple 项目
-
 
 （1）构建一个空的项目，首先执行：
 
 ```
-$ vue init webpack VueDemo02
-
+$ vue create vuedemo2
 ```
 
-然后根据提示依次输入：
+20190624_163726.png
+
+上图中，选择 `Manually select features`，然后根据提示依次输入：
+
+20190624_164305.png
 
 -  project name：**要求小写**。
 
@@ -355,33 +298,11 @@ $ vue init webpack VueDemo02
 
 - e2e test：不需要。
 
+选择 eslint 的配置：
 
+20190624_1650.png
 
-（2）Mac环境，安装各种依赖包，执行如下命令：
-
-```
-cd /Users/smyhvae/Dropbox/workspace/Mac/VueDemo02
-
-npm install
-```
-
-备注：我们在 GitHub上下载的任何Vue有关的项目并没有包含 `node_modules`，第一步都是要首先执行 cnpm install，把 `node_modules`里的包下载下来。我们发给同事的工程文件，建议也不要包含 `node_modules`。
-
-
-
-（3）让项目跑起来：
-
-```
-npm run dev
-```
-
-这个空的项目就可以在浏览器上跑起来。
-
-![](http://img.smyhvae.com/20180303_0915.png)
-
-![](http://img.smyhvae.com/20180303_0913.png)
-
-
+然后让这个空的项目就可以在浏览器上跑起来。
 
 ## vue 项目结构分析
 
@@ -405,11 +326,7 @@ npm run dev
 
 - `index.html`：单页面的入口。通过 webpack打包后，会把 src 源码进行编译，插入到这个 html 里面来。
 
-
 - `package.json`：项目的基础配置，包含版本号、脚本命令、项目依赖库、开发依赖库、引擎等。
-
-
-
 
 ### 图片的base64编码
 
@@ -424,29 +341,4 @@ npm run dev
           name: utils.assetsPath('img/[name].[hash:7].[ext]')
         }
 ```
-
-## Vue 基础语法
-
-![](http://img.smyhvae.com/20180303_1130.png)
-
-![](http://img.smyhvae.com/20180303_1135.png)
-
-![](http://img.smyhvae.com/20180303_1145.png)
-
-![](http://img.smyhvae.com/20180303_1146.png)
-
-![](http://img.smyhvae.com/20180303_1150.png)
-
-
-
-本文参考链接：
-
-- [Get全栈技能点 Vue2.0/Node.js/MongoDB 打造商城系统](https://coding.imooc.com/class/chapter/113.html)
-
-
-
-
-
-
-
 
