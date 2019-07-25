@@ -11,7 +11,6 @@
 
 ## 关于框架
 
-
 ### 为什么要学习流行框架
 
 **1、企业为了提高开发效率**：在企业中，时间就是效率，效率就是金钱；企业中，使用框架，能够提高开发的效率。
@@ -145,8 +144,6 @@ Vue框架中，没有控制器。
 
 - Gulp：基于流的自动化构建工具。
 
-- Grunt ：JS 世界的构建工具。
-
 - Babel：使用最新的 规范来编写 js。
 
 - Vue：构建数据驱动的Web界面的渐进式框架
@@ -191,15 +188,11 @@ $ npm install vue
 $ cnpm i vue --save
 ```
 
-我们可以看到 vue.js 的安装目录：
+然后在代码中通过下面这种方式进行引用：
 
-![](http://img.smyhvae.com/20180302_2252.png)
-
-![](http://img.smyhvae.com/20180302_2255.png)
-
-此时在 src 中需要引入的路径是：
-
-![](http://img.smyhvae.com/20180302_2106.png)
+```javascript
+  import Vue from 'vue'
+```
 
 ## 利用 vue-cli 新建一个空的项目
 
@@ -274,7 +267,7 @@ $ npm install -g @vue/cli
 
 ### 构建一个 非 simple 项目
 
-（1）构建一个空的项目，首先执行：
+构建一个空的项目，首先执行：
 
 ```
 $ vue create vuedemo2
