@@ -2,7 +2,6 @@
 
 ## 前言
 
-
 我们知道，在控制台里可以添加很多设备。我们需要点击 edit，手动添加：
 
 img
@@ -25,7 +24,6 @@ img
 ```
 
 
-
 ## 不同浏览器的 UserAgent
 
 iPhone版微信：
@@ -40,16 +38,6 @@ Android版微信：
 Mozilla/5.0 (Linux; Android 5.0.1; GT-I9502 Build/LRX22C; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/43.0.2357.121 Mobile Safari/537.36 MicroMessenger/6.1.0.78_r1129455.543 NetType/WIFI
 ```
 
-
-
-
-
-
-Android版微信：
-
-```
-Mozilla/5.0 (Linux; Android 5.0.1; GT-I9502 Build/LRX22C; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/43.0.2357.121 Mobile Safari/537.36 MicroMessenger/6.1.0.78_r1129455.543 NetType/WIFI
-```
 
 ## 参考链接
 
