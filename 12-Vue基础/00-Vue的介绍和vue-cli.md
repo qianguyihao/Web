@@ -231,7 +231,7 @@ $ npm install -g @vue/cli
 
 输入上方命令后，会弹出一个选项：
 
-20190624_163626.png
+![](http://img.smyhvae.com/20190624_163626.png)
 
 如果是初学者，直接选`default`就行。之后会自动生成一个空的初始化项目，包含了项目目录、以及项目依赖的脚本。
 
@@ -241,7 +241,7 @@ $ npm install -g @vue/cli
 
 我们可以看到这个项目的结构：
 
-![](http://img.smyhvae.com/20190624_160725.png)
+![](http://img.smyhvae.com/20190624_160726.png)
 
 - src：项目源码
 
