@@ -261,7 +261,7 @@ $ npm install -g @vue/cli
 
 浏览器输入`http://localhost:8080/`，就可以让这个空的项目在本地跑起来：
 
-![](http://img.smyhvae.com/20190624_160228.png)
+![](http://img.smyhvae.com/20190624_160229.png)
 
 备注：我们在 GitHub上下载的任何Vue有关的项目，第一步都是要首先执行 npm install，安装依赖的 mode_modules，然后再运行。我们发给同事的工程文件，建议不要包含 `node_modules`。
 
@@ -293,7 +293,7 @@ $ vue create vuedemo2
 
 选择 eslint 的配置：
 
-![](http://img.smyhvae.com/20190624_165000.png)
+![](http://img.smyhvae.com/20190624_165001.png)
 
 然后让这个空的项目就可以在浏览器上跑起来。
 
