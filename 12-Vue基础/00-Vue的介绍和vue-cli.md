@@ -237,11 +237,11 @@ $ npm install -g @vue/cli
 
 这个空项目的工程文件如下：（请务必仔细研究这个项目的写法和目录结构）
 
-- [2019-06-21-vue-my-app.zip]()
+- [2019-06-21-vue-my-app.zip](https://download.csdn.net/download/smyhvae/11256220)
 
 我们可以看到这个项目的结构：
 
-20190624_160725.png
+![](http://img.smyhvae.com/20190624_160725.png)
 
 - src：项目源码
 
@@ -261,7 +261,7 @@ $ npm install -g @vue/cli
 
 浏览器输入`http://localhost:8080/`，就可以让这个空的项目在本地跑起来：
 
-20190624_160228.png
+![](http://img.smyhvae.com/20190624_160228.png)
 
 备注：我们在 GitHub上下载的任何Vue有关的项目，第一步都是要首先执行 npm install，安装依赖的 mode_modules，然后再运行。我们发给同事的工程文件，建议不要包含 `node_modules`。
 
@@ -273,11 +273,11 @@ $ npm install -g @vue/cli
 $ vue create vuedemo2
 ```
 
-20190624_163726.png
+![](http://img.smyhvae.com/20190624_163726.png)
 
 上图中，选择 `Manually select features`，然后根据提示依次输入：
 
-20190624_164305.png
+![](http://img.smyhvae.com/20190624_164305.png)
 
 -  project name：**要求小写**。
 
@@ -293,7 +293,7 @@ $ vue create vuedemo2
 
 选择 eslint 的配置：
 
-20190624_1650.png
+![](http://img.smyhvae.com/20190624_165000.png)
 
 然后让这个空的项目就可以在浏览器上跑起来。
 
@@ -334,4 +334,14 @@ $ vue create vuedemo2
           name: utils.assetsPath('img/[name].[hash:7].[ext]')
         }
 ```
+
+
+## 我的公众号
+
+想学习<font color=#0000ff>**代码之外的技能**</font>？不妨关注我的微信公众号：**千古壹号**（id：`qianguyihao`）。
+
+扫一扫，你将发现另一个全新的世界，而这将是一场美丽的意外：
+
+![](http://img.smyhvae.com/20160401_01.jpg)
+
 
