@@ -577,3 +577,7 @@ css颜色高亮显示。
 
 同时，你也可以关注我在 GitHub 上的 [前端入门项目](https://github.com/qianguyihao/Web)，超级详细和真诚。
 
+## 参考链接
+
+「Vscode」打造类sublime的高颜值编辑器：https://idoubi.cc/2019/07/08/vscode-sublime-theme/
+
