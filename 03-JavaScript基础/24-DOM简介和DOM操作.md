@@ -82,9 +82,9 @@ var arr2 = document.getElementsByClassName("hehe"); //方式三：通过 类名 
 特殊情况：数组中的值只有1个。即便如此，这一个值也是包在数组里的。这个值的获取方式如下：
 
 ```javascript
-	document.getElementsByTagName("div1")[0];    //取数组中的第一个元素
+document.getElementsByTagName("div1")[0];    //取数组中的第一个元素
 
-	document.getElementsByClassName("hehe")[0];  //取数组中的第一个元素
+document.getElementsByClassName("hehe")[0];  //取数组中的第一个元素
 ```
 
 ## DOM访问关系的获取
@@ -354,7 +354,7 @@ JS中的**父子兄**访问关系：
 
 ### 1、获取节点的属性值
 
-方式1：
+**方式1**：
 
 ```javascript
 	元素节点.属性名;
@@ -386,8 +386,8 @@ JS中的**父子兄**访问关系：
 上方代码中的img标签，有各种属性，我们可以逐一获取，打印结果如下：
 
 ![](http://img.smyhvae.com/20180127_1340.png)
-f
-方式2：
+
+**方式2**：
 
 ```javascript
 	元素节点.getAttribute("属性名称");
