@@ -176,6 +176,10 @@ git cherry-pick commit1
 
 ## git客户端推荐
 
+市面上的Git客户端我基本都用过了，我最推荐的一款Git客户端是：[Tower](https://www.git-tower.com) 或者 [Fork](https://git-fork.com)。
+
+- GitUp：<https://gitup.co/>
+
 20180623时，网上看了下Git客户端的推荐排名：
 
 ![](http://img.smyhvae.com/20180623_1210.png)
@@ -187,7 +191,6 @@ s
 ![](http://img.smyhvae.com/20180623_1305.png)
 
 
-上面的Git客户端我基本都用过了，我最推荐的一款Git客户端是：[Tower](https://www.git-tower.com) 或者 [Fork](https://git-fork.com)。
 
 
 
