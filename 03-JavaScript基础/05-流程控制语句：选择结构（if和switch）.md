@@ -221,42 +221,51 @@ switch语句也叫条件分支语句。
 格式：
 
 ```javascript
-	switch(表达式) {
-		case 值1：
-				语句体1;
-			break;
+switch(表达式) {
+	case 值1：
+			语句体1;
+		break;
 
-		case 值2：
-			语句体2;
-			break;
+	case 值2：
+		语句体2;
+		break;
 
-		...
-		...
+	...
+	...
 
-		default：
-			语句体 n+1;
-			break;
-	}
+	default：
+		语句体 n+1;
+		break;
+}
 ```
 
 备注1：当所有的比较结果都为false时，则只执行default里的语句。
 
-备注2：break可以省略，但一般不建议。否则结果可能不是你想要的，会出现一个现象：**case穿透**。
 
 ### switch语句的执行流程
 
-- 首先，计算出表达式的值，和case依次比较，一旦有对应的值，就会执行相应的语句，在执行的过程中，遇到break就会结束。
+ 流程图如下：
 
-- 然后，如果所有的case都和表达式的值不匹配，就会执行default语句体部分，然后程序结束掉。
+![](http://img.smyhvae.com/20190815_1500.jpg)
+
+执行流程如下：
+
+（1）首先，计算出表达式的值，和case依次比较，一旦有对应的值，就会执行相应的语句，在执行的过程中，遇到break就会结束。
+
+（2）然后，如果所有的case都和表达式的值不匹配，就会执行default语句体部分。
 
 
-### switch语句的结束条件
+### switch语句的结束条件【非常重要】
 
 - 情况a：遇到break就结束，而不是遇到default就结束。（因为break在此处的作用就是退出switch语句）
 
 - 情况b：执行到程序的末尾就结束。
 
-我们来举两个例子就明白了。
+我们来看下面的两个例子就明白了。
+
+### case穿透的问题
+
+switch 语句中的`break`可以省略，但一般不建议。否则结果可能不是你想要的，会出现一个现象：**case穿透**。
 
 
 **举例1**：（case穿透的情况）
@@ -311,35 +320,34 @@ switch语句也叫条件分支语句。
 
 ```javascript
     //switch判断语句
+    var number = 5;
+
     switch (number) {
         default:
             console.log("我是defaul语句");
             // break;
         case (2):
-            console.log(number);
+          	console.log("第二个呵呵:" + number);
             //break;
         case (3):
-            console.log(number);
+          	console.log("第三个呵呵:" + number);
             break;
         case (4):
-            console.log(number);
+          	console.log("第四个呵呵:" + number);
             break;
     }
 
 ```
 
-
 上方代码的运行结果，你也许会意外：
 
 ```
 我是defaul语句
-5
-5
+第二个呵呵:5
+第三个呵呵:5
 ```
 
-上方代码的解释：从这个例子可以看出：switch语句结束与default无关。
-
-
+上方代码的解释：代码走到 default时，因为没有遇到 break，所以会继续往下走，直到遇见 break 或者走到程序的末尾。 从这个例子可以看出：switch语句的结束与default的顺序无关。
 
 ## 我的公众号
 
