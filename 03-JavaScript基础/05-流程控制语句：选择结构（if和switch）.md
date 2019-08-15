@@ -220,7 +220,7 @@ switch语句也叫条件分支语句。
 
 格式：
 
-```javascript
+```
 switch(表达式) {
 	case 值1：
 			语句体1;
