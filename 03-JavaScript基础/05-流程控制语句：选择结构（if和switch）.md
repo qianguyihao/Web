@@ -223,7 +223,7 @@ switch语句也叫条件分支语句。
 ```
 switch(表达式) {
 	case 值1：
-			语句体1;
+		语句体1;
 		break;
 
 	case 值2：
