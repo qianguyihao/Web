@@ -580,14 +580,9 @@ PS：主轴和侧轴并不是固定不变的，通过flex-direction可以互换�
 
 ## CSS Flexbox 可视化手册
 
-1
+可视化的截图如下：（请点开链接，查看大图）
 
-![](http://img.smyhvae.com/20190821_2100.png)
-
-2
-
-ff
-![](http://img.smyhvae.com/20190821_2101.png)
+<http://img.smyhvae.com/20190821_2101.png>
 
 相关文章：
 
