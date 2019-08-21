@@ -1,8 +1,5 @@
 
-
-
 ## 多列布局
-
 
 类似报纸或杂志中的排版方式，上要用以控制大篇幅文本。用得不多。
 
@@ -581,10 +578,30 @@ PS：主轴和侧轴并不是固定不变的，通过flex-direction可以互换�
 </html>
 ```
 
+## CSS Flexbox 可视化手册
 
+1
 
+![](http://img.smyhvae.com/20190821_2100.png)
 
+2
 
+ff
+![](http://img.smyhvae.com/20190821_2101.png)
+
+相关文章：
+
+- 【英文原版】 CSS Flexbox Fundamentals Visual Guide：<https://medium.com/swlh/css-flexbox-fundamentals-visual-guide-1c467f480dac>
+
+- 【中文翻译】CSS Flexbox 可视化手册：<https://zhuanlan.zhihu.com/p/56046851>
+
+##  推荐文章
+
+- flex 效果在线演示：<https://demos.scotch.io/visual-guide-to-css3-flexbox-flexbox-playground/demos/>
+
+- A Complete Guide to Flexbox | 英文原版：<https://css-tricks.com/snippets/css/a-guide-to-flexbox/>
+
+- CSS3 Flexbox 布局完全指南 | 中文翻译：<https://www.html.cn/archives/8629>
 
 
 

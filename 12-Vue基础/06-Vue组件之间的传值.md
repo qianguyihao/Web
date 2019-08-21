@@ -570,7 +570,7 @@ console.log(this.$refs.myTitle.innerText)
 ![](http://img.smyhvae.com/20180701_1640.png)
 
 
-### 使用 ref 属性获取整个子组件
+### 使用 ref 属性获取整个子组件（父组件调用子组件的方法）
 
 根据上面的例子，我们可以得出**规律**：只要`ref`属性加在了DOM元素身上，我们就可以获取这个DOM元素。
 
