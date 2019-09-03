@@ -8,7 +8,7 @@
 
 - style（针对行内样式）
 
-这一段就来讲一下style。
+这篇文章，我们就来讲一下style。
 
 需要注意的是：style是一个对象，只能获取**行内样式**，不能获取内嵌的样式和外链的样式。例如：
 
@@ -432,8 +432,6 @@ style的常用属性包括：
 
 ### 获取元素当前正在显示的样式
 
-上面的内容中，我们通过`box1.style.属性`只能获得**行内样式**的属性。可如果我们想获取**内嵌或者外链**的样式，该怎么办呢？
-
 （1）w3c的做法：
 
 ```javascript
@@ -478,7 +476,6 @@ style的常用属性包括：
 
 <script>
 
-    //赋值：div.style.....
     var div1 = document.getElementsByTagName("div")[0];
 
     console.log(getStyle(div1, "width"));
