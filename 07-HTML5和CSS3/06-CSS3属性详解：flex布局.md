@@ -590,7 +590,7 @@ PS：主轴和侧轴并不是固定不变的，通过flex-direction可以互换�
 
 - 【中文翻译】CSS Flexbox 可视化手册：<https://zhuanlan.zhihu.com/p/56046851>
 
-##  推荐文章
+##  flex 相关的推荐文章
 
 - flex 效果在线演示：<https://demos.scotch.io/visual-guide-to-css3-flexbox-flexbox-playground/demos/>
 
