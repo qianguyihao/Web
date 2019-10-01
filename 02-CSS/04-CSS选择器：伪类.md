@@ -32,7 +32,6 @@ PS：以上两种样式，只能用于超链接。
 - `:active`	“激活”： 鼠标点击标签，但是不松手时。
 - `:focus` 是某个标签获得焦点时的样式（比如某个输入框获得焦点）
 
-PS：以上三种样式，只能用于超链接。
 
 ## 超链接a标签
 
@@ -47,48 +46,36 @@ a标签有4种伪类（即对应四种状态），要求背诵。如下：
 - `:active`	“激活”： 鼠标点击标签，但是不松手时。
 
 
-对应的代码如下：（不带注释）
+对应的代码如下：
 
-```css
-		a:link{
-			color:red;
-		}
-		a:visited{
-			color:orange;
-		}
-		a:hover{
-			color:green;
-		}
-		a:active{
-			color:black;
-		}
-```
+```html
+<style type="text/css">
+	/*让超链接点击之前是红色*/
+	a:link{
+		color:red;
+	}
 
-对应的代码如下：（带注释）
+	/*让超链接点击之后是绿色*/
+	a:visited{
+		color:orange;
+	}
 
-```
-	   /*让超链接点击之前是红色*/
-		a:link{
-			color:red;
-		}
+	/*鼠标悬停，放到标签上的时候*/
+	a:hover{
+		color:green;
+	}
 
-		/*让超链接点击之后是绿色*/
-		a:visited{
-			color:orange;
-		}
-		/*鼠标悬停，放到标签上的时候*/
-		a:hover{
-			color:green;
-		}
-		/*鼠标点击链接，但是不松手的时候*/
-		a:active{
-			color:black;
+	/*鼠标点击链接，但是不松手的时候*/
+	a:active{
+		color:black;
+
+</style>
 ```
 
 
 记住，在css中，这四种状态**必须按照固定的顺序写**：
 
-> a:**l**ink 、a:visited 、a:hover 、a:active
+> a:link 、a:visited 、a:hover 、a:active
 
 如果不按照顺序，那么将失效。“爱恨准则”：love hate。必须先爱，后恨。
 
@@ -96,9 +83,7 @@ a标签有4种伪类（即对应四种状态），要求背诵。如下：
 
 ![](http://img.smyhvae.com/20180113_2239.gif)
 
-
 ### 超链接的美化
-
 
 问：既然`a{}`定义了超链的属性，和`a:link{}`定义了超链点击之前的属性，那这两个有啥区别呢？
 
@@ -109,13 +94,11 @@ a标签有4种伪类（即对应四种状态），要求背诵。如下：
  - `a{}`定义的样式针对所有的超链接(包括锚点)
  - `a:link{}`定义的样式针对所有写了href属性的超链接(不包括锚点)
 
-
-
 超链接a标签在使用的时候，比较难。因为不仅仅要控制a这个盒子，也要控制它的伪类。
 
 我们一定要将a标签写在前面，将`:link、:visited、:hover、:active`这些伪类写在后面。
 
-举个例子。如果效果：
+针对超链接，我们来举个例子：
 
 ![](http://img.smyhvae.com/20170810_2235.gif)
 
