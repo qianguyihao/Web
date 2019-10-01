@@ -796,8 +796,8 @@ event.cancelBubble = true
 ```javascript
     // 获取父节点，并为它注册click事件。 false 表示事件在冒泡阶段触发（默认）
     document.getElementById("parent-list").addEventListener("click", function (e) {
-        // event.target 代表的是子元素。toUpperCase 指的是转换为大写字母
-        if (e.target && e.target.nodeName.toUpperCase == "LI") {
+        // event.target 代表的是子元素。toUpperCase()方法 指的是转换为大写字母并返回
+        if (e.target && e.target.nodeName.toUpperCase() == "LI") {
             // 真正的处理过程在这里
             console.log("List item ", e.target.id, " was clicked!");
         }
