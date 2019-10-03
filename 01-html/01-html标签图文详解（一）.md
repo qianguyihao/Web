@@ -8,10 +8,12 @@
 ## 本文主要内容
 
 - 头标签
-- 排版标签：`<p>` &nbsp;&nbsp;&nbsp; `<div>` &nbsp;&nbsp;&nbsp; `<span>`&nbsp;&nbsp;&nbsp;`<br>` &nbsp;&nbsp;&nbsp; `<hr>` &nbsp;&nbsp;&nbsp; `<center>` &nbsp;&nbsp;&nbsp; `<pre>`
-- 字体标记：`<h1>`&nbsp;&nbsp;&nbsp; `<font>`&nbsp;&nbsp;&nbsp; `<b>`&nbsp;&nbsp;&nbsp; `<u>` &nbsp;&nbsp;&nbsp;`<sup>` &nbsp;&nbsp;&nbsp;`<sub>`
-- 超链接
-- 图片标签
+- 排版标签：`<p>`、 `<div>`、 `<span>`、`<br>` 、 `<hr>` 、 `<center>` 、 `<pre>`
+- 字体标记：`<h1>`、 `<font>`、 `<b>`、 `<u>` 、`<sup>` 、`<sub>`
+- 超链接 `<a>`
+- 图片标签 `<img>`
+
+
 
 ## 前言
 
@@ -1012,7 +1014,7 @@ aaa/../bbb/1.jpg
  - `Hspace`：指图片左右的边距
  - `Vspace`：指图片上下的边距
 
- - `Alt`：当图片显示不出来的时候，代替图片显示的内容。alt是英语 alternate “替代”的意思。（有的浏览器不支持）
+ - `alt`：当图片不可用（无法显示）的时候，代替图片显示的内容。alt是英语 alternate “替代”的意思，代表替换资源。（有的浏览器不支持）
 
 举例：
 ```html
@@ -1022,12 +1024,13 @@ aaa/../bbb/1.jpg
 
 ![Paste_Image.png](http://img.smyhvae.com/2015-10-01-cnblogs_html_20.png)
 
-`Alt`属性效果演示：
+`Alt`属性效果演示：（当图片 src 不可用的时候，显示文字。这样做，至少能让用户知道，这个图片大概是什么内容）
 
 ![Paste_Image.png](http://img.smyhvae.com/2015-10-01-cnblogs_html_21.png)
 
  - 图片的`align`属性：**图片和周围文字的相对位置**。属性取值可以是：bottom（默认）、center、top、left、right。
 我们来分别看一下这`align`属性的这几个属性值的区别。
+
 1、`align=""`，图片和文字低端对齐。即默认情况下的显示效果：
 
 ![](http://img.smyhvae.com/2015-10-02-cnblogs_html_19.png)
