@@ -14,7 +14,6 @@
  - 滚动字幕标签：`<marquee>`
 
 
-
 ## 列表标签
 
 列表标签分为三种。
@@ -46,7 +45,6 @@
 - 我们这里再次强调，ul的作用，并不是给文字增加小圆点的，而是增加无序列表的“语义”的。
 
 
-
 **属性：**
 
  - `type="属性值"`。属性值可以选： `disc`(实心原点，默认)，`square`(实心方点)，`circle`(空心圆)。
@@ -58,10 +56,9 @@
 
 ![](http://img.smyhvae.com/2015-10-02-cnblogs_html_03.png)
 
-注意：项目符号可以是图片，但是通过CSS设置<li>标记的背景图片来实现(CSS中讲)。
+注意：项目符号可以是图片，需要通过CSS设置`<li>`标记的背景图片来实现(CSS中讲)。
 
-当然了，列表之间是可以**嵌套**的。我们来举个例子：
-代码：
+当然了，列表之间是可以**嵌套**的。我们来举个例子。代码：
 
 ```html
   <ul>
@@ -86,14 +83,13 @@
 
 ![](http://img.smyhvae.com/2015-10-01-cnblogs_html_40.png)
 
+#### ul标签实际应用场景：
 
-#### ul标签实际应用场景
-
-场景1 —— 导航条：
+场景1、导航条：
 
 ![](http://img.smyhvae.com/20170704_1717.png)
 
-场景2 —— li里面放置的内容可能很多：
+场景2、li 里面放置的内容可能很多：
 
 ![](http://img.smyhvae.com/20170704_1719.png)
 
@@ -167,7 +163,6 @@ ol这个东西用的不多，如果想表达顺序，大家一般也用ul。举�
 </ul>
 ```
 
-
 ### 3、定义列表`<dl>`
 
 > 定义列表的作用非常大。
@@ -209,8 +204,6 @@ ol这个东西用的不多，如果想表达顺序，大家一般也用ul。举�
 - （2）每一个词儿都有自己的描述项。
 
 备注：dd是描述dt的。
-
-
 
 
 定义列表用法非常灵活，可以一个dt配很多dd：
@@ -285,7 +278,6 @@ ol这个东西用的不多，如果想表达顺序，大家一般也用ul。举�
 
 dt、dd都是容器级标签，想放什么都可以。所以，现在就应该更加清晰的知道：用什么标签，不是根据样子来决定，而是语义（语义本质上是结构）。
 
-
 ## 表格标签
 
 表格标签用`<table>`表示。
@@ -295,41 +287,41 @@ dt、dd都是容器级标签，想放什么都可以。所以，现在就应该�
 
 例如，一行的单元格：
 ```html
-	<table>
-		<tr>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-		</tr>
-	</table>
+<table>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+</table>
 ```
 上面的表格中没有加文字，所以在生成的网页中什么都看不到。
 例如，3行4列的单元格：
 ```html
-	<table>
-		<tr>
-			<td>生命壹号</td>
-			<td>23</td>
-			<td>男</td>
-			<td>黄冈</td>
-		</tr>
+<table>
+	<tr>
+		<td>生命壹号</td>
+		<td>23</td>
+		<td>男</td>
+		<td>黄冈</td>
+	</tr>
 
-		<tr>
-			<td>许嵩</td>
-			<td>29</td>
-			<td>男</td>
-			<td>安徽</td>
-		</tr>
+	<tr>
+		<td>许嵩</td>
+		<td>29</td>
+		<td>男</td>
+		<td>安徽</td>
+	</tr>
 
-		<tr>
-			<td>邓紫棋</td>
-			<td>23</td>
-			<td>女</td>
-			<td>香港</td>
-		</tr>
+	<tr>
+		<td>邓紫棋</td>
+		<td>23</td>
+		<td>女</td>
+		<td>香港</td>
+	</tr>
 
-	</table>
+</table>
 ```
 效果：
 
@@ -361,40 +353,46 @@ dt、dd都是容器级标签，想放什么都可以。所以，现在就应该�
 
 ![](http://img.smyhvae.com/2015-10-02-cnblogs_html_11.png)
 
-备注：表格中很细表格边线的制作：
-CSS的写法：
-```html
+备注：表格中很细表格边线的制作，CSS的写法：
+
+```css
 style="border-collapse:collapse;"
 ```
 
+
 ### `<tr>`：行
-一个表格就是一行一行组成的嘛。
+
+一个表格就是一行一行组成的。
+
 **属性：**
- - `dir`：公有属性，设置这一行单元格内容的排列方式。可以取值：`ltr`：从左到右（left to right，默认），`rtl`：从右到左（right to left）
+
+ - `dir`：公有属性，设置这一行单元格内容的排列方式。可以取值：
+ 	- `ltr`：从左到右（left to right，默认）
+	- `rtl`：从右到左（right to left）
  - `bgcolor`：设置这一行的单元格的背景色。
 注：没有background属性，即：无法设置这一行的背景图片，如果非要设置，可以用css实现。
  - `height`：一行的高度
  - `align="center"`：一行的内容水平居中显示，取值：left、center、right
  - `valign="center"`：一行的内容垂直居中，取值：top、middle、bottom
 
-
-<br>
 ### `<td>`：单元格
+
 **属性：**
- - `align`：内容的横向对齐方式。属性值可以填：left right center。
-如果想让每个单元格的内容都居中，这个属性太麻烦了，以后用css来解决。
+
+ - `align`：内容的横向对齐方式。属性值可以填：left right center。如果想让每个单元格的内容都居中，这个属性太麻烦了，以后用css来解决。
  - `valign`：内容的纵向对齐方式。属性值可以填：top middle bottom
  - `width`：绝对值或者相对值(%)
  - `height`：单元格的高度
  - `bgcolor`：设置这个单元格的背景色。
  - `background`：设置这个单元格的背景图片。
 
-<br>
 ### 单元格的合并
-如果要将两个单元格合并，那肯定就要删掉一个单元格。
+
 单元格的属性：
- - `colspan`：横向合并。例如`colspan="2"`表示当前单元格在水平方向上要占据两个单元格的位置。
- - `rowspan`：纵向合并。例如`rowspan="2"`表示当前单元格在垂直方向上要占据两个单元格的位置。
+
+- `colspan`：横向合并。例如`colspan="2"`表示当前单元格在水平方向上要占据两个单元格的位置。
+- `rowspan`：纵向合并。例如`rowspan="2"`表示当前单元格在垂直方向上要占据两个单元格的位置。
+
 效果举例：（横向合并）
 
 ![](http://img.smyhvae.com/2015-10-02-cnblogs_html_13.png)
@@ -404,7 +402,8 @@ style="border-collapse:collapse;"
 ![](http://img.smyhvae.com/2015-10-02-cnblogs_html_15.png)
 
 ### `<th>`：加粗的单元格。相当于`<td>` + `<b>`
- - 属性同`<td>`标签。
+
+- 属性同`<td>`标签。
 
 <br>
 ### `<caption>`：表格的标题。使用时和`tr`标签并列
@@ -414,9 +413,11 @@ style="border-collapse:collapse;"
 ![](http://img.smyhvae.com/2015-10-02-cnblogs_html_16.png)
 
 ### 表格的`<thead>`标签、`<tbody>`标签、`<tfoot>`标签
+
 这三个标签有与没有的区别：
- - 1、如果写了，那么这三个部分的**代码顺序可以任意**，浏览器显示的时候还是按照thead、tbody、tfoot的顺序依次来显示内容。如果不写thead、tbody、tfoot，那么浏览器解析并显示表格内容的时候是从按照代码的从上到下的顺序来显示。
- - 2、当表格非常大内容非常多的时候，如果用thead、tbody、tfoot标签的话，那么**数据可以边获取边显示**。如果不写，则必须等表格的内容全部从服务器获取完成才能显示出来。
+
+- 1、如果写了，那么这三个部分的**代码顺序可以任意**，浏览器显示的时候还是按照thead、tbody、tfoot的顺序依次来显示内容。如果不写thead、tbody、tfoot，那么浏览器解析并显示表格内容的时候是从按照代码的从上到下的顺序来显示。
+- 2、当表格非常大内容非常多的时候，如果用thead、tbody、tfoot标签的话，那么**数据可以边获取边显示**。如果不写，则必须等表格的内容全部从服务器获取完成才能显示出来。
 
 举例：
 
@@ -468,16 +469,23 @@ style="border-collapse:collapse;"
 > - 框架的集合用`<frameset>`表示，然后在`<frameset>`集合里放入一个一个的框架`<frame>`
 
 ### `<frameset>`：框架的集合
-一个框架的集合可以包含多个框架或框架的集合。
-**属性：**
- - `rows`：水平分割，将框架分为上下部分。写法有两种：
+
+一个框架的集合可以包含多个框架或框架的集合。**属性：**
+
+- `rows`：水平分割，将框架分为上下部分。写法有两种：
+
 1、绝对值写法：`rows="200,*"`  其中`*`代表剩余的。这里其实包含了两个框架：上面的框架占200个像素，下面的框架占剩下的部分。
+
 2、相对值写法：`rows="30%,*"`  其中`*`代表剩余的。这里其实包含了两个框架：上面的框架占30%，下面的框架占70%。
+
 注：如果你想将框架分成很多行，在属性值里用逗号隔开就行了。
 
- - `cols`：垂直分割，将框架分为左右部分。写法有两种：
+- `cols`：垂直分割，将框架分为左右部分。写法有两种：
+
 1、绝对值写法：`cols="200,*"`  其中`*`代表剩余的。这里其实包含了两个框架：左边的框架占200个像素，右边的框架占剩下的部分。
+
 2、相对值写法：`cols="30%,*"`  其中`*`代表剩余的。这里其实包含了两个框架：左边的框架占30%，右边的框架占70%。
+
 注：如果你想将框架分成很多列，在属性值里用逗号隔开就行了。
 
 效果：
@@ -489,22 +497,29 @@ style="border-collapse:collapse;"
 ![](http://img.smyhvae.com/2015-10-02-cnblogs_html_27.png)
 
 ### `<frame>`：框架
+
 一个框架显示一个页面。
+
 **属性：**
- - `scrolling="no"`：是否需要滚动条。默认值是true。
- - `noresize`：不可以改变框架大小。默认情况下，单个框架的边界是可以拖动的，这样的话，框架大小就不固定了。如果用了这个属性值，框架大小将固定。
+
+- `scrolling="no"`：是否需要滚动条。默认值是true。
+- `noresize`：不可以改变框架大小。默认情况下，单个框架的边界是可以拖动的，这样的话，框架大小就不固定了。如果用了这个属性值，框架大小将固定。
 
 举例：
+
 ```html
 <frame src="top.html" noresize></frame>
 ```
 
- - `bordercolor="#00FF00"`：给框架的边框定义颜色。这个属性在框架集合`<frameset>`中同样适用。
+- `bordercolor="#00FF00"`：给框架的边框定义颜色。这个属性在框架集合`<frameset>`中同样适用。
 颜色这个属性在IE浏览器中生效，但是在google浏览器中无效，不知道为啥。
- - `frameborder="0"`或`frameborder="1"`：隐藏或显示边框（框架线）。
 
- - `name`：给框架起一个名字。
+- `frameborder="0"`或`frameborder="1"`：隐藏或显示边框（框架线）。
+
+- `name`：给框架起一个名字。
+
 利用`name`这个属性，我们可以在框架里进行超链。
+
 举例：
 
 ![](http://img.smyhvae.com/2015-10-02-cnblogs_html_28.png)
@@ -514,12 +529,14 @@ style="border-collapse:collapse;"
 ![](http://img.smyhvae.com/2015-10-02-cnblogs_html_gif3.gif)
 
 
-
 ## 内嵌框架
 
 内嵌框架用`<iframe>`表示。`<iframe>`是`<body>`的子标记。
+
 内嵌框架inner frame：嵌入在一个页面上的框架(仅仅IE、新版google浏览器支持，可能有其他浏览器也支持，暂时我不清楚)。
+
 **属性：**
+
  - `src="subframe/the_second.html"`：内嵌的那个页面
  - `width=800`：宽度
  - `height=“150`：高度
@@ -528,6 +545,7 @@ style="border-collapse:collapse;"
 
 
 效果：
+
 ![](http://img.smyhvae.com/2015-10-02-cnblogs_html_29.png)
 
 内嵌框架举例：（在内嵌页面中切换显示不同的压面）
@@ -551,13 +569,9 @@ style="border-collapse:collapse;"
 ![](http://img.smyhvae.com/2015-10-02-cnblogs_html_GIF.gif)
 
 
-
 ## 表单标签
 
 表单标签用`<form>`表示，用于与服务器的交互。表单就是收集用户信息的，就是让用户填写的、选择的。
-
-
-
 
 **属性：**
  - `name`：表单的名称，用于JS来操作或控制表单时使用；
@@ -568,7 +582,6 @@ style="border-collapse:collapse;"
 注意：表单和表格嵌套时，是在<form>标记中套<table>标记。
 
 form标签里面的action属性和method属性，在《Ajax》课程上给大家讲解。稍微说一下：action属性就是表示，表单将提交到哪里。 method属性表示用什么HTTP方法提交，有get、post两种。
-
 
 **get提交和post提交的区别：**
 
@@ -582,9 +595,9 @@ POST方式：
 
 **Enctype：**
 表单数据的编码方式(加密方式)，取值可以是：application/x-www-form-urlencoded、multipart/form-data。Enctype只能在POST方式下使用。
- - Application/x-www-form-urlencoded：**默认**加密方式，除了上传文件之外的数据都可以
- - Multipart/form-data：**上传附件时，必须使用这种编码方式**。
 
+- Application/x-www-form-urlencoded：**默认**加密方式，除了上传文件之外的数据都可以
+- Multipart/form-data：**上传附件时，必须使用这种编码方式**。
 
 
 ### `<input>`：输入标签（文本框）
@@ -595,7 +608,6 @@ POST方式：
 <input type="text" />
 ```
 
-
 **属性：**
 
 - **`type="属性值"`**：文本类型。属性值可以是：
@@ -603,7 +615,7 @@ POST方式：
 	- `password`：密码类型
 	- `radio`：单选按钮，名字相同的按钮作为一组进行单选（单选按钮，天生是不能互斥的，如果想互斥，必须要有相同的name属性。name就是“名字”。
 ）。非常像以前的收音机，按下去一个按钮，其他的就抬起来了。所以叫做radio。
-	- `checkbox`：多选按钮，名字相同的按钮作为一组进行选择。
+	- `checkbox`：多选按钮，**名字相同的按钮**作为一组进行选择。
 	- `checked`：将单选按钮或多选按钮默认处于选中状态。当`<input>`标签的`type="radio"`时，可以用这个属性。属性值也是checked，可以省略。
 	- `hidden`：隐藏框，在表单中包含不希望用户看见的信息
 	- `button`：普通按钮，结合js代码进行使用。
@@ -614,14 +626,16 @@ POST方式：
 提示：如果要限制上传文件的类型，需要配合JS来实现验证。对上传文件的安全检查：一是扩展名的检查，二是文件数据内容的检查。
 
  - **`value="内容"`**：文本框里的默认内容（已经被填好了的）
+
  - `size="50"`：表示文本框内可以显示**五十个字符**。一个英文或一个中文都算一个字符。
 注意**size属性值的单位不是像素哦**。
+
  - `readonly`：文本框只读，不能编辑。因为它的属性值也是readonly，所以属性值可以不写。
 用了这个属性之后，在google浏览器中，光标点不进去；在IE浏览器中，光标可以点进去，但是文字不能编辑。
+
  - `disabled`：文本框只读，不能编辑，光标点不进去。属性值可以不写。
 
-> 备注：HTML5中，input的类型又增加了很多（比如date、color，但是都不兼容，所以我们是在专门的HTML5课程中学）。
-
+> 备注：HTML5中，input的类型又增加了很多（比如date、color，我们会在 html5 中讲到）。
 
 举例：
 
@@ -638,6 +652,7 @@ POST方式：
 			  <input type="checkbox" name="love" value="bat">打豆豆
 	</form>
 ```
+
 效果：
 
 ![](http://img.smyhvae.com/2015-10-02-cnblogs_html_33.png)
@@ -655,17 +670,11 @@ POST方式：
 	</form>
 ```
 
-**前端开发工程师，只需要关心页面的美、样式、板式、交互。至于数据的保存、读取，都是后台工程师做的事情。**
-
-Node.js就是后台语言，到时候我们就知道怎么把表单存储到数据库中了。在Ajax课中会有PHP内容，涉及MySQL，Ajax课你就知道表单怎么真的被提交了。
+**前端开发工程师，重点关心页面的美、样式、板式、交互。至于数据的提供和比较重的业务逻辑，都是后台工程师做的事情。**
 
 效果：
 
 ![](http://img.smyhvae.com/2015-10-02-cnblogs_html_35.png)
-
-
-
-
 
 ### `<select>`：下拉列表标签
 
@@ -779,12 +788,8 @@ text就是“文本”，area就是“区域”。
 
 效果：
 
-![](http://img.smyhvae.com/2015-10-02-cnblogs_html_36.png)
 
-
-
-
-
+![](http://img.smyhvae.com/20151002_36.png)
 
 ### `<label>`标签
 
@@ -817,14 +822,6 @@ text就是“文本”，area就是“区域”。
 <label for="kk">10天内免登陆</label>
 ```
 
-
-
-
-
-
-
-
-
 ## 多媒体标签
 
 **声明：**
@@ -833,7 +830,6 @@ text就是“文本”，area就是“区域”。
 上述格式视频一般文件较大，不利于网络下载播放。
 一般情况下，是将其它的视频格式，转成Flash来在网页上播放。转换软件：格式工厂等。
 Flash格式的视频兼容性非常好，Flash格式的文件很小。
-
 
 ### `<bgsound>`标签：播放背景音乐
 **属性：**
@@ -867,7 +863,6 @@ Flash格式的视频兼容性非常好，Flash格式的文件很小。
  - type：指定Flash的文件格式类型
  - wmode：指Flash的背景是否可以透明，取值：transparent是透明的
 
-
 `<embed>`标签播放音频举例：
 ```html
  <body>
@@ -897,6 +892,7 @@ google浏览器中的运行效果：
 
 **总结：在网页中插入Flash时，为了同时兼容多种浏览器，需要将`<object>`标签和`<embed>`标签标记一起使用，但使用的顺序是：`<object>`中嵌套`<embed>`标记。**
 举例：
+
 ```html
 <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,29,0" width="778" height="202">
   <param name="movie" value="images/banner.swf">
@@ -905,8 +901,6 @@ google浏览器中的运行效果：
   <embed src="images/banner.swf" width="778" height="202" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" wmode="transparent"></embed>
 </object>
 ```
-
-
 
 ## `<marquee>`：滚动字幕标签
 
@@ -929,8 +923,6 @@ google浏览器中的运行效果：
 效果：
 
 ![](http://img.smyhvae.com/2015-10-02-cnblogs_html_04.gif)
-
-
 
 ## html废弃标签介绍
 
@@ -977,7 +969,6 @@ div  p  h1  span   a   img   ul   ol    dl    input
 ```
 
 知道每个标签的特殊用法、属性。比如a标签，img的属性。
-
 
 ## 我的公众号
 
