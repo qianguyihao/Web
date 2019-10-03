@@ -114,7 +114,7 @@ HTML5定义了一系列新元素，如新语义标签、智能表单、多媒体
 
 ![](http://img.smyhvae.com/20180206_1546.png)
 
-以后我们可以这样写：
+在html5中，我们可以这样写：
 
 ![](http://img.smyhvae.com/20180206_1550.png)
 
@@ -171,27 +171,27 @@ HTML5 则是通过新增语义标签的形式来解决这个问题，例如`<hea
 ```
 
 
-## H5中常用的新语义标签
-
-- `<nav>` 表示导航
-
-- `<header>` 表示页眉
-
-- `<footer>` 表示页脚
+## H5中新增的语义标签
 
 - `<section>` 表示区块
 
 - `<article>` 表示文章。如文章、评论、帖子、博客
 
-- `<aside>` 表示侧边栏 如文章的侧栏
+- `<header>` 表示页眉
+
+- `<footer>` 表示页脚
+
+- `<nav>` 表示导航
+
+- `<aside>` 表示侧边栏。如文章的侧栏
 
 - `<figure>` 表示媒介内容分组。
+
 - `<mark>` 表示标记 (用得少)
 
 - `<progress>` 表示进度 (用得少)
 
 - `<time>` 表示日期
-
 
 本质上新语义标签与`<div>`、`<span>`没有区别，只是其具有表意性，使用时除了在HTML结构上需要注意外，其它和普通标签的使用无任何差别，可以理解成`<div class="nav">` 相当于`<nav>`。
 
@@ -226,11 +226,11 @@ IE8 及以下版本的浏览器不支持 H5 和 CSS3。解决办法：引入`htm
 PS:我们在测试 IE 浏览器的兼容的时候，可以使用软件 ietest，模拟IE6-IE11。
 
 
- 在不支持HTML5新标签的浏览器，会将这些新的标签解析成行内元素(inline)对待，所以我们只需要将其转换成块元素(block)即可使用。
+在不支持HTML5新标签的浏览器，会将这些新的标签解析成行内元素(inline)对待，所以我们只需要将其转换成块元素(block)即可使用。
 
- 但是在IE9版本以下，并不能正常解析这些新标签，但是可以识别通过document.createElement('tagName')创建的自定义标签。于是我们的解决方案就是：将HTML5的新标签全部通过document.createElement('tagName')来创建一遍，这样IE低版本也能正常解析HTML5新标签了。
+但是在IE9版本以下，并不能正常解析这些新标签，但是可以识别通过document.createElement('tagName')创建的自定义标签。于是我们的解决方案就是：将HTML5的新标签全部通过document.createElement('tagName')来创建一遍，这样IE低版本也能正常解析HTML5新标签了。
 
- 当然，在实际开发中我们更多采用的办法是：检测IE浏览器的版本，来加载第三方的JS库来解决兼容问题（如上方代码所示）。
+当然，在实际开发中我们更多采用的办法是：检测IE浏览器的版本，来加载第三方的JS库来解决兼容问题（如上方代码所示）。
 
 
 ## H5中的表单
@@ -255,9 +255,9 @@ PS:我们在测试 IE 浏览器的兼容的时候，可以使用软件 ietest，
 
 - `time`	时间
 
-- `date` 日期。
+- `date` 日期
 
-- `--datetime` 时间日期
+- `datetime` 时间日期
 
 - `month` 月份
 
@@ -265,7 +265,6 @@ PS:我们在测试 IE 浏览器的兼容的时候，可以使用软件 ietest，
 
 
 上面的部分类型是针对移动设备生效的，且具有一定的兼容性，在实际应用当中可选择性的使用。
-
 
 代码举例：
 
@@ -354,11 +353,9 @@ PS:我们在测试 IE 浏览器的兼容的时候，可以使用软件 ietest，
 </html>
 ```
 
-
 代码解释：
 
 `<fieldset>` 标签将表单里的内容进行打包，代表一组；而`<legend> `标签的则是 fieldset 里的元素定义标题。
-
 
 ### 表单元素（标签）
 
@@ -384,7 +381,6 @@ PS:我们在测试 IE 浏览器的兼容的时候，可以使用软件 ietest，
 
 上图可以看出，数据列表可以自动提示。
 
-
 2、`<keygen>`元素：
 
 keygen 元素的作用是提供一种验证用户的可靠方法。
@@ -392,8 +388,6 @@ keygen 元素的作用是提供一种验证用户的可靠方法。
 keygen 元素是密钥对生成器（key-pair generator）。当提交表单时，会生成两个键：一个公钥，一个私钥。
 
 私钥（private key）存储于客户端，公钥（public key）则被发送到服务器。公钥可用于之后验证用户的客户端证书（client certificate）。
-
-
 
 3、`<meter>`元素：度量器
 
@@ -407,15 +401,11 @@ keygen 元素是密钥对生成器（key-pair generator）。当提交表单时�
 
 - min：最小值。
 
-
 举例：
-
-
 
 ```javascript
 	<meter  value="81"    min="0" max="100"  low="60"  high="80"/>
 ```
-
 
 ### 表单属性
 
@@ -434,7 +424,6 @@ keygen 元素是密钥对生成器（key-pair generator）。当提交表单时�
 - `required` 表示必填项
 
 - `pattern` 自定义正则，验证表单。例如
-
 
 代码举例：
 
@@ -491,7 +480,6 @@ keygen 元素是密钥对生成器（key-pair generator）。当提交表单时�
 </body>
 </html>
 ```
-
 
 ### 表单事件
 
@@ -563,11 +551,9 @@ keygen 元素是密钥对生成器（key-pair generator）。当提交表单时�
 </html>
 ```
 
-
 效果：
 
 ![](http://img.smyhvae.com/20180206_1920.gif)
-
 
 ## 多媒体
 
@@ -598,7 +584,6 @@ HTML5通过`<audio>`标签来解决音频播放的问题。
 - `loop` 循环播放。
 
 - `preload` 预加载 同时设置 autoplay 时，此属性将失效。
-
 
 **处理兼容性问题：**
 
@@ -664,7 +649,6 @@ HTML5通过`<video>`标签来解决视频播放的问题。
     </video>
 ```
 
-
 ## DOM 操作
 
 ### 获取元素
@@ -672,7 +656,6 @@ HTML5通过`<video>`标签来解决视频播放的问题。
 - document.querySelector("selector") 通过CSS选择器获取符合条件的第一个元素。
 
 - document.querySelectorAll("selector")  通过CSS选择器获取符合条件的所有元素，以类数组形式存在。
-
 
 ### 类名操作
 
@@ -683,7 +666,6 @@ HTML5通过`<video>`标签来解决视频播放的问题。
 - Node.classList.toggle("class") 切换class，有则移除，无则添加
 
 - Node.classList.contains("class") 检测是否存在class
-
 
 ### 自定义属性
 
@@ -726,6 +708,7 @@ H5可以直接在标签里添加自定义属性，**但必须以 `data-` 开头*
 ```html
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Tab 标签</title>
@@ -777,106 +760,107 @@ H5可以直接在标签里添加自定义属性，**但必须以 `data-` 开头*
         .cont ol {
             line-height: 30px;
         }
-
     </style>
 </head>
+
 <body>
-<div class="tabs">
-    <nav>
-        <a href="javascript:;" data-cont="local">国内新闻</a>
-        <a href="javascript:;" data-cont="global">国际新闻</a>
-        <a href="javascript:;" data-cont="sports">体育新闻</a>
-        <a href="javascript:;" data-cont="funny">娱乐新闻</a>
-    </nav>
-    <section class="cont" id="local">
-        <ol>
-            <li>国内新闻1</li>
-            <li>国内新闻2</li>
-            <li>国内新闻3</li>
-            <li>国内新闻4</li>
-            <li>国内新闻5</li>
-            <li>国内新闻6</li>
-            <li>国内新闻7</li>
-        </ol>
-    </section>
-    <section class="cont" id="global">
-        <ol>
-            <li>国内新闻1</li>
-            <li>国际新闻2</li>
-            <li>国际新闻3</li>
-            <li>国际新闻4</li>
-            <li>国际新闻5</li>
-            <li>国际新闻6</li>
-        </ol>
-    </section>
-    <section class="cont" id="sports">
-        <ol>
-            <li>体育新闻1</li>
-            <li>体育新闻2</li>
-            <li>体育新闻3</li>
-            <li>体育新闻4</li>
-            <li>体育新闻5</li>
-            <li>体育新闻6</li>
-            <li>体育新闻7</li>
-        </ol>
-    </section>
-    <section class="cont" id="funny">
-        <ol>
-            <li>娱乐新闻1</li>
-            <li>娱乐新闻2</li>
-            <li>娱乐新闻3</li>
-            <li>娱乐新闻4</li>
-            <li>娱乐新闻5</li>
-            <li>娱乐新闻6</li>
-            <li>娱乐新闻7</li>
-        </ol>
-    </section>
-</div>
-<script>
-    // 目标： 默认显示一个 当前的样式
-    //  点击导航，实现切换
-    //  key 表示的当前显示的是第几个
+    <div class="tabs">
+        <nav>
+            <a href="javascript:;" data-cont="local">国内新闻</a>
+            <a href="javascript:;" data-cont="global">国际新闻</a>
+            <a href="javascript:;" data-cont="sports">体育新闻</a>
+            <a href="javascript:;" data-cont="funny">娱乐新闻</a>
+        </nav>
+        <section class="cont" id="local">
+            <ol>
+                <li>国内新闻1</li>
+                <li>国内新闻2</li>
+                <li>国内新闻3</li>
+                <li>国内新闻4</li>
+                <li>国内新闻5</li>
+                <li>国内新闻6</li>
+                <li>国内新闻7</li>
+            </ol>
+        </section>
+        <section class="cont" id="global">
+            <ol>
+                <li>国内新闻1</li>
+                <li>国际新闻2</li>
+                <li>国际新闻3</li>
+                <li>国际新闻4</li>
+                <li>国际新闻5</li>
+                <li>国际新闻6</li>
+            </ol>
+        </section>
+        <section class="cont" id="sports">
+            <ol>
+                <li>体育新闻1</li>
+                <li>体育新闻2</li>
+                <li>体育新闻3</li>
+                <li>体育新闻4</li>
+                <li>体育新闻5</li>
+                <li>体育新闻6</li>
+                <li>体育新闻7</li>
+            </ol>
+        </section>
+        <section class="cont" id="funny">
+            <ol>
+                <li>娱乐新闻1</li>
+                <li>娱乐新闻2</li>
+                <li>娱乐新闻3</li>
+                <li>娱乐新闻4</li>
+                <li>娱乐新闻5</li>
+                <li>娱乐新闻6</li>
+                <li>娱乐新闻7</li>
+            </ol>
+        </section>
+    </div>
+    <script>
+        // 目标： 默认显示一个 当前的样式
+        // 点击导航，实现切换
+        // key 表示的当前显示的是第几个
 
-    (function (key) {
-//         获取所有的导航
-        var navs = document.querySelectorAll('nav a');
-//         遍历 给导航 绑定事件，并且添加当前样式
-        for (var i = 0; i < navs.length; i++) {
-//            如果是用户指定的当前样式
-            if (key == i) {
-                navs[i].classList.add('active');
-//              拿到要显示内容section的id
-                var secId = navs[i].dataset['cont'];
-//               获取对应的section标签
-                document.querySelector('#' + secId).style.display = 'block';
+        (function (key) {
+            // 获取所有的导航
+            var navs = document.querySelectorAll('nav a');
+            // 遍历 给导航 绑定事件，并且添加当前样式
+            for (var i = 0; i < navs.length; i++) {
+                // 如果是用户指定的当前样式
+                if (key == i) {
+                    navs[i].classList.add('active');
+                    // 拿到要显示内容section的id
+                    var secId = navs[i].dataset['cont'];
+                    // 获取对应的section标签
+                    document.querySelector('#' + secId).style.display = 'block';
+                }
+
+                // 给每一个导航绑定点击事件
+                navs[i].onclick = function () {
+                    // 排他
+                    // 之前有active样式的清除, 之前显示的section 隐藏
+                    var currentNav = document.querySelector('.active');
+                    // 获取对应的内容区域 ，让其隐藏
+                    var currentId = currentNav.dataset['cont'];
+                    // 去掉导航的active 样式
+                    currentNav.classList.remove('active');
+                    // 对应的内容区域
+                    document.querySelector('#' + currentId).style.display = 'none';
+
+                    // 突出显示自己 导航添加样式  对应的section 显示
+                    // 给自己添加active样式
+                    this.classList.add('active');
+                    // 对应的section模块显示出来
+                    var myId = this.dataset['cont'];
+                    document.querySelector('#' + myId).style.display = 'block';
+                }
             }
 
-//            给每一个导航绑定点击事件
-            navs[i].onclick = function () {
-                // 排他
-                // 之前有active样式的清除, 之前显示的section 隐藏
-                var currentNav = document.querySelector('.active');
-//                获取对应的内容区域 ，让其隐藏
-                var currentId = currentNav.dataset['cont'];
-//                去掉导航的active 样式
-                currentNav.classList.remove('active');
-//                对应的内容区域
-                document.querySelector('#' + currentId).style.display = 'none';
-
-                //   突出显示自己 导航添加样式  对应的section 显示
-//                给自己添加active样式
-                this.classList.add('active');
-//                对应的section模块显示出来
-                var myId = this.dataset['cont'];
-                document.querySelector('#' + myId).style.display = 'block';
-            }
-        }
-
-    })(0);
+        })(0);
 
 
-</script>
+    </script>
 </body>
+
 </html>
 ```
 

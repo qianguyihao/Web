@@ -83,6 +83,13 @@
 
 ![](http://img.smyhvae.com/2015-10-01-cnblogs_html_40.png)
 
+
+**css 属性**：
+
+```css
+list-style-position: inside   /* 给 ul 设置这个属性后，将小圆点包含在 li 元素的内部 */
+```
+
 #### ul标签实际应用场景：
 
 场景1、导航条：
@@ -615,7 +622,7 @@ POST方式：
 	- `password`：密码类型
 	- `radio`：单选按钮，名字相同的按钮作为一组进行单选（单选按钮，天生是不能互斥的，如果想互斥，必须要有相同的name属性。name就是“名字”。
 ）。非常像以前的收音机，按下去一个按钮，其他的就抬起来了。所以叫做radio。
-	- `checkbox`：多选按钮，**名字相同的按钮**作为一组进行选择。
+	- `checkbox`：多选按钮，**name 属性值相同的按钮**作为一组进行选择。
 	- `checked`：将单选按钮或多选按钮默认处于选中状态。当`<input>`标签的`type="radio"`时，可以用这个属性。属性值也是checked，可以省略。
 	- `hidden`：隐藏框，在表单中包含不希望用户看见的信息
 	- `button`：普通按钮，结合js代码进行使用。
@@ -637,7 +644,7 @@ POST方式：
 
 > 备注：HTML5中，input的类型又增加了很多（比如date、color，我们会在 html5 中讲到）。
 
-举例：
+**举例**：
 
 ```html
 	<form>
@@ -645,8 +652,8 @@ POST方式：
 		昵称：<input value="哈哈" readonly=""><br>
 		名字：<input type="text" value="name" disabled=""><br>
 		密码：<input type="password" value="pwd" size="50"><br>
-		性别：<input type="radio" name="gender" value="male" checked="">男
-			  <input type="radio" name="gender" value="female" >女<br>
+		性别：<input type="radio" name="gender" id="radio1" value="male" checked="">男
+			  <input type="radio" name="gender" id="radio2" value="female" >女<br>
 		爱好：<input type="checkbox" name="love" value="eat">吃饭
 			  <input type="checkbox" name="love" value="sleep">睡觉
 			  <input type="checkbox" name="love" value="bat">打豆豆
@@ -657,7 +664,9 @@ POST方式：
 
 ![](http://img.smyhvae.com/2015-10-02-cnblogs_html_33.png)
 
-四种按钮的举例：
+注意，多个个单选框的input标签中，name 的属性值可以相同，但是 **id 的属性值必须是唯一的**。我们知道，html的标签中，id的属性值是唯一的。
+
+**四种按钮的举例**：
 
 ```html
 	<form>
@@ -812,7 +821,7 @@ text就是“文本”，area就是“区域”。
 <input type="radio" name="sex" id="nv"  /> <label for="nv">女</label>
 ```
 
-上方代码中，input元素要有一个id，然后label标签有一个for属性，和id相同，那么这个label和input就有绑定关系了。
+上方代码中，让label标签的**for 属性值**，和 input 标签的 **id 属性值相同**，那么这个label和input就有绑定关系了。
 
 
 当然了，复选框也有label：（任何表单元素都有label）
