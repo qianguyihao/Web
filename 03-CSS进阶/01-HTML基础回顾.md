@@ -7,7 +7,7 @@
 
 - html 元素的嵌套关系
 
-- html 元素的默认样式和定制化
+- html 元素的默认样式和 CSS Reset
 
 - html 常见面试题
 
@@ -126,7 +126,7 @@ div 是最常见的元素，大多数场景下，都可以用div（实在不行�
 
 按照内容分类：
 
-20191003_1946.png
+![](http://img.smyhvae.com/20191003_1946.png)
 
 图片来源：<https://html.spec.whatwg.org/multipage/dom.html#kinds-of-content>
 
@@ -140,7 +140,7 @@ div 是最常见的元素，大多数场景下，都可以用div（实在不行�
 
 **注意**：在 HTML5 中 `a > div` 是合法的， `div > a > div`是不合法的 ；但是在 html 4.0.1 中， `a > div` 仍然是不合法的。
 
-## html 元素的默认样式和定制化
+## html 元素的默认样式和 CSS Reset
 
 比如下拉框这种比较复杂的元素，是自带默认样式的。如果没有这个默认样式，则该元素在页面上不会有任何表现，则必然增加一些工作量。
 
