@@ -1,22 +1,17 @@
 
-
 > 本文最初于2015-10-01发表于[博客园](http://www.cnblogs.com/smyhvae/p/4850684.html)，并在[GitHub](https://github.com/qianguyihao/Web)上持续更新**前端的系列文章**。欢迎在GitHub上关注我，一起入门和进阶前端。
 
 > 以下是正文。
 
-
 国庆节快乐，还在加班的童鞋，良辰必有重谢！
 
 ## 本文主要内容
-
 
 - 头标签
 - 排版标签：`<p>` &nbsp;&nbsp;&nbsp; `<div>` &nbsp;&nbsp;&nbsp; `<span>`&nbsp;&nbsp;&nbsp;`<br>` &nbsp;&nbsp;&nbsp; `<hr>` &nbsp;&nbsp;&nbsp; `<center>` &nbsp;&nbsp;&nbsp; `<pre>`
 - 字体标记：`<h1>`&nbsp;&nbsp;&nbsp; `<font>`&nbsp;&nbsp;&nbsp; `<b>`&nbsp;&nbsp;&nbsp; `<u>` &nbsp;&nbsp;&nbsp;`<sup>` &nbsp;&nbsp;&nbsp;`<sub>`
 - 超链接
 - 图片标签
-
-
 
 ## 前言
 
@@ -29,25 +24,17 @@ web标准介绍：
 - web标准规范的分类：结构标准、表现标准、行为标准。
 - 结构：html。表现：css。行为：JavaScript。
 
-
 web标准总结：
 
 - 结构标准：相当于人的身体。html就是用来制作网页的。
 - 表现标准： 相当于人的衣服。css就是对网页进行美化的。
 - 行为标准： 相当于人的动作。JS就是让网页动起来，具有生命力的。
 
-
-
 ### 浏览器介绍
 
 浏览器是网页运行的平台，常用的浏览器有IE、火狐（Firefox）、谷歌（Chrome）、猎豹浏览器、Safari和Opera等。如下图所示：
 
 ![](http://img.smyhvae.com/20170628_1352.png)
-
-
-
-
-
 
 浏览器内核：
 
@@ -60,18 +47,9 @@ web标准总结：
 
 PS：「浏览器内核」也就是浏览器所采用的「渲染引擎」，渲染引擎决定了浏览器如何显示网页的内容以及页面的格式信息。**渲染引擎是兼容性问题出现的根本原因。**
 
-
-
 ### Sublime Text 的使用
 
-详情请移步至：[Sublime Text使用技巧](https://github.com/smyhvae/tools/blob/master/01-%E4%B8%AA%E4%BA%BA%E6%95%B4%E7%90%86/02-Sublime%20Text%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7.md)
-
-
-
-
-
-
-
+详情请移步至：[Sublime Text使用技巧](https://github.com/qianguyihao/Tools/blob/master/%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/02-Sublime%20Text%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7.md)
 
 ## 一、HTML的介绍
 
@@ -86,8 +64,6 @@ PS：「浏览器内核」也就是浏览器所采用的「渲染引擎」，渲
 
 **注意**：HTML语言不是一个编程语言(有编译过程)，而是一个**标记语言**(<font color=#0000ff>**没有编译过程**</font>)，HTML页面直接由浏览器解析执行。
 
-
-
 #### HTML是负责描述文档语义的语言
 
 html中，除了**语义**，其他什么都没有。
@@ -100,8 +76,6 @@ html是一个纯本文文件（就是用txt文件改名而成），用一些标�
 
 - 正确答案：给文本增加主标题的语义。
 - 错误答案：给文字加粗、加黑、变大。
-
-
 
 ### 2、HTML的历史
 
@@ -129,17 +103,18 @@ XHTML是<font color="blue">**严格的、纯净的**</font>HTML。
 - dhtml：dynamic，动态的。`javascript + css + html`合起来的页面就是一个dhtml。
 - http：超文本传输协议。用来规定客户端浏览器和服务端交互时数据的一个格式。SMTP：邮件传输协议，ftp：文件传输协议。
 
-
 ### 4、HTML的编辑工具
 
+> 用的最多的编辑器是： VS Code 和 Sublime Text。
+
+- VS Code：最火的前端代码编辑器。
+- Sublime Text：很轻量的代码编辑器。
 - NotePad：记事本。
 - EditPlus：语法高亮显示。技巧： 根据颜色判断单词是否出错 （不是100%）。不好的地方：没有代码提示。
 - UltraEdit：根据颜色判断单词是否出错，可以显示2进制数据。
-- Sublime Text：新一代的代码编辑器（用的人很多）。
 - dw(dreamweaver，专业工具) ：建立WEB站点和应用程序的专业工具。它将布局功能、开发工具、代码编辑组合在一起。有代码提示。
 
 PS：后缀名不能决定文件格式，只能决定打开文件打开的方式。
-
 
 ### 5、计算机编码介绍
 
@@ -167,7 +142,6 @@ PS：后缀名不能决定文件格式，只能决定打开文件打开的方式
 根据字符的不同，选择其编码的长度。比如：一个字符A用1个字节表示，一个汉字用2个字节表示。
 
 毫无疑问，开发中，都用**UTF-8**编码吧，准没错。
-
 
 **中文能够使用的字符集两种：**
 
@@ -202,13 +176,8 @@ PS：后缀名不能决定文件格式，只能决定打开文件打开的方式
 - qq网、网易、搜狐都是使用gb2312。这些公司，都追求显示速度。
 - 新华网藏语频道，使用的是UTF-8，保证字符集的数量。
 
-
-
 对了，我们是怎么查看网页的编码方式的呢？在浏览器中打开网页，右键，选择“查看网页源代码”，找到me标签中的charset属性即可。
 那么，我们为什么可以查看网页的源代码呢？因为这个打开的网页已经存到我的临时文件夹里了，临时文件夹里的html是纯文本文件，纯文本文件自然剋以查看网页的源代码了。
-
-
-
 
 ### 6、HTML颜色介绍
 
@@ -225,9 +194,6 @@ PS：后缀名不能决定文件格式，只能决定打开文件打开的方式
  - 在数字视频中，对RGB三基色各进行8位编码就构成了大约1678万种颜色，这就是我们常说的真彩色。所有显示设备都采用的是RGB色彩模式。
  - RGB各有256级(0-255)亮度，256级的RGB色彩总共能组合出约1678万种色彩，即256×256×256=16777216。
 
-
-
-
 ## 二、HTML的规范
 
 - HTML是一个弱势语言
@@ -239,7 +205,6 @@ PS：后缀名不能决定文件格式，只能决定打开文件打开的方式
 	- body部分：我们所写的代码必须放在此标签內。
 
 目前，IE浏览器是完全不支持H5的，支持最好的是Opera浏览器，可以支持95%以上；其次是google，可以支持一部分H5。
-
 
 ### 1、编写XHTML的规范：
 
@@ -257,10 +222,6 @@ PS：后缀名不能决定文件格式，只能决定打开文件打开的方式
 （5）所有的属性必须有值。`<hr noshade="noshade">`、`<input  type="radio" checked="checked" />`
 
 （6）XHTML文档开头必须要有DTD文档类型定义
-
-
-
-
 
 ### 2、HTML的基本语法特性
 
@@ -290,8 +251,6 @@ HTML中所有的**文字之间**，如果有空格、换行、tab都将被折叠
 
 ![](http://img.smyhvae.com/20170629_2245.jpg)
 
-
-
 ## 三、HTML结构详解
 
 > 备注：
@@ -299,32 +258,31 @@ HTML中所有的**文字之间**，如果有空格、换行、tab都将被折叠
 > - 每个标签都有私有属性。也都有公有属性。
 > - html中表示长度的单位都是**像素**。HTML只有一种单位就是像素。
 
-HTML标签通常是成对出现的（<font color="blue">**双边标记**</font>），比如 `<div>` 和 `</div>`，也有单独呈现的标签（<font color="blue">**单边标记**</font>），如：`<br />`、`<hr />`和`<img src=“images/1.jpg” />`等。
+HTML标签通常是成对出现的（<font color="blue">**双边标记**</font>），比如 `<div>` 和 `</div>`，也有单独呈现的标签（<font color="blue">**单边标记**</font>），如：`<br />`、`<hr />`和`<img src="images/1.jpg" />`等。
 
 属性与标记之间、各属性之间需要以空格隔开。属性值以双引号括起来。
 
+### 快速生成 html 的骨架
 
-
-#### 使用`Emmet`插件快速生成html的骨架
-
-在Sublime Text中安装`Emmet`插件。
-
-新建html文件，输入`html:xt`，按`Tab`键后（或者按Ctrl+E），自动生成的代码如下：
+**方式1**：在 VS Code 中新建 html 文件，输入`html:5`，按 `Tab`键后，自动生成的代码如下：
 
 ```html
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-	<title>Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Document</title>
 </head>
 <body>
-
+    
 </body>
 </html>
+
 ```
 
-新建html，输入`html:5`后，按 `Tab`键后，自动生成的代码如下：
+**方式2**：在Sublime Text中安装`Emmet`插件。新建html文件，输入`html:5`，按`Tab`键后，自动生成的代码如下：
 
 ```html
 <!DOCTYPE html>
@@ -339,45 +297,43 @@ HTML标签通常是成对出现的（<font color="blue">**双边标记**</font>�
 </html>
 ```
 
+**方式3**：在Sublime Text中安装`Emmet`插件。新建html文件，输入`html:xt`，按`Tab`键后（或者按Ctrl+E），自动生成的代码如下：
 
+```html
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+</head>
+<body>
 
+</body>
+</html>
+```
+
+上面的方式2和方式3中，我们会发现，第一行的内容有些不太一样，这就是我们接下来要讲的**文档声明头**。
 
 ### 1、文档声明头
 
 
-任何一个标准的HTML页面，第一行一定是一个以
+任何一个标准的HTML页面，第一行一定是一个以`<!DOCTYPE ……>`开头的语句。
 
-```
-<!DOCTYPE ……
-```
-
-开头的语句。
 这一行，就是文档声明头，DocType Declaration，简称DTD。此标签可告知浏览器文档使用哪种 HTML 或 XHTML 规范。
 
 #### HTML4.01有哪些规范呢？
 
-首先我们先确定一件事儿，我们现在学习的是**HTML4.01**这个版本，这个版本是IE6开始兼容的。**HTML5是IE9开开始兼容的**。但是IE6、7、8这些浏览器还不能过早的淘汰，所以这几年网页还是应该用HTML4.01来制作。如今，手机、移动端的网页，就可以使用HTML5了，因为其兼容性更高。
+**HTML4.01**这个版本是IE6开始兼容的。**HTML5是IE9开开始兼容的**。如今，手机、移动端的网页，就可以使用HTML5了，因为其兼容性更高。
 
 说个题外话，html1 至 html3 是美国军方以及高等研究所用的，并未对外公开。
 
-HTML4.01里面有两大种规范，每大种规范里面又各有3种小规范。所以一共6种规范（见下面）：
+HTML4.01里面有两大种规范，每大种规范里面又各有3种小规范。所以一共6种规范（见下图）。
 
-> HTML4.01里面规定了**普通**和**XHTML**两大种规范。
+HTML4.01里面规定了**普通**和**XHTML**两大种规范。HTML觉得自己有一些规定不严谨，比如，标签是否可以用大写字母呢？`<H1></H1>`所以，HTML就觉得，把一些规范严格的标准，又制定了一个XHTML1.0。在XHTML中的字母X，表示“严格的”。
 
-> HTML觉得自己有一些规定不严谨，比如，标签是否可以用大写字母呢？`<H1></H1>`
-
-> 所以，HTML就觉得，把一些规范严格的标准，又制定了一个XHTML1.0。在XHTML中的字母X，表示“严格的”。
-
-总结一下，HTML4.01一共有6种DTD，说白了，HTML第一行语句一共有6种：
-
-
+总结一下，HTML4.01一共有6种DTD。说白了，HTML的第一行语句一共有6种情况：
 
 ![](http://img.smyhvae.com/20170629_1600.png)
-
-
-
-
-
 
 下面对上图中的三种小规范进行解释：
 
@@ -391,16 +347,39 @@ HTML4.01里面有两大种规范，每大种规范里面又各有3种小规范�
 - **Frameset**：表示“框架”，在框架的页面使用。
 
 在sublime输入的html:xt，x表示XHTML，t表示transitional。
-HTML5中极大的简化了DTD，也就是说HTML5中就没有XHTML了（W3C自己打脸了）：
+
+在HTML5中极大的简化了DTD，也就是说HTML5中就没有XHTML了（W3C自己打脸了）：
 
 ```
 <!DOCTYPE html>
 ```
 
-
-
-
 ### 2、头标签
+
+#### html5 的比较完整的骨架：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<meta name="Author" content="">
+    <meta name="Keywords" content="牛逼，很牛逼，特别牛逼" />
+    <meta name="Description" content="网易是中国领先的互联网技术公司，为用户提供免费邮箱、游戏、搜索引擎服务，开设新闻、娱乐、体育等30多个内容频道，及博客、视频、论坛等互动交流，网聚人的力量。" />
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+```
+
+面试题：
+
+- 问：网页的head标签里面，表示的是页面的配置，有什么配置？
+- 答：字符集、关键词、页面描述、页面标题、IE适配、视口、iPhone小图标等等。
 
 头标签都放在<head></head>头部分之间。包括：`<title>`、`<base>`、`<meta>`、`<link>`
 
@@ -410,26 +389,8 @@ HTML5中极大的简化了DTD，也就是说HTML5中就没有XHTML了（W3C自�
  - `<body>`：用于定义HTML文档所要显示的内容，也称为主体标签。我们所写的代码必须放在此标签內。
  - `<link>`：定义文档与外部资源的关系。
 
+**meta 标签**：
 
-
-我们打开EditPlus软件，新建一个html文件，自动生成的代码如下：
-
-```html
-<!doctype html>
-<html lang="en">
- <head>
-  <meta charset="UTF-8">
-  <meta name="Generator" content="EditPlus®">
-  <meta name="Author" content="">
-  <meta name="Keywords" content="">
-  <meta name="Description" content="">
-  <title>Document</title>
- </head>
- <body>
-
- </body>
-</html>
-```
 上面的`<meta>`标签都不用记，但是另外还有一个`<meta>`标签是需要记住的：
 
 ```html
@@ -437,12 +398,9 @@ HTML5中极大的简化了DTD，也就是说HTML5中就没有XHTML了（W3C自�
 ```
 上面这个标签的意思是说，3秒之后，自动跳转到百度页面。
 
-我们接下来对各个头标签进行介绍。
+常见的几种 meta 标签如下：
 
-
-#### （1）字符集 charset
-
-我们发现，在头标签中，有下面这种标签：
+（1）字符集 charset：
 
 ```html
 <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
@@ -450,13 +408,22 @@ HTML5中极大的简化了DTD，也就是说HTML5中就没有XHTML了（W3C自�
 
 字符集用meta标签中的`charset`定义，meta表示“元”。“元”配置，就是表示基本的配置项目。
 
-
-charset就是charactor set（即“字符集”），这里采用的是。这个meta不用背，用sublime生成就行。
+charset就是charactor set（即“字符集”）。
 
 浏览器就是通过meta来看网页是什么字符集的。比如你保存的时候，meta写的和声明的不匹配，那么浏览器就是乱码。
 
 
-#### （2）定义“关键词”
+（2）视口 viewport：
+
+```html
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+```
+
+`width=device-width` ：表示视口宽度等于屏幕宽度。
+
+viewport 这个知识点，初学者还比较难理解，以后学 Web 移动端的时候会用到。
+
+（2）定义“关键词”：
 
 举例如下：
 
@@ -466,23 +433,11 @@ charset就是charactor set（即“字符集”），这里采用的是。这个
 
 这些关键词，就是告诉搜索引擎，这个网页是干嘛的，能够提高搜索命中率。让别人能够找到你，搜索到你。
 
-
-#### （3）定义“页面描述”
+（3）定义“页面描述”：
 
 meta除了可以设置字符集，还可以设置关键字和页面描述。
 
-
-我们把含有`meta`标签的这一行代码抽象一下：
-
-```html
-<meta name=" " content=" ">
-```
-
-name即“名字”，content即“内容”。
-
-
 只要设置Description页面描述，那么百度搜索结果，就能够显示这些语句，这个技术叫做**SEO**（search engine optimization，搜索引擎优化）。
-
 
 设置页面描述的举例：
 
@@ -495,43 +450,22 @@ name即“名字”，content即“内容”。
 ![](http://img.smyhvae.com/20170629_1743.png)
 
 
-#### （4）title标签
+**title 标签**:
+
+用于设置网页标题：
 
 ```html
-		<title>网页的标题</title>
+	<title>网页的标题</title>
 ```
-
 title也是有助于SEO搜索引擎优化的。
 
-
-#### html的完整骨架：
-
-综上所述，html的比较完整的骨架是这样：
+**base标签**：
 
 ```html
-	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-	<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
-	<head>
-		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-		<meta name="Keywords" content="牛逼，很牛逼，特别牛逼" />
-		<meta name="Description" content="网易是中国领先的互联网技术公司，为用户提供免费邮箱、游戏、搜索引擎服务，开设新闻、娱乐、体育等30多个内容频道，及博客、视频、论坛等互动交流，网聚人的力量。" />
-		<title>Document</title>
-	</head>
-	<body>
-
-	</body>
-	</html>
+<base href="/">
 ```
 
-
-面试题：
-
-- 问：网页的head标签里面，表示的是页面的配置，有什么配置？
-- 答：字符集、关键词、页面描述、页面标题。（今后我们还能看见一些其他的配置：IE适配、视口、iPhone小图标等等）
-
-
-
-
+base 标签用于指定基础的路径。指定之后，所有的 a 链接都是以这个路径为基准。
 
 ### 3、`<body>`标签的属性
 
@@ -552,9 +486,7 @@ title也是有助于SEO搜索引擎优化的。
 
 ![](http://img.smyhvae.com/2015-10-02-cnblogs_html_05.gif)
 
-
 接下来，我们讲一下`<body>`里的各种标签的属性。
-
 
 ## 一、排版标签
 
@@ -563,8 +495,6 @@ title也是有助于SEO搜索引擎优化的。
 ```html
 <!-- 注释  -->
 ```
-
-
 
 ### 段落标签`<p>`
 
@@ -581,7 +511,6 @@ title也是有助于SEO搜索引擎优化的。
 
 <br>
 
-
 段落，是英语paragraph“段落”缩写。
 
 HTML标签是分等级的，HTML将所有的标签分为两种：
@@ -591,9 +520,7 @@ HTML标签是分等级的，HTML将所有的标签分为两种：
 - **容器级标签**：div、h系列、li、dt、dd。容器级标签里可以放置任何东西。
 
 
-
 从学习p的第一天开始，就要死死记住：**p标签是一个文本级标签，p里面只能放文字、图片、表单元素**。其他的一律不能放。
-
 
 错误写法：（尝试把 h 放到 p 里）
 
@@ -606,15 +533,11 @@ HTML标签是分等级的，HTML将所有的标签分为两种：
 
 网页效果如下：
 
-
 ![](http://img.smyhvae.com/20170630_1102.png)
 
 上图显示，浏览器不允许你这么做，我们使用Chrome的F12审查元素发现，浏览器自己把p封闭掉了，不让你去包裹h1。
 
 PS：Chrome浏览器是世界上HTML5支持最好的浏览器。提供了非常好的开发工具，非常适合我们开发人员使用。审查元素功能的快捷键是F12。
-
-
-
 
 ### 块级标签 `<div>`和`<span>`
 
@@ -642,7 +565,6 @@ div标签是一个**容器级**标签，里面什么都能放，甚至可以放d
 
 span也是表达“小区域、小跨度”的标签，但是是一个**文本级**的标签。
 就是说，span里面只能放置文字、图片、表单元素。 span里面不能放p、h、ul、dl、ol、div。
-
 
 span里面是放置小元素的，div里面放置大东西的。举例如下：
 
@@ -675,10 +597,6 @@ div举例：
 ```
 
 所以，我们亲切的称呼这种模式叫做“**div+css**”。**div标签负责布局，负责结构，负责分块。css负责样式**。
-
-
-
-
 
 
 ### 换行标签`<br>`（已废弃）
@@ -742,8 +660,6 @@ This <br> is a para<br>graph with line breaks
 
 好吧，其实这个标签也用的比较少。
 
-
-
 ## 二、字体标签
 
 ### 标题
@@ -752,7 +668,6 @@ This <br> is a para<br>graph with line breaks
 效果演示：
 
 ![Paste_Image.png](http://img.smyhvae.com/2015-10-01-cnblogs_html_09.png)
-
 
 ### 字体标签`<font>`（已废弃）
 
@@ -820,7 +735,6 @@ http://img.smyhvae.com/2015-10-01-cnblogs_html_13.png)
 |²|平方2（上标2）|`&sup2;`|
 |³|立方3（上标3）|`&sup3;`|
 
-
 ### 一些小标签/小标记
 
 - `<u>`：下划线标记
@@ -833,17 +747,13 @@ http://img.smyhvae.com/2015-10-01-cnblogs_html_13.png)
 
 ![Paste_Image.png](http://img.smyhvae.com/2015-10-01-cnblogs_html_15.png)
 
-
-
 上面的这几个标签，常用于做一些小装饰、小图标。比如：
 
 20180118_2340.png
 
 这张图中，我们通过查看京东网站的代码发现，箭头处的小图标都是用的标签`<i>`。
 
-
 div的主要目的是用来布局，而小装饰却可以用来
-
 
 ### 粗体标签`<b>`或`<strong>`（已废弃）
 
@@ -864,8 +774,6 @@ O<sup>2</sup>    5<sub>3</sub>
 
 ![Paste_Image.png](http://img.smyhvae.com/2015-10-01-cnblogs_html_16.png)
 
-
-
 ## 三、超链接
 
 超链接有三种形式：
@@ -879,7 +787,6 @@ a是英语`anchor`“锚”的意思，就好像这个页面往另一个页面�
 
 href是英语`hypertext reference`超文本地址的缩写。读作“喝瑞夫”，不要读作“喝夫”。
 
-
 效果：
 
 ![Paste_Image.png](http://img.smyhvae.com/2015-10-01-cnblogs_html_17.png)
@@ -889,11 +796,6 @@ href是英语`hypertext reference`超文本地址的缩写。读作“喝瑞夫�
 ```
 	<a href="http://www.baidu.com" target="_blank">点我点我</a>
 ```
-
-
-
-
-
 
 **2、锚链接**：
 指给超链接起一个名字，作用是**在本页面或者其他页面的的不同位置进行跳转**。比如说，在网页底部有一个向上箭头，点击箭头后回到顶部，这个就是利用到了锚链接。
@@ -934,7 +836,6 @@ href是英语`hypertext reference`超文本地址的缩写。读作“喝瑞夫�
 
 
 
-
 `title`属性举例：
 
 ```html
@@ -954,7 +855,6 @@ href是英语`hypertext reference`超文本地址的缩写。读作“喝瑞夫�
 blank就是“空白”的意思，就表示新建一个空白窗口。为啥有一个_ ，就是规定，没啥好解释的。
 也就是说，如果不写`target=”_blank”`那么就是在相同的标签页打开，如果写了`target=”_blank”`，就是在新的空白标签页中打开。
 
-
 #### 备注1：分清楚img和a标签的各自的属性
 
 区别如下：
@@ -963,8 +863,6 @@ blank就是“空白”的意思，就表示新建一个空白窗口。为啥有
 <img src="1.jpg" />
 <a href="1.html"></a>
 ```
-
-
 #### 备注2：a是一个文本级的标签
 
 比如一个段落中的所有文字都能够被点击，那么应该是p包裹a：
@@ -986,7 +884,6 @@ blank就是“空白”的意思，就表示新建一个空白窗口。为啥有
 ```
 
 a的语义要小于p，a就是可以当做文本来处理，所以p里面相当于放的就是纯文字。
-
 
 ## 四、图片标签
 
@@ -1026,7 +923,6 @@ img是自封闭标签，也称为单标签。
 
 img 是image“图片”的简写，src 是英语source“资源”的缩写。
 
-
 相对路径不会出现这种情况：
 
 ```html
@@ -1034,8 +930,6 @@ aaa/../bbb/1.jpg
 ```
 
 `../`要么不写，要么就写在开头。
-
-
 
 举例2：
 
@@ -1046,7 +940,6 @@ aaa/../bbb/1.jpg
 效果：
 
 ![Paste_Image.png](http://img.smyhvae.com/20151001_19.jpg)
-
 
 相对路径的面试题。现有如下文件层级图：
 
@@ -1063,7 +956,6 @@ aaa/../bbb/1.jpg
 ```html
 <img src="../../photo/1.png" />
 ```
-
 
 #### 2、写法二：**绝对路径**
 
@@ -1110,10 +1002,7 @@ aaa/../bbb/1.jpg
 
 - 绝对不允许使用file://开头的东西，这个是完全错误的！
 
-
-
 ### img标签的其他属性
-
 
  - `width`：宽度
  - `height`：高度
@@ -1163,8 +1052,6 @@ aaa/../bbb/1.jpg
 （1）如果要想保证图片等比例缩放，请只设置width和height中其中一个。
 （2）如果想实现图文混排的效果，请使用align属性，取值为left或right。
 
-<br>
-
 ### 热点问题
 
 指的是对图片的**局部区域**加超链接。
@@ -1205,11 +1092,7 @@ aaa/../bbb/1.jpg
 
 ![3.gif](http://img.smyhvae.com/3.gif)
 
-最后，送上妹子的近照一张。楼主已经仁至义尽了。
-
-![](http://img.smyhvae.com/2015-10-01-cnblogs_html_20150219214912_11994.jp)
-
-PS：美女图就不放在 GitHub 上了，这么多 star，放了也不合适。去我的[博客园](https://www.cnblogs.com/qianguyihao/p/4850684.html)看吧~
+最后，送上妹子的近照一张。楼主已经仁至义尽了：http://img.smyhvae.com/2015-10-01-cnblogs_html_20150219214912_11994.jpg
 
 怎么？还没看够？且看下文：[HTML标签----图文详解（二）](http://www.cnblogs.com/smyhvae/p/4852863.html)
 
@@ -1220,9 +1103,6 @@ PS：美女图就不放在 GitHub 上了，这么多 star，放了也不合适�
 扫一扫，你将发现另一个全新的世界，而这将是一场美丽的意外：
 
 ![](http://img.smyhvae.com/cnblogs/%E7%94%9F%E5%91%BD%E5%9B%A2%E9%98%9F%E5%85%AC%E4%BC%97%E5%8F%B7%E4%BA%8C%E7%BB%B4%E7%A0%81.jpg)
-
-
-
 
 
 

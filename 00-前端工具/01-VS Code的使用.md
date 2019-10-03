@@ -541,8 +541,6 @@ GitLens 在 Git 管理上有很多强大的功能，比如：
 }
 ```
 
-
-
 ### highlight-icemode：选中相同的代码时，让高亮显示更加明显【荐】
 
 VSCode自带的高亮显示，实在是不够显眼。用插件支持一下吧。
@@ -553,9 +551,6 @@ VSCode自带的高亮显示，实在是不够显眼。用插件支持一下吧�
 
 
 参考链接：[vscode 选中后相同内容高亮插件推荐](https://blog.csdn.net/palmer_kai/article/details/79548164)
-
-
-
 
 ### 颜色主题推荐： SynthWave '84
 
@@ -576,7 +571,6 @@ VSCode自带的高亮显示，实在是不够显眼。用插件支持一下吧�
 ![](http://img.smyhvae.com/20190418_2005.png)
 
 ### Settings Sync 【荐】
-
 
 - 地址：<https://github.com/shanalikhan/code-settings-sync>
 
@@ -605,4 +599,3 @@ css颜色高亮显示。
 ## 参考链接
 
 「Vscode」打造类sublime的高颜值编辑器：https://idoubi.cc/2019/07/08/vscode-sublime-theme/
-
