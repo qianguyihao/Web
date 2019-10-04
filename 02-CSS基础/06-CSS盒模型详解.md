@@ -118,23 +118,23 @@ CSS盒模型和IE盒模型的区别：
 盒子1：
 
 ```css
-	.box1{
-		width: 100px;
-		height: 100px;
-		padding: 100px;
-		border: 1px solid red;
-	}
+.box1{
+	width: 100px;
+	height: 100px;
+	padding: 100px;
+	border: 1px solid red;
+}
 ```
 
 盒子2：
 
 ```css
-	.box2{
-		width: 250px;
-		height: 250px;
-		padding: 25px;
-		border: 1px solid red;
-	}
+.box2{
+	width: 250px;
+	height: 250px;
+	padding: 25px;
+	border: 1px solid red;
+}
 ```
 
 
@@ -482,7 +482,7 @@ div{
 	height: 0;
 	border: 50px solid transparent;
 	border-top-color: red;
-    border-bottom: none;
+	border-bottom: none;
 }
 
 ```
@@ -491,7 +491,7 @@ div{
 
 （1）当我们设置盒子的width和height为0时，此时效果如下：
 
-![](http://img.smyhvae.com/20170728_1640.png)
+![](http://img.smyhvae.com/20170728_1639.png)
 
 （2）然后将border的底部取消：
 
