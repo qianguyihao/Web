@@ -4,10 +4,7 @@
 
 > 以下是正文。
 
-
-## background系列属性
-
-### 常见背景属性
+## background 的常见背景属性
 
 CSS样式中，常见的背景属性有以下几种：（经常用到，要记住）
 
@@ -25,58 +22,74 @@ CSS样式中，常见的背景属性有以下几种：（经常用到，要记�
 - `background-attachment:scroll;` 设置背景图片是否跟着滚动条一起移动。
 属性值可以是：`scroll`（与fixed属性相反，默认属性）、`fixed`（背景就会被固定住，不会被滚动条滚走）。
 
-- 另外还有一个简写属性叫做`background`，它的作用是：将上面的多个属性写在一个声明中。
+- 另外还有一个综合属性叫做`background`，它的作用是：将上面的多个属性写在一个声明中。
 
 上面这几个属性经常用到，需要记住。现在我们逐个进行讲解。
 
+## background-color：背景颜色的表示方法
 
-### background-color：背景颜色的表示方法
-
-css2.1中，背景颜色的表示方法有三种：单词、rgb表示法、十六进制表示法。
+css2.1 中，背景颜色的表示方法有三种：单词、rgb表示法、十六进制表示法。
 
 比如红色可以有下面的三种表示方法：
 
-```
+```css
 	background-color: red;
 	background-color: rgb(255,0,0);
 	background-color: #ff0000;
 ```
 
+CSS3 中，有一种新的表示颜色的方式：RGBA或者HSLA。
+
+RGBA、HSLA可应用于**所有**使用颜色的地方。
+
 下面分别介绍。
 
-**1、用英语单词来表示：**
+### 用英语单词表示
 
-能够用英语单词来表述的颜色，都是简单颜色。比如红色：
+能够用英语单词来表述的颜色，都是简单颜色。比如红色、绿色等。代码举例：
 
-```
+```css
 background-color: red;
 ```
+### RGB 表示法
 
-**2、rgb表示法：**
-
-rgb表示三原色“红”red、“绿”green、“蓝”blue。
+RGB 表示三原色“红”red、“绿”green、“蓝”blue。
 
 光学显示器中，每个像素都是由三原色的发光原件组成的，靠明亮度不同调成不同的颜色的。r、g、b的值，每个值的取值范围0~255，一共256个值。
 
 比如红色：
 
-```
+```css
 background-color: rgb(255,0,0);
 ```
 
 黑色：
 
-```
+```css
 background-color: rgb(0,0,0);
 ```
 
 颜色可以叠加，比如黄色就是红色和绿色的叠加：
 
-```
+```css
 background-color: rgb(255,255,0);
 ```
 
-**3、十六进制表示法：**
+### RGBA 表示法
+
+```javascript
+    background-color: rgba(0, 0, 255, 0.3);
+
+    border: 30px solid rgba(0, 255, 0, 0.3);
+```
+
+解释：
+
+- RGBA 即：Red、Green、Blue、Alpha
+
+- R、G、B 的取值范围是：0~255
+
+### 十六进制表示法
 
 比如红色：
 
@@ -84,7 +97,7 @@ background-color: rgb(255,255,0);
 background-color: #ff0000;
 ```
 
-PS:所有用#开头的值，都是16进制的。
+PS:所有用`#`开头的值，都是16进制的。
 
 这里，我们就要学会16进制与10进制之间的转换。下面举几个例子。
 
@@ -97,7 +110,6 @@ PS:所有用#开头的值，都是16进制的。
 所以，#ff0000就等于rgb(255,0,0)。
 
 `background-color: #123456;`等价于`background-color: rgb(18,52,86);`
-
 
 **十六进制可以简化为3位，所有#aabbcc的形式，能够简化为#abc**。举例如下：
 
@@ -148,8 +160,37 @@ PS:所有用#开头的值，都是16进制的。
 	#ccc   浅灰
 ```
 
+### HSLA 表示法
 
-### `background-repeat`属性（重要）
+举例：
+
+```javascript
+	background-color: hsla(240,50%,50%,0.4);
+```
+
+解释：
+
+- `H` 色调，取值范围 0~360。0或360表示红色、120表示绿色、240表示蓝色。
+
+- `S` 饱和度，取值范围 0%~100%。值越大，越鲜艳。
+
+- `L` 亮度，取值范围 0%~100%。亮度最大时为白色，最小时为黑色。
+
+- `A` 透明度，取值范围 0~1。
+
+如果不知道 H 的值该设置多少，我们不妨来看一下**色盘**：
+
+![](http://img.smyhvae.com/20180207_1545.png)
+
+推荐链接：[配色宝典](http://www.uisdc.com/how-to-create-color-palettes)
+
+**关于设置透明度的其他方式：**
+
+（1）`opacity: 0.3;` 会将整个盒子及子盒子设置透明度。也就是说，当盒子设置半透明的时候，会影响里面的子盒子。
+
+（2）`background: transparent;` 可以单独设置透明度，但设置的是完全透明（不可调节透明度）。
+
+## `background-repeat`属性
 
 `background-repeat:no-repeat;`设置背景图片是否重复及如何重复，默认平铺满。属性值可以是：
 
@@ -182,7 +223,7 @@ PS：padding的区域也是有背景图的。
 ![](http://img.smyhvae.com/2015-10-03-css-22.png)
 
 
-### `background-position`属性
+## `background-position`属性
 
 `background-position`属性指的是**背景定位**属性。公式如下：
 
@@ -267,7 +308,7 @@ PS：padding的区域也是有背景图的。
 
 上图可以看出，将banner图作为div的背景后，banner图会永远处于网页的正中间（水平方向来看）。
 
-### background-attachment属性
+## background-attachment 属性
 
 - `background-attachment:scroll;` 设置背景图片是否固定。属性值可以是：
 	- `fixed`（背景就会被固定住，不会被滚动条滚走）。
@@ -283,13 +324,13 @@ background属性和border一样，是一个综合属性，可以将多个属性�
 
 举例1:
 
-```
+```css
 	background:red url(1.jpg) no-repeat 100px 100px fixed;
 ```
 
 等价于：
 
-```
+```css
 	background-color:red;
 	background-image:url(1.jpg);
 	background-repeat:no-repeat;
@@ -303,7 +344,7 @@ background属性和border一样，是一个综合属性，可以将多个属性�
 
 比如说，对于下面这样的属性：
 
-```
+```css
 	background: blue url(images/wuyifan.jpg) no-repeat 100px 100px;
 ```
 
@@ -311,10 +352,7 @@ background属性和border一样，是一个综合属性，可以将多个属性�
 
 ![](http://img.smyhvae.com/20170813_1515.png)
 
-
 PS：以后的CSS3内容中，我们会接触到更多的background属性： background-origin、background-clip、background-size（在CSS2.1背景图片是不能调整尺寸，IE9开始兼容）、多背景。
-
-
 
 ## 我的公众号
 
