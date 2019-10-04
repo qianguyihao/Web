@@ -1,6 +1,5 @@
 
 
-
 ## 前言
 
 > CSS已经学了一些基础内容了，我们来讲解一个小案例吧。以[博雅互动](http://www.boyaa.com/)的官网首页举例。
@@ -17,12 +16,9 @@
 
 我们量一下中间四个方形图的width，是1000px，所以，网页版心的宽度是1000px。
 
-
 ### 网页的结构
 
 从结构上来看，网页分为头部（导航栏）、banner区、内容区、底部。
-
-
 
 ## 导航栏的制作
 
@@ -34,8 +30,6 @@
 `class=inner_c`不需要给高，因为它可以被内容撑高。
 
 现在我们需要在`class=inner_c`里放三个东西：左侧的logo、中间的导航栏、右侧的“加入我们”。
-
-
 
 接下来我们开始做右侧的「加入我们」，「加入我们」的背景是带圆角的矩形，这个圆角，实现的方式有两种：要么切图，要么用CSS3实现（IE 7、IE 8不兼容）。我们暂时使用切图来实现。
 
@@ -49,7 +43,6 @@
 - （2）在`class=jrwm`里放一个超链接，并将超链接转为块级元素。
 
 最终，导航栏的代码如下：
-
 
 ```html
 <!DOCTYPE html>
@@ -167,21 +160,17 @@
 
 ![](http://img.smyhvae.com/20180114_1332.gif)
 
-
 ## banenr图
 
 > 因为涉及到 js 的内容，这里先不讲内容区域**轮播图**的效果。
 
 我们首先在导航条和banner图之间加一道墙，即`class=cl`，然后采用隔墙法对其设置`clear: both;`的属性。
 
-
 然后设置banner的背景图片属性，添加banner图。
-
 
 ## 内容区域的制作
 
 导航栏+banner+内容区域的完整代码如下：
-
 
 ```html
 <!DOCTYPE html>
@@ -394,7 +383,6 @@
 
 代码解释：
 
-
 （1）导航栏，左侧的logo：
 
 **错误的写法：**
@@ -417,7 +405,6 @@
     }
 ```
 
-
 这样写虽然视觉效果上达到了，但是搜索引擎是搜不到图片的，不利于SEO。
 
 **正确的写法：**
@@ -431,7 +418,6 @@
 				</a>
 			</h1>
 ```
-
 
 然后将**logo设置为背景图**：
 
@@ -459,50 +445,28 @@
 
 （1）内容区域，“点击播放”右侧的小三角形：
 
-
 我们在“点击播放”的右侧放了一个三角形。这个很有技巧。
 
 ![](http://img.smyhvae.com/20180115_1356.png)
 
-
-
 代码截取如下：
 
-
-
 ```css
-		.content .product ul li p.djbf a{
-			font-size: 12px;
-			color:#38B774;
-			text-decoration: none;
-			background:url(images/sanjiaoxing.png) no-repeat right center;
-			padding-right: 12px;
-		}
+    .content .product ul li p.djbf a{
+        font-size: 12px;
+        color:#38B774;
+        text-decoration: none;
+        background:url(images/sanjiaoxing.png) no-repeat right center;
+        padding-right: 12px;
+    }
 ```
 
 上方代码中，我们在第6行给“点击播放”这个超链接加一个右padding（很关键），然后在第5行把小三角这个背景图放在右padding的位置，就能达到想要的视觉效果。
 
-
-
-（2）
-
-
-导航栏+banner+内容区域的效果如下：
-
+（2）导航栏+banner+内容区域的效果如下：
 
 ![](http://img.smyhvae.com/20180114_1405.png)
 
+工程文件如下：
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+- [2018-03-20-boya.rar](待审核通过)

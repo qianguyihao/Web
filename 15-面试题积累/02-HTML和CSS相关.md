@@ -197,7 +197,7 @@ html代码：
 
         .child {
             display: table-cell;
-            vertical-align: middle; /*来指定行内元素（inline）或表格单元格（table-cell）元素的垂直对齐方式。*/
+            vertical-align: middle; /*指定行内元素（inline）或表格单元格（table-cell）元素的垂直对齐方式。*/
             height: 200px; /*此处的宽高设置无效*/
             width: 200px;
             border: 10px solid blue;
