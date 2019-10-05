@@ -73,6 +73,18 @@ css 中的字体族可以理解成是某一类字体。常见的字体族可以�
 
 （2）有些 Mac 用户会安装 Office 等软件，安装这些软件后，系统会顺带安装微软雅黑字体。此时，写 css 代码时，如果写成 `"Microsoft Yahei", "PingFang SC"`这种顺序，可能导致有些 Mac 用户用微软雅黑来显示字体。
 
+### 常见的字体&文本属性
+
+```css
+	font-style: italic;	/* italic表示斜体，normal表示不倾斜*/
+	font-weight: bold;  /* 字体加粗，100至900 */
+    text-decoration: underline; /* 下划线 */
+    cursor: pointer;  /*鼠标悬停时，光标显示为手形*/
+
+```
+
+`font-weight`属性：在设置字体是否加粗时，属性值既可以填写`normal`、`bold`这样的加粗字体，也可以直接填写 100至900 这样的数字。`normal`的值相当于400，`bold`的值相当于700。
+
 ### 其他
 
 - 网络字体
@@ -95,18 +107,6 @@ css 中的字体族可以理解成是某一类字体。常见的字体族可以�
 
 当然，如果想让一段很长的文本不换行，可以直接设置`white-space: nowrap` 这一个属性即可。
 
-## 常见的字体&文本属性
-
-```css
-	font-style: italic;	/* italic表示斜体，normal表示不倾斜*/
-	font-weight: bold;  /* 字体加粗，100至900 */
-    text-decoration: underline; /* 下划线 */
-    cursor: pointer;  /*鼠标悬停时，光标显示为手形*/
-
-```
-
-`font-weight`属性：在设置字体是否加粗时，属性值既可以填写`normal`、`bold`这样的加粗字体，也可以直接填写 100至900 这样的数字。`normal`的值相当于400，`bold`的值相当于700。
-
 ## CSS Hack
 
 - CSS Hack 的方式：不合法但可以生效的写法。
@@ -118,5 +118,6 @@ css 中的字体族可以理解成是某一类字体。常见的字体族可以�
 - 替代方案：特性检测。
 
 - 替代方案：针对性加 class
+
 
 
