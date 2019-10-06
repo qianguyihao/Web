@@ -414,13 +414,9 @@ background属性和border一样，是一个综合属性，可以将多个属性�
 		}
 
 		.div1 {
-			background-size: 100% auto;
-		}
-
-		.div2 {
 			background-size: cover;
 		}
-		.div3{
+		.div2{
 			background-size: contain;
 		}
 	</style>
@@ -430,7 +426,6 @@ background属性和border一样，是一个综合属性，可以将多个属性�
 	<section class="img_wrap">
 		<div class="img div1"></div>
 		<div class="img div2"></div>
-		<div class="img div3"></div>
 
 	</section>
 </body>
@@ -441,6 +436,10 @@ background属性和border一样，是一个综合属性，可以将多个属性�
 效果如下：
 
 ![](http://img.smyhvae.com/20191006_1350.png)
+
+在上方代码的基础之上，再加一个 `background-position: center`属性之后，图片就会在容器里**居中显示**：
+
+![](http://img.smyhvae.com/20191006_1520.png)
 
 ## 背景原点：`background-origin` 属性
 
@@ -847,7 +846,7 @@ background属性和border一样，是一个综合属性，可以将多个属性�
 
 `clip-path`属性可以创建一个只有元素的部分区域可以显示的剪切区域。区域内的部分显示，区域外的隐藏。
 
-虽然`clip-path`不是背景属性，但往往会结合背景属性一起使用，达到一些效果。
+虽然`clip-path`不是背景属性，但这个属性非常强大，但往往会结合背景属性一起使用，达到一些效果。
 
 举例：（鼠标悬停时，放大裁剪的区域）
 
@@ -875,7 +874,9 @@ background属性和border一样，是一个综合属性，可以将多个属性�
 
 ![](http://img.smyhvae.com/20191006_1430.png)
 
-另外，还可以引入 svg 图形，这里就不详细展开了。
+另外，通过 `clip-path: (svg)` 可以导入svg矢量图，实现 iOS图标的圆角。这里就不详细展开了。
+
+
 
 ## 我的公众号
 
