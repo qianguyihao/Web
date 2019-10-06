@@ -120,4 +120,18 @@ css 中的字体族可以理解成是某一类字体。常见的字体族可以�
 - 替代方案：针对性加 class
 
 
+## CSS 效果
+
+我们可以利用 CSS 实现各种效果，常见的效果属性有：
+
+- box-shadow：盒子的阴影
+
+- text-shadow：文本的阴影
+
+- border-radius
+
+- background
+
+- clip-path
+
 
