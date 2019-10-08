@@ -68,9 +68,7 @@ PS：主轴和侧轴并不是固定不变的，可以通过 `flex-direction` 更
 
 备注：一般是用 `display:flex`这个属性。`display:inline-flex`用得较少。
 
-
-
-### `flex-direction`属性：设置弹性元素的排列方向
+### flex-direction 属性
 
 `flex-direction`：用于设置盒子中**子元素**的排列方向。属性值可以是：
 
@@ -223,10 +221,13 @@ PS：主轴和侧轴并不是固定不变的，可以通过 `flex-direction` 更
 ```
 
 
-### flex-wrap 属性：控制弹性元素溢出时的换行处理
+### flex-wrap 属性
 
-### justify-content 属性：控制子元素在主轴上的排列方式
+`flex-wrap`：控制子元素溢出时的换行处理。
 
+### justify-content 属性
+
+`justify-content`：控制子元素在主轴上的排列方式。
 
 ## 弹性元素
 
@@ -360,9 +361,9 @@ PS：主轴和侧轴并不是固定不变的，可以通过 `flex-direction` 更
 ```
 
 
-### align-items：设置子元素在侧轴上的对齐方式
+### align-items 属性
 
-- `align-items:flex-start;` 设置子元素在**侧轴上的对齐方式**。属性值可以是：
+`align-items`：设置子元素在**侧轴上的对齐方式**。属性值可以是：
     - `flex-start` 从侧轴开始的方向对齐
     - `flex-end` 从侧轴结束的方向对齐
     - `baseline` 基线 默认同flex-start
@@ -615,14 +616,9 @@ PS：主轴和侧轴并不是固定不变的，可以通过 `flex-direction` 更
 
 ###  flex 相关的教程
 
-- - [后盾人 flex 教程](http://houdunren.gitee.io/note/css/10%20%E5%BC%B9%E6%80%A7%E5%B8%83%E5%B1%80.html)
+- [后盾人 flex 教程](http://houdunren.gitee.io/note/css/10%20%E5%BC%B9%E6%80%A7%E5%B8%83%E5%B1%80.html)
 
 ## 技巧：使用 margin 自动撑满剩余空间
-
-
-
-
-
 
 
 
