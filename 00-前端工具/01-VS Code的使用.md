@@ -167,6 +167,9 @@ VS Code用得熟不熟，首先就看你是否会用快捷键。以下列出的�
 
 ![](http://img.smyhvae.com/20190418_1739.png)
 
+### VS Code 命令行启动
+
+如果是习惯了使用命令行启动的大家可以使用 `code .` 使用vscode打开当前根目录。或者使用 `code <filename>`打开一个文件。
 
 ## VS Code 的常见设置项
 
