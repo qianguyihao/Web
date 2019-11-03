@@ -278,6 +278,18 @@ Mac用户按住快捷键 `Cmd+Shift+P` （Windows用户按住快捷键`Ctrl+Shif
 
 ![](http://img.smyhvae.com/20190414_1751.png)
 
+### 使用命令行启动 VS Code
+
+（1）输入快捷键「Cmd + Shift + P 」，选择`install code command`：
+
+![](http://img.smyhvae.com/20191103_1327.png)
+
+（2）使用命令行：
+
+- `code`命令：启动 VS Code 软件
+
+- `code pathName/fileName`命令：通过 VS Code 软件打开指定目录/指定文件。
+
 ## VS Code 的常用技巧
 
 ### 文件对比
