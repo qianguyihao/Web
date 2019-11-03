@@ -586,9 +586,6 @@ css颜色高亮显示。
 
 - 作用：多台设备之间，同步 VS Code 配置。
 
-## 参考链接
-
-- [https://segmentfault.com/a/1190000012811886](https://segmentfault.com/a/1190000012811886)
 
 ## 最后一段
 
@@ -598,4 +595,14 @@ css颜色高亮显示。
 
 ## 参考链接
 
-「Vscode」打造类sublime的高颜值编辑器：https://idoubi.cc/2019/07/08/vscode-sublime-theme/
+- [VSCode前端必备插件，有可能你装了却不知道如何使用？](https://juejin.im/post/5db66672f265da4d0e009aad)
+
+- [能让你开发效率翻倍的 VSCode 插件配置（上）](https://juejin.im/post/5a08d1d6f265da430f31950e)
+
+- [https://segmentfault.com/a/1190000012811886](https://segmentfault.com/a/1190000012811886)
+
+- [「Vscode」打造类sublime的高颜值编辑器](https://idoubi.cc/2019/07/08/vscode-sublime-theme/)
+
+
+
+
