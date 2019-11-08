@@ -7,7 +7,7 @@ VS Code  本来是前端人员专用，但由于它实在是太好用了，于�
 
 写下这篇文章，是顺势而为。
 
-### VS Code 的介绍
+### 一、VS Code 的介绍
 
 VS Code 的全称是 Visual Studio Code，是一款开源的、免费的、跨平台的、高性能的、轻量级的代码编辑器。它在性能、语言支持、开源社区方面，都做的很不错。
 
@@ -43,11 +43,9 @@ VS Code 的全称是 Visual Studio Code，是一款开源的、免费的、跨�
 
 所以，如果你以后还问这个问题，那就真有些掉底了。
 
-## VS Code 的安装
+### VS Code 的安装
 
 - VS Code 官网：<https://code.visualstudio.com>
-
-
 
 VS Code 的安装很简单，直接去官网下载安装包，然后双击安装即可。
 
@@ -55,7 +53,7 @@ VS Code 的安装很简单，直接去官网下载安装包，然后双击安装
 
 上图中，直接点击 download 下载安装即可。
 
-## VS Code快捷键
+## 二、VS Code快捷键
 
 VS Code用得熟不熟，首先就看你是否会用快捷键。以下列出的内容，都是常用快捷键，而加粗部分的快捷键，使用频率则非常高。
 
@@ -165,16 +163,65 @@ VS Code用得熟不熟，首先就看你是否会用快捷键。以下列出的�
 
 上图中，在展开的菜单中选择「键盘快捷方式」，就可以查看和修改所有的快捷键列表了：
 
-![](http://img.smyhvae.com/20190418_1739.png)
+![](http://img.smyhvae.com/20190418_1739_2.png)
 
 
-## VS Code 的常见设置项
+## 四、命令面板的使用
+
+Mac用户按住快捷键 `Cmd+Shift+P` （Windows用户按住快捷键`Ctrl+Shift+P`），可以打开命令面板。效果如下：
+
+![](http://img.smyhvae.com/20190329_1750_2.png)
+
+如果们需要修改一些设置项，可以通过「命令面板」来操作，效率会更高。这里列举一些。
+
+### 字体设置
+
+在命令面板输入“字体”，可以进行字体的设置，效果如下：
+
+![](http://img.smyhvae.com/20190329_2110.png)
+
+当然，你也可以在菜单栏，选择「首选项-设置-常用设置」，在这个设置项里修改字体大小。
+
+### 快捷键设置
+
+在命令面板输入“快捷键”，就可以进入快捷键的设置。
+
+### 大小写转换
+
+选中文本后，在命令面板中输入`transfrom`，就可以修改文本的大小写了。
+
+![](http://img.smyhvae.com/20190414_1751.png)
+
+### 使用命令行启动 VS Code
+
+（1）输入快捷键「Cmd + Shift + P 」，选择`install code command`：
+
+![](http://img.smyhvae.com/20191103_1327.png)
+
+（2）使用命令行：
+
+- `code`命令：启动 VS Code 软件
+
+- `code pathName/fileName`命令：通过 VS Code 软件打开指定目录/指定文件。
+
+## 五、VS Code 的常见设置项
+
+### VS Code 设置为中文语言
+
+Mac用户按住快捷键 `Cmd+Shift+P` （Windows用户按住快捷键`Ctrl+Shift+P`），打开命令面板。
+
+在命令面板中，输入`Configure Display Language`，选择`Install additional languages`，然后安装插件`Chinese (Simplified) Language Pack for Visual Studio Code`即可。
+
+或者，我们可以直接安装插件`Chinese (Simplified) Language Pack for Visual Studio Code`，是一样的。
+
+安装完成后，重启VS Code。
+
 
 ### 面包屑（Breadcrumb）
 
 打开 VS Code 的设置项，选择「用户设置 -> 工作台 -> 导航路径」，如下图所示：
 
-![](http://img.smyhvae.com/20190415_2005.png)
+![](http://img.smyhvae.com/20191108_1550.png)
 
 上图中，将红框部分打钩即可。
 
@@ -252,45 +299,7 @@ VS Code 会根据你所打开的文件来决定该使用空格还是制表。也
 
 我建议这个设置项保持默认的打钩就好，不用修改。删除文件前的弹窗提示，也是为了安全考虑，万一手贱不小心删了呢？
 
-## 命令面板的使用
-
-Mac用户按住快捷键 `Cmd+Shift+P` （Windows用户按住快捷键`Ctrl+Shift+P`），可以打开命令面板。效果如下：
-
-![](http://img.smyhvae.com/20190329_1750_2.png)
-
-如果们需要修改一些设置项，可以通过「命令面板」来操作，效率会更高。这里列举一些。
-
-### 字体设置
-
-在命令面板输入“字体”，可以进行字体的设置，效果如下：
-
-![](http://img.smyhvae.com/20190329_2110.png)
-
-当然，你也可以在菜单栏，选择「首选项-设置-常用设置」，在这个设置项里修改字体大小。
-
-### 快捷键设置
-
-在命令面板输入“快捷键”，就可以进入快捷键的设置。
-
-### 大小写转换
-
-选中文本后，在命令面板中输入`transfrom`，就可以修改文本的大小写了。
-
-![](http://img.smyhvae.com/20190414_1751.png)
-
-### 使用命令行启动 VS Code
-
-（1）输入快捷键「Cmd + Shift + P 」，选择`install code command`：
-
-![](http://img.smyhvae.com/20191103_1327.png)
-
-（2）使用命令行：
-
-- `code`命令：启动 VS Code 软件
-
-- `code pathName/fileName`命令：通过 VS Code 软件打开指定目录/指定文件。
-
-## VS Code 的常用技巧
+## 六、VS Code 的常用技巧
 
 ### 文件对比
 
@@ -433,11 +442,11 @@ VS Code自带 markdown 语法高亮，写完 md 文件之后，你可以点击�
 
 VS Code 默认支持 Emmet。更多 Emmet 语法规则，请自行查阅。
 
-## 插件扩展 / 插件推荐
+## 七、VS Code 插件推荐
 
 VS Code 有一个很强大的功能就是支持插件扩展。
 
-![](http://img.smyhvae.com/20190418_1932.png)
+![](http://img.smyhvae.com/20191108_1553.png)
 
 上图中，点击红框部分，即可在输入框里，查找你想要的插件名，然后进行安装。
 
