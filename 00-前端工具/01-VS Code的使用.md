@@ -446,7 +446,7 @@ VS Code 默认支持 Emmet。更多 Emmet 语法规则，请自行查阅。
 
 VS Code 有一个很强大的功能就是支持插件扩展。
 
-![](http://img.smyhvae.com/20191108_1553.png)
+![](http://img.smyhvae.com/20191108_1553_2.png)
 
 上图中，点击红框部分，即可在输入框里，查找你想要的插件名，然后进行安装。
 
