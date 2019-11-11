@@ -121,7 +121,7 @@ js中有一套方便的**获取元素尺寸**的办法就是offset家族。offse
 
 `offsetTop`：当前元素相对于其**定位父元素**的垂直偏移量。
 
-备注：从父亲的 padding 开始算起，父亲的 border 不算。
+备注：从父亲的 padding 开始算起，父亲的 border 不算在内。
 
 举例：
 
@@ -174,13 +174,13 @@ js中有一套方便的**获取元素尺寸**的办法就是offset家族。offse
 
 在父盒子有定位的情况下，offsetLeft == style.left(去掉px之后)。注意，后者只识别行内样式。但区别不仅仅于此，下面会讲。
 
-### offsetLeft和style.left区别
+### offsetLeft 和 style.left 区别
 
 （1）最大区别在于：
 
 offsetLeft 可以返回无定位父元素的偏移量。如果父元素中都没有定位，则body为准。
 
-style.left 只能获取行内样式，如果父元素中都没有定位，则返回""（意思是，返回空）;
+style.left 只能获取行内样式，如果父元素中都没有设置定位，则返回""（意思是，返回空字符串）;
 
 （2）offsetTop 返回的是数字，而 style.top 返回的是字符串，而且还带有单位：px。
 
@@ -195,8 +195,6 @@ div.style.left = "100px";
 
 （3）offsetLeft 和 offsetTop **只读**，而 style.left 和 style.top 可读写（只读是获取值，可写是修改值）
 
-
-（4）如果没有给 HTML 元素指定过 top 样式，则style.top 返回的是空字符串。
 
 总结：我们一般的做法是：**用offsetLeft 和 offsetTop 获取值，用style.left 和 style.top 赋值**（比较方便）。理由如下：
 
