@@ -5,17 +5,24 @@
 
 ### clientWidth 和 clientHeight
 
-盒子调用时：
+元素调用时：
 
-- clientWidth：获取盒子区域宽度（padding + width）。
+- clientWidth：获取元素的可见宽度（width + padding）。
 
-- clientHeight：获取盒子区域高度（padding + height）。
+- clientHeight：获取元素的可见高度（height + padding）。
 
-body/html调用时：
+
+body/html 调用时：
 
 - clientWidth：获取网页可视区域宽度。
 
 - clientHeight：获取网页可视区域高度。
+
+**声明**：
+
+- `clientWidth` 和 `clientHeight` 属性是只读的，不可修改。
+
+- `clientWidth` 和 `clientHeight` 的值都是不带 px 的，返回的都是一个数字，可以直接进行计算。
 
 
 ### clientX 和 clientY
