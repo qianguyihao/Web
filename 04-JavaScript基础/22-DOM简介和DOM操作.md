@@ -1,9 +1,5 @@
 
 
-> 本文最初发表于[博客园](http://www.cnblogs.com/smyhvae/p/8366012.html)，并在[GitHub](https://github.com/qianguyihao/Web)上持续更新**前端的系列文章**。欢迎在GitHub上关注我，一起入门和进阶前端。
-
-> 以下是正文。
-
 ## 常见概念
 
 ### JavaScript的组成
@@ -637,6 +633,8 @@ onload 事件会在整个页面加载完成之后才触发。为 window 绑定�
 上方代码中，方式一和方式二均可以确保：在页面加载完毕后，再执行 js 代码。
 
 ## DOM 操作：设置元素的样式
+
+暂略。
 
 
 ## 我的公众号
