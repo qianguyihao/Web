@@ -1,8 +1,7 @@
 
-> 本文最初于2015-10-02发表于[博客园](http://www.cnblogs.com/smyhvae/p/4852863.html)，并在[GitHub](https://github.com/qianguyihao/Web)上持续更新**前端的系列文章**。欢迎在GitHub上关注我，一起入门和进阶前端。
+> 本文最初发表于[博客园](http://www.cnblogs.com/smyhvae/p/4852863.html)，并在[GitHub](https://github.com/qianguyihao/Web)上持续更新**前端的系列文章**。欢迎在GitHub上关注我，一起入门和进阶前端。
 
 > 以下是正文。
-
 
 ## 本文主要内容
 

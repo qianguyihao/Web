@@ -293,7 +293,7 @@ fileList 的打印结果：
 
 我看到upload 组件有提供 `defaultFileList` 的属性。我试了下，这个`defaultFileList` 的属性根本没法儿用。
 
-那就只要手动实现了。我的model层代码，是用 redux 写的。整体的实现思路如下：（这个也是在真正在实战中用到的代码）
+那就只有手动实现了。我的model层代码，是用 redux 写的。整体的实现思路如下：（这个也是在真正在实战中用到的代码）
 
 （1）PicturesWall.js：
 
