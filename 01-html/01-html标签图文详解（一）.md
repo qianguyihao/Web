@@ -1,9 +1,7 @@
 
-> 本文最初于2015-10-01发表于[博客园](http://www.cnblogs.com/smyhvae/p/4850684.html)，并在[GitHub](https://github.com/qianguyihao/Web)上持续更新**前端的系列文章**。欢迎在GitHub上关注我，一起入门和进阶前端。
+> 本文最初发表于[博客园](http://www.cnblogs.com/smyhvae/p/4850684.html)，并在[GitHub](https://github.com/qianguyihao/Web)上持续更新**前端的系列文章**。欢迎在GitHub上关注我，一起入门和进阶前端。
 
 > 以下是正文。
-
-国庆节快乐，还在加班的童鞋，良辰必有重谢！
 
 ## 本文主要内容
 
@@ -278,7 +276,7 @@ HTML标签通常是成对出现的（<font color="blue">**双边标记**</font>�
     <title>Document</title>
 </head>
 <body>
-    
+
 </body>
 </html>
 
@@ -373,7 +371,7 @@ HTML4.01里面规定了**普通**和**XHTML**两大种规范。HTML觉得自己�
     <title>Document</title>
 </head>
 <body>
-    
+
 </body>
 </html>
 ```
