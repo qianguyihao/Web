@@ -3,10 +3,13 @@
 ## 前言
 
 
-要学习事件的基础内容，请看先本人的这篇基础文章：
+要学习事件的基础内容，请看先本人之前的基础文章：
 
-- [JavaScript基础：事件对象Event和冒泡](https://github.com/smyhvae/Web/blob/master/03-JavaScript/09-JavaScript%E5%9F%BA%E7%A1%80%EF%BC%9A%E4%BA%8B%E4%BB%B6%E5%AF%B9%E8%B1%A1Event%E5%92%8C%E5%86%92%E6%B3%A1.md)
+- 《04-JavaScript基础/27-事件对象Event》
 
+- 《04-JavaScript基础/28-事件捕获和事件冒泡》
+
+- 《04-JavaScript基础/29-事件委托》
 
 知识难度不大，只是大家需要系统地学习。
 
@@ -296,16 +299,11 @@ IE10以下则是：
 ```
 
 
-
-
-
-
 ## 事件委托
 
 参考本人这篇文章的最后一段：
 
-
-- [JavaScript基础：事件对象Event和冒泡](https://github.com/smyhvae/Web/blob/master/03-JavaScript/09-JavaScript%E5%9F%BA%E7%A1%80%EF%BC%9A%E4%BA%8B%E4%BB%B6%E5%AF%B9%E8%B1%A1Event%E5%92%8C%E5%86%92%E6%B3%A1.md)
+- 《04-JavaScript基础/29-事件委托》
 
 
 
