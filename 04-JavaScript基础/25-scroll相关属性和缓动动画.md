@@ -1,17 +1,24 @@
 
-
 ## scroll 相关属性
 
-当我们用鼠标滚轮，滚动网页的时候，会触发window.onscroll()方法。效果如下：（注意看控制台的打印结果）
+### window.onscroll() 方法
+
+当我们用鼠标滚轮，滚动网页的时候，会触发 window.onscroll() 方法。效果如下：（注意看控制台的打印结果）
 
 ![](http://img.smyhvae.com/20180202_2258.gif)
+
+如果你需要做滚动监听，可以使用这个方法。
+
+我们来看看和 scroll 相关的有哪些属性。
 
 ### 1、ScrollWidth 和 scrollHeight
 
 `ScrollWidth` 和 `scrollHeight`：获取元素**整个滚动区域**的宽、高。包括 width 和 padding，不包括 border和margin。
 
 
-**注意**：`scrollHeight` 的特点是：如果内容超出了盒子，`scrollHeight`为内容的高（包括超出的内容）；如果不超出，`scrollHeight`为盒子本身的高度。`ScrollWidth`同理。
+**注意**：
+
+`scrollHeight` 的特点是：如果内容超出了盒子，`scrollHeight`为内容的高（包括超出的内容）；如果不超出，`scrollHeight`为盒子本身的高度。`ScrollWidth`同理。
 
 
 ```html
@@ -70,11 +77,11 @@
 
 当某个元素满足`scrollWidth - scrollLeft == clientWidth`时，说明水平滚动条滚动到底了。
 
-这个实战经验非常有用，可以用来判断用户是否已经将内容滑动到底了。比如说，有些场景下，希望用户能够看完“活动规则”，才允许触发接下来的表单操作。
+这个实战经验非常有用，可以用来判断用户是否已经将内容滑动到底了。比如说，有些场景下，希望用户能够看完“长长的活动规则”，才允许触发接下来的表单操作。
 
 ### scrollTop 的兼容性
 
-scrollTop 这个属性的写法要注意兼容性，如下。
+如果要获取页面滚动的距离，scrollTop 这个属性的写法要注意兼容性，如下。
 
 （1）如果文档没有 DTD 声明，写法为：
 
@@ -82,7 +89,7 @@ scrollTop 这个属性的写法要注意兼容性，如下。
     document.body.scrollTop
 ```
 
-在没有 DTD 声明的情况下，如果不是这种写法，chrome浏览器认不出来。
+在没有 DTD 声明的情况下，要求是这种写法，chrome浏览器才能认出来。
 
 （2）如果文档有 DTD 声明，写法为：
 
@@ -90,7 +97,7 @@ scrollTop 这个属性的写法要注意兼容性，如下。
    document.documentElement.scrollTop
 ```
 
-在有 DTD 声明的情况下，如果不是这种写法，IE678认不出来。
+在有 DTD 声明的情况下，要求是这种写法，IE6、7、8才能认出来。
 
 综合上面这两个，就诞生了一种兼容性的写法：
 
@@ -117,10 +124,9 @@ scrollTop 这个属性的写法要注意兼容性，如下。
     document.compatMode === "BackCompat"   // 未声明
 ```
 
-### 将 scrollTop 和 scrollLeft 封装为 json
+### 将 scrollTop 和 scrollLeft 进行封装
 
-
-将 scrollTop 和 scrollLeft封装为一个方法，名叫scroll()，返回值为 json。json里的键为 top 和 left。以后就直接调用json.top 和json.left就好。
+这里，我们将 scrollTop 和 scrollLeft 封装为一个方法，名叫scroll()，返回值为 一个对象。以后就直接调用`scroll().top` 和 `scroll().left`就好。
 
 代码实现：
 
@@ -131,7 +137,7 @@ scrollTop 这个属性的写法要注意兼容性，如下。
     <title></title>
     <style>
         body {
-            height: 5000px;
+            height: 6000px;
             width: 5000px;
         }
     </style>
@@ -140,20 +146,20 @@ scrollTop 这个属性的写法要注意兼容性，如下。
 
 <script>
 
-    //需求：封装一个兼容的scroll().返回值是json，用scroll().top获取scrollTop，用scroll().left获取scrollLeft
+    //需求：封装一个兼容的scroll().返回的是对象，用scroll().top获取scrollTop，用scroll().left获取scrollLeft
 
     window.onscroll = function () {
-//        var json = scroll();
-//        json.top;
+//        var myScroll = scroll();
+//        myScroll.top;
         console.log(scroll().top);
         console.log(scroll().left);
     }
 
     //函数封装（简单封装，实际工作使用）
     function scroll() {
-        return { //此函数的返回值是json
-            "top": window.pageYOffset || document.body.scrollTop || document.documentElement.scrollTop,
-            "left": window.pageXOffset || document.body.scrollLeft || document.documentElement.scrollLeft
+        return { //此函数的返回值是对象
+            left: window.pageYOffset || document.body.scrollTop || document.documentElement.scrollTop,
+            right: window.pageXOffset || document.body.scrollLeft || document.documentElement.scrollLeft
         }
     }
 </script>
@@ -161,7 +167,9 @@ scrollTop 这个属性的写法要注意兼容性，如下。
 </html>
 ```
 
-上方代码中，函数定义的那部分就是要封装的代码。另外还有一种较为复杂的封装方式：
+上方代码中，函数定义的那部分就是要封装的代码。
+
+另外还有一种比较麻烦的封装方式：（仅供参考）
 
 ```javascript
 function scroll() {  // 开始封装自己的scrollTop
@@ -199,9 +207,7 @@ function scroll() {  // 开始封装自己的scrollTop
 
 `document.documentElement`表示文档的html标签。也就是说，基本结构当中的 `html 标签`而是通过`document.documentElement`访问的，并不是通过 document.html 去访问的。
 
-
 ## scrollTop 举例：固定导航栏
-
 
 完整版代码实现：
 
@@ -332,7 +338,6 @@ function scroll() {  // 开始封装自己的scrollTop
 - 2018-02-03-scrollTop固定导航栏.rar
 
 
-
 ## 缓动动画
 
 ### 三个函数
@@ -396,7 +401,6 @@ function scroll() {  // 开始封装自己的scrollTop
 效果：
 
 ![](http://img.smyhvae.com/20180202_2046.gif)
-
 
 ### 缓慢动画的封装（解决四舍五入的问题）
 
@@ -680,3 +684,14 @@ function scroll() {  // 开始封装自己的scrollTop
 小火箭的图片资源：
 
 ![](http://img.smyhvae.com/20180203-Top.jpg)
+
+
+## 我的公众号
+
+想学习**代码之外的技能**？不妨关注我的微信公众号：**千古壹号**（id：`qianguyihao`）。
+
+扫一扫，你将发现另一个全新的世界，而这将是一场美丽的意外：
+
+![](http://img.smyhvae.com/20190101.png)
+
+
