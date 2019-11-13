@@ -95,14 +95,116 @@
 
 我们可以看到，`addEventListener()`这种绑定事件的方式：
 
-- 一个元素的一个事件，可以绑定多个响应函数。不存在响应函数被覆盖的情况。
+- 一个元素的一个事件，可以绑定多个响应函数。不存在响应函数被覆盖的情况。**执行顺序是**：事件被触发时，响应函数会按照函数的绑定顺序执行。
 
-- 事件被触发时，响应函数会按照函数的绑定顺序执行。
+- addEventListener()中的this，是绑定事件的对象。
 
 - `addEventListener()`不支持 IE8 及以下的浏览器。在IE8中可以使用`attachEvent`来绑定事件（详见下一小段）。
 
 ### DOM2的写法：attachEvent（IE8及以下版本浏览器）
 
+```javascript
+    element.attachEvent('onclick', function () {
+
+    });
+
+```
+
+参数解释：
+
+- 参数1：事件名的字符串(注意，有on)
+
+- 参数2：回调函数：当事件触发时，该函数会被执行
+
+举例：
+
+```html
+    <body>
+        <button>按钮</button>
+        <script>
+            var btn = document.getElementsByTagName('button')[0];
+
+            btn.attachEvent('onclick', function() {
+                console.log('事件1');
+            });
+
+            btn.attachEvent('onclick', function() {
+                console.log('事件2');
+            });
+        </script>
+    </body>
+```
+
+在低版本的IE浏览器上，点击按钮后，上方代码的打印结果：
+
+
+```html
+    事件2
+    事件1
+```
+
+我们可以看到，`attachEvent()`这种绑定事件的方式：
+
+- 一个元素的一个事件，可以绑定多个响应函数。不存在响应函数被覆盖的情况。**注意**：执行顺序是，后绑定的先执行。
+
+- attachEvent()中的this，是window
+
+### 兼容性写法
+
+上面的内容里，需要强调的是：
+
+- `addEventListener()`中的this，是绑定事件的对象。
+
+- `attachEvent()`中的this，是window。
+
+既然这两个写法的`this`不同，那么，有没有一种兼容性的写法可以确保这两种绑定方式的this是相同的呢？来看看 `bind` 是怎么用的。
+
+
+
+```html
+    <body>
+        <button>按钮</button>
+        <script>
+            var btn = document.getElementsByTagName('button')[0];
+
+            myBind(btn , "click" , function(){
+                alert(this);
+            });
+
+
+
+            //定义一个函数，用来为指定元素绑定响应函数
+            /*
+             * addEventListener()中的this，是绑定事件的对象
+             * attachEvent()中的this，是window
+             *  需要统一两个方法this
+             */
+            /*
+             * 参数：
+             *  element 要绑定事件的对象
+             *  eventStr 事件的字符串(不要on)
+             *  callback 回调函数
+             */
+            function myBind(element , eventStr , callback){
+                if(element.addEventListener){
+                    //大部分浏览器兼容的方式
+                    element.addEventListener(eventStr , callback , false);
+                }else{
+                    /*
+                     * this是谁，由调用方式决定
+                     * callback.call(element)
+                     */
+                    //IE8及以下
+                    element.attachEvent("on"+eventStr , function(){
+                        //在匿名函数 function 中调用回调函数callback
+                        callback.call(element);
+                    });
+                }
+            }
+
+        </script>
+    </body>
+```
 
 
 ## 事件对象
