@@ -43,7 +43,7 @@
 
 我们可以看到，`DOM对象.事件 =  函数`的这种绑定事件的方式：一个元素的一个事件只能绑定一个响应函数。如果绑定了多个响应函数，则后者会覆盖前者。
 
-### DOM2的写法：addEventListener
+### DOM2的写法：addEventListener（高版本浏览器）
 
 ```javascript
     element.addEventListener('click', function () {
@@ -99,7 +99,10 @@
 
 - 事件被触发时，响应函数会按照函数的绑定顺序执行。
 
-- `addEventListener()`不支持 IE8 及以下的浏览器。在IE8中可以使用`attachEvent`来绑定事件（这里就不详细展开了）。
+- `addEventListener()`不支持 IE8 及以下的浏览器。在IE8中可以使用`attachEvent`来绑定事件（详见下一小段）。
+
+### DOM2的写法：attachEvent（IE8及以下版本浏览器）
+
 
 
 ## 事件对象
