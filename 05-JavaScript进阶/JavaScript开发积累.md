@@ -22,12 +22,6 @@ function getFirstNode(ele){
 ```
 
 
-
-
-
-
-
-
 ### 断点调试
 
 （1）先让程序运行一遍。
@@ -58,6 +52,21 @@ function getFirstNode(ele){
 
 
 
+### 2019-05-20-给数组、对象赋值
+
+**数组赋值的正确写法**：
+
+```javascript
+this.todayList.splice(0, 0, ...dataList);
+```
+
+**对象赋值的正确写法**：
+
+```javascript
+Object.assign(this.dataObj, dataObj);
+```
+
+上方代码中，是将`dataObj` 的值追加到`this.dataObj`中。如果对象里属性名相同，会被覆盖。
 
 
 

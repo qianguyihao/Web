@@ -28,6 +28,7 @@
 - 反向面试（反问面试官的问题）：<https://github.com/yifeikong/reverse-interview-zh>
 
 
+- 掘金前端面试题合集：<https://github.com/shfshanyue/blog/blob/master/post/juejin-interview.md>
 
 ## 博客
 
