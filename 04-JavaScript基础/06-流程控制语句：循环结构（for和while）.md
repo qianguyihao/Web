@@ -359,6 +359,7 @@ i的值:2
                     //如果num能被i整除，则说明num一定不是质数
                     //设置flag为false
                     flag = false;
+                    break;
                 }
             }
 
