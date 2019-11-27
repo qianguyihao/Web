@@ -14,25 +14,25 @@ JavaScript基础分为三个部分：
 
 ### 常见的 BOM 对象
 
-BOM可以使我们通过JS来操作浏览器。BOM中为我们提供了一组对象，用来完成对浏览器的操作。
+BOM可以让我们通过JS来操作浏览器。BOM中为我们提供了一些对象，来完成对浏览器相关的操作。
 
 常见的 BOM对象有：
 
 - Window：代表整个浏览器的窗口，同时 window 也是网页中的全局对象。
 
-- Navigator：代表当前浏览器的信息，通过该对象可以来识别不同的浏览器。
+- Navigator：代表当前浏览器的信息，通过该对象可以识别不同的浏览器。
 
 - Location：代表当前浏览器的地址栏信息，通过 Location 可以获取地址栏信息，或者操作浏览器跳转页面。
 
-- History：代表浏览器的历史记录，可以通过该对象操作浏览器的历史记录。由于隐私原因，该对象不能获取到具体的历史记录，只能操作浏览器向前或向后翻页，而且该操作只在当次访问时有效。
+- History：代表浏览器的历史记录，通过该对象可以操作浏览器的历史记录。由于隐私原因，该对象不能获取到具体的历史记录，只能操作浏览器向前或向后翻页，而且该操作只在当次访问时有效。
 
 - Screen：代表用户的屏幕信息，通过该对象可以获取用户的显示器的相关信息。
 
 备注：这些 BOM 对象都是作为 window 对象的属性保存的，可以通过window对象来使用，也可以直接使用。比如说，我可以使用 `window.location.href`，也可以直接使用 `location.href`，二者是等价的。
 
-备注2：不要忘了，之前学习过的， `document`也是在`window`中保存的。
+备注2：不要忘了，之前学习过的`document`也是在`window`中保存的。
 
-我们先来讲一下 `Navigator`。
+这篇文章，我们先来讲一下 `Navigator`。
 
 ## Navigator 和 `navigator.userAgent`
 
@@ -40,10 +40,10 @@ BOM可以使我们通过JS来操作浏览器。BOM中为我们提供了一组对
 
 由于历史原因，Navigator对象中的大部分属性都已经不能帮助我们识别浏览器了。
 
-一般我们只会使用`navigator.userAgent`来获取浏览器的信息。
+**一般我们只会使用`navigator.userAgent`来获取浏览器的信息**。
 
 
-userAgent 的值是一个字符串，简称 **UA**，这个字符串中包含了用来描述浏览器信息的内容，不同的浏览器会有不同的userAgent。‘
+userAgent 的值是一个字符串，简称 **UA**，这个字符串中包含了用来描述浏览器信息的内容，不同的浏览器会有不同的userAgent。
 
 **代码举例**：（获取当前浏览器的UA）
 
@@ -57,7 +57,7 @@ userAgent 的值是一个字符串，简称 **UA**，这个字符串中包含了
     </head>
     <body>
         <script>
-            var ua = navigator.userAgent;
+            var ua = navigator.userAgent; // 获取当前浏览器的 userAgent
 
             console.log('qianguyihao 当前浏览器的UA是：' + ua);
 
@@ -77,13 +77,13 @@ userAgent 的值是一个字符串，简称 **UA**，这个字符串中包含了
 
 ### 在电脑上模拟移动端浏览器
 
-不同浏览器（包括微信内置的浏览器）的 useragent 信息，是不一样的，我们可以根据 `navigator.userAgent`属性来获取。
+不同浏览器（包括微信内置的浏览器）的 userAgent 信息，是不一样的，我们可以根据 `navigator.userAgent`属性来获取。
 
 比如说，我们在电脑浏览器上，按F12，然后在控制台输入`navigator.userAgent`，如下：
 
 ![](http://img.smyhvae.com/20180425_1656.png)
 
-上图显示，MacOS上的Chrome浏览器的 UserAgent 是：
+上图显示，MacOS上的Chrome浏览器的 userAgent 是：
 
 ```
 "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.117 Safari/537.36"
@@ -93,14 +93,14 @@ userAgent 的值是一个字符串，简称 **UA**，这个字符串中包含了
 
 （1）需要点击 edit，手动添加：
 
-![](http://img.smyhvae.com/20191127_1902.png)
+![](http://img.smyhvae.com/20191127_1903.png)
 
 （2）添加时，根据 User agent 来识别不同的浏览器：
 
-![](http://img.smyhvae.com/20191127_1917.png)
+![](http://img.smyhvae.com/20191127_1918.png)
 
 
-### 不同浏览器的 UserAgent
+### 不同浏览器的 userAgent
 
 iPhone版微信浏览器：
 
