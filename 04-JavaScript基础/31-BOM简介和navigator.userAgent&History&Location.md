@@ -160,6 +160,8 @@ history.go( 1 ); // 向前跳转一个页面，相当于 history.forward()
 
 history.go( 2 ); // 表示向前跳转两个页面
 
+history.go( 0 ); // 刷新当前页面
+
 history.go( -1 ); // 向后跳转一个页面，相当于 history.back()
 
 history.go( -2 ); // 向后跳转两个页面
@@ -167,6 +169,11 @@ history.go( -2 ); // 向后跳转两个页面
 ```
 
 解释：向前/向后跳转 n 个页面。
+
+备注：浏览器的前进按钮、后退按钮，在这个位置：
+
+![](http://img.smyhvae.com/20180201_2146.png)
+
 
 ## Location 对象
 
@@ -204,14 +211,13 @@ console.log(location.href); // 获取当前页面的url 路径
 
 ### Location 对象的方法
 
-
 **方法1**：
 
 ```javascript
     location.assign(str);
 ```
 
-解释：用来跳转到其他的页面，作用和直接修改`location.href`一样
+解释：用来跳转到其他的页面，作用和直接修改`location.href`一样。
 
 **方法2**：
 

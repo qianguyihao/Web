@@ -249,33 +249,4 @@ window.navigator 的一些属性可以获取客户端的一些信息。
 ![](http://img.smyhvae.com/20180201_2140.png)
 
 
-## history对象
-
-1、历史记录管理
-
-2、后退：
-
-- history.back()
-
-- history.go(-1)：0是刷新
-
-3、前进：
-
-- history.forward()
-
-- history.go(1)
-
-用的不多。因为浏览器中已经自带了这些功能的按钮：
-
-![](http://img.smyhvae.com/20180201_2146.png)
-
-
-## 我的公众号
-
-想学习<font color=#0000ff>**代码之外的技能**</font>？不妨关注我的微信公众号：**千古壹号**（id：`qianguyihao`）。
-
-扫一扫，你将发现另一个全新的世界，而这将是一场美丽的意外：
-
-![](http://img.smyhvae.com/2016040102.jpg)
-
 
