@@ -11,7 +11,6 @@ JavaScript基础分为三个部分：
 
 - **BOM**：浏览器对象模型（Browser Object Model），操作**浏览器部分功能**的API。比如让浏览器自动滚动。
 
-
 ### 常见的 BOM 对象
 
 BOM可以让我们通过JS来操作浏览器。BOM中为我们提供了一些对象，来完成对浏览器相关的操作。
@@ -114,11 +113,114 @@ Android版微信浏览器：
 Mozilla/5.0 (Linux; Android 5.0.1; GT-I9502 Build/LRX22C; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/43.0.2357.121 Mobile Safari/537.36 MicroMessenger/6.1.0.78_r1129455.543 NetType/WIFI
 ```
 
-
-### 参考链接
+**参考链接**：
 
 - [判断微信内置浏览器的UserAgent](http://www.cnblogs.com/7z7chn/p/5370352.html)
 
 - [微信内置浏览器UserAgent的判断](https://gist.github.com/wjp2013/fff34c063cf0cf227d65)
+
+
+## History 对象
+
+History对象：可以用来操作浏览器的向前或向后翻页。
+
+### History对象的属性
+
+```javascript
+history.length
+```
+
+解释：获取浏览器历史列表中的 url 数量。注意，只是统计当次的数量，如果浏览器关了，数量会重置为1。
+
+### History对象的方法
+
+**方法1**：
+
+```
+history.back();
+```
+
+解释：用来回退到上一个页面，作用和浏览器的「回退按钮」一样。
+
+**方法2**：
+
+```javascript
+history.forward();
+```
+
+解释：用来跳转下一个页面，作用和浏览器的「前进按钮」一样。
+
+**方法3**：
+
+```javascript
+history.go( int n);  // 需要整数作为参数
+
+// 代码举例：
+history.go( 1 ); // 向前跳转一个页面，相当于 history.forward()
+
+history.go( 2 ); // 表示向前跳转两个页面
+
+history.go( -1 ); // 向后跳转一个页面，相当于 history.back()
+
+history.go( -2 ); // 向后跳转两个页面
+
+```
+
+解释：向前/向后跳转 n 个页面。
+
+## Location 对象
+
+Location 对象：封装了浏览器地址栏的 URL 信息。
+
+下面介绍一些常见的属性和方法。
+
+### location.href 属性
+
+`location.href`属性：获取当前页面的 url 路径（或者设置 url 路径）。
+
+代码举例1：
+
+```javascript
+console.log(location.href); // 获取当前页面的url 路径
+
+```
+
+代码举例2：
+
+```javascript
+    location.href = 'www.baidu.com'; // 跳转到指定的页面链接。通俗理解就是：跳转到其他的页面
+```
+
+从上方的**举例2**中可以看出：如果直接将`location.href`属性修改为一个绝对路径（或相对路径），则页面会自动跳转到该路径，并生成相应的历史记录。
+
+### location.assign(str) 方法
+
+解释：用来跳转到其他的页面，作用和直接修改`location.href`一样
+
+
+### location.reload() 方法
+
+解释：用于重新加载当前页面，作用和刷新按钮一样。
+
+代码举例：
+
+```javascript
+    location.reload(); // 重新加载当前页面。
+    location.reload(true); // 在方法的参数中传递一个true，则会强制清空缓存刷新页面。
+
+```
+
+### location.replace() 方法
+
+解释：使用一个新的页面替换当前页面，调用完毕也会跳转页面。但不会生成历史记录，不能使用「后退按钮」后退。
+
+
+## 我的公众号
+
+想学习<font color=#0000ff>**代码之外的技能**</font>？不妨关注我的微信公众号：**千古壹号**（id：`qianguyihao`）。
+
+扫一扫，你将发现另一个全新的世界，而这将是一场美丽的意外：
+
+![](http://img.smyhvae.com/20190101.png)
 
 
