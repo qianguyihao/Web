@@ -31,7 +31,7 @@ BOM可以让我们通过JS来操作浏览器。BOM中为我们提供了一些对
 
 备注2：不要忘了，之前学习过的`document`也是在`window`中保存的。
 
-这篇文章，我们先来讲一下 `Navigator`。
+这篇文章，我们先来讲一下 几个常见的 BOM 对象。
 
 ## Navigator 和 `navigator.userAgent`
 
@@ -174,9 +174,17 @@ Location 对象：封装了浏览器地址栏的 URL 信息。
 
 下面介绍一些常见的属性和方法。
 
-### location.href 属性
+### Location 对象的属性
 
-`location.href`属性：获取当前页面的 url 路径（或者设置 url 路径）。
+**属性1**：
+
+```
+location.href
+
+location.href = 'https://xxx';
+```
+
+解释：获取当前页面的 url 路径（或者设置 url 路径）。
 
 代码举例1：
 
@@ -193,12 +201,23 @@ console.log(location.href); // 获取当前页面的url 路径
 
 从上方的**举例2**中可以看出：如果直接将`location.href`属性修改为一个绝对路径（或相对路径），则页面会自动跳转到该路径，并生成相应的历史记录。
 
-### location.assign(str) 方法
+
+### Location 对象的方法
+
+
+**方法1**：
+
+```javascript
+    location.assign(str);
+```
 
 解释：用来跳转到其他的页面，作用和直接修改`location.href`一样
 
+**方法2**：
 
-### location.reload() 方法
+```javascript
+    location.reload();
+```
 
 解释：用于重新加载当前页面，作用和刷新按钮一样。
 
@@ -210,7 +229,12 @@ console.log(location.href); // 获取当前页面的url 路径
 
 ```
 
-### location.replace() 方法
+**方法3**：
+
+```javascript
+
+    location.replace();
+```
 
 解释：使用一个新的页面替换当前页面，调用完毕也会跳转页面。但不会生成历史记录，不能使用「后退按钮」后退。
 
