@@ -10,6 +10,8 @@
 
 - 优秀的JS代码规范：<https://github.com/ryanmcdermott/clean-code-javascript>
 
+- 据说这个项目，是宝藏：<https://github.com/dexteryy/spellbook-of-modern-webdev>
+
 
 ## TS
 
