@@ -2,7 +2,33 @@
 
 强制类型转换：将一个数据类型强制转换为其他的数据类型。
 
-类型转换主要指，将其他的数据类型，转换为：String、Number、Boolean。你会把某个数据类型转换成 null 或者 undefined 吗？不会，因为这样做，没有意义。
+类型转换主要指，将指定的数据类型，转换为：String、Number、Boolean。你会把某个数据类型转换成 null 或者 undefined 吗？不会，因为这样做，没有意义。
+
+## typeof 运算符
+
+> 我们先来讲一下 typeof，再讲类型转换。
+
+`typeof()`表示“**获取变量的类型**”，返回的是小写，语法为：
+
+```
+typeof 变量
+```
+
+**返回结果**：
+
+- `typeof 数值`的返回结果：number
+
+- `typeof 字符串`的返回结果：string
+
+- `typeof 布尔型`的返回结果：boolean
+
+- `typeof undefined`的返回结果：undefined
+
+- `typeof null`的返回结果：object
+
+在JavaScript中，只要是数，就是 number 数值型的。无论整浮、浮点数（即小数）、无论大小、无论正负，都是 number 类型的。
+
+
 
 ## 其他的简单类型 --> String
 
