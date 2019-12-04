@@ -446,14 +446,14 @@ JS中的**父子兄**访问关系：
 
 获取节点的属性值和设置节点的属性值，都有两种方式。
 
-**如果是节点的“原始属性”**（比如 普通标签的`class/className`属性、普通标签的`style`属性、普通标签的 title属性、img 标签的`src`属性、超链接的`href`属性等），**方式1和方式2是等价的**，可以混用。比如说：用 `div.title = '我是标题'`设置属性，用 `div.getAttribute('title')`获取属性，就是混用。
+**如果是节点的“原始属性”**（比如 普通标签的`class/className`属性、普通标签的`style`属性、普通标签的 title属性、img 标签的`src`属性、超链接的`href`属性等），**方式1和方式2是等价的**，可以混用。怎么理解混用呢？比如说：用 `div.title = '我是标题'`设置属性，用 `div.getAttribute('title')`获取属性，就是混用。
 
 但如果是节点的“非原始属性”，比如：
 
 ```javascript
 div.aaa = 'qianguyihao';
 
-div.setAttribute('aaa', 'qianguyihao');
+div.setAttribute('bbb', 'qianguyihao');
 
 ```
 
