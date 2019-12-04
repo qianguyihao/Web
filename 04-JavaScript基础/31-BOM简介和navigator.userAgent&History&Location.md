@@ -101,19 +101,34 @@ userAgent 的值是一个字符串，简称 **UA**，这个字符串中包含了
 
 ### 不同浏览器的 userAgent
 
-iPhone版微信浏览器：
+iOS 版微信浏览器：
 
 ```
 Mozilla/5.0 (iPhone; CPU iPhone OS 9_3 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Mobile/13E233 MicroMessenger/6.3.15 NetType/WIFI Language/zh_CN
 ```
 
-Android版微信浏览器：
+Android 版微信浏览器：
 
 ```
 Mozilla/5.0 (Linux; Android 5.0.1; GT-I9502 Build/LRX22C; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/43.0.2357.121 Mobile Safari/537.36 MicroMessenger/6.1.0.78_r1129455.543 NetType/WIFI
 ```
 
+iOS 版本QQ浏览器：
+
+```
+Mozilla/5.0 (iPhone; CPU iPhone OS 11_2_2 like Mac OS X) AppleWebKit/604.4.7 (KHTML, like Gecko) Mobile/15C202 QQ/7.3.5.473 V1_IPH_SQ_7.3.5_1_APP_A Pixel/1125 Core/UIWebView Device/Apple(iPhone X) NetType/WIFI QBWebViewType/1
+```
+
+Android 版 QQ浏览器：
+
+```
+Mozilla/5.0 (Linux; Android 4.4.2; PE-TL20 Build/HuaweiPE-TL20; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/57.0.2987.132 MQQBrowser/6.2 TBS/043807 Mobile Safari/537.36 V1_AND_SQ_7.3.2_762_YYB_D QQ/7.3.2.3350 NetType/WIFI WebP/0.3.0 Pixel/1080
+```
+
+
 **参考链接**：
+
+- [微信、QQ在Android和iOS的UserAgent](https://blog.csdn.net/taambernk520/article/details/80801574)
 
 - [判断微信内置浏览器的UserAgent](http://www.cnblogs.com/7z7chn/p/5370352.html)
 
