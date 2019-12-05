@@ -343,7 +343,7 @@ switch 语句中的`break`可以省略，但一般不建议（对于新手而言
 上方代码的解释：代码走到 default 时，因为没有遇到 break，所以会继续往下走，直到遇见 break 或者走到程序的末尾。 从这个例子可以看出：switch 语句的结束与 default 的顺序无关。
 
 
-### switch 语句的应用举例：替换 if 语句
+### switch 语句的实战举例：替换 if 语句
 
 我们实战开发中，经常需要根据接口的返回码 retCode ，来让前端做不同的展示。
 
@@ -419,12 +419,12 @@ function handleRetCode(retCode) {
 
     if (retCode == 1003) {
         alert('未登录');
-        return true;
+        return;
     }
 
     if (retCode == 1004) {
         alert('（风控用户）提示 活动太火爆啦~军万马都在挤，请稍后再试');
-        return true;
+        return;
     }
 
     // 其他异常返回码
@@ -487,7 +487,7 @@ switch (retCode) {
 在实战开发中，方式3是非常推荐的写法，甚至比方式2还要好。我们尽量不要写太多的 if 语句，避免代码过于臃肿。
 
 
-### switch 实战：适时地去掉 break
+### switch 语句的优雅写法：适时地去掉 break
 
 我们先来看看下面这段代码：（不推荐）
 
