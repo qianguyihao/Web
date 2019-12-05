@@ -376,7 +376,6 @@ if (retCode == 0) {
 }
 ```
 
-
 如果你是按照上面的 `if else`的方式来写各种条件判断，说明你的代码水平太初级了，会被人喷的，千万不要这么写。那要怎么改进呢？继续往下看。
 
 **写法2**：（推荐。通过 return 的方式，将上面的写法进行改进）
@@ -440,7 +439,128 @@ function handleRetCode(retCode) {
 
 如果你以后看到有前端小白采用的是**写法1**，请一定要把**写法2**传授给他：不需要那么多的 if else，直接用 return 返回就行了。
 
-### switch 的优雅写法
+**写法3**：（推荐。将 if else 改为 switch）
+
+```javascript
+let retCode = 1003; // 返回码 retCode 的值可能有很多种情况
+
+switch (retCode) {
+    case 0:
+        alert('接口联调成功');
+        break;
+    case 101:
+        alert('活动不存在');
+        break;
+
+    case 103:
+        alert('活动未开始');
+        break;
+
+    case 104:
+        alert('活动已结束');
+        break;
+
+    case 1001:
+        alert('参数错误');
+        break;
+
+    case 1002:
+        alert('接口频率限制');
+        break;
+
+    case 1003:
+        alert('未登录');
+        break;
+
+    case 1004:
+        alert('（风控用户）提示 活动太火爆啦~军万马都在挤，请稍后再试');
+        break;
+
+    default:
+        alert('系统君失联了，请稍候再试');
+        break;
+}
+```
+
+
+在实战开发中，方式3是非常推荐的写法，甚至比方式2还要好。我们尽量不要写太多的 if 语句，避免代码过于臃肿。
+
+
+### switch 的优雅写法：适时地去掉 break
+
+我们先来看看下面这段代码：（不推荐）
+
+```javascript
+let day = 2;
+
+switch (day) {
+    case 1:
+        console.log('work');
+        break;
+    case 2:
+        console.log('work');
+        break;
+
+    case 3:
+        console.log('work');
+        break;
+
+    case 4:
+        console.log('work');
+        break;
+
+    case 5:
+        console.log('work');
+        break;
+
+    case 6:
+        console.log('relax');
+        break;
+
+    case 7:
+        console.log('relax');
+        break;
+
+    default:
+        break;
+}
+```
+
+
+上面的代码，咋一看，好像没啥毛病。但你有没有发现，重复代码太多了？
+
+实战开发中，凡是有重复地方，我们都必须要想办法简化。写代码就是在不断重构的过程。
+
+上面的代码，可以改进如下：（推荐，非常优雅）
+
+```javascript
+let day = 2;
+
+switch (day) {
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+    case 5:
+        console.log('work');
+        break; // 在这里放一个 break
+
+    case 6:
+    case 7:
+        console.log('relax');
+        break; // 在这里放一个 break
+
+    default:
+        break;
+}
+}
+```
+
+
+你没看错，就是上面的这种写法，能达到同样的效果，非常优雅。
+
+小白可能认为这样的写法可读性不强，所以说他是小白。我可以明确告诉你，改进后的这种写法，才是最优雅的、最简洁、可读性最好的。
+
 
 
 ## 我的公众号
