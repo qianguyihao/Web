@@ -1,6 +1,5 @@
 
 
-> 本文首发于[博客园](http://www.cnblogs.com/smyhvae/p/8310295.html)，并在[GitHub](https://github.com/qianguyihao/Web)上持续更新**前端的系列文章**。欢迎在GitHub上关注我，一起入门和进阶前端。
 
 
 ## 代码块
@@ -186,29 +185,29 @@ if语句有以下三种。
 
 ```javascript
 	//第一步，输入
-	var bianhao = parseInt(prompt("您想加什么油？填写92或者97"));
-	var sheng = parseFloat(prompt("您想加多少升？"));
+var bianhao = parseInt(prompt("您想加什么油？填写92或者97"));
+var sheng = parseFloat(prompt("您想加多少升？"));
 
-	//第二步，判断
-	if (bianhao == 92) {
-		//编号是92的时候做的事情
-		if (sheng >= 20) {
-			var price = sheng * 5.9;
-		} else {
-			var price = sheng * 6;
-		}
-	} else if (bianhao == 97) {
-		//编号是97的时候做的事情
-		if (sheng >= 30) {
-			var price = sheng * 6.95;
-		} else {
-			var price = sheng * 7;
-		}
+//第二步，判断
+if (bianhao == 92) {
+	//编号是92的时候做的事情
+	if (sheng >= 20) {
+		var price = sheng * 5.9;
 	} else {
-		alert("对不起，没有这个编号的汽油！");
+		var price = sheng * 6;
 	}
+} else if (bianhao == 97) {
+	//编号是97的时候做的事情
+	if (sheng >= 30) {
+		var price = sheng * 6.95;
+	} else {
+		var price = sheng * 7;
+	}
+} else {
+	alert("对不起，没有这个编号的汽油！");
+}
 
-	alert("价格是" + price);
+alert("价格是" + price);
 ```
 
 
@@ -218,7 +217,7 @@ switch语句也叫条件分支语句。
 
 格式：
 
-```
+```javascript
 switch(表达式) {
 	case 值1：
 		语句体1;
@@ -237,10 +236,11 @@ switch(表达式) {
 }
 ```
 
+注意， JS 是属于弱类型语言，这里面的`值1`、`值2`可以是 `'a'`、`6`、`true` 等任意数据类型。
 
 ### switch语句的执行流程
 
- 流程图如下：
+流程图如下：
 
 ![](http://img.smyhvae.com/20190815_1501.png)
 
@@ -261,8 +261,7 @@ switch(表达式) {
 
 ### case穿透的问题
 
-switch 语句中的`break`可以省略，但一般不建议。否则结果可能不是你想要的，会出现一个现象：**case穿透**。
-
+switch 语句中的`break`可以省略，但一般不建议（对于新手而言）。否则结果可能不是你想要的，会出现一个现象：**case穿透**。
 
 **举例1**：（case穿透的情况）
 
@@ -342,6 +341,107 @@ switch 语句中的`break`可以省略，但一般不建议。否则结果可能
 ```
 
 上方代码的解释：代码走到 default 时，因为没有遇到 break，所以会继续往下走，直到遇见 break 或者走到程序的末尾。 从这个例子可以看出：switch 语句的结束与 default 的顺序无关。
+
+
+### switch 语句的应用举例：替换 if 语句
+
+我们实战开发中，经常需要根据接口的返回码 retCode ，来让前端做不同的展示。
+
+这种场景是业务开发中经常出现的，请一定要掌握。然而，很多人估计会这么写：
+
+**写法1**：（不推荐。这种写法太挫了）
+
+```javascript
+let retCode = 1003; // 返回码 retCode 的值可能有很多种情况
+
+if (retCode == 0) {
+    alert('接口联调成功');
+} else if (retCode == 101) {
+    alert('活动不存在');
+} else if (retCode == 103) {
+    alert('活动未开始');
+} else if (retCode == 104) {
+    alert('活动已结束');
+} else if (retCode == 1001) {
+    alert('参数错误');
+} else if (retCode == 1002) {
+    alert('接口频率限制');
+} else if (retCode == 1003) {
+    alert('未登录');
+} else if (retCode == 1004) {
+    alert('（风控用户）提示 活动太火爆啦~军万马都在挤，请稍后再试');
+} else {
+	// 其他异常返回码
+    alert('系统君失联了，请稍候再试');
+}
+```
+
+
+如果你是按照上面的 `if else`的方式来写各种条件判断，说明你的代码水平太初级了，会被人喷的，千万不要这么写。那要怎么改进呢？继续往下看。
+
+**写法2**：（推荐。通过 return 的方式，将上面的写法进行改进）
+
+```javascript
+
+let retCode = 1003; // 返回码 retCode 的值可能有很多种情况
+handleRetCode(retCode);
+
+// 方法：根据接口不同的返回码，处理前端不同的显示状态
+function handleRetCode(retCode) {
+    if (retCode == 0) {
+        alert('接口联调成功');
+        return;
+    }
+
+    if (retCode == 101) {
+        alert('活动不存在');
+        return;
+    }
+
+    if (retCode == 103) {
+        alert('活动未开始');
+        return;
+    }
+
+    if (retCode == 104) {
+        alert('活动已结束');
+        return;
+    }
+
+    if (retCode == 1001) {
+        alert('参数错误');
+        return;
+    }
+
+    if (retCode == 1002) {
+        alert('接口频率限制');
+        return;
+    }
+
+    if (retCode == 1003) {
+        alert('未登录');
+        return true;
+    }
+
+    if (retCode == 1004) {
+        alert('（风控用户）提示 活动太火爆啦~军万马都在挤，请稍后再试');
+        return true;
+    }
+
+    // 其他异常返回码
+    alert('系统君失联了，请稍候再试');
+    return;
+}
+
+```
+
+
+上面的写法2，是比较推荐的写法：直接通过 return 的方式，让 function 里的代码不再继续往下走，这就达到目的了。对了，因为要用到 return ，所以需要单独封装到一个 function 里面。
+
+如果你以后看到有前端小白采用的是**写法1**，请一定要把**写法2**传授给他：不需要那么多的 if else，直接用 return 返回就行了。
+
+### switch 的优雅写法
+
 
 ## 我的公众号
 
