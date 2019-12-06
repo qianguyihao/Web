@@ -12,21 +12,21 @@
 语法：
 
 ```
-	for(①初始化表达式; ②条件表达式; ④更新表达式){
-		③语句...
-	}
+for(①初始化表达式; ②条件表达式; ④更新表达式){
+	③语句...
+}
 ```
 
 执行流程：
 
 ```
-	①执行初始化表达式，初始化变量（初始化表达式只会执行一次）
+①执行初始化表达式，初始化变量（初始化表达式只会执行一次）
 
-	②执行条件表达式，判断是否执行循环：
-		如果为true，则执行循环③
-		如果为false，终止循环
+②执行条件表达式，判断是否执行循环：
+	如果为true，则执行循环③
+	如果为false，终止循环
 
-	④执行更新表达式，更新表达式执行完毕继续重复②
+④执行更新表达式，更新表达式执行完毕继续重复②
 ```
 
 
@@ -34,23 +34,22 @@
 for循环举例：
 
 ```javascript
-	for (var i = 1; i <= 100; i++) {
-		console.log(i);
-	}
+for (var i = 1; i <= 100; i++) {
+	console.log(i);
+}
 ```
 
 上方代码的解释：
 
-![](http://img.smyhvae.com/20180117_2248.png)
-
+![](http://img.smyhvae.com/20180117_2248_2.png)
 
 ### for循环举例
 
 
 ```javascript
-	for (var i = 1; i < 13; i = i + 4) {
-		console.log(i);
-	}
+for (var i = 1; i < 13; i = i + 4) {
+	console.log(i);
+}
 
 ```
 
@@ -77,10 +76,10 @@ for循环举例：
 **题目1**：
 
 ```javascript
-	for (var i = 1; i < 10; i = i + 3) {
-		i = i + 1;
-		console.log(i);
-	}
+for (var i = 1; i < 10; i = i + 3) {
+	i = i + 1;
+	console.log(i);
+}
 ```
 
 输出结果：2、6、10
@@ -88,10 +87,10 @@ for循环举例：
 **题目2**：
 
 ```javascript
-	for (var i = 1; i <= 10; i++) {
+for (var i = 1; i <= 10; i++) {
 
-	}
-	console.log(i);
+}
+console.log(i);
 ```
 
 输出结果：11
@@ -99,10 +98,10 @@ for循环举例：
 **题目3**：
 
 ```javascript
-	for(var i = 1; i < 7; i = i + 3){
+for(var i = 1; i < 7; i = i + 3){
 
-	}
-	console.log(i);
+}
+console.log(i);
 ```
 
 输出结果：7
@@ -110,14 +109,12 @@ for循环举例：
 **题目4**：
 
 ```javascript
-	for (var i = 1; i > 0; i++) {
-		console.log(i);
-	}
+for (var i = 1; i > 0; i++) {
+	console.log(i);
+}
 ```
 
 死循环。
-
-
 
 ## while循环语句
 
@@ -149,25 +146,23 @@ while语句在执行时，先对条件表达式进行求值判断：
 
 ### do...while循环
 
-
 语法：
 
 ```javascript
-	do{
-		语句...
-	}while(条件表达式)
+do{
+	语句...
+}while(条件表达式)
 
 ```
-		 
+
 执行流程：
 
 ```
-	do...while语句在执行时，会先执行循环体：
+do...while语句在执行时，会先执行循环体：
 
-		循环体执行完毕以后，在对while后的条件表达式进行判断：
-			如果结果为true，则继续执行循环体，执行完毕继续判断以此类推
-			如果结果为false，则终止循环
-
+	循环体执行完毕以后，在对while后的条件表达式进行判断：
+		如果结果为true，则继续执行循环体，执行完毕继续判断以此类推
+		如果结果为false，则终止循环
 
 ```
 
@@ -236,16 +231,15 @@ while语句在执行时，先对条件表达式进行求值判断：
 打印结果：
 
 ```
-	5003.18854203379
+5003.18854203379
 
-	一共需要33年
+一共需要33年
 ```
 
 
 另外，你也可以自己算一下，假如投资的年利率为5%，从1000块增长到1万块，需要花费48年：
 
 ```
-
 10401.269646942128
 一共需要48年
 ```
@@ -255,10 +249,9 @@ while语句在执行时，先对条件表达式进行求值判断：
 
 > 这个知识点非常重要。
 
-
 ### break
 
-- break可以用来退出switch语句或**整个**循环语句（循环语句包括for、while。不包括if。if里不能用 break 和 continue，否则会报错）。
+- break可以用来退出switch语句或退出**整个**循环语句（循环语句包括for循环、while循环。不包括if。if里不能用 break 和 continue，否则会报错）。
 
 - break会立即终止离它**最近**的那个循环语句。
 
@@ -268,16 +261,16 @@ while语句在执行时，先对条件表达式进行求值判断：
 **举例1**：通过 break 终止循环语句
 
 ```javascript
-    for (var i = 0; i < 5; i++) {
-        console.log('i的值:' + i);
-        if (i == 2) {
-            break;  // 注意，虽然在 if 里 使用了 break，但这里的 break 是服务于外面的 for 循环。
-        }
+for (var i = 0; i < 5; i++) {
+    console.log('i的值:' + i);
+    if (i == 2) {
+        break;  // 注意，虽然在 if 里 使用了 break，但这里的 break 是服务于外面的 for 循环。
     }
+}
 
 ```
 
-打印结果： 
+打印结果：
 
 ```
 i的值:0
@@ -289,14 +282,14 @@ i的值:2
 **举例2**：label的使用
 
 ```javascript
-    outer:
-    for (var i = 0; i < 5; i++) {
-        console.log("外层循环 i 的值：" + i)
-        for (var j = 0; j < 5; j++) {
-            break outer; // 直接跳出outer所在的外层循环（这个outer是我自定义的label）
-            console.log("内层循环 j 的值:" + j);
-        }
+outer:
+for (var i = 0; i < 5; i++) {
+    console.log("外层循环 i 的值：" + i)
+    for (var j = 0; j < 5; j++) {
+        break outer; // 直接跳出outer所在的外层循环（这个outer是我自定义的label）
+        console.log("内层循环 j 的值:" + j);
     }
+}
 
 ```
 
@@ -315,17 +308,39 @@ i的值:2
 
 - 同样，continue默认只会离他**最近**的循环起作用。
 
+举例：
+
+```javascript
+for (var i = 0; i < 10; i++) {
+    if (i % 2 == 0) {
+        continue;
+    }
+    console.log('i的值:' + i);
+}
+```
+
+打印结果：
+
+```
+i的值:1
+
+i的值:3
+
+i的值:5
+
+i的值:7
+
+i的值:9
+```
 
 
 ## 各种练习
-
 
 ### 练习一：质数相关
 
 **题目**：在页面中接收一个用户输入的数字，并判断该数是否是质数。
 
 代码实现：
-
 
 ```html
 <!DOCTYPE html>
@@ -379,7 +394,6 @@ i的值:2
 </html>
 
 ```
-
 
 ### 练习二：质数相关
 
@@ -436,9 +450,7 @@ i的值:2
 
 打印结果：
 
-
 ![](http://img.smyhvae.com/20181229_1415.png)
-
 
 ### 练习三：99乘法表
 
