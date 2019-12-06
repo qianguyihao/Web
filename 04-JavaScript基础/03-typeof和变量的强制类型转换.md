@@ -16,18 +16,30 @@ typeof 变量
 
 **返回结果**：
 
-- `typeof 数值`的返回结果：number
+| typeof 的代码写法 | 返回结果 |
+|:-------------|:-------------:|
+| typeof 数值 | number |
+| typeof 字符串 | string |
+| typeof 布尔型 | boolean |
+| typeof 对象 | object |
+| typeof 方法 | function |
+| typeof null | object |
+| typeof undefined | undefined |
 
-- `typeof 字符串`的返回结果：string
+备注1：在JavaScript中，只要是数，就是 number 数值型的。无论整浮、浮点数（即小数）、无论大小、无论正负，都是 number 类型的。
 
-- `typeof 布尔型`的返回结果：boolean
+备注2：为啥 `typeof null`的返回值也是 objcet呢？这个
 
-- `typeof undefined`的返回结果：undefined
 
-- `typeof null`的返回结果：object
+**返回结果举例**：
 
-在JavaScript中，只要是数，就是 number 数值型的。无论整浮、浮点数（即小数）、无论大小、无论正负，都是 number 类型的。
+| typeof 的代码写法 | 返回结果 | 备注 |
+|:-------------|:-------------:|:-------------|
+| typeof [] | object |  空数组 |
+| typeof {} | object |  空对象 |
 
+
+备注：这里的空数组`[]`、空对象`{}` ，为啥他们在使用 typeof 时，返回值也是 `object`呢？因为这里的 `object`指的是**引用数据类型**，是 Object 对象。
 
 
 ## 其他的简单类型 --> String
