@@ -116,7 +116,7 @@ var a = 255;
 
 //对于Number调用toString()时可以在方法中传递一个整数作为参数
 //此时它将会把数字转换为指定的进制,如果不指定则默认转换为10进制
-a = a.toString(2);
+a = a.toString(2); // 转换为二进制
 
 console.log(a);        // 11111111
 console.log(typeof a); // string
@@ -142,7 +142,7 @@ String(变量)
 
 ## 其他的数据类型 --> Number
 
-### 方式一：使用Number()函数
+### 使用Number()函数
 
 **情况一：字符串 --> 数字**
 
@@ -168,7 +168,7 @@ String(变量)
 
 补充：怎么理解这里的 NaN 呢？可以这样理解，使用 Number() 函数之后，**如果无法转换为数字，就会转换为 NaN**。
 
-### 方式二：parseInt()函数：字符串 -> 整数【重要】
+### parseInt()函数：字符串 -> 整数【重要】
 
 **parseInt()的作用是将字符串中的有效的整数内容转为数字**。parse表示“转换”，Int表示“整数”（注意`Int`的拼写）。例如：
 
@@ -320,6 +320,39 @@ var a = "070";
 
 a = parseInt(a,8); //将 070 当成八进制来看待，转换结果为十进制。
 console.log(a); // 打印结果：56。这个地方要好好理解。
+```
+
+## 隐式类型转换
+
+重点：**隐式类型转换，内部调用的都是显式类型的方法**。下面来详细介绍。
+
+### isNaN() 函数
+
+语法：
+
+```javascript
+isNaN(参数)
+```
+
+解释：判断指定的参数是否为 NaN，返回结果为 Boolean 类型。
+
+**过程**：
+
+（1）先调用`Number(参数)`函数；
+
+（2）然后将`Number(参数)`的返回结果和`NaN`进行比较。
+
+
+代码举例：
+
+```javascript
+console.log(isNaN('123')); // 返回结果：false。
+
+console.log(isNaN('abc')); // 返回结果：true。因为 Number('abc') 的返回结果是 NaN
+
+console.log(isNaN(null)); // 返回结果：false
+
+console.log(isNaN(undefined)); // 返回结果：true
 ```
 
 
