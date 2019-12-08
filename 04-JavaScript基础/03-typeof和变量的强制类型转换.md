@@ -8,17 +8,23 @@
 
 > 我们先来讲一下 typeof，再讲类型转换。
 
-`typeof()`表示“**获取变量的类型**”，返回的是小写，语法为：
+`typeof()`表示“**获取变量的类型**”，返回的是小写，语法为：（两种写法都可以）
 
-```
+```javascript
+// 写法1
 typeof 变量
+
+// 写法2
+typeof(变量)
 ```
+
+typeof这个运算符的返回结果就是变量的类型。那返回结果的类型是什么呢？是字符串。
 
 **返回结果**：
 
 | typeof 的代码写法 | 返回结果 |
 |:-------------|:-------------:|
-| typeof 数值 | number |
+| typeof 数字 | number |
 | typeof 字符串 | string |
 | typeof 布尔型 | boolean |
 | typeof 对象 | object |
@@ -28,18 +34,53 @@ typeof 变量
 
 备注1：在JavaScript中，只要是数，就是 number 数值型的。无论整浮、浮点数（即小数）、无论大小、无论正负，都是 number 类型的。
 
-备注2：为啥 `typeof null`的返回值也是 objcet呢？这个
-
+备注2：为啥 `typeof null`的返回值也是 object 呢？因为 null 代表的是**空对象**。
 
 **返回结果举例**：
 
-| typeof 的代码写法 | 返回结果 | 备注 |
-|:-------------|:-------------:|:-------------|
-| typeof [] | object |  空数组 |
-| typeof {} | object |  空对象 |
+```javascript
+console.log(type []); // 空数组的打印结果：object
 
+console.log(type {}); // 空对象的打印结果：object
+```
 
-备注：这里的空数组`[]`、空对象`{}` ，为啥他们在使用 typeof 时，返回值也是 `object`呢？因为这里的 `object`指的是**引用数据类型**，是 Object 对象。
+代码解释：这里的空数组`[]`、空对象`{}` ，为啥他们在使用 typeof 时，返回值也是 `object`呢？因为这里的 返回结果`object`指的是**引用数据类型**。空数组、空对象都是**引用数据类型 Object**。
+
+## 变量的类型转换的分类
+
+类型转换分为两种：显示类型转换、隐式类型转换。
+
+### 显示类型转换
+
+- toString(radix)
+
+- String(mix)
+
+- Number(mix)
+
+- parseInt(string,radix)
+
+- parseFloat(string)
+
+- Boolean()
+
+### 隐式类型转换
+
+- isNaN ()
+
+- ++/—-  +/-（一元正负）
+
+- +
+
+- */%
+
+- && || ！
+
+- <  >  <=  >=
+
+- == !=
+
+下面来详细介绍。
 
 
 ## 其他的简单类型 --> String
@@ -71,14 +112,14 @@ console.log(a + 'haha');  // 转换成 String 类型
 另外，Number类型的变量，在调用toString()时，可以在方法中传递一个整数作为参数。此时它将会把数字转换为指定的进制，如果不指定则默认转换为10进制。例如：
 
 ```javascript
-        var a = 255;
+var a = 255;
 
-        //对于Number调用toString()时可以在方法中传递一个整数作为参数
-        //此时它将会把数字转换为指定的进制,如果不指定则默认转换为10进制
-        a = a.toString(2);
+//对于Number调用toString()时可以在方法中传递一个整数作为参数
+//此时它将会把数字转换为指定的进制,如果不指定则默认转换为10进制
+a = a.toString(2);
 
-        console.log(a);        // 11111111
-        console.log(typeof a); // string
+console.log(a);        // 11111111
+console.log(typeof a); // string
 ```
 
 ### 方法三：使用String()函数
@@ -125,14 +166,16 @@ String(变量)
 
 - 结果为：NaN
 
-### 方式二：`parseInt()`：字符串 -> 整数【重要】
+补充：怎么理解这里的 NaN 呢？可以这样理解，使用 Number() 函数之后，**如果无法转换为数字，就会转换为 NaN**。
+
+### 方式二：parseInt()函数：字符串 -> 整数【重要】
 
 > `parseInt()`是专门用来对付字符串的。
 
 **parseInt()的作用是将字符串中的有效的整数内容转为数字**。parse表示“转换”，Int表示“整数”（注意`Int`的拼写）。例如：
 
 ```
-	parseInt("5");
+parseInt("5");
 ```
 
 得到的结果是数字5。
@@ -141,12 +184,12 @@ String(变量)
 
 （1）**只保留字符串最开头的数字**，后面的中文自动消失。例如：
 
-```
-    console.log(parseInt("2017在公众号上写了6篇文章"));  //打印结果：2017
+```javascript
+console.log(parseInt("2017在公众号上写了6篇文章"));  //打印结果：2017
 
-    console.log(parseInt("2017.01在公众号上写了6篇文章"));  //打印结果仍是：2017   （说明只会取整数）
+console.log(parseInt("2017.01在公众号上写了6篇文章"));  //打印结果仍是：2017   （说明只会取整数）
 
-    console.log(parseInt("aaa2017.01在公众号上写了6篇文章"));  //打印结果：NaN
+console.log(parseInt("aaa2017.01在公众号上写了6篇文章"));  //打印结果：NaN
 ```
 
 （2）自动带有截断小数的功能：**取整，不四舍五入**。
@@ -154,8 +197,8 @@ String(变量)
 例1：
 
 ```javascript
-	var a = parseInt(5.8) + parseInt(4.7);
-	console.log(a);
+var a = parseInt(5.8) + parseInt(4.7);
+console.log(a);
 ```
 
 控制台输出：
@@ -167,38 +210,73 @@ String(变量)
 例2：
 
 ```javascript
-	var a = parseInt(5.8 + 4.7);
-	console.log(a);
+var a = parseInt(5.8 + 4.7);
+console.log(a);
 ```
 
 控制台输出：
 
 ```javascript
-	10
+10
 ```
 
-（3）如果对**非String**使用parseInt()或parseFloat()，它会**先将其转换为String**然后再操作。
+（3）如果对**非String**使用parseInt()或parseFloat()，它会**先将其转换为String**然后再操作。【重要】
 
 比如：
 
 ```javascript
-    var a = true;
-    console.log(parseInt(a));  //打印结果：NaN （因为是先将a转为字符串"true"，然后然后再操作）
+var a = true;
+console.log(parseInt(a));  //打印结果：NaN （因为是先将a转为字符串"true"，然后然后再操作）
 
-    var b = null;
-    console.log(parseInt(b));  //打印结果：NaN  （因为是先将b转为字符串"null"，然后然后再操作）
+var b = 168.23;
+console.log(parseInt(b));  //打印结果：168  （因为是先将c转为字符串"168.23"，然后然后再操作）
 
-    var c = undefined;
-    console.log(parseInt(c));  //打印结果：NaN  （因为是先将b转为字符串"undefined"，然后然后再操作）
+var c = null;
+console.log(parseInt(c));  //打印结果：NaN  （因为是先将b转为字符串"null"，然后然后再操作）
 
-    var d = 168.23;
-    console.log(parseInt(d));  //打印结果：168  （因为是先将c转为字符串"168.23"，然后然后再操作）
+var d = undefined;
+console.log(parseInt(d));  //打印结果：NaN  （因为是先将b转为字符串"undefined"，然后然后再操作）
 
 ```
 
-（4）带两个参数时，表示进制转换。
+总结：就拿`Number(true)` 和 `parseInt(true)/parseFloat(true)`来举例，由此我们可以看出，二者在使用时，是有区别的：
 
-### `parseFloat()`：字符串 --> 浮点数（小数）
+- Number(true) ：千方百计地想转换为数字。
+
+- parseInt(true)/parseFloat(true) ：先转为字符串，再提取出最前面的数字部分；没提取出来，那就返回 NaN。
+
+
+（4）带两个参数时，表示在转换时，包含了进制转换。
+
+代码举例：
+
+```javascript
+var a = '110';
+
+var num = parseInt(a, 16); // 【重要】将 a 当成 十六进制 来看待，转换成 十进制 的 num
+
+console.log(num);
+```
+
+打印结果：
+
+```
+272
+```
+
+如果你对打印结果感到震惊，请仔细看上面的代码注释。也就是说，无论 parseInt() 里面的进制参数是多少，最终的转换结果是十进制。
+
+我们继续来看下面的代码，打印结果是多少。
+
+```javascript
+var a = '5';
+
+var num = parseInt(a, 2); // 将 a 当成 二进制 来看待，转换成 十进制 的 num
+
+console.log(num); // 打印结果：NaN。因为 二进制中没有 5 这个数，转换失败。
+```
+
+### parseFloat()函数：字符串 --> 浮点数（小数）
 
 > `parseFloat()`是专门用来对付字符串的。
 
@@ -209,9 +287,11 @@ parseFloat()和parseInt()的作用类似，不同的是，parseFloat()可以获�
 代码举例：
 
 ```javascript
-    var a = '123.456.789px';
-    console.log(parseFloat(a)); // 打印结果：123.456
+var a = '123.456.789px';
+console.log(parseFloat(a)); // 打印结果：123.456
 ```
+
+parseFloat() 的几个特性，可以参照 parseInt()。
 
 ## 转换为 Boolean
 
@@ -225,9 +305,9 @@ parseFloat()和parseInt()的作用类似，不同的是，parseFloat()可以获�
 
 - 情况四：对象也会转换为true。
 
-PS：转换为 Boolean 的这几种情况，很重要，开发中会经常用到。
+PS：转换为 Boolean 的这几种情况，**很重要**，开发中会经常用到。
 
-## 其他进制的数字
+## 知识补充：其他进制的数字
 
 - 16进制的数字，以`0x`开头
 
@@ -237,12 +317,27 @@ PS：转换为 Boolean 的这几种情况，很重要，开发中会经常用到
 
 比如`070`这个字符串，如果我调用parseInt()转成数字时，有些浏览器会当成8进制解析，有些会当成10进制解析。
 
-所以，比较建议的做法是：可以在parseInt()中传递第二个参数，来指定数字的进制。例如：
+所以，比较建议的做法是：可以在parseInt()中传递第二个参数，来指定当前数字的进制。例如：
 
 ```javascript
-	a = "070";
+var a = "070";
 
-	a = parseInt(a,10); //转换成十进制
+a = parseInt(a,8); //将 070 当成八进制来看待，转换结果为十进制。
+console.log(a); // 打印结果：56。这个地方要好好理解。
+```
+
+
+### 通过运算符转为数字
+
+- 任何值做`-`、`*`、`/`运算时都会自动转换为Number。
+
+注：任何值和字符串相加，结果会转换为字符串。
+
+代码举例：
+
+```javascript
+
+
 ```
 
 
