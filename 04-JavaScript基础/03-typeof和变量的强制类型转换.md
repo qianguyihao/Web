@@ -12,29 +12,29 @@
 
 ```javascript
 // 写法1
-typeof 变量
+typeof 变量;
 
 // 写法2
-typeof(变量)
+typeof 变量;
 ```
 
-typeof这个运算符的返回结果就是变量的类型。那返回结果的类型是什么呢？是字符串。
+typeof 这个运算符的返回结果就是变量的类型。那返回结果的类型是什么呢？是字符串。
 
 **返回结果**：
 
-| typeof 的代码写法 | 返回结果 |
-|:-------------|:-------------:|
-| typeof 数字 | number |
-| typeof 字符串 | string |
-| typeof 布尔型 | boolean |
-| typeof 对象 | object |
-| typeof 方法 | function |
-| typeof null | object |
-| typeof undefined | undefined |
+| typeof 的代码写法 | 返回结果  |
+| :---------------- | :-------: |
+| typeof 数字       |  number   |
+| typeof 字符串     |  string   |
+| typeof 布尔型     |  boolean  |
+| typeof 对象       |  object   |
+| typeof 方法       | function  |
+| typeof null       |  object   |
+| typeof undefined  | undefined |
 
-备注1：在JavaScript中，只要是数，就是 number 数值型的。无论整浮、浮点数（即小数）、无论大小、无论正负，都是 number 类型的。
+备注 1：在 JavaScript 中，只要是数，就是 number 数值型的。无论整浮、浮点数（即小数）、无论大小、无论正负，都是 number 类型的。
 
-备注2：为啥 `typeof null`的返回值也是 object 呢？因为 null 代表的是**空对象**。
+备注 2：为啥 `typeof null`的返回值也是 object 呢？因为 null 代表的是**空对象**。
 
 **返回结果举例**：
 
@@ -52,13 +52,13 @@ console.log(type {}); // 空对象的打印结果：object
 
 ### 显示类型转换
 
-- toString(radix)
+- toString()
 
-- String(mix)
+- String()
 
-- Number(mix)
+- Number()
 
-- parseInt(string,radix)
+- parseInt(string)
 
 - parseFloat(string)
 
@@ -68,20 +68,22 @@ console.log(type {}); // 空对象的打印结果：object
 
 - isNaN ()
 
-- ++/—-  +/-（一元正负）
+- 自增/自减运算符：`++`、`—-`
 
-- +
+- 正号/负号：`+a`、`-a`
 
-- */%
+- 加号：`+`
 
-- && || ！
+- 运算符：`-`、`*`、`/`
 
-- <  >  <=  >=
+### 隐式类型转换（特殊）
 
-- == !=
+- 逻辑运算符：`&&`、`||`、`！` 。非布尔值进行**与或**运算时，会先将其转换为布尔值，然后再运算，但返回结果是**原值**。具体可以看下一篇文章《运算符》。
 
-下面来详细介绍。
+- 关系运算符：`<`、`>` `<=` `>=`等。关系运算符，得到的结果都是布尔值：要么是true，要么是false。具体可以看下一篇文章《运算符》。
 
+
+针对上面这两种类型转换，下面来详细介绍。
 
 ## 其他的简单类型 --> String
 
@@ -90,26 +92,26 @@ console.log(type {}); // 空对象的打印结果：object
 举例如下：
 
 ```javascript
-var a = 123;  // Number 类型
-console.log(a + '');  // 转换成 String 类型
-console.log(a + 'haha');  // 转换成 String 类型
+var a = 123; // Number 类型
+console.log(a + ''); // 转换成 String 类型
+console.log(a + 'haha'); // 转换成 String 类型
 ```
 
 上面的例子中，打印的结果，都是字符串类型的数据。
 
-### 方法二：调用toString()方法
+### 方法二：调用 toString()方法
 
 举例如下：
 
-```
+```javascript
 变量.toString()
 ```
 
 【重要】该方法**不会影响到原变量**，它会将转换的结果返回。当然我们还可以直接写成`a = a.toString()`，这样的话，就是直接修改原变量。
 
-注意：null和undefined这两个值没有toString()方法，所以它们不能用方法二。如果调用，会报错。
+注意：null 和 undefined 这两个值没有 toString()方法，所以它们不能用方法二。如果调用，会报错。
 
-另外，Number类型的变量，在调用toString()时，可以在方法中传递一个整数作为参数。此时它将会把数字转换为指定的进制，如果不指定则默认转换为10进制。例如：
+另外，Number 类型的变量，在调用 toString()时，可以在方法中传递一个整数作为参数。此时它将会把数字转换为指定的进制，如果不指定则默认转换为 10 进制。例如：
 
 ```javascript
 var a = 255;
@@ -118,39 +120,39 @@ var a = 255;
 //此时它将会把数字转换为指定的进制,如果不指定则默认转换为10进制
 a = a.toString(2); // 转换为二进制
 
-console.log(a);        // 11111111
+console.log(a); // 11111111
 console.log(typeof a); // string
 ```
 
-### 方法三：使用String()函数
+### 方法三：使用 String()函数
 
 格式如下：
 
-```
+```javascript
 String(变量)
 ```
 
-使用String()函数做强制类型转换时：
+使用 String()函数做强制类型转换时：
 
-- 对于Number和Boolean而言，实际上就是调用toString()方法。
+- 对于 Number 和 Boolean 而言，实际上就是调用 toString()方法。
 
-- 但是对于null和undefined，就不会调用toString()方法。它会将 null 直接转换为 "null"。将 undefined 直接转换为 "undefined"。
+- 但是对于 null 和 undefined，就不会调用 toString()方法。它会将 null 直接转换为 "null"。将 undefined 直接转换为 "undefined"。
 
 ### prompt()：用户的输入
 
-我们在JS基础的第一篇里，就讲过，`prompt()`就是专门用来弹出能够让用户输入的对话框。重要的是：用户不管输入什么，都是字符串。
+我们在 JS 基础的第一篇里，就讲过，`prompt()`就是专门用来弹出能够让用户输入的对话框。重要的是：用户不管输入什么，都是字符串。
 
 ## 其他的数据类型 --> Number
 
-### 使用Number()函数
+### 使用 Number()函数
 
 **情况一：字符串 --> 数字**
 
 - 1.如果字符串中是纯数字，则直接将其转换为数字。
 
-- 2.只要字符串中包含了非数字的内容（`小数点`按数字来算），则转换为NaN。（此处可以看到Number()函数的局限性）。
+- 2.只要字符串中包含了非数字的内容（`小数点`按数字来算），则转换为 NaN。
 
-- 3.如果字符串是一个空串或者是一个全是空格的字符串，则转换为0。
+- 3.如果字符串是一个空串或者是一个全是空格的字符串，则转换为 0。
 
 **情况二：布尔 --> 数字**
 
@@ -166,33 +168,82 @@ String(变量)
 
 - 结果为：NaN
 
-补充：怎么理解这里的 NaN 呢？可以这样理解，使用 Number() 函数之后，**如果无法转换为数字，就会转换为 NaN**。
+补充：怎么理解这里的 **NaN** 呢？可以这样理解，使用 Number() 函数之后，**如果无法转换为数字，就会转换为 NaN**。
 
-### parseInt()函数：字符串 -> 整数【重要】
+### 使用 parseInt()函数：字符串 -> 整数【重要】
 
-**parseInt()的作用是将字符串中的有效的整数内容转为数字**。parse表示“转换”，Int表示“整数”（注意`Int`的拼写）。例如：
+**parseInt()的作用是将字符串中的有效的整数内容转为数字**。parse 表示“转换”，Int 表示“整数”（注意`Int`的拼写）。例如：
 
-```
+```javascript
 parseInt("5");
 ```
 
-得到的结果是数字5。
+得到的结果是数字 5。
 
-**parseInt()还具有以下特性**：
+parseInt()的转换情况如下。
+
+**情况一：字符串 --> 数字**
+
+- 1.**只保留字符串最开头的数字**，后面的中文自动消失。
+
+- 2.如果字符串不是以数字开头，则转换为 NaN。
+
+- 3.如果字符串是一个空串或者是一个全是空格的字符串，转换时会报错。
+
+**情况二：布尔 --> 数字**
+
+- 结果为：NaN
+
+**情况三：null --> 数字**
+
+- 结果为：NaN
+
+**情况四：undefined --> 数字**
+
+- 结果为：NaN
+
+
+Number() 函数和 parseInt() 函数的区别：
+
+就拿`Number(true)` 和 `parseInt(true)/parseFloat(true)`来举例，二者在使用时，是有区别的：
+
+- Number(true) ：千方百计地想转换为数字。
+
+- parseInt(true)/parseFloat(true) ：先转为字符串，再提取出最前面的数字部分；没提取出来，那就返回 NaN。
+
+**parseInt()具有以下特性**：
 
 （1）**只保留字符串最开头的数字**，后面的中文自动消失。例如：
 
 ```javascript
-console.log(parseInt("2017在公众号上写了6篇文章"));  //打印结果：2017
+console.log(parseInt("2017在公众号上写了6篇文章")); //打印结果：2017
 
-console.log(parseInt("2017.01在公众号上写了6篇文章"));  //打印结果仍是：2017   （说明只会取整数）
+console.log(parseInt("2017.01在公众号上写了6篇文章")); //打印结果仍是：2017   （说明只会取整数）
 
-console.log(parseInt("aaa2017.01在公众号上写了6篇文章"));  //打印结果：NaN
+console.log(parseInt("aaa2017.01在公众号上写了6篇文章")); //打印结果：NaN
 ```
 
-（2）自动带有截断小数的功能：**取整，不四舍五入**。
+（2）如果对**非 String**使用 parseInt()或 parseFloat()，它会**先将其转换为 String** 然后再操作。【重要】
 
-例1：
+比如：
+
+```javascript
+var a = 168.23;
+console.log(parseInt(a)); //打印结果：168  （因为是先将c转为字符串"168.23"，然后然后再操作）
+
+var b = true;
+console.log(parseInt(b)); //打印结果：NaN （因为是先将a转为字符串"true"，然后然后再操作）
+
+var c = null;
+console.log(parseInt(c)); //打印结果：NaN  （因为是先将b转为字符串"null"，然后然后再操作）
+
+var d = undefined;
+console.log(parseInt(d)); //打印结果：NaN  （因为是先将b转为字符串"undefined"，然后然后再操作）
+```
+
+（3）自动带有截断小数的功能：**取整，不四舍五入**。
+
+例 1：
 
 ```javascript
 var a = parseInt(5.8) + parseInt(4.7);
@@ -205,7 +256,7 @@ console.log(a);
 9
 ```
 
-例2：
+例 2：
 
 ```javascript
 var a = parseInt(5.8 + 4.7);
@@ -215,34 +266,8 @@ console.log(a);
 控制台输出：
 
 ```javascript
-10
+10;
 ```
-
-（3）如果对**非String**使用parseInt()或parseFloat()，它会**先将其转换为String**然后再操作。【重要】
-
-比如：
-
-```javascript
-var a = true;
-console.log(parseInt(a));  //打印结果：NaN （因为是先将a转为字符串"true"，然后然后再操作）
-
-var b = 168.23;
-console.log(parseInt(b));  //打印结果：168  （因为是先将c转为字符串"168.23"，然后然后再操作）
-
-var c = null;
-console.log(parseInt(c));  //打印结果：NaN  （因为是先将b转为字符串"null"，然后然后再操作）
-
-var d = undefined;
-console.log(parseInt(d));  //打印结果：NaN  （因为是先将b转为字符串"undefined"，然后然后再操作）
-
-```
-
-总结：就拿`Number(true)` 和 `parseInt(true)/parseFloat(true)`来举例，由此我们可以看出，二者在使用时，是有区别的：
-
-- Number(true) ：千方百计地想转换为数字。
-
-- parseInt(true)/parseFloat(true) ：先转为字符串，再提取出最前面的数字部分；没提取出来，那就返回 NaN。
-
 
 （4）带两个参数时，表示在转换时，包含了进制转换。
 
@@ -278,7 +303,7 @@ console.log(num); // 打印结果：NaN。因为 二进制中没有 5 这个数�
 
 parseFloat()的作用是：将字符串转换为**浮点数**。
 
-parseFloat()和parseInt()的作用类似，不同的是，parseFloat()可以获得有效的小数部分。
+parseFloat()和 parseInt()的作用类似，不同的是，parseFloat()可以获得有效的小数部分。
 
 代码举例：
 
@@ -291,34 +316,34 @@ parseFloat() 的几个特性，可以参照 parseInt()。
 
 ## 转换为 Boolean
 
-将其他的数据类型转换为Boolean，可以使用Boolean()函数。情况如下：
+将其他的数据类型转换为 Boolean，可以使用 Boolean()函数。情况如下：
 
-- 情况一：数字 --> 布尔。除了0和NaN，其余的都是true。
+- 情况一：数字 --> 布尔。除了 0 和 NaN，其余的都是 true。
 
-- 情况二：字符串 ---> 布尔。除了空串，其余的都是true。全是空格的字符串，也是 true。
+- 情况二：字符串 ---> 布尔。除了空串，其余的都是 true。全是空格的字符串，也是 true。
 
-- 情况三：null和undefined都会转换为false。
+- 情况三：null 和 undefined 都会转换为 false。
 
-- 情况四：对象也会转换为true。
+- 情况四：引用数据类型会转换为 true。注意，`空数组[]`和`空对象{}`，转换结果也是 true，这个一点，很多人都不知道。
 
 PS：转换为 Boolean 的这几种情况，**很重要**，开发中会经常用到。
 
 ## 知识补充：其他进制的数字
 
-- 16进制的数字，以`0x`开头
+- 16 进制的数字，以`0x`开头
 
-- 8进制的数字，以`0`开头
+- 8 进制的数字，以`0`开头
 
-- 2进制的数字，`0b`开头（不是所有的浏览器都支持：chrome和火狐支持，IE不支持）
+- 2 进制的数字，`0b`开头（不是所有的浏览器都支持：chrome 和火狐支持，IE 不支持）
 
-比如`070`这个字符串，如果我调用parseInt()转成数字时，有些浏览器会当成8进制解析，有些会当成10进制解析。
+比如`070`这个字符串，如果我调用 parseInt()转成数字时，有些浏览器会当成 8 进制解析，有些会当成 10 进制解析。
 
-所以，比较建议的做法是：可以在parseInt()中传递第二个参数，来指定当前数字的进制。例如：
+所以，比较建议的做法是：可以在 parseInt()中传递第二个参数，来指定当前数字的进制。例如：
 
 ```javascript
 var a = "070";
 
-a = parseInt(a,8); //将 070 当成八进制来看待，转换结果为十进制。
+a = parseInt(a, 8); //将 070 当成八进制来看待，转换结果为十进制。
 console.log(a); // 打印结果：56。这个地方要好好理解。
 ```
 
@@ -331,17 +356,16 @@ console.log(a); // 打印结果：56。这个地方要好好理解。
 语法：
 
 ```javascript
-isNaN(参数)
+isNaN(参数);
 ```
 
 解释：判断指定的参数是否为 NaN，返回结果为 Boolean 类型。
 
-**过程**：
+**执行过程**：
 
 （1）先调用`Number(参数)`函数；
 
 （2）然后将`Number(参数)`的返回结果和`NaN`进行比较。
-
 
 代码举例：
 
@@ -355,20 +379,61 @@ console.log(isNaN(null)); // 返回结果：false
 console.log(isNaN(undefined)); // 返回结果：true
 ```
 
+### 自增/自减运算符：`++`、`—-`
 
-### 通过运算符转为数字
-
-- 任何值做`-`、`*`、`/`运算时都会自动转换为Number。
-
-注：任何值和字符串相加，结果会转换为字符串。
-
-代码举例：
+**举例 1**：
 
 ```javascript
+var a = "666";
+a++;
 
-
+console.log(typeof a); // 打印结果： number
+console.log(a); // 打印结果：667
 ```
 
+执行过程：
+
+（1）先调用`Number(参数)`函数；
+
+（2）然后将`Number(参数)`的返回结果进行 加 1 操作。
+
+**举例 2**：
+
+```javascript
+var a = 'abc';
+a++;
+console.log(typeof a); // 打印结果：number
+console.log(a); // 打印结果：NaN。因为 Number('abc')的结果为 NaN，再自增后，结果依然是 NaN
+```
+
+### 正号/负号：`+a`、`-a`
+
+> 注意，这里说的是正号/负号，不是加号/减号。
+
+任何值做`+a`、`-a`运算时都会自动转换为 Number 类型。 内部调用的是 Number() 函数。
+
+**举例**：
+
+```javascript
+    var a = '666';
+    console.log(typeof +a); // 打印结果：number
+    console.log(+a); // 打印结果：666
+
+    var b = '666';
+    console.log(typeof -b); // 打印结果：number
+    console.log(-b); // 打印结果：-666
+```
+
+
+### 加号：`+`
+
+加号在做隐式类型转换时，有一个特点：当加号的两边，只要有一个是字符串的时候，就会调用 String() 函数，导致最终的返回结果是字符串。
+
+### 运算符：`-`、`*`、`/`
+
+任何值做`-`、`*`、`/`运算时，运算结果都会自动转换为 Number 类型。内部调用的是 Number() 函数。
+
+注：任何值和字符串相加，结果会转换为字符串。这个在上一小段已经讲过。
 
 ## 我的公众号
 
@@ -377,5 +442,3 @@ console.log(isNaN(undefined)); // 返回结果：true
 扫一扫，你将发现另一个全新的世界，而这将是一场美丽的意外：
 
 ![](http://img.smyhvae.com/2016040102.jpg)
-
-

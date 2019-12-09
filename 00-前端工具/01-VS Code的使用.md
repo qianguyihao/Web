@@ -584,11 +584,25 @@ css 颜色管理。
 
 安装了插件 `TODO Highlight`之后，按住「Cmd + Shift + P」打开命令面板，输入「Todohighlist」，选择相关的命令，我们就可以看到一个 todoList 的清单。
 
+
+### WakaTime
+
+统计写代码的时间。
+
+
 ### Code Time
 
 `Code Time`插件：记录编程时间，统计代码行数。摸鱼必备。
 
 安装该插件后，VS Code 底部的状态栏右下角可以看到时间统计。点击那个位置之后，选择「Code Time Dashboard」，即可查看统计结果。
+
+备注：团长试了一下这个 code time 插件，发现统计结果不是很准。
+
+
+### Markdown Preview Github Styling
+
+以 GitHub 风格预览 Markdown 样式。
+
 
 ### Settings Sync
 
@@ -601,7 +615,6 @@ css 颜色管理。
 - 地址：<https://github.com/nonoroazoro/vscode-syncing>
 
 - 作用：多台设备之间，同步 VS Code 配置。
-
 
 ### indent-rainbow：突出显示缩进
 
