@@ -410,24 +410,24 @@ console.log(a); // 打印结果：NaN。因为 Number('abc')的结果为 NaN，�
 
 > 注意，这里说的是正号/负号，不是加号/减号。
 
-任何值做`+a`、`-a`运算时都会自动转换为 Number 类型。 内部调用的是 Number() 函数。
+任何值做`+a`、`-a`运算时，运算结果都会自动转换为 Number 类型。 内部调用的是 Number() 函数。
 
 **举例**：
 
 ```javascript
-    var a = '666';
-    console.log(typeof +a); // 打印结果：number
-    console.log(+a); // 打印结果：666
+var a = '666';
+var b = +a;
 
-    var b = '666';
-    console.log(typeof -b); // 打印结果：number
-    console.log(-b); // 打印结果：-666
+console.log(typeof a); // 打印结果：string。说明 a 的数据类型保持不变。
+console.log(a); // 打印结果：666
+
+console.log(typeof b); // 打印结果：number。说明 b 的数据类型发生了变化。
+console.log(b); // 打印结果：666
 ```
-
 
 ### 加号：`+`
 
-加号在做隐式类型转换时，有一个特点：当加号的两边，只要有一个是字符串的时候，就会调用 String() 函数，导致最终的返回结果是字符串。
+加号在做隐式类型转换时，有一个特点：当加号的两边，只要有一个是字符串的时候，就会调用 String() 函数，导致最终的运算结果是字符串。
 
 ### 运算符：`-`、`*`、`/`
 
