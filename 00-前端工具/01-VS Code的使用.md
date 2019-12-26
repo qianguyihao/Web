@@ -654,6 +654,8 @@ css颜色高亮显示。
 
 ## 八、主题插件
 
+- [One Dark Pro](https://marketplace.visualstudio.com/items?itemName=zhuangtongfa.Material-theme)
+
 - [Snazzy Plus](https://marketplace.visualstudio.com/items?itemName=akarlsten.vscode-snazzy-akarlsten)
 
 - [Dainty](https://marketplace.visualstudio.com/items?itemName=alexanderte.dainty-vscode)
