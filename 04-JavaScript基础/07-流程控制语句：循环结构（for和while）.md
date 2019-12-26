@@ -371,9 +371,10 @@ i的值:9
                 //console.log(i);
                 //判断num是否能被i整除
                 if (num % i == 0) {
-                    //如果num能被i整除，则说明num一定不是质数
-                    //设置flag为false
+                    //一旦发现：如果num能被i整除，则说明num一定不是质数，
+                    //此时：设置flag为false，然后跳出 for 循环
                     flag = false;
+                    break;
                 }
             }
 
