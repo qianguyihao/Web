@@ -1,12 +1,9 @@
 
-
 ### 方法的注释
-
 
 方法写完之后（注意，一定要先写完整），我们在方法的前面输入`/**`，然后回车，会发现，注释的格式会自动补齐。
 
 比如：
-
 
 
 ```javascript
@@ -20,7 +17,6 @@ function getFirstNode(ele){
     return node;
 }
 ```
-
 
 ### 断点调试
 
@@ -51,7 +47,6 @@ function getFirstNode(ele){
 ![](http://img.smyhvae.com/20180124_2038.png)
 
 
-
 ### 2019-05-20-给数组、对象赋值
 
 **数组赋值的正确写法**：
@@ -69,20 +64,47 @@ Object.assign(this.dataObj, dataObj);
 上方代码中，是将`dataObj` 的值追加到`this.dataObj`中。如果对象里属性名相同，会被覆盖。
 
 
+### 2019-11-25-在新的窗口中打开url
+
+在原来的窗体中跳转到新页面：
+
+```javascript
+window.location.href="要跳转的新页面";
+```
+
+在新窗体中打开新页面：
+
+```javascript
+window.open('你所要跳转的新页面');
+```
+
+
+### 2019-12-10-JavaScript 新特性：Optional Chaining（可选链式调用）语法
+
+以往写代码，我们一般都这么写：
+
+```javascript
+if (result && result.user && result.user.name && result.user.name.length) {
+    console.log('qianguyihao');
+}
+```
+
+有了 Optinal Chain 语法之后，就简洁很多了，可以这么写：
+
+
+```javascript
+if (result?.user?.name?.length) {
+    console.log('qianguyihao');
+}
+```
 
 
 
+参考链接：
 
+- 了解 JavaScript 新特性：Optional Chaining：<https://www.infoq.cn/article/2JDORgXrU6VmZ7jlyuFD>
 
-
-
-
-
-
-
-
-
-
+- 原文链接： https://v8.dev/features/optional-chaining
 
 
 

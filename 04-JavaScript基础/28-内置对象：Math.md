@@ -63,6 +63,55 @@ Math属于一个工具类，里面封装了数学运算相关的属性和方法�
     Math.round(Math.random()*(y-x)+x)
 ```
 
+
+### 乘方
+
+如果想计算 `a 的 b 次方`，可以使用如下函数：
+
+```
+	Math.pow(a, b);
+```
+
+Math的中文是“数学”，pow是“power 幂”。
+
+**举例1：**
+
+![](http://img.smyhvae.com/20180117_1730.png)
+
+代码实现：
+
+```
+	var a = Math.pow(3, Math.pow(2, 2));
+	console.log(a);
+```
+
+**举例2：**
+
+![](http://img.smyhvae.com/20180117_1740.png)
+
+代码实现：
+
+```
+	var a = Math.pow(Math.pow(3, 2), 4);
+	console.log(a);
+```
+
+### 开方
+
+如果想计算数值a的开二次方，可以使用如下函数：
+
+```
+	 Math.sqrt(a);
+```
+
+sqrt即“square 开方”。比如：
+
+```
+	var a = Math.sqrt(36);
+```
+
+
+
 ## url 编码和解码
 
 URI (Uniform ResourceIdentifiers,通用资源标识符)进行编码，以便发送给浏览器。有效的URI中不能包含某些字符，例如空格。而这URI编码方法就可以对URI进行编码，它们用特殊的UTF-8编码替换所有无效的字符，从而让浏览器能够接受和理解。

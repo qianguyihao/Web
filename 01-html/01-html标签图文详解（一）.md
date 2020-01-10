@@ -1,7 +1,4 @@
 
-> 本文最初发表于[博客园](http://www.cnblogs.com/smyhvae/p/4850684.html)，并在[GitHub](https://github.com/qianguyihao/Web)上持续更新**前端的系列文章**。欢迎在GitHub上关注我，一起入门和进阶前端。
-
-> 以下是正文。
 
 ## 本文主要内容
 
@@ -10,7 +7,6 @@
 - 字体标记：`<h1>`、 `<font>`、 `<b>`、 `<u>` 、`<sup>` 、`<sub>`
 - 超链接 `<a>`
 - 图片标签 `<img>`
-
 
 
 ## 前言
@@ -24,32 +20,21 @@ web标准介绍：
 - web标准规范的分类：结构标准、表现标准、行为标准。
 - 结构：html。表现：css。行为：JavaScript。
 
-web标准总结：
+Web 前端分三层：
 
-- 结构标准：相当于人的身体。html就是用来制作网页的。
-- 表现标准： 相当于人的衣服。css就是对网页进行美化的。
-- 行为标准： 相当于人的动作。JS就是让网页动起来，具有生命力的。
+- HTML：HyperText Markup Language（超文本标记语言）。从**语义**的角度描述页面的**结构**。相当于人的身体结构。
+- CSS：Cascading Style Sheets（层叠样式表）。从**审美**的角度美化页面的**样式**。相当于人的衣服。
+- JS：JavaScript。从**交互**的角度描述页面的**行为**。相当于人的动作，让人有生命力。
 
-### 浏览器介绍
+## 编辑器相关
 
-浏览器是网页运行的平台，常用的浏览器有IE、火狐（Firefox）、谷歌（Chrome）、猎豹浏览器、Safari和Opera等。如下图所示：
+### VS Code 的使用
 
-![](http://img.smyhvae.com/20170628_1352.png)
-
-浏览器内核：
-
-|浏览器 | 内核|
-|:-------------:|:-------------:|
-|IE|trident |
-|chrome / 欧鹏   |blink  |
-|火狐|gecko|
-|Safari|webkit|
-
-PS：「浏览器内核」也就是浏览器所采用的「渲染引擎」，渲染引擎决定了浏览器如何显示网页的内容以及页面的格式信息。**渲染引擎是兼容性问题出现的根本原因。**
+详情请移步至：[第一次使用VS Code时你应该知道的一切配置](https://github.com/qianguyihao/Web/blob/master/00-%E5%89%8D%E7%AB%AF%E5%B7%A5%E5%85%B7/01-VS%20Code%E7%9A%84%E4%BD%BF%E7%94%A8.md)
 
 ### Sublime Text 的使用
 
-详情请移步至：[Sublime Text使用技巧](https://github.com/qianguyihao/Tools/blob/master/%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/02-Sublime%20Text%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7.md)
+详情请移步至：[Sublime Text使用技巧](https://github.com/qianguyihao/Tools/blob/master/01-%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/02-Sublime%20Text%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7.md)
 
 ## 一、HTML的介绍
 
@@ -384,7 +369,7 @@ HTML4.01里面规定了**普通**和**XHTML**两大种规范。HTML觉得自己�
 头标签都放在<head></head>头部分之间。包括：`<title>`、`<base>`、`<meta>`、`<link>`
 
  - `<title>`：指定整个网页的标题，在浏览器最上方显示。
- - `<base>`：为页面上的所有链接规标题栏显示的内容定默认地址或默认目标。
+ - `<base>`：为页面上的所有链接规定默认地址或默认目标。
  - `<meta>`：提供有关页面的基本信息
  - `<body>`：用于定义HTML文档所要显示的内容，也称为主体标签。我们所写的代码必须放在此标签內。
  - `<link>`：定义文档与外部资源的关系。
@@ -1103,7 +1088,10 @@ aaa/../bbb/1.jpg
 
 扫一扫，你将发现另一个全新的世界，而这将是一场美丽的意外：
 
-![](http://img.smyhvae.com/cnblogs/%E7%94%9F%E5%91%BD%E5%9B%A2%E9%98%9F%E5%85%AC%E4%BC%97%E5%8F%B7%E4%BA%8C%E7%BB%B4%E7%A0%81.jpg)
+## 我的公众号
 
+想学习**代码之外的技能**？不妨关注我的微信公众号：**千古壹号**（id：`qianguyihao`）。
 
+扫一扫，你将发现另一个全新的世界，而这将是一场美丽的意外：
 
+![](http://img.smyhvae.com/20200101.png)
