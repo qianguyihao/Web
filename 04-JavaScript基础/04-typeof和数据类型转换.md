@@ -330,7 +330,7 @@ parseFloat() 的几个特性，可以参照 parseInt()。
 
 - 情况一：数字 --> 布尔。除了 0 和 NaN，其余的都是 true。也就是说，`Boolean(NaN)`的结果是 false。
 
-- 情况二：字符串 ---> 布尔。除了空串，其余的都是 true。全是空格的字符串，也是 true。
+- 情况二：字符串 ---> 布尔。除了空串，其余的都是 true。全是空格的字符串，转换结果也是 true。字符串`'0'`的转换结果也是 true。
 
 - 情况三：null 和 undefined 都会转换为 false。
 
