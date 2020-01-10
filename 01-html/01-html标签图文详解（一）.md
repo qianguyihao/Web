@@ -20,7 +20,7 @@ web标准介绍：
 - web标准规范的分类：结构标准、表现标准、行为标准。
 - 结构：html。表现：css。行为：JavaScript。
 
-Web 前端分三层：
+**Web 前端分三层**：
 
 - HTML：HyperText Markup Language（超文本标记语言）。从**语义**的角度描述页面的**结构**。相当于人的身体结构。
 - CSS：Cascading Style Sheets（层叠样式表）。从**审美**的角度美化页面的**样式**。相当于人的衣服。
