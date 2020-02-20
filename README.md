@@ -15,11 +15,11 @@
 
 维护这个项目的初衷，可以看这篇文章：[《裸辞两个月，海投一个月，从Android转战Web前端的求职之路》](https://www.cnblogs.com/qianguyihao/p/8732781.html)
 
-前端入门路线和推荐学习资源，可以看这篇文章：[《2019年Web前端入门的自学路线》](https://www.cnblogs.com/qianguyihao/p/8776837.html)
+前端入门路线和推荐学习资源，可以看这篇文章：[《2020年Web前端入门的自学路线》](https://www.cnblogs.com/qianguyihao/p/8776837.html)
 
 ## 项目指引
 
-如果你发现文中的部分图片加载不出来，不妨[看这里](https://github.com/qianguyihao/Web/issues/20#issue-390074432)。当然，您也可以直接「下载项目到本地」，通过 markdown 软件（比如 typora）打开项目文件，以便正常展示图片。
+如果你发现文中的部分图片加载不出来，不妨[看这里](https://github.com/qianguyihao/Web/issues/20#issue-390074432)。当然，您也可以直接「下载项目到本地」，通过 markdown 软件（比如 [Typora](https://typora.io/)）打开项目文件，以便正常展示图片。
 
 如果你发现本项目有内容上的错误，欢迎提交 issues 进行指正。
 
