@@ -25,8 +25,15 @@
 解决办法：增加如下属性即可。
 
 ```
-white-space:pre-wrap;
+white-space: pre-wrap;
 ```
+
+或者：
+
+```
+white-space: pre-line;
+```
+
 
 
 ### 2019-11-12-CSS的逗号和空格
