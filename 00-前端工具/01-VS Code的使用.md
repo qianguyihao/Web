@@ -466,7 +466,7 @@ VS Code 有一个很强大的功能就是支持插件扩展。
 
 我来列举几个常见的插件，这些插件都很实用。
 
-### GitLens
+### GitLens 【荐】
 
 我强烈建议你安装插件`GitLens`，它是 VS Code 中我最推荐的一个插件，简直是Git神器，码农必备。如果你不知道，那真是out了。
 
@@ -585,23 +585,27 @@ css 颜色管理。
 安装了插件 `TODO Highlight`之后，按住「Cmd + Shift + P」打开命令面板，输入「Todohighlist」，选择相关的命令，我们就可以看到一个 todoList 的清单。
 
 
-### WakaTime
+### WakaTime 【荐】
 
 统计写代码的时间。
 
 
 ### Code Time
 
-`Code Time`插件：记录编程时间，统计代码行数。摸鱼必备。
+`Code Time`插件：记录编程时间，统计代码行数。
 
 安装该插件后，VS Code 底部的状态栏右下角可以看到时间统计。点击那个位置之后，选择「Code Time Dashboard」，即可查看统计结果。
 
 备注：团长试了一下这个 code time 插件，发现统计结果不是很准。
 
 
-### Markdown Preview Github Styling
+### Markdown Preview Github Styling 【荐】
 
 以 GitHub 风格预览 Markdown 样式。
+
+### Markdown Preview Enhanced
+
+预览 Markdown 样式。
 
 
 ### Settings Sync
