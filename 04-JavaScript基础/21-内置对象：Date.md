@@ -2,51 +2,98 @@
 
 ## 内置对象：Date
 
-### Date对象的创建
+> Date 对象在实际开发中，使用得很频繁，且容易在细节地方出错，需要引起重视。
 
-**写法一**：表示的是当前代码执行的时间（也可以理解成是获取当前时间对象）
+内置对象 Date 用来处理日期和时间。
 
-```javascript
-    var date1 = new Date();
-    console.log(date1);
-```
+**需要注意的是**：与 Math 对象不同，Date 对象是一个**构造函数** ，需要**先实例化**后才能使用。
 
-**写法二**：在参数中传递一个表示时间的字符串（兼容性最强）
+## 创建Date对象
 
-```javascript
-    var date2 = new Date("2017/09/06 09:00:00");
-    console.log(date2);
-```
+创建Date对象有两种写法：
 
-写法三：（不常用）
+- 写法一：如果Date()不写参数，就返回当前时间对象
 
-```javascript
-    var date3 = new Date('Wed Jan 27 2017 12:00:00 GMT+0800 (中国标准时间)');
-    console.log(date3 );
-```
+- 写法二：如果Date()里面写参数，就返回括号里输入的时间对象
 
-写法四：（不常用）
+针对这两种写法，我们来具体讲一讲。
+
+### 写法一：不传递参数时，则获取系统的当前时间对象
+
+代码举例：
 
 ```javascript
-    var date4 = new Date(2017, 1, 27);    //写法四
-    console.log(date4);
+var date1 = new Date();
+console.log(date1);
+console.log(typeof date1);
 ```
 
-以上四种写法的打印结果是：
+代码解释：不传递参数时，表示的是获取系统的当前时间对象。也可以理解成是：获取当前代码执行的时间。
 
-![](http://img.smyhvae.com/20180202_1040.png)
+打印结果：
 
-### 获取日期和时间
+```
+Mon Feb 17 2020 21:57:22 GMT+0800 (中国标准时间)
+object
+```
 
-Date对象 有如下方法，可以获取日期和时间：
+### 写法二：传递参数
 
-- `getDate()`                 **获取日 1-31**
+参数中既可以传递数字，也可以传递字符串。
 
-- `getDay()`                 **获取星期 0-6**（0代表周日，1代表周一）
+代码举例：
+
+```javascript
+var date21 = new Date('2020/02/17 21:00:00');
+console.log(date21);
+// Mon Feb 17 2020 21:00:00 GMT+0800 (中国标准时间)
+
+var date22 = new Date(2020, 2, 18); // 第二个参数返回的是三月，不是二月
+console.log(date22);
+// Wed Mar 18 2020 00:00:00 GMT+0800 (中国标准时间)
+
+var date23 = new Date(2020, 3, 18, 22, 59, 58);
+console.log(date23);
+// Sat Apr 18 2020 22:59:58 GMT+0800 (中国标准时间)
+
+var date24 = new Date('2020/04/19'); // 返回的就是四月
+console.log(date24);
+// Sun Apr 19 2020 00:00:00 GMT+0800 (中国标准时间)
+
+var date25 = new Date('2020-05-20');
+console.log(date25);
+// Wed May 20 2020 08:00:00 GMT+0800 (中国标准时间)
+
+var date26 = new Date('Wed Jan 27 2017 12:00:00 GMT+0800 (中国标准时间)');
+console.log(date26);
+// Fri Jan 27 2017 12:00:00 GMT+0800 (中国标准时间)
+
+```
+
+
+
+
+## 日期的格式化
+
+上一段内容里，我们获取到了 Date **对象**，但这个对象，打印出来的结果并不是特别直观。
+
+如果我们需要获取日期的**指定部分**，就需要用到 Date对象自带的方法。
+
+获取了日期指定的部分之后，我们就可以让日期按照指定的格式，进行展示（即日期的格式化）。比如说，我期望能以 `2020-02-02 19:30:59` 这种格式进行展示。
+
+在这之前，我们先来看看 Date 对象有哪些方法。
+
+### Date对象的方法
+
+Date对象 有如下方法，可以获取日期和时间的**指定部分**：
+
+- `getFullYear() `        获取年份
 
 - `getMonth()  `           **获取月 0-11**（0代表一月）
 
-- `getFullYear() `        获取年份
+- `getDate()`                 **获取日 1-31**。即：获取的是几号
+
+- `getDay()`                 **获取星期 0-6**（0代表周日，1代表周一）
 
 - `getHours()  `      获取小时 0-23
 
@@ -56,17 +103,20 @@ Date对象 有如下方法，可以获取日期和时间：
 
 - `getMilliseconds()`    获取毫秒 （1s = 1000ms）
 
-代码举例：
+**代码举例**：
 
 ```javascript
 	// 我在执行这行代码时，当前时间为 2019年2月4日，周一，13:23:52
 	var myDate = new Date();
 
 	console.log(myDate); // 打印结果：Mon Feb 04 2019 13:23:52 GMT+0800 (中国标准时间)
-	console.log(myDate.getDate()); // 打印结果：4
-	console.log(myDate.getDay()); // 打印结果：1
-	console.log(myDate.getMonth()); // 打印结果：1
+
 	console.log(myDate.getFullYear()); // 打印结果：2019
+	console.log(myDate.getMonth() + 1); // 打印结果：2
+	console.log(myDate.getDate()); // 打印结果：4
+
+	console.log(myDate.getDay()); // 打印结果：1
+
 	console.log(myDate.getHours()); // 打印结果：13
 	console.log(myDate.getMinutes()); // 打印结果：23
 	console.log(myDate.getSeconds()); // 打印结果：52
@@ -75,8 +125,36 @@ Date对象 有如下方法，可以获取日期和时间：
 	console.log(myDate.getTime()); // 获取时间戳。打印结果：1549257832393
 ```
 
+获取了日期和时间的指定部分之后，我们把它们用字符串拼接起来，就可以按照自己想要的格式，来展示日期。
 
-### getTime()：获取时间戳
+
+### 举例1：年月日的格式化
+
+代码举例：
+
+```javascript
+    // 格式化年月日：2020年2月2日 星期三
+    var date = new Date();
+    var year = date.getFullYear();
+    var month = date.getMonth() + 1;
+    var dates = date.getDate();
+    var day = date.getDay();
+    var arr = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+
+    console.log('今天是：' + year + '年' + month + '月' + dates + '日 ' + arr[day]);
+```
+
+
+### 举例2：时分秒的格式化
+
+
+封装一个函数，返回当前时间的时分秒，格式为 06:06:06）
+
+
+
+
+
+## getTime()：获取时间戳
 
 Date对象 还有如下方法：
 
