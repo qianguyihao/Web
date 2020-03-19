@@ -1,4 +1,14 @@
 
+### 让flex盒子中的子元素们，居中
+
+flex布局常用的三行代码：
+
+```
+    display: flex;
+    justify-content: center; // 子元素在横轴的对齐方式 （左右居中）
+    align-items: center;  // 子元素在竖轴的对齐方式（上下居中）
+```
+
 
 ### 让文字只显示一行，超出显示省略号
 

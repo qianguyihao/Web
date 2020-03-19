@@ -879,11 +879,11 @@ img是自封闭标签，也称为单标签。
 
 #### 能插入的图片类型：
 
-- 能够插入的图片类型是：jpg(jpeg)、gif、png、bmp。类型和类型之间有什么区别，css课上讲。
+- 能够插入的图片类型是：jpg(jpeg)、gif、png、bmp等。
 
 - 不能往网页中插入的图片格式是：psd、ai
 
-> HTML页面不是直接插入图片，而是插入图片的引用地址，所以也要把图片上传到服务器上。
+> HTML页面不是直接插入图片，而是插入图片的引用地址，所以要先把图片上传到服务器上。
 
 ### `src`属性：图片的相对路径和绝对路径
 
@@ -895,7 +895,7 @@ img是自封闭标签，也称为单标签。
 
 #### 1、**写法一：相对路径**
 
-相对当前页面所在的路径。两个标记 `.` 和 `..` 分表代表当前目录和父路径。
+相对当前页面所在的路径。两个标记 `.` 和 `..` 分表代表当前目录和上一层路径。
 
 举例1：
 
@@ -922,7 +922,7 @@ aaa/../bbb/1.jpg
 ```html
 <img src="images/1.jpg">
 ```
-上方代码的意思是说，当前页面有一个并列的文件夹`images`，在文件夹`images`中存放了一张图片`1.jpg`
+上方代码的意思是说，当前html页面有一个并列的文件夹`images`，在文件夹`images`中存放了一张图片`1.jpg`
 效果：
 
 ![Paste_Image.png](http://img.smyhvae.com/20151001_19.jpg)
@@ -950,16 +950,18 @@ aaa/../bbb/1.jpg
 （1）以盘符开始的绝对路径。举例：
 
 ```html
-<img src="C:\Users\smyhvae\Desktop\html\images\1.jpg">
+<img src="C:\Users\qianguyihao\Desktop\html\images\1.jpg">
 ```
 
 （2）网络路径。举例：
 
 ```html
-<img src="http://img.smyhvae.com/2016040102.jpg">
+<img src="http://img.smyhvae.com/20200122_200901.png">
+
 ```
 
-大家打开上面的img中的链接，扫一扫，可能有惊喜哦。
+
+大家打开上面的img中的链接，可能有惊喜哦。
 
 ### 相对路径和绝对路径的总结
 
@@ -992,11 +994,11 @@ aaa/../bbb/1.jpg
 
  - `width`：宽度
  - `height`：高度
- - `Align`：指图片的水平对齐方式，属性值可以是：left、center、right
+ - `Align`（已废弃）：指图片的水平对齐方式，属性值可以是：top、middle、bottom、left、center、right。该属性已废弃，替换为 `vertical-align`这个CSS属性。
  - `title`：**提示性文本**。公有属性。也就是鼠标悬停时出现的文本。
- - `border`：给图片加边框（描边），单位是像素，边框的颜色是黑色
- - `Hspace`：指图片左右的边距
- - `Vspace`：指图片上下的边距
+ - `border`（已废弃）：给图片加边框，单位是像素，边框的颜色默认黑色。该属性已废弃，替换为 `border`这个CSS属性。
+ - `Hspace`（已废弃）：指图片左右的边距。
+ - `Vspace`（已废弃）：指图片上下的边距。
 
  - `alt`：当图片不可用（无法显示）的时候，代替图片显示的内容。alt是英语 alternate “替代”的意思，代表替换资源。（有的浏览器不支持）
 
@@ -1039,55 +1041,10 @@ aaa/../bbb/1.jpg
 （1）如果要想保证图片等比例缩放，请只设置width和height中其中一个。
 （2）如果想实现图文混排的效果，请使用align属性，取值为left或right。
 
-### 热点问题
-
-指的是对图片的**局部区域**加超链接。
-我们知道，如果给图片加一个超链接，那个点击这个图片的任意区域，都会跳转到新的位置。举例：
-```html
-<a href="网页2.html"><img src="2.jpg"></a>
-```
-上方代码表明：给图片加一个超链接，那个点击这个图片的任意区域，都会跳转到新的位置。
-现在，我只想对图片的局部区域加超链接，该怎么做呢？这里的难点在于坐标的确定，此时需要用到Dreamweaver。
-
-![Paste_Image.png](http://img.smyhvae.com/2015-10-01-cnblogs_html_22.png)
-
-上图中，切换到“设计”标签，然后：
-
-![Paste_Image.png](http://img.smyhvae.com/2015-10-01-cnblogs_html_23.png)
-
-上图中，点击菜单栏`插入-图像`，导入图片：
-
-![Paste_Image.png](http://img.smyhvae.com/2015-10-01-cnblogs_html_24.png)
-
-，在图片上点击右键，选择`属性`，弹出属性面板：
-
-![Paste_Image.png](http://img.smyhvae.com/2015-10-01-cnblogs_html_25.png)
-
-上图中，我们可以利用红框部分的`地图`绘制需要添加超链接的区域。箭头处表示的是要链接到的文件。蓝框部分表示打开新页面的方式，蓝狂部分的`new`是没有下划线的，它和`_blank`的含义是一样的。
-
-![Paste_Image.png](http://img.smyhvae.com/2015-10-01-cnblogs_html_26.png)
-局部区域的热点设置完毕后，上图显示，红框部分就是多出的代码，也正是我们需要的代码。多出的代码如下：
-```html
-<img src="file:///C|/Users/smyhvae/Desktop/html/1.jpg" alt="" width="488" height="730" usemap="#Map"/>
-<map name="Map">
-  <area shape="circle" coords="227,374,63" href="file:///C|/Users/smyhvae/Desktop/html/网页2.html" target="_blank">
-</map>
-```
-上方代码中，第一行的`usemap="#Map"`表示我要引用名为`Map`的地图。
-然后第02至第04行就给出了地图的定义。
-效果演示：
-
-![3.gif](http://img.smyhvae.com/3.gif)
-
 最后，送上妹子的近照一张。楼主已经仁至义尽了：http://img.smyhvae.com/2015-10-01-cnblogs_html_20150219214912_11994.jpg
 
 怎么？还没看够？且看下文：[HTML标签----图文详解（二）](http://www.cnblogs.com/smyhvae/p/4852863.html)
 
-## 我的公众号
-
-想学习<font color=#0000ff>**代码之外的技能**</font>？不妨关注我的微信公众号（千古壹号id：`qianguyihao`）。
-
-扫一扫，你将发现另一个全新的世界，而这将是一场美丽的意外：
 
 ## 我的公众号
 
