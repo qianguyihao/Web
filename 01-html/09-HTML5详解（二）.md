@@ -597,9 +597,8 @@ HTML5 Geolocation(地理位置定位) 规范提供了一套保护用户隐私的
 
 <script>
     var box = document.querySelector('.box');
+    // box.requestFullscreen();   //直接这样写是没有效果的。之所以无效，应该是浏览器的机制，必须要点一下才可以实现全屏功能。
     document.querySelector('.box').onclick = function () {
-    // box.requestFullscreen();   //直接这样写是没有效果的
-
         // 开启全屏显示的兼容写法
         if (box.requestFullscreen) {  //如果支持全屏，那就让元素全屏
             box.requestFullscreen();
