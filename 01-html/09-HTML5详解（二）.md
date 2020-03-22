@@ -95,7 +95,7 @@
         console.log('拖拽开始.');
     }
 
-    //  拖拽离开：鼠标拖拽时离开被拖拽的元素是触发
+    //  拖拽离开：鼠标拖拽时离开被拖拽的元素时触发
     box.ondragleave = function () {
         console.log('拖拽离开..');
     }
@@ -178,7 +178,7 @@
 
     //目标元素的拖拽事件
 
-    // 当被拖拽元素进入是触发
+    // 当被拖拽元素进入时触发
     two.ondragenter = function () {
         console.log("来了.");
     }
