@@ -79,6 +79,29 @@ CSS的逗号一般写在()里。**不同属性值之间，用的是空格**，�
 这个场景下，别用background。直接放img元素就好了，将图片的高度设置为`auto`。
 
 
+### 2020-03-26-通过CSS扩大点击热区
+
+```css
+.button {
+	position: relative;
+	/* [其余样式] */
+}
+
+.button::before {
+	content: '';
+	position: absolute;
+	top: -10px;
+	right: -10px;
+	bottom: -10px;
+	left: -10px;
+}
+```
+注意，button 里面不要写 `overflow: hidden` 属性，否则扩大的热区无效。
+
+
+参考链接：<https://www.jianshu.com/p/b83fc87cb222>
+
+
 
 
 
