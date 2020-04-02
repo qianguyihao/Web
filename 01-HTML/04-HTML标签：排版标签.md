@@ -60,7 +60,7 @@
 
 效果演示：
 
-![](http://img.smyhvae.com/20200401_1827.png)
+![](http://img.smyhvae.com/20200402_1050.png)
 
 ## HTML 注释
 
@@ -118,9 +118,6 @@ HTML标签是分等级的，HTML将所有的标签分为两种：
 PS：Chrome浏览器是HTML5支持度最好的浏览器。提供了非常好的开发工具，非常适合我们开发人员使用。审查元素功能的快捷键是F12。
 
 
-
-
-
 ## 水平线标签`<hr />`
 
 > horizontal 单词的发音：[ˌhɒrɪˈzɒntl]。
@@ -161,85 +158,75 @@ PS：Chrome浏览器是HTML5支持度最好的浏览器。提供了非常好的�
 
 ![Paste_Image.png](http://img.smyhvae.com/2015-10-01-cnblogs_html_05.png)
 
-<br>
+## 换行标签`<br />`
 
+如果希望某段文本强制换行显示，就需要使用换行标签。
 
+```html
+This <br/> is a para<br/>graph with line breaks
+```
+效果如下：
+
+![](http://img.smyhvae.com/2015-10-01-cnblogs_html03.png)
 
 ## `<div>`和`<span>`标签
 
-> div和span是非常重要的标签，div的语义是division“分割”； span的语义就是span“范围、跨度”。
+div和span是非常重要的标签，div的语义是division“分割”； span的语义就是span“范围、跨度”。想必你应该听说过“div + css”布局。
 
->CSS课程中你将知道，这两个东西，都是最最重要的“盒子”。
+### div和span的介绍
 
-div：把标签中的内容作为一个块儿来对待(division)。必须单独占据一行。
+- **div标签**：可以把标签中的内容分割为独立的区块。必须单独占据一行。
 
-div标签的属性：
- - `align="属性值"`：设置块儿的位置。属性值可选择：left、right、 center。
+- **span标签**：和div的作用一致，但不换行。
 
-<br>
-
-**`<span>`和`<div>`唯一的区别在于**：`<span>`是不换行的，而`<div>`是换行的。
-
-如果单独在网页中插入这两个元素，不会对页面产生任何的影响。这两个元素是专门为定义CSS样式而生的。或者说，DIV+CSS来实现各种样式。
-
-效果举例：
+代码举例：
 
 ![Paste_Image.png](http://img.smyhvae.com/2015-10-01-cnblogs_html_08.png)
+
+div标签的属性：
+
+- `align="属性值"`：设置块儿的位置。属性值可选择：left、right、 center。
+
+### div和span的区别
+
+`<span>`和`<div>`唯一的区别在于：`<span>`是不换行的，而`<div>`是换行的。
+
+如果单独在网页中插入这两个元素，不会对页面产生任何的影响。这两个元素是专门为定义CSS样式而生的。或者说，DIV+CSS来实现各种样式。
 
 div在浏览器中，默认是不会增加任何的效果的，但是语义变了，div中的所有元素是一个小区域。
 div标签是一个**容器级**标签，里面什么都能放，甚至可以放div自己。
 
-span也是表达“小区域、小跨度”的标签，但是是一个**文本级**的标签。
+span也是表达“小区域、小跨度”的标签，但只是一个**文本级**的标签。
 就是说，span里面只能放置文字、图片、表单元素。 span里面不能放p、h、ul、dl、ol、div。
-
-span里面是放置小元素的，div里面放置大东西的。举例如下：
 
 span举例：
 
 ```html
-			<p>
-				简介简介简介简介简介简介简介简介
-				<span>
-					<a href="">详细信息</a>
-					<a href="">购买</a>
-				</span>
-			</p>
+<p>
+	简介简介简介简介简介简介简介简介
+	<span>
+		<a href="">详细信息</a>
+		<a href="">购买</a>
+	</span>
+</p>
 
 ```
 
 div举例：
 
 ```html
-	<div class="header">
-		<div class="logo"></div>
-		<div class="nav"></div>
-	</div>
-	<div class="content">
-		<div class="guanggao"></div>
-		<div class="dongxi"></div>
-	</div>
-	<div class="footer"></div>
-
+<div class="header">
+	<div class="logo"></div>
+	<div class="nav"></div>
+</div>
+<div class="content">
+	<div class="guanggao"></div>
+	<div class="dongxi"></div>
+</div>
+<div class="footer"></div>
 ```
 
-所以，我们亲切的称呼这种模式叫做“**div+css**”。**div标签负责布局，负责结构，负责分块。css负责样式**。
-
-
-## 换行标签`<br>`（已废弃）
-
-当你打算结束一行，而又不想开始一个新段落时，`<br> `标签就派上用场了。无论你将它置于何处，`<br> `标签都会产生一个强制的换行。
-```html
-This <br> is a para<br>graph with line breaks
-```
-效果如下：
-
-![](http://img.smyhvae.com/2015-10-01-cnblogs_html03.png)
-
-上图显示，**`<p>`标签和`<br>`标签的区别在于**：`<p>`标签会在段落的前后自动插入一个空行，而`<br>`标签没有空行；而且`<br>`标签没有属性。
-
-注意`<br>` 没有结束标签，把`<br>`标签写为 `<br/>` 是经得起未来考验的做法，XHTML 和 XML 都接受在打开的标签内部来关闭标签的做法。
-
-<br>
+我们亲切地称这种模式叫做“**div+css**”：**div标签负责布局、结构、分块，css负责样式**。
 
 ## 内容居中标签 `<center>`
 
@@ -248,22 +235,21 @@ This <br> is a para<br>graph with line breaks
 
 ![Paste_Image.png](http://img.smyhvae.com/2015-10-01-cnblogs_html_06.png)
 
-到了H5里面，center标签不建议使用。
+到了HTML5里面，center标签不建议使用，建议使用css布局来实现。
 
-<br>
+## 预定义（预格式化）标签`<pre>`
 
-## 预定义（预格式化）标签：`<pre>`
+含义：将保留标签内部所有的空白字符(空格、换行符)，原封不动地输出结果（告诉浏览器不要忽略空格和空行）。
 
-含义：将保留其中的所有的空白字符(空格、换行符)，原封不动的输出结果（告诉浏览器不要忽略空格和空行）
-说明：真正排网页过程中，`<pre>`标签几乎用不着。但在PHP中用于打印一个数组时使用。
-
+说明：真正排网页过程中，`<pre>`标签几乎用不着。
 效果演示：
 
 ![Paste_Image.png](http://img.smyhvae.com/2015-10-01-cnblogs_html_07.png)
 
-上图中，好像红框部分的字体变小了，而且还出现了缩进，好吧， 这个其实是浏览器搞的鬼。
-为什么要有`<pre>`这个标签呢？答案是：
->  所有的浏览器默认情况下都会忽略空格和空行。
+## 我的公众号
 
-好吧，其实这个标签也用的比较少。
+想学习**代码之外的技能**？不妨关注我的微信公众号：**千古壹号**（id：`qianguyihao`）。
 
+扫一扫，你将发现另一个全新的世界，而这将是一场美丽的意外：
+
+![](http://img.smyhvae.com/20200101.png)
