@@ -8,29 +8,20 @@
 
 - `<p>`
 
--  `<div>`
+-  `<hr />`
 
--  `<span>`
+- `<br />`
 
-- `<br>`
+- `<div>`
 
--  `<hr>`
+- `<span>`
 
 - `<center>`
 
 - `<pre>`
 
 
-字体标签： `<font>`、 `<b>`、 `<u>` 、`<sup>` 、`<sub>`
-
-
-超链接 `<a>`
-
-
-图片标签 `<img>`
-
 下面来详细介绍一下排版标签。
-
 
 ## 标题标签
 
@@ -245,6 +236,7 @@ div举例：
 效果演示：
 
 ![Paste_Image.png](http://img.smyhvae.com/2015-10-01-cnblogs_html_07.png)
+
 
 ## 我的公众号
 
