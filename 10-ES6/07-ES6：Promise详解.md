@@ -5,10 +5,19 @@
 
 JavaScript的执行环境是**单线程**。
 
-所谓单线程，是指JS引擎中负责解释和执行JavaScript代码的线程只有一个，也就是一次只能完成一项任务，这个任务执行完后才能执行下一个，它会「阻塞」其他任务。这个任务可称为主线程
+所谓单线程，是指JS引擎中负责解释和执行JavaScript代码的线程只有一个，也就是一次只能完成一项任务，这个任务执行完后才能执行下一个，它会「阻塞」其他任务。这个任务可称为主线程。
 
 异步模式可以一起执行**多个任务**。
 
+常见的异步模式有以下几种：
+
+- 定时器
+
+- 接口调用
+
+- 事件函数
+
+今天这篇文章，我们重点讲一下**接口调用**。接口调用里，重点讲一下**Promise**。
 
 ### 接口调用的方式
 
@@ -22,12 +31,11 @@ js 中常见的接口调用方式，有以下几种：
 
 ### 多次异步调用的依赖分析
 
-- 多次异步调用的结果，顺序不同步。
+- 多次异步调用的结果，顺序可能不同步。
 
 - 异步调用的结果如果**存在依赖**，则需要嵌套。
 
-在ES5中，当进行多层嵌套回调时，会导致代码层次过多，很难进行维护和二次开发；而且会导致**回调地狱**的问题。而ES6中的Promise 就可以解决这两个问题。
-
+在ES5中，当进行多层嵌套回调时，会导致代码层次过多，很难进行维护和二次开发；而且会导致**回调地狱**的问题。ES6中的Promise 就可以解决这两个问题。
 
 ## Promise 概述
 
@@ -39,21 +47,65 @@ Promise对象, 可以**将异步操作以同步的流程表达出来**。使用 
 
 - 可以很好地解决**回调地狱**的问题（避免了层层嵌套的回调函数）。
 
-- 语法更佳简洁。Promise 对象提供了简洁的API，使得控制异步操作更加容易。
-
-
+- 语法非常简洁。Promise 对象提供了简洁的API，使得控制异步操作更加容易。
 
 ### 回调地狱的举例
 
 假设买菜、做饭、洗碗都是异步的。
 
-现在的流程是：买菜成功之后，才能开始做饭。做饭成功后，才能开始洗碗。这里面就涉及到了回调的嵌套。
+但真实的场景中，实际的操作流程是：买菜成功之后，才能开始做饭。做饭成功后，才能开始洗碗。这里面就涉及到了多层嵌套调用，也就是回调地狱。
 
+## Promise 的基本用法
 
-ES6的Promise是一个构造函数, 用来生成promise实例。
+（1）使用new实例化一个Promise对象，Promise的构造函数中传递一个参数。这个参数是一个函数，该函数用于处理异步任务。
 
+（2）并且传入两个参数：resolve和reject，分别表示异步执行成功后的回调函数和异步执行失败后的回调函数；
 
-### promise对象的3个状态
+（3）通过 promise.then() 处理返回结果。这里的 p 指的是 Promise实例。
+
+代码举例如下：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            // 第一步：model层的接口封装
+            const promise = new Promise((resolve, reject) => {
+                // 这里做异步任务（比如ajax 请求接口。这里暂时用定时器代替）
+                setTimeout(function() {
+                    var data = { retCode: 0, msg: 'qianguyihao' }; // 接口返回的数据
+                    if (data.retCode == 0) {
+                        // 接口请求成功时调用
+                        resolve(data);
+                    } else {
+                        // 接口请求失败时调用
+                        reject({ retCode: -1, msg: 'network error' });
+                    }
+                }, 100);
+            });
+
+            // 第二步：业务层的接口调用。这里的 data 就是 从 resolve 和 reject 传过来的，也就是从接口拿到的数据
+            promise.then(data => {
+                // 从 resolve 获取正常结果
+                console.log(data);
+            }).catch(data => {
+                // 从 reject 获取异常结果
+                console.log(data);
+            });
+        </script>
+    </body>
+</html>
+
+```
+上方代码中，当从接口返回的数据`data.retCode`的值不同时，可能会走 resolve，也可能会走 reject，这个由你自己的业务决定。
+
+## promise对象的3个状态（了解即可）
 
 - 初始化状态（等待状态）：pending
 
@@ -61,50 +113,11 @@ ES6的Promise是一个构造函数, 用来生成promise实例。
 
 - 失败状态：rejected
 
-### 使用promise的基本步骤
-
-（1）创建promise对象
-
-（2）调用promise的**回调函数**then()
-
-
-代码格式如下：
-
-```javascript
-    let promise = new Promise((resolve, reject) => {
-        //进来之后，状态为pending
-        console.log('111');  //这一行代码是同步的
-        //开始执行异步操作（这里开始，写异步的代码，比如ajax请求 or 开启定时器）
-        if (异步的ajax请求成功) {
-            console.log('333');
-            resolve();//如果请求成功了，请写resolve()，此时，promise的状态会被自动修改为fullfilled
-        } else {
-            reject();//如果请求失败了，请写reject()，此时，promise的状态会被自动修改为rejected
-        }
-    })
-    console.log('222');
-
-    //调用promise的then()
-    promise.then(() => {
-            //如果promise的状态为fullfilled，则执行这里的代码
-            console.log('成功了');
-        }
-        , () => {
-            //如果promise的状态为rejected，则执行这里的代码
-            console.log('失败了');
-
-        }
-    )
-```
-
-代码解释：
-
 （1）当new Promise()执行之后，promise对象的状态会被初始化为`pending`，这个状态是初始化状态。`new Promise()`这行代码，括号里的内容是同步执行的。括号里定义一个function，function有两个参数：resolve和reject。如下：
 
+- 如果请求成功了，则执行resolve()，此时，promise的状态会被自动修改为fullfilled。
 
-- 如果请求成功了，请写resolve()，此时，promise的状态会被自动修改为fullfilled。
-
-- 如果请求失败了，请写reject()，此时，promise的状态会被自动修改为rejected
+- 如果请求失败了，则执行reject()，此时，promise的状态会被自动修改为rejected
 
 （2）promise.then()方法，括号里面有两个参数，分别代表两个函数 function1 和 function2：
 
@@ -112,8 +125,9 @@ ES6的Promise是一个构造函数, 用来生成promise实例。
 
 - 如果promise的状态为rejected（意思是，如果请求失败），则执行function2里的内容
 
-另外，resolve()和reject()这两个方法，是可以给promise.then()传递参数的。如下：
+另外，resolve()和reject()这两个方法，是可以给promise.then()传递参数的。
 
+完整代码举例如下：
 
 ```javascript
     let promise = new Promise((resolve, reject) => {
@@ -142,242 +156,464 @@ ES6的Promise是一个构造函数, 用来生成promise实例。
     )
 ```
 
+## 【重要】基于 Promise 处理 多次 Ajax 请求（链式调用）
 
+实际开发中，我们经常需要同时请求多个接口。比如说：在请求完`接口1`的数据`data1`之后，需要根据`data1`的数据，继续请求接口2，获取`data2`；然后根据`data2`的数据，继续请求接口3。
 
-### ajax请求的举例（涉及到嵌套的回调）
+这种场景其实就是接口的多层嵌套调用。有了 promise之后，我们可以把多层嵌套调用按照**线性**的方式进行书写，非常优雅。
 
-```javascript
-    //定义一个请求news的方法
-    function getNews(url) {
-        //创建一个promise对象
-        let promise = new Promise((resolve, reject) => {
-            //初始化promise状态为pending
-            //启动异步任务
-            let request = new XMLHttpRequest();
-            request.onreadystatechange = function () {
-                if (request.readyState === 4) {
-                    if (request.status === 200) {
-                        let news = request.response;
-                        resolve(news);
-                    } else {
-                        reject('请求失败了。。。');
+也就是说：Promise 可以把原本的**多层嵌套调用**改进为**链式调用**。
+
+代码举例：（多次 Ajax请求，链式调用）
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            /*
+              基于Promise发送Ajax请求
+            */
+            function queryData(url) {
+                var promise = new Promise((resolve, reject) => {
+                    var xhr = new XMLHttpRequest();
+                    xhr.onreadystatechange = function() {
+                        if (xhr.readyState != 4) return;
+                        if (xhr.readyState == 4 && xhr.status == 200) {
+                            // 处理正常情况
+                            resolve(xhr.responseText); // xhr.responseText 是从接口拿到的数据
+                        } else {
+                            // 处理异常情况
+                            reject('接口请求失败');
+                        }
+                    };
+                    xhr.responseType = 'json'; // 设置返回的数据类型
+                    xhr.open('get', url);
+                    xhr.send(null); // 请求接口
+                });
+                return promise;
+            }
+            // 发送多个ajax请求并且保证顺序
+            queryData('http://localhost:3000/api1')
+                .then(
+                    data1 => {
+                        console.log(JSON.stringify(data1));
+                        // 请求完接口1后，继续请求接口2
+                        return queryData('http://localhost:3000/api2');
+                    },
+                    error1 => {
+                        console.log(error1);
                     }
-                }
-            };
-            request.responseType = 'json';//设置返回的数据类型
-            request.open("GET", url);//规定请求的方法，创建链接
-            request.send();//发送
-        })
-        return promise;
-    }
+                )
+                .then(
+                    data2 => {
+                        console.log(JSON.stringify(data2));
+                        // 请求完接口2后，继续请求接口3
+                        return queryData('http://localhost:3000/api3');
+                    },
+                    error2 => {
+                        console.log(error2);
+                    }
+                )
+                .then(
+                    data3 => {
+                        // 获取接口3返回的数据
+                        console.log(JSON.stringify(data3));
+                    },
+                    error3 => {
+                        console.log(error3);
+                    }
+                );
+        </script>
+    </body>
+</html>
 
-    getNews('http://localhost:3000/news?id=2')
-        .then((news) => {
-            console.log(news);
-            document.write(JSON.stringify(news));
-            console.log('http://localhost:3000' + news.commentsUrl);
-            return getNews('http://localhost:3000' + news.commentsUrl);
-        }, (error) => {
-            alert(error);
-        })
-        .then((comments) => {
-            console.log(comments);
-            document.write('<br><br><br><br><br>' + JSON.stringify(comments));
-        }, (error) => {
-            alert(error);
-        })
+```
 
+上面这个举例很经典，需要多看几遍。
+
+## return 的函数返回值
+
+return 后面的返回值，有两种情况：
+
+- 情况1：返回 Promise 实例对象。返回的该实例对象会调用下一个 then。
+
+- 情况2：返回普通值。返回的普通值会直接传递给下一个then，通过 then 参数中函数的参数接收该值。
+
+我们针对上面这两种情况，详细解释一下。
+
+### 情况1：返回 Promise 实例对象
+
+举例如下：（这个例子，跟上一段 Ajax 链式调用 的例子差不多）
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            /*
+              基于Promise发送Ajax请求
+            */
+            function queryData(url) {
+                return new Promise((resolve, reject) => {
+                    var xhr = new XMLHttpRequest();
+                    xhr.onreadystatechange = function() {
+                        if (xhr.readyState != 4) return;
+                        if (xhr.readyState == 4 && xhr.status == 200) {
+                            // 处理正常情况
+                            resolve(xhr.responseText);
+                        } else {
+                            // 处理异常情况
+                            reject('接口请求失败');
+                        }
+                    };
+                    xhr.responseType = 'json'; // 设置返回的数据类型
+                    xhr.open('get', url);
+                    xhr.send(null); // 请求接口
+                });
+            }
+            // 发送多个ajax请求并且保证顺序
+            queryData('http://localhost:3000/api1')
+                .then(
+                    data1 => {
+                        console.log(JSON.stringify(data1));
+                        return queryData('http://localhost:3000/api2');
+                    },
+                    error1 => {
+                        console.log(error1);
+                    }
+                )
+                .then(
+                    data2 => {
+                        console.log(JSON.stringify(data2));
+                        // 这里的 return，返回的是 Promise 实例对象
+                        return new Promise((resolve, reject) => {
+                            resolve('qianguyihao');
+                        });
+                    },
+                    error2 => {
+                        console.log(error2);
+                    }
+                )
+                .then(data3 => {
+                    console.log(data3);
+                });
+        </script>
+    </body>
+</html>
+
+```
+
+### 情况2：返回 普通值
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            /*
+              基于Promise发送Ajax请求
+            */
+            function queryData(url) {
+                return new Promise((resolve, reject) => {
+                    var xhr = new XMLHttpRequest();
+                    xhr.onreadystatechange = function() {
+                        if (xhr.readyState != 4) return;
+                        if (xhr.readyState == 4 && xhr.status == 200) {
+                            // 处理正常情况
+                            resolve(xhr.responseText);
+                        } else {
+                            // 处理异常情况
+                            reject('接口请求失败');
+                        }
+                    };
+                    xhr.responseType = 'json'; // 设置返回的数据类型
+                    xhr.open('get', url);
+                    xhr.send(null); // 请求接口
+                });
+            }
+            // 发送多个ajax请求并且保证顺序
+            queryData('http://localhost:3000/api1')
+                .then(
+                    data1 => {
+                        console.log(JSON.stringify(data1));
+                        return queryData('http://localhost:3000/api2');
+                    },
+                    error1 => {
+                        console.log(error1);
+                    }
+                )
+                .then(
+                    data2 => {
+                        console.log(JSON.stringify(data2));
+                        // 返回普通值
+                        return 'qianguyihao';
+                    },
+                    error2 => {
+                        console.log(error2);
+                    }
+                )
+                /*
+                    既然上方返回的是 普通值，那么，这里的 then 是谁来调用呢？
+                    答案是：这里会产生一个新的 默认的 promise实例，来调用这里的then，确保可以继续进行链式操作。
+                */
+                .then(data3 => {
+                    // 这里的 data3 接收的是 普通值 'qianguyihao'
+                    console.log(data3);
+                });
+        </script>
+    </body>
+</html>
+
+```
+
+## Promise 的常用API：实例方法【重要】
+
+
+Promise 自带的API提供了如下实例方法：
+
+- promise.then()：获取异步任务的正常结果。
+
+- promise.catch()：获取异步任务的异常结果。
+
+- promise.finaly()：异步任务无论成功与否，都会执行。
+
+代码举例如下。
+
+写法1：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            function queryData() {
+                return new Promise((resolve, reject) => {
+                    setTimeout(function() {
+                        var data = { retCode: 0, msg: 'qianguyihao' }; // 接口返回的数据
+                        if (data.retCode == 0) {
+                            // 接口请求成功时调用
+                            resolve(data);
+                        } else {
+                            // 接口请求失败时调用
+                            reject({ retCode: -1, msg: 'network error' });
+                        }
+                    }, 100);
+                });
+            }
+
+            queryData()
+                .then(data => {
+                    // 从 resolve 获取正常结果
+                    console.log('接口请求成功时，走这里');
+                    console.log(data);
+                })
+                .catch(data => {
+                    // 从 reject 获取异常结果
+                    console.log('接口请求失败时，走这里');
+                    console.log(data);
+                })
+                .finally(() => {
+                    console.log('无论接口请求成功与否，都会走这里');
+                });
+        </script>
+    </body>
+</html>
+
+```
+
+写法2：（和上面的写法1等价）
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            function queryData() {
+                return new Promise((resolve, reject) => {
+                    setTimeout(function() {
+                        var data = { retCode: 0, msg: 'qianguyihao' }; // 接口返回的数据
+                        if (data.retCode == 0) {
+                            // 接口请求成功时调用
+                            resolve(data);
+                        } else {
+                            // 接口请求失败时调用
+                            reject({ retCode: -1, msg: 'network error' });
+                        }
+                    }, 100);
+                });
+            }
+
+            queryData()
+                .then(
+                    data => {
+                        // 从 resolve 获取正常结果
+                        console.log('接口请求成功时，走这里');
+                        console.log(data);
+                    },
+                    data => {
+                        // 从 reject 获取异常结果
+                        console.log('接口请求失败时，走这里');
+                        console.log(data);
+                    }
+                )
+                .finally(() => {
+                    console.log('无论接口请求成功与否，都会走这里');
+                });
+        </script>
+    </body>
+</html>
+
+```
+
+**注意**：写法1和写法2的作用是完全等价的。只不过，写法2是把 catch 里面的代码作为 then里面的第二个参数而已。
+
+
+## Promise 的常用API：对象方法【重要】
+
+Promise 自带的API提供了如下对象方法：
+
+- Promise.all()：并发处理多个异步任务，所有任务都执行成功，才能得到结果。
+
+- Promise.race(): 并发处理多个异步任务，只要有一个任务执行成功，就能得到结果。
+
+下面来详细介绍
+
+### Promise.all() 代码举例
+
+代码举例：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            /*
+              封装 Promise 接口调用
+            */
+            function queryData(url) {
+                return new Promise((resolve, reject) => {
+                    var xhr = new XMLHttpRequest();
+                    xhr.onreadystatechange = function() {
+                        if (xhr.readyState != 4) return;
+                        if (xhr.readyState == 4 && xhr.status == 200) {
+                            // 处理正常结果
+                            resolve(xhr.responseText);
+                        } else {
+                            // 处理异常结果
+                            reject('服务器错误');
+                        }
+                    };
+                    xhr.open('get', url);
+                    xhr.send(null);
+                });
+            }
+
+            var promise1 = queryData('http://localhost:3000/a1');
+            var promise2 = queryData('http://localhost:3000/a2');
+            var promise3 = queryData('http://localhost:3000/a3');
+
+            Promise.all([promise1, promise2, promise3]).then(result => {
+                console.log(result);
+            });
+        </script>
+    </body>
+</html>
+```
+
+
+### Promise.race() 代码举例
+
+代码举例：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            /*
+              封装 Promise 接口调用
+            */
+            function queryData(url) {
+                return new Promise((resolve, reject) => {
+                    var xhr = new XMLHttpRequest();
+                    xhr.onreadystatechange = function() {
+                        if (xhr.readyState != 4) return;
+                        if (xhr.readyState == 4 && xhr.status == 200) {
+                            // 处理正常结果
+                            resolve(xhr.responseText);
+                        } else {
+                            // 处理异常结果
+                            reject('服务器错误');
+                        }
+                    };
+                    xhr.open('get', url);
+                    xhr.send(null);
+                });
+            }
+
+            var promise1 = queryData('http://localhost:3000/a1');
+            var promise2 = queryData('http://localhost:3000/a2');
+            var promise3 = queryData('http://localhost:3000/a3');
+
+            Promise.race([promise1, promise2, promise3]).then(result => {
+                console.log(result);
+            });
+        </script>
+    </body>
+</html>
 ```
 
 
 
-
-
-
-### 参考链接
+## 参考链接
 
 - [当面试官问你Promise的时候，他究竟想听到什么？](https://zhuanlan.zhihu.com/p/29235579)
 
 
 
+## 我的公众号
 
+想学习**代码之外的技能**？不妨关注我的微信公众号：**千古壹号**（id：`qianguyihao`）。
 
+扫一扫，你将发现另一个全新的世界，而这将是一场美丽的意外：
 
-
-## Symbol
-
-### 概述
-
-背景：ES5中对象的属性名都是字符串，容易造成重名，污染环境。
-
-**概念**：ES6 引入了一种新的原始数据类型Symbol，表示独一无二的值。它是 JavaScript 语言的第七种数据类型，前六种是：undefined、null、布尔值（Boolean）、字符串（String）、数值（Number）、对象（Object）。
-
-
-**特点：**
-
-- Symbol属性对应的值是唯一的，解决**命名冲突问题**
-
-- Symbol值不能与其他数据进行计算，包括同字符串拼串
-
-- for in、for of 遍历时不会遍历Symbol属性。
-
-
-### 创建Symbol属性值
-
-Symbol是函数，但并不是构造函数。创建一个Symbol数据类型：
-
-```javascript
-    let mySymbol = Symbol();
-
-    console.log(typeof mySymbol);  //打印结果：symbol
-    console.log(mySymbol);         //打印结果：Symbol()
-```
-
-打印结果：
-
-![](http://img.smyhvae.com/20180317_1134.png)
-
-下面来讲一下Symbol的使用。
-
-### 1、将Symbol作为对象的属性值
-
-```javascript
-    let mySymbol = Symbol();
-
-    let obj = {
-        name: 'smyhvae',
-        age: 26
-    };
-
-    //obj.mySymbol = 'male'; //错误：不能用 . 这个符号给对象添加 Symbol 属性。
-    obj[mySymbol] = 'hello';    //正确：通过**属性选择器**给对象添加 Symbol 属性。后面的属性值随便写。
-
-    console.log(obj);
-```
-
-上面的代码中，我们尝试给obj添加一个Symbol类型的属性值，但是添加的时候，不能采用`.`这个符号，而是应该用`属性选择器`的方式。打印结果：
-
-![](http://img.smyhvae.com/20180317_1134.png)
-
-现在我们用for in尝试对上面的obj进行遍历：
-
-```javascript
-    let mySymbol = Symbol();
-
-    let obj = {
-        name: 'smyhvae',
-        age: 26
-    };
-
-    obj[mySymbol] = 'hello';
-
-    console.log(obj);
-
-    //遍历obj
-    for (let i in obj) {
-        console.log(i);
-    }
-```
-
-打印结果：
-
-![](http://img.smyhvae.com/20180317_1134.png)
-
-从打印结果中可以看到：for in、for of 遍历时不会遍历Symbol属性。
-
-### 创建Symbol属性值时，传参作为标识
-
-如果我通过 Symbol()函数创建了两个值，这两个值是不一样的：
-
-```javascript
-    let mySymbol1 = Symbol();
-    let mySymbol2 = Symbol();
-
-    console.log(mySymbol1 == mySymbol2); //打印结果：false
-    console.log(mySymbol1);         //打印结果：Symbol()
-    console.log(mySymbol2);         //打印结果：Symbol()
-```
-
-![](http://img.smyhvae.com/20180317_1134.png)
-
-上面代码中，倒数第三行的打印结果也就表明了，二者的值确实是不相等的。
-
-最后两行的打印结果却发现，二者的打印输出，肉眼看到的却相同。那该怎么区分它们呢？
-
-既然Symbol()是函数，函数就可以传入参数，我们可以通过参数的不同来作为**标识**。比如：
-
-
-```javascript
-    //在括号里加入参数，来标识不同的Symbol
-    let mySymbol1 = Symbol('one');
-    let mySymbol2 = Symbol('two');
-
-    console.log(mySymbol1 == mySymbol2); //打印结果：false
-    console.log(mySymbol1);         //打印结果：Symbol(one)
-    console.log(mySymbol2);         //打印结果：Symbol(two)。颜色为红色。
-    console.log(mySymbol2.toString());//打印结果：Symbol(two)。颜色为黑色。
-```
-
-打印结果：
-
-![](http://img.smyhvae.com/20180317_1134.png)
-
-### 定义常量
-
-Symbol 可以用来定义常量：
-
-
-```javascript
-    const MY_NAME = Symbol('my_name');
-```
-
-
-### 内置的 Symbol 值
-
-除了定义自己使用的 Symbol 值以外，ES6 还提供了 11 个内置的 Symbol 值，指向语言内部使用的方法。
-
-- `Symbol.iterator`属性
-
-对象的`Symbol.iterator`属性，指向该对象的默认遍历器方法。
-
-
-## async函数（异步函数）
-
-### 概述
-
-> async 函数是在 ES2017 引入的。
-
-概念：真正意义上去解决异步回调的问题，同步流程表达异步操作。
-
-本质： Generator 的语法糖。
-
-async比之前的 Promise、Generator要好用一些。
-
-
-语法：
-
-```javascript
-    async function foo() {
-        await 异步操作;
-        await 异步操作；
-    }
-```
-
-我们在普通的函数前面加上 async 关键字，就成了 async 函数。
-
-
-###  async、Promise、Generator的对比（async的特点）
-
-1、不需要像Generator去调用next方法，遇到await等待，当前的异步操作完成就往下执行。
-
-2、async返回的总是Promise对象，可以用then方法进行下一步操作。
-
-3、async取代Generator函数的星号*，await取代Generator的yield。
-
-4、语意上更为明确，使用简单，经临床验证，暂时没有任何副作用。
-
-
-
+![](http://img.smyhvae.com/20200101.png)
 
 
 
