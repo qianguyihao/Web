@@ -156,13 +156,13 @@ Promise对象, 可以**将异步操作以同步的流程表达出来**。使用 
     )
 ```
 
-## 【重要】基于 Promise 处理 多次 Ajax 请求（链式调用）
+## 基于 Promise 处理 多次 Ajax 请求（链式调用）【重要】
 
 实际开发中，我们经常需要同时请求多个接口。比如说：在请求完`接口1`的数据`data1`之后，需要根据`data1`的数据，继续请求接口2，获取`data2`；然后根据`data2`的数据，继续请求接口3。
 
-这种场景其实就是接口的多层嵌套调用。有了 promise之后，我们可以把多层嵌套调用按照**线性**的方式进行书写，非常优雅。
+换而言之，现在有三个网络请求，请求2必须依赖请求1的结果，请求3必须依赖请求2的结果，如果按照往常的写法，会有三层回调，会陷入“回调地狱”。
 
-也就是说：Promise 可以把原本的**多层嵌套调用**改进为**链式调用**。
+这种场景其实就是接口的多层嵌套调用。有了 Promise 之后，我们可以把多层嵌套调用按照**线性**的方式进行书写，非常优雅。也就是说：Promise 可以把原本的**多层嵌套调用**改进为**链式调用**。
 
 代码举例：（多次 Ajax请求，链式调用）
 
@@ -175,67 +175,74 @@ Promise对象, 可以**将异步操作以同步的流程表达出来**。使用 
         <title>Document</title>
     </head>
     <body>
-        <script type="text/javascript">
-            /*
-              基于Promise发送Ajax请求
-            */
-            function queryData(url) {
-                var promise = new Promise((resolve, reject) => {
-                    var xhr = new XMLHttpRequest();
-                    xhr.onreadystatechange = function() {
-                        if (xhr.readyState != 4) return;
-                        if (xhr.readyState == 4 && xhr.status == 200) {
-                            // 处理正常情况
-                            resolve(xhr.responseText); // xhr.responseText 是从接口拿到的数据
+        <script>
+            const request = require('request');
+
+            // Promise 封装接口
+            const request1 = function() {
+                const promise = new Promise(resolve => {
+                    request('https://www.baidu.com', function(response) {
+                        if (response.retCode == 200) {
+                            resolve('request1 success');
                         } else {
-                            // 处理异常情况
                             reject('接口请求失败');
                         }
-                    };
-                    xhr.responseType = 'json'; // 设置返回的数据类型
-                    xhr.open('get', url);
-                    xhr.send(null); // 请求接口
+                    });
                 });
+
                 return promise;
-            }
-            // 发送多个ajax请求并且保证顺序
-            queryData('http://localhost:3000/api1')
-                .then(
-                    data1 => {
-                        console.log(JSON.stringify(data1));
-                        // 请求完接口1后，继续请求接口2
-                        return queryData('http://localhost:3000/api2');
-                    },
-                    error1 => {
-                        console.log(error1);
-                    }
-                )
-                .then(
-                    data2 => {
-                        console.log(JSON.stringify(data2));
-                        // 请求完接口2后，继续请求接口3
-                        return queryData('http://localhost:3000/api3');
-                    },
-                    error2 => {
-                        console.log(error2);
-                    }
-                )
-                .then(
-                    data3 => {
-                        // 获取接口3返回的数据
-                        console.log(JSON.stringify(data3));
-                    },
-                    error3 => {
-                        console.log(error3);
-                    }
-                );
+            };
+
+            const request2 = function() {
+                const promise = new Promise(resolve => {
+                    request('https://www.jd.com', function(response) {
+                        if (response.retCode == 200) {
+                            resolve('request2 success');
+                        } else {
+                            reject('接口请求失败');
+                        }
+                    });
+                });
+
+                return promise;
+            };
+
+            const request3 = function() {
+                const promise = new Promise(resolve => {
+                    request('https://www.taobao.com', function(response) {
+                        if (response.retCode == 200) {
+                            resolve('request3 success');
+                        } else {
+                            reject('接口请求失败');
+                        }
+                    });
+                });
+
+                return promise;
+            };
+
+            // 先发起request1，等resolve后再发起request2；紧接着，等 request2有了 resolve之后，再发起 request3
+            request1()
+                .then(data => {
+                    console.log(data);
+                    return request2();
+                })
+                .then(data => {
+                    console.log(data);
+                    return request3();
+                })
+                .then(data => {
+                    console.log(data);
+                });
         </script>
     </body>
 </html>
 
 ```
 
-上面这个举例很经典，需要多看几遍。
+上面代码中，then是可以链式调用的，后面的then可以拿到前面resolve出来的数据。
+
+这个举例很经典，需要多看几遍。
 
 ## return 的函数返回值
 
@@ -502,7 +509,7 @@ Promise 自带的API提供了如下对象方法：
 
 - Promise.race(): 并发处理多个异步任务，只要有一个任务执行成功，就能得到结果。
 
-下面来详细介绍
+下面来详细介绍。
 
 ### Promise.all() 代码举例
 
@@ -539,9 +546,9 @@ Promise 自带的API提供了如下对象方法：
                 });
             }
 
-            var promise1 = queryData('http://localhost:3000/a1');
-            var promise2 = queryData('http://localhost:3000/a2');
-            var promise3 = queryData('http://localhost:3000/a3');
+            var promise1 = queryData('http://localhost:3000/api1');
+            var promise2 = queryData('http://localhost:3000/api2');
+            var promise3 = queryData('http://localhost:3000/api3');
 
             Promise.all([promise1, promise2, promise3]).then(result => {
                 console.log(result);
@@ -550,7 +557,6 @@ Promise 自带的API提供了如下对象方法：
     </body>
 </html>
 ```
-
 
 ### Promise.race() 代码举例
 
@@ -587,9 +593,9 @@ Promise 自带的API提供了如下对象方法：
                 });
             }
 
-            var promise1 = queryData('http://localhost:3000/a1');
-            var promise2 = queryData('http://localhost:3000/a2');
-            var promise3 = queryData('http://localhost:3000/a3');
+            var promise1 = queryData('http://localhost:3000/api1');
+            var promise2 = queryData('http://localhost:3000/api2');
+            var promise3 = queryData('http://localhost:3000/api3');
 
             Promise.race([promise1, promise2, promise3]).then(result => {
                 console.log(result);
@@ -599,13 +605,13 @@ Promise 自带的API提供了如下对象方法：
 </html>
 ```
 
-
+了解这些内容之后， Promise 的基本用法，你就已经掌握了。
 
 ## 参考链接
 
 - [当面试官问你Promise的时候，他究竟想听到什么？](https://zhuanlan.zhihu.com/p/29235579)
 
-
+- [手写一个Promise/A+,完美通过官方872个测试用例](https://www.cnblogs.com/dennisj/p/12660388.html)
 
 ## 我的公众号
 
@@ -614,7 +620,5 @@ Promise 自带的API提供了如下对象方法：
 扫一扫，你将发现另一个全新的世界，而这将是一场美丽的意外：
 
 ![](http://img.smyhvae.com/20200101.png)
-
-
 
 
