@@ -1,7 +1,4 @@
 
-> 本文最初发表于[博客园](http://www.cnblogs.com/smyhvae/p/4852863.html)，并在[GitHub](https://github.com/qianguyihao/Web)上持续更新**前端的系列文章**。欢迎在GitHub上关注我，一起入门和进阶前端。
-
-> 以下是正文。
 
 ## 本文主要内容
 
@@ -474,6 +471,8 @@ style="border-collapse:collapse;"
 > - 注意，框架标签不能放在`<body>`标签里面，因为`<body>`标签代表的只是一个页面，而框架标签代表的是多个页面。于是：`<frameset>`和`<body>`只能二选一。
 > - 框架的集合用`<frameset>`表示，然后在`<frameset>`集合里放入一个一个的框架`<frame>`
 
+**补充**：`frameset`和`frame`已经从 Web标准中删除，建议使用 iframe 代替。
+
 ### `<frameset>`：框架的集合
 
 一个框架的集合可以包含多个框架或框架的集合。**属性：**
@@ -622,7 +621,7 @@ POST方式：
 	- `radio`：单选按钮，名字相同的按钮作为一组进行单选（单选按钮，天生是不能互斥的，如果想互斥，必须要有相同的name属性。name就是“名字”。
 ）。非常像以前的收音机，按下去一个按钮，其他的就抬起来了。所以叫做radio。
 	- `checkbox`：多选按钮，**name 属性值相同的按钮**作为一组进行选择。
-	- `checked`：将单选按钮或多选按钮默认处于选中状态。当`<input>`标签的`type="radio"`时，可以用这个属性。属性值也是checked，可以省略。
+	- `checked`：将单选按钮或多选按钮默认处于选中状态。当`<input>`标签设置为`type="radio"`或者`type=checkbox`时，可以用这个属性。属性值也是checked，可以省略。
 	- `hidden`：隐藏框，在表单中包含不希望用户看见的信息
 	- `button`：普通按钮，结合js代码进行使用。
 	- `submit`：提交按钮，传送当前表单的数据给服务器或其他程序处理。这个按钮不需要写value自动就会有“提交”文字。这个按钮真的有提交功能。点击按钮后，这个表单就会被提交到form标签的action属性中指定的那个页面中去。
@@ -692,7 +691,7 @@ select标签和ul、ol、dl一样，都是组标签。
 
 **`<select>`标签的属性：**
 
-- `multiple`：可以对下拉列表中的选项进行多选。没有属性值。
+- `multiple`：可以对下拉列表中的选项进行多选。属性值为 multiple，也可以没有属性值。也就是说，既可以写成 `multiple=""`，也可以写成`multiple="multiple"`。
 - `size="3"`：如果属性值大于1，则列表为滚动视图。默认属性值为1，即下拉视图。
 
 **`<option>`标签的属性：**
@@ -737,14 +736,12 @@ select标签和ul、ol、dl一样，都是组标签。
 
 ![](http://img.smyhvae.com/2015-10-02-cnblogs_html_32.png)
 
-### `<textare>`标签：多行文本输入框
+### `<textarea>`标签：多行文本输入框
 
-text就是“文本”，area就是“区域”。
-
+text 就是“文本”，area 就是“区域”。
 
 **属性：**
 
- - `value`：提交给服务器的值。
  - `rows="4"`：指定文本区域的行数。
  - `cols="20"`：指定文本区域的列数。
  - `readonly`：只读。
@@ -756,8 +753,6 @@ text就是“文本”，area就是“区域”。
 		<textarea name="txtInfo" rows="4" cols="20">1、不爱摄影不懂设计的程序猿不是一个好的产品经理。</textarea>
 	</form>
 ```
-
-上方代码解释：textarea这个标签，是个标签对儿。对儿里面不用写东西。如果写的话，就是这个框的默认文字。
 
 
 效果：

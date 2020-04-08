@@ -1,4 +1,14 @@
 
+### 让flex盒子中的子元素们，居中
+
+flex布局常用的三行代码：
+
+```
+    display: flex;
+    justify-content: center; // 子元素在横轴的对齐方式 （左右居中）
+    align-items: center;  // 子元素在竖轴的对齐方式（上下居中）
+```
+
 
 ### 让文字只显示一行，超出显示省略号
 
@@ -67,6 +77,29 @@ CSS的逗号一般写在()里。**不同属性值之间，用的是空格**，�
 ### 2019-11-27-图片的宽度固定，高度自适应
 
 这个场景下，别用background。直接放img元素就好了，将图片的高度设置为`auto`。
+
+
+### 2020-03-26-通过CSS扩大点击热区
+
+```css
+.button {
+	position: relative;
+	/* [其余样式] */
+}
+
+.button::before {
+	content: '';
+	position: absolute;
+	top: -10px;
+	right: -10px;
+	bottom: -10px;
+	left: -10px;
+}
+```
+注意，button 里面不要写 `overflow: hidden` 属性，否则扩大的热区无效。
+
+
+参考链接：<https://www.jianshu.com/p/b83fc87cb222>
 
 
 
