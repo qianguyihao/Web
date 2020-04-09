@@ -1,41 +1,11 @@
 
-> 本文最初发表于[博客园](http://www.cnblogs.com/smyhvae/p/8492713.html)，并在[GitHub](https://github.com/qianguyihao/Web)上持续更新**前端的系列文章**。欢迎在GitHub上关注我，一起入门和进阶前端。
-
-> 以下是正文。
 
 
 ## Node.js的介绍
 
+### 什么是 Node.js（官方解释）
 
-### 引擎
-
-**引擎的特性**：
-
-JS的内核即**引擎**。因为引擎有以下特性：
-
-（1）转化的作用：
-
--  汽油柴油等等->动能
-
-- 模板+数据--->页面
-
-- js引擎：js 代码--->机器码\字节码
-
-（2）移植性。
-
-
-**有哪些引擎**：
-
-![](http://img.smyhvae.com/20180302_1258.png)
-
-
-备注：Node是用V8引擎去解析 js，此时，我们不用去考虑浏览器的兼容性问题。
-
-### 什么是 Node.js
-
-**1、官方解释：**
-
-Node.js 是一个基于 **Chrome V8** 引擎的 JavaScript 运行环境。 Node.js使用了一个**事件驱动**、**非阻塞式I/O**的模型（ Node.js的特性），使其轻量级又高效。 Node.js 的包管理器 npm 是全球最大的开源库生态系统。
+Node.js 是一个基于 **Chrome V8** 引擎的 JavaScript 代码运行环境。 Node.js使用了一个**事件驱动**、**非阻塞式I/O**的模型（ Node.js的特性），使其轻量级又高效。 Node.js 的包管理器 npm 是全球最大的开源库生态系统。
 
 ![](http://img.smyhvae.com/20180301_1540.png)
 
@@ -46,19 +16,9 @@ Node.js 是一个基于 **Chrome V8** 引擎的 JavaScript 运行环境。 Node.
 - 通过自行开发的 libuv 库，调用操作系统资源。
 
 
-**2、非官方解释：**
+### 什么是 Node.js（非官方解释）
 
-**Node.js**：是 JavaScript 语言在服务器端的运行环境（平台）。
-
-**3、运行环境（平台）的含义：**
-
-- 首先，JavaScript 语言通过 Node 在服务器运行，在这个意义上，Node 有点像 JavaScript 虚拟机。
-
-- 其次，Node 提供大量工具库，使得 JavaScript 语言能与操作系统互动（比如读写文件、新建子进程），在这个意义上， Node 又是 JavaScript 的工具库。
-
-**总结：**
-
-**Node.js 是一个 JavaScript 的运行环境（平台）**，不是一门语言，也不是 JavaScript 的框架。
+**Node.js是 JavaScript 语言在服务器端的运行环境（平台）**。Node.js 不是一门语言，也不是 JavaScript 的框架。
 
 - 与PHP、JSP、Python、Perl、Ruby的“既是语言，也是平台”不同，Node.js的使用JavaScript进行编程，运行在 Chrome 的 V8 引擎上。
 
@@ -66,9 +26,34 @@ Node.js 是一个基于 **Chrome V8** 引擎的 JavaScript 运行环境。 Node.
 ），Node.js跳过了Apache、Naginx、IIS等HTTP服务器，它自己不用建设在任何服务器软件之上。Node.js的许多设计理念与经典架构（LAMP = Linux + Apache + MySQL + PHP）有着很大的不同，可以提供强大的伸缩能力。Node.js没有web容器。
 
 
+### 运行环境（平台）的含义
+
+- 首先，JavaScript 语言通过 Node 在服务器上运行，在这个意义上，Node 有点像 JavaScript 虚拟机。
+
+- 其次，Node 生态系统活跃，提供了大量的开源库，使得 JavaScript 语言能与操作系统进行交互（比如读写文件、新建子进程），在这个层次上，Node 又是属于 JavaScript 的工具库。
+
+### 为什么要学习服务器端开发
+
+- 能够和后台开发的程序员更佳紧密地结合、更顺畅地沟通。
+
+- 当网站的业务逻辑需要前置时，前端人员需要学习一些后台开发的技术，以完成相应的任务。
+
+- 拓宽知识视野和技术栈，能够站在全局的角度审视整个项目。
+
+### 为什么选择 Node.js 做后台开发
+
+- 使用 JavaScript 语言 开发服务器端应用。
+
+- 一些公司要求前端工程师掌握 Node.js 开发。
+
+- Node.js 生态系统活跃，提供了大量的开源库。
+
+
+## Node.js的发展
+
 ### Node 的历史
 
-- 2008年左右，随着 AJAX 的逐渐普及，Web 开发逐渐走向复杂化，系统化；
+- 2008年左右，随着 Ajax 的逐渐普及，Web 开发逐渐走向复杂化，系统化；
 
 - 2009年2月，Ryan Dahl 想要创建一个轻量级，适应现代 Web 开发的平台；
 
@@ -82,31 +67,6 @@ Node.js 是一个基于 **Chrome V8** 引擎的 JavaScript 运行环境。 Node.
 
 注意：是 Node 选择了 JavaScript，不是 JavaScript 发展出来了一个 Node。
 
-### 国内外的应用情况
-
-以下几个项目都用到了 Node：
-
-- https://github.com/nodejs/node-v0.x-archive/wiki/Projects,-Applications,-and-Companies-Using-Node
-
-- https://nodejs.org/en/foundation/members/
-
-- https://github.com/NetEase/pomelo
-
-
-还有以下几个网站：
-
-- LinkedIn移动版From RoR to Node.js, base on Joyent
-
-- Paypal From Java to Node.js
-
-- Twitter的队列：收集需要保存的Tweets，传给负责写入的进程
-
-- 知乎的推送
-
-- 网易、阿里、各种创业团队等
-
-
-
 
 ### Node.js的主要应用领域
 
@@ -119,12 +79,15 @@ Node.js 是一个基于 **Chrome V8** 引擎的 JavaScript 运行环境。 Node.
 - I/O阻塞
 
 
-
 ### 知名度较高的Node.js开源项目
 
 ![](http://img.smyhvae.com/20180301_2009.png)
 
-- express：Node.js中最有名的web服务器框架。
+- express：Node.js中著名的web服务器框架。
+
+- Koa：下一代的 Node.js 的 Web 框架。
+
+- mocha：功能强大的 node.js 测试框架。
 
 - PM2：node 本来是单进程的，PM2可以实现和管理多进程。
 
@@ -136,51 +99,52 @@ Node.js 是一个基于 **Chrome V8** 引擎的 JavaScript 运行环境。 Node.
 
 - socket.io：实时通信框架。
 
-- mocha：功能强大的 node.js 测试框架。
 
+### Node.js的特点
 
-## Node.js的特点
-
-### 单线程
-
+- 单线程
 
 
 
+## Node.js 运行环境配置：通过 Node.js 安装包（不推荐）
 
-
-
-## Node.js 的环境配置
-
-### Node.js 安装包（不推荐）
 
 去 Node.js 的[官网](https://nodejs.org/en/)下载安装包：
 
 ![](http://img.smyhvae.com/20180301_1505.png)
 
-我们也可以在<https://nodejs.org/en/download/releases/>上下载历史版本。
+我们也可以在<https://nodejs.org/en/download/releases/> 里下载历史版本。
 
 ![](http://img.smyhvae.com/20180301_1507.png)
 
 
 注意，我们以一定要用偶数版（V4、V6等)，不要用奇数版（比如V5），因为奇数版不稳定。
 
-我们并不推荐直接采用 Node.js.msi 安装包进行安装，不方便 node 的更新，原因如下：
+我们并不推荐直接采用 Node.js.msi（windows）或者 Node.js.pkg（Mac） 安装包进行安装，原因如下：
 
-- 以前版本安装的很多全局的工具包需要重新安装；
+
+- 不方便 Node.js 版本的更新；
 
 - 无法回滚到之前的版本；
 
-- 无法在多个版本之间切换（很多时候我们要使用特定版本）。
-
+- 无法在多个版本之间切换（在有些项目中，我们要使用 Node 的指定版本）。
 
 因此，我们暂时先不用安装 Node.js，稍后用 NVM 的方式来安装 Node.js。
 
 
-### 通过 NVM 安装Node.js（推荐）
+## Node.js 运行环境配置：通过 NVM（推荐）
 
-**NVM**：node.js version manager，用来管理 node 的版本。安装的步骤如下。
+**NVM**：node.js version manager，用来管理 node 的版本。
 
-（1）我们去[官网](https://github.com/coreybutler/nvm-windows/releases)下载 NVM 的安装包：
+**我们可以先安装 NVM，然后通过 NVM 安装 Node.js**。这是官方推荐的做法。
+
+Windows 和 Mac 下安装的Node.js 的步骤如下。
+
+### Windows 系统安装 Node.js
+
+**1、安装 NVM**：
+
+（1）我们去 <https://github.com/coreybutler/nvm-windows/releases> 下载 NVM 的安装包：
 
 ![](http://img.smyhvae.com/20180301_1603.png)
 
@@ -218,7 +182,7 @@ proxy
 
 配置成功后，重启资源管理器。
 
-**验证：**(在 cmd 中输入命令)
+**2、验证：**(在 cmd 命令行中输入命令)
 
 （1）输入`nvm`命令查看环境变量是否配置成功：
 
@@ -234,65 +198,165 @@ proxy
 
 - **参考链接**：[安装npm，nvm，node](https://segmentfault.com/a/1190000011114680)
 
-如果 node 安装失败，可以参考上面这个链接。
+如果 Node 安装失败，可以参考上面这个链接。
 
-### NVM 的常用命令
+**3、安装指定版本的 Node.js**：
 
+```bash
+nvm install 版本号
+
+# 举例
+nvm install 8.10.0
+```
+
+输入 `node -v`，查看当前使用的 node 版本。
+
+关于 NVM 的常用命令，详见下一段。
+
+
+### Mac 系统安装 Node.js
+
+**1、安装 NVM**：
+
+（1）打开 终端.app，输入：
+
+```bash
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash
+```
+
+安装成功的界面：
+
+![](http://img.smyhvae.com/20180302_2126.png)
+
+完成后，nvm就被安装在了`~/.nvm`下。
+
+
+如果发现安装失败：
+
+![](http://img.smyhvae.com/20180302_2111.png)
+
+原因：Xcode 软件进行过更新。
+
+解决办法：打开 Xcode 软件，同意相关内容即可。
+
+
+（2）配置环境变量：
+
+编辑器打开`~/.bash_profile`文件，如果不会就输入`open ~/.bash_profile`。
+
+（补充：如果你的Mac电脑里找不到`~/.bash_profile`文件，那就找找有没有`~/.profile`文件，或者`~/.bashrc`文件，或者`~/.zshrc`文件）。
+
+在最后一行输入：
+
+```bash
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
+```
+
+
+如果你发现文件中已经存在了上面这行代码，就不用往里面加了。这一步的作用是每次新打开一个bash，nvm都会被自动添加到环境变量中。
+
+
+最后，输入 `source ~/.bash_profile`重启环境变量的配置。
+
+PS：NVM 现在已经不支持 Homebrew 的方式来安装了。
+
+
+参考链接：<https://www.jianshu.com/p/a3f8778bc0a1>
+
+**2、验证：**(在 终端命令行中输入命令)
+
+（1）输入 `nvm` 命令查看环境变量是否配置成功：
+
+（2）输入 `nvm ls`，查看已安装的所有 node 版本。
+
+（3）输入 `nvm -v`，查看 已安装的 nvm 版本。
+
+（4）输入 `node -v`，查看正在使用的 node 版本。
+
+
+**3、安装指定版本的 Node.js**：
+
+和Windows下一样，也是执行如下命令：
+
+
+```bash
+nvm install 版本号
+
+# 举例
+nvm install 8.10.0
+```
+
+网速有点慢，要稍等。
+
+![](http://img.smyhvae.com/20180302_2148.png)
+
+输入 `node -v`，查看当前使用的 node 版本。
+
+安装好 `Node` 之后，`npm` 也会自动安装的，输入 `npm -v`，查看 npm 的版本。
+
+关于 NVM 的常用命令，详见下一段。
+
+
+## NVM 的常用命令
+
+> 注意，这一段说的是 NVM 的常用命令，不是 Node的 常用命令。
 
 
 查看当前使用的 nvm 版本：
 
-```
+```bash
 nvm -v
 
 nvm --version
 ```
 
 
-查看本地安装的所有的 node 版本：
+查看本地安装的所有的 Node.js 版本：
 
-```
+```bash
 nvm list|ls
 ```
 
+**安装指定版本的 Node.js：**
 
-**安装指定版本的node：**
+```bash
+nvm install 版本号
 
+# 举例
+nvm install 8.10.0
 ```
-nvm install 版本号 [arch]
-```
 
-比如：`nvm install 8.10.0`。
 
-卸载指定版本node：
+卸载指定版本 Node.js：
 
-```
+```bash
 nvm uninstall 版本号
 ```
 
 切换使用指定版本的node：
 
-```
-nvm use 版本号 [arch]
+```bash
+nvm use 版本号
 ```
 
-### Node 的常用命令
+## Node.js 的常用命令
 
 查看 node 的版本：
 
-```
+```bash
 $ node -v
 ```
 
 执行脚本字符串：
 
-```
+```bash
 $ node -e 'console.log("Hello World")'
 ```
 
 运行脚本文件：
 
-```
+```bash
 $ node index.js
 
 $ node path/index.js
@@ -303,14 +367,14 @@ $ node path/index
 查看帮助：
 
 
-```
+```bash
 $ node --help
 
 ```
 
 **进入 REPL 环境：**
 
-```
+```bash
 $ node
 ```
 
@@ -322,7 +386,6 @@ REPL 的全称：Read、Eval、 Print、Loop。类似于浏览器的控制台。
 如果要退出 REPL 环境，可以输入`.exit` 或 `process.exit() `。
 
 在 VS Code 里，我们可以在菜单栏选择“帮助->切换开发人员工具”，打开console控制台。
-
 
 
 ## 包和 NPM
@@ -346,7 +409,7 @@ Node 本身并没有太多的功能性 API，所以市面上涌现出大量的�
 
 比如说：
 
-```
+```javascript
 requiere(`fs`)
 ```
 
@@ -387,7 +450,7 @@ NVM、Node、NPM 安装之后，目录分布如下：
 
 另外，Node 附带的 NPM 可能不是最新版本，可以用下面的命令，更新到最新版本：
 
-```
+```bash
 $ npm install npm -g
 ```
 
@@ -430,20 +493,21 @@ NPM 默认安装到当前正在使用 Node 版本所在目录下。我们建议�
 
 安装 NRM：
 
-```
+```bash
 	npm install -g nrm
 ```
 
 ![](http://img.smyhvae.com/20180302_1208.png)
 
 
-
 **NRM 的常用命令：**
 
-```
-nrm ls  //显示全部的镜像
+```bash
+# 显示全部的镜像
+nrm ls
 
-nrm use taobao  // 使用淘宝的镜像
+# 使用淘宝的镜像
+nrm use taobao
 ```
 
 效果入下：
@@ -470,105 +534,31 @@ npm install -g cnpm --registry=https://registry.npm.taobao.org
 
 如果我们需要通过 cnpm 去安装一个包时，举例如下：
 
-```
+```bash
 	cnpm i vue
 ```
 
-
 解释： i  指的就是 install。
-
 
 
 ## Node 的使用
 
 我们可以输入`node`命令，然后在里面写 js 的代码，也可以 通过 node 运行 js 文件。比如，编写好一个 js文件`01.js`，然后在命令行输入：
 
-```
+```bash
 	node 01.js
 ```
 
 就可以执行  js 程序。
 
 
-## Mac 下的环境安装
-
-
-### Mac 下安装 NVM
-
-（1）打开 终端.app，输入：
-
-```
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash
-```
-
-安装成功的界面：
-
-![](http://img.smyhvae.com/20180302_2126.png)
-
-完成后，nvm就被安装在了`~/.nvm`下。
-
-
-如果发现安装失败：
-
-![](http://img.smyhvae.com/20180302_2111.png)
-
-原因：Xcode 软件进行过更新。
-
-解决办法：打开 Xcode 软件，同意相关内容即可。
-
-
-（2）配置环境变量：
-
-打开文件：
-
-```
-open  ～／.bash_profile
-```
-
-在最后一行输入：
-
-```
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
-```
-
-
-如果你发现文件中已经存在了上面这行代码，就不用往里面加了。
-
-
-最后，重启终端软件，输入`nvm`试试。
-
-PS：NVM 现在已经不支持 Homebrew 的方式来安装了。
-
-
-参考链接：<https://www.jianshu.com/p/a3f8778bc0a1>
-
-
-### Mac 下安装 Node（通过nvm安装）
-
-和Windows下一样，也是执行如下命令：
-
-```
-nvm install 8.10.0
-```
-
-网速有点慢，要稍等。
-
-![](http://img.smyhvae.com/20180302_2148.png)
-
-输入 `node -v`，查看当前使用的 node 版本。
-
-安装好 `Node` 之后，`npm` 也会自动安装的，输入 `npm -v`，查看 npm 的版本。
-
-
 
 ## 我的公众号
 
-想学习<font color=#0000ff>**代码之外的技能**</font>？不妨关注我的微信公众号：**千古壹号**（id：`qianguyihao`）。
+想学习**代码之外的技能**？不妨关注我的微信公众号：**千古壹号**（id：`qianguyihao`）。
 
 扫一扫，你将发现另一个全新的世界，而这将是一场美丽的意外：
 
-![](http://img.smyhvae.com/2016040102.jpg)
-
+![](http://img.smyhvae.com/20200101.png)
 
 

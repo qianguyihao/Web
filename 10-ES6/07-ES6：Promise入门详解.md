@@ -103,6 +103,7 @@ Promise对象, 可以**将异步操作以同步的流程表达出来**。使用 
 </html>
 
 ```
+
 上方代码中，当从接口返回的数据`data.retCode`的值不同时，可能会走 resolve，也可能会走 reject，这个由你自己的业务决定。
 
 ## promise对象的3个状态（了解即可）
@@ -156,7 +157,7 @@ Promise对象, 可以**将异步操作以同步的流程表达出来**。使用 
     )
 ```
 
-## 基于 Promise 处理 多次 Ajax 请求（链式调用）【重要】
+## 基于 Promise 处理多次 Ajax 请求（链式调用）【重要】
 
 实际开发中，我们经常需要同时请求多个接口。比如说：在请求完`接口1`的数据`data1`之后，需要根据`data1`的数据，继续请求接口2，获取`data2`；然后根据`data2`的数据，继续请求接口3。
 
@@ -178,12 +179,13 @@ Promise对象, 可以**将异步操作以同步的流程表达出来**。使用 
         <script>
             const request = require('request');
 
-            // Promise 封装接口
+            // Promise 封装接口1
             const request1 = function() {
                 const promise = new Promise(resolve => {
                     request('https://www.baidu.com', function(response) {
                         if (response.retCode == 200) {
-                            resolve('request1 success');
+                            // 这里的 response 是接口1的返回结果
+                            resolve('request1 success'+ response);
                         } else {
                             reject('接口请求失败');
                         }
@@ -193,11 +195,14 @@ Promise对象, 可以**将异步操作以同步的流程表达出来**。使用 
                 return promise;
             };
 
+            // Promise 封装接口2
             const request2 = function() {
                 const promise = new Promise(resolve => {
                     request('https://www.jd.com', function(response) {
                         if (response.retCode == 200) {
-                            resolve('request2 success');
+                            // 这里的 response 是接口2的返回结果
+                            resolve('request2 success'+ response);
+
                         } else {
                             reject('接口请求失败');
                         }
@@ -207,11 +212,14 @@ Promise对象, 可以**将异步操作以同步的流程表达出来**。使用 
                 return promise;
             };
 
+            // Promise 封装接口3
             const request3 = function() {
                 const promise = new Promise(resolve => {
                     request('https://www.taobao.com', function(response) {
                         if (response.retCode == 200) {
-                            resolve('request3 success');
+                            // 这里的 response 是接口3的返回结果
+                            resolve('request3 success'+ response);
+
                         } else {
                             reject('接口请求失败');
                         }
@@ -224,14 +232,17 @@ Promise对象, 可以**将异步操作以同步的流程表达出来**。使用 
             // 先发起request1，等resolve后再发起request2；紧接着，等 request2有了 resolve之后，再发起 request3
             request1()
                 .then(data => {
+                    // 接口1请求成功后，打印接口1的返回结果
                     console.log(data);
                     return request2();
                 })
                 .then(data => {
+                    // 接口2请求成功后，打印接口1的返回结果
                     console.log(data);
                     return request3();
                 })
                 .then(data => {
+                    // 接口3请求成功后，打印接口1的返回结果
                     console.log(data);
                 });
         </script>
