@@ -28,6 +28,11 @@
 
 - 极客时间 App 的《数据结构与算法之美》
 
+## Vue 教程
+
+- 你也许不知道的 Vuejs：<https://github.com/yugasun/You-May-Not-Know-Vuejs>
+
+
 ## 前端教程类
 
 ## 其他

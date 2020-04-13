@@ -253,3 +253,70 @@ define(function (require) {
 打印结果：
 
 ![](http://img.smyhvae.com/20180412_1955.png)
+
+
+
+
+
+
+## others
+
+
+### SeaJS 的介绍
+
+SeaJS：一个基于CMD规范实现的模块化开发解决方案。
+
+作者：Alibaba 玉伯。
+
+官网：<http://seajs.org/>
+
+GitHub：<https://github.com/seajs/seajs>
+
+现在官网变成了：<https://seajs.github.io/seajs/docs/>
+
+特性：
+
+- 简单友好的模块定义规范。
+
+- 自然直观的代码组织方式。
+
+![](http://img.smyhvae.com/20180303_2107.png)
+
+### RequireJS（AMD）、SeaJS（CDM）、CommonJS、ES6 的对比
+
+1、RequireJS 和 AMD：
+
+![](http://img.smyhvae.com/20180303_1653.png)
+
+异步模块定义，特点是依赖前置。
+
+2、SeaJS 和 CMD：
+
+
+同步模块定义。
+
+```javascript
+  // 所有模块都通过 define 来定义
+  define(funtion(require, exports, module) {
+
+        //通过 require 引入依赖
+
+        var $ require(`jquery`);
+
+        var Spinning = require(`./spinning`);
+  })
+```
+
+3、CommonJS：
+
+![](http://img.smyhvae.com/20180303_1701.png)
+
+以上三个都是 ES5里面的规范。
+
+4、ES6：
+
+ES6的特性：export/import
+
+![](http://img.smyhvae.com/20180303_1704.png)
+
+
