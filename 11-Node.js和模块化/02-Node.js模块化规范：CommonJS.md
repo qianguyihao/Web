@@ -4,7 +4,6 @@
 
 网站越来越复杂，js代码、js文件也越来越多，会遇到**一些问题**：
 
-
 - 文件依赖
 
 - 全局污染、命名冲突
@@ -27,7 +26,6 @@
 
 ## 模块化的理解
 
-
 ### 什么是模块化
 
 
@@ -36,7 +34,6 @@
 模块的内部数据、实现是私有的, 只是向外部暴露一些接口(方法)与外部其它模块通信。
 
 最早的时候，我们会把所有的代码都写在一个js文件里，那么，耦合性会很高（关联性强），不利于维护；而且会造成全局污染，很容易命名冲突。
-
 
 ### 模块化的好处
 
@@ -87,7 +84,6 @@
 那如何把这种模块化思维应用到前端来呢？这就产生了两种伟大的 js：RequireJS 和 SeaJS。
 
 
-
 ### 模块化规范
 
 服务器端规范：
@@ -126,11 +122,9 @@ PS：面试时，经常会问AMD 和 CMD 的区别。
 
 另外，还有ES6规范。
 
-这篇文章，我们来讲一下`CommonJS`。
-
+这篇文章，我们来讲一下`CommonJS`，它是 Node.js 使用的模块化规范。
 
 ## CommonJS 的基本语法
-
 
 ### CommonJS 的介绍
 
@@ -182,9 +176,11 @@ require(xxx)
 
 解释：
 
-- 下载的第三方模块：xxx直接为模块名（包名）。
+- 内置模块：xxx 为模块名（包名）
 
-- 自定义模块：xxx为模块文件路径
+- 下载的第三方模块：xxx为模块名（包名）。
+
+- 自定义模块：xxx为模块文件路径。
 
 
 ## CommonJS 在服务器端的实现举例
@@ -532,70 +528,6 @@ module3.foo2();
 ```html
     <script type="text/javascript" src="js/dist/bundle.js"></script>
 ```
-
-
-
-
-## others
-
-
-### SeaJS 的介绍
-
-SeaJS：一个基于CMD规范实现的模块化开发解决方案。
-
-作者：Alibaba 玉伯。
-
-官网：<http://seajs.org/>
-
-GitHub：<https://github.com/seajs/seajs>
-
-现在官网变成了：<https://seajs.github.io/seajs/docs/>
-
-特性：
-
-- 简单友好的模块定义规范。
-
-- 自然直观的代码组织方式。
-
-![](http://img.smyhvae.com/20180303_2107.png)
-
-### RequireJS（AMD）、SeaJS（CDM）、CommonJS、ES6 的对比
-
-1、RequireJS 和 AMD：
-
-![](http://img.smyhvae.com/20180303_1653.png)
-
-异步模块定义，特点是依赖前置。
-
-2、SeaJS 和 CMD：
-
-
-同步模块定义。
-
-```javascript
-  // 所有模块都通过 define 来定义
-  define(funtion(require, exports, module) {
-
-        //通过 require 引入依赖
-
-        var $ require(`jquery`);
-
-        var Spinning = require(`./spinning`);
-  })
-```
-
-3、CommonJS：
-
-![](http://img.smyhvae.com/20180303_1701.png)
-
-以上三个都是 ES5里面的规范。
-
-4、ES6：
-
-ES6的特性：export/import
-
-![](http://img.smyhvae.com/20180303_1704.png)
-
 
 
 

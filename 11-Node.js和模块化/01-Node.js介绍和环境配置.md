@@ -1,11 +1,14 @@
 
 
-
 ## Node.js的介绍
 
 ### 什么是 Node.js（官方解释）
 
-Node.js 是一个基于 **Chrome V8** 引擎的 JavaScript 代码运行环境。 Node.js使用了一个**事件驱动**、**非阻塞式I/O**的模型（ Node.js的特性），使其轻量级又高效。 Node.js 的包管理器 npm 是全球最大的开源库生态系统。
+Node.js 是一个基于 **Chrome V8** 引擎的 JavaScript 代码运行环境。
+
+Node.js使用了一个**事件驱动**、**非阻塞式I/O**的模型（ Node.js的特性），使其轻量级又高效。
+
+Node.js 的包管理器 npm 是全球最大的开源库生态系统。
 
 ![](http://img.smyhvae.com/20180301_1540.png)
 
@@ -14,6 +17,7 @@ Node.js 是一个基于 **Chrome V8** 引擎的 JavaScript 代码运行环境。
 - Node 内部采用 Google Chrome 的 V8 引擎，作为 JavaScript 语言解释器；
 
 - 通过自行开发的 libuv 库，调用操作系统资源。
+
 
 
 ### 什么是 Node.js（非官方解释）
@@ -32,7 +36,13 @@ Node.js 是一个基于 **Chrome V8** 引擎的 JavaScript 代码运行环境。
 
 - 其次，Node 生态系统活跃，提供了大量的开源库，使得 JavaScript 语言能与操作系统进行交互（比如读写文件、新建子进程），在这个层次上，Node 又是属于 JavaScript 的工具库。
 
-### 为什么要学习服务器端开发
+## Node.js和服务器端开发
+
+> 在这一段，“服务器端开发”和“后台开发”是一个概念。
+
+### 前端同学为什么要学习后台开发
+
+- 了解前后端交互流程。
 
 - 能够和后台开发的程序员更佳紧密地结合、更顺畅地沟通。
 
@@ -40,14 +50,55 @@ Node.js 是一个基于 **Chrome V8** 引擎的 JavaScript 代码运行环境。
 
 - 拓宽知识视野和技术栈，能够站在全局的角度审视整个项目。
 
-### 为什么选择 Node.js 做后台开发
+### 为什么选择 Node.js 做后台开发（Node.js的优势）
 
-- 使用 JavaScript 语言 开发服务器端应用。
+1、使用 JavaScript 语言开发服务器端应用，**便于前端同学上手**（一些公司甚至要求前端工程师掌握 Node.js 开发）。
 
-- 一些公司要求前端工程师掌握 Node.js 开发。
+2、**性能高**。AO操作的性能可能没有优势，但运算方面的性能不错。
 
-- Node.js 生态系统活跃，提供了大量的开源库。
+3、**有利于和前端代码整合**，甚至共用部分代码。
 
+比如说，针对接口返回的各种字段，前后端都必须要做校验。此时，如果用 Node.js 来做后台开发的话，前后端可以共用校验的代码。
+
+4、Node.js 生态系统活跃，提供了大量的开源库。
+
+**思考**：限制语言能力的不是语言本身，而是语言的运行环境（平台）。
+
+### Node.js 的用途
+
+**1、中间层**。
+
+前端访问中间层，中间层再访问后台的 Java/C++ 服务。这样做的好处是：安全性（不会把主服务器暴露在外面）、提高性能（做缓存等）、降低主服务器的复杂度。
+
+当然，有时候做 Node.js 开发，是因为：后台人力不够，所以把后台开发的一部分工作量，转移给前端同学。
+
+**2、公司内部工具**。
+
+**3、小型服务**（比如管理系统）。
+
+需要声明的是：Node.js很难像 Java/C++ 那样，成为后台的主力开发语言。这并非是因为 Node.js的性能问题（实际上，Node.js的性能还不错），主要是因为，Node.js的框架的支持度不够，很难独立成为后台开发语言。
+
+### Node.js 的组成
+
+我们知道，JavaScript 的组成分为三个部分：
+
+- ECMAScript
+
+- DOM
+
+- BOM
+
+ECMAScript 是 JS 的语法；DOM 和 BOM 浏览器运行环境为 JS 提供的API。
+
+而 Node.js 的组成分为：
+
+- **ECMAScript**。ECMAScript的所有语法在Node环境中都可以使用。
+
+- **Node 环境**提供的一些**附加API**(包括文件、网络、路径等等 API)。
+
+如下图所示：
+
+![](http://img.smyhvae.com/20200409_1545.png)
 
 ## Node.js的发展
 
@@ -79,6 +130,7 @@ Node.js 是一个基于 **Chrome V8** 引擎的 JavaScript 代码运行环境。
 - I/O阻塞
 
 
+
 ### 知名度较高的Node.js开源项目
 
 ![](http://img.smyhvae.com/20180301_2009.png)
@@ -100,9 +152,6 @@ Node.js 是一个基于 **Chrome V8** 引擎的 JavaScript 代码运行环境。
 - socket.io：实时通信框架。
 
 
-### Node.js的特点
-
-- 单线程
 
 
 
@@ -120,16 +169,29 @@ Node.js 是一个基于 **Chrome V8** 引擎的 JavaScript 代码运行环境。
 
 注意，我们以一定要用偶数版（V4、V6等)，不要用奇数版（比如V5），因为奇数版不稳定。
 
-我们并不推荐直接采用 Node.js.msi（windows）或者 Node.js.pkg（Mac） 安装包进行安装，原因如下：
+后续如果需要安装其他版本，可以这样做：重新下载最新的安装包，覆盖安装即可。
 
+但我们并不推荐直接采用 Node.js.msi（windows）或者 Node.js.pkg（Mac） 安装包进行安装，因为会产生如下问题。
 
-- 不方便 Node.js 版本的更新；
+**通过 Node.js 安装包产生的问题**：
 
-- 无法回滚到之前的版本；
+- 安装新版本时，以前版本安装的很多全局工具包，需要重新安装。
 
-- 无法在多个版本之间切换（在有些项目中，我们要使用 Node 的指定版本）。
+- 无法回滚到之前的版本。
+
+- 无法在多个版本之间切换（很多时候我们要使用特定版本）
 
 因此，我们暂时先不用安装 Node.js，稍后用 NVM 的方式来安装 Node.js。
+
+### Node.js 版本常识
+
+- 偶数版本为稳定版（0.6.x ，0.8.x ，8.10.x）
+
+- 奇数版本为非稳定版（0.7.x ，0.9.x ，9.11.x）
+
+- LTS（Long Term Support）
+
+参考链接：[node.js中LTS和Current的区别](https://blog.csdn.net/u012532033/article/details/73332099)
 
 
 ## Node.js 运行环境配置：通过 NVM（推荐）
@@ -300,7 +362,7 @@ nvm install 8.10.0
 
 ## NVM 的常用命令
 
-> 注意，这一段说的是 NVM 的常用命令，不是 Node的 常用命令。
+> 注意，这一段说的是 NVM 的常用命令，不是 Node 的常用命令。
 
 
 查看当前使用的 nvm 版本：
@@ -454,7 +516,6 @@ NVM、Node、NPM 安装之后，目录分布如下：
 $ npm install npm -g
 ```
 
-
 ### 配置 NPM 的全局目录（暂略）
 
 NPM 默认安装到当前正在使用 Node 版本所在目录下。我们建议重新配置 NPM 的全局目录。
@@ -466,32 +527,77 @@ NPM 默认安装到当前正在使用 Node 版本所在目录下。我们建议�
 
 ### NPM的常用命令
 
-- npm init --yes
+查看 npm 当前版本：
 
-项目的初始化。执行完成后，会生成`package.json`文件。
+```bash
+npm -v
+```
 
-- npm install [package]
+更新 npm：
 
-只在当前工程下安装 package。
+```bash
+npm install npm@latest -g
 
-- npm install -g [package]
+```
 
-在全局环境下安装 package。
+项目初始化：（执行完成后，会生成`package.json`文件）
 
-- npm run [script]
+```bash
+npm init
+
+npm init --yes 默认配置
+```
+
+只在当前工程下安装指定的包：
+
+```bash
+npm install [package]
+```
+
+在全局阿浑惊吓安装指定的包：
+
+```
+npm install -g [package]
+```
+
+## 配置 npm 镜像源
+
+由于 npm 默认的下载地址在国外（npmjs.com），有时候会被墙，导致无法下载或者下载很慢。因此，我们可以尝试切换成，从其他的镜像源下载npm包。
+
+切换镜像源，有下面这几种方式：
+
+- 方式1：临时切换镜像源。
+
+- 方式2：通过 NRM 切换镜像源（最为推荐的方式）。
+
+- 方式3：cnpm。
+
+下面来分别讲一下。
+
+### 方式1：临时切换镜像源
+
+安装指定包的时候，通过追加 `--registry`参数即可。格式如下：
+
+```bash
+# 格式
+npm install [package] --registry [https://xxx]
+
+# 举例：在下载安装 express 这个包的时候，临时指定镜像源为 https://registry.npm.taobao.org
+npm install express --registry https://registry.npm.taobao.org
+```
 
 
-## NRM的安装(Win 和 Mac 通用)
+### 方式2：通过 NRM 切换镜像源（推荐）
 
-由于 NPM 的资源都在国外，有时候会被墙，导致无法下载或者很慢。此时可以用到NRM。
 
-**NRM**：Node Registry Manager。作用是：**切换和管理包的镜像源**。
+**NRM**：Node Registry Manager。作用是：**切换和管理npm包的镜像源**。
 
 - 项目地址：<https://www.npmjs.com/package/nrm>
 
 - GitHub地址： <https://github.com/Pana/nrm>
 
-安装 NRM：
+
+**安装 NRM**：
 
 ```bash
 	npm install -g nrm
@@ -510,7 +616,7 @@ nrm ls
 nrm use taobao
 ```
 
-效果入下：
+效果如下：
 
 ![](http://img.smyhvae.com/20180302_1215.png)
 
@@ -518,16 +624,15 @@ nrm use taobao
 推荐的国内加速镜像淘宝：<https://npm.taobao.org/>
 
 
-## 安装cnpm
+## 方式3：安装cnpm
 
 - 项目地址：<https://npm.taobao.org/>
 
-安装`cnpm`替换npm（npm由于源服务器在国外，下载node包速度较慢，cnpm使用国内镜像）：
+安装`cnpm`替换npm（npm 由于源服务器在国外，下载包的速度较慢，cnpm 会使用国内镜像）：
 
 ```bash
 npm install -g cnpm --registry=https://registry.npm.taobao.org
 ```
-
 
 ![](http://img.smyhvae.com/20180302_2204.png)
 
@@ -535,22 +640,22 @@ npm install -g cnpm --registry=https://registry.npm.taobao.org
 如果我们需要通过 cnpm 去安装一个包时，举例如下：
 
 ```bash
-	cnpm i vue
+	cnpm install vue
 ```
 
-解释： i  指的就是 install。
+这里的单词 `install` 可以简写成 `i`。
 
+## Node.js 的简单使用
 
-## Node 的使用
+我们可以输入`node`命令，然后在里面写 js 的代码。
 
-我们可以输入`node`命令，然后在里面写 js 的代码，也可以 通过 node 运行 js 文件。比如，编写好一个 js文件`01.js`，然后在命令行输入：
+或者，也可以 通过 node 运行 指定的 js 文件。比如，编写好一个 js文件`01.js`，然后在命令行输入：
 
 ```bash
 	node 01.js
 ```
 
-就可以执行  js 程序。
-
+就可以执行这个 js 程序，直接在命令行查看运行结果。
 
 
 ## 我的公众号
