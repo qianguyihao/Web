@@ -766,10 +766,11 @@ npm install -g cnpm --registry=https://registry.npm.taobao.org
 ![](http://img.smyhvae.com/20180302_2204.png)
 
 
-如果我们需要通过 cnpm 去安装一个包时，举例如下：
+以后我们就可以通过 cnpm 命令去安装一个包。举例如下：
 
 ```bash
-	cnpm install vue
+# 安装 vue 这个包
+cnpm install vue
 ```
 
 这里的单词 `install` 可以简写成 `i`。

@@ -129,9 +129,9 @@ PS：面试时，经常会问AMD 和 CMD 的区别。
 ### CommonJS 的介绍
 
 
-[CommonJS](http://www.commonjs.org/)：是 Node.js 使用的模块化规范。
+[CommonJS](http://www.commonjs.org/)：是 Node.js 使用的模块化规范。也就是说，Node.js 就是基于 CommonJS 这种模块化规范来编写的。
 
-也就是说，Node.js 就是基于 CommonJS 这种模块化规范来编写的。
+CommonJS 规范规定：每个模块内部，module 变量代表当前模块。这个变量是一个对象，它的 exports 属性（即 module.exports）是对外的接口对象。加载某个模块，其实是加载该模块的 module.exports 对象。
 
 在 CommonJS 中，每个文件都可以当作一个模块：
 
@@ -169,7 +169,13 @@ exports.xxx = value
 
 ```js
 const name = 'qianguyihao';
+
+const foo = function (value) {
+	return value * 2;
+};
+
 exports.name = name;
+exports.foo = foo;
 ```
 
 
