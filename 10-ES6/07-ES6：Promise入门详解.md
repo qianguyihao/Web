@@ -237,12 +237,12 @@ Promise对象, 可以**将异步操作以同步的流程表达出来**。使用 
                     return request2();
                 })
                 .then(data => {
-                    // 接口2请求成功后，打印接口1的返回结果
+                    // 接口2请求成功后，打印接口2的返回结果
                     console.log(data);
                     return request3();
                 })
                 .then(data => {
-                    // 接口3请求成功后，打印接口1的返回结果
+                    // 接口3请求成功后，打印接口3的返回结果
                     console.log(data);
                 });
         </script>

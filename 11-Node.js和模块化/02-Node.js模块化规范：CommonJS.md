@@ -139,48 +139,195 @@ PS：面试时，经常会问AMD 和 CMD 的区别。
 
 - 在浏览器端: 模块需要提前编译打包处理。首先，既然同步的，很容易引起阻塞；其次，浏览器不认识`require`语法，因此，需要提前编译打包。
 
+### 模块的暴露和引入
 
-### 暴露模块的方式
+Node.js 中只有模块作用域，两个模块之间的变量、方法，默认是互不冲突，互不影响，这样就导致一个问题：模块 A 要怎样使用模块B中的变量&方法呢？这就需要通过 `exports` 关键字来实现。
 
-**方式一**：
+Node.js中，每个模块都有一个 exports 接口对象，我们可以把公共的变量、方法挂载到这个接口对象中，其他的模块才可以使用。
 
-```javascript
-  module.exports = value
+接下来详细讲一讲模块的暴露、模块的引入。
+
+
+### 暴露模块的方式一： exports
+
+`exports`对象用来导出当前模块的公共方法或属性。别的模块通过 require 函数调用当前模块时，得到的就是当前模块的 exports 对象。
+
+**语法格式**：
+
+```js
+// 相当于是：给 exports 对象添加属性
+exports.xxx = value
 ```
 
 这个 value 可以是任意的数据类型。
 
-**方式二**：
+**注意**：暴露的关键词是`exports`，不是`export`。其实，这里的 exports 类似于 ES6 中的 export 的用法，都是用来导出一个指定名字的对象。
 
-```javascript
-  exports.xxx = value
+
+
+**代码举例**：
+
+```js
+const name = 'qianguyihao';
+exports.name = name;
 ```
 
 
-**问题**: 暴露的模块到底是谁？
+
+### 暴露模块的方式二： module.exports
+
+`module.exports`用来导出一个默认对象，没有指定对象名。
+
+语法格式：
+
+```javascript
+// 方式一：导出整个 exports 对象
+module.exports = value;
+
+// 方式二：给 exports 对象添加属性
+module.exports.xxx = value;
+```
+
+这个 value 可以是任意的数据类型。
+
+代码举例：
+
+```js
+// 方式1
+module.exports = {
+    name: '我是 module1',
+    foo(){
+        console.log(this.name);
+    }
+}
+
+// 我们不能再继续写 module.exports = value2。因为重新赋值，会把 exports 对象 之前的赋值覆盖掉。
+
+// 方式2
+const age = 28;
+module.exports.age = age;
+
+```
+
+`module.exports` 还可以修改模块的原始导出对象。比如当前模块原本导出的是一个对象，我们可以通过 module.exports 修改为导出一个函数。如下：
+
+```js
+module.exports = function () {
+    console.log('hello world')
+}
+```
+
+### exports 和 module.exports 的区别
+
+
+
+最重要的区别：
+
+- 使用exports时，只能单个设置属性 `exports.a = a;`
+
+- 使用module.exports时，既单个设置属性 `module.exports.a`，也可以整个赋值 `module.exports = obj`。
+
+其他要点：
+
+- Node中每个模块的最后，都会执行 `return: module.exports`。
+
+- Node中每个模块都会把 `module.exports`指向的对象赋值给一个变量 `exports`，也就是说 `exports = module.exports`。
+
+- `module.exports = XXX`，表示当前模块导出一个单一成员，结果就是XXX。
+
+- 如果需要导出多个成员，则必须使用 `exports.add = XXX; exports.foo = XXX`。或者使用 `module.exports.add = XXX; module.export.foo = XXX`。
+
+### 问题: 暴露的模块到底是谁？
 
 **答案**：暴露的本质是`exports`对象。【重要】
 
-比如，方式二可以理解成是，**给 exports 对象添加属性**。
+比如，方式一的 `exports.a = a` 可以理解成是，**给 exports 对象添加属性**。方式二的 `module.exports = a`可以理解成是给整个 exports 对象赋值。方式二的 `module.exports.c = c`可以理解成是给 exports 对象添加属性。
 
-PS：暴露的关键词是`exports`，不是`export`。
-
-
+Node.js 中每个模块都有一个 module 对象，module 对象中的有一个 exports 属性称之为**接口对象**。我们需要把模块之间公共的方法或属性挂载在这个接口对象中，方便其他的模块使用。
 
 
-### 引入模块的方式
+### 引入模块的方式：require
 
-```
-require(xxx)
+require函数用来在一个模块中引入另外一个模块。传入模块名，返回模块导出对象。
+
+**语法格式**：
+
+```js
+const module1 = require('模块名');
 ```
 
 解释：
 
-- 内置模块：xxx 为模块名（包名）
+- 内置模块：require的是**包名**。
 
-- 下载的第三方模块：xxx为模块名（包名）。
+- 下载的第三方模块：require的是**包名**。
 
-- 自定义模块：xxx为模块文件路径。
+- 自定义模块：require的是**文件路径**。文件路径既可以用绝对路径，也可以用相对路径。后缀名`.js`可以省略。
+
+
+**代码举例**：
+
+```js
+const module1 = require('./main.js');
+
+const module2 = require('./main');
+
+const module3 = require('Demo/src/main.js');
+```
+
+**require()函数的两个作用**：
+
+- 执行导入的模块中的代码。
+
+- 返回导入模块中的接口对象。
+
+
+### 主模块
+
+主模块是整个程序执行的入口，可以调度其他模块。
+
+```bash
+# 运行main.js启动程序。此时，main.js就是主模块
+$ node main.js
+```
+
+### 模块的初始化
+
+一个模块中的 JS 代码仅在模块**第一次被使用时**执行一次，并且在使用的过程中进行初始化，然后会被缓存起来，便于后续继续使用。
+
+代码举例：
+
+（1）calModule.js:
+
+```js
+var a = 1;
+​
+function add () {
+  return ++a;
+}
+​
+exports.add = add;
+
+```
+
+（2）main.js：（在 main.js 中引入 hello.js 模块）
+
+```js
+var addModule1 = require('./calModule')
+var addModule2 = require('./calModule')
+​
+console.log(addModule1.add());
+console.log(addModule2.add());
+```
+
+在命令行执行 `node main.js` 运行程序，打印结果：
+
+```bash
+2
+3
+```
+
+从打印结果中可以看出，`calModule.js`这个模块虽然被引用了两次，但只初始化了一次。
 
 
 ## CommonJS 在服务器端的实现举例
