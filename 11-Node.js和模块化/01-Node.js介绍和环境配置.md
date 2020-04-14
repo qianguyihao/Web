@@ -2,39 +2,43 @@
 
 ## Node.js的介绍
 
-### 什么是 Node.js（官方解释）
+### 什么是 Node.js
 
-Node.js 是一个基于 **Chrome V8** 引擎的 JavaScript 代码运行环境。
+Node.js 是一个基于 **Chrome V8** 引擎的 JavaScript 运行环境。Node.js使用了一个**事件驱动**、**非阻塞式I/O**的模型（ Node.js的特性），使其轻量级又高效。Node.js 的包管理工具 npm 是全球最大的开源库生态系统。
 
-Node.js使用了一个**事件驱动**、**非阻塞式I/O**的模型（ Node.js的特性），使其轻量级又高效。
-
-Node.js 的包管理器 npm 是全球最大的开源库生态系统。
 
 ![](http://img.smyhvae.com/20180301_1540.png)
 
 如上图所示：
 
-- Node 内部采用 Google Chrome 的 V8 引擎，作为 JavaScript 语言解释器；
+- Node.js 不是一门语言，也不是 JavaScript 的框架，**Node.js是 JavaScript 语言在服务器端的运行环境（平台）**。
 
-- 通过自行开发的 libuv 库，调用操作系统资源。
+- Node.js 内部采用 Google Chrome 的 V8 引擎，作为 JavaScript 语言解释器；同时结合自行开发的 libuv 库，扩展了 JS 的功能，使得 JS 既可以在前端进行DOM操作（浏览器端），又可以在后端调用操作系统资源（I/O操作、文件读写、数据库操作等），是目前最简单的全栈式语言。
 
+### Node.js的特点
 
+- 事件驱动
 
-### 什么是 Node.js（非官方解释）
+- 非阻塞IO模型（异步）
 
-**Node.js是 JavaScript 语言在服务器端的运行环境（平台）**。Node.js 不是一门语言，也不是 JavaScript 的框架。
-
-- 与PHP、JSP、Python、Perl、Ruby的“既是语言，也是平台”不同，Node.js的使用JavaScript进行编程，运行在 Chrome 的 V8 引擎上。
-
-- 与PHP、JSP等相比（PHP、JSP、.net都需要运行在服务器程序上，Apache、Naginx、Tomcat、IIS。
-），Node.js跳过了Apache、Naginx、IIS等HTTP服务器，它自己不用建设在任何服务器软件之上。Node.js的许多设计理念与经典架构（LAMP = Linux + Apache + MySQL + PHP）有着很大的不同，可以提供强大的伸缩能力。Node.js没有web容器。
+- 轻量和高效
 
 
 ### 运行环境（平台）的含义
 
-- 首先，JavaScript 语言通过 Node 在服务器上运行，在这个意义上，Node 有点像 JavaScript 虚拟机。
+首先，JavaScript 语言通过 Node 在服务器上运行，在这个意义上，Node 有点像 JavaScript 虚拟机。
 
-- 其次，Node 生态系统活跃，提供了大量的开源库，使得 JavaScript 语言能与操作系统进行交互（比如读写文件、新建子进程），在这个层次上，Node 又是属于 JavaScript 的工具库。
+其次，Node 生态系统活跃，提供了大量的开源库，使得 JavaScript 语言能与操作系统进行交互（比如读写文件、新建子进程），在这个层次上，Node 又是属于 JavaScript 的工具库。
+
+
+**引申**：
+
+
+与PHP、JSP、Python、Perl、Ruby的“既是语言，也是平台”不同，Node.js的使用JavaScript进行编程，运行在 Chrome 的 V8 引擎上。
+
+与PHP、JSP等相比（PHP、JSP、.net都需要运行在服务器程序上，Apache、Naginx、Tomcat、IIS。
+），Node.js跳过了Apache、Naginx、IIS等HTTP服务器，它自己不用建设在任何服务器软件之上。Node.js的许多设计理念与经典架构（LAMP = Linux + Apache + MySQL + PHP）有着很大的不同，可以提供强大的伸缩能力。Node.js没有web容器。
+
 
 ## Node.js和服务器端开发
 
@@ -68,15 +72,15 @@ Node.js 的包管理器 npm 是全球最大的开源库生态系统。
 
 **1、中间层**。
 
-前端访问中间层，中间层再访问后台的 Java/C++ 服务。这样做的好处是：安全性（不会把主服务器暴露在外面）、提高性能（做缓存等）、降低主服务器的复杂度。
+前端访问中间层的接口，中间层再访问后台的 Java/C++ 服务。这样做的好处是：安全性（不会把主服务器暴露在外面）、提高性能（做缓存等）、降低主服务器的复杂度。
 
 当然，有时候做 Node.js 开发，是因为：后台人力不够，所以把后台开发的一部分工作量，转移给前端同学。
 
-**2、公司内部工具**。
+**2、做公司内部工具、项目构建工具**。
 
-**3、小型服务**（比如管理系统）。
+**3、做小型服务、小型网站的后端**（比如管理系统）。
 
-需要声明的是：Node.js很难像 Java/C++ 那样，成为后台的主力开发语言。这并非是因为 Node.js的性能问题（实际上，Node.js的性能还不错），主要是因为，Node.js的框架的支持度不够，很难独立成为后台开发语言。
+需要声明的是：目前来看，Node.js很难像 Java/C++ 那样，成为后台的主力开发语言。这并非是因为 Node.js的性能问题（实际上，Node.js的性能还不错），主要是因为，Node.js的框架的支持度不够，很难独立成为后台开发语言。
 
 ### Node.js 的组成
 
@@ -103,6 +107,8 @@ ECMAScript 是 JS 的语法；DOM 和 BOM 浏览器运行环境为 JS 提供的A
 ## Node.js的发展
 
 ### Node 的历史
+
+Node.js 诞生于 2009 年，由 Joyent 的员工 Ryan Dahl 开发而成, 目前官网最新版本已经更新到 13.x.x版本，最新稳定的是10.15.3。
 
 - 2008年左右，随着 Ajax 的逐渐普及，Web 开发逐渐走向复杂化，系统化；
 
@@ -525,7 +531,7 @@ NPM 默认安装到当前正在使用 Node 版本所在目录下。我们建议�
 ![](http://img.smyhvae.com/20180302_1210.png)
 
 
-### NPM的常用命令
+## NPM的常用命令
 
 查看 npm 当前版本：
 
@@ -545,7 +551,8 @@ npm install npm@latest -g
 ```bash
 npm init
 
-npm init --yes 默认配置
+# 快速跳过问答式界面，选择默认配置
+npm init --yes
 ```
 
 只在当前工程下安装指定的包：
@@ -554,11 +561,124 @@ npm init --yes 默认配置
 npm install [package]
 ```
 
-在全局阿浑惊吓安装指定的包：
+在全局安装指定的包：
 
 ```
 npm install -g [package]
 ```
+
+安装的包只用于开发环境，不用于生产环境：（会出现在 package.json 文件中的 devDependencies 属性中）
+
+```bash
+npm install [package] --save-dev
+
+# 或者
+npm install [package] -D
+```
+
+安装的包需要发布到生产环境：（会出现在 package.json 文件中的 dependencies 属性中）
+
+```bash
+npm install [package] --save
+
+# 或者
+npm install [package] -S
+```
+
+
+查看当前目录下已安装的node包：
+
+```bash
+npm list
+```
+
+查看全局已经安装的node包：
+
+```bash
+npm list -g
+```
+
+查看npm帮助命令：
+
+```bash
+npm --help
+```
+
+查看指定命令的帮助：
+
+```bash
+npm [指定命令] --help
+```
+
+更新指定的包：
+
+```bash
+npm update [package]
+```
+
+卸载指定的包：
+
+
+```bash
+npm uninstall [package]
+```
+
+查看配置信息：
+
+```bash
+npm config list
+```
+
+查看本地安装的指定包的信息，没有则显示empty：
+
+```bash
+npm ls [package]
+```
+
+查看全局安装的指定包的信息，没有则显示empty：
+
+
+```bash
+npm ls [package] -g
+```
+
+
+
+
+查看远程npm上指定包的所有版本信息：
+
+```bash
+npm info [package]
+```
+
+
+查看当前包的安装路径：
+
+```bash
+npm root
+```
+
+
+
+查看全局包的安装路径：
+
+```bash
+npm root -g
+```
+
+
+
+```bash
+
+```
+
+
+
+
+```bash
+
+```
+
 
 ## 配置 npm 镜像源
 
@@ -568,9 +688,11 @@ npm install -g [package]
 
 - 方式1：临时切换镜像源。
 
-- 方式2：通过 NRM 切换镜像源（最为推荐的方式）。
+- 方式2：切换镜像源
 
-- 方式3：cnpm。
+- 方式3：通过 NRM 切换镜像源（最为推荐的方式）。
+
+- 方式4：cnpm。
 
 下面来分别讲一下。
 
@@ -586,8 +708,15 @@ npm install [package] --registry [https://xxx]
 npm install express --registry https://registry.npm.taobao.org
 ```
 
+### 方式2：切换镜像源
 
-### 方式2：通过 NRM 切换镜像源（推荐）
+```bash
+npm config set registry https://registry.npm.taobao.org
+```
+
+执行上述命令后，以后下载所有 npm 包的时候，都会改为使用淘宝的镜像源。
+
+### 方式3：通过 NRM 切换镜像源（推荐）
 
 
 **NRM**：Node Registry Manager。作用是：**切换和管理npm包的镜像源**。
@@ -624,7 +753,7 @@ nrm use taobao
 推荐的国内加速镜像淘宝：<https://npm.taobao.org/>
 
 
-## 方式3：安装cnpm
+## 方式4：安装cnpm
 
 - 项目地址：<https://npm.taobao.org/>
 
