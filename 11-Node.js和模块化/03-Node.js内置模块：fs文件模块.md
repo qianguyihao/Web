@@ -1,30 +1,19 @@
 
-## CommonJS 规范
-
-CommonJS 规范规定，每个模块内部，module 变量代表当前模块。这个变量是一个对象，它的 exports 属性（即 module.exports）是对外的接口对象。加载某个模块，其实是加载该模块的 module.exports 对象。
-
-
-```javascript
-var x = 5;
-var addX = function (value) {
-	return value + x;
-};
-module.exports.x = x;
-module.exports.addX = addX;
-```
-
 
 ## Node.js 的API文档
 
-Node.js 的API文档： <https://nodejs.org/docs/latest-v8.x/api/index.html>
+Node.js 的API文档（英文）： <https://nodejs.org/docs/latest-v8.x/api/index.html>
 
-查阅文档时的常见规律：
+Node.js 的API文档（中文）：<http://nodejs.cn/api/>
 
-- 红色：表示已废弃。
 
-- 绿色：表示100%安全使用。
+查阅文档时，稳定指数如下：
 
-- 黄颜色：表示当前版本可用，其他版本不确定。
+- 红色：废弃。
+
+- 橙色：实验。表示当前版本可用，其他版本不确定。也许不向下兼容，建议不要在生产环境中使用该特性。
+
+- 绿色：稳定。与 npm 生态系统的兼容性是最高的优先级。
 
 
 ## Node.js 中模块的分类
@@ -80,7 +69,14 @@ console.log(example.x); // 5
 console.log(example.addX(1)); // 6
 ```
 
-今天这篇文章，重点讲一下内置模块中的 **fs 文件处理模块**。
+今天这篇文章，重点讲一下 Node 内置模块中的 **fs 文件处理模块**。
+
+在使用文件模块之前，记得先导入：
+
+```js
+// 导入文件模块
+const fs = require('fs');
+```
 
 ## 文件读取
 
@@ -102,11 +98,86 @@ fs.readFile(file[, options], callback(error, data))
 代码举例：
 
 ```javascript
-fs.readFile('c:\\demo\1.txt', 'utf8', (err, data) => {
-  if (err) throw err;
-  console.log(data);
+const fs = require('fs');
+
+fs.readFile('hello.txt', 'utf8', (err, data) => {
+    if (err) {
+        // 失败
+        console.log(err)
+    } else {
+        // 成功
+        console.log('异步读取数据：' + data2)
+    }
 });
 ```
+
+
+如果需要嵌套读取多个文件，可以用 promise 或者 async ... await 进行封装。代码举例如下。
+
+### promise 封装 fs.readFile()
+
+```js
+const fs = require('fs');
+
+function fsRead(path) {
+    return new Promise((resolve, reject) => {
+        fs.readFile(path, { flag: 'r', encoding: "utf-8" }, (err, data) => {
+            if (err) {
+                //失败执行的内容
+                reject(err)
+            } else {
+                //成功执行的内容
+                resolve(data)
+            }
+        })
+    })
+}
+
+var promise1 = fsRead('hello1.txt')
+promise1.then(res1 => {
+    console.log(res1);
+    return fsRead('hello2.txt');
+}).then(res2 => {
+    console.log(res2);
+    return fsRead('hello3.txt');
+}).then(res3 => {
+    console.log(res);
+})
+
+```
+
+### async ... await 封装 fs.readFile()
+
+这个写法更为简洁，推荐。
+
+```js
+var fs = require('fs');
+
+function fsRead(path) {
+    return new Promise((resolve, reject) => {
+        fs.readFile(path, { flag: 'r', encoding: "utf-8" }, (err, data) => {
+            if (err) {
+                //失败执行的内容
+                reject(err)
+            } else {
+                //成功执行的内容
+                resolve(data)
+            }
+        })
+    })
+}
+
+async function ReadList() {
+    var res1 = await fsRead('hello1.txt');
+    var res2 = await fsRead('hello2.txt');
+    var res3 = await fsRead('hello3.txt');
+}
+
+// 执行方法
+ReadList();
+
+```
+
 
 ### 同步读取文件 fs.readFileSync()
 
@@ -119,8 +190,10 @@ fs.readFileSync(file[, options])
 代码举例：
 
 ```javascript
+const fs = require('fs');
+
 try {
-  const data = fs.readFileSync('c:\\demo\1.txt', 'utf8');
+  const data = fs.readFileSync('hello.txt', 'utf8');
   console.log(data);
 } catch(e) {
   // 文件不存在，或者权限错误
@@ -128,11 +201,9 @@ try {
 }
 ```
 
-
-### Node.js 中的异步操作
+### Node.js 中的同步和异步的区别
 
 fs模块对文件的几乎所有操作都有同步和异步两种形式。例如：readFile() 和 readFileSync()。
-
 
 区别：
 
@@ -142,30 +213,68 @@ fs模块对文件的几乎所有操作都有同步和异步两种形式。例如
 
 - 异常处理方面，同步必须使用 try catch 方式，异步可以通过回调函数的第一个参数。【重要】
 
-```javascript
-const fs = require('fs');
-const path = require('path');
+## 文件写入
 
-console.time('async');
-fs.readFile(path.join('C:\\Users\\qianguyihao\\Downloads', 'H.mp4'), (error, data) => {
-    if (error) throw error;
-    // console.log(data);
-});
-console.timeEnd('async');
+语法格式：
 
+```js
+fs.write(fd, string[, position[, encoding]], callback)
 
-console.time('sync');
-try {
-    var data = fs.readFileSync(path.join('C:\\Users\\qianguyihao\\Downloads', 'H.mp4'));
-    // console.log(data);
-} catch (error) {
-    throw error;
-}
-console.timeEnd('sync');
 ```
 
+async ... await 封装：
+
+```js
+let fs = require('fs')
+
+function writeFs(path, content) {
+    return new Promise(function (resolve, reject) {
+        fs.writeFile(path, content, { flag: "a", encoding: "utf-8" }, function (err) {
+            if (err) {
+                //console.log("写入内容出错")
+                reject(err)
+            } else {
+                resolve(err)
+                //console.log("写入内容成功")
+            }
+        })
+    })
+}
 
 
+async function writeList() {
+    await writeFs('1.html', "<h1>qianguyihao</h1>");
+    await writeFs('2.html', "<h1>hello world</h1>");
+    await writeFs('3.html', "<h1>永不止步</h1>");
+}
 
+writeList()
+```
+
+## 删除文件
+
+语法格式：
+
+```js
+fs.unlink(path, callback)
+```
+
+参数说明：
+
+- path：文件路径。
+- callback：回调函数。
+
+
+代码举例：
+
+```js
+fs.unlink('path/file.txt', (err) => {
+    if (err) throw err;
+    console.log('文件删除成功');
+});
+
+```
+
+备注：`fs.unlink()` 不能用于目录。 要删除目录，则使用 `fs.rmdir()`。
 
 
