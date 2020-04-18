@@ -1,19 +1,14 @@
-
-
 ## MySQL 的一些简单命令
-
 
 我们可以在 Navicat Premium 软件中，创建数据库和表，然后输入查询命令来查询数据。选择菜单栏「查询->新建查询->输入 sql 命令->运行」即可，效果如下：
 
 ![](https://github.com/qianguyihao/Web/blob/master/img/20200417_1750.png)
-
 
 我们还可以直接在终端输入命令行来操作。
 
 注意，在 Mac 终端执行 sql 命令时，命令的末尾必须加上`;`（英文格式的分号）。效果如下：
 
 ![](https://github.com/qianguyihao/Web/blob/master/img/20200417_1700.png)
-
 
 MySQL 命令行的一些简单命令如下。
 
@@ -22,7 +17,6 @@ MySQL 命令行的一些简单命令如下。
 ```
 mysql -u root -p
 ```
-
 
 **查看有哪些数据库**：
 
@@ -63,13 +57,11 @@ drop table xxx;
 drop table qianguyihao_student_table;
 ```
 
-
 **删除指定的数据库**：
 
 ```sql
 drop database qianguyihao_student_table;
 ```
-
 
 **创建一个数据库**：
 
@@ -77,17 +69,15 @@ drop database qianguyihao_student_table;
 create database qianguyihao_database2;
 ```
 
-
 ## where 条件查询
 
-使用 `where` 子句可以对表中的数据进行筛选，结果为true的行会出现在查询结果中。
+使用 `where` 子句可以对表中的数据进行筛选，结果为 true 的行会出现在查询结果中。
 
 语法格式如下：
 
 ```sql
 SELECT * FROM 表名 where 条件;
 ```
-
 
 上面的语法格式中，`条件` 具体要怎么写呢？这个可能有很多种情况。我们继续往下看。
 
@@ -101,16 +91,12 @@ SELECT * FROM 表名 where 条件;
 - `!=`：不等于
 - `age > 20`：查询 age 大于 30 的数据
 
-
-
 **举例**：
 
 ```sql
 # 查询 age 大于 20 的数据
 SELECT * FROM qianguyihao_table WHERE age > 20;
 ```
-
-
 
 ### 逻辑运算符
 
@@ -120,7 +106,6 @@ SELECT * FROM qianguyihao_table WHERE age > 20;
 
 - NOT
 
-
 **举例**：
 
 ```sql
@@ -128,7 +113,6 @@ SELECT * FROM qianguyihao_table WHERE age > 20;
 SELECT * FROM qianguyihao_table WHERE age BETWEEN 20 AND 30;
 
 ```
-
 
 ### 范围查询
 
@@ -145,16 +129,11 @@ SELECT * FROM qianguyihao_table WHERE name IN ['千古壹号', '许嵩'];
 SELECT * FROM qianguyihao_table WHERE age BETWEEN 20 AND 30;
 ```
 
-
-
-
-
-
 ### 模糊查询
 
 - `like`
-    - `%` 表示任意多个任意字符
-    - `_` 表示一个任意字符
+  - `%` 表示任意多个任意字符
+  - `_` 表示一个任意字符
 
 `%` 符号举例：
 
@@ -167,7 +146,6 @@ select * from qianguyihao_table where `title` like "%前端";
 
 ```
 
-
 `_`符号举例：
 
 ```sql
@@ -175,15 +153,13 @@ select * from qianguyihao_table where `title` like "%前端";
 SELECT * FROM qianguyihao_table WHERE `title` LIKE "千古___";
 ```
 
-
-
 ### NULL 的判断
 
-- `is  null` 判断为空
+- `is null` 判断为空
 
 - `is not null` 判断为非空
 
-注意，`is null` 和**空字符串**`""` 是有区别的。学过js基础之后，你应该知道：空字符串并非null，只不过是里面的值为空而已；空字符串也是会占有内存空间的。
+注意，`is null` 和**空字符串**`""` 是有区别的。学过 js 基础之后，你应该知道：空字符串并非 null，只不过是里面的值为空而已；空字符串也是会占有内存空间的。
 
 举例：
 
@@ -192,5 +168,96 @@ select * from qianguyihao_table where name is not NULL;
 
 ```
 
-### 优先级
+## join 联表查询
+
+### 联表查询命令
+
+- `tableA inner join tableB`：表 A 与表 B 匹配的行会出现在结果中。
+
+- `tableA left join tableB`：表 A 与表 B 匹配的行会出现在结果中。表 A 中独有的数据，对应表 B 中用 null 填充。
+
+- `tableA right join tableB`：表 A 与表 B 匹配的行会出现在结果中。表 B 中独有的数据，对应表 A 中用 null 填充。
+
+光是这样看，不好理解，我们来举个例子。
+
+### 举例
+
+现在有下面这两张表：作者表 author、图书表 book。
+
+**表 1**、作者表 author：
+
+| id  | authorId | authorName |
+| :-- | :------- | :--------- |
+| 1   | 11       | 王小波     |
+| 2   | 12       | 吴军       |
+| 3   | 88       | 千古壹号   |
+
+**表 2**、图书表 book：（注意，每本图书都有对应的 authorId）
+
+| id  | bookId | bookName   | authorId |
+| :-- | :----- | :--------- | -------- |
+| 1   | 201    | 黄金时代   | 11       |
+| 2   | 202    | 白银时代   | 11       |
+| 3   | 203    | 青铜时代   | 11       |
+| 4   | 204    | 浪潮之巅   | 12       |
+| 5   | 205    | 硅谷之谜   | 12       |
+| 6   | 206    | 数学之美   | 12       |
+| 7   | 777    | 设计心理学 | 99       |
+
+通过连表查询上面的两张表，我们来对比一下查询结果。
+
+**情况 0**：（inner join）
+
+```sql
+SELECT * FROM author INNER JOIN book;
+```
+
+查询结果：
+
+
+![](https://github.com/qianguyihao/Web/blob/master/img/20200418_2300.png)
+
+
+上面这种查询，没有意义，因为没有加任何查询条件。
+
+**情况 1**：（inner join）
+
+```sql
+SELECT * FROM author INNER JOIN book ON author.authorId = book.authorId;
+```
+
+查询结果：
+
+![](https://github.com/qianguyihao/Web/blob/master/img/20200418_2305.png)
+
+
+上面这行命令，跟下面这行命令等价：
+
+```sql
+SELECT * FROM author, book WHERE author.authorId = book.authorId;
+```
+
+**情况 2**：（left join）
+
+```sql
+SELECT * FROM author LEFT JOIN book ON author.authorId = book.authorId;
+```
+
+查询结果：
+
+![](https://github.com/qianguyihao/Web/blob/master/img/20200418_2310.png)
+
+**情况 3**：（right join）
+
+```sql
+SELECT * FROM author RIGHT JOIN book ON author.authorId = book.authorId;
+```
+
+查询结果：
+
+![](https://github.com/qianguyihao/Web/blob/master/img/20200418_2315.png)
+
+### 参考链接
+
+- [Mysql 联表查询](https://blog.csdn.net/qmhball/article/details/8000003)
 
