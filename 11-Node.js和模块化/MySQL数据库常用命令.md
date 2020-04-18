@@ -6,9 +6,9 @@
 
 MySQL 下载地址：https://dev.mysql.com/downloads/mysql/
 
-![](../img/20200415_1707.png)
+![](https://github.com/qianguyihao/Web/blob/master/img/20200415_1707.png)
 
-![](../img/20200415_1708.png)
+![](https://github.com/qianguyihao/Web/blob/master/img/20200415_1708.png)
 
 
 #### 步骤2、配置环境变量
@@ -63,26 +63,26 @@ Navicat Premium 软件是一种数据库管理的GUI软件，采用可视化的�
 
 打开 Navicat Premium 软件，选择菜单栏「文件-新建连接-mysql」，然后选择如下配置，即可在本地新建一个数据库连接：
 
-![](../img/20200416_1157.png)
+![](https://github.com/qianguyihao/Web/blob/master/img/20200416_1157.png)
 
 2、选中连接后，右键新建数据库：
 
-![](../img/20200416_1159.png)
+![](https://github.com/qianguyihao/Web/blob/master/img/20200416_1159.png)
 
 
-![](../img/20200416_1127.png)
+![](https://github.com/qianguyihao/Web/blob/master/img/20200416_1127.png)
 
 3、选中数据库之后，新建表 `qiangu_student_table`：
 
-![](../img/20200416_1138.png)
+![](https://github.com/qianguyihao/Web/blob/master/img/20200416_1138.png)
 
 4、在表中添加字段：
 
-![](../img/20200416_1202.png)
+![](https://github.com/qianguyihao/Web/blob/master/img/20200416_1202.png)
 
 5、字段建好后，开始在表中插入数据：
 
-![](../img/20200416_1259.png)
+![](https://github.com/qianguyihao/Web/blob/master/img/20200416_1259.png)
 
 
 ## MySQL 的一些简单命令
@@ -91,12 +91,12 @@ Navicat Premium 软件是一种数据库管理的GUI软件，采用可视化的�
 
 注意，在 Mac 终端执行 sql 命令时，命令的末尾必须加上`;`（英文格式的分号）。效果如下：
 
-![](../img/20200417_1700.png)
+![](https://github.com/qianguyihao/Web/blob/master/img/20200417_1700.png)
 
 
 我们也可以在 Navicat Premium 软件中，输入查询命令来查询数据。选择菜单栏「查询->新建查询->输入 sql 命令->运行」即可，效果如下：
 
-![](../img/20200417_1750.png)
+![](https://github.com/qianguyihao/Web/blob/master/img/20200417_1750.png)
 
 
 MySQL 命令行的一些简单命令如下。
