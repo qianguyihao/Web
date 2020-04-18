@@ -57,7 +57,7 @@ require 加载第三方包的机制：
 
 （4）如果一直找到该模块的磁盘根路径都没有找到，则会报错：can not find module xxx。
 
-**3、自定义模块（module）**：
+### 3、自定义模块（module）：
 
 每个文件就是一个模块，有自己的作用域。在一个文件里面定义的变量、函数、类，都是私有的，对其他文件不可见。
 
@@ -69,7 +69,9 @@ console.log(example.x); // 5
 console.log(example.addX(1)); // 6
 ```
 
-今天这篇文章，重点讲一下 Node 内置模块中的 **fs 文件处理模块**。
+## 读取文件
+
+今天这篇文章，重点讲一下 Node 内置模块中的 **fs（文件处理模块）**。
 
 在使用文件模块之前，记得先导入：
 
@@ -78,9 +80,7 @@ console.log(example.addX(1)); // 6
 const fs = require('fs');
 ```
 
-## 文件读取
-
-fs 的英文全称是 File System。fs 模块提供了很多api方法，我们首先应该学习的方法是**文件读取**。
+fs 的英文全称是 File System。fs 模块提供了很多 api 方法，我们首先应该学习的方法是**文件读取**。
 
 Node中文件读取的方式主要有以下几种。
 
@@ -211,9 +211,9 @@ fs模块对文件的几乎所有操作都有同步和异步两种形式。例如
 
 - 异步调用会将 读取任务 下达到任务队列，直到任务执行完成才会回调。
 
-- 异常处理方面，同步必须使用 try catch 方式，异步可以通过回调函数的第一个参数。【重要】
+- 异常处理方面：同步必须使用 try catch 方式，异步可以通过回调函数的第一个参数。【重要】
 
-## 文件写入
+## 写入文件
 
 语法格式：
 
@@ -275,6 +275,80 @@ fs.unlink('path/file.txt', (err) => {
 
 ```
 
-备注：`fs.unlink()` 不能用于目录。 要删除目录，则使用 `fs.rmdir()`。
+备注：`fs.unlink()` 不能用于删除目录。 如果要删除目录，可以使用 `fs.rmdir()`。
+
+
+## Buffer
+
+通过 Buffer 开辟的内存空间，都是连续的内存空间，所以效率比较高。
+
+代码举例1：
+
+```js
+
+// 将字符串转成 buffer 对象
+const str = 'qianguyihao';
+let buffer = Buffer.from(str);
+
+console.log(buffer); // 输出16进制编码
+console.log(buffer.toString()); // 输出字符串：qianguyihao
+```
+
+代码举例2：
+
+```js
+// 从内存中开辟一个新的缓冲区
+let buffer = Buffer.alloc(20);
+buffer[0] = 'a';
+
+console.log(buffer);
+
+```
+
+
+## 读取目录
+
+
+语法格式：
+
+```js
+fs.mkdir(path[, options], callback)
+```
+
+参数说明：
+
+- path：文件路径。
+
+- options参数可以是：
+    - recursive：是否以递归的方式创建目录，默认为 false。
+    - mode：设置目录权限，默认为 0777。
+
+
+代码举例：
+
+```js
+var fs = require("fs");
+​
+console.log("查看 /tmp 目录");
+fs.readdir("/tmp/",function(err, files){
+   if (err) {
+       return console.error(err);
+   }
+   files.forEach( function (file){
+       console.log( file );
+   });
+});
+
+```
+
+
+其他的还有：（暂略）
+
+- 删除目录
+
+- 输入输出
+
+
+
 
 
