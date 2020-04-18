@@ -55,7 +55,7 @@ flush privileges;
 
 针对下面这张表：
 
-![](../img/20200418_1728.png)
+![](https://github.com/qianguyihao/Web/blob/master/img/20200418_1728.png)
 
 
 通过 Node.js可以对其进行一些增删改查操作。代码举例如下。
