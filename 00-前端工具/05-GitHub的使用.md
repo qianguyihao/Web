@@ -16,3 +16,13 @@
 
 - <https://blog.csdn.net/qq_35246620/article/details/77647234>
 
+
+
+### GitHub 引用图片的另一种方式
+
+参考链接：
+
+- [关于markdown文件插入图片遇到的小问题和解决办法](https://www.cnblogs.com/cxint/p/7200164.html)
+
+
+
