@@ -142,7 +142,7 @@ SELECT * FROM qianguyihao_table WHERE age BETWEEN 20 AND 30;
 select * from qianguyihao_table where `title` like "%前端%";
 
 # 查询标题以“前端”开头的数据
-select * from qianguyihao_table where `title` like "%前端";
+select * from qianguyihao_table where `title` like "前端%";
 
 ```
 
@@ -192,7 +192,7 @@ select * from qianguyihao_table where name is not NULL;
 | 2   | 12       | 吴军       |
 | 3   | 88       | 千古壹号   |
 
-**表 2**、图书表 book：（注意，每本图书都有对应的 authorId）
+**表 2**、图书表 book：
 
 | id  | bookId | bookName   | authorId |
 | :-- | :----- | :--------- | -------- |
@@ -204,7 +204,9 @@ select * from qianguyihao_table where name is not NULL;
 | 6   | 206    | 数学之美   | 12       |
 | 7   | 777    | 设计心理学 | 99       |
 
-通过连表查询上面的两张表，我们来对比一下查询结果。
+注意，表2中的每本图书都有对应的 authorId，这个 authorId 就是对应表1中的 authorId。**通过 authorId 把两张表关联起来**。
+
+通过联表查询上面的两张表，我们来对比一下查询结果。
 
 **情况 0**：（inner join）
 
@@ -260,4 +262,19 @@ SELECT * FROM author RIGHT JOIN book ON author.authorId = book.authorId;
 ### 参考链接
 
 - [Mysql 联表查询](https://blog.csdn.net/qmhball/article/details/8000003)
+
+
+## 自关联查询
+
+涉及到层级关系时可以用自关联查询。
+
+
+## 子查询
+
+当一个查询结果是另一个查询的条件时，这个查询称之为子查询。
+
+
+
+
+
 
