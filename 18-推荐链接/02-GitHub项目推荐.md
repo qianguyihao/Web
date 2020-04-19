@@ -33,6 +33,13 @@
 - 你也许不知道的 Vuejs：<https://github.com/yugasun/You-May-Not-Know-Vuejs>
 
 
+## 综合类
+
+- [前端精读周刊](https://github.com/dt-fe/weekly)
+
+
+
+
 ## 前端教程类
 
 ## 其他
