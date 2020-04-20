@@ -17,14 +17,14 @@ SQL 的一些简单语法规则：
 
 下面来详细讲一讲。
 
-## 数据库（DB）的基本操作
+## 一、数据库（DB）的基本操作
 
 
 ### 1、创建数据库
 
 **语法格式**：
 
-```sql
+```mysql
 create database 数据库名称 [数据库选项];
 ```
 
@@ -39,7 +39,7 @@ create database 数据库名称 [数据库选项];
 
 创建一个名为 qianguyihao_db1 的数据库：
 
-```sql
+```mysql
 create database qianguyihao_db1;
 ```
 
@@ -61,16 +61,25 @@ create database qianguyihao_db3 charset utf8MB4 collate utf8mb4_general_ci
 
 查看有哪些数据库：(显示所有的数据库列表)
 
-```sql
+```mysql
 show databases;
 ```
+
+
+2、查看 `qianguyihao_db1` 这个数据库的具体创建指令是怎样的：
+
+```mysql
+show create database qianguyihao_db1;
+```
+
+备注：由于系统会加工，所以看到的结果不一定是真实的创建指令。
 
 
 ### 3、使用指定的数据库
 
 使用指定的数据库：（也可以理解成：进入指定的数据库）
 
-```sql
+```mysql
 use xxx_database;
 
 # 举例
@@ -90,21 +99,45 @@ use qianguyihao_db;
 
 **语法格式**：
 
-```sql
+```mysql
 alter database 数据库名称 [库选项]
 ```
 
 **举例1**、修改数据库的字符集为gbk：
 
-```sql
+```mysql
 alter database qianguyihao_db1 charset gbk;
 ```
 
-**举例2**、修改数据库的校对集（在修改字符集的同时，修改校对集）
+**举例2**、修改数据库的校对集：
 
 ```sql
-alter database db_3 charset gbk collate gbk_chinese_ci;
+alter database qianguyihao_db2 charset gbk collate gbk_chinese_ci;
 ```
+
+备注：因为校对集是和字符集有关的，所以上方指令是在修改字符集的同时，修改校对集。
+
+
+
+### 5、删除指定的数据库
+
+**语法格式**：
+
+```mysql
+drop database 数据库名称;
+```
+
+备注：删除数据库时，会清空当前数据库里的所有数据表，所以删除数据库的操作一定要谨慎。
+
+
+## 二、数据表（Table）的基本操作
+
+* 创建数据表
+* 显示数据表
+* 查看表结构
+* 更改数据表
+* 更改字段
+* 删除数据表
 
 
 
