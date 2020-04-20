@@ -312,7 +312,7 @@ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | b
 
 编辑器打开`~/.bash_profile`文件，如果不会就输入`open ~/.bash_profile`。
 
-（补充：如果你的Mac电脑里找不到`~/.bash_profile`文件，那就找找有没有`~/.profile`文件，或者`~/.bashrc`文件，或者`~/.zshrc`文件）。
+（补充：如果你的Mac电脑里找不到`~/.bash_profile`文件，那就找找有没有`~/.profile`文件，或者`~/.bashrc`文件，或者`~/.zshrc`文件。如果还是没有，那你就手动创建一个`~/.bash_profile`文件）。
 
 在最后一行输入：
 
