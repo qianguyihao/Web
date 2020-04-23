@@ -51,7 +51,7 @@ create database 数据库名称 [数据库选项];
 - 由数字、字母和下划线组成。
 - 不区分大小写。
 - 不能以数字开头。
-- 建议使用下划线法创建复杂的数据库名字。比如 `qianguyihao_db`。
+- 建议使用下划线法创建复杂的数据库名字。比如 `db_qianguyihao`。
 
 **举例**：
 
@@ -165,16 +165,28 @@ create table [数据库名].[表名] (
 ) 表选项;
 ```
 
-**举例1**、在当前数据库中创建数据表 `t_student1`：
+**举例**：
+
+1、在当前数据库中创建数据表 `table_qiangu1`，并新增**主键** id 字段：
+
+```sql
+CREATE TABLE table_qiangu1 (
+  id int NOT NULL AUTO_INCREMENT PRIMARY KEY
+);
+```
+
+2、在当前数据库中创建数据表 `t_student1`，并新增 name、age这连个字段：
 
 ```sql
 create table t_student1(
     name varchar(255),
     age int
 );
+
+
 ```
 
-**举例2**、在指定的数据库 `db_2` 中创建数据表 `t_student2`：
+3、在指定的数据库 `db_2` 中创建数据表 `t_student2`：
 
 
 ```sql
@@ -184,7 +196,7 @@ create table db_2.t_student2(
 );
 ```
 
-**举例3**、在当前数据库中创建数据表 `t_student3`（含表选项）：
+4、在当前数据库中创建数据表 `t_student3`（含表选项）：
 
 ```sql
 create table t_student3(
@@ -193,7 +205,7 @@ create table t_student3(
 )engine Innodb charset utf8MB4;
 ```
 
-举例3中的代码涉及到存储引擎，这里解释一下：
+举例4中的代码涉及到存储引擎，这里解释一下：
 
 **存储引擎**是指数据存储和管理的方式，MySQL中提供了多种存储引擎，一般使用默认存储引擎 InnoDB。
 
@@ -330,6 +342,15 @@ rename table 数据库名.原表名 to 数据库名.新表名;
 alter table table1 charset gbk;
 ```
 
+### 7、删除数据表
+
+语法格式：
+
+```sql
+drop table 数据表名称;
+
+```
+
 
 ## 三、字段（Field）的基本操作
 
@@ -417,7 +438,7 @@ alter table 表名 change 原字段名 新字段名 字段类型 [字段属性] 
 
 - 修改字段名时，一定要设置新字段的字段类型。
 
-- 虽然 change 关键字也可以修改现有字段的字段属性，字段位置，但我们一般是通过 modify 关键字来做（下面会讲）。
+- 虽然 change 关键字也可以修改现有字段的字段属性、字段位置，但我们一般是通过 modify 关键字来做（下面会讲）。
 
 
 **举例**：
