@@ -109,3 +109,17 @@ if (result?.user?.name?.length) {
 
 
 
+### 2020-04-28-字符串添加白名单
+
+```js
+if ('str1' == ('str1' || 'str2')){
+    console.log('smyhvae);
+}
+```
+
+注意，上面的代码，根本就不会走 console.log语句，因为if里面的内容是false。
+
+
+
+
+
