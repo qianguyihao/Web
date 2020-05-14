@@ -3,61 +3,6 @@
 
 > 在日常开发中，String对象的使用频率是非常高的。所以有必要详细介绍。
 
-### 基本数据类型不能绑定属性和方法
-
-**1、基本数据类型：**
-
-注意，基本数据类型`string`是**无法绑定属性和方法**的。比如说：
-
-```javascript
-    var str = "qianguyihao";
-
-    str.aaa = 12;
-    console.log(typeof str);  //打印结果为：string
-    console.log(str.aaa);     //打印结果为：undefined
-```
-
-上方代码中，当我们尝试打印`str.aaa`的时候，会发现打印结果为：undefined。也就是说，不能给 `string` 绑定属性和方法。
-
-当然，我们可以打印str.length、str.indexOf("m")等等。因为这两个方法的底层做了数据类型转换（**临时**将 `string` 字符串转换为 `String` 对象，然后再调用内置方法），也就是我们在上一篇文章中讲到的**包装类**。
-
-**2、引用数据类型：**
-
-引用数据类型`String`是可以绑定属性和方法的。如下：
-
-
-```javascript
-    var strObj = new String("smyhvae");
-    strObj.aaa = 123;
-    console.log(strObj);
-    console.log(typeof strObj);  //打印结果：Object
-    console.log(strObj.aaa);
-```
-
-打印结果：
-
-![](http://img.smyhvae.com/20180202_1351.png)
-
-内置对象Number也有一些自带的方法，比如：
-
-- Number.MAX_VALUE;
-
-- Number.MIN_VALUE;
-
-内置对象Boolean也有一些自带的方法，但是用的不多。
-
-### 在底层，字符串以字符数组的形式保存
-
-在底层，字符串是以字符数组的形式保存的。代码举例：
-
-```javascript
-	var str = "smyhvae";
-	console.log(str.length); // 获取字符串的长度
-	console.log(str[2]); // 获取字符串中的第2个字符
-```
-
-上方代码中，`smyhvae`这个字符串在底层是以`["s", "m", "y", "h", "v", "a", "e"]`的形式保存的。因此，我们既可以获取字符串的长度，也可以获取指定索引index位置的单个字符。这很像数组中的操作。
-
 ## 内置对象 String 的常见方法
 
 ### charAt()
