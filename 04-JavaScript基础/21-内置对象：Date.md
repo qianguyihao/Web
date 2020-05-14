@@ -87,21 +87,18 @@ console.log(date26);
 
 Date对象 有如下方法，可以获取日期和时间的**指定部分**：
 
-- `getFullYear() `        获取年份
+| 方法名        | 含义              | 备注      |
+| ------------- | ----------------- | --------- |
+| getFullYear() | 获取年份          |           |
+| getMonth()    | **获取月： 0-11** | 0代表一月 |
+| getDate()       | **获取日：1-31** | 获取的是几号 |
+| getDay() | **获取星期：0-6** | 0代表周日，1代表周一 |
+| getHours() | 获取小时：0-23 |  |
+| getMinutes() | 获取分钟：0-59 |           |
+| getSeconds() | 获取秒：0-59 |           |
+| etMilliseconds() | 获取毫秒 | 1s = 1000ms |
 
-- `getMonth()  `           **获取月 0-11**（0代表一月）
 
-- `getDate()`                 **获取日 1-31**。即：获取的是几号
-
-- `getDay()`                 **获取星期 0-6**（0代表周日，1代表周一）
-
-- `getHours()  `      获取小时 0-23
-
-- `getMinutes() `         获取分钟 0-59
-
-- `getSeconds()`         获取秒  0-59
-
-- `getMilliseconds()`    获取毫秒 （1s = 1000ms）
 
 **代码举例**：
 
@@ -115,7 +112,9 @@ Date对象 有如下方法，可以获取日期和时间的**指定部分**：
 	console.log(myDate.getMonth() + 1); // 打印结果：2
 	console.log(myDate.getDate()); // 打印结果：4
 
+	var dayArr  = ['星期日', '星期一', '星期二', '星期三', '星期四','星期五', '星期六'];
 	console.log(myDate.getDay()); // 打印结果：1
+	console.log(dayArr[myDate.getDay()]); // 打印结果：星期一
 
 	console.log(myDate.getHours()); // 打印结果：13
 	console.log(myDate.getMinutes()); // 打印结果：23
@@ -127,44 +126,61 @@ Date对象 有如下方法，可以获取日期和时间的**指定部分**：
 
 获取了日期和时间的指定部分之后，我们把它们用字符串拼接起来，就可以按照自己想要的格式，来展示日期。
 
-
-### 举例1：年月日的格式化
+### 举例：年月日的格式化
 
 代码举例：
 
-```javascript
-    // 格式化年月日：2020年2月2日 星期三
-    var date = new Date();
-    var year = date.getFullYear();
-    var month = date.getMonth() + 1;
-    var dates = date.getDate();
-    var day = date.getDay();
-    var arr = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+```js
+console.log(formatDate());
 
-    console.log('今天是：' + year + '年' + month + '月' + dates + '日 ' + arr[day]);
+/*
+    方法：日期格式化。
+    格式要求：今年是：2020年02月02日 08:57:09 星期日
+*/
+function formatDate() {
+    var date = new Date();
+
+    var year = date.getFullYear(); // 年
+    var month = date.getMonth() + 1; // 月
+    var day = date.getDate(); // 日
+
+    var week = date.getDay(); // 星期几
+    var weekArr = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+
+    var hour = date.getHours(); // 时
+    hour = hour < 10 ? '0' + hour : hour; // 如果只有一位，则前面补零
+
+    var minute = date.getMinutes(); // 分
+    minute = minute < 10 ? '0' + minute : minute; // 如果只有一位，则前面补零
+
+    var second = date.getSeconds(); // 秒
+    second = second < 10 ? '0' + second : second; // 如果只有一位，则前面补零
+
+    var result = '今天是：' + year + '年' + month + '月' + day + '日 ' + hour + ':' + minute + ':' + second + ' ' + weekArr[week];
+
+    return result;
+}
+
 ```
 
 
-### 举例2：时分秒的格式化
 
 
-封装一个函数，返回当前时间的时分秒，格式为 06:06:06）
-
-
-
-
-
-## getTime()：获取时间戳
+## 获取时间戳
 
 Date对象 还有如下方法：
 
-- `getTime()`         获取当前日期对象的**时间戳**。这个方法在实际开发中，用得比较多。
+- `getTime()`  获取日期对象的**时间戳**（单位：毫秒）。这个方法在实战开发中，用得比较多。
 
 啥叫时间戳？接下来，我们解释一下。
+
+### 时间戳的定义和作用
 
 **时间戳**：指的是从格林威治标准时间的`1970年1月1日，0时0分0秒`到当前日期所花费的**毫秒数**（1秒 = 1000毫秒）。
 
 计算机底层在保存时间时，使用的都是时间戳。时间戳的存在，就是为了**统一**时间的单位。
+
+我们经常会利用时间戳来计算时间，因为它更精确。
 
 我们再来看下面这样的代码：
 
@@ -183,7 +199,41 @@ Date对象 还有如下方法：
 为啥打印结果是`-28800000`，而不是`0`呢？这是因为，我们的当前代码，是在中文环境下运行的，与英文时间会存在**8个小时的时差**（中文时间比英文时间早了八个小时）。如果代码是在英文环境下运行，打印结果就是`0`。
 
 
-**利用时间戳检测代码的执行时间**：
+### 获取 Date 对象的时间戳
+
+代码演示：
+
+```js
+    // 方式一：获取 Date 对象的时间戳（最常用的写法）
+    var date1 = +new Date();
+    console.log(date2);  // 打印结果举例：1589448165370
+
+    var date2 = new Date();
+
+    // 方式二：获取 Date 对象的时间戳
+    console.log(date2.getTime()); // 打印结果举例：1589448165370
+
+    // 方式三：获取 Date 对象的时间戳
+    console.log(date2.valueOf()); // 打印结果举例：1589448165370
+```
+
+上面这三种写法都可以获取任意 Date 对象的时间戳，最常见的写法是**方式一**，其次是方式二。
+
+根据前面所讲的关于「时间戳」的概念，上方代码获取到的时间戳指的是：从 `1970年1月1日，0时0分0秒` 到现在所花费的总毫秒数。
+
+### 获取当前时间的时间戳
+
+如果我们要获取**当前时间**的时间戳，除了上面的三种方式之外，还有另一种方式。代码如下：
+
+```js
+    // 方式四：获取当前时间的时间戳
+    console.log(Date.now()); // 打印结果举例：1589448165370
+```
+
+上面这种方式，用得也很多。只不过，`Date.now()`是H5标准中新增的特性，如果你的项目需要兼容低版本的IE浏览器，就不要用了。这年头，谁还用IE呢？
+
+
+### 利用时间戳检测代码的执行时间
 
 我们可以在业务代码的前面定义 `时间戳1`，在业务代码的后面定义 `时间戳2`。把这两个时间戳相减，就能得出业务代码的执行时间。
 
