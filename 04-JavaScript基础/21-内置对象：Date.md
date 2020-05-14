@@ -170,9 +170,9 @@ function formatDate() {
 
 Date对象 还有如下方法：
 
-- `getTime()`  获取日期对象的**时间戳**（单位：毫秒）。这个方法在实战开发中，用得比较多。
+- `getTime()`  获取日期对象的**时间戳**（单位：毫秒）。这个方法在实战开发中，用得比较多。但还有比它更常用的写法，我们往下看。
 
-啥叫时间戳？接下来，我们解释一下。
+啥叫时间戳？我们先来解释这个概念。
 
 ### 时间戳的定义和作用
 
@@ -180,7 +180,7 @@ Date对象 还有如下方法：
 
 计算机底层在保存时间时，使用的都是时间戳。时间戳的存在，就是为了**统一**时间的单位。
 
-我们经常会利用时间戳来计算时间，因为它更精确。
+我们经常会利用时间戳来计算时间，因为它更精确。而且，在实战开发中，接口返回给前端的日期数据，都是以时间戳的形式。
 
 我们再来看下面这样的代码：
 
@@ -210,7 +210,7 @@ Date对象 还有如下方法：
 
     var date2 = new Date();
 
-    // 方式二：获取 Date 对象的时间戳
+    // 方式二：获取 Date 对象的时间戳（较常用的写法）
     console.log(date2.getTime()); // 打印结果举例：1589448165370
 
     // 方式三：获取 Date 对象的时间戳
@@ -226,11 +226,11 @@ Date对象 还有如下方法：
 如果我们要获取**当前时间**的时间戳，除了上面的三种方式之外，还有另一种方式。代码如下：
 
 ```js
-    // 方式四：获取当前时间的时间戳
+    // 方式四：获取当前时间的时间戳（很常用的写法）
     console.log(Date.now()); // 打印结果举例：1589448165370
 ```
 
-上面这种方式，用得也很多。只不过，`Date.now()`是H5标准中新增的特性，如果你的项目需要兼容低版本的IE浏览器，就不要用了。这年头，谁还用IE呢？
+上面这种方式四，用得也很多。只不过，`Date.now()`是H5标准中新增的特性，如果你的项目需要兼容低版本的IE浏览器，就不要用了。这年头，谁还用IE呢？
 
 
 ### 利用时间戳检测代码的执行时间
@@ -304,66 +304,74 @@ Date对象 还有如下方法：
 
 实现思路：
 
-设置一个定时器，每间隔1毫秒就自动刷新一次div的内容。
+- 设置一个定时器，每间隔1毫秒就自动刷新一次div的内容。
+
+- 核心算法：输入的时间戳减去当前的时间戳，就是剩余时间（即倒计时），然后转换成时分秒。
 
 代码实现：
 
 ```html
 <!DOCTYPE html>
 <html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-    <style>
-        div {
-            width: 1210px;
-            margin: 200px auto;
-            color: red;
-            text-align: center;
-            font: 600 30px/30px "simsun";
-        }
-    </style>
-</head>
-<body>
-<div></div>
+    <head lang="en">
+        <meta charset="UTF-8" />
+        <title></title>
+        <style>
+            div {
+                width: 1210px;
+                margin: 200px auto;
+                color: red;
+                text-align: center;
+                font: 600 30px/30px 'simsun';
+            }
+        </style>
+    </head>
+    <body>
+        <div></div>
 
-<script>
-    var div = document.getElementsByTagName("div")[0];
-    var timer = setInterval(fn, 1);
+        <script>
+            var div = document.getElementsByTagName('div')[0];
 
-    function fn() {
-        var nowtime = new Date();
-        var future = new Date("2019/02/03 11:20:00");
-        var timeSum = future.getTime() - nowtime.getTime();  //获取时间差：发布会时间减去此刻的毫秒值
-        var day = parseInt(timeSum / 1000 / 60 / 60 / 24);
-        var hour = parseInt(timeSum / 1000 / 60 / 60 % 24);
-        var minu = parseInt(timeSum / 1000 / 60 % 60);
-        var sec = parseInt(timeSum / 1000 % 60);
-        var millsec = parseInt(timeSum % 1000);
+            var timer = setInterval(() => {
+                countDown('2022/02/03 11:20:00');
+            }, 1);
 
-        //问题处理：所有的时间小于10的时候，在前面自动补0，毫秒值要补双0（比如如，把 8 秒改成 08 秒）
-        day = day < 10 ? "0" + day : day;  //day小于10吗？如果小于，就补0；如果不小于，就是day本身
-        hour = hour < 10 ? "0" + hour : hour;
-        minu = minu < 10 ? "0" + minu : minu;
-        sec = sec < 10 ? "0" + sec : sec;
-        if (millsec < 10) {
-            millsec = "00" + millsec;
-        } else if (millsec < 100) {
-            millsec = "0" + millsec;
-        }
-//        console.log(day);
-//        console.log(parseInt(timeSum/1000/60/60/24));
-        if (timeSum < 0) {
-            div.innerHTML = "距离苹果发布会还有00天00小时00分00秒000毫秒";
-            clearInterval(timer);
-            return;
-        }
-        div.innerHTML = "距离苹果发布会还有" + day + "天" + hour + "小时" + minu + "分" + sec + "秒" + millsec + "毫秒";
-    }
-</script>
-</body>
+            function countDown(myTime) {
+                var nowTime = new Date();
+                var future = new Date(myTime);
+                var timeSum = future.getTime() - nowTime.getTime(); //获取时间差：发布会时间减去此刻的毫秒值
 
+                var day = parseInt(timeSum / 1000 / 60 / 60 / 24); // 天
+                var hour = parseInt((timeSum / 1000 / 60 / 60) % 24); // 时
+                var minu = parseInt((timeSum / 1000 / 60) % 60); // 分
+                var sec = parseInt((timeSum / 1000) % 60); // 秒
+                var millsec = parseInt(timeSum % 1000); // 毫秒
+
+                //细节处理：所有的时间小于10的时候，在前面自动补0，毫秒值要补双0（比如如，把 8 秒改成 08 秒）
+                day = day < 10 ? '0' + day : day; //day小于10吗？如果小于，就补0；如果不小于，就是day本身
+                hour = hour < 10 ? '0' + hour : hour;
+                minu = minu < 10 ? '0' + minu : minu;
+                sec = sec < 10 ? '0' + sec : sec;
+                if (millsec < 10) {
+                    millsec = '00' + millsec;
+                } else if (millsec < 100) {
+                    millsec = '0' + millsec;
+                }
+
+                // 兜底处理
+                if (timeSum < 0) {
+                    div.innerHTML = '距离苹果发布会还有00天00小时00分00秒000毫秒';
+                    clearInterval(timer);
+                    return;
+                }
+
+                // 前端要显示的文案
+                div.innerHTML = '距离苹果发布会还有' + day + '天' + hour + '小时' + minu + '分' + sec + '秒' + millsec + '毫秒';
+            }
+        </script>
+    </body>
 </html>
+
 ```
 
 实现效果：
