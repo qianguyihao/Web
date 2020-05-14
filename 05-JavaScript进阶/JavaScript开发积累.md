@@ -58,10 +58,10 @@ this.todayList.splice(0, 0, ...dataList);
 **对象赋值的正确写法**：
 
 ```javascript
-Object.assign(this.dataObj, dataObj);
+Object.assign(obj2, obj1);
 ```
 
-上方代码中，是将`dataObj` 的值追加到`this.dataObj`中。如果对象里属性名相同，会被覆盖。
+上方代码中，是将`obj1` 的值追加到`obj2`中。如果对象里的属性名相同，会被覆盖。
 
 
 ### 2019-11-25-在新的窗口中打开url

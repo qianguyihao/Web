@@ -143,10 +143,10 @@ href（hypertext reference）：超文本地址。读作“喝瑞夫”，不要
 
 ![Paste_Image.png](http://img.smyhvae.com/2015-10-01-cnblogs_html_17.png)
 
-当然，我们也可以直接点进链接，访问一个网址。举例如下：
+当然，我们也可以直接点进链接，访问一个网址。代码举例如下：
 
-```
-	<a href="http://www.baidu.com" target="_blank">点我点我</a>
+```html
+<a href="http://www.baidu.com" target="_blank">点我点我</a>
 ```
 
 ### 2、锚链接

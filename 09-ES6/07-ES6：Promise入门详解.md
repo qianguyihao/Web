@@ -231,19 +231,19 @@ Promise对象, 可以**将异步操作以同步的流程表达出来**。使用 
 
             // 先发起request1，等resolve后再发起request2；紧接着，等 request2有了 resolve之后，再发起 request3
             request1()
-                .then(data => {
+                .then(res1 => {
                     // 接口1请求成功后，打印接口1的返回结果
-                    console.log(data);
+                    console.log(res1);
                     return request2();
                 })
-                .then(data => {
+                .then(res2 => {
                     // 接口2请求成功后，打印接口2的返回结果
-                    console.log(data);
+                    console.log(res2);
                     return request3();
                 })
-                .then(data => {
+                .then(res3 => {
                     // 接口3请求成功后，打印接口3的返回结果
-                    console.log(data);
+                    console.log(res3);
                 });
         </script>
     </body>
