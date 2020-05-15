@@ -1,11 +1,75 @@
 
 ## 前言
 
-> 在日常开发中，String对象的使用频率是非常高的。所以有必要详细介绍。
+> 在日常开发中，String 对象（字符串对象）的使用频率是非常高的。所以有必要详细介绍。
 
-## 内置对象 String 的常见方法
+需要注意的是：**字符串的所有方法，都不会改变原字符串**（字符串的不可变性），操作完成后会返回一个新的值。
 
-### charAt()
+字符串的常见方法如下。
+
+## indexOf()/lastIndexOf()
+
+> 这个方法，是使用频率最高的一个方法。
+
+`indexOf()/lastIndexOf()`：获取指定字符的索引。
+
+**语法1**：
+
+```javascript
+    索引值 = str.indexOf(想要查询的字符);
+```
+
+解释：`indexOf()` 是从前向后索引字符串的位置。同理，`lastIndexOf()`是从后向前寻找。
+
+**作用**：可以检索一个字符串中是否含有指定内容。如果字符串中含有该内容，则会返回其**第一次出现**的索引；如果没有找到指定的内容，则返回 -1。
+
+因此可以得出一个技巧：
+
+- **如果获取的索引值为0，说明字符串是以查询的参数为开头的**。
+
+- 如果获取的索引值为-1，说明这个字符串中没有指定的内容。
+
+
+代码举例1：
+
+```javascript
+    var str = 'abcdea';
+
+    //给字符查索引(索引值为0,说明字符串以查询的参数为开头)
+    console.log(str.indexOf("c"));
+    console.log(str.lastIndexOf("c"));
+
+    console.log(str.indexOf("a"));
+    console.log(str.lastIndexOf("a"));
+
+```
+
+打印结果：
+
+![](http://img.smyhvae.com/20180202_1420.png)
+
+**语法2**：
+
+这个方法还可以指定第二个参数，用来指定查找的**起始位置**。语法如下：
+
+
+```javascript
+    索引值 = str.indexOf(想要查询的字符, [起始位置]);
+```
+
+代码举例2：（两个参数时，需要特别注意）
+
+```javascript
+    var str = 'qianguyihao';
+    result = str.indexOf('a', 3); // 从第三个位置开始查找 'a'这个字符 【重要】
+
+    console.log(result); // 打印结果：9
+```
+
+上方代码中，`indexOf()`方法中携带了两个参数，具体解释请看注释。
+
+
+## charAt()
 
 `charAt`：返回字符串指定位置的字符。不会修改原字符串。
 
@@ -35,7 +99,7 @@
 
 上面这个例子一般不用。一般打印数组和json的时候用索引，打印String不建议用索引。
 
-### charCodeAt()
+## charCodeAt()
 
 `charCodeAt`：返回字符串指定位置的字符的 Unicode 编码。不会修改原字符串。
 
@@ -93,7 +157,7 @@
 
 另外，sort()方法其实底层也是用到了charCodeAt()，因为用到了Unicode编码。
 
-### String.fromCharCode()
+## String.fromCharCode()
 
 `String.fromCharCode()`：根据字符的 Unicode 编码获取字符。
 
@@ -107,54 +171,7 @@
 	console.log(result2); // 打印结果：中
 ```
 
-### indexOf()/lastIndexOf()
-
-`indexOf()/lastIndexOf()`：获取指定字符的索引。
-
-语法：
-
-```javascript
-    索引值 = str.indexOf(想要查询的字符);
-```
-
-解释：`indexOf()` 是从前向后索引字符串的位置。同理，`lastIndexOf()`是从后向前寻找。
-
-**作用**：可以检索一个字符串中是否含有指定内容。如果字符串中含有该内容，则会返回其**第一次出现**的索引；如果没有找到指定的内容，则返回 -1。
-
-因此可以得出一个技巧：**如果获取的索引值为0，说明字符串是以查询的参数为开头的**。
-
-这个方法还可以指定第二个参数，用来 指定开始查找的位置。
-
-**代码举例1**：
-
-```javascript
-    var str = "abcdea";
-
-    //给字符查索引(索引值为0,说明字符串以查询的参数为开头)
-    console.log(str.indexOf("c"));
-    console.log(str.lastIndexOf("c"));
-
-    console.log(str.indexOf("a"));
-    console.log(str.lastIndexOf("a"));
-
-```
-
-打印结果：
-
-![](http://img.smyhvae.com/20180202_1420.png)
-
-**代码举例2**：（两个参数时，需要特别注意）
-
-```javascript
-    var str = 'qianguyihao';
-    result = str.indexOf('a', 3); // 从第三个位置开始查找 'a'这个字符 【重要】
-
-    console.log(result); // 打印结果：9
-```
-
-上方代码中，`indexOf()`方法中携带了两个参数，具体解释请看注释。
-
-### concat()
+## concat()
 
 `concat()`：字符串的连接。
 
@@ -178,7 +195,7 @@
     console.log(result); // 打印结果：qianguyihao
 ```
 
-### slice()
+## slice()
 
 `slice()`：从字符串中截取指定的内容。不会修改原字符串，而是将及截取到的内容返回。
 
@@ -200,7 +217,7 @@
 
 - (5, 2) 表示前面的大，后面的小，返回值为空。
 
-### substring()
+## substring()
 
 `substring()`：从字符串中截取指定的内容。和`slice()`类似。
 
@@ -216,7 +233,7 @@
 
 - `substring()`还会自动调整参数的位置，如果第二个参数小于第一个，则自动交换。比如说， `substring(1, 0)`截取的是第一个字符。
 
-### substr()
+## substr()
 
 `substr()`：从字符串中截取指定的内容。不会修改原字符串，而是将及截取到的内容返回。
 
@@ -238,7 +255,7 @@
 
 备注：ECMAscript 没有对 `substr()` 方法进行标准化，因此不建议使用它。
 
-### split() 【重要】
+## split() 【重要】
 
 `split()`：将一个字符串拆分成一个数组。
 
@@ -283,7 +300,7 @@
 
 ![](http://img.smyhvae.com/20180202_1503.png)
 
-### trim()
+## trim()
 
 `trim()`：去除字符串前后的空白。
 
@@ -300,7 +317,7 @@
 
 ![](http://img.smyhvae.com/20180202_1455.png)
 
-### replace()
+## replace()
 
 `replace()`：将字符串中的指定内容，替换为新的内容并返回。不会修改原字符串。
 
@@ -320,7 +337,7 @@
     console.log(str2.replace(/today/gi,"tomorrow")); //这里用到了正则，才能替换所有的today
 ```
 
-### 大小写转换
+## 大小写转换
 
 举例：
 
