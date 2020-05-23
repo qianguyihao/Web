@@ -108,18 +108,25 @@ if (result?.user?.name?.length) {
 
 
 
-
-### 2020-04-28-字符串添加白名单
+### 2020-04-28-判断字符串的包含关系
 
 ```js
-if ('str1' == ('str1' || 'str2')){
-    console.log('smyhvae);
+var str = 'qiangu2';
+if (str == ('qiangu1' || 'qiangu2')) {
+    console.log('qianguyihao');
 }
 ```
 
-注意，上面的代码，根本就不会走 console.log语句，因为if里面的内容是false。
+注意，上面的代码，根本就不会走 console.log 语句，因为if里面的内容是false。
 
+如果我们要判断变量 `str` 是否在 `qiangu1、qiangu2`的合集里，我们应该这样写：
 
+```js
+var str = 'qiangu2';
+if (str == 'qiangu1' || str == 'qiangu2') {
+    console.log('qianguyihao');
+}
+```
 
 
 
