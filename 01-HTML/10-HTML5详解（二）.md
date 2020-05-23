@@ -320,11 +320,17 @@
 
 `window.history`对象可以让我们管理历史记录，可用于单页面应用，Single Page Application，可以无刷新改变网页内容。
 
-1. window.history.forward(); // 前进
-2. window.history.back(); // 后退
-3. window.history.go(); // 刷新
-4. 通过JS可以加入一个访问状态
-5. history.pushState; //放入历史中的状态数据, 设置title(现在浏览器不支持改变历史状态)
+- window.history.forward(); // 前进
+
+- window.history.back(); // 后退
+
+- window.history.go(); // 刷新
+
+- window.history.go(n); //n=1 表示前进；n=-1 后退；n=0s 刷新。如果移动的位置超出了访问历史的边界，会静默失败，但不会报错。
+
+- 通过JS可以加入一个访问状态
+
+- history.pushState; //放入历史中的状态数据, 设置title(现在浏览器不支持改变历史状态)
 
 
 
