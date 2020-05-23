@@ -30,6 +30,10 @@ flex布局常用的三行代码：
 	-webkit-line-clamp:2;
 ```
 
+参考链接：<https://blog.csdn.net/NN_nan/article/details/55045562>
+
+
+
 ### 问题描述：文本内容里自带了换行，但是在前端没有展示出来
 
 解决办法：增加如下属性即可。
