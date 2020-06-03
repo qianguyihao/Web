@@ -405,7 +405,18 @@ alter table 表名 add 新字段名 字段类型 字段位置;
 ```
 
 
-**举例**：
+**举例1**：
+
+在 `name`字段的后面，新增一个 `sex` 字段：
+
+```sql
+alter table t_qiangu1 add sex varchar(255) default null comment '性别' after name;
+```
+
+注意，上方举例中，如果是新建 varchar 类型的字段，一定要指定 varchar 的长度（比如255），否则报错。
+
+**举例2**：
+
 
 新增一个 `id` 字段，放到最前面：
 
@@ -413,11 +424,7 @@ alter table 表名 add 新字段名 字段类型 字段位置;
 alter table t_qiangu1 add id int first;
 ```
 
-在 `name`字段的后面，新增一个 `sex` 字段：
 
-```sql
-alter table t_qiangu1 add sex varchar(255) after name;
-```
 
 
 ### 3、change：修改现有字段的字段名
