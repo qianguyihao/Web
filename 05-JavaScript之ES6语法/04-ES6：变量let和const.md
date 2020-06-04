@@ -43,20 +43,32 @@ ES6 中新增了 let 和 const 来定义变量：
 
 ### let：定义局部变量
 
+举例1：
+
+```js
+    {
+        let a = 'hello';
+    }
+    console.log(a); // 打印结果报错：Uncaught ReferenceError: a is not defined
+```
+上方代码，打印报错。
+
+举例2：
+
 ```javascript
 	var a = 2;
 	{
 	    let a = 3;
 	}
 
-	console.log(a);
+	console.log(a); // 打印结果：2
 ```
 
-上方代码的输出结果为 2。用 let 声明的变量，只在局部（块级作用域内）起作用。
+通过上面两个例子可以看出，用 let 声明的变量，只在局部（块级作用域内）起作用。
 
 let是防止数据污染，我们来看下面这个 **for 循环**的例子，很经典。
 
-1、用 var 声明变量：（）
+1、用 var 声明变量：
 
 ```javascript
 for (var i = 0; i < 10; i++) {
@@ -95,7 +107,7 @@ console.log('循环体外:' + i);
 const name = 'smyhvae';  //定义常量
 ```
 
-用 const 声明的变量，只在局部（块级作用域内）起作用。
+用 let/const 声明的变量，只在局部（块级作用域内）起作用。
 
 ### let 和 const 的作用【重要】
 
@@ -209,207 +221,32 @@ let 和 const 的作用如下：
 
 上面这个运行结果，才是我们预期的效果。我们用 let 定义变量 i，在循环的过程中，每执行一次循环体，就会诞生一个新的 i。循环体执行4次，就会有四个 i。
 
-## 变量的解构赋值
 
-ES6允许我们，通过数组或者对象的方式，对一组变量进行赋值，这被称为解构。
+## 暂时性死区 DTC
 
-解构赋值在实际开发中可以大量减少我们的代码量，并且让程序结构更清晰。
+ES6规定：使用 let/const 声明的变量，会使区块形成封闭的作用域。若在声明之前使用变量，就会报错。
 
-### 数组的解构赋值
+也就是说，在使用 let/const 声明变量时，**变量需要先声明，再使用**（声明语句必须放在使用之前）。这在语法上，称为 “暂时性死区”（ temporal dead zone，简称 TDZ）。
 
-**举例：**
+DTC其实是一种保护机制，可以让我们养成良好的编程习惯。
 
-通常情况下，我们在为一组变量赋值时，一般是这样写：
-
-
-```javascript
-	let a = 0;
-	let b = 1;
-	let c = 2;
-
-```
-
-现在我们可以通过数组解构的方式进行赋值：
-
-```javascript
-	let [a, b, c] = [1, 2, 3];
-```
-
-二者的效果是一样的。
-
-**解构的默认值：**
-
-在解构赋值时，是允许使用默认值的。举例如下：
+代码举例：
 
 
-```javascript
-{
-    //一个变量时
-    let [foo = true] = [];
-    console.log(foo); //输出结果：true
+```js
+const name = 'qianguyihao';
+
+function foo() {
+    console.log(name);
+    const name = 'hello';
 }
 
-{
-    //两个变量时
-    let [a, b] = ['生命壹号']   //a 赋值为：生命壹号。b没有赋值
-    console.log(a + ',' + b); //输出结果：生命壹号,undefined
-}
-
-
-{
-    //两个变量时
-    let [a, b = 'smyhvae'] = ['生命壹号']   //a 赋值为：生命壹号。b 采用默认值 smyhvae
-    console.log(a + ',' + b); //输出结果：生命壹号,smyhvae
-}
-
+foo(); // 执行函数后，控制台报错：Uncaught ReferenceError: Cannot access 'name' before initialization
 ```
 
-`undefined`和`null`的区别：
-
-如果我们在赋值时，采用的是 `undefined`或者`null`，那会有什么区别呢？
+## 块级作用域
 
 
-
-```javascript
-{
-    let [a, b = 'smyhvae'] = ['生命壹号', undefined]; //b 虽然被赋值为 undefined，但是 b 会采用默认值
-    console.log(a + ',' + b); //输出结果：生命壹号,smyhvae
-}
-
-{
-    let [a, b = 'smyhvae'] = ['生命壹号', null];  //b 被赋值为 null
-    console.log(a + ',' + b); //输出结果：生命壹号,null
-}
-
-
-```
-
-上方代码分析：
-
-- undefined：相当于什么都没有，此时 b 采用默认值。
-
-- null：相当于有值，但值为 null。
-
-### 对象的解构赋值
-
-通常情况下，我们从接口拿到json数据后，一般这么赋值：
-
-```javascript
-var a = json.a;
-
-var b = json.b;
-
-bar c = json.c;
-```
-
-上面这样写，过于麻烦了。
-
-现在，我们同样可以针对对象，进行结构赋值。
-
-**举例如下：**
-
-```
-	let { foo, bar } = { bar: '我是 bar 的值', foo: '我是 foo 的值' };
-	console.log(foo + ',' + bar); //输出结果：我是键 foo 的值,我是键 bar 的值
-
-```
-
-上方代码可以看出，对象的解构与数组的结构，有一个重要的区别：**数组**的元素是按次序排列的，变量的取值由它的**位置**决定；而**对象的属性没有次序**，是**根据键来取值**的。
-
-**圆括号的使用**：
-
-如果变量 foo 在解构之前就已经定义了，此时你再去解构，就会出现问题。下面是错误的代码，编译会报错：
-
-
-```javascript
-	let foo = 'haha';
-	{ foo } = { foo: 'smyhvae' };
-	console.log(foo);
-
-```
-
-要解决报错，只要在解构的语句外边，加一个圆括号即可：
-
-
-```javascript
-	let foo = 'haha';
-	({ foo } = { foo: 'smyhvae' });
-	console.log(foo); //输出结果：smyhvae
-
-```
-
-### 字符串解构
-
-字符串也可以解构，这是因为，此时字符串被转换成了一个类似数组的对象。举例如下：
-
-```javascript
-const [a, b, c, d] = 'smyhvae';
-console.log(a);
-console.log(b);
-console.log(c);
-console.log(d);
-
-console.log(typeof a);  //输出结果：string
-```
-
-输出结果：
-
-![](http://img.smyhvae.com/20180304_1626.png)
-
-## for ... of 循环
-
-ES6 中，如果我们要遍历一个数组，可以这样做：
-
-```
-	let arr1 = [1, 2, 3, 4, 5];
-
-	for (let value of arr1) {
-	    console.log(value);
-	}
-```
-
-输出结果：
-
-![](http://img.smyhvae.com/20180304_2016.png)
-
-for…of 的循环可以避免我们开拓内存空间，增加代码运行效率，所以建议大家在以后的工作中使用for…of循环。
-
-注意，上面的数组中，`for ... of`获取的是数组里的值；`for ... in`获取的是index索引值。
-
-### Map对象的遍历
-
-`for ... of`既可以遍历数组，也可以遍历Map对象。
-
-## 模板字符串
-
-我们以前让字符串进行拼接的时候，是这样做的：（传统写法的字符串拼接）
-
-```javascript
-    var name = 'smyhvae';
-    var age = '26';
-    console.log('name:'+name+',age:'+age);   //传统写法
-```
-
-
-这种写法，比较繁琐，而且容易出错。
-
-现在有了 ES6 语法，字符串拼接可以这样写：
-
-```javascript
-    var name = 'smyhvae';
-    var age = '26';
-
-    console.log('name:'+name+',age:'+age);   //传统写法
-
-    console.log(`name:${name},age:${age}`);  //ES6 写法
-
-```
-
-**注意**，上方代码中，倒数第二行用的符号是单引号，最后一行用的符号是反引号（在tab键的上方）。
-
-参考链接：
-
-- [ES6的rest参数和扩展运算符](https://segmentfault.com/a/1190000010222698)
 
 
 ## 参考链接：
