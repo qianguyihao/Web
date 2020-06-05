@@ -471,6 +471,15 @@ alter table 表名 modify 现有字段的字段名 现有字段的字段类型 [
 alter table t_qiangu1 modify age int after name;
 ```
 
+### 修改字段的默认值
+
+```sql
+# 若本身存在默认值，则先删除
+alter table 表名 alter column 字段名 drop default;
+
+# 若本身不存在则可以直接设定
+alter table 表名 alter column 字段名 set default 默认值;
+```
 ### 5、删除字段
 
 >  删除字段的同时，会删除字段对应的数据。删除字段的操作不可逆，请谨慎操作。
