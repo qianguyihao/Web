@@ -61,6 +61,44 @@ foo(); // 执行函数后，控制台报错：Uncaught ReferenceError: Cannot ac
 关于”暂时性死区“的更多介绍，详本项目的另一篇文章《ES6：变量》。
 
 
+## const 常量能不能被修改
+
+我们知道：用 const 声明的变量无法被修改。但还有一点，我们一定要记住：
+
+- 如果用 const 声明基本数据类型，则无法被修改；
+
+- 如果用 const 声明引用数据类型（即“对象”），这里的“无法被修改”指的是**不能改变内存地址的引用**；但对象里的内容是可以被修改的。
+
+举例1：（不能修改）
+
+```js
+const name = 'qianguyihao';
+name = 'vae'; // 因为无法被修改，所以报错：Uncaught TypeError: Assignment to constant variable
+```
+
+
+举例2：（不能修改）
+
+```js
+const obj = {
+    name: 'qianguyihao',
+    age: 28,
+};
+
+obj = { name: 'vae' }; // 因为无法被修改，所以报错：Uncaught TypeError: Assignment to constant variable
+```
+
+
+举例3：（可以修改）
+
+```js
+const obj = {
+    name: 'qianguyihao',
+    age: 28,
+};
+obj.name = 'vae'; // 对象里的 name 属性可以被修改
+
+```
 
 ## 参考链接
 
