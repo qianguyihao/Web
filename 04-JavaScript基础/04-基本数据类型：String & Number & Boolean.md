@@ -253,7 +253,7 @@ console.log(1+2+3);				//输出6
 6
 ```
 
-**总结**：如果加号两边**都是**数值，此时是加。否则，就是连字符（用来连接字符串）。
+**总结**：如果加号两边**都是** Number 类型，此时是数字相加。否则，就是连字符（用来连接字符串）。
 
 举例1：
 
@@ -328,43 +328,6 @@ boolean
 
 布尔型和数字型相加时， true 按 1 来算 ，false 按 0 来算。
 
-
-## Null 和 Undefined
-
-### `null`：空值
-
-专门用来表示一个为空的**对象**（例如：`var a = null`）。注意，专门用来表示**空对象**。
-
-- Null类型的值只有一个，就是null。比如 `var a = null`。
-
-- 使用 typeof 检查一个null值时，会返回object。
-
-
-如果你想定义一个变量，以后打算存储为对象，但是还没想好放什么内容，这个时候，可以给 null。
-
-比如：
-
-```js
-var myObj = null;
-cosole.log(typeof myObj); // 打印结果：object
-```
-
-
-### `undefined`：未定义
-
-**声明**了一个变量，但是没有**赋值**（例如：`var a;`），此时它的值就是 `undefined`。
-
-- Undefined类型的值只有一个，就是undefind。比如
-
-- 使用 type of 检查一个undefined时，会返回undefined。
-
-null和undefined有很大的相似性。看看null == undefined的结果(true)也就更加能说明这点。
-
-但是null === undefined的结果(false)。它们虽然相似，但还是有区别的，其中一个区别是：和数字运算时，10 + null结果为：10；10 + undefined结果为：NaN。
-
-- 任何数据类型和undefined运算都是NaN;
-
-- 任何值和null运算，null可看做0运算。
 
 ## 变量值的传递（赋值）
 
@@ -484,7 +447,7 @@ console.log(a-b);
 
 ## 我的公众号
 
-想学习**代码之外的技能**？不妨关注我的微信公众号：**千古壹号**（id：`qianguyihao`）。
+想学习**代码之外的技能**？不妨关注我的微信公众号：**千古壹号**。
 
 扫一扫，你将发现另一个全新的世界，而这将是一场美丽的意外：
 
