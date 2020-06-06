@@ -47,13 +47,22 @@ typeof 这个运算符的返回结果就是变量的类型。那返回结果的�
 **返回结果举例**：
 
 ```javascript
-console.log(type []); // 空数组的打印结果：object
+console.log(typeof []); // 空数组的打印结果：object
 
-console.log(type {}); // 空对象的打印结果：object
+console.log(typeof {}); // 空对象的打印结果：object
 ```
 
 代码解释：这里的空数组`[]`、空对象`{}` ，为啥他们在使用 typeof 时，返回值也是 `object`呢？因为这里的 返回结果`object`指的是**引用数据类型**。空数组、空对象都是**引用数据类型 Object**。
 
+typeof 无法区分数组，但 instanceof 可以。比如：
+
+```js
+console.log([] instanceof Array); // 打印结果：true
+
+console.log({} instanceof Array); // 打印结果：false
+```
+
+关于 instanceof 的详细内容，以后讲对象的时候，会详细介绍。
 
 
 ## 变量的类型转换的分类

@@ -56,9 +56,9 @@ var str = 'hello";  // 报错：Uncaught SyntaxError: Invalid or unexpected toke
 在字符串中我们可以使用`\`作为转义字符，当表示一些特殊符号时可以使用`\`进行转义。
 
 
-- `\"` 表示 `"`
+- `\"` 表示 `"` 双引号
 
-- `\'` 表示 `'`
+- `\'` 表示 `'` 单引号
 
 - `\\` 表示`\`
 
@@ -163,6 +163,44 @@ console.log(str6);
 
 千古壹号[object Object]
 ```
+
+## 模板字面量（模板字符串）
+
+ES6中引入了**模板字面量**，让我们省去了字符串拼接的烦恼。
+
+### 在模板字符串中插入变量
+
+举例：
+
+```js
+let name = 'qianguyihao';
+
+// 下面这一行是模板字面量，注意语法格式
+console.log(`我是${name}`); // 打印结果：我是 qianguyihao
+```
+
+
+### 在模板字面量中插入表达式
+
+在字符串中插入表达式，以往的写法必须是这样的：
+
+```js
+const a = 5;
+const b = 10;
+console.log('this is ' + (a + b) + ' and\nnot ' + (2 * a + b) + '.');
+```
+现在通过模板字面量，我们可以使用一种更优雅的方式来表示：
+
+```js
+const a = 5;
+const b = 10;
+
+console.log(`this is ${a + b} and
+not ${2 * a + b}.`);
+
+```
+
+
 
 
 ## 数值型：Number
