@@ -1,24 +1,17 @@
-
-
-
-
 ## 代码块
 
 用`{}`包围起来的代码，就是代码块。
 
-
-JS中的代码块，只具有**分组**的作用，没有其他的用途。
-
-代码块中的内容，在外部是完全可见的。举例：
+在 ES5 语法中，代码块，只具有**分组**的作用，没有其他的用途。代码块中的内容，在外部是完全可见的。举例：
 
 ```javascript
 {
     var a = 2;
-    alert("qianguyihao");
-    console.log("永不止步");
+    alert('qianguyihao');
+    console.log('永不止步');
 }
 
-console.log("a = " + a);
+console.log('a = ' + a);
 ```
 
 打印结果：（可以看出，虽然变量 a 是定义在代码块中的，但是在外部依然可以访问）
@@ -28,7 +21,6 @@ console.log("a = " + a);
 a = 2
 ```
 
-
 ## 流程控制语句
 
 在一个程序执行的过程中，各条语句的执行顺序对程序的结果是有直接影响的。所以，我们必须清楚每条语句的执行流程。而且，很多时候我们要通过控制语句的执行顺序来实现我们要完成的功能。
@@ -37,10 +29,9 @@ a = 2
 
 - 顺序结构
 
-- 选择结构：if语句、switch语句
+- 选择结构：if 语句、switch 语句
 
-- 循环结构：while语句、for语句
-
+- 循环结构：while 语句、for 语句
 
 ## 顺序结构
 
@@ -48,9 +39,9 @@ a = 2
 
 ![](http://img.smyhvae.com/20181227_1200.png)
 
-## if语句
+## if 语句
 
-if语句有以下三种。
+if 语句有以下三种。
 
 ### 1、条件判断语句
 
@@ -61,15 +52,12 @@ if语句有以下三种。
 ```javascript
 if (条件表达式) {
     // 条件为真时，做的事情
-
 }
 ```
 
-
 ### 2、条件分支语句
 
-
-格式1：
+格式 1：
 
 ```javascript
 if (条件表达式) {
@@ -81,8 +69,7 @@ if (条件表达式) {
 }
 ```
 
-
-格式2：（多分支的if语句）
+格式 2：（多分支的 if 语句）
 
 ```javascript
 if (条件表达式1) {
@@ -123,53 +110,53 @@ BMI =体重÷身高的平方
 
 **答案**：
 
-写法1：
+写法 1：
 
 ```javascript
 //第一步，输入身高和体重
-var height = parseFloat(prompt("请输入身高，单位是米"));
-var weight = parseFloat(prompt("请输入体重，单位是公斤"));
+var height = parseFloat(prompt('请输入身高，单位是米'));
+var weight = parseFloat(prompt('请输入体重，单位是公斤'));
 //第二步，计算BMI指数
 var BMI = weight / Math.pow(height, 2);
 //第三步，if语句来判断。注意跳楼现象
 if (BMI < 18.5) {
-    alert("偏瘦");
+    alert('偏瘦');
 } else if (BMI < 25) {
-    alert("正常");
+    alert('正常');
 } else if (BMI < 28) {
-    alert("过重");
+    alert('过重');
 } else if (BMI <= 32) {
-    alert("肥胖");
+    alert('肥胖');
 } else {
-    alert("非常肥胖");
+    alert('非常肥胖');
 }
 ```
 
-写法2：
+写法 2：
 
 ```javascript
 //第一步，输入身高和体重
-var height = parseFloat(prompt("请输入身高，单位是米"));
-var weight = parseFloat(prompt("请输入体重，单位是公斤"));
+var height = parseFloat(prompt('请输入身高，单位是米'));
+var weight = parseFloat(prompt('请输入体重，单位是公斤'));
 //第二步，计算BMI指数
 var BMI = weight / Math.pow(height, 2);
 //第三步，if语句来判断。注意跳楼现象
 if (BMI > 32) {
-    alert("非常肥胖");
+    alert('非常肥胖');
 } else if (BMI >= 28) {
-    alert("肥胖");
+    alert('肥胖');
 } else if (BMI >= 25) {
-    alert("过重");
+    alert('过重');
 } else if (BMI >= 18.5) {
-    alert("正常")
+    alert('正常');
 } else {
-    alert("偏瘦");
+    alert('偏瘦');
 }
 ```
 
-### if语句的嵌套
+### if 语句的嵌套
 
-我们通过下面这个例子来引出if语句的嵌套。
+我们通过下面这个例子来引出 if 语句的嵌套。
 
 ```
 一个加油站为了鼓励车主多加油，所以加的多有优惠。
@@ -180,42 +167,40 @@ if (BMI > 32) {
 
 ![](http://img.smyhvae.com/20180117_2232.png)
 
-
 代码实现如下：
 
 ```javascript
-	//第一步，输入
-var bianhao = parseInt(prompt("您想加什么油？填写92或者97"));
-var sheng = parseFloat(prompt("您想加多少升？"));
+//第一步，输入
+var bianhao = parseInt(prompt('您想加什么油？填写92或者97'));
+var sheng = parseFloat(prompt('您想加多少升？'));
 
 //第二步，判断
 if (bianhao == 92) {
-	//编号是92的时候做的事情
-	if (sheng >= 20) {
-		var price = sheng * 5.9;
-	} else {
-		var price = sheng * 6;
-	}
+    //编号是92的时候做的事情
+    if (sheng >= 20) {
+        var price = sheng * 5.9;
+    } else {
+        var price = sheng * 6;
+    }
 } else if (bianhao == 97) {
-	//编号是97的时候做的事情
-	if (sheng >= 30) {
-		var price = sheng * 6.95;
-	} else {
-		var price = sheng * 7;
-	}
+    //编号是97的时候做的事情
+    if (sheng >= 30) {
+        var price = sheng * 6.95;
+    } else {
+        var price = sheng * 7;
+    }
 } else {
-	alert("不好意思，没有这个编号的汽油！");
+    alert('不好意思，没有这个编号的汽油！');
 }
 
-alert("价格是" + price);
+alert('价格是' + price);
 ```
 
+## switch 语句（条件分支语句）
 
-## switch语句（条件分支语句）
+switch 语句也叫条件分支语句。
 
-switch语句也叫条件分支语句。
-
-格式：
+### 语法格式
 
 ```javascript
 switch(表达式) {
@@ -236,17 +221,9 @@ switch(表达式) {
 }
 ```
 
+**解释**：switch 可以理解为“开关、转换” 。case 可以理解为“案例、选项”。
 
-**注意**：
-
-- switch 可以理解为“开关、转换” 。case 可以理解为“案例、选项”。
-
-- switch 后面的**括号里**可以是**表达式**或者**值**， 通常是一个**变量**（通常做法是：先把表达式或者值存放到变量中）。
-
-- JS 是属于弱类型语言，case 后面的`值1`、`值2`可以是 `'a'`、`6`、`true` 等任意数据类型的值，也可以是表达式。
-
-
-### switch语句的执行流程
+### switch 语句的执行流程
 
 流程图如下：
 
@@ -254,56 +231,109 @@ switch(表达式) {
 
 执行流程如下：
 
-（1）首先，计算出表达式的值，和case依次比较，一旦有对应的值，就会执行相应的语句，在执行的过程中，遇到break就会结束。
+（1）首先，计算出表达式的值，和 case 依次比较，一旦有对应的值，就会执行相应的语句，在执行的过程中，遇到 break 就会结束。
 
-（2）然后，如果所有的case都和表达式的值不匹配，就会执行default语句体部分。
+（2）然后，如果所有的 case 都和表达式的值不匹配，就会执行 default 语句体部分。
+
+### switch 和 case 后面的值（含代码举例）
+
+switch 后面的**括号里**可以是**表达式**或者**值**， 通常是一个**变量**（通常做法是：先把表达式或者值存放到变量中）。
+
+JS 是属于弱类型语言，case 后面的`值1`、`值2`可以是 `'a'`、`6`、`true` 等任意数据类型的值，也可以是**表达式**。注意，在这里，**字符串`'6'`和 数字 `6` 是不一样的**。
+
+举例1：
+
+```js
+let msg = 'notice';
+
+switch (msg) {
+    case 'notice':
+        console.log('提示');
+        break;
+    case 'warning':
+        console.log('警告');
+        break;
+    case 'error':
+        console.log('错误');
+        break;
+    default:
+        console.log('默认文案');
+        break;
+}
+```
+
+举例2：（case 后面的是表达式）
+
+```js
+let age = 28;
+
+switch (true) {
+    case age < 18:
+        console.log('未成年人');
+        break;
+    case age >= 18 && age <= 65:
+        console.log('还能干活儿');
+        break;
+    case age > 65:
+        console.log('该退休了');
+        break;
+    default:
+        console.log('默认文案');
+        break;
+}
+
+```
+
+代码解释：由于 switch 里的值是 true，所以，在众多的 case 语句中，会去匹配第一个符合 `case true`的语句，然后命中这条语句。
+
 
 
 ### switch 语句的结束条件【非常重要】
 
-- 情况a：遇到break就结束，而不是遇到default就结束。（因为break在此处的作用就是退出switch语句）
+- 情况 a：遇到 break 就结束，而不是遇到 default 就结束。（因为 break 在此处的作用就是退出 switch 语句）
 
-- 情况b：执行到程序的末尾就结束。
+- 情况 b：执行到程序的末尾就结束。
 
 我们来看下面的两个例子就明白了。
 
-### case穿透的问题
+### case 穿透
 
-switch 语句中的`break`可以省略，但一般不建议（对于新手而言）。否则结果可能不是你想要的，会出现一个现象：**case穿透**。
+switch 语句中的`break`可以省略，但一般不建议（对于新手而言）。否则结果可能不是你想要的，会出现一个现象：**case 穿透**。
 
-**举例1**：（case穿透的情况）
+当然，如果你能利用好 case 穿透，会让代码些得十分优雅。
+
+**举例 1**：（case 穿透的情况）
 
 ```javascript
-    var num = 4;
+var num = 4;
 
-    //switch判断语句
-    switch (num) {
-        case 1:
-            console.log("星期一");
-            break;
-        case 2:
-            console.log("星期二");
-            break;
-        case 3:
-            console.log("星期三");
-            break;
-        case 4:
-            console.log("星期四");
-        //break;
-        case 5:
-            console.log("星期五");
-        //break;
-        case 6:
-            console.log("星期六");
-            break;
-        case 7:
-            console.log("星期日");
-            break;
-        default:
-            console.log("你输入的数据有误");
-            break;
-    }
-
+//switch判断语句
+switch (num) {
+    case 1:
+        console.log('星期一');
+        break;
+    case 2:
+        console.log('星期二');
+        break;
+    case 3:
+        console.log('星期三');
+        break;
+    case 4:
+        console.log('星期四');
+    //break;
+    case 5:
+        console.log('星期五');
+    //break;
+    case 6:
+        console.log('星期六');
+        break;
+    case 7:
+        console.log('星期日');
+        break;
+    default:
+        console.log('你输入的数据有误');
+        break;
+}
 ```
 
 上方代码的运行结果，可能会令你感到意外：
@@ -314,30 +344,28 @@ switch 语句中的`break`可以省略，但一般不建议（对于新手而言
 星期六
 ```
 
+上方代码的解释：因为在 case 4 和 case 5 中都没有 break，那语句走到 case 6 的 break 才会停止。
 
-上方代码的解释：因为在case 4和case 5中都没有break，那语句走到case 6的break才会停止。
-
-**举例2**：
+**举例 2**：
 
 ```javascript
-    //switch判断语句
-    var number = 5;
+//switch判断语句
+var number = 5;
 
-    switch (number) {
-        default:
-            console.log("我是defaul语句");
-            // break;
-        case (2):
-          	console.log("第二个呵呵:" + number);
-            //break;
-        case (3):
-          	console.log("第三个呵呵:" + number);
-            break;
-        case (4):
-          	console.log("第四个呵呵:" + number);
-            break;
-    }
-
+switch (number) {
+    default:
+        console.log('我是defaul语句');
+    // break;
+    case 2:
+        console.log('第二个呵呵:' + number);
+    //break;
+    case 3:
+        console.log('第三个呵呵:' + number);
+        break;
+    case 4:
+        console.log('第四个呵呵:' + number);
+        break;
+}
 ```
 
 上方代码的运行结果，你也许会意外：
@@ -350,14 +378,13 @@ switch 语句中的`break`可以省略，但一般不建议（对于新手而言
 
 上方代码的解释：代码走到 default 时，因为没有遇到 break，所以会继续往下走，直到遇见 break 或者走到程序的末尾。 从这个例子可以看出：switch 语句的结束与 default 的顺序无关。
 
-
-### switch 语句的实战举例：替换 if 语句
+## switch 语句的实战举例：替换 if 语句
 
 我们实战开发中，经常需要根据接口的返回码 retCode ，来让前端做不同的展示。
 
 这种场景是业务开发中经常出现的，请一定要掌握。然而，很多人估计会这么写：
 
-**写法1**：（不推荐。这种写法太挫了）
+### 写法 1（不推荐。这种写法太挫了）
 
 ```javascript
 let retCode = 1003; // 返回码 retCode 的值可能有很多种情况
@@ -379,17 +406,18 @@ if (retCode == 0) {
 } else if (retCode == 1004) {
     alert('（风控用户）提示 活动太火爆啦~军万马都在挤，请稍后再试');
 } else {
-	// 其他异常返回码
+    // 其他异常返回码
     alert('系统君失联了，请稍候再试');
 }
 ```
 
-如果你是按照上面的 `if else`的方式来写各种条件判断，说明你的代码水平太初级了，会被人喷的，千万不要这么写。那要怎么改进呢？继续往下看。
+如果你是按照上面的 `if else`的方式来写各种条件判断，说明你的代码水平太初级了，会被人喷的，千万不要这么写。这种写法，容易导致**嵌套太深，可读性很差**。
 
-**写法2**：（推荐。通过 return 的方式，将上面的写法进行改进）
+那要怎么改进呢？继续往下看。
+
+### 写法 2（推荐。通过 return 的方式，将上面的写法进行改进）
 
 ```javascript
-
 let retCode = 1003; // 返回码 retCode 的值可能有很多种情况
 handleRetCode(retCode);
 
@@ -439,15 +467,13 @@ function handleRetCode(retCode) {
     alert('系统君失联了，请稍候再试');
     return;
 }
-
 ```
 
+上面的写法 2，是比较推荐的写法：直接通过 return 的方式，让 function 里的代码不再继续往下走，这就达到目的了。对了，因为要用到 return ，所以需要单独封装到一个 function 里面。
 
-上面的写法2，是比较推荐的写法：直接通过 return 的方式，让 function 里的代码不再继续往下走，这就达到目的了。对了，因为要用到 return ，所以需要单独封装到一个 function 里面。
+如果你以后看到有前端小白采用的是**写法 1**，请一定要把**写法 2**传授给他：不需要那么多的 if else，直接用 return 返回就行了。
 
-如果你以后看到有前端小白采用的是**写法1**，请一定要把**写法2**传授给他：不需要那么多的 if else，直接用 return 返回就行了。
-
-**写法3**：（推荐。将 if else 改为 switch）
+### 写法 3（推荐。将 if else 改为 switch）
 
 ```javascript
 let retCode = 1003; // 返回码 retCode 的值可能有很多种情况
@@ -484,16 +510,14 @@ switch (retCode) {
         alert('（风控用户）提示 活动太火爆啦~军万马都在挤，请稍后再试');
         break;
 
-	// 其他异常返回码
+    // 其他异常返回码
     default:
         alert('系统君失联了，请稍候再试');
         break;
 }
 ```
 
-
-在实战开发中，方式3是非常推荐的写法，甚至比方式2还要好。我们尽量不要写太多的 if 语句，避免代码嵌套过深。
-
+在实战开发中，方式 3 是非常推荐的写法，甚至比方式 2 还要好。我们尽量不要写太多的 if 语句，避免代码嵌套过深。
 
 ### switch 语句的优雅写法：适时地去掉 break
 
@@ -536,7 +560,6 @@ switch (day) {
 }
 ```
 
-
 上面的代码，咋一看，好像没啥毛病。但你有没有发现，重复代码太多了？
 
 实战开发中，凡是有重复的地方，我们都必须要想办法简化。写代码就是在不断重构的过程。
@@ -566,19 +589,14 @@ switch (day) {
 }
 ```
 
-
 你没看错，就是上面的这种写法，能达到同样的效果，非常优雅。
 
 小白可能认为这样的写法可读性不强，所以说他是小白。我可以明确告诉你，改进后的这种写法，才是最优雅的、最简洁、可读性最好的。
 
-
-
 ## 我的公众号
 
-想学习<font color=#0000ff>**代码之外的技能**</font>？不妨关注我的微信公众号：**千古壹号**（id：`qianguyihao`）。
+想学习**代码之外的技能**？不妨关注我的微信公众号：**千古壹号**。
 
 扫一扫，你将发现另一个全新的世界，而这将是一场美丽的意外：
 
-![](http://img.smyhvae.com/2016040102.jpg)
-
-
+![](http://img.smyhvae.com/20200101.png)
