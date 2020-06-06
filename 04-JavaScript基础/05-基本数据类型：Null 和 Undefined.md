@@ -3,14 +3,14 @@
 
 ## Null：空对象
 
-null 专门用来定义一个**空对象**（例如：`var a = null`）。。
+null 专门用来定义一个**空对象**（例如：`let a = null`）。
 
 如果你想定义一个变量用来保存引用类型，但是还没想好放什么内容，这个时候，可以在初始化时将其设置为 null。
 
 比如：
 
 ```js
-var myObj = null;
+let myObj = null;
 cosole.log(typeof myObj); // 打印结果：object
 ```
 
@@ -51,7 +51,7 @@ console.log(a); // 打印结果：Uncaught ReferenceError: a is not defined
 
 如果一个函数没有返回值，那么，这个函数的返回值就是 undefined。
 
-或者，也可以这样理解：在定义一个函数时，如果没有 return 语句，那么，其实就是 `return undefined`。
+或者，也可以这样理解：在定义一个函数时，如果末尾没有 return 语句，那么，其实就是 `return undefined`。
 
 举例：
 
