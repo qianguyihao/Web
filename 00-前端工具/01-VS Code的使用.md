@@ -805,6 +805,9 @@ css 颜色管理。
 
 ### vscode-pigments
 
+### 颜色标注
+
+
 css 颜色高亮显示。
 
 ## 八、主题插件
@@ -820,6 +823,7 @@ css 颜色高亮显示。
 * [Dainty](https://marketplace.visualstudio.com/items?itemName=alexanderte.dainty-vscode)
 
 * `SynthWave '84`
+
 
 ## 最后一段
 
@@ -838,3 +842,5 @@ css 颜色高亮显示。
 - [https://segmentfault.com/a/1190000012811886](https://segmentfault.com/a/1190000012811886)
 
 - [「Vscode」打造类 sublime 的高颜值编辑器](https://idoubi.cc/2019/07/08/vscode-sublime-theme/)
+
+- [Mac Vscode快捷键](https://lsqy.tech/2020/03/14/20200314Mac-Vscode%E5%BF%AB%E6%8D%B7%E9%94%AE/)

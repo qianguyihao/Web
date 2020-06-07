@@ -179,7 +179,6 @@ let name = 'qianguyihao';
 console.log(`我是${name}`); // 打印结果：我是 qianguyihao
 ```
 
-
 ### 在模板字面量中插入表达式
 
 在字符串中插入表达式，以往的写法必须是这样的：
@@ -197,10 +196,52 @@ const b = 10;
 
 console.log(`this is ${a + b} and
 not ${2 * a + b}.`);
+```
+打印结果：
 
+```
+this is 15 and
+not 20.
 ```
 
 
+### 换行时不容易出错
+
+上面的例子中，也可以看出这个特征。
+
+### 在模板字面量中插入函数返回值
+
+举例：
+
+```js
+function getName() {
+	return 'qianguyihao';
+}
+
+console.log(`www.${getName()}.com`); // 打印结果：www.qianguyihao.com
+```
+
+
+### 模板字面量支持嵌套使用
+
+```js
+const nameList = ['千古壹号', '许嵩', '解忧少帅'];
+
+function myTemplate() {
+	// join('') 的意思是，把数组里的内容合并成一个字符串
+	return `<ul>
+	${nameList
+		.map((item) => `<li>${item}</li>`)
+		.join('')}
+	</ul>`;
+}
+document.body.innerHTML = myTemplate();
+
+```
+
+效果如下：
+
+![](http://img.smyhvae.com/20200607_2118.png)
 
 
 ## 数值型：Number
