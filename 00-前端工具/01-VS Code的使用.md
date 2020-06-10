@@ -844,3 +844,6 @@ css 颜色高亮显示。
 - [「Vscode」打造类 sublime 的高颜值编辑器](https://idoubi.cc/2019/07/08/vscode-sublime-theme/)
 
 - [Mac Vscode快捷键](https://lsqy.tech/2020/03/14/20200314Mac-Vscode%E5%BF%AB%E6%8D%B7%E9%94%AE/)
+
+
+- [使用VSCode的一些技巧](https://mp.weixin.qq.com/s?src=11&timestamp=1591581536&ver=2387&signature=i4xLZlLe1Gkl7OiBIhPO*VSeNB5lzFgTY-dgNW9E9ZbtIAv4bnJ1RdAAZdhvDw*cg-DmMcUa-V8NSUdV-tthmXZCq3ht4edCweq6v0QxKjnh8IuAxyyh5qymdRui*8iE&new=1)
