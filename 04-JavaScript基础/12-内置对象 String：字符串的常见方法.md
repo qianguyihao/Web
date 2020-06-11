@@ -426,7 +426,7 @@ console.log(result); // 打印结果：qianguyihao
 新的数组 = str.split(分隔符);
 ```
 
-解释：将一个字符串拆分成一个数组。不会改变原字符串。
+解释：通过指定的分隔符，将一个字符串拆分成一个**数组**。不会改变原字符串。
 
 备注：`split()`这个方法在实际开发中用得非常多。一般来说，从接口拿到的 json 数据中，经常会收到类似于`"q, i, a, n"`这样的字符串，前端需要将这个字符串拆分成`['q', 'i', 'a', 'n']`数组，这个时候`split()`方法就派上用场了。
 
@@ -443,22 +443,24 @@ console.log(array); // 打印结果是数组：["qian", " gu", " yi", " hao"]
 
 ```javascript
 //split()方法：字符串变数组
-var str3 = '生命壹号|许嵩|smyhvae';
+var str3 = '千古壹号|qianguyihao|许嵩';
 
-console.log(str3);
-
-console.log(str3.split()); // 无参数，表示：把字符串作为一个元素添加到数组中。
+console.log('结果1：' +str3.split()); // 无参数，表示：把整个字符串作为一个元素添加到数组中。
 
 console.log(str3.split('')); // 参数为空字符串，则表示：分隔字符串中每一个字符，分别添加到数组中
 
-console.log(str3.split('|')); // 参数为指定字符，表示：此字符将不会出现在数组的任意一个元素中
+console.log(str3.split('|')); // 参数为指定字符，表示：用 '|' 分隔字符串。此分隔符将不会出现在数组的任意一个元素中
 
-console.log(str3.split('许')); // 同理
+console.log(str3.split('许')); // 同上
 ```
 
-打印结果：
+打印结果：（都是数组）
 
-![](http://img.smyhvae.com/20180202_1503.png)
+![](http://img.smyhvae.com/20200611_2050.png)
+
+
+
+
 
 ## replace()
 

@@ -335,7 +335,7 @@ parseFloat() 的几个特性，可以参照 parseInt()。
 
 ## 转换为 Boolean
 
-将其他的数据类型转换为 Boolean，可以使用 Boolean()函数。情况如下：
+其他的数据类型都可以转换为 Boolean类型。情况如下：
 
 - 情况一：数字 --> 布尔。除了 0 和 NaN，其余的都是 true。也就是说，`Boolean(NaN)`的结果是 false。
 
@@ -347,6 +347,22 @@ parseFloat() 的几个特性，可以参照 parseInt()。
 
 
 PS：转换为 Boolean 的这几种情况，**很重要**，开发中会经常用到。
+
+**1、隐式转换为 Boolean 类型**：
+
+当非 Boolean 类型的数值和 Boolean类型的数值做比较时，会先把前者进行隐式转换为 Boolean类型，然后再做比较。举例如下：
+
+```js
+console.log(1 == true); // 打印结果：true
+console.log(0 == true); // 打印结果：false
+```
+
+**2、显式转换为 Boolean 类型**：
+
+方法1：使用 `!!`可以显式转换为 Boolean 类型。比如 `!!3`的结果是true。
+
+方法2：使用 Boolean()函数可以显式转换为 Boolean 类型。
+
 
 
 
