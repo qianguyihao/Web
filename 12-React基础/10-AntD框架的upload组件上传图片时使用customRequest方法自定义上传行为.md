@@ -1,7 +1,7 @@
 本次做后台管理系统，采用的是 AntD 框架。涉及到图片的上传，用的是AntD的 [upload](https://ant.design/components/upload-cn/) 组件。
 
 
-我在上一篇文章《[AntD框架的upload组件上传图片时使用customRequest方法自定义上传行为](https://www.cnblogs.com/qianguyihao/p/13093592.html)》中讲到：AntD 的 upload 组件有很多坑，引起了很多人的关注。折腾过的人，自然明白其中的苦楚。
+我在上一篇文章《[前端AntD框架的upload组件上传图片时遇到的一些坑](https://www.cnblogs.com/qianguyihao/p/10460834.html)》中讲到：AntD 的 upload 组件有很多坑，引起了很多人的关注。折腾过的人，自然明白其中的苦楚。
 
 今天这篇文章，我们继续来研究 AntD 的 upload 组件的另一个坑。
 

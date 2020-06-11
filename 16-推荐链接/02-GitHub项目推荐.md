@@ -38,15 +38,15 @@
 - [前端精读周刊](https://github.com/dt-fe/weekly)
 
 
-
-
-## 前端教程类
-
 ## 其他
 
 - 单元测试：<https://github.com/goldbergyoni/javascript-testing-best-practices>
 
 ## 面试
+
+- 前端开发面试题: <https://github.com/markyun/My-blog/tree/master/Front-end-Developer-Questions>
+
+- web前端面试宝典：<https://github.com/h5bp/Front-end-Developer-Interview-Questions/>
 
 - 反向面试（反问面试官的问题）：<https://github.com/yifeikong/reverse-interview-zh>
 
