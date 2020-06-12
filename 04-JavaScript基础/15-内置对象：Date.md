@@ -39,36 +39,54 @@ object
 
 ### 写法二：传递参数
 
-参数中既可以传递数字，也可以传递字符串。
+传递参数时，表示获取指定时间的时间对象。参数中既可以传递字符串，也可以传递数字，也可以传递时间戳。
 
-代码举例：
+通过传参的这种写法，我们可以把时间字符串/时间数字/时间戳，按照指定的格式，转换为时间对象。
 
-```javascript
-var date21 = new Date('2020/02/17 21:00:00');
-console.log(date21);
-// Mon Feb 17 2020 21:00:00 GMT+0800 (中国标准时间)
+举例1：（参数是字符串）
 
-var date22 = new Date(2020, 2, 18); // 第二个参数返回的是三月，不是二月
-console.log(date22);
-// Wed Mar 18 2020 00:00:00 GMT+0800 (中国标准时间)
+```js
+const date11 = new Date('2020/02/17 21:00:00');
+console.log(date11); // Mon Feb 17 2020 21:00:00 GMT+0800 (中国标准时间)
 
-var date23 = new Date(2020, 3, 18, 22, 59, 58);
-console.log(date23);
-// Sat Apr 18 2020 22:59:58 GMT+0800 (中国标准时间)
+const date12 = new Date('2020/04/19'); // 返回的就是四月
+console.log(date12); // Sun Apr 19 2020 00:00:00 GMT+0800 (中国标准时间)
 
-var date24 = new Date('2020/04/19'); // 返回的就是四月
-console.log(date24);
-// Sun Apr 19 2020 00:00:00 GMT+0800 (中国标准时间)
+const date13 = new Date('2020-05-20');
+console.log(date13); // Wed May 20 2020 08:00:00 GMT+0800 (中国标准时间)
 
-var date25 = new Date('2020-05-20');
-console.log(date25);
-// Wed May 20 2020 08:00:00 GMT+0800 (中国标准时间)
-
-var date26 = new Date('Wed Jan 27 2017 12:00:00 GMT+0800 (中国标准时间)');
-console.log(date26);
-// Fri Jan 27 2017 12:00:00 GMT+0800 (中国标准时间)
-
+const date14 = new Date('Wed Jan 27 2017 12:00:00 GMT+0800 (中国标准时间)');
+console.log(date14); // Fri Jan 27 2017 12:00:00 GMT+0800 (中国标准时间)
 ```
+
+
+举例2：（参数是多个数字）
+
+```js
+const date21 = new Date(2020, 2, 18); // 注意，第二个参数返回的是三月，不是二月
+console.log(date21); // Wed Mar 18 2020 00:00:00 GMT+0800 (中国标准时间)
+
+const date22 = new Date(2020, 3, 18, 22, 59, 58);
+console.log(date22); // Sat Apr 18 2020 22:59:58 GMT+0800 (中国标准时间)
+
+const params = [2020, 06, 12, 16, 20, 59];
+const date23 = new Date(...params);
+console.log(date23); // Sun Jul 12 2020 16:20:59 GMT+0800 (中国标准时间)
+```
+
+
+举例3：（参数是时间戳）
+
+```js
+const date31 = new Date(1591950413388);
+console.log(date31); // Fri Jun 12 2020 16:26:53 GMT+0800 (中国标准时间)
+
+// 先把时间对象转换成时间戳，然后把时间戳转换成时间对象
+const timestamp = new Date().getTime();
+const date32 = new Date(timestamp);
+console.log(date32); // Fri Jun 12 2020 16:28:21 GMT+0800 (中国标准时间)
+```
+
 
 
 
@@ -96,7 +114,7 @@ Date对象 有如下方法，可以获取日期和时间的**指定部分**：
 | getHours() | 获取小时：0-23 |  |
 | getMinutes() | 获取分钟：0-59 |           |
 | getSeconds() | 获取秒：0-59 |           |
-| etMilliseconds() | 获取毫秒 | 1s = 1000ms |
+| getMilliseconds() | 获取毫秒 | 1s = 1000ms |
 
 
 
@@ -168,12 +186,6 @@ function formatDate() {
 
 ## 获取时间戳
 
-Date对象 还有如下方法：
-
-- `getTime()`  获取日期对象的**时间戳**（单位：毫秒）。这个方法在实战开发中，用得比较多。但还有比它更常用的写法，我们往下看。
-
-啥叫时间戳？我们先来解释这个概念。
-
 ### 时间戳的定义和作用
 
 **时间戳**：指的是从格林威治标准时间的`1970年1月1日，0时0分0秒`到当前日期所花费的**毫秒数**（1秒 = 1000毫秒）。
@@ -199,25 +211,38 @@ Date对象 还有如下方法：
 为啥打印结果是`-28800000`，而不是`0`呢？这是因为，我们的当前代码，是在中文环境下运行的，与英文时间会存在**8个小时的时差**（中文时间比英文时间早了八个小时）。如果代码是在英文环境下运行，打印结果就是`0`。
 
 
+### getTime()：获取时间戳
+
+`getTime()`  获取日期对象的**时间戳**（单位：毫秒）。这个方法在实战开发中，用得比较多。但还有比它更常用的写法，我们往下看。
+
+
 ### 获取 Date 对象的时间戳
 
 代码演示：
 
 ```js
-    // 方式一：获取 Date 对象的时间戳（最常用的写法）
-    var date1 = +new Date();
-    console.log(date2);  // 打印结果举例：1589448165370
+// 方式一：获取 Date 对象的时间戳（最常用的写法）
+const timestamp1 = +new Date();
+console.log(timestamp1); // 打印结果举例：1589448165370
 
-    var date2 = new Date();
+// 方式二：获取 Date 对象的时间戳（较常用的写法）
+const timestamp2 = new Date().getTime();
+console.log(timestamp2); // 打印结果举例：1589448165370
 
-    // 方式二：获取 Date 对象的时间戳（较常用的写法）
-    console.log(date2.getTime()); // 打印结果举例：1589448165370
+// 方式三：获取 Date 对象的时间戳
+const timestamp3 = new Date().valueOf();
+console.log(timestamp3); // 打印结果举例：1589448165370
 
-    // 方式三：获取 Date 对象的时间戳
-    console.log(date2.valueOf()); // 打印结果举例：1589448165370
+// 方式4：获取 Date 对象的时间戳
+const timestamp4 = new Date() * 1;
+console.log(timestamp4); // 打印结果举例：1589448165370
+
+// 方式5：获取 Date 对象的时间戳
+const timestamp5 = Number(new Date());
+console.log(timestamp5); // 打印结果举例：1589448165370
 ```
 
-上面这三种写法都可以获取任意 Date 对象的时间戳，最常见的写法是**方式一**，其次是方式二。
+上面这五种写法都可以获取任意 Date 对象的时间戳，最常见的写法是**方式一**，其次是方式二。
 
 根据前面所讲的关于「时间戳」的概念，上方代码获取到的时间戳指的是：从 `1970年1月1日，0时0分0秒` 到现在所花费的总毫秒数。
 
@@ -226,11 +251,11 @@ Date对象 还有如下方法：
 如果我们要获取**当前时间**的时间戳，除了上面的三种方式之外，还有另一种方式。代码如下：
 
 ```js
-    // 方式四：获取当前时间的时间戳（很常用的写法）
-    console.log(Date.now()); // 打印结果举例：1589448165370
+// 方式六：获取当前时间的时间戳（很常用的写法）
+console.log(Date.now()); // 打印结果举例：1589448165370
 ```
 
-上面这种方式四，用得也很多。只不过，`Date.now()`是H5标准中新增的特性，如果你的项目需要兼容低版本的IE浏览器，就不要用了。这年头，谁还用IE呢？
+上面这种方式六，用得也很多。只不过，`Date.now()`是H5标准中新增的特性，如果你的项目需要兼容低版本的IE浏览器，就不要用了。这年头，谁还用IE呢？
 
 
 ### 利用时间戳检测代码的执行时间
@@ -377,6 +402,39 @@ Date对象 还有如下方法：
 实现效果：
 
 ![](http://img.smyhvae.com/20180202_1130.gif)
+
+## Moment.js
+
+Moment.js是一个轻量级的JavaScript时间库，我们可以利用它很方便地进行时间操作，提升开发效率。
+
+使用举例：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script src="https://cdn.bootcdn.net/ajax/libs/moment.js/2.26.0/moment.min.js"></script>
+        <script>
+            // 按照指定的格式，格式化当前时间
+            console.log(moment().format('YYYY-MM-DD HH:mm:ss')); // 打印结果举例：2020-06-12 16:38:38
+            console.log(typeof moment().format('YYYY-MM-DD HH:mm:ss')); // 打印结果：string
+
+            // 按照指定的格式，格式化指定的时间
+            console.log(moment('2020/06/12 18:01:59').format('YYYY-MM-DD HH:mm:ss')); // 打印结果：2020-06-12 18:01:59
+
+            // 按照指定的格式，获取七天后的时间
+            console.log(moment().add(7, 'days').format('YYYY-MM-DD hh:mm:ss')); // 打印结果举例：2020-06-19 04:43:56
+        </script>
+    </body>
+</html>
+
+```
+
 
 ## 我的公众号
 
