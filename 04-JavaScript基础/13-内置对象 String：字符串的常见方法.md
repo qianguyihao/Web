@@ -158,8 +158,6 @@ console.log(name.search(/\yi/i)); // 打印结果：6
 ```
 
 
-
-
 ### 3、includes()：字符串中是否包含指定的内容
 
 **语法**：
