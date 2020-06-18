@@ -1,10 +1,13 @@
 
 
-## Node.js 的API文档
+## Node.js 的官方API文档
 
-Node.js 的API文档（英文）： <https://nodejs.org/docs/latest-v8.x/api/index.html>
 
-Node.js 的API文档（中文）：<http://nodejs.cn/api/>
+- Node.js 的API文档（英文）： <https://nodejs.org/docs/latest-v8.x/api/index.html>
+
+- Node.js 的API文档（中文）：<http://nodejs.cn/api/>
+
+关于 Node.js 的内置模块和常见API，可以看官方文档。
 
 
 查阅文档时，稳定指数如下：
@@ -40,6 +43,39 @@ console.log(path.resolve('../'));
 ```
 
 require方法用于加载模块。
+
+常见的内置模块包括：
+
+- FS：文件系统模块
+
+- path：路径模块
+
+- OS：操作系统相关
+
+- net：网络相关
+
+- http
+
+- ...
+
+你可能会有疑问：Node.js 这么牛吗？还能直接和操作系统做交互？
+
+带着这个疑问，我们不妨简单看看 Node.js 的源码，以 os 模块举例：
+
+- 打开os模块的源码：<https://github.com/nodejs/node/blob/master/lib/os.js>，翻到最底部，找到 `cpus`这个方法
+
+- 进而找到 `getCPUs()`
+
+- internalBinding('os')：通过 internalBinding 可以调用系统底层的方法。internalBinding 主要是 JS 虚拟机在做的事情。
+
+- `internalBinding('os')` 的实现，在 <https://github.com/nodejs/node/blob/master/src/node_os.cc> 里，里面都是 C++ 的代码。比如有一个`getCPUs`方法。
+
+现在你知道了，JS本身是没有能力获取底层系统资源的，这一切都是 JS虚拟机在和底层做交互，然后通过 JS 的表现形式，暴露给应用层。
+
+另外，还有很多库，是直接使用C/++编写的，通过编译之后，再提供给 JS 应用层调用，或者直接提供给 Node.js层使用。
+
+**所有的编程语言底层都会回归C/C++**，甚至是汇编语言。
+
 
 ### 2、require 加载第三方包的机制
 
