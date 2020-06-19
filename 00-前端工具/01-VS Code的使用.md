@@ -1,6 +1,6 @@
 ## 前言
 
-> 本文的最新内容，更新于 2020-06-19。大家完全不用担心这篇文章会过时，因为随着 VS Code 的版本更新和插件更新，本文也会随之更新。
+> 文章标题：《第一次使用 VS Code 时你应该知道的一切配置》。本文的最新内容，更新于 2020-06-19。大家完全不用担心这篇文章会过时，因为随着 VS Code 的版本更新和插件更新，本文也会随之更新。
 
 > 本文的最新内容，也会在[GitHub](https://github.com/qianguyihao/Web/blob/master/00-%E5%89%8D%E7%AB%AF%E5%B7%A5%E5%85%B7/01-VS%20Code%E7%9A%84%E4%BD%BF%E7%94%A8.md)上同步更新，欢迎 star。
 
@@ -10,7 +10,7 @@ VS Code 软件实在是太酷、太好用了，越来越多的新生代互联网
 
 ![](http://img.smyhvae.com/20200619_0133.png)
 
-有一点你可能会感到惊讶：VS Code 这款软件本身，是用 JavaScript 语言编写的（具体请自行查阅基于 JS 的客户端开发框架 `Electron`）。Jeff Atwood 在 2007 年提出了著名的 Atwood 定律：
+有一点你可能会感到惊讶：VS Code 这款软件本身，是用 JavaScript 语言编写的（具体请自行查阅基于 JS 的 PC 客户端开发框架 `Electron`）。Jeff Atwood 在 2007 年提出了著名的 Atwood 定律：
 
 > **任何能够用 JavaScript 实现的应用系统，最终都必将用 JavaScript 实现**。
 
@@ -32,6 +32,8 @@ Jeff Atwood 这个人是谁不重要（他是 Stack Overflow 网站的联合创�
 
 VS Code 的全称是 Visual Studio Code，是一款开源的、免费的、跨平台的、高性能的、轻量级的代码编辑器。它在性能、语言支持、开源社区方面，都做得很不错。
 
+微软有两种软件：一种是 VS Code，一种是其他软件。
+
 ### IDE 与 编辑器的对比
 
 IDE 和编辑器是有区别的：
@@ -52,7 +54,7 @@ IDE 和编辑器是有区别的：
 
 - 支持第三方插件，功能强大，生态系统完善。
 
-- VS Code 自带了 TypeScript 和 Node.js 的支持。也就是说，你在书写 JS 和 TS 时，是自带智能提示的。当然，其他的语言，你可以安装相应的**扩展包**插件，也会有智能提示。
+- VS Code 自带了 JavaScript、TypeScript 和 Node.js 的支持。也就是说，你在书写 JS 和 TS 时，是自带智能提示的。当然，其他的语言，你可以安装相应的**扩展包**插件，也会有智能提示。
 
 ### 前端利器之争： VS Code 与 WebStorm
 
@@ -62,7 +64,7 @@ IDE 和编辑器是有区别的：
 
 - **内存占用情况**：根据我的观察，VS Code 是很占内存的（尤其是当你打开多个窗口的时候），但如果你的内存条够用，使用起来是不会有任何卡顿的感觉的。相比之下，IntelliJ IDEA 不仅非常占内存，而且还非常卡顿。如果你想换个既轻量级、又不占内存的编辑器，最好还是使用「Sublime Text」编辑器。
 
-- **使用比例**：当然是 VS Code 更胜一筹。先不说别的，我就拿数据说话，我目前所在的前端团队有 100 人左右，绝大部分前端同学都在用 VS Code，妥妥的。
+- **使用比例**：当然是 VS Code 更胜一筹。先不说别的，我就拿数据说话，我目前所在的研发团队有 200 人左右（120个后台、80个前端），他们绝大部分人都在用 VS Code 编码，妥妥的。
 
 所以，如果你以后还问这个问题，那就真有些掉底了。
 
@@ -103,14 +105,14 @@ VS Code 用得熟不熟，首先就看你是否会用快捷键。以下列出的
 
 ### 2、跳转操作
 
-| Mac 快捷键                                                       | Win 快捷键             | 作用                                 | 备注               |
-| :--------------------------------------------------------------- | :--------------------- | :----------------------------------- | :----------------- |
+| Mac 快捷键                                                         | Win 快捷键             | 作用                                 | 备注               |
+| :----------------------------------------------------------------- | :--------------------- | :----------------------------------- | :----------------- |
 | Cmd + ` | 没有 | 在同一个软件的**多个工作区**之间切换 | 使用很频繁 |
-| **Cmd + Option + 左右方向键**                                    | Ctrl + Pagedown/Pageup | 在已经打开的**多个文件**之间进行切换 | 非常实用           |
-| Ctrl + Tab                                                       | Ctrl + Tab             | 在已经打开的多个文件之间进行跳转     | 不如上面的快捷键快 |
-| Cmd + Shift + O                                                  | Ctrl + shift + O       | 在当前文件的各种**方法之间**进行跳转 |                    |
-| Ctrl + G                                                         | Ctrl + G               | 跳转到指定行                         |                    |
-| `Cmd+Shift+\` | `Ctrl+Shift+\`                                   | 跳转到匹配的括号       |                                      |
+| **Cmd + Option + 左右方向键**                                      | Ctrl + Pagedown/Pageup | 在已经打开的**多个文件**之间进行切换 | 非常实用           |
+| Ctrl + Tab                                                         | Ctrl + Tab             | 在已经打开的多个文件之间进行跳转     | 不如上面的快捷键快 |
+| Cmd + Shift + O                                                    | Ctrl + shift + O       | 在当前文件的各种**方法之间**进行跳转 |                    |
+| Ctrl + G                                                           | Ctrl + G               | 跳转到指定行                         |                    |
+| `Cmd+Shift+\` | `Ctrl+Shift+\`                                     | 跳转到匹配的括号       |                                      |
 
 ### 3、移动光标
 
@@ -440,7 +442,7 @@ VS Code 自带了 Git 版本管理，如下图所示：
 
 ![](http://img.smyhvae.com/20190418_1850.png)
 
-上图中，我们可以在这里进行常见的 git 命令操作。如果你还不熟悉 **Git 版本管理**，先去补补课吧。
+上图中，我们可以在这里进行常见的 git 命令操作。如果你还不熟悉 **Git 版本管理**，可以先去补补课。
 
 与此同时，我建议安装插件`GitLens`，它是 VS Code 中我最推荐的一个插件，简直是 Git 神器，码农必备。
 
@@ -654,7 +656,6 @@ VS Code 默认支持 Emmet。更多 Emmet 语法规则，请自行查阅。
 
 ## 八、三头六臂：VS Code 插件推荐
 
-
 VS Code 有一个很强大的功能就是支持插件扩展，让你的编辑器仿佛拥有了三头六臂。
 
 ![](http://img.smyhvae.com/20191108_1553_2.png)
@@ -767,6 +768,10 @@ vscode-icons 会根据文件的后缀名来显示不同的图标，让你更直�
 
 预览 Markdown 样式。
 
+### Markdown All in One
+
+这个插件将帮助你更高效地在 Markdown 中编写文档。
+
 ### 16、Settings Sync【荐】
 
 - 地址：<https://github.com/shanalikhan/code-settings-sync>
@@ -804,6 +809,8 @@ Prettier 是一个代码格式化工具，只关注格式化，但不具备校�
 ### 23、Beautify
 
 代码格式化工具。
+
+备注：相比之下，Prettier 是当前最流行的代码格式化工具，比 Beautify 用得更多。
 
 ### 24、JavaScript(ES6) code snippets
 
@@ -851,9 +858,17 @@ ES6 语法智能提示，支持快速输入。
 
 ![](http://img.smyhvae.com/20200618_2246.png)
 
-### 30、Polacode-2020 【荐】
+### 30、Polacode-2020：生成代码截图 【荐】
 
-可以把代码保存成美观的图片，主题不同，代码配色方案也不同，也可以自己设置边框颜色、大小、阴影。
+可以把代码片段保存成美观的图片，主题不同，代码的配色方案也不同，也也可以自定义设置图片的边框颜色、大小、阴影。
+
+尤其是在我们做 PPT 分享时需要用到代码片段时，或者需要在网络上优雅地分享代码片段时，这一招很有用。
+
+生成的效果如下：
+
+![](http://img.smyhvae.com/20200619_1403.png)
+
+其他同类插件：`CodeSnap`。我们也可以通过 <https://carbon.now.sh/>这个网站生成代码图片
 
 有人可能会说：直接用 QQ 截图不行吗？可以是可以，但不够美观、不够干净。
 
@@ -909,6 +924,10 @@ CSS Peek 对 Vue 没有支持，该插件提供了对 Vue 文件的支持。
 
 在项目开发过程中，我们会引入很多 npm 包，有时候可能只用到了某个包里的一个方法，却引入了整个包，导致代码体积增大很多。`Import Cost`插件可以在代码中友好的提示我们，当前引入的包会增加多少体积，这很有助于帮我们优化代码的体积。
 
+### Paste JSON as Code
+
+此插件可以将剪贴板中的 JSON 字符串转换成工作代码。支持多种语言。
+
 ## 八、常见主题插件
 
 给你的 VS Code 换个皮肤吧，免费的那种。
@@ -943,7 +962,7 @@ CSS Peek 对 Vue 没有支持，该插件提供了对 Vue 文件的支持。
 
 大家完全不用担心这篇文章会过时，随着 VS Code 的版本更新和插件更新，本文也会随之更新。关于 VS Code 内容的后续更新，你可以关注我在 GitHub 上的前端入门项目，项目地址是：
 
-> https://github.com/qianguyihao/Web>
+> https://github.com/qianguyihao/Web
 
 一个超级详细和真诚的前端入门项目。
 
@@ -954,6 +973,8 @@ CSS Peek 对 Vue 没有支持，该插件提供了对 Vue 文件的支持。
 - <http://www.supuwoerc.xyz/tools/vscode/plugins.html>
 
 - [如何让 VS Code 更好用 10 倍？这里有一份 VS Code 新手指南](https://zhuanlan.zhihu.com/p/99462672)
+
+- [那些你应该考虑卸载的 VSCode 扩展](https://lyreal666.com/%E9%82%A3%E4%BA%9B%E4%BD%A0%E5%BA%94%E8%AF%A5%E8%80%83%E8%99%91%E5%8D%B8%E8%BD%BD%E7%9A%84-VSCode-%E6%89%A9%E5%B1%95/#more)
 
 - [VS Code 折腾记 - (16) 推荐一波实用的插件集](https://juejin.im/post/5d74eb5c51882525017787d9)
 
@@ -968,3 +989,11 @@ CSS Peek 对 Vue 没有支持，该插件提供了对 Vue 文件的支持。
 - [Mac Vscode 快捷键](https://lsqy.tech/2020/03/14/20200314Mac-Vscode%E5%BF%AB%E6%8D%B7%E9%94%AE/)
 
 * [使用 VSCode 的一些技巧](https://mp.weixin.qq.com/s?src=11&timestamp=1591581536&ver=2387&signature=i4xLZlLe1Gkl7OiBIhPO*VSeNB5lzFgTY-dgNW9E9ZbtIAv4bnJ1RdAAZdhvDw*cg-DmMcUa-V8NSUdV-tthmXZCq3ht4edCweq6v0QxKjnh8IuAxyyh5qymdRui*8iE&new=1)
+
+## 我的公众号
+
+想学习<font color=#0000ff>**代码之外的技能**</font>？不妨关注我的微信公众号：**千古壹号**。
+
+扫一扫，你将发现另一个全新的世界，而这将是一场美丽的意外：
+
+![](http://img.smyhvae.com/20190101.png)
