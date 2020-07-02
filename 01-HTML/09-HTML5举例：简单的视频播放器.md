@@ -261,6 +261,8 @@ index.html的代码如下：
 
 工程文件：
 
-- 2018-02-23-H5多媒体播放器.rar
+- [2018-02-23-H5多媒体播放器.rar](https://pan.baidu.com/s/10RHLQIMl1EKvFaxvYhHaRw )
+
+- 密码:88cy
 
 
