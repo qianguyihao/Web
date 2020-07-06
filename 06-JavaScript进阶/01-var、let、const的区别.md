@@ -66,7 +66,7 @@ console.log(c); // 报错：Uncaught ReferenceError: c is not defined ==> 找不
 
 报错是因为找不到 b 和 c 这两个变量。
 
-### 4、同一作用域下，var 可以声明同名变量，let 和 const 不能声明同名变量
+### 4、同一作用域下，var 可以重复声明变量，let 和 const 不能重复声明变量
 
 ```js
 var a = '我是a';
@@ -85,6 +85,9 @@ const c = '我是c';
 const c = 'qianguyihao';
 console.log(c); //报错：Uncaught SyntaxError: Identifier 'c' has already been declared  ==> 变量 c 已经被声明了
 ```
+
+备注：通过第3、第4点可以看出：使用 let/const 声明的变量，不会造成全局污染。
+
 
 
 ### 5、let 和 const 的暂时性死区（DTC）
