@@ -187,25 +187,43 @@ ES6中引入了**模板字面量**，让我们省去了字符串拼接的烦恼�
 
 ### 在模板字符串中插入变量
 
-举例：
+以前，让字符串进行拼接的时候，是这样做的：（传统写法的字符串拼接）
 
-```js
-let name = 'qianguyihao';
-
-// 下面这一行是模板字面量，注意语法格式
-console.log(`我是${name}`); // 打印结果：我是 qianguyihao
+```javascript
+var name = 'smyhvae';
+var age = '26';
+console.log('name:' + name + ',age:' + age); //传统写法
 ```
+
+这种写法，比较繁琐，而且容易出错。
+
+现在，有了 ES6 语法，字符串拼接可以这样写：
+
+```javascript
+var name = 'qianguyihao';
+var age = '26';
+
+console.log('我是' + name + ',age:' + age); //传统写法
+
+console.log(`我是${name},age:${age}`); //ES6 写法。注意语法格式
+```
+
+**注意**，上方代码中，倒数第二行用的符号是单引号，最后一行用的符号是反引号（在 tab 键的上方）。
+
+参考链接：
+
+-   [ES6 的 rest 参数和扩展运算符](https://segmentfault.com/a/1190000010222698)
 
 ### 在模板字面量中插入表达式
 
-在字符串中插入表达式，以往的写法必须是这样的：
+以前，在字符串中插入表达式的写法必须是这样的：
 
 ```js
 const a = 5;
 const b = 10;
 console.log('this is ' + (a + b) + ' and\nnot ' + (2 * a + b) + '.');
 ```
-现在通过模板字面量，我们可以使用一种更优雅的方式来表示：
+现在，通过模板字面量，我们可以使用一种更优雅的方式来表示：
 
 ```js
 const a = 5;
