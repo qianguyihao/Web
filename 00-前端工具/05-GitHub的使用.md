@@ -10,7 +10,7 @@
 
 - <https://juejin.im/post/5a3216c8f265da43333e6b54>
 
-### GitHub项目添加 licence
+### GitHub项目添加 license
 
 参考链接：
 

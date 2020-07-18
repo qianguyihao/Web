@@ -305,7 +305,7 @@ meta表示“元”。“元”配置，就是表示基本的配置项目。
 <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 ```
 
-字符集用meta标签中的`charset`定义，charset就是charactor set（即“字符集”），即**网页的编码方式**。
+字符集用meta标签中的`charset`定义，charset就是character set（即“字符集”），即**网页的编码方式**。
 
 **字符集**(Character set)是多个字符的集合。计算机要准确的处理各种字符集文字，需要进行字符编码，以便计算机能够识别和存储各种文字。
 
