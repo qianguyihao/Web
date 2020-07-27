@@ -248,16 +248,16 @@ console.log(parseInt("aaa2017.01在公众号上写了6篇文章")); //打印结�
 
 ```javascript
 var a = 168.23;
-console.log(parseInt(a)); //打印结果：168  （因为是先将c转为字符串"168.23"，然后然后再操作）
+console.log(parseInt(a)); //打印结果：168  （因为是先将a转为字符串"168.23"，然后然后再操作）
 
 var b = true;
-console.log(parseInt(b)); //打印结果：NaN （因为是先将a转为字符串"true"，然后然后再操作）
+console.log(parseInt(b)); //打印结果：NaN （因为是先将b转为字符串"true"，然后然后再操作）
 
 var c = null;
-console.log(parseInt(c)); //打印结果：NaN  （因为是先将b转为字符串"null"，然后然后再操作）
+console.log(parseInt(c)); //打印结果：NaN  （因为是先将c转为字符串"null"，然后然后再操作）
 
 var d = undefined;
-console.log(parseInt(d)); //打印结果：NaN  （因为是先将b转为字符串"undefined"，然后然后再操作）
+console.log(parseInt(d)); //打印结果：NaN  （因为是先将d转为字符串"undefined"，然后然后再操作）
 ```
 
 （3）自动带有截断小数的功能：**取整，不四舍五入**。
