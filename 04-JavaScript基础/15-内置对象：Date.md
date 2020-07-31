@@ -280,44 +280,45 @@ console.log(Date.now()); // 打印结果举例：1589448165370
 ```html
 <!DOCTYPE html>
 <html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-    <style>
-        div {
-            width: 800px;
-            margin: 200px auto;
-            color: red;
-            text-align: center;
-            font: 600 30px/30px "simsun";
-        }
-    </style>
-</head>
-<body>
-    <div></div>
+    <head lang="en">
+        <meta charset="UTF-8" />
+        <title></title>
+        <style>
+            div {
+                width: 800px;
+                margin: 200px auto;
+                color: red;
+                text-align: center;
+                font: 600 30px/30px 'simsun';
+            }
+        </style>
+    </head>
+    <body>
+        <div></div>
 
-    <script>
-        //模拟日历
-        //需求：每天打开这个页面都能定时显示年月日和星期几
+        <script>
+            //模拟日历
+            //需求：每天打开这个页面都能定时显示年月日和星期几
+            function getCurrentDate() {
+                //1.创建一个当前日期的日期对象
+                const date = new Date();
+                //2.然后获取其中的年、月、日和星期
+                const year = date.getFullYear();
+                const month = date.getMonth();
+                const hao = date.getDate();
+                const week = date.getDay();
+                //        console.log(year+" "+month+" "+hao+" "+week);
+                //3.赋值给div
+                const arr = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+                const div = document.getElementsByTagName('div')[0];
+                return '今天是：' + year + '年' + (month + 1) + '月' + hao + '日 ' + arr[week];
+            }
 
-        //1.创建一个当前日期的日期对象
-        var date = new Date();
-        //2.然后获取其中的年、月、日和星期
-        var year = date.getFullYear();
-        var month = date.getMonth();
-        var hao = date.getDate();
-        var week = date.getDay();
-//        console.log(year+" "+month+" "+hao+" "+week);
-        //3.赋值给div
-        var arr = ["星期日","星期一","星期二","星期三","星期四","星期五","星期六"];
-        var div = document.getElementsByTagName("div")[0];
-        div.innerText = "今天是："+year+"年"+(month+1)+"月"+hao+"日 "+arr[week];
-
-    </script>
-
-</body>
+            const div = document.getElementsByTagName('div')[0];
+            div.innerText = getCurrentDate();
+        </script>
+    </body>
 </html>
-
 ```
 
 实现效果：

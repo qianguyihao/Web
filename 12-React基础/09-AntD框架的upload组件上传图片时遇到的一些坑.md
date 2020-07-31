@@ -605,6 +605,10 @@ export default {
 
 大功告成。本文感谢 ld 同学的支持。
 
+更多内容，可以看本人的另外一篇文章：
+
+- [AntD框架的upload组件上传图片时使用customRequest方法自定义上传行为](https://www.cnblogs.com/qianguyihao/p/13093592.html)
+
 ## 其他问题
 
 - [beforeUpload返回false后，文件仍然为上传中的状态](https://github.com/ant-design/ant-design/issues/8779)
@@ -613,6 +617,5 @@ export default {
 
 有人说，前端开发，连卖菜的都会。可如果真的遇到技术难题，还是得找个靠谱的前端同学才行。这不，来看看前端码农日常：
 
-![](http://img.smyhvae.com/20190302_1339.png)
-
+![](http://img.smyhvae.com/20190302_1339_2.png)
 
