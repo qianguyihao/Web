@@ -340,17 +340,17 @@ export default class PicturesWall extends PureComponent {
 
 Demo在线演示：
 
-- <https://stackoverflow.com/questions/58128062/using-customrequest-in-ant-design-file-upload>
+- https://stackoverflow.com/questions/58128062/using-customrequest-in-ant-design-file-upload
 
 - <https://stackblitz.com/edit/so-58128062-upload-progress>
 
 fileList 格式在线演示：
 
-- <https://stackoverflow.com/questions/51514757/action-function-is-required-with-antd-upload-control-but-i-dont-need-it>
+- https://stackoverflow.com/questions/51514757/action-function-is-required-with-antd-upload-control-but-i-dont-need-it
 
-- <https://codesandbox.io/s/rl7ooo544q>
+- https://codesandbox.io/s/rl7ooo544q
 
 ant design Upload组件的使用总结：https://www.jianshu.com/p/0aa4612af987
 
-antd上传功能的CustomRequest：<https://mlog.club/article/3832743>
+antd上传功能的CustomRequest：https://mlog.club/article/3832743
 
