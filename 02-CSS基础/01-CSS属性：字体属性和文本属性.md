@@ -82,9 +82,13 @@ CSS中，所有的行，都有行高。盒子模型的padding，绝对不是直�
 ### `vertical-align: middle;` 属性
 
 ```css
-vertical-align: middle; /*指定行内元素（inline）或表格单元格（table-cell）元素的垂直对齐方式。*/
+vertical-align: middle; /*指定行级元素的垂直对齐方式。*/
 
 ```
+
+注意，这里的**行级元素**包括：行内元素（inline）、表格单元格（table-cell），还有 inline-block 元素。
+
+关于这一点，连 MDN 上都没我讲得详细。MDN上的原话是 “vertical-align 用来指定行内元素（inline）或表格单元格（table-cell）元素的垂直对齐方式。” MDN上的这种描述是不完整的。
 
 ### 字号、行高、字体三大属性
 
