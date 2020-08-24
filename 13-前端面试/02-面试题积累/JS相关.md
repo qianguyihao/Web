@@ -158,7 +158,7 @@ then：
         //开始执行异步操作（这里开始，写异步的代码，比如ajax请求 or 开启定时器）
         if (异步的ajax请求成功) {
             console.log('333');
-            resolve();//如果请求成功了，请写resolve()，此时，promise的状态会被自动修改为fullfilled
+            resolve();//如果请求成功了，请写resolve()，此时，promise的状态会被自动修改为fulfilled
         } else {
             reject();//如果请求失败了，请写reject()，此时，promise的状态会被自动修改为rejected
         }
@@ -167,7 +167,7 @@ then：
 
     //调用promise的then()
     promise.then(() => {
-            //如果promise的状态为fullfilled，则执行这里的代码
+            //如果promise的状态为fulfilled，则执行这里的代码
             console.log('成功了');
         }
         , () => {

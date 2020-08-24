@@ -169,19 +169,19 @@ request1().then((res1) => {
 
 - 初始化状态（等待状态）：pending
 
-- 成功状态：fullfilled
+- 成功状态：fulfilled
 
 - 失败状态：rejected
 
 （1）当 new Promise()执行之后，promise 对象的状态会被初始化为`pending`，这个状态是初始化状态。`new Promise()`这行代码，括号里的内容是同步执行的。括号里定义一个 function，function 有两个参数：resolve 和 reject。如下：
 
-- 如果请求成功了，则执行 resolve()，此时，promise 的状态会被自动修改为 fullfilled。
+- 如果请求成功了，则执行 resolve()，此时，promise 的状态会被自动修改为 fulfilled。
 
 - 如果请求失败了，则执行 reject()，此时，promise 的状态会被自动修改为 rejected
 
 （2）promise.then()方法，括号里面有两个参数，分别代表两个函数 function1 和 function2：
 
-- 如果 promise 的状态为 fullfilled（意思是：如果请求成功），则执行 function1 里的内容
+- 如果 promise 的状态为 fulfilled（意思是：如果请求成功），则执行 function1 里的内容
 
 - 如果 promise 的状态为 rejected（意思是，如果请求失败），则执行 function2 里的内容
 
@@ -196,7 +196,7 @@ let promise = new Promise((resolve, reject) => {
   //开始执行异步操作（这里开始，写异步的代码，比如ajax请求 or 开启定时器）
   if (异步的ajax请求成功) {
     console.log('333');
-    resolve('haha'); //如果请求成功了，请写resolve()，此时，promise的状态会被自动修改为fullfilled
+    resolve('haha'); //如果请求成功了，请写resolve()，此时，promise的状态会被自动修改为fulfilled
   } else {
     reject('555'); //如果请求失败了，请写reject()，此时，promise的状态会被自动修改为rejected
   }
@@ -206,7 +206,7 @@ console.log('222');
 //调用promise的then()
 promise.then(
   (successMsg) => {
-    //如果promise的状态为fullfilled，则执行这里的代码
+    //如果promise的状态为fulfilled，则执行这里的代码
     console.log(successMsg, '成功了');
   },
   (errorMsg) => {

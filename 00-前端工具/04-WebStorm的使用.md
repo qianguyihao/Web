@@ -5,7 +5,7 @@
 
 #### 1、主题修改：
 
-可能大家会觉得软件的界面不太好看，我们可以换一下主题。选择菜单栏“File--settings--apperance--theme”，主题选择Darcula：
+可能大家会觉得软件的界面不太好看，我们可以换一下主题。选择菜单栏“File--settings--appearance--theme”，主题选择 Dracula：
 
 ![](http://img.smyhvae.com/20180118_1600.png)
 
