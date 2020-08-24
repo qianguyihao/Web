@@ -247,12 +247,13 @@ div.style.left = "100px";
         setInterval(function () {
             console.log(parseInt(div.style.left));
             //动画原理： 盒子未来的位置 = 盒子现在的位置 + 步长；
-            //用style.left赋值，用offsetLeft获取值。
-            div.style.left = div.offsetLeft + 100 + "px";
-            //div.style.left = parseInt(div.style.left)+10+"px";  //NaN不能用
+            //方法1：用offsetLeft获取值，用style.left赋值。
+            div.style.left = div.offsetLeft + 100 + 'px';
 
+            // 方法2：必须一开始就在DOM节点上添加 style="left: 0px;"属性，才能用方法2。否则， div.style.left 的值为 NaN
+            // div.style.left = parseInt(div.style.left)+100+"px";  //方法2：
         }, 500);
-    }
+    };
 </script>
 </body>
 </html>
