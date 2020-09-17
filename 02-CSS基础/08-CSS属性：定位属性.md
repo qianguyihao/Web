@@ -313,7 +313,7 @@ p将无视父亲的padding，在border内侧为参考点，进行定位：
 		<div class="image">
 			<img src="http://img.smyhvae.com/20180116_1116.jpg" alt="">
 		</div>
-		<h4>广东深圳宝安区建安一路海雅缤纷城4楼</h3>
+		<h4>广东深圳宝安区建安一路海雅缤纷城4楼</h4>
 	</div>
 </body>
 </html>
