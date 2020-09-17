@@ -46,6 +46,7 @@ Node.js学习：<https://blog.poetries.top/node-learning-notes/>
 ## 其他
 
 - 单元测试：<https://github.com/goldbergyoni/javascript-testing-best-practices>
+- 前后端部署工具：<https://github.com/TencentCloudBase/cloudbase-framework>
 
 ## 前端面试
 
