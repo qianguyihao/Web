@@ -196,8 +196,6 @@ nvm install 8.10.0
 查看当前使用的 nvm 版本：
 
 ```bash
-nvm -v
-
 nvm --version
 ```
 
