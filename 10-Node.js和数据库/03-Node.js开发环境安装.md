@@ -230,6 +230,13 @@ nvm uninstall 版本号
 nvm use 版本号
 ```
 
+**设置node的默认版本**：
+
+```bash
+nvm alias default 版本号
+```
+
+
 查看远程服务器端的所有 Node 版本：
 
 ```bash
