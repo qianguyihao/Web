@@ -86,7 +86,7 @@
 <div class="box" draggable="true"></div>
 
 <script>
-    var box = document.querySelector('.box');
+    var box = document.querySelector('.box1');
 
     //  绑定拖拽事件
 
