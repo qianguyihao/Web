@@ -19,7 +19,7 @@
 
 ## 项目指引
 
-由于 GitHub 是国外的网站，访问较慢，如果你发现文中的部分图片加载不出来，不妨[先看这里](https://github.com/qianguyihao/Web/issues/20#issue-390074432)。
+由于 GitHub 是国外的网站，如果你发现网站访问较慢，或者文中的部分图片加载不出来，不妨[先看这里](https://github.com/qianguyihao/Web/issues/20#issue-390074432)。
 
 如果你发现本项目有内容上的错误，欢迎提交 issues 进行指正。
 

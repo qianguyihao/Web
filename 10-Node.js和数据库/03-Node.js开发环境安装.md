@@ -237,6 +237,13 @@ nvm alias default 版本号
 ```
 
 
+**查看全局npm包的安装路径**：
+
+```
+npm root -g
+```
+
+
 查看远程服务器端的所有 Node 版本：
 
 ```bash
