@@ -27,7 +27,7 @@
 
 ### SublimeCodeIntel：JavaScript代码自动提示（不好用）
 
-安装完成后，通过路径Perferences->Package Settings->SublimeCodeIntel->Setting - Defalut打开配置文件。
+安装完成后，通过路径Preferences->Package Settings->SublimeCodeIntel->Setting - Default打开配置文件。
 
 将
 
@@ -112,21 +112,21 @@
 
 ## sublime text 快捷键
 
-| Win快捷键 | Mac快捷键 |作用 | 备注 |
-|:-------------|:-------------|:-----|:-----|
-|html:5+tab||html结构代码||
-|tab||补全标签代码||
-|tab|补全标签代码| |比如，在html文件中输入`div`，然后	按住tab键后，会自动生成`<div></div>`。||
-|  **Ctrl + Shift + D** | Cmd + Shift + D|复制当前行到下一行  |   |
-|  Ctrl+Shift+K ||  快速删除整行 |   |
-|Ctrl+鼠标左键单击||集体输入||
-|Ctrl+H|Option+Cmd+F|查找替换|||
-| Ctrl+/  ||  注释单行 |   |
-| Ctrl+Shift+/  || 注释多行  |   |
-|Ctrl+L| | 快速选中整行，继续操作则继续选择下一行，效果和 `Shift + ↓` 效果一样| |
-|**Ctrl+Shift+L**| | 先选中多行，再按下快捷键，会在每行行尾插入光标，即可同时编辑这些行| 经常与上一个快捷键结合起来使用 |
-|**Ctrl + Shift +【↑/↓**| Ctrl + Cmd +↑/↓ | 移动当前行 | |
-|F11||全屏||
+| Win快捷键               | Mac快捷键       | 作用                                                                | 备注                                                                     |
+| :---------------------- | :-------------- | :------------------------------------------------------------------ | :----------------------------------------------------------------------- |
+| html:5+tab              |                 | html结构代码                                                        |                                                                          |
+| tab                     |                 | 补全标签代码                                                        |                                                                          |
+| tab                     | 补全标签代码    |                                                                     | 比如，在html文件中输入`div`，然后	按住tab键后，会自动生成`<div></div>`。 |  |
+| **Ctrl + Shift + D**    | Cmd + Shift + D | 复制当前行到下一行                                                  |                                                                          |
+| Ctrl+Shift+K            |                 | 快速删除整行                                                        |                                                                          |
+| Ctrl+鼠标左键单击       |                 | 集体输入                                                            |                                                                          |
+| Ctrl+H                  | Option+Cmd+F    | 查找替换                                                            |                                                                          |  |
+| Ctrl+/                  |                 | 注释单行                                                            |                                                                          |
+| Ctrl+Shift+/            |                 | 注释多行                                                            |                                                                          |
+| Ctrl+L                  |                 | 快速选中整行，继续操作则继续选择下一行，效果和 `Shift + ↓` 效果一样 |                                                                          |
+| **Ctrl+Shift+L**        |                 | 先选中多行，再按下快捷键，会在每行行尾插入光标，即可同时编辑这些行  | 经常与上一个快捷键结合起来使用                                           |
+| **Ctrl + Shift +【↑/↓** | Ctrl + Cmd +↑/↓ | 移动当前行                                                          |                                                                          |
+| F11                     |                 | 全屏                                                                |                                                                          |
 
 
 
