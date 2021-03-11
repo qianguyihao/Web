@@ -96,7 +96,6 @@ proxy
 
 （4）输入 `node -v`，查看正在使用的 node 版本。
 
--   **参考链接**：[安装 npm，nvm，node](https://segmentfault.com/a/1190000011114680)
 
 如果 Node 安装失败，可以参考上面这个链接。
 
@@ -112,6 +111,18 @@ nvm install 8.10.0
 输入 `node -v`，查看当前使用的 node 版本。
 
 关于 NVM 的常用命令，详见下一段。
+
+补充：
+
+如果 Node 安装失败，可以在上方的 `settings.txt`文件中，新增如下两行，修改镜像源：
+
+```
+node_mirror: https://npm.taobao.org/mirrors/node/
+npm_mirror: https://npm.taobao.org/mirrors/npm/
+```
+
+- 参考链接：[安装 npm，nvm，node](https://segmentfault.com/a/1190000011114680)
+
 
 ### Mac 系统安装 Node.js
 
