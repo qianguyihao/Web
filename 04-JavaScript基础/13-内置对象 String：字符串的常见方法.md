@@ -154,8 +154,10 @@ console.log('a 出现的次数是: ' + num);
 const name = 'qianguyihao';
 
 console.log(name.search('yi')); // 打印结果：6
-console.log(name.search(/\yi/i)); // 打印结果：6
+console.log(name.search(/yi/i)); // 打印结果：6
 ```
+
+备注：上方的`/yi/i`采用的是正则表达式的写法，意思是，让 name去匹配字符`yi`，忽略大小写。
 
 
 ### 3、includes()：字符串中是否包含指定的内容
