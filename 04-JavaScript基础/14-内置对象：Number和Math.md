@@ -31,13 +31,13 @@ let num = 3.456;
 let num2 = num.toFixed(2);
 
 console.log(num); // 打印结果：3.456
-console.log(num2); // 打印结果：3.47
+console.log(num2); // 打印结果：3.46
 
 console.log(typeof num); // number
 console.log(typeof num2); // string
 ```
 
-上方代码中，`num2`的结果是0.12，但是请注意，`num`的类型Number型，而`num`的类型却是String型。
+上方代码中，`num2`的结果是3.46，但是请注意，`num`的类型Number型，而`num2`的类型却是String型。
 
 
 ## 内置对象 Math 的常见方法

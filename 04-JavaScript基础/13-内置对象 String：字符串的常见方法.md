@@ -216,7 +216,7 @@ console.log(name.startsWith('c',3)); // 打印结果：false
 **语法**：
 
 ```js
-布尔值 = str.endsWith(想要查找的内容, [position]);z
+布尔值 = str.endsWith(想要查找的内容, [position]);
 ```
 
 **解释**：判断一个字符串是否以指定的子字符串结尾。如果是，则返回 true；否则返回 false。
@@ -357,7 +357,7 @@ for (var i = 0; i < str.length; i++) {
 新字符串 = str.slice(开始索引, 结束索引); //两个参数都是索引值。包左不包右。
 ```
 
-解释：从字符串中截取指定的内容。不会修改原字符串，而是将及截取到的内容返回。
+解释：从字符串中截取指定的内容。不会修改原字符串，而是将截取到的内容返回。
 
 注意：上面的参数，包左不包右。参数举例如下：
 
@@ -395,7 +395,7 @@ for (var i = 0; i < str.length; i++) {
 字符串 = str.substr(开始索引, 截取的长度);
 ```
 
-解释：从字符串中截取指定的内容。不会修改原字符串，而是将及截取到的内容返回。
+解释：从字符串中截取指定的内容。不会修改原字符串，而是将截取到的内容返回。
 
 注意，这个方法的第二个参数**截取的长度**，不是结束索引。
 
@@ -621,11 +621,11 @@ console.log(str.bold());
 代码实现：
 
 ```javascript
-var str2 = 'abcoefoxyozzopp';
+var str2 = 'smyhvaevaesmyh';
 for (var i = 0; i < str2.length; i++) {
     //如果指定位置的符号=== "o"
     //str2[i]
-    if (str2.charAt(i) === 'o') {
+    if (str2.charAt(i) === 'm') {
         console.log(i);
     }
 }
