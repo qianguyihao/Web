@@ -2,9 +2,9 @@
 前端入门到进阶图文教程，超详细的 Web 前端学习笔记。从零开始学前端，做一名精致优雅的前端工程师。
 ## 项目地址
 
-- GitHub地址：<https://github.com/qianguyihao/Web>
+- GitHub地址（最完整）：<https://github.com/qianguyihao/Web>
 
-- 语雀地址：<https://www.yuque.com/qianguyihao/web>
+- 语雀地址（陆续更新中）：<https://www.yuque.com/qianguyihao/web>
 
 如果你发现本项目有内容上的错误，欢迎在 GitHub 提交 issues 进行指正，**方便归档**。如果你的网络较慢，也可以在语雀上留言。
 
