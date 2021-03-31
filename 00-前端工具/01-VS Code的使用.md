@@ -946,11 +946,11 @@ CSS Peek 对 Vue 没有支持，该插件提供了对 Vue 文件的支持。
 
 - Ayu
 
-* [Snazzy Plus](https://marketplace.visualstudio.com/items?itemName=akarlsten.vscode-snazzy-akarlsten)
+- [Snazzy Plus](https://marketplace.visualstudio.com/items?itemName=akarlsten.vscode-snazzy-akarlsten)
 
-* [Dainty](https://marketplace.visualstudio.com/items?itemName=alexanderte.dainty-vscode)
+- [Dainty](https://marketplace.visualstudio.com/items?itemName=alexanderte.dainty-vscode)
 
-* `SynthWave '84`
+- `SynthWave '84`
 
 - GitHub Plus Theme：白色主题
 
@@ -996,12 +996,10 @@ CSS Peek 对 Vue 没有支持，该插件提供了对 Vue 文件的支持。
 
 - [Mac Vscode 快捷键](https://lsqy.tech/2020/03/14/20200314Mac-Vscode%E5%BF%AB%E6%8D%B7%E9%94%AE/)
 
-* [使用 VSCode 的一些技巧](https://mp.weixin.qq.com/s?src=11&timestamp=1591581536&ver=2387&signature=i4xLZlLe1Gkl7OiBIhPO*VSeNB5lzFgTY-dgNW9E9ZbtIAv4bnJ1RdAAZdhvDw*cg-DmMcUa-V8NSUdV-tthmXZCq3ht4edCweq6v0QxKjnh8IuAxyyh5qymdRui*8iE&new=1)
+- [使用 VSCode 的一些技巧](https://mp.weixin.qq.com/s?src=11&timestamp=1591581536&ver=2387&signature=i4xLZlLe1Gkl7OiBIhPO*VSeNB5lzFgTY-dgNW9E9ZbtIAv4bnJ1RdAAZdhvDw*cg-DmMcUa-V8NSUdV-tthmXZCq3ht4edCweq6v0QxKjnh8IuAxyyh5qymdRui*8iE&new=1)
 
-## 我的公众号
+---
 
-想学习<font color=#0000ff>**代码之外的技能**</font>？不妨关注我的微信公众号：**千古壹号**。
+本作品采用[知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议](https://creativecommons.org/licenses/by-nc-sa/4.0/)进行许可。
 
-扫一扫，你将发现另一个全新的世界，而这将是一场美丽的意外：
-
-![](http://img.smyhvae.com/20190101.png)
+![](https://img.smyhvae.com/20210329_1930.png)
