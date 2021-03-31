@@ -26,6 +26,12 @@
 
 由于 GitHub 是国外的网站，如果你发现网站访问较慢，或者文中的部分图片加载不出来，不妨[先看这里](https://github.com/qianguyihao/Web/issues/20#issue-390074432)。
 
+## LICENSE
+
+![](http://img.smyhvae.com/20210331_CC-BY-NC-SA.png)
+
+本作品采用[知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议](https://creativecommons.org/licenses/by-nc-sa/4.0/)进行许可。
+
 ## 学习交流
 
 我建了一个“前端学习”的微信交流群，在下方公众号里回复「前端学习」，拉你进群：
@@ -37,6 +43,4 @@
 如果你还想学习**更多技能**，不妨关注我的微信公众号：**千古壹号**。
 
 ![](https://img.smyhvae.com/20200101.png)
-
-
 
