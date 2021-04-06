@@ -71,3 +71,10 @@ CSS 相当于人的衣服和打扮：
 JS 相当于人的行为：
 
 ![](http://img.smyhvae.com/20200322_2220.gif)
+
+
+---
+
+本作品采用[知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议](https://creativecommons.org/licenses/by-nc-sa/4.0/)进行许可。
+
+![](https://img.smyhvae.com/20210329_1930.png)
