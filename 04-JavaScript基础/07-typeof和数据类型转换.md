@@ -344,17 +344,20 @@ parseFloat() 的几个特性，可以参照 parseInt()。
 
 - 情况三：null 和 undefined 都会转换为 false。
 
-- 情况四：引用数据类型会转换为 true。注意，空数组`[]`和空对象`{}`，**转换结果也是 true**，这个一点，很多人都不知道。
+- 情况四：引用数据类型会转换为 true。注意，空数组`[]`和空对象`{}`，**转换结果也是 true**，这一点，很多人都不知道。
 
 
-PS：转换为 Boolean 的这几种情况，**很重要**，开发中会经常用到。
 
 **1、隐式转换为 Boolean 类型**：
 
-当非 Boolean 类型的数值和 Boolean类型的数值做比较时，会先把前者进行隐式转换为 Boolean类型，然后再做比较。举例如下：
+当非 Boolean 类型的数值和 Boolean类型的数值做比较时，会先把前者进行隐式转换为 Boolean类型，然后再做比较；且不会改变前者的数据类型。举例如下：
 
 ```js
-console.log(1 == true); // 打印结果：true
+const a = 1;
+
+console.log(a == true); // 打印结果：true
+console.log(typeof a); // 打印结果：number。可见，上面一行代码里，a 做了隐式类型转换，但是 a 的数据类型并没有发生变化，仍然是 Number 类型
+
 console.log(0 == true); // 打印结果：false
 ```
 
@@ -364,8 +367,27 @@ console.log(0 == true); // 打印结果：false
 
 方法2：使用 Boolean()函数可以显式转换为 Boolean 类型。
 
+**总结**：
 
+转换为 Boolean 的这几种情况，**很重要**，开发中会经常用到。比如说，我们在项目开发中，经常需要对一些**非布尔值**做逻辑判断，符合条件后，才做进一步的事情。下面来看个例子。
 
+举例：（接口返回的内容不为空，前端才做进一步的事情）
+
+```js
+const result1 = '';
+const result2 = {a:'data1', b: 'data2'};
+
+if (result1) {
+    console.log('因为 result1的内容为空，所以代码进不了这里');
+}
+
+if (result2 && result2.a) {
+    // 接口返回了 result2，且 result2.a 里面有值，前端才做进一步的事情
+    console.log('代码能进来，前端继续在这里干活儿');
+}
+```
+
+这里再次强调一下，空数组`[]`和空对象`{}`转换为 Boolean 值时，转换结果为 true。
 
 ## 知识补充：其他进制的数字
 
