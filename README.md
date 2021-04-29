@@ -4,7 +4,7 @@
 
 - GitHub地址（最完整）：<https://github.com/qianguyihao/Web>
 
-如果你发现本项目有内容上的错误，欢迎在 GitHub 提交 issues 进行指正，**方便归档**。如果你的网络较慢，也可以在语雀上留言。
+如果你发现本项目有内容上的错误，欢迎在 GitHub 提交 issues 进行指正，**方便归档**。
 
 由于 GitHub 是国外的网站，如果你发现网站访问较慢，或者文中的部分图片加载不出来，不妨[先看这里](https://github.com/qianguyihao/Web/issues/20#issue-390074432)。
 
@@ -37,4 +37,4 @@
 
 - 群里只做两件事：学习和分享。
 
-![](http://img.smyhvae.com/20210329_1930.png)
+![](https://img.smyhvae.com/20210329_1930.png)
