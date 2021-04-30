@@ -58,6 +58,12 @@ async 后面可以跟一个 Promise 实例对象。代码举例如下：
 暂略。
 
 
+### Promise、async...await、Generator的对比
+
+我们在使用 Promise、async...await、Generator 的时候，返回的都是 Promise 的实例。
+
+如果直接使用 Promise，则需要通过 then 来进行链式调用；如果使用 async...await、Generator，写起来更像同步的代码。
+
 ## 参考链接
 
 - [js async await 终极异步解决方案](https://www.cnblogs.com/CandyManPing/p/9384104.html)
