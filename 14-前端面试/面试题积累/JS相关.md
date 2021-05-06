@@ -2,7 +2,7 @@
 
 ## JS 有哪些数据类型
 
-- 基本数据类型：string number bool undefined null
+- 基本数据类型：string、number、bigint、bool、undefined、null
 
 - 引用数据类型：object、symbol。
 
