@@ -81,7 +81,6 @@ for (var i = 0; i < 10; i++) {
 console.log('循环体外:' + i);
 ```
 
-
 上方代码可以正常打印结果，且最后一行的打印结果是 10。说明**循环体外**定义的变量 i，是**全局作用域**下的 i。
 
 2、用 let 声明变量：
@@ -116,17 +115,17 @@ const name = 'smyhvae'; //定义常量
 
 ### let 和 const 的特点【重要】
 
+-   不属于顶层对象 Window
+
+-   不允许重复声明
+
 -   不存在变量提升
 
--   禁止重复声明
+-   暂时性死区
 
 -   支持块级作用域
 
-- 暂时性死区
-
-
 相反， 用`var`声明的变量：存在变量提升、可以重复声明、**没有块级作用域**。
-
 
 ### var/let/const 的共同点
 
@@ -136,7 +135,7 @@ const name = 'smyhvae'; //定义常量
 
 ### 总结
 
-关于 let、const、var 更详细的介绍和区别，可以看本项目的另一篇文章《JavaScript 进阶/var、let、const 的区别.md》。
+关于 let、const、var 更详细的介绍和区别，可以看本项目的另一篇文章《JavaScript 进阶/var、let、const 的区别》。
 
 ## for 循环举例（经典案例）
 
@@ -239,8 +238,9 @@ i++; // 到这里，i 的值已经是4了。因此，当我们点击按钮时，
 
 上面这个运行结果，才是我们预期的效果。我们用 let 定义变量 i，在循环的过程中，每执行一次循环体，就会诞生一个新的 i。循环体执行 4 次，就会有四个 i。
 
+## 补充知识
 
-## 暂时性死区 DTC
+### 暂时性死区 DTC
 
 ES6 规定：使用 let/const 声明的变量，会使区块形成封闭的作用域。若在声明之前使用变量，就会报错。
 
@@ -261,11 +261,29 @@ function foo() {
 foo(); // 执行函数后，控制台报错：Uncaught ReferenceError: Cannot access 'name' before initialization
 ```
 
+### ES5 中如何定义常量
+
+ES5中有`Object.defineProperty`这样一个api，可以定义常量。这个API中接收三个参数。
+
+代码举例：
+
+```js
+// 定义常量 PI
+Object.defineProperty(window, 'PI', {
+    value: 3.14,
+    writable: false,
+});
+
+console.log(PI); // 打印结果：3.14
+PI = 6; //尝试修改常量
+console.log(PI); //打印结果：3.14，说明修改失败
+```
+
+
+
 ## 参考链接：
 
 -   [阮一峰 | ECMAScript 6 入门](http://es6.ruanyifeng.com/)
-
-
 
 ## 我的公众号
 
