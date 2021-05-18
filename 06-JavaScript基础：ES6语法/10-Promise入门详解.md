@@ -108,6 +108,7 @@ $.ajax({
 在 ES5 中，当进行多层嵌套回调时，会导致代码层次过多，很难进行后续维护和二次开发；而且会导致**回调地狱**的问题。ES6 中的 Promise 就可以解决这两个问题。
 
 当然， Promise 的更强大功能，不止于此。我们来一探究竟。
+
 ### Promise 的介绍和优点
 
 ES6 中的 Promise 是异步编程的一种方案。从语法上讲，Promise 是一个对象，它可以获取异步操作的消息。
@@ -152,7 +153,7 @@ myPromise()
 
 （3）通过 promise.then() 处理返回结果（这里的 `promise` 指的是 Promise 实例）。
 
-Promise的精髓在于**对异步操作的状态管理**。
+Promise 的精髓在于**对异步操作的状态管理**。
 
 接下来，我们来具体看看， promise 的代码是怎么写的。
 
@@ -355,6 +356,28 @@ promise.then(
 );
 ```
 
+**几点补充**：
+
+（1）Promise 的状态一旦改变，就不能再变。
+
+（2）Promise 的状态改变，是不可逆的。
+
+为了解释这两点，我们来看个例子：
+
+```js
+const p = new Promise((resolve, reject) => {
+    resolve(1); // 代码执行到这里时， promise状态是 fulfilled
+    reject(2); // 尝试修改状态为 rejected，是不行的
+});
+
+p.then((res) => {
+    console.log(res);
+}).catch((err) => {
+    console.log(err);
+```
+
+上方代码的打印结果是1，而不是2。
+
 ## 如何封装异步操作为 promise
 
 ### Promise 封装异步任务
@@ -478,10 +501,10 @@ const request = require('request');
 // Promise 定义接口
 function request1() {
     return new Promise((resolve, reject) => {
-        request('https://www.baidu.com', (response) => {
-            if (response.retCode == 200) {
-                // 这里的 response 是接口1的返回结果
-                resolve('request1 success' + response);
+        request('https://www.baidu.com', res => {
+            if (res.retCode == 200) {
+                // 这里的 res 是接口1的返回结果
+                resolve('request1 success' + res);
             } else {
                 reject('接口请求失败');
             }
@@ -490,10 +513,10 @@ function request1() {
 }
 
 request1()
-    .then((res1) => {
+    .then((res) => {
         // 接口1请求成功后，打印接口1的返回结果
-        console.log(res1);
-        return request2();
+        console.log(res);
+        // return request2();
     })
     .catch((e) => {
         // 从 reject 获取异常结果

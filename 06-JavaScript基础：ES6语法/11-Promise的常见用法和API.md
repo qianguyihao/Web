@@ -25,10 +25,10 @@
             // Promise 封装接口1
             const request1 = function () {
                 const promise = new Promise((resolve, reject) => {
-                    request('https://www.baidu.com', function (response) {
-                        if (response.retCode == 200) {
-                            // 这里的 response 是接口1的返回结果
-                            resolve('request1 success' + response);
+                    request('https://www.baidu.com', res => {
+                        if (res.retCode == 200) {
+                            // 这里的 res 是接口1的返回结果
+                            resolve('request1 success' + res);
                         } else {
                             reject('接口请求失败');
                         }
@@ -41,10 +41,10 @@
             // Promise 封装接口2
             const request2 = function () {
                 const promise = new Promise((resolve, reject) => {
-                    request('https://www.jd.com', function (response) {
-                        if (response.retCode == 200) {
-                            // 这里的 response 是接口2的返回结果
-                            resolve('request2 success' + response);
+                    request('https://www.jd.com', res => {
+                        if (res.retCode == 200) {
+                            // 这里的 res 是接口2的返回结果
+                            resolve('request2 success' + res);
                         } else {
                             reject('接口请求失败');
                         }
@@ -57,10 +57,10 @@
             // Promise 封装接口3
             const request3 = function () {
                 const promise = new Promise((resolve, reject) => {
-                    request('https://www.taobao.com', function (response) {
-                        if (response.retCode == 200) {
-                            // 这里的 response 是接口3的返回结果
-                            resolve('request3 success' + response);
+                    request('https://www.taobao.com', res => {
+                        if (res.retCode == 200) {
+                            // 这里的 res 是接口3的返回结果
+                            resolve('request3 success' + res);
                         } else {
                             reject('接口请求失败');
                         }
