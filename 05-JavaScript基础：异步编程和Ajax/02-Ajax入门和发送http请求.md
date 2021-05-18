@@ -1,6 +1,6 @@
 
 
-## 同步和异步
+## 同步和异步回顾
 
 ### 同步和异步的简单理解
 
@@ -23,9 +23,9 @@
 
 试想一下，如果没有异步刷新的话，每次点击“加载更多”，网页都要重新刷新，体验就太糟糕了。
 
-web前端里的异步更新，就要用到 Ajax。
+web前端里的异步更新，就要用到 Ajax。很多人说，如果没有 Ajax，就没有互联网的今天。
 
-关于同步和异步的更详细介绍，可以参考本项目的另外一篇文章：《JavaScript基础：ES6语法/单线程和异步》
+关于同步和异步的更详细介绍，可以参考本项目的另外一篇文章：《05-JavaScript基础：异步编程和Ajax/01-单线程和异步》
 
 
 
@@ -33,12 +33,11 @@ web前端里的异步更新，就要用到 Ajax。
 
 ### Ajax 的概念
 
-在浏览器中，我们可以在不刷新页面的情况下，通过ajax的方式去获取一些新的内容。
+在浏览器中，我们可以在不刷新页面的情况下，通过 Ajax 的方式去获取一些新的内容。
 
 Ajax：Asynchronous Javascript And XML（异步 JavaScript 和 XML）。它并不是凭空出现的新技术，而是对于现有技术的结合。Ajax 的核心是 js 对象：**XMLHttpRequest**。
 
-
-### 发送 Ajax 请求的五个步骤
+### Ajax原理（发送 Ajax 请求的五个步骤）
 
 > 其实也就是 使用 XMLHttpRequest 对象的五个步骤。
 
@@ -54,11 +53,11 @@ Ajax：Asynchronous Javascript And XML（异步 JavaScript 和 XML）。它并�
 
 （1）创建异步对象，即 XMLHttpRequest 对象。
 
-（2）使用open方法设置请求的参数。`open(method, url, async)`。参数解释：请求的方法、请求的url、是否异步。
+（2）使用open方法设置请求参数。`open(method, url, async)`。参数解释：请求的方法、请求的url、是否异步。
 
-（3）发送请求。
+（3）发送请求：`send()`。
 
-（4）注册事件。 注册onreadystatechange事件，状态改变时就会调用。
+（4）注册事件：注册onreadystatechange事件，状态改变时就会调用。
 
 如果要在数据完整请求回来的时候才调用，我们需要手动写一些判断的逻辑。
 
@@ -84,29 +83,29 @@ Ajax：Asynchronous Javascript And XML（异步 JavaScript 和 XML）。它并�
     document.querySelector('#btnAjax').onclick = function () {
         // 发送ajax 请求 需要 五步
 
-        // （1）创建异步对象
-        var ajaxObj = new XMLHttpRequest();
+        // （1）创建XMLHttpRequest对象
+        var xmlhttp = new XMLHttpRequest();
 
         // （2）设置请求的参数。包括：请求的方法、请求的url。
-        ajaxObj.open('get', '02-ajax.php');
+        xmlhttp.open('get', '02-ajax.php');
 
         // （3）发送请求
-        ajaxObj.send();
+        xmlhttp.send();
 
         //（4）注册事件。 onreadystatechange事件，状态改变时就会调用。
         //如果要在数据完整请求回来的时候才调用，我们需要手动写一些判断的逻辑。
-        ajaxObj.onreadystatechange = function () {
+        xmlhttp.onreadystatechange = function () {
             // 为了保证 数据 完整返回，我们一般会判断 两个值
-            if (ajaxObj.readyState == 4 && ajaxObj.status == 200) {
-                // 如果能够进到这个判断 说明 数据 完美的回来了,并且请求的页面是存在的
-                // 5.在注册的事件中 获取 返回的 内容 并修改页面的显示
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                // 如果能够进入这个判断，说明数据请求成功了
+                // （5）在注册的事件中，获取返回的内容，并显示在页面上
                 console.log('数据返回成功');
-
+              
                 // 数据是保存在 异步对象的 属性中
-                console.log(ajaxObj.responseText);
+                console.log(xmlhttp.responseText);
 
-                // 修改页面的显示
-                document.querySelector('h1').innerHTML = ajaxObj.responseText;
+                // 显示在页面上
+                document.querySelector('h1').innerHTML = xmlhttp.responseText;
             }
         }
     }
