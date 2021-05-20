@@ -155,9 +155,256 @@ myPromise()
 
 Promise 的精髓在于**对异步操作的状态管理**。
 
-接下来，我们来具体看看， promise 的代码是怎么写的。
+### promise 对象的 3 个状态
 
-### Promise 处理异步任务的过程
+-   初始化（等待中）：pending
+
+-   成功：fulfilled
+
+-   失败：rejected
+
+（1）当 new Promise()执行之后，promise 对象的状态会被初始化为`pending`，这个状态是初始化状态。`new Promise()`这行代码，括号里的内容是同步执行的。括号里定义一个 function，function 有两个参数：resolve 和 reject。如下：
+
+-   如果请求成功了，则执行 resolve()，此时，promise 的状态会被自动修改为 fulfilled。
+
+-   如果请求失败了，则执行 reject()，此时，promise 的状态会被自动修改为 rejected
+
+（2）promise.then()方法，括号里面有两个参数，分别代表两个函数 function1 和 function2：
+
+-   如果 promise 的状态为 fulfilled（意思是：如果请求成功），则执行 function1 里的内容
+
+-   如果 promise 的状态为 rejected（意思是，如果请求失败），则执行 function2 里的内容
+
+另外，resolve()和 reject()这两个方法，是可以给 promise.then()传递参数的。
+
+关于promise的状态改变，伪代码及注释如下：
+
+```javascript
+let promise = new Promise((resolve, reject) => {
+    //进来之后，状态为pending
+    console.log('111'); //这行代码是同步的
+    //开始执行异步操作（这里开始，写异步的代码，比如ajax请求 or 开启定时器）
+    if (异步的ajax请求成功) {
+        console.log('333');
+        resolve('haha'); //如果请求成功了，请写resolve()，此时，promise的状态会被自动修改为fulfilled
+    } else {
+        reject('555'); //如果请求失败了，请写reject()，此时，promise的状态会被自动修改为rejected
+    }
+});
+console.log('222');
+
+//调用promise的then()
+promise.then(
+    (successMsg) => {
+        //如果promise的状态为fulfilled，则执行这里的代码
+        console.log(successMsg, '成功了');
+    },
+    (errorMsg) => {
+        //如果promise的状态为rejected，则执行这里的代码
+        console.log(errorMsg, '失败了');
+    }
+);
+```
+
+**几点补充**：
+
+（1）Promise 的状态一旦改变，就不能再变。
+
+（2）Promise 的状态改变，是不可逆的。
+
+为了解释这两点，我们来看个例子：
+
+```js
+const p = new Promise((resolve, reject) => {
+    resolve(1); // 代码执行到这里时， promise状态是 fulfilled
+    reject(2); // 尝试修改状态为 rejected，是不行的。因为状态执行到上一行时，已经被改变了。
+});
+
+p.then((res) => {
+    console.log(res);
+}).catch((err) => {
+    console.log(err);
+```
+
+上方代码的打印结果是1，而不是2，详见注释。
+
+### 小结
+
+1、promise 有三种状态：等待中、成功、失败。等待中状态可以更改为成功或失败，已经更改过状态后⽆法继续更改（例如从失败改为成功）。
+
+2、promise 实例中需要传⼊⼀个函数，这个函数接收两个参数，执⾏第⼀个参数之后就会改变当前 promise 为「成功」状态，执⾏第⼆个参数之后就会变为「失败」状态。
+
+3、通过 .then ⽅法，即可在上⼀个 promise 达到成功时继续执⾏下⼀个函数或 promise。同时通过 resolve 或 reject 时传⼊参数，即可给下⼀个函数或 promise 传⼊初始值。
+
+4、失败的 promise，后续可以通过 promise 自带的 .catch ⽅法或是 .then ⽅法的第⼆个参数进⾏捕获。
+
+
+### Promise 规范
+
+Promise 是⼀个拥有 then ⽅法的对象或函数。任何符合 promise 规范的对象或函数都可以成为 Promise。
+
+关于 promise 规范的详细解读，可以看下面这个链接：
+
+-   Promises/A+ 规范：<https://promisesaplus.com/>
+
+了解这些常见概念之后，接下来，我们来具体看看 promise 的代码是怎么写的。
+
+
+
+
+## 如何封装异步操作为 promise
+
+### Promise 封装异步任务
+
+**传统写法**：
+
+写法 1：
+
+```js
+// 定义一个异步的延迟函数：异步函数结束1秒之后，再执行cb回调函数
+function fun1(cb) {
+    setTimeout(function () {
+        console.log('即将执行cb回调函数');
+        cb();
+    }, 1000);
+}
+
+// 先执行异步函数 fun1，再执行回调函数 myCallback
+fun1(myCallback);
+
+// 定义回调函数
+function myCallback() {
+    console.log('我是延迟执行的cb回调函数');
+}
+```
+
+写法 2：（精简版，更常见）
+
+```js
+// 定义一个异步的延迟函数：异步函数结束1秒之后，再执行cb回调函数
+function fun1(cb) {
+    setTimeout(cb, 1000);
+}
+
+// 先执行异步函数fun1，再执行回调函数
+fun1(function () {
+    console.log('我是延迟执行的cb回调函数');
+});
+```
+
+上⾯的例⼦就是最传统的写法，在异步结束后通过传入回调函数的方式执⾏函数。
+
+学习 Promise 之后，我们可以将这个异步函数封装为 Promise，如下。
+
+**Promise 写法**：
+
+```js
+function fun2() {
+    return new Promise((resolve) => {
+        setTimeout(resolve, 1000);
+    });
+}
+
+/* 【重要】上面的 fun2 也可以写成：
+function fun2() {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve();
+        }, 1000);
+    });
+}
+*/
+
+// 先执行异步函数fun1，再执行回调函数
+fun2().then(() => {
+    console.log('我是延迟执行的回调函数');
+});
+```
+
+### Promise 封装 Ajax 请求
+
+// todo 代码简化
+
+**传统写法**：
+
+```js
+// 定义 ajax 请求：传入回调函数 success 和 fail
+function ajax(url, success, fail) {
+    var client = new XMLHttpRequest();
+    client.open('GET', url);
+    client.onreadystatechange = function () {
+        if (this.readyState !== 4) {
+            return;
+        }
+        if (this.status === 200) {
+            success(this.response);
+        } else {
+            fail(new Error(this.statusText));
+        }
+    };
+    client.send();
+}
+
+// 执行 ajax 请求
+ajax(
+    '/ajax.json',
+    function () {
+        console.log('qianguyihao 成功');
+    },
+    function () {
+        console.log('失败');
+    }
+);
+```
+
+上面的传统写法里，定义和执行 ajax 时需要传⼊ success 和 fail 这两个回调函数，进而执行回调函数。
+
+有了 Promise 之后，我们不需要传入回调函数，而是：
+
+-   先将 promise 实例化；
+
+-   然后在原来执行回调函数的地方，改为执行对应的改变 promise 状态的函数；
+
+-   并通过 then ... catch 或者 then ...then 等写法，实现链式调用，提高代码可读性。
+
+和传统写法相比，promise 在写法上的大致区别是：定义异步函数的时候，将 callback 改为 resolve 和 reject，待状态改变之后，我们在外面控制具体执行哪些函数。
+
+**Promise 写法**：
+
+```js
+const request = require('request');
+
+// 第一步：model层的接口封装
+function request1() {
+    return new Promise((resolve, reject) => {
+        request('xxx_a.json', res => {
+          // 这里的 res 是接口的返回结果。返回码 retCode 是动态数据。
+            if (res.retCode == 0) {
+              // 接口请求成功时调用
+                resolve('request1 success' + res);
+            } else {
+              // 接口请求失败时调用
+                reject({ retCode: -1, msg: 'network error' });
+            }
+        });
+    });
+}
+
+// 第二步：业务层的接口调用。这里的 data 就是 从 resolve 和 reject 传过来的，也就是从接口拿到的数据
+request1()
+    .then((res) => {
+        // 从 resolve 获取正常结果：接口请求成功后，打印接口1的返回结果
+        console.log(res);
+        // return request2();
+    })
+    .catch((e) => {
+        // 从 reject 获取异常结果
+        console.log(e);
+    });
+```
+
+
+### Promise 处理异步任务
 
 通过 Promise 处理异步任务的典型写法如下：
 
@@ -285,244 +532,8 @@ try-catch 主要用于捕获异常，注意，这里的异常是指**同步**函
 
 （2）写法 1 中，`promiseA().then().catch()`和`promiseA().catch().then()`区别在于：前者可以捕获到 `then` 里面的异常，后者不可以。
 
-### 小结
 
-1、promise 有三种状态：等待中、成功、失败。等待中状态可以更改为成功或失败，已经更改过状态后⽆法继续更改（例如从失败改为成功）。
 
-2、promise 实例中需要传⼊⼀个函数，他接受两个函数参数，执⾏第⼀个参数之后就会改变当前 promise 为「成功」状态，执⾏第⼆个参数之后就会变为「失败」状态。
-
-3、通过 .then ⽅法，即可在上⼀个 promise 达到成功时继续执⾏下⼀个函数或 promise。同时通过 resolve 或 reject 时传⼊参数，即可给下⼀个函数或 promise 传⼊初始值。
-
-4、失败的 promise，后续可以通过 promise 自带的 .catch ⽅法或是 .then ⽅法的第⼆个参数进⾏捕获。
-
-## Promise 规范
-
-### Promise 规范解读
-
-Promise 是⼀个拥有 then ⽅法的对象或函数。任何符合 promise 规范的对象或函数都可以成为 Promise。
-
-关于 promise 规范的详细解读，可以看下面这个链接：
-
--   Promises/A+ 规范：<https://promisesaplus.com/>
-
-## promise 对象的 3 个状态
-
--   初始化（等待中）：pending
-
--   成功：fulfilled
-
--   失败：rejected
-
-（1）当 new Promise()执行之后，promise 对象的状态会被初始化为`pending`，这个状态是初始化状态。`new Promise()`这行代码，括号里的内容是同步执行的。括号里定义一个 function，function 有两个参数：resolve 和 reject。如下：
-
--   如果请求成功了，则执行 resolve()，此时，promise 的状态会被自动修改为 fulfilled。
-
--   如果请求失败了，则执行 reject()，此时，promise 的状态会被自动修改为 rejected
-
-（2）promise.then()方法，括号里面有两个参数，分别代表两个函数 function1 和 function2：
-
--   如果 promise 的状态为 fulfilled（意思是：如果请求成功），则执行 function1 里的内容
-
--   如果 promise 的状态为 rejected（意思是，如果请求失败），则执行 function2 里的内容
-
-另外，resolve()和 reject()这两个方法，是可以给 promise.then()传递参数的。
-
-完整代码举例如下：
-
-```javascript
-let promise = new Promise((resolve, reject) => {
-    //进来之后，状态为pending
-    console.log('111'); //这行代码是同步的
-    //开始执行异步操作（这里开始，写异步的代码，比如ajax请求 or 开启定时器）
-    if (异步的ajax请求成功) {
-        console.log('333');
-        resolve('haha'); //如果请求成功了，请写resolve()，此时，promise的状态会被自动修改为fulfilled
-    } else {
-        reject('555'); //如果请求失败了，请写reject()，此时，promise的状态会被自动修改为rejected
-    }
-});
-console.log('222');
-
-//调用promise的then()
-promise.then(
-    (successMsg) => {
-        //如果promise的状态为fulfilled，则执行这里的代码
-        console.log(successMsg, '成功了');
-    },
-    (errorMsg) => {
-        //如果promise的状态为rejected，则执行这里的代码
-        console.log(errorMsg, '失败了');
-    }
-);
-```
-
-**几点补充**：
-
-（1）Promise 的状态一旦改变，就不能再变。
-
-（2）Promise 的状态改变，是不可逆的。
-
-为了解释这两点，我们来看个例子：
-
-```js
-const p = new Promise((resolve, reject) => {
-    resolve(1); // 代码执行到这里时， promise状态是 fulfilled
-    reject(2); // 尝试修改状态为 rejected，是不行的
-});
-
-p.then((res) => {
-    console.log(res);
-}).catch((err) => {
-    console.log(err);
-```
-
-上方代码的打印结果是1，而不是2。
-
-## 如何封装异步操作为 promise
-
-### Promise 封装异步任务
-
-**传统写法**：
-
-写法 1：
-
-```js
-// 定义一个异步的延迟函数：异步函数结束1秒之后，再执行cb回调函数
-function fun1(cb) {
-    setTimeout(function () {
-        console.log('即将执行cb回调函数');
-        cb();
-    }, 1000);
-}
-
-// 先执行异步函数 fun1，再执行回调函数 myCallback
-fun1(myCallback);
-
-// 定义回调函数
-function myCallback() {
-    console.log('我是延迟执行的cb回调函数');
-}
-```
-
-写法 2：（精简版，更常见）
-
-```js
-// 定义一个异步的延迟函数：异步函数结束1秒之后，再执行cb回调函数
-function fun1(cb) {
-    setTimeout(cb, 1000);
-}
-
-// 先执行异步函数fun1，再执行回调函数
-fun1(function () {
-    console.log('我是延迟执行的cb回调函数');
-});
-```
-
-上⾯的例⼦就是最传统的写法，在异步结束后通过传入回调函数的方式执⾏函数。
-
-学习 Promise 之后，我们可以将这个异步函数封装为 Promise，如下。
-
-**Promise 写法**：
-
-```js
-function fun2() {
-    return new Promise((resolve) => {
-        setTimeout(resolve, 1000);
-    });
-}
-
-/* 【重要】上面的 fun2 也可以写成：
-function fun2() {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            resolve();
-        }, 1000);
-    });
-}
-*/
-
-// 先执行异步函数fun1，再执行回调函数
-fun2().then(() => {
-    console.log('我是延迟执行的回调函数');
-});
-```
-
-### Promise 封装 Ajax 请求
-
-**传统写法**：
-
-```js
-// 定义 ajax 请求：传入回调函数 success 和 fail
-function ajax(url, success, fail) {
-    var client = new XMLHttpRequest();
-    client.open('GET', url);
-    client.onreadystatechange = function () {
-        if (this.readyState !== 4) {
-            return;
-        }
-        if (this.status === 200) {
-            success(this.response);
-        } else {
-            fail(new Error(this.statusText));
-        }
-    };
-    client.send();
-}
-
-// 执行 ajax 请求
-ajax(
-    '/ajax.json',
-    function () {
-        console.log('qianguyihao 成功');
-    },
-    function () {
-        console.log('失败');
-    }
-);
-```
-
-上面的传统写法里，定义和执行 ajax 时需要传⼊ success 和 fail 这两个回调函数，进而执行回调函数。
-
-有了 Promise 之后，我们不需要传入回调函数，而是：
-
--   先将 promise 实例化；
-
--   然后在原来执行回调函数的地方，改为执行对应的改变 promise 状态的函数；
-
--   并通过 then ... catch 或者 then ...then 等写法，实现链式调用，提高代码可读性。
-
-和传统写法相比，promise 在写法上的大致区别是：定义异步函数的时候，将 callback 改为 resolve 和 reject，待状态改变之后，我们在外面控制具体执行哪些函数。
-
-**Promise 写法**：
-
-```js
-const request = require('request');
-
-// Promise 定义接口
-function request1() {
-    return new Promise((resolve, reject) => {
-        request('https://www.baidu.com', res => {
-            if (res.retCode == 200) {
-                // 这里的 res 是接口1的返回结果
-                resolve('request1 success' + res);
-            } else {
-                reject('接口请求失败');
-            }
-        });
-    });
-}
-
-request1()
-    .then((res) => {
-        // 接口1请求成功后，打印接口1的返回结果
-        console.log(res);
-        // return request2();
-    })
-    .catch((e) => {
-        // 从 reject 获取异常结果
-        console.log(e);
-    });
-```
 
 ## 总结
 
