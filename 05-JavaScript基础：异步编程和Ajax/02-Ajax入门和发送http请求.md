@@ -80,12 +80,11 @@ xmlhttp.send();
 xmlhttp.onreadystatechange = function () {
     // 为了保证 数据 完整返回，我们一般会判断 两个值
     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-        // 如果能够进入这个判断，说明数据请求成功了
-        //（5）服务端相应：在注册的事件中，获取返回的内容，并显示在页面上
-        console.log('数据返回成功');
+        //（5）服务端相应：如果能够进入这个判断，说明数据请求成功了
+        console.log('数据返回成功：' + JSON.stringify(xmlhttp.responseText));
 
-        // 数据是保存在 异步对象的 属性中
-        console.log(JSON.stringify(xmlhttp.responseText));
+        // 伪代码：按业务需要，将接口返回的内容显示在页面上
+        // document.querySelector('h1').innerHTML = xmlhttp.responseText;
     }
 };
 ```
@@ -114,11 +113,54 @@ xmlhttp.onreadystatechange = function () {
 };
 ```
 
-### 封装Ajax请求（重要）
+### 封装 Ajax 请求（重要）
 
-todo
+上面的代码，执行顺序很好理解，但在实战开发中，是不会这么写的。假如你的页面中，需要调十次接口，那岂不是要手写十遍 Ajax 请求？这样会导致大量的重复代码。
 
-## Ajax 请求举例
+所以，我们需要把重复代码封装成一个公共函数，然后通过**回调函数**处理成功和失败的逻辑。
+
+封装 Ajax 请求的代码如下：(get 请求为例)
+
+```js
+// 封装 Ajax为公共函数
+function myAjax(url, callback) {
+    // 1、创建XMLHttpRequest对象
+    var xmlhttp;
+    if (window.XMLHttpRequest) {
+        xmlhttp = new XMLHttpRequest();
+    } else {
+        // 兼容IE5、IE6浏览器。不写也没关系
+        xmlhttp = new ActiveXObject('Microsoft.XMLHTTP');
+    }
+    // 2、发送请求
+    xmlhttp.open('GET', url, true);
+    xmlhttp.send();
+    // 3、服务端响应
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+            var obj = JSON.parse(xmlhttp.responseText);
+            console.log('数据返回成功：' + Jobj);
+            callback(obj);
+        }
+    };
+}
+
+// 单次调用 ajax
+myAjax('a.json', (res) => {
+    console.log(res);
+});
+
+// 多次调用 ajax。接口请求顺序：a --> b --> c
+myAjax('a.json', (res) => {
+    console.log(res);
+    myAjax('b.json', (res) => {
+        console.log(res);
+        myAjax('c.json', (res) => {
+            console.log(res);
+        });
+    });
+});
+```
 
 ### Ajax 请求：get 请求举例
 
@@ -138,19 +180,32 @@ todo
         <script type="text/javascript">
             // 绑定点击事件
             document.querySelector('#btnAjax').onclick = function () {
-                // 发送ajax 请求需要五步
-                var xmlhttp = new XMLHttpRequest();
-                xmlhttp.open('get', '02-ajax.php');
+                myAjax('02-ajax.php', (res) => {
+                    console.log(res);
+                    console.log('数据返回成功');
+                    // 显示在页面上
+                    document.querySelector('h1').innerHTML = obj;
+                    // alert(xhr.responseText);
+                });
+            };
+
+            function myAjax(url, callback) {
+                var xmlhttp;
+                if (window.XMLHttpRequest) {
+                    xmlhttp = new XMLHttpRequest();
+                } else {
+                    xmlhttp = new ActiveXObject('Microsoft.XMLHTTP');
+                }
+                xmlhttp.open('GET', url, true);
                 xmlhttp.send();
                 xmlhttp.onreadystatechange = function () {
-                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                        console.log('数据返回成功');
-                        console.log(xmlhttp.responseText);
-                        // 显示在页面上
-                        document.querySelector('h1').innerHTML = xmlhttp.responseText;
+                    if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+                        var obj = JSON.parse(xmlhttp.responseText);
+                        console.log('数据返回成功：' + Jobj);
+                        callback(obj);
                     }
                 };
-            };
+            }
         </script>
     </body>
 </html>
@@ -168,37 +223,6 @@ todo
 
 ![](http://img.smyhvae.com/20180228_1605.gif)
 
-### Ajax 请求：post 请求举例
-
-index.html：
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <title>Document</title>
-    </head>
-    <body>
-        <h1>Ajax 发送 get 请求</h1>
-        <input type="button" value="发送put_ajax请求" id="btnAjax" />
-        <script type="text/javascript">
-            // 发送ajax 请求需要五步
-            var xhr = new XMLHttpRequest();
-            xhr.open('post', '02.post.php');
-            // 如果想要使用post提交数据,必须添加此行
-            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-            xhr.send('name=fox&age=18');
-            xhr.onreadystatechange = function () {
-                // 这步为判断服务器是否正确响应
-                if (xhr.readyState == 4 && xhr.status == 200) {
-                    alert(xhr.responseText);
-                }
-            };
-        </script>
-    </body>
-</html>
-```
 
 ## XMLHttpRequest 对象详解
 
@@ -269,7 +293,6 @@ status：
 -   responseXML：获得 XML 形式的响应数据。
 
 如果响应的是普通字符串，就使用 responseText；如果响应的是 XML，使用 responseXML。
-
 
 ## jQuery 中的 Ajax
 
