@@ -48,7 +48,7 @@ dynamicFunc(function () {
 
 关于回调地狱，我们来看看两段代码。
 
-定时器的代码举例：
+定时器的代码举例：（回调地狱）
 
 ```js
 setTimeout(function () {
@@ -62,7 +62,7 @@ setTimeout(function () {
 }, 1000);
 ```
 
-ajax 请求的代码举例：
+ajax 请求的代码举例：（回调地狱）
 
 ```js
 // 伪代码
@@ -180,6 +180,7 @@ Promise 的精髓在于**对异步操作的状态管理**。
 关于 promise 的状态改变，伪代码及注释如下：
 
 ```javascript
+// 创建 promise 实例
 let promise = new Promise((resolve, reject) => {
     //进来之后，状态为pending
     console.log('111'); //这行代码是同步的
@@ -293,14 +294,14 @@ fun1(function () {
 ### Promise 写法
 
 ```js
-function fun2() {
+function myPromise() {
     return new Promise((resolve) => {
         setTimeout(resolve, 1000);
     });
 }
 
-/* 【重要】上面的 fun2 也可以写成：
-function fun2() {
+/* 【重要】上面的 myPromise 也可以写成：
+function myPromise() {
     return new Promise((resolve) => {
         setTimeout(() => {
             resolve();
@@ -310,7 +311,7 @@ function fun2() {
 */
 
 // 先执行异步函数fun1，再执行回调函数
-fun2().then(() => {
+myPromise().then(() => {
     console.log('我是延迟执行的回调函数');
 });
 ```
@@ -349,38 +350,6 @@ ajax(
 
 ### Promise 写法
 
-```js
-const request = require('request');
-
-// 第一步：model层的接口封装
-function request1() {
-    return new Promise((resolve, reject) => {
-        request('xxx_a.json', (res) => {
-            // 这里的 res 是接口的返回结果。返回码 retCode 是动态数据。
-            if (res.retCode == 0) {
-                // 接口请求成功时调用
-                resolve('request1 success' + res);
-            } else {
-                // 接口请求失败时调用
-                reject({ retCode: -1, msg: 'network error' });
-            }
-        });
-    });
-}
-
-// 第二步：业务层的接口调用。这里的 data 就是 从 resolve 和 reject 传过来的，也就是从接口拿到的数据
-request1()
-    .then((res) => {
-        // 从 resolve 获取正常结果：接口请求成功后，打印接口1的返回结果
-        console.log(res);
-        // return request2();
-    })
-    .catch((e) => {
-        // 从 reject 获取异常结果
-        console.log(e);
-    });
-```
-
 有了 Promise 之后，我们不需要传入回调函数，而是：
 
 -   先将 promise 实例化；
@@ -391,102 +360,96 @@ request1()
 
 和传统写法相比，promise 在写法上的大致区别是：定义异步函数的时候，将 callback 改为 resolve 和 reject，待状态改变之后，我们在外面控制具体执行哪些函数。
 
-### Promise 处理异步任务
-
-通过 Promise 处理异步任务的典型写法如下：
+写法 1：
 
 ```js
+const request = require('request');
+
 // 第一步：model层的接口封装
 function promiseA() {
     return new Promise((resolve, reject) => {
-        // 这里做异步任务（比如 ajax 请求接口。这里暂时用定时器代替）
-        setTimeout(() => {
-            var data = { retCode: 0, msg: 'qianguyihao' }; // 接口返回的数据，返回码 retCode 是动态数据
-            if (data.retCode == 0) {
+        request('xxx_a.json', (res) => {
+            // 这里的 res 是接口的返回结果。返回码 retCode 是动态数据。
+            if (res.retCode == 0) {
                 // 接口请求成功时调用
-                resolve(data);
+                resolve('request success' + res);
             } else {
                 // 接口请求失败时调用
                 reject({ retCode: -1, msg: 'network error' });
             }
-        }, 100);
+        });
     });
 }
 
 // 第二步：业务层的接口调用。这里的 data 就是 从 resolve 和 reject 传过来的，也就是从接口拿到的数据
 promiseA()
-    .then((data) => {
-        // 从 resolve 获取正常结果
-        console.log(data);
+    .then((res) => {
+        // 从 resolve 获取正常结果：接口请求成功后，打印接口的返回结果
+        console.log(res);
     })
-    .catch((e) => {
+    .catch((err) => {
         // 从 reject 获取异常结果
-        console.log(e);
+        console.log(err);
     });
 ```
 
 上方代码中，当从接口返回的数据`data.retCode`的值（接口返回码）不同时，可能会走 resolve，也可能会走 reject，这个由你自己的业务决定。
 
-上面的写法中，是将 promise 实例定义成了一个**函数** `promiseA`。我们也可以将 promise 实例定义成一个**变量** `promiseB`，达到的效果是一模一样的。写法如下：（写法上略有区别）
+接口返回的数据，一般是`{ retCode: 0, msg: 'qianguyihao' }` 这种 json 格式， retCode 为 0 代表请求接口成功，所以前端对应会写`if (res.retCode == 0) `这样的逻辑。
+
+另外，上面的写法中，是将 promise 实例定义成了一个**函数** `promiseA`。我们也可以将 promise 实例定义成一个**变量** `promiseB`，达到的效果和上面的代码是一模一样的。写法如下：（写法上略有区别）
+
+写法 2：
 
 ```js
 // 第一步：model层的接口封装
 const promiseB = new Promise((resolve, reject) => {
-    // 这里做异步任务（比如ajax 请求接口。这里暂时用定时器代替）
-    setTimeout(() => {
-        var data = { retCode: 0, msg: 'qianguyihao' }; // 接口返回的数据，返回码 retCode 是动态数据
-        if (data.retCode == 0) {
+    request('xxx_a.json', (res) => {
+        // 这里的 res 是接口的返回结果。返回码 retCode 是动态数据。
+        if (res.retCode == 0) {
             // 接口请求成功时调用
-            resolve(data);
+            resolve('request success' + res);
         } else {
             // 接口请求失败时调用
             reject({ retCode: -1, msg: 'network error' });
         }
-    }, 100);
+    });
 });
 
 // 第二步：业务层的接口调用。这里的 data 就是 从 resolve 和 reject 传过来的，也就是从接口拿到的数据
 promiseB
-    .then((data) => {
+    .then((res) => {
         // 从 resolve 获取正常结果
-        console.log(data);
+        console.log(res);
     })
-    .catch((e) => {
+    .catch((err) => {
         // 从 reject 获取异常结果
-        console.log(e);
+        console.log(err);
     });
 ```
 
+注意，如果你用的是写法 1（将 promise 实例定义为函数），则调用 promise 的时候是`promiseA().then()`，如果你用的是写法 2（将 promise 实例定位为函数），则调用的时候用的是`promiseB.then()`。写法 1 多了个括号，不要搞混了。
+
 ### 捕获 reject 异常状态的两种写法
 
-我们有两种写法可以捕获并处理 reject 异常状态。上一小段中，用的就是其中一种写法。
-
-这两种写法的代码举例如下：
+我们有两种写法可以捕获并处理 reject 异常状态。这两种写法的代码举例如下：
 
 ```js
 // 第一步：model层的接口封装
 function promiseA() {
     return new Promise((resolve, reject) => {
-        // 这里做异步任务（比如 ajax 请求接口。这里暂时用定时器代替）
-        setTimeout(() => {
-            var data = { retCode: 0, msg: 'qianguyihao' }; // 接口返回的数据，返回码 retCode 是动态数据
-            if (data.retCode == 0) {
-                // 接口请求成功时调用
-                resolve(data);
-            } else {
-                // 接口请求失败时调用
-                reject({ retCode: -1, msg: 'network error' });
-            }
-        }, 100);
+        // 这里做异步任务（比如 ajax 请求接口，或者定时器）
+				...
+        ...
     });
 }
 
-const onResolve = function (value) {
-    console.log(value);
+const onResolve = function (res) {
+    console.log(res);
 };
 
-const onReject = function (e) {
-    console.log(e);
+const onReject = function (err) {
+    console.log(err);
 };
 
 // 写法1：通过 catch 方法捕获 状态变为已拒绝时的 promise
@@ -505,9 +468,9 @@ try {
 }
 ```
 
-需要注意的是：
+如注释所述：前面的段落里，我们捕获 reject 异常用的就是写法 1。如果你写法 2 也是可以的。
 
-（1）上面的写法 3 是错误的。运行之后，控制台会报如下错误：
+需要注意的是，上面的写法 3 是错误的。运行之后，控制台会报如下错误：
 
 ![](http://img.smyhvae.com/20210430_1553.png)
 
@@ -528,8 +491,6 @@ try-catch 主要用于捕获异常，注意，这里的异常是指**同步**函
 这种场景其实就是接口的多层嵌套调用。有了 Promise 之后，我们可以把多层嵌套调用按照**线性**的方式进行书写，非常优雅。也就是说：Promise 可以把原本的**多层嵌套写法**改进为**链式写法**。
 
 ### 传统写法
-
-
 
 ```js
 // 封装 ajax 请求：传入回调函数 success 和 fail
@@ -566,9 +527,11 @@ ajax(
 );
 ```
 
-### Promise 链式调用（简单写法，方便理解）
+上面的代码层层嵌套，出现了我们常说的回调地狱问题。
 
-如果我们不对 Promise 的链式调用进行封装，那么，它的简单写法是下面这样的。
+### Promise 链式调用（初步写法，方便理解）
+
+如果我们不对 Promise 的链式调用进行封装，那么，它的简单写法是下面这样的：
 
 ```js
 // 封装 ajax 请求：传入回调函数 success 和 fail
@@ -614,14 +577,18 @@ new Promise((resolve, reject) => {
     });
 ```
 
-你可能会奇怪，上面的代码，怎么这么多？而且有不少重复。这里只是采用了一种笨拙的方式来写，为的是方便大家理解 promise 执行的过程。我们可以对 promise 的链式调用进行封装，如下。
+上面代码中，then 是可以链式调用的，一旦 return 一个新的 promise 实例之后，后面的 then 就可以拿到前面 resolve 出来的数据。这种**扁平化**的写法，更方便维护；并且可以更好的**管理**请求成功和失败的状态。
+
+你可能会奇怪，上面的代码，怎么这么多？而且有不少重复。这里只是采用了一种笨拙的方式来写，为的是方便大家理解 promise 的执行过程。我们其实可以对 promise 的链式调用进行进一步封装。
+
+怎么个封装法呢？上面的代码中，每次在 return 一个 promise 的时候，只是 url 地址不一样，其他的代码是一样的。所以我们可以把重复的代码封装成函数。
 
 ### Promise 链式调用（封装写法）
 
 封装 Ajax 请求的链式调用，代码举例：
 
 ```js
-// 封装 ajax 请求：传入回调函数 success 和 fail
+// 定义 ajax 请求：传入回调函数 success 和 fail
 function ajax(url, success, fail) {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.open('GET', url);
@@ -638,7 +605,7 @@ function ajax(url, success, fail) {
 // 第一步：model层，接口封装
 function getPromise(url) {
     return new Promise((resolve, reject) => {
-        ajax('url', (res) => {
+        ajax(url, (res) => {
             // 这里的 res 是接口的返回结果。返回码 retCode 是动态数据。
             if (res.retCode == 0) {
                 // 接口请求成功时调用
@@ -656,33 +623,28 @@ getPromise('a.json')
     .then((res) => {
         // a 请求成功。从 resolve 获取正常结果：接口请求成功后，打印a接口的返回结果
         console.log(res);
-        return getPromise('b.json');
+        return getPromise('b.json'); // 继续请求 b
     })
     .then((res) => {
         // b 请求成功
         console.log(res);
-        return getPromise('c.json');
-    })
-    .then((res) => {
-        // b 请求成功
-        console.log(res);
-        return getPromise('c.json');
+        return getPromise('c.json'); // 继续请求 c
     })
     .then((res) => {
         // c 请求成功
-        cnosole.log(res);
+        console.log(res);
     })
     .catch((e) => {
-        // 从 reject 获取异常结果
+        // 从 reject中获取异常结果
         console.log(e);
     });
 ```
 
-上面代码中，then 是可以链式调用的，后面的 then 可以拿到前面 resolve 出来的数据。
+怎么样？上面代码中，是不是非常简洁？而且可读性很强。
 
-细心的你可以发现，我们在封装`getPromise()`方法时，里面针对 resolve 和 reject 的处理时机是一样的。
+代码写到这里，我们还可以再继续优化一下。细心的你可以发现，我们在依次请求三个接口的时候，里面针对 resolve 和 reject 的处理时机是一样的。
 
-但是，真正在实战中，我们在调不用的接口时，要处理的 resolve 和 reject 的时机一般是不同的。所以，实战中的代码，应该是像下面这样写，分开封装 不同的 Promise 请求。
+但是，真正在实战中，我们在调不用的接口时，要处理的 resolve 和 reject 的时机往往是不同的。所以分开封装 不同的 Promise 实例。实战中的代码，应该是像下面这样写。
 
 ### Promise 链式调用（封装写法，实战版）
 
@@ -719,25 +681,25 @@ getPromise('a.json')
                             resolve('request1 success' + res);
                         } else {
                             // 接口请求异常时调用异常
-                            reject('接口请求失败');
+                            reject('接口1请求失败');
                         }
                     });
                 });
             }
 
             // Promise 封装接口2
-            function request2 () {
+            function request2() {
                 return new Promise((resolve, reject) => {
                     ajax('https://www.jd.com', (res) => {
                         if (res.retCode == 202) {
                             // 这里的 res 是接口2的返回结果
                             resolve('request2 success' + res);
                         } else {
-                            reject('接口请求失败');
+                            reject('接口2请求失败');
                         }
                     });
                 });
-            };
+            }
 
             // Promise 封装接口3
             function request3() {
@@ -747,46 +709,50 @@ getPromise('a.json')
                             // 这里的 res 是接口3的返回结果
                             resolve('request3 success' + res);
                         } else {
-                            reject('接口请求失败');
+                            reject('接口3请求失败');
                         }
                     });
                 });
-            };
+            }
 
             // 先发起request1，等resolve后再发起request2；紧接着，等 request2有了 resolve之后，再发起 request3
             request1()
                 .then((res1) => {
-                    // 接口1请求成功后，打印接口1的返回结果
+                    // 接口1请求成功
                     console.log(res1);
                     return request2();
                 })
                 .then((res2) => {
-                    // 接口2请求成功后，打印接口2的返回结果
+                    // 接口2请求成功
                     console.log(res2);
                     return request3();
                 })
                 .then((res3) => {
-                    // 接口3请求成功后，打印接口3的返回结果
+                    // 接口3请求成功
                     console.log(res3);
+                })
+                .catch((err) => {
+                    // 从 reject中获取异常结果
+                    console.log(err);
                 });
         </script>
     </body>
 </html>
 ```
 
-这个举例很经典，需要多看几遍。
+这段代码很经典，你一定要多看几遍。
 
 ## return 的函数返回值
 
 return 后面的返回值，有两种情况：
 
-- 情况 1：返回 Promise 实例对象。返回的该实例对象会调用下一个 then。
+-   情况 1：返回 Promise 实例对象。返回的该实例对象会调用下一个 then。
 
-- 情况 2：返回普通值。返回的普通值会直接传递给下一个 then，通过 then 参数中函数的参数接收该值。
+-   情况 2：返回普通值。返回的普通值会直接传递给下一个 then，通过 then 参数中函数的参数接收该值。
 
 我们针对上面这两种情况，详细解释一下。
 
-### 情况1：返回 Promise 实例对象
+### 情况 1：返回 Promise 实例对象
 
 举例如下：（这个例子，跟上一段 Ajax 链式调用 的例子差不多）
 
