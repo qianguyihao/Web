@@ -177,7 +177,7 @@ Promise 的精髓在于**对异步操作的状态管理**。
 
 另外，resolve()和 reject()这两个方法，是可以给 promise.then()传递参数的。
 
-关于promise的状态改变，伪代码及注释如下：
+关于 promise 的状态改变，伪代码及注释如下：
 
 ```javascript
 let promise = new Promise((resolve, reject) => {
@@ -226,7 +226,7 @@ p.then((res) => {
     console.log(err);
 ```
 
-上方代码的打印结果是1，而不是2，详见注释。
+上方代码的打印结果是 1，而不是 2，详见注释。
 
 ### 小结
 
@@ -238,7 +238,6 @@ p.then((res) => {
 
 4、失败的 promise，后续可以通过 promise 自带的 .catch ⽅法或是 .then ⽅法的第⼆个参数进⾏捕获。
 
-
 ### Promise 规范
 
 Promise 是⼀个拥有 then ⽅法的对象或函数。任何符合 promise 规范的对象或函数都可以成为 Promise。
@@ -249,14 +248,9 @@ Promise 是⼀个拥有 then ⽅法的对象或函数。任何符合 promise 规
 
 了解这些常见概念之后，接下来，我们来具体看看 promise 的代码是怎么写的。
 
+## Promise 封装异步任务
 
-
-
-## 如何封装异步操作为 promise
-
-### Promise 封装异步任务
-
-**传统写法**：
+### 传统写法
 
 写法 1：
 
@@ -296,7 +290,7 @@ fun1(function () {
 
 学习 Promise 之后，我们可以将这个异步函数封装为 Promise，如下。
 
-**Promise 写法**：
+### Promise 写法
 
 ```js
 function fun2() {
@@ -321,55 +315,39 @@ fun2().then(() => {
 });
 ```
 
-### Promise 封装 Ajax 请求
+## Promise 封装 Ajax 请求
 
-// todo 代码简化
-
-**传统写法**：
+### 传统写法
 
 ```js
-// 定义 ajax 请求：传入回调函数 success 和 fail
+// 封装 ajax 请求：传入回调函数 success 和 fail
 function ajax(url, success, fail) {
-    var client = new XMLHttpRequest();
-    client.open('GET', url);
-    client.onreadystatechange = function () {
-        if (this.readyState !== 4) {
-            return;
-        }
-        if (this.status === 200) {
-            success(this.response);
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.open('GET', url);
+    xmlhttp.send();
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+            success(xmlhttp.responseText);
         } else {
-            fail(new Error(this.statusText));
+            fail(new Error('接口请求失败'));
         }
     };
-    client.send();
 }
 
 // 执行 ajax 请求
 ajax(
-    '/ajax.json',
-    function () {
-        console.log('qianguyihao 成功');
-    },
-    function () {
-        console.log('失败');
+    '/a.json',
+    (res) => {
+        console.log('qianguyihao 第一个接口请求成功:' + JSON.stringify(res));
+    (err) => {
+        console.log('qianguyihao 请求失败:' + JSON.stringify(err));
     }
 );
 ```
 
 上面的传统写法里，定义和执行 ajax 时需要传⼊ success 和 fail 这两个回调函数，进而执行回调函数。
 
-有了 Promise 之后，我们不需要传入回调函数，而是：
-
--   先将 promise 实例化；
-
--   然后在原来执行回调函数的地方，改为执行对应的改变 promise 状态的函数；
-
--   并通过 then ... catch 或者 then ...then 等写法，实现链式调用，提高代码可读性。
-
-和传统写法相比，promise 在写法上的大致区别是：定义异步函数的时候，将 callback 改为 resolve 和 reject，待状态改变之后，我们在外面控制具体执行哪些函数。
-
-**Promise 写法**：
+### Promise 写法
 
 ```js
 const request = require('request');
@@ -377,13 +355,13 @@ const request = require('request');
 // 第一步：model层的接口封装
 function request1() {
     return new Promise((resolve, reject) => {
-        request('xxx_a.json', res => {
-          // 这里的 res 是接口的返回结果。返回码 retCode 是动态数据。
+        request('xxx_a.json', (res) => {
+            // 这里的 res 是接口的返回结果。返回码 retCode 是动态数据。
             if (res.retCode == 0) {
-              // 接口请求成功时调用
+                // 接口请求成功时调用
                 resolve('request1 success' + res);
             } else {
-              // 接口请求失败时调用
+                // 接口请求失败时调用
                 reject({ retCode: -1, msg: 'network error' });
             }
         });
@@ -403,6 +381,15 @@ request1()
     });
 ```
 
+有了 Promise 之后，我们不需要传入回调函数，而是：
+
+-   先将 promise 实例化；
+
+-   然后在原来执行回调函数的地方，改为执行对应的改变 promise 状态的函数；
+
+-   并通过 then ... catch 或者 then ...then 等写法，实现链式调用，提高代码可读性。
+
+和传统写法相比，promise 在写法上的大致区别是：定义异步函数的时候，将 callback 改为 resolve 和 reject，待状态改变之后，我们在外面控制具体执行哪些函数。
 
 ### Promise 处理异步任务
 
@@ -532,8 +519,405 @@ try-catch 主要用于捕获异常，注意，这里的异常是指**同步**函
 
 （2）写法 1 中，`promiseA().then().catch()`和`promiseA().catch().then()`区别在于：前者可以捕获到 `then` 里面的异常，后者不可以。
 
+## 链式调用：基于 Promise 处理多次 Ajax 请求【重要】
+
+实际开发中，我们经常需要同时请求多个接口。比如说：在请求完`接口1`的数据`data1`之后，需要根据`data1`的数据，继续请求接口 2，获取`data2`；然后根据`data2`的数据，继续请求接口 3。
+
+换而言之，现在有三个网络请求，请求 2 必须依赖请求 1 的结果，请求 3 必须依赖请求 2 的结果，如果按照往常的写法，会有三层回调，会陷入“回调地狱”。
+
+这种场景其实就是接口的多层嵌套调用。有了 Promise 之后，我们可以把多层嵌套调用按照**线性**的方式进行书写，非常优雅。也就是说：Promise 可以把原本的**多层嵌套写法**改进为**链式写法**。
+
+### 传统写法
 
 
+
+```js
+// 封装 ajax 请求：传入回调函数 success 和 fail
+function ajax(url, success, fail) {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.open('GET', url);
+    xmlhttp.send();
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+            success(xmlhttp.responseText);
+        } else {
+            fail(new Error('接口请求失败'));
+        }
+    };
+}
+
+// 执行 ajax 请求
+ajax(
+    '/a.json',
+    (res) => {
+        console.log('qianguyihao 第一个接口请求成功:' + JSON.stringify(res));
+        // ajax嵌套调用
+        ajax('b.json', (res) => {
+            console.log('qianguyihao 第二个接口请求成功:' + JSON.stringify(res));
+            // ajax嵌套调用
+            ajax('c.json', (res) => {
+                console.log('qianguyihao 第三个接口请求成功:' + JSON.stringify(res));
+            });
+        });
+    },
+    (err) => {
+        console.log('qianguyihao 请求失败:' + JSON.stringify(err));
+    }
+);
+```
+
+### Promise 链式调用（简单写法，方便理解）
+
+如果我们不对 Promise 的链式调用进行封装，那么，它的简单写法是下面这样的。
+
+```js
+// 封装 ajax 请求：传入回调函数 success 和 fail
+function ajax(url, success, fail) {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.open('GET', url);
+    xmlhttp.send();
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+            success(xmlhttp.responseText);
+        } else {
+            fail(new Error('接口请求失败'));
+        }
+    };
+}
+
+new Promise((resolve, reject) => {
+    ajax('a.json', (res) => {
+        console.log(res);
+        resolve();
+    });
+})
+    .then((res) => {
+        console.log('a成功');
+        return new Promise((resolve, reject) => {
+            ajax('b.json', (res) => {
+                console.log(res);
+                resolve();
+            });
+        });
+    })
+    .then((res) => {
+        console.log('b成功');
+        return new Promise((resolve, reject) => {
+            ajax('c.json', (res) => {
+                console.log(res);
+                resolve();
+            });
+        });
+    })
+    .then((res) => {
+        cnosole.log('c成功');
+    });
+```
+
+你可能会奇怪，上面的代码，怎么这么多？而且有不少重复。这里只是采用了一种笨拙的方式来写，为的是方便大家理解 promise 执行的过程。我们可以对 promise 的链式调用进行封装，如下。
+
+### Promise 链式调用（封装写法）
+
+封装 Ajax 请求的链式调用，代码举例：
+
+```js
+// 封装 ajax 请求：传入回调函数 success 和 fail
+function ajax(url, success, fail) {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.open('GET', url);
+    xmlhttp.send();
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+            success(xmlhttp.responseText);
+        } else {
+            fail(new Error('接口请求失败'));
+        }
+    };
+}
+
+// 第一步：model层，接口封装
+function getPromise(url) {
+    return new Promise((resolve, reject) => {
+        ajax('url', (res) => {
+            // 这里的 res 是接口的返回结果。返回码 retCode 是动态数据。
+            if (res.retCode == 0) {
+                // 接口请求成功时调用
+                resolve('request success' + res);
+            } else {
+                // 接口请求异常时调用
+                reject({ retCode: -1, msg: 'network error' });
+            }
+        });
+    });
+}
+
+// 第二步：业务层的接口调用。这里的 data 就是 从 resolve 和 reject 传过来的，也就是从接口拿到的数据
+getPromise('a.json')
+    .then((res) => {
+        // a 请求成功。从 resolve 获取正常结果：接口请求成功后，打印a接口的返回结果
+        console.log(res);
+        return getPromise('b.json');
+    })
+    .then((res) => {
+        // b 请求成功
+        console.log(res);
+        return getPromise('c.json');
+    })
+    .then((res) => {
+        // b 请求成功
+        console.log(res);
+        return getPromise('c.json');
+    })
+    .then((res) => {
+        // c 请求成功
+        cnosole.log(res);
+    })
+    .catch((e) => {
+        // 从 reject 获取异常结果
+        console.log(e);
+    });
+```
+
+上面代码中，then 是可以链式调用的，后面的 then 可以拿到前面 resolve 出来的数据。
+
+细心的你可以发现，我们在封装`getPromise()`方法时，里面针对 resolve 和 reject 的处理时机是一样的。
+
+但是，真正在实战中，我们在调不用的接口时，要处理的 resolve 和 reject 的时机一般是不同的。所以，实战中的代码，应该是像下面这样写，分开封装 不同的 Promise 请求。
+
+### Promise 链式调用（封装写法，实战版）
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            // 封装 ajax 请求：传入回调函数 success 和 fail
+            function ajax(url, success, fail) {
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.open('GET', url);
+                xmlhttp.send();
+                xmlhttp.onreadystatechange = function () {
+                    if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+                        success(xmlhttp.responseText);
+                    } else {
+                        fail(new Error('接口请求失败'));
+                    }
+                };
+            }
+
+            // Promise 封装接口1
+            function request1() {
+                return new Promise((resolve, reject) => {
+                    ajax('https://www.baidu.com', (res) => {
+                        if (res.retCode == 201) {
+                            // 接口请求成功时调用：这里的 res 是接口1的返回结果
+                            resolve('request1 success' + res);
+                        } else {
+                            // 接口请求异常时调用异常
+                            reject('接口请求失败');
+                        }
+                    });
+                });
+            }
+
+            // Promise 封装接口2
+            function request2 () {
+                return new Promise((resolve, reject) => {
+                    ajax('https://www.jd.com', (res) => {
+                        if (res.retCode == 202) {
+                            // 这里的 res 是接口2的返回结果
+                            resolve('request2 success' + res);
+                        } else {
+                            reject('接口请求失败');
+                        }
+                    });
+                });
+            };
+
+            // Promise 封装接口3
+            function request3() {
+                return new Promise((resolve, reject) => {
+                    ajax('https://www.taobao.com', (res) => {
+                        if (res.retCode == 203) {
+                            // 这里的 res 是接口3的返回结果
+                            resolve('request3 success' + res);
+                        } else {
+                            reject('接口请求失败');
+                        }
+                    });
+                });
+            };
+
+            // 先发起request1，等resolve后再发起request2；紧接着，等 request2有了 resolve之后，再发起 request3
+            request1()
+                .then((res1) => {
+                    // 接口1请求成功后，打印接口1的返回结果
+                    console.log(res1);
+                    return request2();
+                })
+                .then((res2) => {
+                    // 接口2请求成功后，打印接口2的返回结果
+                    console.log(res2);
+                    return request3();
+                })
+                .then((res3) => {
+                    // 接口3请求成功后，打印接口3的返回结果
+                    console.log(res3);
+                });
+        </script>
+    </body>
+</html>
+```
+
+这个举例很经典，需要多看几遍。
+
+## return 的函数返回值
+
+return 后面的返回值，有两种情况：
+
+- 情况 1：返回 Promise 实例对象。返回的该实例对象会调用下一个 then。
+
+- 情况 2：返回普通值。返回的普通值会直接传递给下一个 then，通过 then 参数中函数的参数接收该值。
+
+我们针对上面这两种情况，详细解释一下。
+
+### 情况1：返回 Promise 实例对象
+
+举例如下：（这个例子，跟上一段 Ajax 链式调用 的例子差不多）
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            /*
+              基于Promise发送Ajax请求
+            */
+            function queryData(url) {
+                return new Promise((resolve, reject) => {
+                    var xhr = new XMLHttpRequest();
+                    xhr.onreadystatechange = function () {
+                        if (xhr.readyState != 4) return;
+                        if (xhr.readyState == 4 && xhr.status == 200) {
+                            // 处理正常情况
+                            resolve(xhr.responseText);
+                        } else {
+                            // 处理异常情况
+                            reject('接口请求失败');
+                        }
+                    };
+                    xhr.responseType = 'json'; // 设置返回的数据类型
+                    xhr.open('get', url);
+                    xhr.send(null); // 请求接口
+                });
+            }
+            // 发送多个ajax请求并且保证顺序
+            queryData('http://localhost:3000/api1')
+                .then(
+                    (data1) => {
+                        console.log(JSON.stringify(data1));
+                        return queryData('http://localhost:3000/api2');
+                    },
+                    (error1) => {
+                        console.log(error1);
+                    }
+                )
+                .then(
+                    (data2) => {
+                        console.log(JSON.stringify(data2));
+                        // 这里的 return，返回的是 Promise 实例对象
+                        return new Promise((resolve, reject) => {
+                            resolve('qianguyihao');
+                        });
+                    },
+                    (error2) => {
+                        console.log(error2);
+                    }
+                )
+                .then((data3) => {
+                    console.log(data3);
+                });
+        </script>
+    </body>
+</html>
+```
+
+### 情况 2：返回 普通值
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            /*
+              基于Promise发送Ajax请求
+            */
+            function queryData(url) {
+                return new Promise((resolve, reject) => {
+                    var xhr = new XMLHttpRequest();
+                    xhr.onreadystatechange = function () {
+                        if (xhr.readyState != 4) return;
+                        if (xhr.readyState == 4 && xhr.status == 200) {
+                            // 处理正常情况
+                            resolve(xhr.responseText);
+                        } else {
+                            // 处理异常情况
+                            reject('接口请求失败');
+                        }
+                    };
+                    xhr.responseType = 'json'; // 设置返回的数据类型
+                    xhr.open('get', url);
+                    xhr.send(null); // 请求接口
+                });
+            }
+            // 发送多个ajax请求并且保证顺序
+            queryData('http://localhost:3000/api1')
+                .then(
+                    (data1) => {
+                        console.log(JSON.stringify(data1));
+                        return queryData('http://localhost:3000/api2');
+                    },
+                    (error1) => {
+                        console.log(error1);
+                    }
+                )
+                .then(
+                    (data2) => {
+                        console.log(JSON.stringify(data2));
+                        // 返回普通值
+                        return 'qianguyihao';
+                    },
+                    (error2) => {
+                        console.log(error2);
+                    }
+                )
+                /*
+                    既然上方返回的是 普通值，那么，这里的 then 是谁来调用呢？
+                    答案是：这里会产生一个新的 默认的 promise实例，来调用这里的then，确保可以继续进行链式操作。
+                */
+                .then((data3) => {
+                    // 这里的 data3 接收的是 普通值 'qianguyihao'
+                    console.log(data3);
+                });
+        </script>
+    </body>
+</html>
+```
 
 ## 总结
 
