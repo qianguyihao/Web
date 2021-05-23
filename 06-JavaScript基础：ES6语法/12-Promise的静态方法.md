@@ -1,9 +1,11 @@
 
+## Promise 的常用API分类
 
+### Promise的实例方法
 
-## Promise 的常用 API：实例方法【重要】
+**实例方法**：我们需要先 new 一个 promise实例对象，然后通过 promise对象去调用 `then`、`catch`、`finally`方法。这几个方法就是 Promise 的实例方法。
 
-Promise 自带的 API 提供了如下实例方法：
+具体来说，Promise 的自带API 提供了如下实例方法：
 
 -   promise.then()：获取异步任务的正常结果。
 
@@ -11,103 +13,22 @@ Promise 自带的 API 提供了如下实例方法：
 
 -   promise.finaly()：异步任务无论成功与否，都会执行。
 
-代码举例如下。
 
-写法 1：
+### Promise的静态方法
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
-    </head>
-    <body>
-        <script>
-            function queryData() {
-                return new Promise((resolve, reject) => {
-                    setTimeout(function () {
-                        var data = { retCode: 0, msg: 'qianguyihao' }; // 接口返回的数据
-                        if (data.retCode == 0) {
-                            // 接口请求成功时调用
-                            resolve(data);
-                        } else {
-                            // 接口请求失败时调用
-                            reject({ retCode: -1, msg: 'network error' });
-                        }
-                    }, 100);
-                });
-            }
+**静态方法**：可以直接通过大写的`Promise.xxx`调用的方法。这里的`xxx`就称之为静态方法。
 
-            queryData()
-                .then((data) => {
-                    // 从 resolve 获取正常结果
-                    console.log('接口请求成功时，走这里');
-                    console.log(data);
-                })
-                .catch((data) => {
-                    // 从 reject 获取异常结果
-                    console.log('接口请求失败时，走这里');
-                    console.log(data);
-                })
-                .finally(() => {
-                    console.log('无论接口请求成功与否，都会走这里');
-                });
-        </script>
-    </body>
-</html>
-```
+具体来说，Promise 的自带API 提供了如下静态方法：
 
-写法 2：（和上面的写法 1 等价）
+- `Promise.resolve()`
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
-    </head>
-    <body>
-        <script>
-            function queryData() {
-                return new Promise((resolve, reject) => {
-                    setTimeout(function () {
-                        var data = { retCode: 0, msg: 'qianguyihao' }; // 接口返回的数据
-                        if (data.retCode == 0) {
-                            // 接口请求成功时调用
-                            resolve(data);
-                        } else {
-                            // 接口请求失败时调用
-                            reject({ retCode: -1, msg: 'network error' });
-                        }
-                    }, 100);
-                });
-            }
+- `Promise.reject()`
 
-            queryData()
-                .then(
-                    (data) => {
-                        // 从 resolve 获取正常结果
-                        console.log('接口请求成功时，走这里');
-                        console.log(data);
-                    },
-                    (data) => {
-                        // 从 reject 获取异常结果
-                        console.log('接口请求失败时，走这里');
-                        console.log(data);
-                    }
-                )
-                .finally(() => {
-                    console.log('无论接口请求成功与否，都会走这里');
-                });
-        </script>
-    </body>
-</html>
-```
+- `Promsie.all()`
 
-**注意**：写法 1 和写法 2 的作用是完全等价的。只不过，写法 2 是把 catch 里面的代码作为 then 里面的第二个参数而已。
+- `Promise.race`
+
+前面的几篇文章，讲的都是 Promise的**实例方法**；今天这篇文章，我们来详细讲一下 Promise的**静态方法**。
 
 ## Promise 的常用 API：对象方法【重要】
 

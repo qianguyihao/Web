@@ -448,7 +448,15 @@ promiseB
 
 ## 处理 reject 失败状态的两种写法
 
-我们有两种写法可以捕获并处理 reject 异常状态。这两种写法的代码举例如下：
+我们有两种写法可以捕获并处理 reject 异常状态：
+
+-   写法 1：通过 catch 方法捕获 状态变为已 reject 时的 promise
+
+-   写法 2：then 可以传两个参数，第⼀个参数为 resolve 后执⾏，第⼆个参数为 reject 后执⾏。
+
+### 代码格式
+
+这两种写法的**代码格式**如下：
 
 ```js
 // 第一步：model层的接口封装
@@ -497,6 +505,57 @@ try-catch 主要用于捕获异常，注意，这里的异常是指**同步**函
 原因是：当异步函数抛出异常时，对于宏任务而言，执行函数时已经将该函数推入栈，此时并不在 try-catch 所在的栈，所以 try-catch 并不能捕获到错误。对于微任务而言（比如 promise）promise 的构造函数的异常只能被自带的 reject 也就是.catch 函数捕获到。
 
 （2）写法 1 中，`promiseA().then().catch()`和`promiseA().catch().then()`区别在于：前者可以捕获到 `then` 里面的异常，后者不可以。
+
+### 代码举例
+
+这两种写法的**代码举例**如下：
+
+```js
+function promiseA() {
+    return new Promise((resolve, reject) => {
+        // 这里做异步任务（比如 ajax 请求接口，或者定时器）
+            ...
+            ...
+    });
+}
+
+// 写法1
+promiseB()
+    .then((res) => {
+        // 从 resolve 获取正常结果
+        console.log('接口请求成功时，走这里');
+        console.log(res);
+    })
+    .catch((err) => {
+        // 从 reject 获取异常结果
+        console.log('接口请求失败时，走这里');
+        console.log(err);
+    })
+    .finally(() => {
+        console.log('无论接口请求成功与否，都会走这里');
+    });
+
+
+// 写法 2：（和写法 1 等价）
+promiseB()
+    .then(
+        (res) => {
+            // 从 resolve 获取正常结果
+            console.log('接口请求成功时，走这里');
+            console.log(res);
+        },
+        (err) => {
+            // 从 reject 获取异常结果
+            console.log('接口请求失败时，走这里');
+            console.log(err);
+        }
+    )
+    .finally(() => {
+        console.log('无论接口请求成功与否，都会走这里');
+    });
+```
+
+**代码解释**：写法 1 和写法 2 的作用是完全等价的。只不过，写法 2 是把 catch 里面的代码作为 then 里面的第二个参数而已。
 
 ## 总结
 
