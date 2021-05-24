@@ -291,4 +291,4 @@ console.log(PI); //打印结果：3.14，说明修改失败
 
 扫一扫，你将发现另一个全新的世界，而这将是一场美丽的意外：
 
-![](http://img.smyhvae.com/20200101.png)
+![](https://img.smyhvae.com/20200102.png)
