@@ -202,21 +202,51 @@ Promise.all([promise1, promise2, promise3])
 
 可以看到，当 promise2 执行失败之后，马上就走到了 catch，而且 promise3 里的 resolve 并没有执行。
 
-### Promise.all()举例：图片上传
+### Promise.all()举例：多张图片上传
 
-比如说，现在有一个**图片上传**的接口，每次请求接口时只能上传一张图片。需求是：当用户连续上传完三张图片（甚至是更多图片）之后，给用户一个“上传成功”的提示。这个时候，我们就可以使用`Promsie.all()`。
+比如说，现在有一个**图片上传**的接口，每次请求接口时只能上传一张图片。需求是：当用户连续上传完九张图片（正好凑齐九宫格）之后，给用户一个“上传成功”的提示。这个时候，我们就可以使用`Promsie.all()`。
+
+代码举例如下：
+
+```js
+const imgArr = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg', '7.jpg', '8.jpg', '9.jpg'];
+const promiseArr = [];
+imgArr.forEach((item) => {
+    const p = new Promise((resolve, reject) => {
+        // 在这里做图片上传的异步任务。图片上传成功后，接口会返回图片的 url 地址
+        //  upload img ==> return imgUrl
+        if (imgUrl) {
+            // 单张图片上传完成
+            resolve(imgUrl);
+        } else {
+            reject('单张图片上传失败');
+        }
+    });
+    promiseArr.push(p);
+});
+Promise.all(promiseArr).then((res) => {
+    console.log('图片全部上传完成');
+    console.log('九张图片的url地址，组成的数组：' + res);
+});
+```
+
+上面这个例子，在实际的项目开发中，经常遇到，属于高频需求，需要记住并理解。
+
+当然，实战开发中，在做多张图片上传时，可能是一张一张地单独上传，各自的上传进度相互独立。此时 `Promise.all`便不再适用，这就得具体需求具体分析了。
 
 ## Promise.race()
 
 `Promise.race([p1, p2, p3])`：并发处理多个异步任务，返回的是第一个执行完成的 promise，且状态和第一个完成的任务状态保持一致。参数里传的是多个 promise 实例组成的数组。
 
-上面这句话，第一次读时，可能很绕口。我说的再通俗一点：在多个同时执行的异步任务中，先找出哪个异步任务**最先执行完成**（无论是走到 resolve，还是走到 reject，都算执行完成）。然后，整体的状态跟这个任务保持一致。如果这个任务执行成功，那整体就算成功（走到 then）；如果这个任务执行失败，那整体就算失败（走到 catch）。
+上面这句话，第一次读时，可能很绕口。我说的再通俗一点：在多个同时执行的异步任务中，先找出哪个异步任务**最先执行完成**（无论是走到 resolve，还是走到 reject，都算执行完成），整体的状态就跟这个任务保持一致。如果这个任务执行成功，那整体就算成功（走到 then）；如果这个任务执行失败，那整体就算失败（走到 catch）。
 
 `race`的中文翻译，可以理解为“竞赛”。意思是，谁先抢到名额，就认定谁了。无论这个人最终的结局是成功或者失败，整体的结局，都以这个人的结局为准。
 
-我刚开始学 Promise.race()的时候，误以为它的含义是“只要有一个异步执行成功，整体就算成功（走到 then）；所有任务都执行失败，整体才算失败（走到 catch）”。现在想来，真是大错特错，过于懵懂。
+我刚开始学 Promise.race()的时候，误以为它的含义是“只要有一个异步**执行成功**，整体就算成功（走到 then）；所有任务都执行失败，整体才算失败（走到 catch）”。现在想来，真是大错特错，过于懵懂。
 
-我们来看看各种场景的打印结果，便能让你擦干泪水，继续前行。
+现在我顿悟了，准确来说，Promise.race()强调的是：只要有一个异步任务**执行完成**，整体就是**完成**的。
+
+我们来看看各种场景的打印结果，便能擦干泪水，继续前行。
 
 ### 语法举例
 
@@ -375,6 +405,54 @@ Promise.race([promise1, promise2, promise3])
 看清楚了没？场景 3 的最终打印结果，是走到了 catch；任务 2 和任务 3 里的 resolve，并没有继续执行。
 
 场景 3 的代码，一定好好好理解。
+
+### Promise.race()举例
+
+现在有个需求是这样的：前端需要加载并显示一张图片。如果图片在三秒内加载成功，那就显示图片；如果三秒内没有加载成功，那就按异常处理，前端提示“加载超时”。
+
+代码实现思路：
+
+```js
+function getImg() {
+    return new Promise((resolve, reject) => {
+        let img = new Image();
+        img.onload = function () {
+            // 图片的加载，是异步任务
+            resolve(img);
+        };
+        img.src = 'https://img.smyhvae.com/20200102.png';
+    });
+}
+
+function timeout() {
+    return new Promise((resolve, reject) => {
+        // 采用 Promise.race()之后，如果 timeout() 的 promise 比 getImg() 的 promise先执行，说明定时器时间到了，那就算超时。整体的最终结果按失败处理。
+        setTimeout(() => {
+            reject('图片加载超时');
+        }, 3000);
+    });
+}
+
+Promise.race([getImg(), timeout()])
+    .then((res) => {
+        // 图片加载成功
+        console.log(res);
+    })
+    .catch((err) => {
+        // 图片加载超时
+        console.log(err);
+    });
+```
+
+如代码注释所述：采用 Promise.race()之后，如果 timeout() 的 promise 比 getImg() 的 promise 先执行，说明定时器时间到了，那就算超时。整体的最终结果按失败处理。
+
+这个思路很巧妙。
+
+## 总结
+
+Promise 不仅能解决嵌套异步任务的**回调地域**问题，也可做多个异步任务的**并发请求**，还可以进行舒适简洁的状态管理。
+
+Promise 本身不是异步的，但是它可以封装异步任务，并对异步操作进行良好的状态管理，这便是 Promise 的魅力所在。
 
 ## 我的公众号
 
