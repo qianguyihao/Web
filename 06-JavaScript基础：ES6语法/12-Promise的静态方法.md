@@ -24,7 +24,7 @@ Promise 的自带 API 提供了如下静态方法：
 
 -   `Promsie.all()`：并发处理多个异步任务，所有任务都执行成功，才算成功（走到 resolve）；只要有一个失败，就会走到 reject，整体都算失败。
 
--   `Promise.race`：并发处理多个异步任务，只要有一个任务执行成功，就会成功（马上会走到 resolve）；
+-   `Promise.race()`：并发处理多个异步任务，返回的是第一个执行完成的 promise，且状态和第一个任务的状态保持一致。
 
 前面的几篇文章，讲的都是 Promise 的**实例方法**；今天这篇文章，我们来详细讲一下 Promise 的**静态方法**。
 
@@ -96,82 +96,285 @@ foo(false).catch((err) => {
 
 ## Promise.all()
 
-`Promsie.all([p1, p2, p3])`：并发处理多个异步任务，所有任务都执行成功，才算成功（走到 resolve）；只要有一个失败，就会走到 reject，整体都算失败。参数里传的是 多个 promise 实例组成的数组。
+`Promsie.all([p1, p2, p3])`：并发处理多个异步任务，所有任务都执行成功，才算成功（才会走到 then）；只要有一个任务失败，就会马上走到 catch，整体都算失败。参数里传的是 多个 promise 实例组成的数组。
 
-### 代码举例
+### 语法举例
+
+**1、异步任务都执行成功时**：
 
 ```js
-/*
-              封装 Promise 接口调用
-            */
-function queryData(url) {
-    return new Promise((resolve, reject) => {
-        const xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState != 4) return;
-            if (xhr.readyState == 4 && xhr.status == 200) {
-                // 处理正常结果
-                resolve(xhr.responseText);
-            } else {
-                // 处理异常结果
-                reject('服务器错误');
-            }
-        };
-        xhr.open('get', url);
-        xhr.send(null);
-    });
-}
-
-const promise1 = queryData('http://localhost:3000/api1');
-const promise2 = queryData('http://localhost:3000/api2');
-const promise3 = queryData('http://localhost:3000/api3');
-
-Promise.all([promise1, promise2, promise3]).then((res) => {
-    // 这里拿到的 res是三个返回结果组成的数组。
-    console.log(res);
+const promise1 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        console.log('执行 promise1');
+        resolve('promise 1 成功');
+    }, 1000);
 });
+
+const promise2 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        console.log('执行 promise2');
+        resolve('promise 2 成功');
+    }, 2000);
+});
+
+const promise3 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        console.log('执行 promise3');
+        resolve('promise 3 成功');
+    }, 3000);
+});
+
+Promise.all([promise1, promise2, promise3])
+    .then((res) => {
+        // 三个异步任务都执行成功，才会走到这里
+        // 这里拿到的 res，是三个成功的返回结果组成的数组
+        console.log(JSON.stringify(res));
+    })
+    .catch((err) => {
+        // 只要有一个异步任务执行失败，就会马上走到这里
+        console.log(err);
+    });
 ```
 
-### Promise.all()：图片上传举例
+打印结果：
 
-比如说，现在有一个**图片上传**的接口，每次请求接口时只能上传一张图片。需求是：当用户连续上传完三张图片之后，给用户一个“上传成功”的提示。这个时候，我们就可以使用`Promsie.all()`。
+```js
+// 1秒后
+执行 promise1
+
+// 2秒后
+执行 promise2
+
+// 3秒后
+执行 promise3
+["promise 1 成功","promise 2 成功","promise 3 成功"]
+```
+
+**2、异步任务有至少一个执行失败时**：
+
+```js
+const promise1 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        console.log('执行 promise1');
+        resolve('promise 1 成功');
+    }, 1000);
+});
+
+const promise2 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        console.log('执行 promise2');
+        // 这里通过 reject() 的方式，表示任务执行失败
+        reject('promise 2 失败');
+    }, 2000);
+});
+
+const promise3 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        console.log('执行 promise3');
+        resolve('promise 3 成功');
+    }, 3000);
+});
+
+Promise.all([promise1, promise2, promise3])
+    .then((res) => {
+        // 三个异步任务都执行成功，才会走到这里
+        console.log('走到 then:' + JSON.stringify(res));
+    })
+    .catch((err) => {
+        // 只要有一个异步任务执行失败，就会马上走到这里
+        console.log('走到 catch:' + err);
+    });
+```
+
+打印结果：
+
+```js
+// 1秒后
+执行 promise1
+
+// 2秒后
+执行 promise2
+走到 catch:promise 2 失败
+
+// 3秒后
+执行 promise3
+```
+
+可以看到，当 promise2 执行失败之后，马上就走到了 catch，而且 promise3 里的 resolve 并没有执行。
+
+### Promise.all()举例：图片上传
+
+比如说，现在有一个**图片上传**的接口，每次请求接口时只能上传一张图片。需求是：当用户连续上传完三张图片（甚至是更多图片）之后，给用户一个“上传成功”的提示。这个时候，我们就可以使用`Promsie.all()`。
 
 ## Promise.race()
 
-`race`的中文翻译，可以理解为“竞赛”。
+`Promise.race([p1, p2, p3])`：并发处理多个异步任务，返回的是第一个执行完成的 promise，且状态和第一个任务的状态保持一致。参数里传的是多个 promise 实例组成的数组。
 
-代码举例：
+上面这句话，第一次读时，可能很绕口。我说的再通俗一点：在多个同时执行的异步任务中，先找出哪个异步任务**最先执行完成**（无论是走到 resolve，还是走到 reject，都算执行完成）。然后，整体的状态跟这个任务保持一致。如果这个任务执行成功，那整体就算成功（走到 then）；如果这个任务执行失败，那整体就算失败（走到 catch）。
+
+`race`的中文翻译，可以理解为“竞赛”。意思是，谁先抢到名额，就认定谁了。无论这个人最终的结局是成功或者失败，整体的结局，都以这个人的结局为准。
+
+我刚开始学 Promise.race()的时候，误以为它的含义是“只要有一个异步执行成功，整体就算成功（走到 then）；所有任务都执行失败，整体才算失败（走到 catch）”。现在想来，真是大错特错，过于懵懂。
+
+我们来看看各种场景的打印结果，便能让你擦干泪水。
+
+### 语法举例
+
+**场景 1、所有任务都执行成功时**：
 
 ```js
-/*
-              封装 Promise 接口调用
-            */
-function queryData(url) {
-    return new Promise((resolve, reject) => {
-        var xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState != 4) return;
-            if (xhr.readyState == 4 && xhr.status == 200) {
-                // 处理正常结果
-                resolve(xhr.responseText);
-            } else {
-                // 处理异常结果
-                reject('服务器错误');
-            }
-        };
-        xhr.open('get', url);
-        xhr.send(null);
-    });
-}
-
-var promise1 = queryData('http://localhost:3000/api1');
-var promise2 = queryData('http://localhost:3000/api2');
-var promise3 = queryData('http://localhost:3000/api3');
-
-Promise.race([promise1, promise2, promise3]).then((result) => {
-    console.log(result);
+const promise1 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        console.log('执行 promise1');
+        resolve('promise 1 成功');
+    }, 1000);
 });
+
+const promise2 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        console.log('执行 promise2');
+        resolve('promise 2 成功');
+    }, 2000);
+});
+
+const promise3 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        console.log('执行 promise3');
+        resolve('promise 3 成功');
+    }, 3000);
+});
+
+Promise.race([promise1, promise2, promise3])
+    .then((res) => {
+        // 只要有一个异步任务执行成功，就会走到这里
+        // 这里拿到的 res，是第一个成功的 promise 返回的结果，不是数组
+        console.log(JSON.stringify(res));
+    })
+    .catch((err) => {
+        // 所有异步任务异步都执行失败，才会走到这里
+        console.log(err);
+    });
 ```
+
+打印结果：
+
+```js
+// 1秒后
+执行 promise1
+"promise 1 成功"
+
+// 2秒后
+执行 promise2
+
+// 3秒后
+执行 promise3
+```
+
+**场景 2、第一个任务成功、第二个任务失败时**：
+
+```js
+const promise1 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        console.log('执行 promise1');
+        resolve('promise 1 成功');
+    }, 1000);
+});
+
+const promise2 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        console.log('执行 promise2');
+        // 第二个任务执行失败时
+        reject('promise 2 失败');
+    }, 2000);
+});
+
+const promise3 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        console.log('执行 promise3');
+        resolve('promise 3 成功');
+    }, 3000);
+});
+
+Promise.race([promise1, promise2, promise3])
+    .then((res) => {
+        // 第一个完成的任务，如果执行成功，就会走到这里
+        console.log('走到then:' + res);
+    })
+    .catch((err) => {
+        // 第一个完成的任务，如果执行失败，就会走到这里
+        console.log('走到catch:' + err);
+    });
+```
+
+打印结果：
+
+```js
+// 1秒后
+执行 promise1
+走到then:promise 1 成功
+
+// 2秒后
+执行 promise2
+
+// 3秒后
+执行 promise3
+```
+
+可以看出，场景 2 的打印结果和场景 1 的打印结果，是一样的。因为最新执行完成的任务，是成功的，所以整体会马上走到 then，且整体就算成功。
+
+**场景 3、第一个任务失败、第二个任务成功时**：
+
+```js
+const promise1 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        console.log('执行 promise1');
+        // 第一个任务执行失败时
+        reject('promise 1 失败');
+    }, 1000);
+});
+
+const promise2 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        console.log('执行 promise2');
+        resolve('promise 2 成功');
+    }, 2000);
+});
+
+const promise3 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        console.log('执行 promise3');
+        resolve('promise 3 成功');
+    }, 3000);
+});
+
+Promise.race([promise1, promise2, promise3])
+    .then((res) => {
+        // 第一个完成的任务，如果执行成功，就会走到这里
+        console.log('走到then:' + res);
+    })
+    .catch((err) => {
+        // 第一个完成的任务，如果执行失败，就会走到这里
+        console.log('走到catch:' + err);
+    });
+```
+
+打印结果：
+
+```js
+// 1秒后
+执行 promise1
+走到catch：promise 1 失败
+
+// 2秒后
+执行 promise2
+
+// 3秒后
+执行 promise3
+```
+
+看清楚了没？场景 3 的最终打印结果，是走到了 catch；任务 2 和任务 3 里的 resolve，并没有继续执行。
+
+场景 3 的代码，一定好好好理解。
 
 ## 我的公众号
 
