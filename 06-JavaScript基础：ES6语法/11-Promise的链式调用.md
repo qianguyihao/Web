@@ -280,7 +280,7 @@ getPromise('a.json')
 打印结果：
 
 ```
-'a: err
+a: err
 undefined
 c：success
 ```
@@ -365,7 +365,7 @@ return 后面的返回值，有两种情况：
 
 ### 情况 1：返回 Promise 实例对象
 
-举例如下：（这个例子，跟上一段 Ajax 链式调用 的例子差不多）
+举例如下：
 
 ```js
 getPromise('a.json')
