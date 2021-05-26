@@ -694,7 +694,7 @@ css 中用`.`来表示类。举例如下：
 
 ![](http://img.smyhvae.com/20170711_1836.png)
 
-讲到这里，我们再提一个 sublme 的快捷键。
+讲到这里，我们再提一个 sublime 的快捷键。
 
 在 sublime 中输入`p#haha`，按 tab 键后，会生成`<p id="haha"></p>`。
 
