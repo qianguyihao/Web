@@ -1,9 +1,8 @@
 
-> 备注： async/await 的内容还有待完善。
 
 ## async/await （异步函数）概述
 
-async/await 是在 ES7 中引入的新语法，可以更加方便地进行异步操作。
+async/await 是在 ES8(即ES 2017）中引入的新语法，是另外一种异步编程解决方案。
 
 本质： Generator 的语法糖。
 
