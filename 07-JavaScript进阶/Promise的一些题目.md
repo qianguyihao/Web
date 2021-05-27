@@ -94,3 +94,31 @@ a成功
 b成功
 b接口返回的内容
 ```
+
+### 题目 3
+
+举例1：
+
+```js
+new Promise((resolve, reject) => {
+    resolove();
+    console.log('promise1');  // 代码1
+}).then(res => {
+    console.log('promise  then)';  // 代码2：微任务
+})
+
+console.log('千古壹号');  // 代码3
+```
+
+打印结果：
+
+```
+promise1
+千古壹号
+promise  then
+```
+
+代码解释：代码1是同步代码，所以最先执行。代码2是**微任务**里面的代码，所以要先等同步任务（代码3）先执行完。
+
+当写完`resolove();`之后，就会立刻把 `.then()`里面的代码加入到微任务队列当中。
+

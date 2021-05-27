@@ -143,17 +143,17 @@ myPromise()
 
 上面的伪代码可以看出，即便在业务逻辑上是层层嵌套，但是代码写法上，却十分优雅，也没有过多的嵌套。
 
-## Promise 基础
+## Promise 对象的用法和状态
 
-### Promise 的基本用法
+### 使用 Promise 的基本步骤
 
 （1）通过 `new Promise()` 构造出一个 Promise 实例。Promise 的构造函数中传入一个参数，这个参数是一个函数，该函数用于处理异步任务。
 
 （2）函数中传入两个参数：resolve 和 reject，分别表示异步执行成功后的回调函数和异步执行失败后的回调函数。代表着我们需要改变当前实例的状态到**已完成**或是**已拒绝**。
 
-（3）通过 promise.then() 处理返回结果（这里的 `promise` 指的是 Promise 实例）。
+（3）通过 promise.then() 和 promise.catch() 处理返回结果（这里的 `promise` 指的是 Promise 实例）。
 
-Promise 的精髓在于**对异步操作的状态管理**。
+看到这里，你估计还是不知道 Promise 怎么使用。我们不妨来看一下 Promise 有哪些状态，便一目了然。要知道，Promise 的精髓在于**对异步操作的状态管理**。
 
 ### promise 对象的 3 个状态
 
@@ -163,13 +163,17 @@ Promise 的精髓在于**对异步操作的状态管理**。
 
 -   失败：rejected
 
-（1）当 new Promise()执行之后，promise 对象的状态会被初始化为`pending`，这个状态是初始化状态。`new Promise()`这行代码，括号里的内容是同步执行的。括号里定义一个 function，function 有两个参数：resolve 和 reject。如下：
+**步骤 1**：
+
+当 new Promise()执行之后，promise 对象的状态会被初始化为`pending`，这个状态是初始化状态。`new Promise()`这行代码，括号里的内容是同步执行的。括号里可以再定义一个 异步任务的 function，function 有两个参数：resolve 和 reject。如下：
 
 -   如果请求成功了，则执行 resolve()，此时，promise 的状态会被自动修改为 fulfilled。
 
 -   如果请求失败了，则执行 reject()，此时，promise 的状态会被自动修改为 rejected
 
-（2）promise.then()方法，括号里面有两个参数，分别代表两个函数 function1 和 function2：
+（2）promise.then()方法：**只有 promise 的状态被改变之后，才会走到 then 或者 catch**。也就是说，在 new Promise()的时候，如果没有写 resolve()，则 promise.then() 不执行；如果没有写 reject()，则 promise.catch() 不执行。
+
+`then()`括号里面有两个参数，分别代表两个函数 function1 和 function2：
 
 -   如果 promise 的状态为 fulfilled（意思是：如果请求成功），则执行 function1 里的内容
 
@@ -177,43 +181,103 @@ Promise 的精髓在于**对异步操作的状态管理**。
 
 另外，resolve()和 reject()这两个方法，是可以给 promise.then()传递参数的。
 
-关于 promise 的状态改变，伪代码及注释如下：
+关于 promise 的状态改变，以及如何处理状态改变，伪代码及注释如下：
 
 ```javascript
 // 创建 promise 实例
 let promise = new Promise((resolve, reject) => {
     //进来之后，状态为pending
-    console.log('111'); //这行代码是同步的
+    console.log('同步代码'); //这行代码是同步的
     //开始执行异步操作（这里开始，写异步的代码，比如ajax请求 or 开启定时器）
     if (异步的ajax请求成功) {
         console.log('333');
-        resolve('haha'); //如果请求成功了，请写resolve()，此时，promise的状态会被自动修改为fulfilled
+        resolve('请求成功，并传参'); //如果请求成功了，请写resolve()，此时，promise的状态会被自动修改为fulfilled（成功状态）
     } else {
-        reject('555'); //如果请求失败了，请写reject()，此时，promise的状态会被自动修改为rejected
+        reject('请求失败，并传参'); //如果请求失败了，请写reject()，此时，promise的状态会被自动修改为rejected（失败状态）
     }
 });
 console.log('222');
 
-//调用promise的then()
+//调用promise的then()：开始处理成功和失败
 promise.then(
     (successMsg) => {
-        //如果promise的状态为fulfilled，则执行这里的代码
-        console.log(successMsg, '成功了');
+        // 处理 promise 的成功状态：如果promise的状态为fulfilled，则执行这里的代码
+        console.log(successMsg, '成功了'); // 这里的 successMsg 是前面的 resolve('请求成功，并传参')  传过来的参数
     },
     (errorMsg) => {
-        //如果promise的状态为rejected，则执行这里的代码
-        console.log(errorMsg, '失败了');
+        //处理 promise 的失败状态：如果promise的状态为rejected，则执行这里的代码
+        console.log(errorMsg, '失败了'); // 这里的 errorMsg 是前面的 reject('请求失败，并传参') 传过来的参数
     }
 );
 ```
 
-**几点补充**：
+上面的注释要多看几遍。
 
-（1）Promise 的状态一旦改变，就不能再变。
+## 几点补充
 
-（2）Promise 的状态改变，是不可逆的。
+### new Promise() 是同步代码
 
-为了解释这两点，我们来看个例子：
+`new Promise()`这行代码本身是同步的。promise 如果没有使用 resolve 或 reject 更改状态时，状态为 pending。
+
+**举例1**：
+
+```js
+const promiseA = new Promise((resolve, reject) => {});
+console.log(promiseA); // 此时 promise 的状态为 pending（准备阶段）
+```
+
+上面的代码中，我既没有写 reslove()，也没有写 reject()。也就是说，这个 promise 一直处于准备阶段。
+
+当完成异步任务之后，状态分为成功或失败，此时我们就可以用 reslove() 和 reject() 来修改 promise 的状态。
+
+**举例2**：
+
+```js
+new Promise((resolve, reject) => {
+    console.log('promise1'); // 这行代码是同步代码，会立即执行
+}).then((res) => {
+    console.log('promise then:' + res); // 这行代码不会执行，因为前面没有写 resolve()，所以走不到 .then
+});
+```
+
+打印结果：
+
+```
+promise1
+```
+
+
+上方代码，仔细看注释：如果前面没有写 `resolve()`，那么后面的 `.then`是不会执行的。
+
+**举例3**：
+
+```js
+new Promise((resolve, reject) => {
+    resolove();
+    console.log('promise1');  // 代码1：同步任务，会立即执行
+}).then(res => {
+    console.log('promise  then)';  // 代码2：异步任务中的微任务
+})
+
+console.log('千古壹号');  // 代码3：同步任务
+```
+
+打印结果：
+
+```
+promise1
+千古壹号
+promise  then
+```
+
+代码解释：代码1是同步代码，所以最先执行。代码2是**微任务**里面的代码，所以要先等同步任务（代码3）先执行完。当写完`resolve();`之后，就会立刻把 `.then()`里面的代码加入到微任务队列当中。
+
+补充知识：异步任务分为“宏任务”、“微任务”两种。我们到后续的章节中再详细讲。
+
+
+### Promise 的状态一旦改变，就不能再变
+
+代码举例：
 
 ```js
 const p = new Promise((resolve, reject) => {
@@ -228,6 +292,8 @@ p.then((res) => {
 ```
 
 上方代码的打印结果是 1，而不是 2，详见注释。
+
+### Promise 的状态改变，是不可逆的
 
 ### 小结
 

@@ -192,8 +192,8 @@ xmlhttp.onreadystatechange = function () {
 封装 Ajax 请求的代码如下：(get 请求为例)
 
 ```js
-// 封装 Ajax为公共函数
-function myAjax(url, callback) {
+// 封装 Ajax为公共函数：传入回调函数 success 和 fail
+function myAjax(url, success, fail) {
     // 1、创建XMLHttpRequest对象
     var xmlhttp;
     if (window.XMLHttpRequest) {
@@ -210,7 +210,10 @@ function myAjax(url, callback) {
         if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
             var obj = JSON.parse(xmlhttp.responseText);
             console.log('数据返回成功：' + Jobj);
-            callback(obj);
+            success && success(xmlhttp.responseText);
+        } else {
+            // 这里的 && 符号，意思是：如果传了 fail 参数，就调用后面的 fail()；如果没传 fail 参数，就不调用后面的内容。因为 fail 参数不一定会传。
+            fail && fail(new Error('接口请求失败'));
         }
     };
 }
