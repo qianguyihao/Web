@@ -377,7 +377,7 @@ function myPromise() {
 }
 */
 
-// 先执行异步函数fun1，再执行回调函数
+// 先执行异步函数 myPromise，再执行回调函数
 myPromise().then(() => {
     console.log('我是延迟执行的回调函数');
 });
