@@ -408,6 +408,7 @@ ajax(
     '/a.json',
     (res) => {
         console.log('qianguyihao 第一个接口请求成功:' + JSON.stringify(res));
+    },
     (err) => {
         console.log('qianguyihao 请求失败:' + JSON.stringify(err));
     }
