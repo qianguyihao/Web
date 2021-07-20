@@ -289,6 +289,7 @@ p.then((res) => {
     console.log(res);
 }).catch((err) => {
     console.log(err);
+});
 ```
 
 上方代码的打印结果是 1，而不是 2，详见注释。
