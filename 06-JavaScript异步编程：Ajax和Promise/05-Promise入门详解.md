@@ -253,10 +253,10 @@ promise1
 
 ```js
 new Promise((resolve, reject) => {
-    resolove();
+    resolve();
     console.log('promise1');  // 代码1：同步任务，会立即执行
 }).then(res => {
-    console.log('promise  then)';  // 代码2：异步任务中的微任务
+    console.log('promise  then');  // 代码2：异步任务中的微任务
 })
 
 console.log('千古壹号');  // 代码3：同步任务
