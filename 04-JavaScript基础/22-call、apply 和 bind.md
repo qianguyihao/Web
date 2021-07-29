@@ -1,3 +1,11 @@
+---
+title: 22-call、apply 和 bind
+publish: true
+---
+
+<ArticleTopAd></ArticleTopAd>
+
+
 ## 前言
 
 JS 专门为我们提供了一些方法来改变函数内部的 this 指向。常见的方法有 call()、apply()、bind() 方法。

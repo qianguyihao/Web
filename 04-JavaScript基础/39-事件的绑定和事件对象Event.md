@@ -1,3 +1,11 @@
+---
+title: 39-事件的绑定和事件对象Event
+publish: true
+---
+
+<ArticleTopAd></ArticleTopAd>
+
+
 
 
 ## 绑定事件的两种方式/DOM事件的级别

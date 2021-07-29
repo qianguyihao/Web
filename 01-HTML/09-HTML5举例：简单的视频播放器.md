@@ -1,3 +1,9 @@
+---
+title: 09-HTML5举例：简单的视频播放器
+publish: true
+---
+
+<ArticleTopAd></ArticleTopAd>
 
 
 我们采用 Bootstrap 网站的图标字体，作为播放器的按钮图标。

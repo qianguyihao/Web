@@ -1,3 +1,14 @@
+---
+title: 01-VS Code的使用
+publish: true
+---
+
+<ArticleTopAd></ArticleTopAd>
+
+
+
+
+
 ## 前言
 
 > 文章标题：《第一次使用 VS Code 时你应该知道的一切配置》。本文的最新内容，更新于 2020-06-19。大家完全不用担心这篇文章会过时，因为随着 VS Code 的版本更新和插件更新，本文也会随之更新。
@@ -611,6 +622,10 @@ VS Code 默认支持 Emmet。更多 Emmet 语法规则，请自行查阅。
 （3）在 VS Code 的当前文件里，选择「右键 -> upload」，就可以将本地的代码上传到 指定的 ftp 服务器上（也就是在上方 `host` 中配置的服务器 ip）。
 
 我们还可以选择「右键 -> Diff with Remote」，就可以将本地的代码和 ftp 服务器上的代码做对比。
+
+### 28、设置tab的缩进
+
+在配置里搜索`Detect Indentation`，修改为false。参考链接：https://www.yisu.com/zixun/327399.html
 
 ## 七、VS Code 配置云同步
 

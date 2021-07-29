@@ -1,3 +1,9 @@
+---
+title: 07-typeof和数据类型转换
+publish: true
+---
+
+<ArticleTopAd></ArticleTopAd>
 ## 前言
 
 **变量的数据类型转换**：将一种数据类型转换为另外一种数据类型。

@@ -1,3 +1,11 @@
+---
+title: 函数封装-Ajax发送http请求（get&post）
+publish: false
+---
+
+<ArticleTopAd></ArticleTopAd>
+
+
 
 
 

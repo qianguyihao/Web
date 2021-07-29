@@ -1,3 +1,11 @@
+---
+title: 05-Promise入门详解
+publish: true
+---
+
+<ArticleTopAd></ArticleTopAd>
+
+
 ## 为什么需要 Promise？
 
 我们在前面的文章《JavaScript 基础：异步编程和 Ajax/单线程和异步》中讲过，Javascript 是⼀⻔单线程语⾔。早期我们解决异步场景时，⼤部分情况都是通过回调函数来进⾏。

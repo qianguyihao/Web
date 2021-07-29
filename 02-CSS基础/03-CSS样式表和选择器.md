@@ -1,4 +1,9 @@
-> 本文最初于 2015-10-03 发表于[博客园](http://www.cnblogs.com/smyhvae/p/4853995.html)，并在[GitHub](https://github.com/qianguyihao/Web)上持续更新**前端的系列文章**。欢迎在 GitHub 上关注我，一起入门和进阶前端。
+---
+title: 03-CSS样式表和选择器
+publish: true
+---
+
+<ArticleTopAd></ArticleTopAd>
 
 ## 本文主要内容
 

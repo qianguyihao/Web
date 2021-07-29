@@ -1,3 +1,13 @@
+---
+title: 01-var、let、const的区别
+publish: true
+---
+
+<ArticleTopAd></ArticleTopAd>
+
+
+
+
 ## var、let、const 的区别
 
 ### 1、var 声明的变量会挂载在 window 对象上，而 let 和 const 声明的变量不会

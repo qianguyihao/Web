@@ -1,7 +1,13 @@
+---
+title: 04-DOM操作练习：Tab栏切换（通过className设置样式）
+publish: true
+---
 
-> 本文最初发表于[博客园](http://www.cnblogs.com/smyhvae/p/8371782.html)，并在[GitHub](https://github.com/smyhvae/Web)上持续更新**前端的系列文章**。欢迎在GitHub上关注我，一起入门和进阶前端。
+<ArticleTopAd></ArticleTopAd>
 
-> 以下是正文。
+
+
+
 
 京东网页上，可以看到下面这种tab栏的切换：
 

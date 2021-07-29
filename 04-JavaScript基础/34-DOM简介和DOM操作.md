@@ -1,3 +1,11 @@
+---
+title: 34-DOM简介和DOM操作
+publish: true
+---
+
+<ArticleTopAd></ArticleTopAd>
+
+
 
 ## 常见概念
 

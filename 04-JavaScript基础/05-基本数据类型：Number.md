@@ -1,3 +1,9 @@
+---
+title: 05-基本数据类型：Number
+publish: true
+---
+
+<ArticleTopAd></ArticleTopAd>
 
 ## 数值型：Number
 

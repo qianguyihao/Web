@@ -1,3 +1,11 @@
+---
+title: 06-Promise的链式调用
+publish: true
+---
+
+<ArticleTopAd></ArticleTopAd>
+
+
 ## Promise 的链式调用：处理多次 Ajax 请求【重要】
 
 实际开发中，我们经常需要同时请求多个接口。比如说：在请求完`接口1`的数据`data1`之后，需要根据`data1`的数据，继续请求接口 2，获取`data2`；然后根据`data2`的数据，继续请求接口 3。

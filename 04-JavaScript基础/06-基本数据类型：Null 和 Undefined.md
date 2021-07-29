@@ -1,3 +1,9 @@
+---
+title: 06-基本数据类型：Null 和 Undefined
+publish: true
+---
+
+<ArticleTopAd></ArticleTopAd>
 
 很多其他的语言中，只有 null；但 JS 语言中，既有 null，又有 undefined。很多人会弄混，由此觉得 JS 语言很麻烦。其实不然，学习完这篇文章后，你会发现 null 和 undefined 的区别很容易理解。
 

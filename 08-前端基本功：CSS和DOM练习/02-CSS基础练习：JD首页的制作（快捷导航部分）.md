@@ -1,4 +1,12 @@
-02-CSS基础练习：JD首页的制作（快捷导航部分）
+---
+title: 02-CSS基础练习：JD首页的制作（快捷导航部分）
+publish: true
+---
+
+<ArticleTopAd></ArticleTopAd>
+
+
+
 
 我们在上一篇文章中制作的网页最顶部的导航，是属于网页导航。
 

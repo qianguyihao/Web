@@ -1,6 +1,5 @@
 ---
 title: 02-Git的使用
-publish: true
 ---
 
 <ArticleTopAd></ArticleTopAd>

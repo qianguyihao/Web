@@ -1,3 +1,11 @@
+---
+title: 07-Promise的静态方法
+publish: true
+---
+
+<ArticleTopAd></ArticleTopAd>
+
+
 ## Promise 的常用 API 分类
 
 ### Promise 的实例方法
@@ -227,12 +235,35 @@ imgArr.forEach((item) => {
 Promise.all(promiseArr).then((res) => {
     console.log('图片全部上传完成');
     console.log('九张图片的url地址，组成的数组：' + res);
+}).catch(res=> {
+    console.log('部分图片上传失败');
 });
 ```
 
+上方代码解释：
+
+1、只有九张图片都上传成功，才会走到 then。
+
+2、按时间顺序来看，假设第一张图片上传成功，第二张图片上传失败，那么，最终的表现是：
+
+- 对于前端来说，九张图都会走到 reject；整体会走到 catch，不会走到 then。
+
+- 对于后端来说，第一张图片会上传成功（因为写入DB是不可逆的），第二张图上传失败，剩下的七张图，会正常请求 upload img 接口。
+
+3、**特别说明**：
+
+- 第一张图会成功调 upload 接口，并返回 imgUrl，但不会走到 resolve，因为要等其他八张图的执行结果，再决定是一起走 resolove 还是一起走 reject。
+
+- 当执行 Promise.all() / Promise.race() / Promise.any() 的时候，**其实九张图的 upload img 请求都已经发出去了**。对于后端来说，是没有区别的（而且读写DB的操作不可逆），只是在前端的交互表现不同、走到 resolve / reject / then / catch 的时机不同而已。
+
+
 上面这个例子，在实际的项目开发中，经常遇到，属于高频需求，需要记住并理解。
 
-当然，实战开发中，在做多张图片上传时，可能是一张一张地单独上传，各自的上传进度相互独立。此时 `Promise.all`便不再适用，这就得具体需求具体分析了。
+4、**思维拓展**：
+
+- 拓展1：如果你希望九张图同时上传，并且想知道哪些图上传成功、哪些图上传失败，则可以这样做：**无论 upload img 接口请求成功与否，全都执行 reslove**。这样的话，最终一定会走到 then，然后再根据接口返回的结果判断九张图片的上传成功与否。
+
+- 拓展2：实战开发中，在做多张图片上传时，可能是一张一张地单独上传，各自的上传操作相互独立。此时 `Promise.all`便不再适用，这就得具体需求具体分析了。
 
 ## Promise.race()
 
@@ -447,6 +478,11 @@ Promise.race([getImg(), timeout()])
 如代码注释所述：采用 Promise.race()之后，如果 timeout() 的 promise 比 getImg() 的 promise 先执行，说明定时器时间到了，那就算超时。整体的最终结果按失败处理。
 
 这个思路很巧妙。
+
+## Promise.any()
+
+
+
 
 ## 总结
 

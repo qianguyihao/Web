@@ -1,3 +1,11 @@
+---
+title: 43-BOM简介和navigator.userAgent&History&Location
+publish: true
+---
+
+<ArticleTopAd></ArticleTopAd>
+
+
 
 ## 常见概念
 

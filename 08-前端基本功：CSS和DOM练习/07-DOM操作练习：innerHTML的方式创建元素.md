@@ -1,3 +1,11 @@
+---
+title: 07-DOM操作练习：innerHTML的方式创建元素
+publish: true
+---
+
+<ArticleTopAd></ArticleTopAd>
+
+
 
 
 ## 动态创建DOM元素的三种方式

@@ -1,3 +1,10 @@
+---
+title: 04-ES6：变量 let、const 和块级作用域
+publish: true
+---
+
+<ArticleTopAd></ArticleTopAd>
+
 ## ES6 的变量声明
 
 ES5 中，使用 `var` 定义**全局变量**（ var 是 variable 的简写）。

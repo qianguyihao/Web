@@ -1,3 +1,11 @@
+---
+title: 10-流程控制语句：循环结构（for和while）
+publish: true
+---
+
+<ArticleTopAd></ArticleTopAd>
+
+
 ## 前言
 
 循环语句：通过循环语句可以反复的执行一段代码多次。
@@ -228,7 +236,7 @@ do...while语句在执行时，会先执行循环体：
 
 ### break
 
-- break 可以用来退出 switch 语句或退出**整个**循环语句（循环语句包括 for 循环、while 循环。不包括 if。if 里不能用 break 和 continue，否则会报错）。
+- break 可以用来退出 switch 语句或退出**整个**循环语句（循环语句包括 for 循环、while 循环。不包括 if。单独的if 语句里不能用 break 和 continue，否则会报错）。
 
 - break 会立即终止离它**最近**的那个循环语句。
 

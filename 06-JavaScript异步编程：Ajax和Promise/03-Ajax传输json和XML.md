@@ -1,3 +1,11 @@
+---
+title: 03-Ajax传输json和XML
+publish: true
+---
+
+<ArticleTopAd></ArticleTopAd>
+
+
 
 
 ## Ajax 传输 JSON

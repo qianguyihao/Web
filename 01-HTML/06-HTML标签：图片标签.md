@@ -1,3 +1,9 @@
+---
+title: 06-HTML标签：图片标签
+publish: true
+---
+
+<ArticleTopAd></ArticleTopAd>
 
 
 ## img标签介绍

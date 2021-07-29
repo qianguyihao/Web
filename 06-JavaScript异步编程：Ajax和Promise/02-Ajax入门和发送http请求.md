@@ -1,3 +1,11 @@
+---
+title: 02-Ajax入门和发送http请求
+publish: true
+---
+
+<ArticleTopAd></ArticleTopAd>
+
+
 ## 同步和异步回顾
 
 ### 同步和异步的简单理解

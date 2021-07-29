@@ -1,3 +1,11 @@
+---
+title: 14-内置对象：Number和Math
+publish: true
+---
+
+<ArticleTopAd></ArticleTopAd>
+
+
 
 
 ## 内置对象 Number 的常见方法

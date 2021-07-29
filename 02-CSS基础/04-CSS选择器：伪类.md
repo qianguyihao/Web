@@ -1,7 +1,10 @@
+---
+title: 04-CSS选择器：伪类
+publish: true
+---
 
-> 本文最初发表于[博客园](http://www.cnblogs.com/smyhvae/p/8280814.html)，并在[GitHub](https://github.com/qianguyihao/Web)上持续更新**前端的系列文章**。欢迎在GitHub上关注我，一起入门和进阶前端。
+<ArticleTopAd></ArticleTopAd>
 
-> 以下是正文。
 
 
 ## 伪类（伪类选择器）

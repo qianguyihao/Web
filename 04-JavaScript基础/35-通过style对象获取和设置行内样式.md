@@ -1,3 +1,11 @@
+---
+title: 35-通过style对象获取和设置行内样式
+publish: true
+---
+
+<ArticleTopAd></ArticleTopAd>
+
+
 
 
 ## style属性的获取和修改

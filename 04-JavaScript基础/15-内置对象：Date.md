@@ -1,3 +1,11 @@
+---
+title: 15-内置对象：Date
+publish: true
+---
+
+<ArticleTopAd></ArticleTopAd>
+
+
 
 
 ## 内置对象：Date
