@@ -243,6 +243,8 @@ myAjax('a.json', (res) => {
 });
 ```
 
+学会了封装 get 请求之后，封装 post请求也是类似的写法。
+
 ### Ajax 请求：get 请求举例
 
 （1）index.html：
@@ -261,6 +263,7 @@ myAjax('a.json', (res) => {
         <script type="text/javascript">
             // 绑定点击事件
             document.querySelector('#btnAjax').onclick = function () {
+                // 这里直接使用上面封装的 myAjax() 方法即可
                 myAjax('02-ajax.php', (res) => {
                     console.log(res);
                     console.log('数据返回成功');
@@ -269,24 +272,6 @@ myAjax('a.json', (res) => {
                     // alert(xhr.responseText);
                 });
             };
-
-            function myAjax(url, callback) {
-                var xmlhttp;
-                if (window.XMLHttpRequest) {
-                    xmlhttp = new XMLHttpRequest();
-                } else {
-                    xmlhttp = new ActiveXObject('Microsoft.XMLHTTP');
-                }
-                xmlhttp.open('GET', url, true);
-                xmlhttp.send();
-                xmlhttp.onreadystatechange = function () {
-                    if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
-                        var obj = JSON.parse(xmlhttp.responseText);
-                        console.log('数据返回成功：' + Jobj);
-                        callback(obj);
-                    }
-                };
-            }
         </script>
     </body>
 </html>
@@ -304,7 +289,7 @@ myAjax('a.json', (res) => {
 
 ![](http://img.smyhvae.com/20180228_1605.gif)
 
-### Ajax 多个接口的嵌套请求（重要）
+### Ajax 多个接口的嵌套请求
 
 我们在做异步任务的时候，经常会涉及到多个接口的嵌套请求。比如说，接口 1 请求完成后，需要根据接口 1 的数据请求接口 2；接口 2 请求完成后，需要根据接口 3 的数据请求接口 3，以此类推。
 
@@ -319,7 +304,7 @@ myAjax('a.json', (res) => {
 ```js
 myAjax('http://localhost:8888/php/user.php?name=千古', (userInfo) => {
     // 根据第一个接口返回的 userInfo.id，继续请求第二个接口
-    myAjax(`http://localhost:8888/php/houdunren.php?id=${userInfo['id']}`, (res) => {
+    myAjax(`http://localhost:8888/php/info.php?id=${userInfo['id']}`, (res) => {
         console.log(response);
     });
 });
