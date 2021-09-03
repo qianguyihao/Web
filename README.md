@@ -9,11 +9,7 @@
 
 **项目地址**：
 
-- 官网地址：<https://web.qianguyihao.com>
-
 - GitHub地址：<https://github.com/qianguyihao/Web>
-
-官网首次打开时略慢，请耐心等待。
 
 如果你发现本项目有内容上的错误，欢迎在 GitHub 提交 issues 或者 pull requests 进行指正，**方便归档**。
 
