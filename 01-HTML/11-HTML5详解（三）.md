@@ -174,7 +174,7 @@ sessionStorage 的 API 举例：
         window.localStorage.setItem('userName', txt.value);
     }
 
-    //        localStorage存储数据
+    //        localStorage获取数据
     btns[1].onclick = function () {
         txt.value = window.localStorage.getItem('userName');
     }
