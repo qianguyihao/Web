@@ -1,6 +1,5 @@
 ---
 title: 01-VS Code的使用
-publish: true
 ---
 
 <ArticleTopAd></ArticleTopAd>
@@ -58,14 +57,15 @@ IDE 和编辑器是有区别的：
 ### VS Code 的特点
 
 - VS Code 的使命，是让开发者在编辑器里拥有 IDE 那样的开发体验，比如代码的智能提示、语法检查、图形化的调试工具、插件扩展、版本管理等。
-
 - 跨平台支持 MacOS、Windows 和 Linux 等多个平台。
-
 - VS Code 的源代码以 MIT 协议开源。
-
 - 支持第三方插件，功能强大，生态系统完善。
 
-- VS Code 自带了 JavaScript、TypeScript 和 Node.js 的支持。也就是说，你在书写 JS 和 TS 时，是自带智能提示的。当然，其他的语言，你可以安装相应的**扩展包**插件，也会有智能提示。
+- 自带丰富的调试功能。
+
+- 自带  emmet：支持代码自动补全，快速地生成简单的语法结构。要知道，这个功能在 Sublime Text中，得先安装插件才行。
+
+- VS Code 自带了 JavaScript、TypeScript 和 Node.js 的语法支持。也就是说，你在书写 JS 和 TS 时，是自带智能提示的。当然，其他的语言，你可以安装相应的**扩展包**插件，也会有智能提示。
 
 ### 前端利器之争： VS Code 与 WebStorm
 
@@ -89,6 +89,10 @@ VS Code 的安装很简单，直接去官网下载安装包，然后双击安装
 
 上图中，直接点击 download，一键下载安装即可。
 
+VS Code支持以下平台：
+
+![](https://img.smyhvae.com/20210930_1930.png)
+
 ## 二、崭露锋芒：VS Code 快捷键
 
 VS Code 用得熟不熟，首先就看你是否会用快捷键。以下列出的内容，都是常用快捷键，而加粗部分的快捷键，使用频率则非常高。
@@ -107,7 +111,7 @@ VS Code 用得熟不熟，首先就看你是否会用快捷键。以下列出的
 | **Cmd + B**            | **Ctrl + B**             | 显示/隐藏侧边栏                               | 很实用               |
 | `Cmd + \` | `Ctrl + \` | **创建多个编辑器**       | 【重要】抄代码利器                            |
 | **Cmd + 1、2**         | **Ctrl + 1、2**          | 聚焦到第 1、第 2 个编辑器                     | 同上重要             |
-| **cmd +/-**            | **ctrl +/-**             | 将工作区放大/缩小（包括代码字体、左侧导航栏） | 在投影仪场景经常用到 |
+| **Cmd + +、Cmd + -** | **ctrl + +、ctrl + -**  | 将工作区放大/缩小（包括代码字体、左侧导航栏） | 在投影仪场景经常用到 |
 | Cmd + J                | Ctrl + J                 | 显示/隐藏控制台                               |                      |
 | **Cmd + Shift + N**    | **Ctrl + Shift + N**     | 重新开一个软件的窗口                          | 很常用               |
 | Cmd + Shift + W        | Ctrl + Shift + W         | 关闭软件的当前窗口                            |                      |
@@ -142,12 +146,22 @@ VS Code 用得熟不熟，首先就看你是否会用快捷键。以下列出的
 
 | Mac 快捷键             | Win 快捷键          | 作用                                 | 备注                                   |
 | :--------------------- | :------------------ | :----------------------------------- | :------------------------------------- |
+| Cmd + C                | Ctrl + C            | 复制                                 |                                        |
+| Cmd + X                | Ctrl + X            | 剪切                                 |                                        |
+| Cmd + C                | Ctrl + V            | 粘贴                                 |                                        |
 | **Cmd + Enter**        | **Ctrl + Enter**    | 在当前行的下方新增一行，然后跳至该行 | 即使光标不在行尾，也能快速向下插入一行 |
 | Cmd+Shift+Enter        | Ctrl+Shift+Enter    | 在当前行的上方新增一行，然后跳至该行 | 即使光标不在行尾，也能快速向上插入一行 |
 | **Option + ↑**         | **Alt + ↑**         | 将代码向上移动                       | 很常用                                 |
 | **Option + ↓**         | **Alt + ↓**         | 将代码向下移动                       | 很常用                                 |
-| Option + Shift + ↑     | Alt + Shift + ↑     | 将代码向上复制                       |                                        |
-| **Option + Shift + ↓** | **Alt + Shift + ↓** | 将代码向下复制                       | 写重复代码的利器                       |
+| Option + Shift + ↑     | Alt + Shift + ↑     | 将代码向上复制一行                   |                                        |
+| **Option + Shift + ↓** | **Alt + Shift + ↓** | 将代码向下复制一行                   | 写重复代码的利器                       |
+
+另外再补充一点：将光标点击到某一行的任意位置时，默认就已经是**选中全行**了，此时可以直接**复制**或**剪切**，无需点击鼠标。这个非常实用，是所有的编辑操作中，使用得最频繁的。它可以有以下使用场景：
+
+- 场景1：假设光标现在处于第5行的**任意位置**，那么，直接依次按下 `Cmd + C` 和 `Cmd + V`，就会把这行代码复制到第6行。继续按 `Cmd + C` 和 `Cmd + V`，就会把这行代码复制到第7行。copy代码so easy。
+- 场景2：假设光标现在处于第5行，那么，先按下 `Cmd + C`，然后按两下`↑` 方向键，此时光标处于第3行；紧接着，继续按下`Cmd + V`，就会把刚刚那行代码复制到第3行，原本处于第3行的代码会整体**下移**。
+
+你看到了没？上面的两个场景，我全程没有使用鼠标，只通过简单的复制粘贴和方向键，就做到了如此迅速的copy代码。你说是不是很高效？
 
 ### 5、多光标编辑
 
@@ -218,7 +232,51 @@ VS Code 用得熟不熟，首先就看你是否会用快捷键。以下列出的
 
 - 快捷键速查表[官方]：<https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf>
 
-## 三、命令面板的使用
+
+## 三、纵享丝滑：常见操作
+
+### 1、快速生成HTML骨架
+
+先新建一个空的html文件，然后通过以下方式，可以快速生成html骨架。
+
+**方式1**：输入`!`，然后按下`enter`键，即可生成html骨架。如下图：
+
+![](https://img.smyhvae.com/20210623-2115.gif)
+
+
+
+**方式2**：输入`html:5`，然后按住 `Tab`键，即可生成html骨架。
+
+生成的骨架，内容如下：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+</body>
+</html>
+```
+
+有了上面的html骨架之后，我们就可以快乐地在里面插入CSS 代码和 JS 代码。
+
+### 2、左右显示多个编辑器窗口（抄代码利器）
+
+Mac 用户按住快捷键 `Cmd + \`， Windows 用户按住快捷键`Ctrl + \`，即可同时打开多个编辑器窗口，效果如下：
+
+![](http://img.smyhvae.com/20200619_0030.gif)
+
+按快捷键「Cmd + 1 」切换到左边的窗口，按快捷键「Cmd + 2 」切换到右边的窗口。随时随地，想切就切。
+
+学会了这一招，以后抄代码的时候，leader 再也不用担心我抄得慢了，一天工资到手。
+
+## 四、高端访问：命令面板的使用
 
 Mac 用户按住快捷键 `Cmd+Shift+P` （Windows 用户按住快捷键`Ctrl+Shift+P`），可以打开命令面板。效果如下：
 
@@ -226,7 +284,17 @@ Mac 用户按住快捷键 `Cmd+Shift+P` （Windows 用户按住快捷键`Ctrl+Sh
 
 如果们需要修改一些设置项，可以通过「命令面板」来操作，效率会更高。这里列举一些。
 
-### 1、设置字体大小
+### 1、VS Code 设置为中文语言
+
+Mac 用户按住快捷键 `Cmd+Shift+P` （Windows 用户按住快捷键`Ctrl+Shift+P`），打开命令面板。
+
+在命令面板中，输入`Configure Display Language`，选择`Install additional languages`，然后安装插件`Chinese (Simplified) Language Pack for Visual Studio Code`即可。
+
+或者，我们可以直接安装插件`Chinese (Simplified) Language Pack for Visual Studio Code`，是一样的。
+
+安装完成后，重启 VS Code。
+
+### 2、设置字体大小
 
 在命令面板输入“字体”，可以进行字体的设置，效果如下：
 
@@ -234,17 +302,17 @@ Mac 用户按住快捷键 `Cmd+Shift+P` （Windows 用户按住快捷键`Ctrl+Sh
 
 当然，你也可以在菜单栏，选择「首选项-设置-常用设置」，在这个设置项里修改字体大小。
 
-### 2、快捷键设置
+### 3、快捷键设置
 
 在命令面板输入“快捷键”，就可以进入快捷键的设置。
 
-### 3、大小写转换
+### 4、大小写转换
 
 选中文本后，在命令面板中输入`transfrom`，就可以修改文本的大小写了。
 
 ![](http://img.smyhvae.com/20190414_1751.png)
 
-### 4、使用命令行启动 VS Code
+### 5、使用命令行启动 VS Code
 
 （1）输入快捷键「Cmd + Shift + P 」，选择`install code command`：
 
@@ -256,17 +324,35 @@ Mac 用户按住快捷键 `Cmd+Shift+P` （Windows 用户按住快捷键`Ctrl+Sh
 
 - `code pathName/fileName`命令：通过 VS Code 软件打开指定目录/指定文件。
 
-## 四、私人订制：VS Code 的常见配置
+## 五、私人订制：VS Code 的常见配置
 
-### 1、VS Code 设置为中文语言
+在修改 VS Code配置之前，我们需要知道，在哪里可以找到配置项的入口。
 
-Mac 用户按住快捷键 `Cmd+Shift+P` （Windows 用户按住快捷键`Ctrl+Shift+P`），打开命令面板。
+**方式1**：Mac用户选择菜单栏「Code--> 首选项-->设置」，即可打开配置项：
 
-在命令面板中，输入`Configure Display Language`，选择`Install additional languages`，然后安装插件`Chinese (Simplified) Language Pack for Visual Studio Code`即可。
+![](http://img.smyhvae.com/20210930_2009.png)
 
-或者，我们可以直接安装插件`Chinese (Simplified) Language Pack for Visual Studio Code`，是一样的。
+**方式2**：点击软件右下角的设置图标：
 
-安装完成后，重启 VS Code。
+![](http://img.smyhvae.com/20210930_2016.png)
+
+
+
+### 1、修改颜色主题
+
+选择菜单栏「Code --> 首选项 --> 颜色主题」：
+
+![](http://img.smyhvae.com/20210930_2017.png)
+
+在弹出的对话框中，挑选你一个你喜欢的的颜色主题吧：
+
+![](http://img.smyhvae.com/20210930_2018.png)
+
+
+
+
+
+
 
 ### 2、面包屑（Breadcrumb）
 
@@ -280,17 +366,9 @@ Mac 用户按住快捷键 `Cmd+Shift+P` （Windows 用户按住快捷键`Ctrl+Sh
 
 ![](http://img.smyhvae.com/20190415_2009.png)
 
-有了这个面包屑导航，我们可以在任意目录、任意文件之间随意跳转。
+有了这个面包屑导航，我们可以点击它，在任意目录、任意文件之间随意跳转。
 
-### 3、左右显示多个编辑器窗口（抄代码利器）
 
-Mac 用户按住快捷键 `Cmd + \`， Windows 用户按住快捷键`Ctrl + \`，即可同时打开多个编辑器窗口，效果如下：
-
-![](http://img.smyhvae.com/20200619_0030.gif)
-
-按快捷键「Cmd + 1 」切换到左边的窗口，按快捷键「Cmd + 2 」切换到右边的窗口。随时随地，想切就切。
-
-学会了这一招，以后抄代码的时候，leader 再也不用担心我抄得慢了，一天工资到手。
 
 ### 4、是否显示代码的行号
 
@@ -627,49 +705,9 @@ VS Code 默认支持 Emmet。更多 Emmet 语法规则，请自行查阅。
 
 在配置里搜索`Detect Indentation`，修改为false。参考链接：https://www.yisu.com/zixun/327399.html
 
-## 七、VS Code 配置云同步
 
-我们可以将配置云同步，这样的话，当我们换个电脑时，即可将配置一键同步到本地，就不需要重新安装插件了，也不需要重新配置软件。
 
-我们还可以把配置分享其他用户，也可以把其他用户的配置给自己用。
-
-**将自己本地的配置云同步到 GitHub**：
-
-（1）安装插件 `settings-sync`。
-
-（2）安装完插件后，在插件里使用 GitHub 账号登录。
-
-（3）登录后在 vscode 的界面中，可以选择一个别人的 gist；也可以忽略掉，然后创建一个属于自己的 gist。
-
-（4）使用快捷键 「Command + Shift + P」，在弹出的命令框中输入 sync，并选择「更新/上传配置」，这样就可以把最新的配置上传到 GitHub。
-
-**换另外一个电脑时，从云端同步配置到本地**：
-
-（1）当我们换另外一台电脑时，可以先在 VS Code 中安装 `settings-sync` 插件。
-
-（2）安装完插件后，在插件里使用 GitHub 账号登录。
-
-（3）登录之后，插件的界面上，会自动出现之前的同步记录：
-
-![](http://img.smyhvae.com/20200521_1530.png)
-
-上图中，我们点击最新的那条记录，就可将云端的最新配置同步到本地：
-
-![](http://img.smyhvae.com/20200521_1550.png)
-
-如果你远程的配置没有成功同步到本地，那可能是网络的问题，此时，可以使用快捷键 「Command + Shift + P」，在弹出的命令框中输入 sync，并选择「下载配置」，多试几次。
-
-**使用其他人的配置**：
-
-如果我们想使用别人的配置，首先需要对方提供给你 gist。具体步骤如下：
-
-（1）安装插件 `settings-sync`。
-
-（2）使用快捷键 「Command + Shift + P」，在弹出的命令框中输入 sync，并选择「下载配置」
-
-（3）在弹出的界面中，选择「Download Public Gist」，然后输入别人分享给你的 gist。注意，这一步不需要登录 GitHub 账号。
-
-## 八、三头六臂：VS Code 插件推荐
+## 六、三头六臂：VS Code 插件推荐
 
 VS Code 有一个很强大的功能就是支持插件扩展，让你的编辑器仿佛拥有了三头六臂。
 
@@ -942,6 +980,50 @@ CSS Peek 对 Vue 没有支持，该插件提供了对 Vue 文件的支持。
 ### Paste JSON as Code
 
 此插件可以将剪贴板中的 JSON 字符串转换成工作代码。支持多种语言。
+
+## 七、无缝切换：VS Code 配置云同步
+
+我们可以将配置云同步，这样的话，当我们换个电脑时，即可将配置一键同步到本地，就不需要重新安装插件了，也不需要重新配置软件。
+
+我们还可以把配置分享其他用户，也可以把其他用户的配置给自己用。
+
+**将自己本地的配置云同步到 GitHub**：
+
+（1）安装插件 `settings-sync`。
+
+（2）安装完插件后，在插件里使用 GitHub 账号登录。
+
+（3）登录后在 vscode 的界面中，可以选择一个别人的 gist；也可以忽略掉，然后创建一个属于自己的 gist。
+
+（4）使用快捷键 「Command + Shift + P」，在弹出的命令框中输入 sync，并选择「更新/上传配置」，这样就可以把最新的配置上传到 GitHub。
+
+**换另外一个电脑时，从云端同步配置到本地**：
+
+（1）当我们换另外一台电脑时，可以先在 VS Code 中安装 `settings-sync` 插件。
+
+（2）安装完插件后，在插件里使用 GitHub 账号登录。
+
+（3）登录之后，插件的界面上，会自动出现之前的同步记录：
+
+![](http://img.smyhvae.com/20200521_1530.png)
+
+上图中，我们点击最新的那条记录，就可将云端的最新配置同步到本地：
+
+![](http://img.smyhvae.com/20200521_1550.png)
+
+如果你远程的配置没有成功同步到本地，那可能是网络的问题，此时，可以使用快捷键 「Command + Shift + P」，在弹出的命令框中输入 sync，并选择「下载配置」，多试几次。
+
+**使用其他人的配置**：
+
+如果我们想使用别人的配置，首先需要对方提供给你 gist。具体步骤如下：
+
+（1）安装插件 `settings-sync`。
+
+（2）使用快捷键 「Command + Shift + P」，在弹出的命令框中输入 sync，并选择「下载配置」
+
+（3）在弹出的界面中，选择「Download Public Gist」，然后输入别人分享给你的 gist。注意，这一步不需要登录 GitHub 账号。
+
+
 
 ## 八、常见主题插件
 

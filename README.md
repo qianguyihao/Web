@@ -9,13 +9,11 @@
 
 **项目地址**：
 
-- GitHub地址：<https://github.com/qianguyihao/Web>
-
 - 官网地址：<https://web.qianguyihao.com>
 
-如果你发现本项目有内容上的错误，欢迎在 GitHub 提交 issues 或者 pull requests 进行指正，**方便归档**。
+- GitHub地址：<https://github.com/qianguyihao/Web>
 
-由于 GitHub 是国外的网站，如果你发现网站访问较慢，或者文中的部分图片加载不出来，不妨[先看这里](https://github.com/qianguyihao/Web/issues/20#issue-390074432)。
+如果你发现本项目有内容上的错误，欢迎在 GitHub 提交 issues 或者 pull requests 进行指正，方便归档。
 
 **项目作用**：
 
@@ -30,7 +28,6 @@
 - 维护这个项目的初衷，可以看这篇文章：[《裸辞两个月，海投一个月，从Android转战Web前端的求职之路》](https://mp.weixin.qq.com/s/fr_NwtghRQagc_3ubk-hKQ)
 
 - 前端入门路线和推荐学习资源，可以看这篇文章：[《2020年Web前端入门的自学路线》](https://www.cnblogs.com/qianguyihao/p/8776837.html)
-
 
 ## 赞赏作者
 
