@@ -217,7 +217,7 @@ function myAjax(url, success, fail) {
     xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
             var obj = JSON.parse(xmlhttp.responseText);
-            console.log('数据返回成功：' + Jobj);
+            console.log('数据返回成功：' + obj);
             success && success(xmlhttp.responseText);
         } else {
             // 这里的 && 符号，意思是：如果传了 fail 参数，就调用后面的 fail()；如果没传 fail 参数，就不调用后面的内容。因为 fail 参数不一定会传。
