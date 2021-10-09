@@ -26,7 +26,7 @@ Jeff Atwood 这个人是谁不重要（他是 Stack Overflow 网站的联合创�
 
 前端目前是处在春秋战国时代，各路英雄豪杰成为后浪，各种框架工具层出不穷，VS Code 软件无疑是大前端时代最骄傲的工具。
 
-如果你是做前端开发（JavaScript 编程语言为主），则完全可以将 VS Code 作为「**主力开发工具**」。这款软件是为前端同学量身定制的。
+如果你是做前端开发（JavaScript 编程语言为主），则完全可以将 VS Code 作为「**主力开发工具**」。这款软件是为前端同学量身定制的，开箱即用。
 
 如果你是做其他语言方向的开发，并且不需要太复杂的集成开发环境，那么，你可以把 VS Code 作为「**代码编辑器**」来使用，纵享丝滑。
 
@@ -42,6 +42,8 @@ VS Code 的全称是 Visual Studio Code，是一款开源的、免费的、跨�
 
 微软有两种软件：一种是 VS Code，一种是其他软件。
 
+在2015年4月29日的微软Build开发者大会上，微软宣布推出 VS Code之后，这个轻量级的编辑器成为全球无数开发者们最喜爱的开发工具。VS Code基于开源且跨平台的理念，每月都会进行迭代，并提供每天发布的 insider 版本（insider是微软的一种公测计划，类似于国内软件所说的内测版）。它拥有至少几万个插件，生态极为活跃和丰富。
+
 ### IDE 与 编辑器的对比
 
 IDE 和编辑器是有区别的：
@@ -52,18 +54,20 @@ IDE 和编辑器是有区别的：
 
 需要注意的是，VS Code 的定位是**编辑器**，而非 IDE ，但 VS Code 又比一般的编辑器的功能要丰富许多。可以这样理解：VS Code 的体量是介于编辑器和 IDE 之间。
 
+ VS Code流行起来之后，使用 Sublime Text、Atom 这类编辑器软件的人，自然就越来越少了。
+
 ### VS Code 的特点
 
-- VS Code 的使命，是让开发者在编辑器里拥有 IDE 那样的开发体验，比如代码的智能提示、语法检查、图形化的调试工具、插件扩展、版本管理等。
-- 跨平台支持 MacOS、Windows 和 Linux 等多个平台。
-- VS Code 的源代码以 MIT 协议开源。
-- 支持第三方插件，功能强大，生态系统完善。
+- 跨平台：支持 MacOS、Windows 和 Linux 等多个平台。在这多种平台下，拥有一致的用户界面和开发体验。
+- 开源：VS Code 的源代码以 MIT 协议开源。不仅代码开源，而且整个产品的开发计划、发布管理、开发文档也都是开源的。VS Code团队每年都会在 GitHub 的Wiki上发布 [Roadmap](https://github.com/microsoft/vscode/wiki/Roadmap)，列出一整年的规划图。
+- 自带终端、图形化的调试工具、Git 版本控制。
+- 支持第三方插件，功能强大。既有中心化的插件市场，也可以直接在 VS Code里搜索你想要的插件。
+- 生态：社区生态活跃且丰富，社区氛围浓厚。
+- 自带  emmet：支持代码自动补全，快速生成简单的语法结构。要知道，这个功能在 Sublime Text中，得先安装插件才行。
+- 语法支持：VS Code 自带了 JavaScript、TypeScript 和 Node.js 的**语法支持**，包括：**语法高亮、代码智能提示和补全、括号匹配、颜色区分、代码片段提示**等。也就是说，你在书写 JS 和 TS 时，这些语法支持都是自带的。其他的一些语言，你需要先安装相应的**扩展包**插件，就出现语法支持。
+- 在修改配置方面，既有图形化的配置界面，也有 基于 JSON 文件的配置方式，满足不同人群的使用习惯。
 
-- 自带丰富的调试功能。
-
-- 自带  emmet：支持代码自动补全，快速地生成简单的语法结构。要知道，这个功能在 Sublime Text中，得先安装插件才行。
-
-- VS Code 自带了 JavaScript、TypeScript 和 Node.js 的语法支持。也就是说，你在书写 JS 和 TS 时，是自带智能提示的。当然，其他的语言，你可以安装相应的**扩展包**插件，也会有智能提示。
+总而言之，VS Code 的使命，是让开发者在编辑器里拥有 IDE 那样的开发体验，比如代码的智能提示、语法检查、图形化的调试工具、插件扩展、版本管理等。
 
 ### 前端利器之争： VS Code 与 WebStorm
 
@@ -226,9 +230,16 @@ VS Code 用得熟不熟，首先就看你是否会用快捷键。以下列出的
 
 ![](http://img.smyhvae.com/20190418_1739_2.png)
 
-### 快捷键参考链接
+### 快捷键参考表（官方）
 
-- 快捷键速查表[官方]：<https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf>
+VS Code官网提供了 PDF版本的键盘快捷键参考表，转需：
+
+- Windows版本：https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf
+- Mac 版本：https://code.visualstudio.com/shortcuts/keyboard-shortcuts-macos.pdf
+- Linux版本：https://code.visualstudio.com/shortcuts/keyboard-shortcuts-linux.pdf
+
+
+
 
 
 
@@ -726,7 +737,7 @@ VS Code 有一个很强大的功能就是支持插件扩展，让你的编辑器
 
 插件安装完成后，记得重启软件（或者点击插件位置的“重新加载”），插件才会生效。
 
-我来列举几个常见的插件，这些插件都很实用。注意：**顺序越靠前，越实用**。
+我来列举几个常见的插件，这些插件都很实用，小伙伴们可以按需安装。注意：**顺序越靠前，越实用**。
 
 ### 1、Chinese (Simplified) Language Pack for Visual Studio Code
 
@@ -753,6 +764,8 @@ GitLens 在 Git 管理上有很多强大的功能，比如：
 ![](http://img.smyhvae.com/20211009_1430.png)
 
 上图中，红框部分就是  GitLens 的功能，诸君可以自由发挥。
+
+补充一个有意思的趣事：Python插件、Ruby插件、GitLens插件、Vetur插件，这四个插件的开发者先后加入了微软。
 
 ### 3、Git History
 
