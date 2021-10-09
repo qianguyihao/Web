@@ -306,10 +306,6 @@ Mac 用户按住快捷键 `Cmd+Shift+P` （Windows 用户按住快捷键`Ctrl+Sh
 
 
 
-
-
-
-
 ### 2、面包屑（Breadcrumb）
 
 打开 VS Code 的设置项，选择「用户设置 -> 工作台 -> 导航路径」，如下图所示：
@@ -419,7 +415,7 @@ VS Code 会根据你所打开的文件来决定该使用空格还是制表。也
 
 
 
-## 五、纵享丝滑：常见操作
+## 五、纵享丝滑：常见操作和使用技巧
 
 ### 1、快速生成HTML骨架
 
@@ -708,9 +704,17 @@ VS Code 默认支持 Emmet。更多 Emmet 语法规则，可以自行查阅。
 
 ### 19、设置tab的缩进
 
-在配置里搜索`Detect Indentation`，修改为false。参考链接：https://www.yisu.com/zixun/327399.html
+（1）在配置里搜索`Detect Indentation`，修改为false。这样做，是为了取消系统的自动缩进。 参考链接：https://www.yisu.com/zixun/327399.html
 
+![](http://img.smyhvae.com/20211009_1600.png)
 
+（2）状态栏会显示当前的缩进值。点击状态栏，可以直接修改缩进：
+
+![](http://img.smyhvae.com/20211009_1610.png)
+
+（3）另外，我们还可以安装 prettier 插件，设置代码的默认缩进值。prettier 是做代码格式化的最常见工具。
+
+![](https://img.smyhvae.com/20211009_1637.png)
 
 ## 六、三头六臂：VS Code 插件推荐
 
@@ -718,11 +722,17 @@ VS Code 有一个很强大的功能就是支持插件扩展，让你的编辑器
 
 ![](http://img.smyhvae.com/20191108_1553_2.png)
 
-上图中，点击红框部分，即可在输入框里，查找你想要的插件名，然后进行安装。
+上图中，点击红框部分，即可在顶部输入框里，查找你想要的插件名，然后进行安装。
+
+插件安装完成后，记得重启软件（或者点击插件位置的“重新加载”），插件才会生效。
 
 我来列举几个常见的插件，这些插件都很实用。注意：**顺序越靠前，越实用**。
 
-### 1、GitLens 【荐】
+### 1、Chinese (Simplified) Language Pack for Visual Studio Code
+
+让软件显示为简体中文语言。
+
+### 2、GitLens 【荐】
 
 我强烈建议你安装插件`GitLens`，它是 VS Code 中我最推荐的一个插件，简直是 Git 神器，码农必备。如果你不知道，那真是 out 了。
 
@@ -744,19 +754,15 @@ GitLens 在 Git 管理上有很多强大的功能，比如：
 
 上图中，红框部分就是  GitLens 的功能，诸君可以自由发挥。
 
-### 2、Git History
+### 3、Git History
 
 有些同学习惯使用编辑器中的 Git 管理工具，而不太喜欢要打开另外一个 Git UI 工具的同学，这一款插件满足你查询所有 Git 记录的需求。
 
-### 3、Live Server 【荐】
+### 4、Live Server 【荐】
 
 在本地启动一个服务器，代码写完后可以实现「热更新」，实时地在网页中看到运行效果。就不需要每次都得手动刷新页面了。
 
 使用方式：安装插件后，开始写代码；代码写完后，右键选择「Open with Live Server」。
-
-### 4、Chinese (Simplified) Language Pack for Visual Studio Code
-
-让软件显示为简体中文语言。
 
 ### 5、Bracket Pair Colorizer 2：突出显示成对的括号【荐】
 
@@ -920,7 +926,7 @@ ES6 语法智能提示，支持快速输入。
 
 ### 29、Local History 【荐】
 
-维护文件的本地历史记录，强烈建议安装。代码意外丢失时，有时可以救命。
+维护文件的本地历史记录。代码意外丢失时，有时可以救命。
 
 ![](http://img.smyhvae.com/20200618_2246.png)
 
@@ -944,7 +950,7 @@ ES6 语法智能提示，支持快速输入。
 
 ### 32、Auto Close Tag、Auto Rename Tag
 
-自动闭合标签、自动对标签重命名。
+自动闭合配对的标签、自动重命名配对的标签。
 
 ### 33、Better Comments
 
@@ -990,9 +996,13 @@ CSS Peek 对 Vue 没有支持，该插件提供了对 Vue 文件的支持。
 
 在项目开发过程中，我们会引入很多 npm 包，有时候可能只用到了某个包里的一个方法，却引入了整个包，导致代码体积增大很多。`Import Cost`插件可以在代码中友好的提示我们，当前引入的包会增加多少体积，这很有助于帮我们优化代码的体积。
 
-### Paste JSON as Code
+### 40、Paste JSON as Code
 
 此插件可以将剪贴板中的 JSON 字符串转换成工作代码。支持多种语言。
+
+### 41、JS-CSS-HTML Formatter【荐】
+
+保存文件时，自动格式化 HTML、CSS、JS代码。
 
 ## 七、无缝切换：VS Code 配置云同步
 
