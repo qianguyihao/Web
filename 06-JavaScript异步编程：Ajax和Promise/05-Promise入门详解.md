@@ -261,10 +261,10 @@ promise1
 
 ```js
 new Promise((resolve, reject) => {
-    resolove();
+    resolve();
     console.log('promise1');  // 代码1：同步任务，会立即执行
 }).then(res => {
-    console.log('promise  then)';  // 代码2：异步任务中的微任务
+    console.log('promise  then');  // 代码2：异步任务中的微任务
 })
 
 console.log('千古壹号');  // 代码3：同步任务
@@ -297,6 +297,7 @@ p.then((res) => {
     console.log(res);
 }).catch((err) => {
     console.log(err);
+});
 ```
 
 上方代码的打印结果是 1，而不是 2，详见注释。
@@ -384,7 +385,7 @@ function myPromise() {
 }
 */
 
-// 先执行异步函数fun1，再执行回调函数
+// 先执行异步函数 myPromise，再执行回调函数
 myPromise().then(() => {
     console.log('我是延迟执行的回调函数');
 });
@@ -415,6 +416,7 @@ ajax(
     '/a.json',
     (res) => {
         console.log('qianguyihao 第一个接口请求成功:' + JSON.stringify(res));
+    },
     (err) => {
         console.log('qianguyihao 请求失败:' + JSON.stringify(err));
     }
