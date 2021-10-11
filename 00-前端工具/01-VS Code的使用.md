@@ -104,7 +104,11 @@ VS Code支持以下平台：
 
 ![](https://img.smyhvae.com/20210930_1930.png)
 
+安装完成后，我们可以看到， VS Code在功能上非常克制，只包含了大多数开发流程中所需要的基础组件。基础包括：编辑器、文件管理、窗口管理、首选项设置、终端等。如下图所示：
 
+![](https://img.smyhvae.com/20211011_1703.png)
+
+你需要根据具体需要安装额外的组件或者插件。比如说，如果开发TS项目，则需要安装 TS编译器、ESLint、TSLint等编译工具。如果开发C语言项目，则需要安装gcc、Clang等编辑工具。
 
 ## 二、崭露锋芒：VS Code 快捷键
 
@@ -480,7 +484,62 @@ Mac 用户按住快捷键 `Cmd + \`， Windows 用户按住快捷键`Ctrl + \`�
 
 学会了这一招，以后抄代码的时候，leader 再也不用担心我抄得慢了，一天工资到手。
 
-### 3、文件对比
+### 3、从终端 code 命令启动 VS Code（Mac电脑）
+
+在终端输入`code`或者输入 `code + 指定项目的目录`，就可以启动 VS  Code，十分便捷。
+
+为了达到目的，我们需要先将 VS Code的软件安装路径添加到环境变量。具体操作如下：
+
+（1）打开 `bash_profile`文件：
+
+```bash
+cd ~
+vim ./bash_profile
+```
+
+（2）在 bash_profile 中添加如下内容：
+
+```bash
+# 从终端启动VS Code，并设置vscode启动的命令别名
+alias code="/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code"
+```
+
+注意，由于`Visual Studio Code.app`这个路径里有空格，所以需要在空格前面加上反斜杠`\`。
+
+（3）重启环境变量的配置：
+
+```
+# 重启
+source ~/.bash_profile
+```
+
+大功告成。
+
+改完之后，如果没生效，那你把  `bash_profile`文件 换成 `zshrc`文件试试。
+
+参考链接：
+
+- [mac通过终端code 命令打开vscode](https://blog.csdn.net/logan_LG/article/details/106800904)
+
+### 3、从终端 code 命令启动 VS Code（Windows电脑）
+
+在终端输入`code`或者输入 `code + 指定项目的目录`，就可以启动 VS  Code，十分便捷。
+
+为了达到目的，我们需要先将 VS Code的软件安装路径添加到环境变量。具体操作如下：
+
+（1）打开 VS Code 的安装位置，进入bin文件夹，复制路径。比如：`D:\Microsoft VS Code\bin`。
+
+（2）回到桌面，右键我的电脑-->高级系统设置-->环境变量-->编辑path值，在原来的path后面，追加内容`;D:\Microsoft VS Code\bin`（即英文的分号+VS  Code 的 bin 路径)
+
+（3）重启电脑，大功告成。
+
+改完之后，如果没生效，那八成是因为你填的 path 值有问题。
+
+参考链接：
+
+- [windows使用 code . 命令打开vscode](https://www.cnblogs.com/zyl-Tara/p/10642704.html)
+
+### 4、文件对比
 
 VS Code 默认支持**对比两个文件的内容**。选中两个文件，然后右键选择「将已选项进行比较」即可，效果如下：
 
@@ -492,9 +551,7 @@ VS Code 自带的对比功能并不够强大，我们可以安装插件`comparei
 
 如果你安装了 GitLens 插件，还可以将两个git分支的代码进行比对，非常完美。
 
-
-
-### 4、查找某个函数在哪些地方被调用了
+### 5、查找某个函数在哪些地方被调用了
 
 比如我已经在`a.js`文件里调用了 `foo()`函数。那么，如果我想知道`foo()`函数在其他文件中是否也被调用了，该怎么做呢？
 
