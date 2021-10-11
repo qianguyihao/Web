@@ -268,7 +268,7 @@ myAjax('a.json', (res) => {
                     console.log(res);
                     console.log('数据返回成功');
                     // 显示在页面上
-                    document.querySelector('h1').innerHTML = obj;
+                    document.querySelector('h1').innerHTML = res;
                     // alert(xhr.responseText);
                 });
             };
