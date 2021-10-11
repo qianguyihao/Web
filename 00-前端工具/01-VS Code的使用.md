@@ -52,22 +52,20 @@ IDE 和编辑器是有区别的：
 
 - **编辑器**：要相对轻量许多，侧重于文本的编辑。比如 Sublime Text 的定位就是编辑器。再比如 Windows 系统自带的「记事本」就是最简单的编辑器。
 
-需要注意的是，VS Code 的定位是**编辑器**，而非 IDE ，但 VS Code 又比一般的编辑器的功能要丰富许多。可以这样理解：VS Code 的体量是介于编辑器和 IDE 之间。
+需要注意的是，VS Code 的定位是**编辑器**，而非 IDE ，但 VS Code 又比一般的编辑器的功能要丰富许多。可以这样理解：VS Code 的体量是介于编辑器和 IDE 之间。VS Code 的使命，是让开发者在编辑器里拥有 IDE 那样的开发体验。
 
  VS Code流行起来之后，使用 Sublime Text、Atom 这类编辑器软件的人，自然就越来越少了。
 
 ### VS Code 的特点
 
 - 跨平台：支持 MacOS、Windows 和 Linux 等多个平台。在这多种平台下，拥有一致的用户界面和开发体验。
-- 开源：VS Code 的源代码以 MIT 协议开源。不仅代码开源，而且整个产品的开发计划、发布管理、开发文档也都是开源的。VS Code团队每年都会在 GitHub 的Wiki上发布 [Roadmap](https://github.com/microsoft/vscode/wiki/Roadmap)，列出一整年的规划图。
+- 开源：VS Code 的源代码以 MIT 协议开源。不仅代码开源，而且整个产品的开发计划和发布管理也都是开源的。VS Code团队每年都会在 GitHub 的Wiki上发布 [Roadmap](https://github.com/microsoft/vscode/wiki/Roadmap)，列出一整年的规划图。VS Code 软件的官方文档也托管在了 [GitHub](https://github.com/Microsoft/vscode-docs) 上。
 - 自带终端、图形化的调试工具、Git 版本控制。
-- 支持第三方插件，功能强大。既有中心化的插件市场，也可以直接在 VS Code里搜索你想要的插件。
+- 插件扩展：支持第三方插件，功能强大。既有中心化的插件市场，也可以直接在 VS Code里搜索你想要的插件。
 - 生态：社区生态活跃且丰富，社区氛围浓厚。
 - 自带  emmet：支持代码自动补全，快速生成简单的语法结构。要知道，这个功能在 Sublime Text中，得先安装插件才行。
 - 语法支持：VS Code 自带了 JavaScript、TypeScript 和 Node.js 的**语法支持**，包括：**语法高亮、代码智能提示和补全、括号匹配、颜色区分、代码片段提示**等。也就是说，你在书写 JS 和 TS 时，这些语法支持都是自带的。其他的一些语言，你需要先安装相应的**扩展包**插件，就出现语法支持。
 - 在修改配置方面，既有图形化的配置界面，也有 基于 JSON 文件的配置方式，满足不同人群的使用习惯。
-
-总而言之，VS Code 的使命，是让开发者在编辑器里拥有 IDE 那样的开发体验，比如代码的智能提示、语法检查、图形化的调试工具、插件扩展、版本管理等。
 
 ### 前端利器之争： VS Code 与 WebStorm
 
@@ -80,6 +78,17 @@ IDE 和编辑器是有区别的：
 - **使用比例**：当然是 VS Code 更胜一筹。先不说别的，我就拿数据说话，我目前所在的研发团队有 200 人左右（120个后台、80个前端），他们绝大部分人都在用 VS Code 编码，妥妥的。
 
 所以，如果你以后还问这个问题，那就真有些掉底了。
+
+### VS Code 的技术栈、核心组件
+
+了解 VS Code的技术栈和核心组件，可以让我们对 VS Code 有更深入的认识。此小段，了解即可。
+
+- 开发框架：Electron。Electron可以使用 Node.js + JS这样的技术栈开发桌面GUI应用程序。
+- 编辑器：Monaco Editor。Monaco Editor 是一款开源的在线代码编辑器，是 **VS Code 浏览器版本**的最核心组件。[#](https://zhuanlan.zhihu.com/p/88828576)
+- 编程语言：TypeScript。TypeScript 是  JavaScript的严格超集。TS 在JS的基础上添加了许多功能，引入了声明文件，而且支持类型扩展。TS 适合长期的、多人开发的大型项目开发。
+- 让编辑器支持语言功能：Language Server Protocol （LSP） 语言服务协议。LSP是编辑器/IDE 与语言服务器之间的一种协议，通过 JSON-PRC 传输消息，可以让编辑器嵌入并支持各种编程语言。开发者可以在编辑器中使用各种语言来编写程序。
+- 让编辑器支持调试功能：Debug Adapter Protocol（DAP）。DAP 是基于 JSON的协议，它抽象了开发工具与调试工具质检的通信。
+- 集成终端：Xterm.js。VS Code的集成终端是基于开源项目 [Xterm.js](https://github.com/xtermjs/xterm.js/) 进行开发的。Xterm.js 是一个使用 TS 开发的终端组件。另外，Xterm.js 并不是直接下来下来就能用的终端应用，它只是一个前端组件，可以与 bash这样的进程进行连接，然后让用户通过  Xterm.js 进行交互。
 
 ### VS Code 的安装
 
@@ -94,6 +103,8 @@ VS Code 的安装很简单，直接去官网下载安装包，然后双击安装
 VS Code支持以下平台：
 
 ![](https://img.smyhvae.com/20210930_1930.png)
+
+
 
 ## 二、崭露锋芒：VS Code 快捷键
 
