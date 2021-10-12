@@ -192,11 +192,13 @@ BFF，即 Backend For Frontend（服务于前端的后端）。玉伯在《[从�
 
 前端正在广泛使用的构建工具 gulp、Webpack，就是基于 Node.js 来实现的。
 
-### 5、 做 PC 端的软件（基于 Electron 框架）
+### 5、 做 PC 客户端软件（基于 Electron 框架）
 
-Electron 框架就是基于 Node.js 的。也可以说：Electron 是 Node.js 在PC客户端的技术。
+Electron 框架就是基于 Node.js 的，可以用来开发客户端软件。
 
-有一点你可能会感到惊讶：程序员们都在用的代码编辑器 VS Code 软件， 就是用 JS 语言实现的。
+Electron 原名为 Atom Shell，是由 GitHub 开发的一个开源框架。Electron 以 Node.js 作为运行时（runtime），以  chromium 作为渲染引擎，使开发者可以使用 JS 这种前端技术栈开来发跨平台的桌面GUI应用程序。
+
+有一点你可能会感到惊讶：程序员们都在用的代码编辑器 VS Code 软件， 就是基于 Electron 框架来开发的。其他使用 Electron 进行开发的知名应用还有：Skype、GitHub Desktop、Slack、WhatsApp等。
 
 还有一个例子是：电子游戏直播网站 [Twitch](https://www.twitch.tv/)，号称是国外游戏直播的鼻祖，它在 PC 端的客户端软件，就是用 Electron 框架的。你会发现，Twitch 的网站视觉，和 PC 端的视觉，几乎是一样的。如果两端都采用 JS 语言，就可以极大的复用现有的工程。
 
