@@ -11,6 +11,8 @@
 
 - 官网地址：<https://web.qianguyihao.com>
 
+点击官网顶部的广告，帮助我收回服务器成本 ❤️
+
 - GitHub地址：<https://github.com/qianguyihao/Web>
 
 如果你发现本项目有内容上的错误，欢迎在 GitHub 提交 issues 或者 pull requests 进行指正，方便归档。
