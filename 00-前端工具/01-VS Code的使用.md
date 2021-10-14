@@ -421,7 +421,7 @@ VS Code 默认显示代码的行号。你可以在设置项里搜索 `editor.lin
 
 如果某个文件的代码量很大，缩略图就很有用了，可以预览全局，并在当前文件中快速跳转。
 
-VS Code 会在代码的右侧，默认显示缩略图。你可以在设置项里搜索 `editor.minimap`进行设置，配置项如下：
+VS Code 会在代码的右侧，默认显示缩略图。你可以在设置项里搜索 `editor.minimap` 进行设置，配置项如下：
 
 ![](http://img.smyhvae.com/20211012_1507.png)
 
@@ -532,7 +532,7 @@ VS Code 会根据你所打开的文件来决定该使用空格还是制表。也
 
 ### 12、直观地显示代码里的空格和缩进 ✨
 
-代码里如果有缩进或者空格，肉眼是看不出来的，但是我们可以修改配置项，把它显示出来。
+代码里如果有缩进或者空格，肉眼是看不出来的，但是我们可以修改配置项，把它揪出来。
 
 在配置项里搜索`editor.renderWhitespace`，修改为`all`：
 
@@ -570,7 +570,7 @@ VS Code 会根据你所打开的文件来决定该使用空格还是制表。也
 
 补充知识—— `window.restoreWindows`可以用来配置 如何恢复之前的会话窗口。涉及到的场景是：你把 VS Code 关闭了，然后又打开了，是否要展示之前打开过的文件、文件夹？参数值有以下几种：
 
-- one：默认配置。只会重新打开上一次回话中最后操作的那一个窗口。
+- one（默认配置）：只会重新打开上一次回话中最后操作的那一个窗口。
 - none：打开一个空的窗口，不包含任何文件、文件夹。
 - all（建议配置）：恢复上一次会话中的所有窗口。
 - folders：恢复上一次会话中包含文件夹的窗口。
@@ -618,7 +618,7 @@ VS Code 会根据你所打开的文件来决定该使用空格还是制表。也
 
 ### 2、并排编辑：左右（上下）显示多个编辑器窗口（copy代码利器）
 
-> 并排编辑是所有的操作中最常用的一个技巧，十分有用。比如我们在开发一个项目时，可能需要同时打开 HTML 文件和 CSS 文件，很常见。
+> 并排编辑是所有的编辑操作中最常用的一个技巧，十分有用。比如我们在开发一个项目时，可能需要同时打开 HTML 文件和 CSS 文件，很常见。
 
 Mac 用户按住快捷键 `Cmd + \`， Windows 用户按住快捷键`Ctrl + \`，即可同时打开多个编辑器窗口，进行并排编辑。效果如下：
 
@@ -814,8 +814,8 @@ VS Code软件自带了终端，但我个人认为不是很好用，而且VS Code
 
 > 在终端上，单击右键所产生的行为在不同的系统里是不同的。
 
-- macOS：选中光标所在位置的单词，并显示右键菜单。
 - Windows：如果有**选定**文本，则复制当前文本；如果没有选定文本，则粘贴。
+- macOS：选中光标所在位置的单词，并显示右键菜单。
 - Linux：显示右键菜单。
 
 ### 13、Git 版本管理
@@ -828,7 +828,7 @@ VS Code 自带了 Git 版本管理的功能，如下图所示：
 
 上图中，我们可以在这里进行常见的 git 命令操作。如果你还不熟悉 **Git 版本管理**，可以先去补补课。
 
-我自己用的最多的功能是** diff 代码**和**合并冲突**，自从用上了  VS Code 的这两个功能，简直离不开它。
+我自己用的最多的功能是**diff 代码**和**合并冲突**，自从用上了  VS Code 的这两个功能，简直离不开它。
 
 我们先来看看 diff 代码的效果：
 
@@ -1132,13 +1132,17 @@ VS Code 有一个很强大的功能就是支持插件扩展，让你的编辑器
 - `@installed @category:themes`：显示已安装的主题插件。
 - `@sort:installs java`：对 Java 相关的插件按照安装量排序。
 
-下面的内容，我来列举一些常见的插件，这些插件都很实用，小伙伴们可以按需安装。注意：**顺序越靠前，越实用**。
+下面的内容，我来列举一些常见的插件，这些插件都很实用，小伙伴们可以按需安装。注意：每一类插件里，**顺序越靠前，越实用**。
 
-### 1、Chinese (Simplified) Language Pack for Visual Studio Code
+### 1、基本插件
+
+#### Chinese (Simplified) Language Pack for Visual Studio Code
 
 让软件显示为简体中文语言。
 
-### 2、GitLens 【荐】
+### 2、Git 相关插件
+
+#### GitLens 【荐】
 
 我强烈建议你安装插件`GitLens`，它是 VS Code 中我最推荐的一个插件，简直是 Git 神器，码农必备。如果你不知道，那真是 out 了。
 
@@ -1162,33 +1166,64 @@ GitLens 在 Git 管理上有很多强大的功能，比如：
 
 补充一个有意思的趣事：Python插件、Ruby插件、GitLens插件、Vetur插件，这四个插件的开发者先后加入了微软。
 
-### 3、Git History
+#### Git History
 
 有些同学习惯使用编辑器中的 Git 管理工具，而不太喜欢要打开另外一个 Git UI 工具的同学，这一款插件满足你查询所有 Git 记录的需求。
 
-### 4、Live Server 【荐】
+#### Local History 【荐】
 
-在本地启动一个服务器，代码写完后可以实现「热更新」，实时地在网页中看到运行效果。就不需要每次都得手动刷新页面了。
+维护文件的本地历史记录。代码意外丢失时，有时可以救命。
 
-使用方式：安装插件后，开始写代码；代码写完后，右键选择「Open with Live Server」。
+![](http://img.smyhvae.com/20200618_2246.png)
 
-### 5、Bracket Pair Colorizer 2：突出显示成对的括号【荐】
+### 3、代码智能提示插件
+
+#### Vetur
+
+Vue 多功能集成插件，包括：语法高亮，智能提示，emmet，错误提示，格式化，自动补全，debugger。VS Code 官方钦定 Vue 插件，Vue 开发者必备。
+#### ES7 React/Redux/GraphQL/React-Native snippets
+
+React/Redux/react-router 的语法智能提示。
+#### JavaScript(ES6) code snippets
+
+ES6 语法智能提示，支持快速输入。
+
+#### javascript console utils：快速打印 log 日志【荐】
+
+安装这个插件后，当我们按住快捷键「Cmd + Shift + L」后，即可自动出现日志 `console.log()`。简直是日志党福音。
+
+当我们选中某个变量 `name`，然后按住快捷键「Cmd + Shift + L」，即可自动出现这个变量的日志 `console.log(name)`。
+
+其他的同类插件还有：Turbo Console Log。
+
+不过，生产环境的代码，还是尽量少打日志比较好，避免出现一些异常。
+
+编程有三等境界：
+
+- 第三等境界是打日志，这是最简单、便捷的方式，略显低级，一般新手或资深程序员偷懒时会用。
+
+- 第二等境界是断点调试，在前端、Java、PHP、iOS 开发时非常常用，通过断点调试可以很直观地跟踪代码执行逻辑、调用栈、变量等，是非常实用的技巧。
+
+- 第一等境界是测试驱动开发，在写代码之前先写测试。与第二等的断点调试刚好相反，大部分人不是很习惯这种方式，但在国外开发者或者敏捷爱好者看来，这是最高效的开发方式，在保证代码质量、重构等方面非常有帮助，是现代编程开发必不可少的一部分。
+
+#### Code Spell Checker：单词拼写错误检查
+
+这个拼写检查程序的目标是帮助捕获常见的单词拼写错误，可以检测驼峰命名。从此告别 Chinglish.
+
+#### Auto Close Tag、Auto Rename Tag
+
+自动闭合配对的标签、自动重命名配对的标签。
+
+### 4、代码显示增强插件
+
+#### Bracket Pair Colorizer 2：突出显示成对的括号【荐】
 
 `Bracket Pair Colorizer 2`插件：以不同颜色显示成对的括号，并用连线标注括号范围。简称**彩虹括号**。
 
 另外，还有个`Rainbow Brackets`插件，也可以突出显示成对的括号。
 
-### 6、sftp：文件传输 【荐】
 
-如果你需要将本地文件通过 ftp 的形式上传到局域网的服务器，可以安装`sftp`这个插件，很好用。在公司会经常用到。
-
-详细配置已经在上面讲过。
-
-### 7、open in browser
-
-安装`open in browser`插件后，在 HTML 文件中「右键选择 --> Open in Default Browser」，即可在浏览器中预览网页。
-
-### 8、highlight-icemode：选中相同的代码时，让高亮显示更加明显【荐】
+#### highlight-icemode：选中相同的代码时，让高亮显示更加明显【荐】
 
 VSCode 自带的高亮显示，实在是不够显眼。用插件支持一下吧。
 
@@ -1198,15 +1233,22 @@ VSCode 自带的高亮显示，实在是不够显眼。用插件支持一下吧�
 
 参考链接：[vscode 选中后相同内容高亮插件推荐](https://blog.csdn.net/palmer_kai/article/details/79548164)
 
-### 9、vscode-icons
+
+#### vscode-icons
 
 vscode-icons 会根据文件的后缀名来显示不同的图标，让你更直观地知道每种文件是什么类型的。
 
-### 10、Project Manager
 
-工作中，我们经常会来回切换多个项目，每次都要找到对应项目的目录再打开，比较麻烦。Project Manager 插件可以解决这样的烦恼，它提供了专门的视图来展示你的项目，我们可以把常用的项目保存在这里，需要时一键切换，十分方便。
+#### indent-rainbow：突出显示代码缩进
 
-### 11、TODO Highlight
+`indent-rainbow`插件：突出显示代码缩进。
+
+安装完成后，效果如下图所示：
+
+![](http://img.smyhvae.com/20190418_1958.png)
+
+
+#### TODO Highlight
 
 写代码过程中，突然发现一个 Bug，但是又不想停下来手中的活，以免打断思路，怎么办？按照代码规范，我们一般是在代码中加个 TODO 注释。比如：（注意，一定要写成大写`TODO`，而不是小写的`todo`）
 
@@ -1222,63 +1264,13 @@ vscode-icons 会根据文件的后缀名来显示不同的图标，让你更直�
 
 安装了插件 `TODO Highlight`之后，按住「Cmd + Shift + P」打开命令面板，输入「Todohighlist」，选择相关的命令，我们就可以看到一个 todoList 的清单。
 
-### 12、WakaTime 【荐】
+#### Better Comments
 
-统计在 VS Code 里写代码的时间。统计效果如下：
+为注释添加更醒目、带分类的色彩。
 
-![](http://img.smyhvae.com/20200618_2300.png)
+### 5、代码格式化插件
 
-### 13、Code Time
-
-`Code Time`插件：记录编程时间，统计代码行数。
-
-安装该插件后，VS Code 底部的状态栏右下角可以看到时间统计。点击那个位置之后，选择「Code Time Dashboard」，即可查看统计结果。
-
-备注：团长试了一下这个 code time 插件，发现统计结果不是很准。
-
-### 14、Markdown Preview Github Styling 【荐】
-
-以 GitHub 风格预览 Markdown 样式，十分简洁优雅。就像下面这样，左侧书写 Markdown 文本，右侧预览 Markdown 的渲染效果：
-
-![](http://img.smyhvae.com/20200618_2025.png)
-
-### 15、Markdown Preview Enhanced
-
-预览 Markdown 样式。
-
-### Markdown All in One
-
-这个插件将帮助你更高效地在 Markdown 中编写文档。
-
-### 16、Settings Sync
-
-- 地址：<https://github.com/shanalikhan/code-settings-sync>
-
-- 作用：多台设备之间，同步 VS Code 配置。通过登录 GitHub 账号来使用这个同步工具。
-
-同步的详细操作，下一段会讲。
-
-另外，北京时间的[2020年8月14日](https://zhuanlan.zhihu.com/p/184868336)，微软发布 Visual Studio Code 1.48 稳定版。此版本**原生**支持用户同步 VS Code的配置，只需要登录微软账号或者 GitHub账号即可。
-
-### 17、vscode-syncing
-
-- 地址：<https://github.com/nonoroazoro/vscode-syncing>
-
-- 作用：多台设备之间，同步 VS Code 配置。
-
-### 18、Vetur
-
-Vue 多功能集成插件，包括：语法高亮，智能提示，emmet，错误提示，格式化，自动补全，debugger。VS Code 官方钦定 Vue 插件，Vue 开发者必备。
-
-### 19、ES7 React/Redux/GraphQL/React-Native snippets
-
-React/Redux/react-router 的语法智能提示。
-
-### 20、minapp：小程序支持
-
-小程序开发必备插件。
-
-### 21、Prettier：代码格式化
+#### Prettier：代码格式化
 
 Prettier 是一个代码格式化工具，**只关注格式化，但不具备校验功能**。在一个多人协同开发的团队中，统一的代码编写规范非常重要。一套规范可以让我们编写的代码达到一致的风格，提高代码的可读性和统一性。自然维护性也会有所提高，代码的展示也会更加美观。
 
@@ -1304,65 +1296,29 @@ Prettier 是一个代码格式化工具，**只关注格式化，但不具备校
 
 更多配置，可以参考官方文档：<https://prettier.io/docs/en/options.html>
 
-
-
-### 22、ESLint：代码格式的校验
+#### ESLint：代码格式的校验
 
 日常开发中，建议用 Prettier 做代码格式化，然后用 eslint 做校验。很多人把这两个插件的功能弄混了。
 
-### 23、Beautify
+#### Beautify
 
 代码格式化工具。
 
 备注：相比之下，Prettier 是当前最流行的代码格式化工具，比 Beautify 用得更多。
 
-### 24、JavaScript(ES6) code snippets
+#### Paste JSON as Code
 
-ES6 语法智能提示，支持快速输入。
+此插件可以将剪贴板中的 JSON 字符串转换成工作代码。支持多种语言。
 
-### 25、Search node_modules 【荐】
+#### JS-CSS-HTML Formatter【荐】
 
-`node_modules`模块里面的文件夹和模块实在是太多了，根本不好找。好在安装 `Search node_modules` 这个插件后，输入快捷键「Cmd + Shift + P」，然后输入 `node_modules`，在弹出的选项中选择 `Search node_modules`，即可搜索 node_modules 里的模块。
+保存文件时，自动格式化 HTML、CSS、JS代码。
 
-![](http://img.smyhvae.com/20200618_2100.png)
 
-### 26、indent-rainbow：突出显示代码缩进
 
-`indent-rainbow`插件：突出显示代码缩进。
+### 6、图片相关插件
 
-安装完成后，效果如下图所示：
-
-![](http://img.smyhvae.com/20190418_1958.png)
-
-### 27、javascript console utils：快速打印 log 日志【荐】
-
-安装这个插件后，当我们按住快捷键「Cmd + Shift + L」后，即可自动出现日志 `console.log()`。简直是日志党福音。
-
-当我们选中某个变量 `name`，然后按住快捷键「Cmd + Shift + L」，即可自动出现这个变量的日志 `console.log(name)`。
-
-其他的同类插件还有：Turbo Console Log。
-
-不过，生产环境的代码，还是尽量少打日志比较好，避免出现一些异常。
-
-编程有三等境界：
-
-- 第三等境界是打日志，这是最简单、便捷的方式，略显低级，一般新手或资深程序员偷懒时会用。
-
-- 第二等境界是断点调试，在前端、Java、PHP、iOS 开发时非常常用，通过断点调试可以很直观地跟踪代码执行逻辑、调用栈、变量等，是非常实用的技巧。
-
-- 第一等境界是测试驱动开发，在写代码之前先写测试。与第二等的断点调试刚好相反，大部分人不是很习惯这种方式，但在国外开发者或者敏捷爱好者看来，这是最高效的开发方式，在保证代码质量、重构等方面非常有帮助，是现代编程开发必不可少的一部分。
-
-### 28、Code Spell Checker：单词拼写错误检查
-
-这个拼写检查程序的目标是帮助捕获常见的单词拼写错误，可以检测驼峰命名。从此告别 Chinglish.
-
-### 29、Local History 【荐】
-
-维护文件的本地历史记录。代码意外丢失时，有时可以救命。
-
-![](http://img.smyhvae.com/20200618_2246.png)
-
-### 30、Polacode-2020：生成代码截图 【荐】
+#### Polacode-2020：生成代码截图 【荐】
 
 可以把代码片段保存成美观的图片，主题不同，代码的配色方案也不同，也也可以自定义设置图片的边框颜色、大小、阴影。
 
@@ -1376,31 +1332,118 @@ ES6 语法智能提示，支持快速输入。
 
 有人可能会说：直接用 QQ 截图不行吗？可以是可以，但不够美观、不够干净。
 
-### 31、Image Preview 【荐】
+#### Image Preview 【荐】
 
 图片预览。鼠标移动到图片 url 上的时候，会自动显示图片的预览和图片尺寸。
 
-### 32、Auto Close Tag、Auto Rename Tag
 
-自动闭合配对的标签、自动重命名配对的标签。
 
-### 33、Better Comments
+### 7、CSS相关插件
 
-为注释添加更醒目、带分类的色彩。
-
-### 34、CSS Peek
+#### CSS Peek
 
 增强 HTML 和 CSS 之间的关联，快速查看该元素上的 CSS 样式。
 
-### 35、Vue CSS Peek
+#### Vue CSS Peek
 
 CSS Peek 对 Vue 没有支持，该插件提供了对 Vue 文件的支持。
 
-### 36、Color Info
+#### Color Info
 
 这个便捷的插件，将为你提供你在 CSS 中使用颜色的相关信息。你只需在颜色上悬停光标，就可以预览色块中色彩模型的（HEX、 RGB、HSL 和 CMYK）相关信息了。
 
-### 37、RemoteHub
+
+
+### 8、Mardown 相关插件
+
+#### Markdown Preview Github Styling 【荐】
+
+以 GitHub 风格预览 Markdown 样式，十分简洁优雅。就像下面这样，左侧书写 Markdown 文本，右侧预览 Markdown 的渲染效果：
+
+![](http://img.smyhvae.com/20200618_2025.png)
+
+#### Markdown Preview Enhanced
+
+预览 Markdown 样式。
+
+#### Markdown All in One
+
+这个插件将帮助你更高效地在 Markdown 中编写文档。
+
+
+
+### 9、通用工具类插件
+
+#### sftp：文件传输 【荐】
+
+如果你需要将本地文件通过 ftp 的形式上传到局域网的服务器，可以安装`sftp`这个插件，很好用。在公司会经常用到。
+
+详细配置已经在上面讲过。
+
+#### Live Server 【荐】
+
+在本地启动一个服务器，代码写完后可以实现「热更新」，实时地在网页中看到运行效果。就不需要每次都得手动刷新页面了。
+
+使用方式：安装插件后，开始写代码；代码写完后，右键选择「Open with Live Server」。
+
+#### open in browser
+
+安装`open in browser`插件后，在 HTML 文件中「右键选择 --> Open in Default Browser」，即可在浏览器中预览网页。
+
+
+#### Project Manager
+
+工作中，我们经常会来回切换多个项目，每次都要找到对应项目的目录再打开，比较麻烦。Project Manager 插件可以解决这样的烦恼，它提供了专门的视图来展示你的项目，我们可以把常用的项目保存在这里，需要时一键切换，十分方便。
+
+#### WakaTime 【荐】
+
+统计在 VS Code 里写代码的时间。统计效果如下：
+
+![](http://img.smyhvae.com/20200618_2300.png)
+
+#### Code Time
+
+`Code Time`插件：记录编程时间，统计代码行数。
+
+安装该插件后，VS Code 底部的状态栏右下角可以看到时间统计。点击那个位置之后，选择「Code Time Dashboard」，即可查看统计结果。
+
+备注：团长试了一下这个 code time 插件，发现统计结果不是很准。
+
+
+#### Settings Sync
+
+- 地址：<https://github.com/shanalikhan/code-settings-sync>
+
+- 作用：多台设备之间，同步 VS Code 配置。通过登录 GitHub 账号来使用这个同步工具。
+
+同步的详细操作，下一段会讲。
+
+另外，北京时间的[2020年8月14日](https://zhuanlan.zhihu.com/p/184868336)，微软发布 Visual Studio Code 1.48 稳定版。此版本**原生**支持用户同步 VS Code的配置，只需要登录微软账号或者 GitHub账号即可。
+
+#### vscode-syncing
+
+- 地址：<https://github.com/nonoroazoro/vscode-syncing>
+
+- 作用：多台设备之间，同步 VS Code 配置。
+
+#### minapp：小程序支持
+
+小程序开发必备插件。
+
+
+
+
+#### Search node_modules
+
+`node_modules`模块里面的文件夹和模块实在是太多了，根本不好找。好在安装 `Search node_modules` 这个插件后，输入快捷键「Cmd + Shift + P」，然后输入 `node_modules`，在弹出的选项中选择 `Search node_modules`，即可搜索 node_modules 里的模块。
+
+![](http://img.smyhvae.com/20200618_2100.png)
+
+
+
+
+
+#### RemoteHub
 
 不要惊讶，RemoteHub 和 GitLens 是同一个作者开发出来的。
 
@@ -1410,7 +1453,7 @@ CSS Peek 对 Vue 没有支持，该插件提供了对 Vue 文件的支持。
 
 这个插件目前使用的人还不多，赶紧安装起来尝尝鲜吧。
 
-### 38、Live Share：实时编码分享
+#### Live Share：实时编码分享
 
 `Live Share`这个神奇的插件是由微软官方出品，它的作用是：**实时编码分享**。也就是说，它可以实现你和你的同伴一起写代码。这绝对就是**结对编程**的神器啊。
 
@@ -1424,19 +1467,11 @@ CSS Peek 对 Vue 没有支持，该插件提供了对 Vue 文件的支持。
 
 ![](http://img.smyhvae.com/20190418_2005.png)
 
-### 39、Import Cost
+#### Import Cost
 
 在项目开发过程中，我们会引入很多 npm 包，有时候可能只用到了某个包里的一个方法，却引入了整个包，导致代码体积增大很多。`Import Cost`插件可以在代码中友好的提示我们，当前引入的包会增加多少体积，这很有助于帮我们优化代码的体积。
 
-### 40、Paste JSON as Code
-
-此插件可以将剪贴板中的 JSON 字符串转换成工作代码。支持多种语言。
-
-### 41、JS-CSS-HTML Formatter【荐】
-
-保存文件时，自动格式化 HTML、CSS、JS代码。
-
-### 主题插件
+### 10、主题插件
 
 给你的 VS Code 换个皮肤吧，免费的那种。
 
