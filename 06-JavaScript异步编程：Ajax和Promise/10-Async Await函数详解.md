@@ -1,24 +1,23 @@
 ---
 title: 08-Async Await函数详解
-publish: true
 ---
 
 <ArticleTopAd></ArticleTopAd>
-
-
 
 
 ## async/await （异步函数）概述
 
 async/await 是在 ES8(即ES 2017）中引入的新语法，是另外一种异步编程解决方案。
 
-本质： Generator 的语法糖。
+本质： 是 Generator 的语法糖。
 
 - async 的返回值是 Promise 实例对象。
 
 - await 可以得到异步结果。
 
 我们在普通的函数前面加上 async 关键字，就成了 async 函数。
+
+什么是语法糖呢？语法糖就是让语法变得更加简洁、更加舒服，有一种甜甜的感觉。
 
 ## async/await 的基本用法
 
@@ -27,7 +26,7 @@ async 后面可以跟一个 Promise 实例对象。代码举例如下：
 ```javascript
     const request1 = function() {
         const promise = new Promise(resolve => {
-            request('https://www.baidu.com', function(response) {
+            request('https://www.baidu.com/xxx_url', function(response) {
                 if (response.retCode == 200) {
                     // 这里的 response 是接口1的返回结果
                     resolve('request1 success'+ response);
