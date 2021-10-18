@@ -5,7 +5,6 @@ publish: true
 
 <ArticleTopAd></ArticleTopAd>
 
-
 ## 为什么需要 Promise？
 
 我们在前面的文章《JavaScript 基础：异步编程和 Ajax/单线程和异步》中讲过，Javascript 是⼀⻔单线程语⾔。早期我们解决异步场景时，⼤部分情况都是通过回调函数来进⾏。
@@ -38,9 +37,9 @@ dynamicFunc(function () {
 
 回调的写法比较直观，不需要 return，层层嵌套即可。但也存在两个问题：
 
--   1、如果嵌套过深，则会出现**回调地狱**的问题。
+-   1. 如果嵌套过深，则会出现**回调地狱**的问题。
 
--   2、不同的函数，回调的参数，在写法上可能不一致，导致不规范、且需要**单独记忆**。
+-   2. 不同的函数，回调的参数，在写法上可能不一致，导致不规范、且需要**单独记忆**。
 
 我们来具体看看这两个问题。
 
@@ -54,9 +53,9 @@ dynamicFunc(function () {
 
 > 但真实的场景中，实际的操作流程是：买菜成功之后，才能开始做饭。做饭成功后，才能开始洗碗。洗碗完成后， 再倒厨余垃圾。这里的一系列动作就涉及到了多层嵌套调用，也就是回调地狱。
 
-关于回调地狱，我们来看看两段代码。
+关于回调地狱，我们来看看几段代码举例。
 
-定时器的代码举例：（回调地狱）
+1.1、定时器的代码举例：（回调地狱）
 
 ```js
 setTimeout(function () {
@@ -70,7 +69,23 @@ setTimeout(function () {
 }, 1000);
 ```
 
-ajax 请求的代码举例：（回调地狱）
+1.2、Node.js 读取文件的代码举例：（回调地狱）
+
+```js
+fs.readFile(A, 'utf-8', function (err, data) {
+    fs.readFile(B, 'utf-8', function (err, data) {
+        fs.readFile(C, 'utf-8', function (err, data) {
+            fs.readFile(D, 'utf-8', function (err, data) {
+                console.log('qianguyihao:' + data);
+            });
+        });
+    });
+});
+```
+
+上面代码的逻辑为：先读取 A 文本内容，再根据 A 文本内容读取 B，然后再根据 B 的内容读取 C。为了实现这个业务逻辑，上面的代码就很容易形成回调地狱。
+
+1.3、ajax 请求的代码举例：（回调地狱）
 
 ```js
 // 伪代码
@@ -89,7 +104,7 @@ ajax('a.json', (res1) => {
 
 ```js
 // Node.js 读取文件时，成功回调和失败回调，是通过 error参数来区分
-readFile('d:\\readme.text', function (error, data) {
+readFile('d:\\readme.text', function (err, data) {
     if (error) {
         console.log('文件读取失败');
     } else {
@@ -113,9 +128,9 @@ $.ajax({
 
 **小结**：
 
-在 ES5 中，当进行多层嵌套回调时，会导致代码层次过多，很难进行后续维护和二次开发；而且会导致**回调地狱**的问题。ES6 中的 Promise 就可以解决这两个问题。
+在 ES5 中，当进行多层嵌套回调时，会导致代码层次过多，很难进行后续维护和二次开发；而且会导致**回调地狱**的问题。ES6 中的 Promise 就可以解决这些问题。
 
-当然， Promise 的更强大功能，不止于此。我们来一探究竟。
+当然， Promise 的强大功能，不止于此。我们来一探究竟。
 
 ### Promise 的介绍和优点
 
@@ -227,7 +242,7 @@ promise.then(
 
 `new Promise()`这行代码本身是同步的。promise 如果没有使用 resolve 或 reject 更改状态时，状态为 pending。
 
-**举例1**：
+**举例 1**：
 
 ```js
 const promiseA = new Promise((resolve, reject) => {});
@@ -238,7 +253,7 @@ console.log(promiseA); // 此时 promise 的状态为 pending（准备阶段）
 
 当完成异步任务之后，状态分为成功或失败，此时我们就可以用 reslove() 和 reject() 来修改 promise 的状态。
 
-**举例2**：
+**举例 2**：
 
 ```js
 new Promise((resolve, reject) => {
@@ -254,20 +269,19 @@ new Promise((resolve, reject) => {
 promise1
 ```
 
-
 上方代码，仔细看注释：如果前面没有写 `resolve()`，那么后面的 `.then`是不会执行的。
 
-**举例3**：
+**举例 3**：
 
 ```js
 new Promise((resolve, reject) => {
     resolve();
-    console.log('promise1');  // 代码1：同步任务，会立即执行
+    console.log('promise1'); // 代码1：同步任务，会立即执行
 }).then(res => {
-    console.log('promise  then');  // 代码2：异步任务中的微任务
-})
+    console.log('promise  then'); // 代码2：异步任务中的微任务
+});
 
-console.log('千古壹号');  // 代码3：同步任务
+console.log('千古壹号'); // 代码3：同步任务
 ```
 
 打印结果：
@@ -278,10 +292,9 @@ promise1
 promise  then
 ```
 
-代码解释：代码1是同步代码，所以最先执行。代码2是**微任务**里面的代码，所以要先等同步任务（代码3）先执行完。当写完`resolve();`之后，就会立刻把 `.then()`里面的代码加入到微任务队列当中。
+代码解释：代码 1 是同步代码，所以最先执行。代码 2 是**微任务**里面的代码，所以要先等同步任务（代码 3）先执行完。当写完`resolve();`之后，就会立刻把 `.then()`里面的代码加入到微任务队列当中。
 
 补充知识：异步任务分为“宏任务”、“微任务”两种。我们到后续的章节中再详细讲。
-
 
 ### Promise 的状态一旦改变，就不能再变
 
@@ -324,7 +337,7 @@ Promise 是⼀个拥有 then ⽅法的对象或函数。任何符合 promise 规
 
 了解这些常见概念之后，接下来，我们来具体看看 promise 的代码是怎么写的。
 
-## Promise 封装异步任务
+## Promise 封装定时器
 
 ### 传统写法
 
@@ -403,9 +416,9 @@ function ajax(url, success, fail) {
     xmlhttp.send();
     xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
-           success && success(xmlhttp.responseText);
+            success && success(xmlhttp.responseText);
         } else {
-          	// 这里的 && 符号，意思是：如果传了 fail 参数，就调用后面的 fail()；如果没传 fail 参数，就不调用后面的内容。因为 fail 参数不一定会传。
+            // 这里的 && 符号，意思是：如果传了 fail 参数，就调用后面的 fail()；如果没传 fail 参数，就不调用后面的内容。因为 fail 参数不一定会传。
             fail && fail(new Error('接口请求失败'));
         }
     };
