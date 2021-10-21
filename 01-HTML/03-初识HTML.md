@@ -21,7 +21,7 @@ PS：文件的后缀名不能决定文件格式，只能决定打开文件打开
 
 ### Sublime Text 的使用
 
-详情请移步至：[Sublime Text使用技巧](https://github.com/qianguyihao/Mac/blob/master/05-%E5%85%A8%E5%B9%B3%E5%8F%B0%E8%BD%AF%E4%BB%B6/Sublime%20Text%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7.md)
+详情请移步至：[Sublime Text使用技巧](https://github.com/qianguyihao/Mac/blob/master/03-%E5%85%A8%E5%B9%B3%E5%8F%B0%E8%BD%AF%E4%BB%B6/Sublime%20Text%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7.md)
 
 ## HTML的概述
 

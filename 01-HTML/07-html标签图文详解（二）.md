@@ -592,7 +592,7 @@ style="border-collapse:collapse;"
 
 注意：表单和表格嵌套时，是在`<form>`标记中套`<table>`标记。
 
-form标签里面的action属性和method属性，在《Ajax》课程上给大家讲解。稍微说一下：action属性就是表示，表单将提交到哪里。 method属性表示用什么HTTP方法提交，有get、post两种。
+form标签里面的action属性和method属性，在后续的 ajax文章上再讲。这里简单说一下：action属性就是表示，表单将提交到哪里。 method属性表示用什么HTTP方法提交，有get、post两种。
 
 **get提交和post提交的区别：**
 
