@@ -1,11 +1,11 @@
 ---
-title: 01-JS简介
+title: 01-JavaScript简介
 publish: true
 ---
 
 <ArticleTopAd></ArticleTopAd>
 
-## JavaScript背景
+## JavaScript历史和发展
 
 Web前端有三层：
 
@@ -15,27 +15,37 @@ Web前端有三层：
 
 - JavaScript：从交互的角度，描述**行为**（实现业务逻辑和页面控制）
 
-### 发展历史
+### JS 的历史
 
-JavaScript诞生于**1995年**。网景公司的员工布兰登 • 艾奇（Brendan Eich，1961年～）在1995年开发出了 JavaScript 语言。
+1、JavaScript诞生于**1995年**，是由**网景**公司（Netscape）的员工 Brendan Eich（兰登 • 艾奇，1961年～）发明，最初命名为LiveScript。1995年12月与SUN公司合作，因市场宣传需要，为了蹭Java的热度，改名为 JavaScript。
 
-JavaScript是由**网景**公司（Netscape）发明，最初命名为LiveScript；1995年12月与SUN公司合作，因市场宣传需要，改名为 JavaScript。
+补充：
 
-JavaScript是Sun注册并授权给Netscape使用的商标。后来 Sun 公司 被Oracle收购，JavaScript版权归Oracle所有。
+> 1994年网景公司发布历史上第一个比较成熟的浏览器(Navigator 0.9), 但是只能浏览不能**交互**。1995年为了解决表单有效性验证就要与服务器进行多次地往返交互问题，网景公司录用 Brendan Eich（兰登 • 艾奇），他只用了10天就开发出 LiveScript 语言的第一版。
 
-> 备注：由于 Sun 公司当时的Java 语言特别火，所以为了傍大牌，就借势改名为JavaScript。如同“北大”和“北大青鸟”的关系。“北大青鸟”就是傍“北大”大牌。
+> 由于 Sun 公司当时的 Java 语言特别火，所以为了傍大牌，就借势改名为JavaScript。如同“北大”和“北大青鸟”的关系，“北大青鸟”就是傍“北大”的大牌。
 
 > 同时期还有其他的网页语言，比如VBScript、JScript等等，但是后来都被JavaScript打败了，所以现在的浏览器中，只运行一种脚本语言就是JavaScript。
 
-1996年，微软为了抢占市场，推出了`JScript`在IE3.0中使用。
+2、JavaScript是Sun注册并授权给Netscape使用的商标。后来 Sun 公司 被Oracle收购，JavaScript版权归Oracle所有。
 
-1996年11月网景公司将JS提交给ECMA(国际标准化组织)成为国际标准，用于对抗微软。
+3、1996年，微软为了抢占市场，推出了`JScript`在IE3.0中使用。
+
+4、1996年11月网景公司将JS提交给ECMA(国际标准化组织)成为国际标准，用于对抗微软。
+
+补充：
+
+> JavaScript是世界上用的最多的**脚本语言**。
+
+> Java和JavaScript的关系，就好比：雷锋和雷峰塔的关系、老婆和老婆饼的关系、北大和北大青鸟的关系。
+
+推荐阅读链接：
+
+- [网道 |  JavaScript 语言的历史](https://wangdoc.com/javascript/basic/history.html)
 
 
-JavaScript是世界上用的最多的**脚本语言**。
 
-
-### JavaScript的发展：蒸蒸日上
+### JS的发展：蒸蒸日上
 
 2003年之前，JavaScript被认为“牛皮鲜”，用来制作页面上的广告，弹窗、漂浮的广告。什么东西让人烦，什么东西就是JavaScript开发的。所以很多浏览器就推出了屏蔽广告功能。
 
