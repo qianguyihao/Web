@@ -636,7 +636,7 @@ if (!res || +res.retCode !== 0) {
 resolve(res.data);
 ```
 
-备注：如果你没学过 Promise，这个例子可以先不看。等以后学了 Promise再回来看就很容易明白了。
+备注：如果你没学过 Promise，这个例子可以先不看。等以后学了 Promise 再回来看就很容易明白了。
 
 ## 我的公众号
 
