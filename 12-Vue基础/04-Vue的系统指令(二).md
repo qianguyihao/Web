@@ -67,7 +67,7 @@ publish: true
         el: '#app',
         //上面的标签中采用v-model进行双向数据绑定，数据会自动更新到data里面来
         data: {
-            name: 'smyhvae',
+            name: 'qianguyihao',
             myAccount: {username: '', userpwd: ''}
         },
         //在methods里绑定各种方法，根据业务需要进行操作
@@ -202,7 +202,7 @@ publish: true
 </head>
 
 <body>
-    <h1 class="my-red my-thin">我是生命壹号，smyhvae</h1>
+    <h1 class="my-red my-thin">我是千古壹号，qianguyihao</h1>
 </body>
 
 </html>
@@ -211,7 +211,7 @@ publish: true
 上面的代码中，我们直接通过正常的方式，给`<h1>`标签设置了两个 class 类的样式。代码抽取如下：
 
 ```html
-    <h1 class="my-red my-thin">我是生命壹号，smyhvae</h1>
+    <h1 class="my-red my-thin">我是千古壹号，qianguyihao</h1>
 ```
 
 上面的效果，我们还可以用Vue来写。这就引入了本段要讲的方式。
@@ -257,10 +257,10 @@ publish: true
     <div id="app">
 
         <!-- 普通写法 -->
-        <h1 class="my-red my-thin">我是生命壹号，smyhvae</h1>
+        <h1 class="my-red my-thin">我是千古壹号，qianguyihao</h1>
 
         <!-- vue的写法1：数组的形式 -->
-        <h1 :class="['my-red', 'my-thin']">我是smyhvae，生命壹号</h1>
+        <h1 :class="['my-red', 'my-thin']">我是qianguyihao，千古壹号</h1>
 
     </div>
 
@@ -280,7 +280,7 @@ publish: true
 
 ```html
         <!-- vue的写法1：数组的形式 -->
-        <h1 :class="['my-red', 'my-thin']">我是smyhvae，生命壹号</h1>
+        <h1 :class="['my-red', 'my-thin']">我是qianguyihao，千古壹号</h1>
 ```
 
 上方代码中，注意，数组里写的是字符串；如果不加单引号，就不是字符串了，而是变量。
@@ -296,7 +296,7 @@ publish: true
     <div id="app">
         <!-- vue的写法2：在数组中使用三元表达式。注意格式不要写错-->
         <!-- 通过data中布尔值 flag 来判断：如果 flag 为 true，就给 h1 标签添加`my-active`样式；否则，就不设置样式。 -->
-        <h1 :class="[flag?'my-active':'']">我是smyhvae，生命壹号</h1>
+        <h1 :class="[flag?'my-active':'']">我是qianguyihao，千古壹号</h1>
     </div>
 
     <script>
@@ -327,7 +327,7 @@ publish: true
 <body>
     <div id="app">
         <!-- vue的写法3：在数组中使用对象来代替三元表达式。-->
-        <h1 :class="[ {'my-active':flag} ]">我是smyhvae，生命壹号</h1>
+        <h1 :class="[ {'my-active':flag} ]">我是qianguyihao，千古壹号</h1>
     </div>
 
     <script>
@@ -348,7 +348,7 @@ publish: true
 ```html
         <!-- vue的写法4：直接使用对象-->
         <!-- 在为 class 使用 v-bind 绑定 对象的时候，对象的属性是类名。由于 对象的属性名可带引号，也可不带引号，所以 这里我没写引号；  属性的值 是一个标识符 -->
-        <h1 :class="{style1:true, style2:false}">我是smyhvae，生命壹号</h1>
+        <h1 :class="{style1:true, style2:false}">我是qianguyihao，千古壹号</h1>
 ```
 
 上方代码的意思是，给`<h1>`标签使用样式`style1`，不使用样式`style2`。注意：
@@ -362,7 +362,7 @@ publish: true
     <div id="app">
         <!-- vue的写法4：直接使用对象-->
         <!-- 在为 class 使用 v-bind 绑定 对象的时候，对象的属性是类名。由于 对象的属性名可带引号，也可不带引号，所以 这里我没写引号；  属性的值 是一个标识符 -->
-        <h1 :class="classObj">我是smyhvae，生命壹号</h1>
+        <h1 :class="classObj">我是qianguyihao，千古壹号</h1>
     </div>
 
     <script>
@@ -387,7 +387,7 @@ publish: true
 例如：
 
 ```html
-        <h1 :style="{color: 'red', 'font-size': '20px'}">我是生命壹号，smyhvae</h1>
+        <h1 :style="{color: 'red', 'font-size': '20px'}">我是千古壹号，qianguyihao</h1>
 ```
 
 ### 写法二
@@ -399,7 +399,7 @@ publish: true
 ```html
 <body>
     <div id="app">
-        <h1 :style="styleObj">我是生命壹号，smyhvae</h1>
+        <h1 :style="styleObj">我是千古壹号，qianguyihao</h1>
     </div>
 
     <script>
@@ -424,7 +424,7 @@ publish: true
 ```html
 <body>
     <div id="app">
-        <h1 :style="[ styleObj1, styleObj2 ]">我是生命壹号，smyhvae</h1>
+        <h1 :style="[ styleObj1, styleObj2 ]">我是千古壹号，qianguyihao</h1>
     </div>
 
     <script>
@@ -590,7 +590,7 @@ publish: true
     el: '#app',
     data: {
       obj1: {
-        name: 'smyhvae',
+        name: 'qianguyihao',
         age: '26',
         gender: '男'
       }
@@ -697,7 +697,7 @@ key的类型只能是：string/number，而且要通过 v-bind 来指定。
                 list: [
                     { id: 1, name: 'smyh' },
                     { id: 2, name: 'vae' },
-                    { id: 3, name: 'smyhvae' },
+                    { id: 3, name: 'qianguyihao' },
                     { id: 4, name: 'xiaoming' },
                     { id: 5, name: 'xiaohong' }
                 ]

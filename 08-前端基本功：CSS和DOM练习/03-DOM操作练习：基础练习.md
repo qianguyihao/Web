@@ -43,7 +43,7 @@ publish: true
 <body>
 <button id="btn">隐藏</button>
 <div>
-    生命壹号
+    千古壹号
 </div>
 
 <script>
@@ -338,7 +338,7 @@ publish: true
 ```html
 <body>
 
-账号: <input type="text" value="生命壹号..."/><button>禁用</button><button>解禁</button><br><br>
+账号: <input type="text" value="千古壹号..."/><button>禁用</button><button>解禁</button><br><br>
 密码: <input type="password" value="aaabbbccc"/>
 
 <script>

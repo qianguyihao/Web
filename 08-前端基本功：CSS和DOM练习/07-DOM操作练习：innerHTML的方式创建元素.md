@@ -130,16 +130,16 @@ document.write();
 ```html
     //往ul中添加li元素以及li元素中的内容
        ul.innerHTML += '<li>'+
-                       '<a href="#" target="_blank"><img src="images/noavatar_small.gif" width="48" height="48" alt="生命壹号"></a>'+
-                       '<p><a href="#" title="生命壹号" target="_blank">生命壹号</a></p>'+
+                       '<a href="#" target="_blank"><img src="images/noavatar_small.gif" width="48" height="48" alt="千古壹号"></a>'+
+                       '<p><a href="#" title="千古壹号" target="_blank">千古壹号</a></p>'+
                    '</li>';
        ul.innerHTML += '<li>'+
-               '<a href="#" target="_blank"><img src="images/noavatar_small.gif" width="48" height="48" alt="生命壹号"></a>'+
-               '<p><a href="#" title="生命壹号" target="_blank">生命壹号</a></p>'+
+               '<a href="#" target="_blank"><img src="images/noavatar_small.gif" width="48" height="48" alt="千古壹号"></a>'+
+               '<p><a href="#" title="千古壹号" target="_blank">千古壹号</a></p>'+
                '</li>';
        ul.innerHTML += '<li>'+
-               '<a href="#" target="_blank"><img src="images/noavatar_small.gif" width="48" height="48" alt="生命壹号"></a>'+
-               '<p><a href="#" title="生命壹号" target="_blank">生命壹号</a></p>'+
+               '<a href="#" target="_blank"><img src="images/noavatar_small.gif" width="48" height="48" alt="千古壹号"></a>'+
+               '<p><a href="#" title="千古壹号" target="_blank">千古壹号</a></p>'+
                '</li>';
 
 ```
@@ -288,8 +288,8 @@ document.write();
                         <div class="module cl ml mls" id="users">
                             <ul>
                                 <!--<li>-->
-                                <!--<a href="#" target="_blank"><img src="images/noavatar_small.gif" width="48" height="48" alt="生命壹号"></a>-->
-                                <!--<p><a href="#" title="生命壹号" target="_blank">生命壹号</a></p>-->
+                                <!--<a href="#" target="_blank"><img src="images/noavatar_small.gif" width="48" height="48" alt="千古壹号"></a>-->
+                                <!--<p><a href="#" title="千古壹号" target="_blank">千古壹号</a></p>-->
                                 <!--</li>-->
 
                             </ul>
