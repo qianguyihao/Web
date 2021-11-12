@@ -38,10 +38,10 @@ let connection = mysql.createConnection(options);
 //建立连接
 connection.connect((err) => {
   if (err) {
-    // 数据库连接成功
+      // 数据库连接失败
     console.log(err);
   } else {
-    // 数据库连接失败
+      // 数据库连接成功
     console.log("数据库连接成功");
   }
 });
@@ -85,10 +85,10 @@ let connection = mysql.createConnection(options);
 //建立连接
 connection.connect((err) => {
     if (err) {
-        // 数据库连接成功
+        // 数据库连接失败
         console.log(err)
     } else {
-        // 数据库连接失败
+        // 数据库连接成功
         console.log('数据库连接成功')
     }
 });
@@ -181,10 +181,10 @@ let connection = mysql.createConnection(options);
 //建立连接
 connection.connect((err) => {
     if (err) {
-        // 数据库连接成功
+        // 数据库连接失败
         console.log(err);
     } else {
-        // 数据库连接失败
+        // 数据库连接成功
         console.log('数据库连接成功')
     }
 });
@@ -247,10 +247,10 @@ let connection = mysql.createConnection(options);
 //建立连接
 connection.connect((err) => {
     if (err) {
-        // 数据库连接成功
+        // 数据库连接失败
         console.log(err);
     } else {
-        // 数据库连接失败
+        // 数据库连接成功
         console.log('数据库连接成功')
     }
 });

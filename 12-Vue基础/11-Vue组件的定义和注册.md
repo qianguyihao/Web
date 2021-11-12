@@ -870,19 +870,21 @@ Vue.component('myComponent', myAccount); //第一个参数是组件的名称（�
 
 运行效果：
 
-20180618_2240.gif
+
+![](https://img.smyhvae.com/20180618_2240.gif)
+
 
 如上方代码所示，多个组件切换时，如果要设置动画，可以用`<transition>`把组件包裹起来。需要注意的是，我给`<transition>`标签里添加了`mode="out-in"`这种模式，它表示第一个组件消失之后，第二个组件才会出现。如果没有这个mode属性，效果如下：（第一个组件准备消失的时候，第二个组件马上就准备出现，这不是我们想要的效果）
 
-20180618_2245.gif
 
+![](https://img.smyhvae.com/20180618_2245.gif)
 
 ## 我的公众号
 
-想学习<font color=#0000ff>**更多技能**</font>？不妨关注我的微信公众号：**千古壹号**（id：`qianguyihao`）。
+想学习**更多技能**？不妨关注我的微信公众号：**千古壹号**（id：`qianguyihao`）。
 
 扫一扫，你将发现另一个全新的世界，而这将是一场美丽的意外：
 
-![](http://img.smyhvae.com/2016040102.jpg)
+![](https://img.smyhvae.com/20200102.png)
 
 

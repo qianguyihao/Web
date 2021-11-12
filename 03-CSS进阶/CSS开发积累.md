@@ -129,7 +129,7 @@ CSS的逗号一般写在()里。**不同属性值之间，用的是空格**，�
 }
 ```
 
-注意，去掉滚动条的那行代码里，建议用`display: none;`，不要用`width: 0;`。因为，当你需要设置横向滚动的效果时，`display: none;`这个属性的效果更好，不会改变容易的size；`width: 0;`可能会改变容易的size。
+注意，去掉滚动条的那行代码里，建议用`display: none;`，不要用`width: 0;`。因为，当你需要设置横向滚动的效果时，`display: none;`这个属性的效果更好，不会改变容器的size；`width: 0;`可能会改变容器的size。
 
 参考链接：
 
@@ -148,3 +148,16 @@ CSS的逗号一般写在()里。**不同属性值之间，用的是空格**，�
 
 ```
 
+### 2021-09-13-JS中插入CSS
+
+代码举例：
+
+```js
+new_element = document.createElement("style");
+new_element.innerHTML =(".tucao-content p{font-size:18px;}");
+document.body.appendChild(new_element);
+```
+
+参考链接：
+
+- js 插入公共css的方法：https://blog.csdn.net/u013970232/article/details/90578937

@@ -5,7 +5,6 @@ publish: true
 
 <ArticleTopAd></ArticleTopAd>
 
-
 ## 前言
 
 循环语句：通过循环语句可以反复的执行一段代码多次。
@@ -236,11 +235,11 @@ do...while语句在执行时，会先执行循环体：
 
 ### break
 
-- break 可以用来退出 switch 语句或退出**整个**循环语句（循环语句包括 for 循环、while 循环。不包括 if。单独的if 语句里不能用 break 和 continue，否则会报错）。
+-   break 可以用来退出 switch 语句或退出**整个**循环语句（循环语句包括 for 循环、while 循环。不包括 if。单独的 if 语句里不能用 break 和 continue，否则会报错）。
 
-- break 会立即终止离它**最近**的那个循环语句。
+-   break 会立即终止离它**最近**的那个循环语句。
 
-- 可以为循环语句创建一个 label，来标识当前的循环（格式：label:循环语句）。使用 break 语句时，可以在 break 后跟着一个 label，这样 break 将会结束指定的循环，而不是最近的。
+-   可以为循环语句创建一个 label，来标识当前的循环（格式：label:循环语句）。使用 break 语句时，可以在 break 后跟着一个 label，这样 break 将会结束指定的循环，而不是最近的。
 
 **举例 1**：通过 break 终止循环语句
 
@@ -281,11 +280,11 @@ outer: for (var i = 0; i < 5; i++) {
 
 ### continue
 
-- continue 可以用来跳过**当次**循环，继续下一次循环。
+-   continue 可以用来跳过**当次**循环，继续下一次循环。
 
-- 同样，continue 默认只会离他**最近**的循环起作用。
+-   同样，continue 默认只会离他**最近**的循环起作用。
 
-- 同样，如果需要跳过指定的当次循环，可以使用 label 标签。
+-   同样，如果需要跳过指定的当次循环，可以使用 label 标签。
 
 举例：
 

@@ -5,7 +5,6 @@ publish: true
 
 <ArticleTopAd></ArticleTopAd>
 
-
 ## Promise 的链式调用：处理多次 Ajax 请求【重要】
 
 实际开发中，我们经常需要同时请求多个接口。比如说：在请求完`接口1`的数据`data1`之后，需要根据`data1`的数据，继续请求接口 2，获取`data2`；然后根据`data2`的数据，继续请求接口 3。
@@ -168,7 +167,7 @@ getPromise('a.json')
 
 代码写到这里，我们还可以再继续优化一下。细心的你可以发现，我们在做三次嵌套请求的时候，针对 resolve 和 reject 的处理时机是一样的。如果你的业务是针对**同一个接口**连续做了三次调用，只是请求**传参不同**，那么，按上面这样写是没有问题的。
 
-但是，真正在实战中，我们往往需要嵌套请求**多个不同的接口**，要处理的 resolve 和 reject 的时机往往是不同的，所以需要分开封装不同的 Promise 实例，这在实战开发中更为常见。代码应该是像下面这样写。
+但是，真正在实战中，我们往往需要嵌套请求**多个不同的接口**，要处理的 resolve 和 reject 的时机和逻辑往往是不同的，所以需要分开封装不同的 Promise 实例，这在实战开发中更为常见。代码应该是像下面这样写。
 
 ### Promise 链式调用（封装多个接口）
 
@@ -255,6 +254,56 @@ request1()
 ```
 
 这段代码很经典，你一定要多看几遍，多默写几遍。倒背如流也不过分。
+
+## Promise 链式调用：封装 Node.js 的回调方法
+
+### 传统写法
+
+```js
+fs.readFile(A, 'utf-8', function (err, data) {
+    fs.readFile(B, 'utf-8', function (err, data) {
+        fs.readFile(C, 'utf-8', function (err, data) {
+            fs.readFile(D, 'utf-8', function (err, data) {
+                console.log('qianguyihao:' + data);
+            });
+        });
+    });
+});
+```
+
+上方代码多层嵌套，存在回调地狱的问题。
+
+### Promise 写法
+
+```js
+function read(url) {
+    return new Promise((resolve, reject) => {
+        fs.readFile(url, 'utf8', (err, data) => {
+            if (err) reject(err);
+            resolve(data);
+        });
+    });
+}
+
+read(A)
+    .then((data) => {
+        return read(B);
+    })
+    .then((data) => {
+        return read(C);
+    })
+    .then((data) => {
+        return read(D);
+    })
+    .then((data) => {
+        console.log('qianguyihao:' + data);
+    })
+    .catch((err) => {
+        console.log(err);
+    });
+```
+
+这一段代码可以看出，Promise 很好的处理了回调地狱的问题。下一篇文章，我们会更详细的介绍 Promise 的链式调用。
 
 ## 链式调用，如何处理 reject 失败状态
 

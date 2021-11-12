@@ -229,9 +229,9 @@ CSS Tools: Reset CSS。链接：<https://meyerweb.com/eric/tools/css/reset/>
 
 - 有助于 SEO
 
-### 哪些元素可以自闭和
+### 哪些元素可以自闭合
 
-> 自闭和的元素中不能再嵌入别的元素。且 HTML5 中要求加斜杠。
+> 自闭合的元素中不能再嵌入别的元素。且 HTML5 中要求加斜杠。
 
 - 表单元素 input
 

@@ -5,9 +5,6 @@ publish: true
 
 <ArticleTopAd></ArticleTopAd>
 
-
-
-
 今天这篇文章，我们详细讲一下基本数据类型。
 
 ## String 字符串
@@ -19,30 +16,29 @@ publish: true
 来看个示例。下面的这些，都是字符串：
 
 ```javascript
-	var a = "abcde";
-	var b = "千古壹号";
-	var c = "123123";
-	var d = '哈哈哈哈哈';
-	var e = "";     //空字符串
+var a = 'abcde';
+var b = '千古壹号';
+var c = '123123';
+var d = '哈哈哈哈哈';
+var e = ''; //空字符串
 
-	var f = haha; // 没使用引号，到这里会直接报错。因为会被认为是js代码，但是之前并没有定义 haha。
+var f = haha; // 没使用引号，到这里会直接报错。因为会被认为是js代码，但是之前并没有定义 haha。
 
-	console.log(typeof a);
-	console.log(typeof b);
-	console.log(typeof c);
-	console.log(typeof d);
-	console.log(typeof e);
-
+console.log(typeof a);
+console.log(typeof b);
+console.log(typeof c);
+console.log(typeof d);
+console.log(typeof e);
 ```
 
 控制台输出如下：
 
 ```
-	string
-	string
-	string
-	string
-	string
+string
+string
+string
+string
+string
 ```
 
 ### 引号的注意事项
@@ -61,32 +57,29 @@ var str = 'hello";  // 报错：Uncaught SyntaxError: Invalid or unexpected toke
 
 在字符串中我们可以使用`\`作为转义字符，当表示一些特殊符号时可以使用`\`进行转义。
 
+-   `\"` 表示 `"` 双引号
 
-- `\"` 表示 `"` 双引号
+-   `\'` 表示 `'` 单引号
 
-- `\'` 表示 `'` 单引号
+-   `\\` 表示`\`
 
-- `\\` 表示`\`
+-   `\r` 表示回车
 
-- `\r` 表示回车
+-   `\n` 表示换行。n 的意思是 newline。
 
-- `\n` 表示换行。n 的意思是 newline。
+-   `\t` 表示缩进。t 的意思是 tab。
 
-- `\t` 表示缩进。t 的意思是 tab。
-
-- `\b` 表示空格。b 的意思是 blank。
-
+-   `\b` 表示空格。b 的意思是 blank。
 
 举例：
 
 ```javascript
-    var str1 = "我说:\"今天\t天气真不错！\"";
-    var str2 = "\\\\\\";
+var str1 = '我说:"今天\t天气真不错！"';
+var str2 = '\\\\\\';
 
-    console.log(str1);
-    console.log(str2);
+console.log(str1);
+console.log(str2);
 ```
-
 
 上方代码的打印结果：
 
@@ -102,25 +95,25 @@ var str = 'hello";  // 报错：Uncaught SyntaxError: Invalid or unexpected toke
 代码举例：
 
 ```javascript
-	var str1 = '千古壹号';
-	var str2 = '千古壹号，永不止步！';
+var str1 = '千古壹号';
+var str2 = '千古壹号，永不止步！';
 
-	var str3 = 'qianguyihao';
-	var str4 = 'qianguyihao, keep moving!';
+var str3 = 'qianguyihao';
+var str4 = 'qianguyihao, keep moving!';
 
-	console.log(str1.length); // 4
-	console.log(str2.length); // 10
-	console.log(str3.length); // 11
-	console.log(str4.length); // 25
+console.log(str1.length); // 4
+console.log(str2.length); // 10
+console.log(str3.length); // 11
+console.log(str4.length); // 25
 ```
 
 由此可见，字符串的 length 属性，在判断字符串的长度时，会认为：
 
-- 一个中文算一个字符，一个英文算一个字符
+-   一个中文算一个字符，一个英文算一个字符
 
-- 一个标点符号（包括中文标点、英文标点）算一个字符
+-   一个标点符号（包括中文标点、英文标点）算一个字符
 
-- 一个空格算一个字符
+-   一个空格算一个字符
 
 ### 字符串拼接
 
@@ -170,7 +163,6 @@ console.log(str6);
 千古壹号[object Object]
 ```
 
-
 ## 字符串的不可变性
 
 字符串里面的值不可被改变。虽然看上去可以改变内容，但其实是地址变了，内存中新开辟了一个内存空间。
@@ -185,11 +177,9 @@ str = 'qianguyihao';
 
 比如上面的代码，当重新给变量 str 赋值时，常量`hello`不会被修改，依然保存在内存中；str 会改为指向`qianguyihao`。
 
-
-
 ## 模板字符串（模板字面量）
 
-ES6中引入了**模板字符串**，让我们省去了字符串拼接的烦恼。下面一起来看看它的特性。
+ES6 中引入了**模板字符串**，让我们省去了字符串拼接的烦恼。下面一起来看看它的特性。
 
 ### 在模板字符串中插入变量
 
@@ -256,9 +246,9 @@ not 20.
 
 ```js
 const result = {
-	name: 'qianguyihao',
-	age: 28,
-	sex: '男',
+    name: 'qianguyihao',
+    age: 28,
+    sex: '男',
 };
 
 // 模板字符串支持换行
@@ -275,9 +265,6 @@ console.log(html); // 打印结果也会换行
 
 ![](http://img.smyhvae.com/20200825_2016.png)
 
-
-
-
 ### 模板字符串中可以调用函数
 
 模板字符串中可以调用函数。字符串中调用函数的位置，将会显示函数执行后的返回值。
@@ -286,12 +273,11 @@ console.log(html); // 打印结果也会换行
 
 ```js
 function getName() {
-	return 'qianguyihao';
+    return 'qianguyihao';
 }
 
 console.log(`www.${getName()}.com`); // 打印结果：www.qianguyihao.com
 ```
-
 
 ### 模板字符串支持嵌套使用
 
@@ -299,22 +285,17 @@ console.log(`www.${getName()}.com`); // 打印结果：www.qianguyihao.com
 const nameList = ['千古壹号', '许嵩', '解忧少帅'];
 
 function myTemplate() {
-	// join('') 的意思是，把数组里的内容合并成一个字符串
-	return `<ul>
-	${nameList
-		.map((item) => `<li>${item}</li>`)
-		.join('')}
+    // join('') 的意思是，把数组里的内容合并成一个字符串
+    return `<ul>
+	${nameList.map((item) => `<li>${item}</li>`).join('')}
 	</ul>`;
 }
 document.body.innerHTML = myTemplate();
-
 ```
 
 效果如下：
 
 ![](http://img.smyhvae.com/20200607_2118.png)
-
-
 
 ## 布尔值：Boolean
 
@@ -337,8 +318,6 @@ boolean
 
 布尔型和数字型相加时， true 按 1 来算 ，false 按 0 来算。
 
-
-
 ## 我的公众号
 
 想学习**更多技能**？不妨关注我的微信公众号：**千古壹号**。
@@ -346,4 +325,3 @@ boolean
 扫一扫，你将发现另一个全新的世界，而这将是一场美丽的意外：
 
 ![](https://img.smyhvae.com/20200102.png)
-

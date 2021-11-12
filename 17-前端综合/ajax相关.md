@@ -10,6 +10,16 @@ ajax跨域访问是一个老问题了，解决方法很多，比较常用的是J
 
 因此，在**前端使用post方法，数据类型是json**的情况下，如果想跨域的话，可以通过设置Access-Control-Allow-Origin来实现跨域访问比较简单。
 
+解决办法：
+
+在 Response header中加入这三行：
+
+```
+ response.headers['Access-Control-Allow-Origin'] = '*'
+response.headers['Access-Control-Allow-Methods'] = 'POST'
+response.headers['Access-Control-Allow-Headers'] = 'x-requested-with,content-type'
+```
+
 
 
 参考链接：

@@ -5,7 +5,6 @@ publish: true
 
 <ArticleTopAd></ArticleTopAd>
 
-
 ## Promise 的常用 API 分类
 
 ### Promise 的实例方法
@@ -22,6 +21,8 @@ Promise 的自带 API 提供了如下实例方法：
 
 ### Promise 的静态方法
 
+前面的几篇文章，讲的都是 Promise 的**实例方法**；今天这篇文章，我们来详细讲一下 Promise 的**静态方法**。
+
 **静态方法**：可以直接通过大写的`Promise.xxx`调用的方法。这里的`xxx`就称之为静态方法。
 
 Promise 的自带 API 提供了如下静态方法：
@@ -30,11 +31,15 @@ Promise 的自带 API 提供了如下静态方法：
 
 -   `Promise.reject()`
 
--   `Promsie.all()`：并发处理多个异步任务，所有任务都执行成功，才算成功（走到 resolve）；只要有一个失败，就会走到 reject，整体都算失败。
+-   `Promsie.all()`：并发处理多个异步任务，所有任务都执行成功，才算成功（走到 resolve）；只要有一个失败，就会马上走到 reject，整体都算失败。
 
 -   `Promise.race()`：并发处理多个异步任务，返回的是第一个执行完成的 promise，且状态和第一个完成的任务状态保持一致。
 
-前面的几篇文章，讲的都是 Promise 的**实例方法**；今天这篇文章，我们来详细讲一下 Promise 的**静态方法**。
+-   `Promise.allSettled()`：并发处理多个异步任务，返回所有任务的执行结果（包括成功、失败）。当你有多个彼此不依赖的异步任务执行完成时，或者你想知道每个 promise 的结果时，通常使用它。
+
+-   `Promise.all()`
+
+-   `Promise.any()`
 
 ## Promise.resolve() 和 Promise.reject()
 
@@ -232,12 +237,14 @@ imgArr.forEach((item) => {
     });
     promiseArr.push(p);
 });
-Promise.all(promiseArr).then((res) => {
-    console.log('图片全部上传完成');
-    console.log('九张图片的url地址，组成的数组：' + res);
-}).catch(res=> {
-    console.log('部分图片上传失败');
-});
+Promise.all(promiseArr)
+    .then((res) => {
+        console.log('图片全部上传完成');
+        console.log('九张图片的url地址，组成的数组：' + res);
+    })
+    .catch((res) => {
+        console.log('部分图片上传失败');
+    });
 ```
 
 上方代码解释：
@@ -246,24 +253,23 @@ Promise.all(promiseArr).then((res) => {
 
 2、按时间顺序来看，假设第一张图片上传成功，第二张图片上传失败，那么，最终的表现是：
 
-- 对于前端来说，九张图都会走到 reject；整体会走到 catch，不会走到 then。
+-   对于前端来说，九张图都会走到 reject；整体会走到 catch，不会走到 then。
 
-- 对于后端来说，第一张图片会上传成功（因为写入DB是不可逆的），第二张图上传失败，剩下的七张图，会正常请求 upload img 接口。
+-   对于后端来说，第一张图片会上传成功（因为写入 DB 是不可逆的），第二张图上传失败，剩下的七张图，会正常请求 upload img 接口。
 
 3、**特别说明**：
 
-- 第一张图会成功调 upload 接口，并返回 imgUrl，但不会走到 resolve，因为要等其他八张图的执行结果，再决定是一起走 resolove 还是一起走 reject。
+-   第一张图会成功调 upload 接口，并返回 imgUrl，但不会走到 resolve，因为要等其他八张图的执行结果，再决定是一起走 resolove 还是一起走 reject。
 
-- 当执行 Promise.all() / Promise.race() / Promise.any() 的时候，**其实九张图的 upload img 请求都已经发出去了**。对于后端来说，是没有区别的（而且读写DB的操作不可逆），只是在前端的交互表现不同、走到 resolve / reject / then / catch 的时机不同而已。
-
+-   当执行 Promise.all() / Promise.race() / Promise.any() 的时候，**其实九张图的 upload img 请求都已经发出去了**。对于后端来说，是没有区别的（而且读写 DB 的操作不可逆），只是在前端的交互表现不同、走到 resolve / reject / then / catch 的时机不同而已。
 
 上面这个例子，在实际的项目开发中，经常遇到，属于高频需求，需要记住并理解。
 
 4、**思维拓展**：
 
-- 拓展1：如果你希望九张图同时上传，并且想知道哪些图上传成功、哪些图上传失败，则可以这样做：**无论 upload img 接口请求成功与否，全都执行 reslove**。这样的话，最终一定会走到 then，然后再根据接口返回的结果判断九张图片的上传成功与否。
+-   拓展 1：如果你希望九张图同时上传，并且想知道哪些图上传成功、哪些图上传失败，则可以这样做：**无论 upload img 接口请求成功与否，全都执行 reslove**。这样的话，最终一定会走到 then，然后再根据接口返回的结果判断九张图片的上传成功与否。
 
-- 拓展2：实战开发中，在做多张图片上传时，可能是一张一张地单独上传，各自的上传操作相互独立。此时 `Promise.all`便不再适用，这就得具体需求具体分析了。
+-   拓展 2：实战开发中，在做多张图片上传时，可能是一张一张地单独上传，各自的上传操作相互独立。此时 `Promise.all`便不再适用，这就得具体需求具体分析了。
 
 ## Promise.race()
 
@@ -276,6 +282,8 @@ Promise.all(promiseArr).then((res) => {
 我刚开始学 Promise.race()的时候，误以为它的含义是“只要有一个异步**执行成功**，整体就算成功（走到 then）；所有任务都执行失败，整体才算失败（走到 catch）”。现在想来，真是大错特错，过于懵懂。
 
 现在我顿悟了，准确来说，Promise.race()强调的是：只要有一个异步任务**执行完成**，整体就是**完成**的。
+
+Promise.race()的**应用场景**：在众多 Promise 实例中，最终结果只取一个 Promise，**谁返回得最快就用谁的 Promise**。
 
 我们来看看各种场景的打印结果，便能擦干泪水，继续前行。
 
@@ -307,7 +315,7 @@ const promise3 = new Promise((resolve, reject) => {
 
 Promise.race([promise1, promise2, promise3])
     .then((res) => {
-        // 第一个完成的任务，如果执行失败，就会走到这里
+        // 第一个完成的任务，如果执行成功，就会走到这里
         // 这里拿到的 res，是第一个成功的 promise 返回的结果，不是数组
         console.log(JSON.stringify(res));
     })
@@ -437,13 +445,14 @@ Promise.race([promise1, promise2, promise3])
 
 场景 3 的代码，一定好好好理解。
 
-### Promise.race()举例
+### Promise.race()举例：图片加载超时
 
-现在有个需求是这样的：前端需要加载并显示一张图片。如果图片在三秒内加载成功，那就显示图片；如果三秒内没有加载成功，那就按异常处理，前端提示“加载超时”。
+现在有个需求是这样的：前端需要加载并显示一张图片。如果图片在三秒内加载成功，那就显示图片；如果三秒内没有加载成功，那就按异常处理，前端提示“加载超时”或者“请求超时”。
 
-代码实现思路：
+代码实现：
 
 ```js
+// 图片请求的Promise
 function getImg() {
     return new Promise((resolve, reject) => {
         let img = new Image();
@@ -455,6 +464,7 @@ function getImg() {
     });
 }
 
+// 加载超时的 Promise
 function timeout() {
     return new Promise((resolve, reject) => {
         // 采用 Promise.race()之后，如果 timeout() 的 promise 比 getImg() 的 promise先执行，说明定时器时间到了，那就算超时。整体的最终结果按失败处理。
@@ -475,13 +485,39 @@ Promise.race([getImg(), timeout()])
     });
 ```
 
-如代码注释所述：采用 Promise.race()之后，如果 timeout() 的 promise 比 getImg() 的 promise 先执行，说明定时器时间到了，那就算超时。整体的最终结果按失败处理。
+如代码注释所述：采用 Promise.race() 之后，如果 timeout() 的 promise 比 getImg() 的 promise 先执行，说明定时器时间到了，那就算超时。整体的最终结果按失败处理。
 
-这个思路很巧妙。
+这个思路很巧妙。用同样的思路，我们还可以处理网络请求超时的问题。如果接口请求时长超过 3 秒，就按超时处理，也就是下面我们要举的例子。
 
-## Promise.any()
+### Promise.race()举例：网络请求超时
 
+现在有这种需求：如果接口请求时长超过 3 秒，就按超时处理。
 
+基于这种需求，我们可以用 Promise.race() 来实现：一个 Promise 用于 请求接口，另一个 Promise 用于执行 setTimeout()。把这两个 Promise 用 Promise.race()组装在一起，谁先执行，那么最终的结果就以谁的为准。
+
+代码举例：
+
+```js
+function query(url, delay = 4000) {
+    let promiseArr = [
+        myAajax(url),
+        new Promise((resolve, reject) => {
+            setTimeout(() => {
+                reject('网络请求超时');
+            }, delay);
+        }),
+    ];
+    return Promise.race(promiseArr);
+}
+
+query('http://localhost:8899/xxx_url', 3000)
+    .then((res) => {
+        console.log(res);
+    })
+    .catch((error) => {
+        console.log(error);
+    });
+```
 
 
 ## 总结

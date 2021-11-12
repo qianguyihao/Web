@@ -1,6 +1,5 @@
 ---
-title: 07-html标签图文详解（二）
-publish: true
+title: 07-HTML标签图文详解（二）
 ---
 
 <ArticleTopAd></ArticleTopAd>
@@ -96,7 +95,7 @@ list-style-position: inside   /* 给 ul 设置这个属性后，将小圆点包�
 
 场景1、导航条：
 
-![](http://img.smyhvae.com/20170704_1717.png)
+![20211031_1617](https://img.smyhvae.com/20211031_1617.png)
 
 场景2、li 里面放置的内容可能很多：
 
@@ -310,7 +309,7 @@ dt、dd都是容器级标签，想放什么都可以。所以，现在就应该�
 ```html
 <table>
 	<tr>
-		<td>生命壹号</td>
+		<td>千古壹号</td>
 		<td>23</td>
 		<td>男</td>
 		<td>黄冈</td>
@@ -414,8 +413,10 @@ style="border-collapse:collapse;"
 
 - 属性同`<td>`标签。
 
-<br>
+
+
 ### `<caption>`：表格的标题。使用时和`tr`标签并列
+
  - 属性：`align`，表示标题相对于表格的位置。属性取值可以是：left、center、right、top、bottom
 效果：
 
@@ -592,7 +593,7 @@ style="border-collapse:collapse;"
 
 注意：表单和表格嵌套时，是在`<form>`标记中套`<table>`标记。
 
-form标签里面的action属性和method属性，在《Ajax》课程上给大家讲解。稍微说一下：action属性就是表示，表单将提交到哪里。 method属性表示用什么HTTP方法提交，有get、post两种。
+form标签里面的action属性和method属性，在后续的 ajax文章上再讲。这里简单说一下：action属性就是表示，表单将提交到哪里。 method属性表示用什么HTTP方法提交，有get、post两种。
 
 **get提交和post提交的区别：**
 
@@ -625,7 +626,7 @@ POST方式：
 	- `text`（默认）
 	- `password`：密码类型
 	- `radio`：单选按钮，名字相同的按钮作为一组进行单选（单选按钮，天生是不能互斥的，如果想互斥，必须要有相同的name属性。name就是“名字”。
-）。非常像以前的收音机，按下去一个按钮，其他的就抬起来了。所以叫做radio。
+	）。非常像以前的收音机，按下去一个按钮，其他的就抬起来了。所以叫做radio。
 	- `checkbox`：多选按钮，**name 属性值相同的按钮**作为一组进行选择。
 	- `checked`：将单选按钮或多选按钮默认处于选中状态。当`<input>`标签设置为`type="radio"`或者`type=checkbox`时，可以用这个属性。属性值也是checked，可以省略。
 	- `hidden`：隐藏框，在表单中包含不希望用户看见的信息
@@ -634,7 +635,7 @@ POST方式：
 	- `reset`：重置按钮，清空当前表单的内容，并设置为最初的默认值
 	- `image`：图片按钮，和提交按钮的功能完全一致，只不过图片按钮可以显示图片。
 	- `file`：文件选择框。
-提示：如果要限制上传文件的类型，需要配合JS来实现验证。对上传文件的安全检查：一是扩展名的检查，二是文件数据内容的检查。
+	提示：如果要限制上传文件的类型，需要配合JS来实现验证。对上传文件的安全检查：一是扩展名的检查，二是文件数据内容的检查。
 
  - **`value="内容"`**：文本框里的默认内容（已经被填好了的）
 
@@ -854,7 +855,7 @@ Flash格式的视频兼容性非常好，Flash格式的文件很小。
 ```
 运行效果：
 打开网页后，在IE 8中播放正常，播放时网页上显示一片空白。在google浏览器中无法播放。
-<br>
+
 ### `<embed>`标签：播放多媒体文件（音频、视频等）
 主要应用Netscape浏览器，它不是W3C规范。
 
@@ -888,7 +889,6 @@ google浏览器中的运行效果：
 ![](http://img.smyhvae.com/2015-10-02-cnblogs_html_38.png)
 
 注：在HTML5中新增了`<video>`标签播放视频。
-<br>
 
 ### `<object>`标签：播放多媒体文件（音频、视频等）
 

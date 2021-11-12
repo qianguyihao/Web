@@ -713,7 +713,7 @@ jQuery 无法直接操作节点的属性和src等，我们需要借助attr()方�
 **（1）设置属性：**
 
 ```javascript
-	$(selector).attr("title", "生命壹号");
+	$(selector).attr("title", "千古壹号");
 ```
 
 参数解释：第一个参数表示：要设置的属性名称。第二个参数表示：该属性名称对应的值。

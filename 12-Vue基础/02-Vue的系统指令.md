@@ -550,7 +550,7 @@ v-on 提供了click 事件，也提供了一些其他的事件。
 
 ```javascript
     data: {
-        msg: '生命壹号，永不止步～～～',
+        msg: '千古壹号，前端教程～～～',
         intervalId: null
     },
     methods: {
@@ -611,7 +611,7 @@ v-on 提供了click 事件，也提供了一些其他的事件。
         var vm = new Vue({
             el: '#app',
             data: {
-                msg: '生命壹号，永不止步～～～',
+                msg: '千古壹号，前端教程～～～',
                 intervalId: null
             },
             methods: {

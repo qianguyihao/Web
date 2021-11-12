@@ -25,10 +25,7 @@ Web（World Wide Web）即全球广域网，也称为万维网。
 
 浏览器是网页运行的平台，常见的浏览器有谷歌（Chrome）、Safari、火狐（Firefox）、IE、Edge、Opera等。
 
-关于浏览器的详细介绍，可以看下一篇文章：《[浏览器的介绍](https://github.com/qianguyihao/Web/blob/master/01-html/02-%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E4%BB%8B%E7%BB%8D.md)》
-
-
-
+关于浏览器的详细介绍，可以看下一篇文章：《浏览器的介绍》。
 
 ## Web标准
 

@@ -212,6 +212,16 @@ git push --mirror https://github.com/exampleuser/new-repository.git
 - [Git 本地仓库和裸仓库](https://moelove.info/2016/12/04/Git-%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93%E5%92%8C%E8%A3%B8%E4%BB%93%E5%BA%93/)
 
 
+### 2021-11-10-提交代码时，绕过 eslint 检查
+
+需求：提交代码时，绕过 eslint 检查
+
+解决办法：用命令行提交，在命令做 git commit 的时候，末尾追加`--no-verify`。例如：
+
+```bash
+git commit -m '千古壹号的commit备注' --no-verify
+```
+
 
 
 ## git客户端推荐
