@@ -50,14 +50,14 @@ number
 ```javascript
 console.log('abc' / 18); //结果是NaN
 
-console.log('abc' * 'abcd'); //按理说，字符串相乘是没有结果的，但如果你非要让JS去算，它就一定会给你一个结果。结果是NaN
+console.log('abc' * 'abcd'); //按理说，字符串相乘是没有结果的，但如果你非要让JS去算，它就一定会给你一个结果，结果是NaN。
 ```
 
 注意：`typeof NaN`的返回结果是 number。
 
 Undefined 和任何数值计算的结果为 NaN。NaN 与任何值都不相等，包括 NaN 本身。
 
-另外，关于 isNaN() 函数，可以看下一篇文章。
+另外，关于 isNaN() 函数，可以看后续的文章《JavaScript基础/typeof和数据类型转换》。
 
 ### 连字符和加号的区别
 

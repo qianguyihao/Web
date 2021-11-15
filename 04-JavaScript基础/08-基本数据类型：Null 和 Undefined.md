@@ -26,7 +26,7 @@ cosole.log(typeof myObj); // 打印结果：object
 
 -   使用 typeof 检查一个 null 值时，会返回 object。
 
-## undefined
+## undefined：未定义类型
 
 ### case1：变量已声明，未赋值时
 
@@ -81,7 +81,7 @@ function foo(name) {
 foo(); // 调用函数时，未传参。执行函数后的打印结果：undefined
 ```
 
-实际开发中，如果调用函数时没有传参，我们可以给形参设置一个默认值：
+实际开发中，如果调用函数时没有传参，我们可以根据需要给形参设置一个默认值：
 
 ```js
 function foo(name) {
@@ -111,9 +111,10 @@ null 和 undefined 有很大的相似性。看看 `null == undefined` 的结果�
 
 规律总结：
 
--   任何数据类型和 undefined 运算都是 NaN;
+- 任何值和 null 运算，null 可看做 0 运算。
 
--   任何值和 null 运算，null 可看做 0 运算。
+-   任何数据类型和 undefined 运算都是 NaN。
+
 
 ## 我的公众号
 
