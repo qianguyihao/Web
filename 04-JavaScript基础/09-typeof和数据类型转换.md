@@ -178,7 +178,7 @@ String(变量);
 
 -   2.如果字符串是一个空串或者是一个全是空格的字符串，则转换为 0。
 
--   3.只要字符串中包含了其他非数字的内容（`小数点`按数字来算），则转换为 NaN。
+-   3.只要字符串中包含了其他非数字的内容（`小数点`按数字来算），则转换为 NaN。怎么理解这里的 **NaN** 呢？可以这样理解，使用 Number() 函数之后，**如果无法转换为数字，就会转换为 NaN**。
 
 **情况二：布尔 --> 数字**
 
@@ -193,8 +193,6 @@ String(变量);
 **情况四：undefined --> 数字**
 
 -   结果为：NaN
-
-补充：怎么理解这里的 **NaN** 呢？可以这样理解，使用 Number() 函数之后，**如果无法转换为数字，就会转换为 NaN**。
 
 ### 使用 parseInt()函数：字符串 -> 整数
 
@@ -429,16 +427,16 @@ isNaN(参数);
 
 （1）先调用`Number(参数)`函数；
 
-（2）然后将`Number(参数)`的返回结果和`NaN`进行比较。
+（2）然后将`Number(参数)`的返回结果是否为数值。如果不为数值，则最终结果为 true；如果为数值，则最终结果为 false。
 
 代码举例：
 
 ```javascript
 console.log(isNaN('123')); // 返回结果：false。
 
-console.log(isNaN('abc')); // 返回结果：true。因为 Number('abc') 的返回结果是 NaN
-
 console.log(isNaN(null)); // 返回结果：false
+
+console.log(isNaN('abc')); // 返回结果：true。因为 Number('abc') 的返回结果是 NaN
 
 console.log(isNaN(undefined)); // 返回结果：true
 
