@@ -131,13 +131,53 @@ console.log(a + 'haha'); // 转换成 String 类型
 
 ```javascript
 变量.toString();
+
+// 或者用一个新的变量接收转换结果
+var result = 变量.toString();
 ```
 
 【重要】该方法**不会影响到原变量**，它会将转换的结果返回。当然我们还可以直接写成`a = a.toString()`，这样的话，就是直接修改原变量。
 
-注意：null 和 undefined 这两个值没有 toString()方法，所以它们不能用方法二。如果调用，会报错。
+举例：
 
-另外，Number 类型的变量，在调用 toString()时，可以在方法中传递一个整数作为参数。此时它将会把数字转换为指定的进制，如果不指定则默认转换为 10 进制。例如：
+```js
+// 基本数据类型
+var a1 = 'qianguyihao';
+var a2 = 29;
+var a3 = true;
+
+// 引用数据类型
+var a4 = [1, 2, 3];
+var a5 = { name: 'qianguyihao', age: 29 };
+
+// null 和 undefined
+var a6 = null;
+var a7 = undefined;
+
+// 打印结果都是字符串
+console.log(a1.toString()); // qianguyihao
+console.log(a2.toString()); // 29
+console.log(a3.toString()); // true
+console.log(a4.toString()); // 1,2,3
+console.log(a5.toString()); // object
+
+// 下面这两个，打印报错
+console.log(a6.toString()); // 报错：Uncaught TypeError: Cannot read properties of null
+console.log(a7.toString()); // 报错：Uncaught TypeError: Cannot read properties of undefined
+```
+
+一起来看看 toString() 的注意事项。
+
+1. null 和 undefined 这两个值没有 toString() 方法，所以它们不能用 toString() 。如果调用，会报错。
+
+```js
+console.log(null.toString());
+console.log(undefined.toString());
+```
+
+![](https://img.smyhvae.com/20211116_1458.png)
+
+2. Number 类型的变量，在调用 toString()时，可以在方法中传递一个整数作为参数。此时它会把数字转换为指定的进制，如果不指定则默认转换为 10 进制。例如：
 
 ```javascript
 var a = 255;
@@ -160,13 +200,13 @@ String(变量);
 
 使用 String()函数做强制类型转换时：
 
--   对于 Number 和 Boolean 而言，本质上就是调用 toString()方法。
+-   对于 Number、Boolean、Object 而言，本质上就是调用 toString()方法。
 
 -   但是对于 null 和 undefined，则不会调用 toString()方法。它会将 null 直接转换为 "null"。将 undefined 直接转换为 "undefined"。
 
 ### prompt()：用户的输入
 
-我们在 JS 基础的第 01 篇里，就讲过，`prompt()`就是专门用来弹出能够让用户输入的对话框。重要的是：用户不管输入什么，都当字符串处理。
+我们在前面的《JavaScript基础/02-JavaScript书写方式：hello world》就讲过，`prompt()`就是专门用来弹出能够让用户输入的对话框。重要的是：用户不管输入什么，都当字符串处理。
 
 ## 其他的数据类型 --> Number 【重要】
 
