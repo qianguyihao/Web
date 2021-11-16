@@ -5,6 +5,8 @@
 
 此前端教程不玩猫腻，不会设置任何套路，暂时也没打算做成付费内容，因为我**相信启蒙的重要性**。
 
+你也可以在「即刻」App上搜索「[千古壹号](https://web.okjike.com/u/smyhvae)」关注我，我会在上面发一些有意思的动态~
+
 ## 项目介绍
 
 **项目地址**：
@@ -32,8 +34,6 @@
 - 维护这个项目的初衷，可以看这篇文章：[《裸辞两个月，海投一个月，从Android转战Web前端的求职之路》](https://mp.weixin.qq.com/s/fr_NwtghRQagc_3ubk-hKQ)
 
 - 前端入门路线和推荐学习资源，可以看这篇文章：[《2020年Web前端入门的自学路线》](https://www.cnblogs.com/qianguyihao/p/8776837.html)
-
-- 即刻@[千古壹号](https://web.okjike.com/u/smyhvae)。 你可以在即刻App上搜索「千古壹号」关注我，我会在上面发一些有趣的动态。
 
 ## 赞赏作者
 
