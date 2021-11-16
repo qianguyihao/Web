@@ -1,5 +1,5 @@
 ---
-title: 14-内置对象：Number和Math
+title: 16-内置对象：Number和Math
 publish: true
 ---
 

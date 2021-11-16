@@ -1,3 +1,7 @@
+---
+title: 02-JavaScript书写方式：hello world
+---
+
 ## 开始写第一行 JavaScript 代码：hello world
 
 JS 代码的书写位置在哪里呢？这个问题，也可以理解成：引入 JS 代码，有哪几种方式？有三种方式：（和 CSS 的引入方式类似）

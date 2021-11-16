@@ -1,5 +1,5 @@
 ---
-title: 04-基本数据类型：String 和 Boolean
+title: 06-基本数据类型：String 和 Boolean
 publish: true
 ---
 

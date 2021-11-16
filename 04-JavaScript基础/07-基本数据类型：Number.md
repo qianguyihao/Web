@@ -1,5 +1,5 @@
 ---
-title: 05-基本数据类型：Number
+title: 07-基本数据类型：Number
 publish: true
 ---
 
