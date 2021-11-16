@@ -767,17 +767,14 @@ h3.special.zhongyao {
 举例：
 
 ```css
-p,
-h1,
-#mytitle,
-.one {
+p,h1,.title1,#one {
     color: red;
 }
 ```
 
 效果：
 
-![](http://img.smyhvae.com/2015-10-03-css-10.png)
+![](https://img.smyhvae.com/20211116_1055.png)
 
 ## 一些 CSS3 选择器
 
