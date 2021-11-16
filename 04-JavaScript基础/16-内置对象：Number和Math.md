@@ -10,7 +10,6 @@ publish: true
 
 ## 内置对象 Number 的常见方法
 
-
 ### Number.isInteger() 判断是否为整数
 
 语法：
@@ -18,7 +17,6 @@ publish: true
 ```
 布尔值 = Number.isInteger(数字);
 ```
-
 
 ### toFixed() 小数点后面保留多少位
 

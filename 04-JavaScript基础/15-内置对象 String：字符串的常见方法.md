@@ -105,7 +105,7 @@ console.log(name.indexOf('yi')); // 打印结果：6
 
 ```javascript
 var str = 'qianguyihao';
-result = str.indexOf('a', 3); // 从第三个位置开始查找 'a'这个字符 【重要】
+result = str.indexOf('a', 3); // 从[3]位置开始查找 'a'这个字符 【重要】
 
 console.log(result); // 打印结果：9
 ```
@@ -167,7 +167,6 @@ console.log(name.search(/yi/i)); // 打印结果：6
 
 备注：上方的`/yi/i`采用的是正则表达式的写法，意思是，让 name去匹配字符`yi`，忽略大小写。我们在后面会专门介绍正则表达式。
 
-
 ### 3、includes()：字符串中是否包含指定的内容
 
 **语法**：
@@ -188,7 +187,6 @@ console.log(name.includes('haha')); // 打印结果：false
 
 console.log(name.includes('yi',7)); // 打印结果：false
 ```
-
 
 ### 4、startsWith()：字符串是否以指定的内容开头
 
@@ -352,7 +350,6 @@ for (var i = 0; i < str.length; i++) {
 
 ## 字符串截取
 
-
 ### 1、slice()
 
 
@@ -506,7 +503,7 @@ console.log(str3.split('许')); // 同上
 语法：
 
 ```javascript
-新的字符串 = str.replace(被替换的字符，新的字符);
+新的字符串 = str.replace(被替换的子串，新的子串);
 ```
 
 解释：将字符串中的指定内容，替换为新的内容并返回。不会修改原字符串。
@@ -551,7 +548,6 @@ const mix_telephone = telephone.slice(0, -4) + '*'.repeat(4); // 模糊电话号
 console.log(telephone); // 打印结果：13088889999
 console.log(mix_telephone); // 打印结果：1308888****
 ```
-
 
 
 
