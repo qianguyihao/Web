@@ -1,5 +1,5 @@
 ---
-title: 04-基本数据类型：String 和 Boolean
+title: 06-基本数据类型：String 和 Boolean
 publish: true
 ---
 
@@ -300,7 +300,7 @@ document.body.innerHTML = myTemplate();
 
 布尔型有两个值：true 和 false。主要用来做逻辑判断： true 表示真，false 表示假。
 
-布尔值直接使用就可以了，千万不要加上引号。
+布尔值直接使用就可以了，千万不要加引号。
 
 代码：
 

@@ -1,5 +1,5 @@
 ---
-title: 22-call、apply 和 bind
+title: 24-call、apply 和 bind
 publish: true
 ---
 
