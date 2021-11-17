@@ -105,7 +105,7 @@ console.log(name.indexOf('yi')); // 打印结果：6
 
 ```javascript
 var str = 'qianguyihao';
-result = str.indexOf('a', 3); // 从第三个位置开始查找 'a'这个字符 【重要】
+result = str.indexOf('a', 3); // 从下标为3的位置开始查找 'a'这个字符 【重要】
 
 console.log(result); // 打印结果：9
 ```
@@ -506,7 +506,7 @@ console.log(str3.split('许')); // 同上
 语法：
 
 ```javascript
-新的字符串 = str.replace(被替换的字符，新的字符);
+新的字符串 = str.replace(被替换的子串，新的子串);
 ```
 
 解释：将字符串中的指定内容，替换为新的内容并返回。不会修改原字符串。

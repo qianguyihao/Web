@@ -200,7 +200,6 @@ var name = 'qianguyihao';
 var age = '26';
 
 console.log('我是' + name + ',age:' + age); //传统写法
-
 console.log(`我是${name},age:${age}`); //ES6 写法。注意语法格式
 ```
 
