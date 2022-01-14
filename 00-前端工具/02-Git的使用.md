@@ -222,6 +222,21 @@ git push --mirror https://github.com/exampleuser/new-repository.git
 git commit -m '千古壹号的commit备注' --no-verify
 ```
 
+### 2021-12-29-切换仓库的源地址
+
+查看源地址：
+
+```
+git remote -v
+```
+
+切换源地址：
+
+```bash
+git remote set-url origin https://xxx.git
+```
+
+
 
 
 ## git客户端推荐

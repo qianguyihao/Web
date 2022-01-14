@@ -1423,6 +1423,9 @@ CSS Peek 对 Vue 没有支持，该插件提供了对 Vue 文件的支持。
 
 备注：团长试了一下这个 code time 插件，发现统计结果不是很准。
 
+#### File Tree to Text Generator：快速生成文件的目录树
+
+如题。
 
 #### Settings Sync
 
