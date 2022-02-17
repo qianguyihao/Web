@@ -43,12 +43,6 @@ git mv Temp Test
 
 不分区大小写，也有它的好处，比如：文件夹/文件的路径，很多时候就代表了网站地址、页面url的路径。而**网站地址也是不区分大小写的**，这是很关键的原因之一。
 
-### 参考链接
-
-- [Mac 中 git 大小写问题的解决方案](https://shanyue.tech/bug/mac-git-ignorecase.html)
-
-- [git 大小写问题 踩坑笔记](https://blog.csdn.net/u013707249/article/details/79135639)
-
 ### 关于 Git是否区分大小写 的补充
 
 前面讲到，Git 默认是不区分大小写的，可以通过命令`git config --get core.ignorecase`查到，默认值是 true。
@@ -56,3 +50,10 @@ git mv Temp Test
 我们也可以修改 Git 的这一配置项，改为区分大小写，配置命令为`git config core.ignorecase false`。
 
 但我建议你**保留 Git 的默认配置项**，不要随意自行修改，避免产生其他的麻烦。
+
+
+### 参考链接
+
+- [Mac 中 git 大小写问题的解决方案](https://shanyue.tech/bug/mac-git-ignorecase.html)
+
+- [git 大小写问题 踩坑笔记](https://blog.csdn.net/u013707249/article/details/79135639)
