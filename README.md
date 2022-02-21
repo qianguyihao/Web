@@ -12,9 +12,7 @@
 
 - 官网地址：<https://web.qianguyihao.com>
 
-点击官网顶部的广告，帮助我收回服务器成本 ❤️
-
-如果官网打开异常，请先尝试强制刷新页面，或者清除浏览器缓存，或者通过底部的公众号联系我处理。
+如果官网打开异常，请先尝试强制刷新页面，或者清除浏览器缓存，或者提交 GitHub issues 反馈问题。
 
 - GitHub地址：<https://github.com/qianguyihao/Web>
 
@@ -30,38 +28,15 @@
 
 ### 相关链接
 
-- 维护这个项目的初衷，可以看这篇文章：[《裸辞两个月，海投一个月，从Android转战Web前端的求职之路》](https://mp.weixin.qq.com/s/fr_NwtghRQagc_3ubk-hKQ)
+- 维护这个项目的初衷，可以看这篇文章：[《裸辞两个月，海投一个月，从Android转战Web前端的求职之路》](https://www.cnblogs.com/qianguyihao/p/8732781.html)
 
-- 前端入门路线和推荐学习资源，可以看这篇文章：[《2021年Web前端入门的自学路线》](https://www.cnblogs.com/qianguyihao/p/8776837.html)
+- 前端入门路线和推荐学习资源，可以看这篇文章：[《2022年Web前端入门的自学路线》](https://www.cnblogs.com/qianguyihao/p/8776837.html)
 
 ## 赞赏作者
 
 创作不易，你的赞赏和认可，是我更新的最大动力：
 
 ![](https://img.smyhvae.com/20210921_1700.jpg)
-
-
-## 关于作者
-
-- 即刻App：@[千古壹号](https://web.okjike.com/u/smyhvae) ，我会在即刻上发一些有意思的动态，欢迎关注。
-
-- [小报童专栏](https://xiaobot.net/p/qianguyihao/)：记录日常思考，分享小而美的事物，还有一些压箱底的好东西。可以在微信端打开订阅。
-
-- 公众号：千古壹号
-
-- 博客：https://www.qianguyihao.com/
-
-- GitHub：https://github.com/qianguyihao
-
-## 学习交流
-
-在公众号「千古壹号」里回复“**前端学习**”，拉你进微信交流群：
-
-- 进群暗号：前端学习
-
-- 进群要求：少提问、少闲聊、多分享（不适合长期潜水）。
-
-![](https://img.smyhvae.com/20210329_1930.png)
 
 
 ## LICENSE
