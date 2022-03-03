@@ -216,10 +216,14 @@ git push --mirror https://github.com/exampleuser/new-repository.git
 
 需求：提交代码时，绕过 eslint 检查
 
-解决办法：用命令行提交，在命令做 git commit 的时候，末尾追加`--no-verify`。例如：
+解决办法：用命令行提交，末尾追加`--no-verify`。例如：
 
 ```bash
+# 提交代码
 git commit -m '千古壹号的commit备注' --no-verify
+
+# 推送到远程时，也可以追加 --no-verify，以免远程仓库做了 eslint 限制。
+git push origin --no-verify
 ```
 
 ### 2021-12-29-切换仓库的源地址
