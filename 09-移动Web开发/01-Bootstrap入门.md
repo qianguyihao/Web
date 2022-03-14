@@ -403,7 +403,7 @@ JS 组件在[官网](https://v3.bootcss.com/javascript/)有介绍：
 
 空结构的工程文件的下载地址：(lib文件夹里包含了Bootstrap相关的各种库和中文文档)
 
-- [2018-02-25-BootstrapDemo及文档.rar](http://download.csdn.net/download/smyhvae/10258718)
+- [2018-02-25-BootstrapDemo及文档.rar](https://github.com/qianguyihao/web-resource/blob/main/project/2018-02-25-BootstrapDemo%E5%8F%8A%E6%96%87%E6%A1%A3.rar)
 
 还是那句话：**如果需要哪个样式，直接根据文档的指引，在相应的元素里加指定的类名即可。**
 

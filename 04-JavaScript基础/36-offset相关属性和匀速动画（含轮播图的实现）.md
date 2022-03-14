@@ -666,9 +666,7 @@ div.style.left = "100px";
 
 温馨提示：动图太大，可以把<http://img.smyhvae.com/20180202_2020.gif>单独在浏览器中打开。
 
-工程文件：
-
-- [2018-02-02-JS动画实现轮播图.rar](http://download.csdn.net/download/smyhvae/10237662)
+工程文件：[2018-02-02-JS动画实现轮播图.rar](https://github.com/qianguyihao/web-resource/blob/main/project/2018-02-02-JS%E5%8A%A8%E7%94%BB%E5%AE%9E%E7%8E%B0%E8%BD%AE%E6%92%AD%E5%9B%BE.rar)
 
 
 ## 我的公众号

@@ -473,9 +473,7 @@ publish: true
 
 ![](http://img.smyhvae.com/20180114_1405.png)
 
-工程文件如下：
-
-- [2018-03-20-boya.rar](https://download.csdn.net/download/smyhvae/11832612)
+工程文件：[2018-03-20-boya.rar](https://github.com/qianguyihao/web-resource/blob/main/project/2018-03-20-boya.rar)
 
 ## 我的公众号
 
