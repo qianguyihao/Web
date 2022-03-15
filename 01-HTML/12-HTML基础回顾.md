@@ -69,7 +69,7 @@ div 是最常见的元素，大多数场景下，都可以用div（实在不行�
 - a[href,target]
 - img[src,alt]
 - table td[colspan,rowspan]。设置当前单元格占据几行几列。在合并单元格时，会用到。
-- form[target,method,enctype]
+- form[action,method,enctype]
 - input[type,value]
 - button[type]
 - selection>option[value]
