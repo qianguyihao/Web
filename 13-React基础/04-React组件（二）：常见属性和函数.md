@@ -459,7 +459,7 @@ export default class Counter extends React.Component {
 
 工程文件：
 
-- [2019-02-12-ReactDemo.zip](https://pan.baidu.com/s/1STNpgtmO23hE_cHIjNkBMA)
+- [2019-02-12-ReactDemo.zip](https://github.com/qianguyihao/web-resource/blob/main/project/2019-02-12-ReactDemo.zip)
 
 
 ## 生命周期函数：componentWillReceiveProps()

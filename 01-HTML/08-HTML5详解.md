@@ -340,7 +340,7 @@ PS:我们在测试 IE 浏览器的兼容的时候，可以使用软件 ietest，
             datetime: <input type="datetime">
         </label>
         <label for="">
-            week: <input type="week" name="month">
+            week: <input type="week" name="week">
         </label>
         <label for="">
             month: <input type="month" name="month">

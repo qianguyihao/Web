@@ -236,9 +236,7 @@ publish: true
 
 20180127_1630.gif
 
-工程文件：
-
-- [2018-01-27-美女相册demo.rar](http://download.csdn.net/download/smyhvae/10227161)
+工程文件：[2018-01-27-美女相册demo.rar](https://github.com/qianguyihao/web-resource/blob/main/project/2018-01-27-%E7%BE%8E%E5%A5%B3%E7%9B%B8%E5%86%8Cdemo.rar)
 
 ### 举例3：鼠标悬停时，显示二维码大图
 

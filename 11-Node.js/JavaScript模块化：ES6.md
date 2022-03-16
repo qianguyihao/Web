@@ -296,9 +296,7 @@ dist/main.js就是我们需要引入到 index.html 里的文件。
 ![](http://img.smyhvae.com/20180414_1615.png)
 
 
-工程文件：
-
-- [2018-04-13-ES6Demo.rar](https://download.csdn.net/download/smyhvae/10348940)
+工程文件：[2018-04-13-ES6Demo.rar](https://github.com/qianguyihao/web-resource/blob/main/project/2018-04-13-ES6Demo.rar)
 
 
 ## ES6模块化的使用举例（引入第三方模块）

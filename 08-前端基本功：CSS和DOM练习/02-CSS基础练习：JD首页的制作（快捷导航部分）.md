@@ -793,8 +793,6 @@ index.css:
 
 ![](http://img.smyhvae.com/20180124_1607.png)
 
-工程文件如下：
-
-- [2018-01-23-前端基础练习-JD顶部导航.rar](http://download.csdn.net/download/smyhvae/10222155)
+工程文件：[2018-01-23-前端基础练习-JD顶部导航.rar](https://github.com/qianguyihao/web-resource/blob/main/project/2018-01-23-%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80%E7%BB%83%E4%B9%A0-JD%E9%A1%B6%E9%83%A8%E5%AF%BC%E8%88%AA.rar)
 
 

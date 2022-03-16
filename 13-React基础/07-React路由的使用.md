@@ -251,11 +251,8 @@ export default class Movie extends React.Component {
 20190214_1030.png
 
 
-工程文件：
+工程文件：[2019-02-14-ReactDemo.zip](https://github.com/qianguyihao/web-resource/blob/main/project/2019-02-14-ReactDemo.zip)
 
-2019-02-14-ReactDemo.zip
-
-## 参考链接
 
 
 

@@ -341,9 +341,11 @@ function scroll() {  // 开始封装自己的scrollTop
 ![](http://img.smyhvae.com/20180203_1619.gif)
 
 
-工程文件：
+~工程文件~：
 
 - 2018-02-03-scrollTop固定导航栏.rar
+
+- 下载链接暂无。
 
 
 ## 缓动动画

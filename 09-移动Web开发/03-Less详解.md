@@ -353,9 +353,9 @@ copy 红框那部分的代码如下：
 > 不提倡将 less 引入页面，因为 less 需要编译，因此你就需要再引入一个less.js, 多了一个HTTP 请求，同时当浏览器禁用了 js 你的样式就不起作用了，less 编译应该在服务端或使用 grunt 自动编译。
 
 
-工程文件：（工程文件中，我引用的less.js版本是 2.5.3）
+工程文件：（我引用的less.js版本是 2.5.3）
 
-- [2018-02-27-LessDemo.rar](http://download.csdn.net/download/smyhvae/10260410)
+- [2018-02-27-LessDemo.rar](https://github.com/qianguyihao/web-resource/blob/main/project/2018-02-27-LessDemo.rar)
 
 
 参考链接：

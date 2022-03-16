@@ -244,7 +244,7 @@ $ npm install -g @vue/cli
 
 这个空项目的工程文件如下：（请务必仔细研究这个项目的写法和目录结构）
 
-- [2019-06-21-vue-my-app.zip](https://download.csdn.net/download/smyhvae/11256220)
+- [2019-06-21-vue-my-app.zip](https://github.com/qianguyihao/web-resource/blob/main/project/2019-06-21-vue-my-app.zip)
 
 我们可以看到这个项目的结构：
 
