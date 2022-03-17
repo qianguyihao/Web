@@ -362,7 +362,7 @@ CACHE:
 
 ```html
 <!DOCTYPE html>
-<html manifest="01.appcache">
+<html manifest="demo.appcache">
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
