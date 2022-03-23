@@ -17,8 +17,8 @@ publish: true
 ### 特殊字符（转义字符）
 
 - `&nbsp;`：空格	（non-breaking spacing，不断打空格）
-- `&lt;`：小于号（less than）
--  `&gt;`：大于号（greater than）
+- `&lt;`：小于号`<`（less than）
+-  `&gt;`：大于号`>`（greater than）
 - `&amp;`：符号`&`
 - `&quot;`：双引号
 - `&apos;`：单引号

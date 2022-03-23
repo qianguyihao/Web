@@ -1,6 +1,5 @@
 ---
 title: 07-基本数据类型：Number
-publish: true
 ---
 
 <ArticleTopAd></ArticleTopAd>
@@ -45,7 +44,9 @@ number
 
 ### NaN
 
-**NaN**：是一个特殊的数字，表示 Not a Number，非数值。比如：
+**NaN**：是一个特殊的数字，表示 Not a Number，非数值。在进行数值运算时，如果得不到正常结果，就会返回 NaN。
+
+比如：
 
 ```javascript
 console.log('abc' / 18); //结果是NaN
@@ -130,6 +131,8 @@ console.log(a);
 ```
 
 虽然程序可以对`-`、`*`、`/`、`%``这几个符号自动进行“隐式转换”；但作为程序员，我们最好自己完成转换，方便程序的可读性。
+
+关于隐式转换的详细内容，可以看后续的文章《JavaScript基础/typeof和数据类型转换》。
 
 ## 浮点数的运算
 

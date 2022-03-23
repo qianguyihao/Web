@@ -24,7 +24,7 @@ cosole.log(typeof myObj); // 打印结果：object
 
 -   Null 类型的值只有一个，就是 null。比如 `let a = null`。
 
--   使用 typeof 检查一个 null 值时，会返回 object。
+-   从语义上讲，null表示一个空对象，所以使用 typeof 检查一个 null 值时，会返回 object。
 
 ## undefined：未定义类型
 
@@ -101,7 +101,7 @@ foo();
 
 ## 其他区别
 
-null 和 undefined 有很大的相似性。看看 `null == undefined` 的结果为 `true` 也更加能说明这点。
+undefined 实际上是由 null 衍生出来的，所以`null == undefined`的结果为 true。
 
 但是 `null === undefined` 的结果是 false。它们虽然相似，但还是有区别的，其中一个区别是，和数字运算时：
 
