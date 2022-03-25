@@ -204,9 +204,7 @@ Location 对象：封装了浏览器地址栏的 URL 信息。
 
 下面介绍一些常见的属性和方法。
 
-### Location 对象的属性
-
-**属性1**：
+### Location 对象的属性：location.href
 
 ```
 location.href
@@ -214,22 +212,30 @@ location.href
 location.href = 'https://xxx';
 ```
 
-解释：获取当前页面的 url 路径（或者设置 url 路径）。
+解释：获取当前页面的 url 路径（或者设置 url 路径）；或者跳转到指定路径。
 
-代码举例1：
+举例1：
 
 ```javascript
 console.log(location.href); // 获取当前页面的url 路径
 
 ```
 
-代码举例2：
+举例2：
 
 ```javascript
     location.href = 'www.baidu.com'; // 跳转到指定的页面链接。通俗理解就是：跳转到其他的页面
 ```
 
 从上方的**举例2**中可以看出：如果直接将`location.href`属性修改为一个绝对路径（或相对路径），则页面会自动跳转到该路径，并生成相应的历史记录。
+
+**window.location.href 是异步代码：**
+
+需要特别注意的是：window.location.href的赋值，并不会中断Javascript的执行立即进行页面跳转。因为 LocationChange 行为在浏览器内核中是起定时器异步执行的。异步执行的好处是为了防止代码调用过深，导致栈溢出，另外也是为了防止递归进入加载逻辑，导致状态紊乱，保证导航请求是顺序执行的。
+
+解决办法：在 location.href 的下一行，加上 return 即可。意思是，执行了 location.href 之后，就不要再继续往下执行了。
+
+参考链接：[location.href的异步机制](https://juejin.cn/post/6844904040518647815)
 
 
 ### Location 对象的方法
