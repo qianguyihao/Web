@@ -111,21 +111,7 @@ console.log({} instanceof Array); // 打印结果：false
 
 ## 一、转换为 String
 
-### 1. 隐式类型转换：字符串拼接
-
-格式：变量+"" 或者 变量+"abc"
-
-举例：
-
-```javascript
-var a = 123; // Number 类型
-console.log(a + ''); // 转换成 String 类型
-console.log(a + 'haha'); // 转换成 String 类型：123haha
-```
-
-上面的例子中，打印的结果，都是字符串类型的数据。实际上内部是调用的 String() 函数。
-
-### 2. 调用 toString()方法
+### 1. 调用 toString()方法
 
 语法：
 
@@ -230,21 +216,36 @@ console.log(num4.toString()); // 打印结果："0.10000001"
 
 （5）既然常量没有方法，那它为什么可以调用 toString()呢？这是因为，除了 null、undefined之外，其他的常量都有对应的特殊的引用类型——**基本包装类型**，所以代码在解释执行的时候，会将常量转为基本包装类型，这样就可以调用相应的引用类型的方法。
 
-我们在后续的内容《JavaScritpt基础/基本包装类型》中会专门讲到这个知识。
+我们在后续的内容《JavaScritpt基础/基本包装类型》中会专门讲到基本包装类型。
 
-### 3. 使用 String()函数
+### 2. 使用 String()函数
 
 语法：
 
 ```javascript
-String(变量);
+String(变量/常量);
 ```
 
 使用 String()函数做强制类型转换时：
 
--   对于 Number、Boolean、Object 而言，本质上就是调用 toString()方法，返回结果同上。
-
+-   对于 Number、Boolean、String、Object 而言，本质上就是调用 toString()方法，返回结果同 toString()方法。
 -   但是对于 null 和 undefined，则不会调用 toString()方法。它会将 null 直接转换为 "null"。将 undefined 直接转换为 "undefined"。
+
+该方法**不会影响到原数值**，它会将转换的结果返回。
+
+### 3. 隐式类型转换：字符串拼接
+
+格式：变量+"" 或者 变量+"abc"
+
+举例：
+
+```javascript
+var a = 123; // Number 类型
+console.log(a + ''); // 打印结果："123"
+console.log(a + 'haha'); // 打印结果："123haha"
+```
+
+上面的例子中，打印的结果，都是字符串类型的数据。实际上底层是调用的 String() 函数。
 
 ### prompt()：用户的输入
 
