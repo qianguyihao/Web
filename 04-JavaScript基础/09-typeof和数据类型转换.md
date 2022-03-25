@@ -109,7 +109,7 @@ console.log({} instanceof Array); // 打印结果：false
 
 针对上面这两种类型转换，这篇文章来详细介绍。
 
-## 一、其他的简单类型 --> String
+## 一、转换为 String
 
 ### 1. 隐式类型转换：字符串拼接
 
@@ -131,6 +131,7 @@ console.log(a + 'haha'); // 转换成 String 类型：123haha
 
 ```javascript
 变量.toString();
+常量.toString(); // 这里的常量，不允许是数字，但可以是其它常量
 
 // 或者用一个新的变量接收转换结果
 var result = 变量.toString();
@@ -155,20 +156,22 @@ var a6 = null;
 var a7 = undefined;
 
 // 打印结果都是字符串
-console.log(a1.toString()); // qianguyihao
-console.log(a2.toString()); // 29
-console.log(a3.toString()); // true
-console.log(a4.toString()); // 1,2,3
-console.log(a5.toString()); // object
+console.log(a1.toString()); // "qianguyihao"
+console.log(a2.toString()); // "29"
+console.log(a3.toString()); // "true"
+console.log(a4.toString()); // "1,2,3"
+console.log(a5.toString()); // "object"
 
 // 下面这两个，打印报错
 console.log(a6.toString()); // 报错：Uncaught TypeError: Cannot read properties of null
 console.log(a7.toString()); // 报错：Uncaught TypeError: Cannot read properties of undefined
 ```
 
+小技巧：在 chrome 浏览器的控制台中，Number类型、Boolean类型的打印结果是蓝色的，String类型的打印结果是黑色的。
+
 一起来看看 toString() 的注意事项。
 
-1. null 和 undefined 这两个值没有 toString() 方法，所以它们不能用 toString() 。如果调用，会报错。
+（1）null 和 undefined 这两个值没有 toString() 方法，所以它们不能用 toString() 。如果调用，会报错。
 
 ```js
 console.log(null.toString());
@@ -177,18 +180,57 @@ console.log(undefined.toString());
 
 ![](https://img.smyhvae.com/20211116_1458.png)
 
-2. Number 类型的变量，在调用 toString()时，可以在方法中传递一个整数作为参数。此时它会把数字转换为指定的进制，如果不指定则默认转换为 10 进制。例如：
+如果你不确定一个值是不是`null`或`undefined`，可以使用`String()`函数，下一小段会讲。
+
+（2）多数情况下，`toString()`不接收任何参数；当然也有例外：Number 类型的变量，在调用 toString()时，可以在方法中传递一个整数作为参数。此时它会把数字转换为指定的进制，如果不指定则默认转换为 10 进制。例如：
 
 ```javascript
 var a = 255;
 
-//对于Number调用toString()时可以在方法中传递一个整数作为参数
+//Number数值在调用toString()时，可以在方法中传递一个整数作为参数
 //此时它将会把数字转换为指定的进制,如果不指定则默认转换为10进制
 a = a.toString(2); // 转换为二进制
 
-console.log(a); // 11111111
+console.log(a); // "11111111"
 console.log(typeof a); // string
 ```
+
+（3）纯小数的小数点后面，如果紧跟连续6个或6个以上的“0”时，那么，将用e来表示这个小数。代码举例：
+
+```js
+const num1 = 0.000001; // 小数点后面紧跟五个零
+console.log(num1.toString()); // 打印结果："0.000001"
+
+const num2 = 0.0000001; // 小数点后面紧跟六个零
+console.log(num2.toString()); // 【重点关注】打印结果："1e-7" 
+
+const num3 = 1.0000001;
+console.log(num3.toString()); // 打印结果："1.0000001"
+
+const num4 = 0.10000001;
+console.log(num4.toString()); // 打印结果："0.10000001"
+```
+
+（4）常量可以直接调用 toString() 方法，但这里的常量，不允许是数字。举例如下：
+
+```js
+1.toString(); // 注意，会报错
+1..toString(); // 合法。得到的结果是字符串"1"
+1.2.toString(); // 合法。得到的结果是字符串"1.2"
+(1).toString(); // 合法。得到的结果是字符串"1"
+```
+
+上方代码中，为何出现这样的打印结果？这是因为：
+
+- 第一行代码：JS引擎认为`1.toString()`中的`.`是小数点，小数点后面的字符是非法的。
+- 第二行、第三行代码：JS引擎认为第一个`.`是小数点，第二个`.`是属性访问的语法，所以能正常解释实行。
+- 第四行嗲吗：用`()`排除了`.`被视为小数点的语法解释，所以这种写法也能正常解释执行。
+
+参考链接：[你不知道的toString方法](https://www.jianshu.com/p/88570529a03c)
+
+（5）既然常量没有方法，那它为什么可以调用 toString()呢？这是因为，除了 null、undefined之外，其他的常量都有对应的特殊的引用类型——**基本包装类型**，所以代码在解释执行的时候，会将常量转为基本包装类型，这样就可以调用相应的引用类型的方法。
+
+我们在后续的内容《JavaScritpt基础/基本包装类型》中会专门讲到这个知识。
 
 ### 3. 使用 String()函数
 
@@ -200,7 +242,7 @@ String(变量);
 
 使用 String()函数做强制类型转换时：
 
--   对于 Number、Boolean、Object 而言，本质上就是调用 toString()方法。
+-   对于 Number、Boolean、Object 而言，本质上就是调用 toString()方法，返回结果同上。
 
 -   但是对于 null 和 undefined，则不会调用 toString()方法。它会将 null 直接转换为 "null"。将 undefined 直接转换为 "undefined"。
 
@@ -208,7 +250,7 @@ String(变量);
 
 我们在前面的《JavaScript基础/02-JavaScript书写方式：hello world》就讲过，`prompt()`就是专门用来弹出能够让用户输入的对话框。重要的是：用户不管输入什么，都当字符串处理。
 
-## 二、其他的数据类型 --> Number 【重要】
+## 二、转换为 Number 【重要】
 
 
 
