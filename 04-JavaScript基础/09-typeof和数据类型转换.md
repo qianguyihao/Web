@@ -188,7 +188,7 @@ const num1 = 0.000001; // 小数点后面紧跟五个零
 console.log(num1.toString()); // 打印结果："0.000001"
 
 const num2 = 0.0000001; // 小数点后面紧跟六个零
-console.log(num2.toString()); // 【重点关注】打印结果："1e-7" 
+console.log(num2.toString()); // 【重点关注】打印结果："1e-7"
 
 const num3 = 1.0000001;
 console.log(num3.toString()); // 打印结果："1.0000001"
@@ -251,11 +251,17 @@ console.log(a + 'haha'); // 打印结果："123haha"
 
 我们在前面的《JavaScript基础/02-JavaScript书写方式：hello world》就讲过，`prompt()`就是专门用来弹出能够让用户输入的对话框。重要的是：用户不管输入什么，都当字符串处理。
 
-## 二、转换为 Number 【重要】
+## 二、转换为 Number
 
 
 
 ### 1. 使用 Number() 函数
+
+语法：
+
+```js
+const result = Number(变量/常量);
+```
 
 **情况一：字符串 --> 数字**
 
@@ -279,11 +285,46 @@ console.log(a + 'haha'); // 打印结果："123haha"
 
 > 注意，这里说的是正号/负号，不是加号/减号。
 
-任何值做`+a`、`-a`运算时， 内部调用的是 Number() 函数。不会改变原数值。
+任何值做`+a`、`-a`运算时， 底层调用的是 Number() 函数。不会改变原数值；得到的结果，会改变正负性。
+
+代码举例：
+
+```js
+const a1 = '123';
+console.log(+a1); // 123
+console.log(-a1); // -123
+
+const a2 = '123abc';
+console.log(+a2); // NaN
+console.log(-a2); // NaN
+
+const a3 = true;
+console.log(+a3); // 1
+console.log(-a3); // -1
+
+
+const a4 = false;
+console.log(+a4); // 0
+console.log(-a4); // -0
+
+const a5 = null;
+console.log(+a5); // 0
+console.log(-a5); // -0
+
+const a6 = undefined;
+console.log(+a6); // NaN
+console.log(-a6); // NaN
+```
 
 ### 3. 使用 parseInt()函数：字符串 -> 整数
 
-**parseInt()**：将传入的数据当作**字符串**来处理，从左至右提取数值, 一旦遇到非数值就立即停止；停止时如何还没有提取到数值, 那么就返回NaN。
+语法：
+
+```js
+const result = parseInt(需要转换的字符串)
+```
+
+**parseInt()**：将传入的数据当作**字符串**来处理，从左至右提取数值，一旦遇到非数值就立即停止；停止时如果还没有提取到数值，就返回NaN。
 
 parse 表示“转换”，Int 表示“整数”。例如：
 
@@ -291,7 +332,7 @@ parse 表示“转换”，Int 表示“整数”。例如：
 parseInt('5'); // 得到的结果是数字 5
 ```
 
-按照上面的规律，parseInt()的转换情况如下。
+按照上面的规律，parseInt()的转换结果，情况如下。
 
 **情况一：字符串 --> 数字**
 
@@ -421,8 +462,6 @@ console.log(parseFloat(a)); // 打印结果：123.456
 ```
 
 parseFloat() 的几个特性，可以参照 parseInt()。
-
-
 
 ## 三、转换为 Boolean
 
