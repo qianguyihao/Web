@@ -1,5 +1,5 @@
 ---
-title: 02-JavaScript书写方式：hello world
+title: 02-开始写JavaScript：hello world
 ---
 
 ## 开始写第一行 JavaScript：hello world
