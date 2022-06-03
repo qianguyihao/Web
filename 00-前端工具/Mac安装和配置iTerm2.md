@@ -6,3 +6,6 @@
 
 - [安装oh my zsh失败：curl: (7) Failed to connect to raw.githubusercontent.com port 443: Connection refused](https://blog.csdn.net/huangpin815/article/details/105606135)
 
+- <https://www.jianshu.com/p/246b844f4449>
+
+
