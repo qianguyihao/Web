@@ -42,8 +42,6 @@
 
 - 即刻App：@[千古壹号](https://web.okjike.com/u/smyhvae) ，我会在即刻上发一些有意思的动态，欢迎关注。
 
-- [小报童专栏](https://xiaobot.net/p/qianguyihao/)：记录日常思考，分享小而美的事物，还有一些压箱底的好东西。可以在微信端打开订阅。
-
 - 公众号：千古壹号
 
 - 博客：<https://www.qianguyihao.com/>
