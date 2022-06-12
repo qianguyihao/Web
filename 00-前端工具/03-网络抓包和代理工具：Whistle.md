@@ -46,7 +46,7 @@ w2 start
 ![](https://img.smyhvae.com/20200420_0922.png)
 
 
-
+证书下载后，双击安装，安装目录选择“登录”这个tab。安装完成后，记得执行 `w2 restart`重启 whistle。
 
 
 ### 手机设置代理
