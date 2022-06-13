@@ -1,8 +1,13 @@
+---
+title: 01-Bootstrap入门
+publish: true
+---
+
+<ArticleTopAd></ArticleTopAd>
 
 
-> 本文最初发表于[博客园](http://www.cnblogs.com/smyhvae/p/8470657.html)，并在[GitHub](https://github.com/qianguyihao/Web)上持续更新**前端的系列文章**。欢迎在GitHub上关注我，一起入门和进阶前端。
 
-> 以下是正文。
+
 
 ## Bootstrap 介绍
 
@@ -398,13 +403,13 @@ JS 组件在[官网](https://v3.bootcss.com/javascript/)有介绍：
 
 空结构的工程文件的下载地址：(lib文件夹里包含了Bootstrap相关的各种库和中文文档)
 
-- [2018-02-25-BootstrapDemo及文档.rar](http://download.csdn.net/download/smyhvae/10258718)
+- [2018-02-25-BootstrapDemo及文档.rar](https://github.com/qianguyihao/web-resource/blob/main/project/2018-02-25-BootstrapDemo%E5%8F%8A%E6%96%87%E6%A1%A3.rar)
 
 还是那句话：**如果需要哪个样式，直接根据文档的指引，在相应的元素里加指定的类名即可。**
 
 ## 我的公众号
 
-想学习<font color=#0000ff>**代码之外的技能**</font>？不妨关注我的微信公众号：**千古壹号**（id：`qianguyihao`）。
+想学习<font color=#0000ff>**更多技能**</font>？不妨关注我的微信公众号：**千古壹号**（id：`qianguyihao`）。
 
 扫一扫，你将发现另一个全新的世界，而这将是一场美丽的意外：
 

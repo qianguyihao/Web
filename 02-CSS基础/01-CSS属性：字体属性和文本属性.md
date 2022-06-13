@@ -1,3 +1,9 @@
+---
+title: 01-CSS属性：字体属性和文本属性
+publish: true
+---
+
+<ArticleTopAd></ArticleTopAd>
 
 
 ## 本文重要内容
@@ -218,7 +224,6 @@ CSS样式中，常见的文本属性有以下几种：
 - `letter-spacing: 0.5cm ;`  单个字母之间的间距
 - `word-spacing: 1cm;`   单词之间的间距
 - `text-decoration: none;` 字体修饰：none 去掉下划线、**underline 下划线**、line-through 中划线、overline 上划线
-- `text-transform: lowercase;`  单词字体大小写。uppercase大写、lowercase小写
 - `color:red;` 字体颜色
 - `text-align: center;` 在当前容器中的对齐方式。属性值可以是：left、right、center（<font color="#0000FF">**在当前容器的中间**</font>）、justify
 - `text-transform: lowercase;` 单词的字体大小写。属性值可以是：`uppercase`（单词大写）、`lowercase`（单词小写）、`capitalize`（每个单词的首字母大写）
@@ -448,7 +453,7 @@ p:hover{
 
 ## 我的公众号
 
-想学习**代码之外的技能**？不妨关注我的微信公众号：**千古壹号**（id：`qianguyihao`）。
+想学习**更多技能**？不妨关注我的微信公众号：**千古壹号**（id：`qianguyihao`）。
 
 扫一扫，你将发现另一个全新的世界，而这将是一场美丽的意外：
 

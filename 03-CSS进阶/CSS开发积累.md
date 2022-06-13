@@ -1,3 +1,9 @@
+---
+title: 认识Web和Web标准
+publish: false
+---
+
+<ArticleTopAd></ArticleTopAd>
 
 ### 让flex盒子中的子元素们，居中
 
@@ -64,7 +70,7 @@ CSS的逗号一般写在()里。**不同属性值之间，用的是空格**，�
 
 ### 2019-11-01
 
-价格中的羊角符号，有半角和全角之分：
+人民币价格中的羊角符号，有半角和全角之分：
 
 - ¥半角
 
@@ -123,10 +129,35 @@ CSS的逗号一般写在()里。**不同属性值之间，用的是空格**，�
 }
 ```
 
-注意，去掉滚动条的那行代码里，建议用`display: none;`，不要用`width: 0;`。因为，当你需要设置横向滚动的效果时，`display: none;`这个属性的效果更好，不会改变容易的size；`width: 0;`可能会改变容易的size。
+注意，去掉滚动条的那行代码里，建议用`display: none;`，不要用`width: 0;`。因为，当你需要设置横向滚动的效果时，`display: none;`这个属性的效果更好，不会改变容器的size；`width: 0;`可能会改变容器的size。
 
 参考链接：
 
 - [html设置局部区域上下滚动，不显示滚动条](https://blog.csdn.net/weixin_42157001/article/details/90176510)
 
 
+### 2021-05-06-设置页面的宽高，撑满屏幕
+
+一般来说，我们在开发一个页面的时候，默认是希望这个页面的宽高能够撑满屏幕的。代码可以这样写：
+
+```css
+.app {
+	width: 100vw;
+	min-height: 100vh;
+}
+
+```
+
+### 2021-09-13-JS中插入CSS
+
+代码举例：
+
+```js
+new_element = document.createElement("style");
+new_element.innerHTML =(".tucao-content p{font-size:18px;}");
+document.body.appendChild(new_element);
+```
+
+参考链接：
+
+- js 插入公共css的方法：https://blog.csdn.net/u013970232/article/details/90578937

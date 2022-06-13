@@ -1,8 +1,10 @@
+---
+title: 08-CSS属性：定位属性
+publish: true
+---
 
+<ArticleTopAd></ArticleTopAd>
 
-> 本文最初发表于[博客园](http://www.cnblogs.com/smyhvae/p/8296748.html)，并在[GitHub](https://github.com/qianguyihao/Web)上持续更新**前端的系列文章**。欢迎在GitHub上关注我，一起入门和进阶前端。
-
-> 以下是正文。
 
 
 
@@ -191,7 +193,7 @@ PS：负数表示相反的方向。
 
 为了理解“**首屏**”二字的含义，我们来看一下动态图：
 
-![](http://img.smyhvae.com/20180115_2200.gif)
+![](https://img.smyhvae.com/20180115_2200.gif)
 
 问题：
 
@@ -520,7 +522,7 @@ z-index属性的应用还是很广泛的。当好几个已定位的标签出现�
 
 ## 我的公众号
 
-想学习**代码之外的技能**？不妨关注我的微信公众号：**千古壹号**（id：`qianguyihao`）。
+想学习**更多技能**？不妨关注我的微信公众号：**千古壹号**（id：`qianguyihao`）。
 
 扫一扫，你将发现另一个全新的世界，而这将是一场美丽的意外：
 

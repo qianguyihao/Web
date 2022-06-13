@@ -1,7 +1,10 @@
+---
+title: 05-CSS样式表的继承性和层叠性
+publish: true
+---
 
-> 本文最初于2017-07-29发表于[博客园](http://www.cnblogs.com/smyhvae/p/7253929.html)，并在[GitHub](https://github.com/qianguyihao/Web)上持续更新**前端的系列文章**。欢迎在GitHub上关注我，一起入门和进阶前端。
+<ArticleTopAd></ArticleTopAd>
 
-> 以下是正文。
 
 ## 本文重点
 
@@ -389,7 +392,7 @@ ul li:last-child
 
 ## 我的公众号
 
-想学习**代码之外的技能**？不妨关注我的微信公众号：**千古壹号**（id：`qianguyihao`）。
+想学习**更多技能**？不妨关注我的微信公众号：**千古壹号**（id：`qianguyihao`）。
 
 扫一扫，你将发现另一个全新的世界，而这将是一场美丽的意外：
 

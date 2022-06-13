@@ -1,3 +1,9 @@
+---
+title: 09-HTML5举例：简单的视频播放器
+publish: true
+---
+
+<ArticleTopAd></ArticleTopAd>
 
 
 我们采用 Bootstrap 网站的图标字体，作为播放器的按钮图标。
@@ -259,10 +265,7 @@ index.html的代码如下：
 
 
 
-工程文件：
+工程文件：[2018-02-23-H5多媒体播放器.rar](https://github.com/qianguyihao/web-resource/blob/main/project/2018-02-23-H5%E5%A4%9A%E5%AA%92%E4%BD%93%E6%92%AD%E6%94%BE%E5%99%A8.rar)
 
-- [2018-02-23-H5多媒体播放器.rar](https://pan.baidu.com/s/10RHLQIMl1EKvFaxvYhHaRw )
-
-- 密码:88cy
 
 

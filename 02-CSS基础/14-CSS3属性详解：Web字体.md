@@ -1,3 +1,9 @@
+---
+title: 14-CSS3属性详解：Web字体
+publish: true
+---
+
+<ArticleTopAd></ArticleTopAd>
 
 
 
@@ -151,9 +157,8 @@ woff字体是Web字体中最佳格式，他是一个开放的TrueType/OpenType�
 
 （2）因为我把字体文件单独放在了font文件夹中，所以在src中引用字体资源时，写的路径是 `font/...`
 
-工程文件：
+工程文件：[2018-02-20-WebFont举例.zip](https://github.com/qianguyihao/web-resource/blob/main/project/2018-02-20-WebFont%E4%B8%BE%E4%BE%8B.zip)
 
-- [2018-02-20-WebFont举例.zip](http://download.csdn.net/download/smyhvae/10253565)
 
 
 ## 字体图标（阿里的 iconfont 网站举例）
@@ -293,11 +298,11 @@ woff字体是Web字体中最佳格式，他是一个开放的TrueType/OpenType�
 ![](http://img.smyhvae.com/20180220_1815.png)
 
 
-工程文件：
+~工程文件~：
 
 - 2018-02-20-图标字体demo.zip
 
-
+- 下载链接暂无。
 
 ## 其他相相关网站介绍
 
@@ -373,7 +378,7 @@ SVG素材：
 
 ## 我的公众号
 
-想学习**代码之外的技能**？不妨关注我的微信公众号：**千古壹号**（id：`qianguyihao`）。
+想学习**更多技能**？不妨关注我的微信公众号：**千古壹号**（id：`qianguyihao`）。
 
 扫一扫，你将发现另一个全新的世界，而这将是一场美丽的意外：
 

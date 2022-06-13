@@ -1,3 +1,10 @@
+---
+title: 02-Git的使用
+---
+
+<ArticleTopAd></ArticleTopAd>
+
+
 
 
 
@@ -203,6 +210,35 @@ git push --mirror https://github.com/exampleuser/new-repository.git
 - [复制仓库](https://help.github.com/cn/github/creating-cloning-and-archiving-repositories/duplicating-a-repository)
 
 - [Git 本地仓库和裸仓库](https://moelove.info/2016/12/04/Git-%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93%E5%92%8C%E8%A3%B8%E4%BB%93%E5%BA%93/)
+
+
+### 2021-11-10-提交代码时，绕过 eslint 检查
+
+需求：提交代码时，绕过 eslint 检查
+
+解决办法：用命令行提交，末尾追加`--no-verify`。例如：
+
+```bash
+# 提交代码
+git commit -m '千古壹号的commit备注' --no-verify
+
+# 推送到远程时，也可以追加 --no-verify，以免远程仓库做了 eslint 限制。
+git push origin --no-verify
+```
+
+### 2021-12-29-切换仓库的源地址
+
+查看源地址：
+
+```
+git remote -v
+```
+
+切换源地址：
+
+```bash
+git remote set-url origin https://xxx.git
+```
 
 
 

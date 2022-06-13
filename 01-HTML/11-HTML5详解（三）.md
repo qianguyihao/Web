@@ -1,3 +1,9 @@
+---
+title: 11-HTML5详解（三）
+publish: true
+---
+
+<ArticleTopAd></ArticleTopAd>
 
 
 ## Web 存储
@@ -163,17 +169,17 @@ sessionStorage 的 API 举例：
     var txt = document.querySelector('input');
     var btns = document.querySelectorAll('button');
 
-    //        localStorage存储数据
+    // localStorage存储数据
     btns[0].onclick = function () {
         window.localStorage.setItem('userName', txt.value);
     }
 
-    //        localStorage存储数据
+    // localStorage获取数据
     btns[1].onclick = function () {
         txt.value = window.localStorage.getItem('userName');
     }
 
-    //        localStorage删除数据
+    // localStorage删除数据
     btns[3].onclick = function () {
         window.localStorage.removeItem('userName');
     }
@@ -356,7 +362,7 @@ CACHE:
 
 ```html
 <!DOCTYPE html>
-<html manifest="01.appcache">
+<html manifest="demo.appcache">
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>

@@ -1,3 +1,8 @@
+---
+title: 12-HTML基础回顾
+---
+
+<ArticleTopAd></ArticleTopAd>
 
 ## 本文主要内容
 
@@ -64,7 +69,7 @@ div 是最常见的元素，大多数场景下，都可以用div（实在不行�
 - a[href,target]
 - img[src,alt]
 - table td[colspan,rowspan]。设置当前单元格占据几行几列。在合并单元格时，会用到。
-- form[target,method,enctype]
+- form[action,method,enctype]
 - input[type,value]
 - button[type]
 - selection>option[value]
@@ -223,9 +228,9 @@ CSS Tools: Reset CSS。链接：<https://meyerweb.com/eric/tools/css/reset/>
 
 - 有助于 SEO
 
-### 哪些元素可以自闭和
+### 哪些元素可以自闭合
 
-> 自闭和的元素中不能再嵌入别的元素。且 HTML5 中要求加斜杠。
+> 自闭合的元素中不能再嵌入别的元素。且 HTML5 中要求加斜杠。
 
 - 表单元素 input
 

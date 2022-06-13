@@ -1,4 +1,9 @@
-> 本文最初于 2015-10-03 发表于[博客园](http://www.cnblogs.com/smyhvae/p/4853995.html)，并在[GitHub](https://github.com/qianguyihao/Web)上持续更新**前端的系列文章**。欢迎在 GitHub 上关注我，一起入门和进阶前端。
+---
+title: 03-CSS样式表和选择器
+publish: true
+---
+
+<ArticleTopAd></ArticleTopAd>
 
 ## 本文主要内容
 
@@ -67,9 +72,7 @@ css 的最新版本是 css3，**我们目前学习的是 css2.1**。 因为 css3
     </head>
     <body>
         <h1>我是大标题</h1>
-        <p>
-            我是内容
-        </p>
+        <p>我是内容</p>
     </body>
 </html>
 ```
@@ -258,19 +261,20 @@ decoration 就是“装饰”的意思。
 text-decoration:none;
 ```
 
-## CSS 和 HTML 结合的方式（样式表）
+## CSS 的书写方式
 
-CSS 和 HTML 结合的方式，其实就是问你 css 的代码放在哪里比较合适。CSS 代码理论上的位置是任意的，**但通常写在`<style>`标签里**。只要是`<style>`标签里的代码，那就是 css 代码，浏览器就是这样来进行解析的。
+CSS 的书写方式，实就是问你 CSS 的代码放在哪个位置。CSS 代码理论上的位置是任意的，**但通常写在`<style>`标签里**。
 
-CSS 和 HTML 的结合方式有 3 种：
+CSS 的书写方式有三种：
 
--   **行内样式**：在某个特定的标签里采用 style**属性**。范围只针对此标签。
--   **内嵌样式表**：在页面的 head 里采用`<style>`**标签**。范围针对此页面。
--   **引入外部样式表 css 文件**的方式。这种引入方式又分为两种： - 1、采用`<link>`标签。例如：`<link rel = "stylesheet" type = "text/css" href = "a.css"></link>` - 2、采用 import，必须写在`<style>`标签中，并且必须是第一句。例如：`@import url(a.css) ;`
+1. **行内样式**：在某个特定的标签里采用 style **属性**。范围只针对此标签。
 
-> 两种引入样式方式的区别：外部样式表中不能写<link>标签，但是可以写 import 语句。
+2. **内嵌样式**（内联样式）：在页面的 head 标签里里采用`<style>`**标签**。范围针对此页面。
+3. **外链样式**：引入外部样式表 CSS **文件**。这种引入方式又分为两种：
+   - 3.1 采用`<link>`标签。例如：`<link rel = "stylesheet" type = "text/css" href = "a.css"></link>`
+   - 3.2 采用 import 导入，必须写在`<style>`标签中。然后用类似于`@import url(a.css) ;`这种方式导入。
 
-下面来详细的讲一讲这三种方式。
+下面来详细讲一讲这三种方式。
 
 ### 1、CSS 和 HTML 结合方式一：行内样式
 
@@ -397,7 +401,7 @@ div {
 
 CSS 选择器：就是指定 CSS 要作用的标签，那个标签的名称就是选择器。意为：选择哪个容器。
 
-CSS 的选择器分为两大类：基本选择题和扩展选择器。
+CSS 的选择器分为两大类：基本选择器和扩展选择器。
 
 **基本选择器：**
 
@@ -424,7 +428,7 @@ p{ font-size:14px; }
 
 ![](http://img.smyhvae.com/2015-10-03-css-06.png)
 
-再比如说，我想让“生命壹号学完了安卓，继续学前端哟”这句话中的“前端”两个变为红色字体，那么我可以用`<span>`标签把“前端”这两个字围起来，然后给`<span>`标签加一个标签选择器。
+再比如说，我想让“千古壹号学完了安卓，继续学前端哟”这句话中的“前端”两个变为红色字体，那么我可以用`<span>`标签把“前端”这两个字围起来，然后给`<span>`标签加一个标签选择器。
 
 代码如下：
 
@@ -441,7 +445,7 @@ p{ font-size:14px; }
         </style>
     </head>
     <body>
-        <p>生命壹号学完了安卓，继续学<span>前端</span>哟</p>
+        <p>千古壹号学完了安卓，继续学<span>前端</span>哟</p>
     </body>
 </html>
 ```
@@ -694,11 +698,11 @@ css 中用`.`来表示类。举例如下：
 
 ![](http://img.smyhvae.com/20170711_1836.png)
 
-讲到这里，我们再提一个 sublme 的快捷键。
+讲到这里，我们再提一个 VS Code 的快捷键：
 
-在 sublime 中输入`p#haha`，按 tab 键后，会生成`<p id="haha"></p>`。
+在 VS Code 中输入`p#haha`，按 tab 键后，会生成`<p id="haha"></p>`。
 
-在 sublime 中输入`p.haha`，按 tab 键后，会生成`<p class="haha"></p>`。
+在 VS Code 中输入`p.haha`，按 tab 键后，会生成`<p class="haha"></p>`。
 
 ### 2、交集选择器：定义的时候紧密相连
 
@@ -763,17 +767,14 @@ h3.special.zhongyao {
 举例：
 
 ```css
-p,
-h1,
-#mytitle,
-.one {
+p,h1,.title1,#one {
     color: red;
 }
 ```
 
 效果：
 
-![](http://img.smyhvae.com/2015-10-03-css-10.png)
+![](https://img.smyhvae.com/20211116_1055.png)
 
 ## 一些 CSS3 选择器
 
@@ -935,7 +936,7 @@ ul li.first{ color:red; } ul li.last{ color:blue; }
 
 ## 我的公众号
 
-想学习**代码之外的技能**？不妨关注我的微信公众号：**千古壹号**（id：`qianguyihao`）。
+想学习**更多技能**？不妨关注我的微信公众号：**千古壹号**（id：`qianguyihao`）。
 
 扫一扫，你将发现另一个全新的世界，而这将是一场美丽的意外：
 
