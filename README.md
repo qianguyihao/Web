@@ -1,7 +1,7 @@
 
 ## 前言
 
-千古前端图文教程，超详细的 Web 前端入门到进阶学习笔记。从零开始学前端，做一名精致优雅的前端工程师。持续更新中...
+千古前端图文教程，超详细的 Web 前端入门到进阶知识库。从零开始学前端，做一名精致优雅的前端工程师。持续更新中...
 
 通俗易懂，不懂技术也能学。此前端教程不玩猫腻，不会设置任何套路，因为我**相信启蒙的重要性**。
 
@@ -38,15 +38,6 @@
 
 ![](https://img.smyhvae.com/20220401_1800.jpg)
 
-## 关于作者
-
-- 即刻App：@[千古壹号](https://web.okjike.com/u/smyhvae) ，我会在即刻上发一些有意思的动态，欢迎关注。
-
-- 豆瓣：@[千古壹号](https://www.douban.com/people/smyhvae/)，记录读过的好书。
-
-- 博客：<https://www.qianguyihao.com/>
-
-- GitHub：<https://github.com/qianguyihao>
 
 ## LICENSE
 
