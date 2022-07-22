@@ -113,10 +113,10 @@ BMI =体重÷身高的平方
 
 ```javascript
 //第一步，输入身高和体重
-var height = parseFloat(prompt('请输入身高，单位是米'));
-var weight = parseFloat(prompt('请输入体重，单位是公斤'));
+const height = parseFloat(prompt('请输入身高，单位是米'));
+const weight = parseFloat(prompt('请输入体重，单位是公斤'));
 //第二步，计算BMI指数
-var BMI = weight / Math.pow(height, 2);
+const BMI = weight / Math.pow(height, 2);
 //第三步，if语句来判断
 if (BMI < 18.5) {
     alert('偏瘦');
@@ -135,10 +135,10 @@ if (BMI < 18.5) {
 
 ```javascript
 //第一步，输入身高和体重
-var height = parseFloat(prompt('请输入身高，单位是米'));
-var weight = parseFloat(prompt('请输入体重，单位是公斤'));
+const height = parseFloat(prompt('请输入身高，单位是米'));
+const weight = parseFloat(prompt('请输入体重，单位是公斤'));
 //第二步，计算BMI指数
-var BMI = weight / Math.pow(height, 2);
+const BMI = weight / Math.pow(height, 2);
 //第三步，if语句来判断
 if (BMI > 32) {
     alert('非常肥胖');
@@ -170,23 +170,23 @@ if (BMI > 32) {
 
 ```javascript
 //第一步，输入
-var bianhao = parseInt(prompt('您想加什么油？填写92或者97'));
-var sheng = parseFloat(prompt('您想加多少升？'));
+const bianhao = parseInt(prompt('您想加什么油？填写92或者97'));
+const sheng = parseFloat(prompt('您想加多少升？'));
 
 //第二步，判断
 if (bianhao == 92) {
     //编号是92的时候做的事情
     if (sheng >= 20) {
-        var price = sheng * 5.9;
+        const price = sheng * 5.9;
     } else {
-        var price = sheng * 6;
+        const price = sheng * 6;
     }
 } else if (bianhao == 97) {
     //编号是97的时候做的事情
     if (sheng >= 30) {
-        var price = sheng * 6.95;
+        const price = sheng * 6.95;
     } else {
-        var price = sheng * 7;
+        const price = sheng * 7;
     }
 } else {
     alert('不好意思，没有这个编号的汽油！');
@@ -349,7 +349,7 @@ switch (num) {
 
 ```javascript
 //switch判断语句
-var number = 5;
+const number = 5;
 
 switch (number) {
     default:
