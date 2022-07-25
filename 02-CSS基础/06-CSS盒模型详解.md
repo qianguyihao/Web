@@ -63,7 +63,7 @@ CSS盒模型和IE盒模型的区别：
 - <font color="#0000FF">**IE盒子模型**</font>中，<font color="#0000FF">**width 和 height 指的是内容区域+border+padding**</font>的宽度和高度。
 
 
-注：Android中也有margin和padding的概念，意思是差不多的，如果你会一点Android，应该比较好理解吧。区别在于，Android中没有border这个东西，而且在Android中，margin并不是控件的一部分，我觉得这样做更合理一些，呵呵。
+注：Android中也有margin和padding的概念，意思是差不多的，如果你会一点Android，应该比较好理解吧。区别在于，Android中没有border这个东西，而且在Android中，margin并不是控件的一部分。
 
 ### `<body>`标签也有margin
 
@@ -146,8 +146,7 @@ CSS盒模型和IE盒模型的区别：
 
 上面这两个盒子的盒模型图如下：
 
-![](http://img.smyhvae.com/20170728_0925.png)
-
+![](https://img.smyhvae.com/20170728_0925.png)
 
 **如果想保持一个盒子的真实占有宽度不变，那么加width的时候就要减padding。加padding的时候就要减width**。因为盒子变胖了是灾难性的，这会把别的盒子挤下去。
 
@@ -533,8 +532,6 @@ div{
 
 另外，我们在上方代码的基础之上，再加一个 `border-radus: 20px;` 就能画出一个扇形。
 
-关于盒模型的更多内容，请查看本项目的另外一篇文章：《13-前端面试/面试必看/02-CSS盒模型及BFC.md》
-
 ## 我的公众号
 
 想学习**更多技能**？不妨关注我的微信公众号：**千古壹号**（id：`qianguyihao`）。
@@ -542,5 +539,4 @@ div{
 扫一扫，你将发现另一个全新的世界，而这将是一场美丽的意外：
 
 ![](http://img.smyhvae.com/20190101.png)
-
 
