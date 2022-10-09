@@ -260,9 +260,6 @@ git remote set-url origin https://xxx.git
 ![](http://img.smyhvae.com/20180623_1305.png)
 
 
-
-
-
 ## 推荐书籍
 
 - 《pro.git中文版》
@@ -278,4 +275,8 @@ git remote set-url origin https://xxx.git
 
 
 
+## 赞赏作者
 
+创作不易，你的赞赏和认可，是我更新的最大动力：
+
+![](https://img.smyhvae.com/20220401_1800.jpg)
