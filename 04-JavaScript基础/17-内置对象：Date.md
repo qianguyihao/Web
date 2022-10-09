@@ -1,6 +1,5 @@
 ---
 title: 17-内置对象：Date
-publish: true
 ---
 
 <ArticleTopAd></ArticleTopAd>

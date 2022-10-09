@@ -1,6 +1,5 @@
 ---
-title: 47-jQuery操作DOM
-publish: true
+title: 49-jQuery操作DOM
 ---
 
 <ArticleTopAd></ArticleTopAd>

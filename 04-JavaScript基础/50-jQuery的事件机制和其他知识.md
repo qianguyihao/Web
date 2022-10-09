@@ -1,6 +1,5 @@
 ---
-title: 48-jQuery的事件机制和其他知识
-publish: true
+title: 50-jQuery的事件机制和其他知识
 ---
 
 <ArticleTopAd></ArticleTopAd>

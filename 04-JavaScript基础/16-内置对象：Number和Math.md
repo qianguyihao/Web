@@ -1,6 +1,5 @@
 ---
 title: 16-内置对象：Number和Math
-publish: true
 ---
 
 <ArticleTopAd></ArticleTopAd>

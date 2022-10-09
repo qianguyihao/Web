@@ -1,6 +1,5 @@
 ---
-title: 39-事件的绑定和事件对象Event
-publish: true
+title: 41-事件的绑定和事件对象Event
 ---
 
 <ArticleTopAd></ArticleTopAd>

@@ -1,6 +1,5 @@
 ---
-title: 23-this指向
-publish: true
+title: 25-this指向
 ---
 
 <ArticleTopAd></ArticleTopAd>

@@ -1,6 +1,5 @@
 ---
-title: 43-BOM简介和navigator.userAgent&History&Location
-publish: true
+title: 45-BOM简介和navigator.userAgent&History&Location
 ---
 
 <ArticleTopAd></ArticleTopAd>

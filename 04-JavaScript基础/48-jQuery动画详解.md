@@ -1,6 +1,5 @@
 ---
-title: 46-jQuery动画详解
-publish: true
+title: 48-jQuery动画详解
 ---
 
 <ArticleTopAd></ArticleTopAd>

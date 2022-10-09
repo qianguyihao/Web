@@ -1,6 +1,5 @@
 ---
-title: 45-jQuery的介绍和选择器
-publish: true
+title: 47-jQuery的介绍和选择器
 ---
 
 <ArticleTopAd></ArticleTopAd>
