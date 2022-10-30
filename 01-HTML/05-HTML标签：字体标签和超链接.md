@@ -82,13 +82,11 @@ http://img.smyhvae.com/2015-10-01-cnblogs_html_13.png)
 
 
 
-### 粗体标签`<b>`或`<strong>`（已废弃）
+### 粗体标签 `<b>`或`<strong>`
 
 效果：
 
 ![Paste_Image.png](http://img.smyhvae.com/2015-10-01-cnblogs_html_14.png)
-
-
 
 
 
