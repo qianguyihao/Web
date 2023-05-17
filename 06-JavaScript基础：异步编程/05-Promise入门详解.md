@@ -5,9 +5,13 @@ publish: true
 
 <ArticleTopAd></ArticleTopAd>
 
+## 前言
+
+ Promise 是 JavaScript 中特有的语法（中文名翻译为“承诺”，一般不称呼中文名）。可以毫不夸张得说，Promise 是ES6中最重要的语法，没有之一。初学者可能对 Promise 的概念有些陌生，但是不用担心。大多数情况下，使用 Promise 的语法是比较固定的。我们可以先把这些固定语法和结构记下来，多默写几遍；然后在实战开发中逐渐去学习和领悟 Promise 的原理、底层逻辑以及细节知识点，自然就掌握了。
+
 ## 为什么需要 Promise？
 
-我们在前面的文章《JavaScript 基础：异步编程和 Ajax/单线程和异步》中讲过，Javascript 是⼀⻔单线程语⾔。早期我们解决异步场景时，⼤部分情况都是通过回调函数来进⾏。
+我们在前面的文章《JavaScript 基础：异步编程/单线程和异步》中讲过，Javascript 是⼀⻔单线程语⾔。早期我们解决异步场景时，⼤部分情况都是通过回调函数来进⾏。
 
 （如果你还不了解单线程和异步的概念，可以先去回顾上一篇文章。）
 
@@ -15,25 +19,44 @@ publish: true
 
 把函数 A 传给另一个函数 B 调用，那么函数 A 就是回调函数。
 
-例如在浏览器中发送 ajax 请求，就是常⻅的⼀个异步场景，发送请求后，需要等待一段时间，等服务端响应之后我们才能拿到结果。如果我们希望在异步结束之后执⾏某个操作，就只能通过**回调函数**这样的⽅式进⾏操作。
+例如在浏览器中发送 ajax 网络请求，或者在定时器中执行异步任务，就是最常⻅的异步场景。发送请求后，需要等待一段时间，等服务端响应之后我们才能拿到结果。如果我们希望**等待异步任务结束之后再执⾏想要的操作**，就只能通过**回调函数**这样的⽅式进⾏处理。
 
 ```js
-var dynamicFunc = function (callback) {
-    setTimeout(function () {
-        callback();
-    }, 1000);
+ const dynamicFunc = function (callback) {
+  setTimeout(function () {
+    console.log("一开始在这里执行异步任务 task1，延迟3秒执行");
+    // task1： total 计数
+    let total = 0;
+    for (let i = 0; i < 10; i++) {
+      total += i;
+    }
+
+    // 等待异步任务 task1 执行完成后，通过回调传入的 callback() 函数，通知外面的调用者，可以开始做后续任务 task2 了
+    // 如果有需要的话，可以把 task1 的执行结果 total 传给外面。
+    callback && callback(total);
+  }, 3000);
 };
 
-dynamicFunc(function () {
-    console.log('qian gu');
+// 执行同步任务 task2。需要先等 异步任务 task1做完。
+dynamicFunc(function (value) {
+  console.log("外面监听到，异步任务 task1已经完成了，并且还能拿到 task1的执行结果 value");
+  console.log("task1的返回值value:" + value);
+
+  // task2：将task1的执行结果乘以2
+  const result = value * 2;
+  console.log("result:" + result);
 });
 ```
 
-例如上⾯这个例⼦，dynamicFunc 就是⼀个异步函数，⾥⾯ setTimeout 会在 1s 之后调⽤传⼊的 callback 函数。按照上⾯的调⽤⽅式，最终 1s 之后，会打印 qian gu 这个结果。
+上⾯的例⼦中，dynamicFunc() 函数里面的 setTimeout()就是⼀个异步函数，在里面执行了一些异步任务，延迟3秒执行。dynamicFunc() 的参数 callback() 就是一个回调函数。这段代码的诉求是：**先等待 异步任务 task1 做完，再做 同步任务task2。**我们来分析一下。
+
+已知异步任务 task1 需要3秒才能做完。**3秒结束后，通知 dynamicFunc 函数的调用者，里面的异步任务 task1 已经做完了，外面可以开始做后续的任务 task2 了。**那要怎么通知呢？在ES5中，最常见的做法就是**需要回调传入的 callback 函数**（也就是回调函数）， 通知外面的调用者。并且，如果有需要的话，外面还可以拿到异步任务task1的执行结果 total（详见代码注释）。
+
+（注：`callback`这个单词并不是关键字，可以自由命名，我们通常习惯性地用“回调”这个词的英文名 callback 代表回调函数。）
 
 为了能使回调函数以更优雅的⽅式进⾏调⽤，在 ES6 语法中，新增了⼀个名为 Promise 的新规范。
 
-### 回调的缺点
+### 回调的缺点（异步代码的困境）
 
 回调的写法比较直观，不需要 return，层层嵌套即可。但也存在两个问题：
 
