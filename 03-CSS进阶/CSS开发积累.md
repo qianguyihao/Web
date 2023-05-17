@@ -18,25 +18,40 @@ flex布局常用的三行代码：
 
 ### 让文字只显示一行，超出显示省略号
 
-```
+```css
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
 
 ```
 
-
 ### 让文字最多只显示两行，超出后显示省略号
 
-```
-	overflow:hidden;
-	text-overflow:ellipsis;
-	display:-webkit-box;
-	-webkit-box-orient:vertical;
-	-webkit-line-clamp:2;
+```css
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	overflow: hidden;
+	text-overflow: ellipsis;
 ```
 
+上面的代码中，我们把 `-webkit-line-clamp`的值设为1，也能达到“让文字只显示一行，超出显示省略号”的效果。
+
 参考链接：<https://blog.csdn.net/NN_nan/article/details/55045562>
+
+
+### 让文字最多只显示三行，超过后显示省略号
+
+> 如果当前元素处于flex布局等复杂的场景中，那么，样式可能比较难调，用上面两种写法未必能达到预期效果。此时可以试试下面这种写法（多加了一行 `white-space: normal`）。
+
+```css
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+```
 
 
 

@@ -113,8 +113,11 @@ proxy
 ```bash
 nvm install 版本号
 
-# 举例
-nvm install 8.10.0
+# 安装举例
+nvm install 12.20.0
+
+# 使用该版本
+nvm use 12.20.0
 ```
 
 输入 `node -v`，查看当前使用的 node 版本。
