@@ -1,5 +1,5 @@
 ---
-title: 05-Promise入门详解
+title: 06-Promise入门详解
 publish: true
 ---
 
@@ -7,153 +7,13 @@ publish: true
 
 ## 前言
 
+
  Promise 是 JavaScript 中特有的语法（中文名翻译为“承诺”，一般不称呼中文名）。可以毫不夸张得说，Promise 是ES6中最重要的语法，没有之一。初学者可能对 Promise 的概念有些陌生，但是不用担心。大多数情况下，使用 Promise 的语法是比较固定的。我们可以先把这些固定语法和结构记下来，多默写几遍；然后在实战开发中逐渐去学习和领悟 Promise 的原理、底层逻辑以及细节知识点，自然就掌握了。
 
+在了解 Promise 之前，必须要知道什么是回调函数，这是必不可少的前置知识。关于回调函数的知识，已经在上一篇文章中做了讲解。
+
+
 ## 为什么需要 Promise？
-
-我们在前面的文章《JavaScript 基础：异步编程/单线程和异步》中讲过，Javascript 是⼀⻔单线程语⾔。早期我们解决异步场景时，⼤部分情况都是通过回调函数来进⾏。
-
-（如果你还不了解单线程和异步的概念，可以先去回顾上一篇文章。）
-
-### 回调的定义
-
-把函数 A 传给另一个函数 B 调用，那么函数 A 就是回调函数。
-
-例如在浏览器中发送 ajax 网络请求，或者在定时器中执行异步任务，就是最常⻅的异步场景。发送请求后，需要等待一段时间，等服务端响应之后我们才能拿到结果。如果我们希望**等待异步任务结束之后再执⾏想要的操作**，就只能通过**回调函数**这样的⽅式进⾏处理。
-
-```js
- const dynamicFunc = function (callback) {
-  setTimeout(function () {
-    console.log("一开始在这里执行异步任务 task1，延迟3秒执行");
-    // task1： total 计数
-    let total = 0;
-    for (let i = 0; i < 10; i++) {
-      total += i;
-    }
-
-    // 等待异步任务 task1 执行完成后，通过回调传入的 callback() 函数，通知外面的调用者，可以开始做后续任务 task2 了
-    // 如果有需要的话，可以把 task1 的执行结果 total 传给外面。
-    callback && callback(total);
-  }, 3000);
-};
-
-// 执行同步任务 task2。需要先等 异步任务 task1做完。
-dynamicFunc(function (value) {
-  console.log("外面监听到，异步任务 task1已经完成了，并且还能拿到 task1的执行结果 value");
-  console.log("task1的返回值value:" + value);
-
-  // task2：将task1的执行结果乘以2
-  const result = value * 2;
-  console.log("result:" + result);
-});
-```
-
-上⾯的例⼦中，dynamicFunc() 函数里面的 setTimeout()就是⼀个异步函数，在里面执行了一些异步任务，延迟3秒执行。dynamicFunc() 的参数 callback() 就是一个回调函数。这段代码的诉求是：**先等待 异步任务 task1 做完，再做 同步任务task2。**我们来分析一下。
-
-已知异步任务 task1 需要3秒才能做完。**3秒结束后，通知 dynamicFunc 函数的调用者，里面的异步任务 task1 已经做完了，外面可以开始做后续的任务 task2 了。**那要怎么通知呢？在ES5中，最常见的做法就是**需要回调传入的 callback 函数**（也就是回调函数）， 通知外面的调用者。并且，如果有需要的话，外面还可以拿到异步任务task1的执行结果 total（详见代码注释）。
-
-（注：`callback`这个单词并不是关键字，可以自由命名，我们通常习惯性地用“回调”这个词的英文名 callback 代表回调函数。）
-
-为了能使回调函数以更优雅的⽅式进⾏调⽤，在 ES6 语法中，新增了⼀个名为 Promise 的新规范。
-
-### 回调的缺点（异步代码的困境）
-
-回调的写法比较直观，不需要 return，层层嵌套即可。但也存在两个问题：
-
--   1. 如果嵌套过深，则会出现**回调地狱**的问题。
-
--   2. 不同的函数，回调的参数，在写法上可能不一致，导致不规范、且需要**单独记忆**。
-
-我们来具体看看这两个问题。
-
-**1、回调地狱的问题**：
-
-如果多个异步函数存在依赖关系（比如，需要等第一个异步函数执行完成后，才能执行第二个异步函数；等第二个异步函数执行完毕后，才能执行第三个异步函数），就需要多个异步函数进⾏层层嵌套，⾮常不利于后续的维护，而且会导致**回调地狱**的问题。
-
-关于回调地狱，我们来举一个形象的例子：
-
-> 假设买菜、做饭、洗碗、倒厨余垃圾都是异步的。
-
-> 但真实的场景中，实际的操作流程是：买菜成功之后，才能开始做饭。做饭成功后，才能开始洗碗。洗碗完成后， 再倒厨余垃圾。这里的一系列动作就涉及到了多层嵌套调用，也就是回调地狱。
-
-关于回调地狱，我们来看看几段代码举例。
-
-1.1、定时器的代码举例：（回调地狱）
-
-```js
-setTimeout(function () {
-    console.log('qiangu1');
-    setTimeout(function () {
-        console.log('qiangu2');
-        setTimeout(function () {
-            console.log('qiangu3');
-        }, 3000);
-    }, 2000);
-}, 1000);
-```
-
-1.2、Node.js 读取文件的代码举例：（回调地狱）
-
-```js
-fs.readFile(A, 'utf-8', function (err, data) {
-    fs.readFile(B, 'utf-8', function (err, data) {
-        fs.readFile(C, 'utf-8', function (err, data) {
-            fs.readFile(D, 'utf-8', function (err, data) {
-                console.log('qianguyihao:' + data);
-            });
-        });
-    });
-});
-```
-
-上面代码的逻辑为：先读取 A 文本内容，再根据 A 文本内容读取 B，然后再根据 B 的内容读取 C。为了实现这个业务逻辑，上面的代码就很容易形成回调地狱。
-
-1.3、ajax 请求的代码举例：（回调地狱）
-
-```js
-// 伪代码
-ajax('a.json', (res1) => {
-    console.log(res1);
-    ajax('b.json', (res2) => {
-        console.log(res2);
-        ajax('c.json', (res3) => {
-            console.log(res3);
-        });
-    });
-});
-```
-
-**2、回调的写法不一致问题**：
-
-```js
-// Node.js 读取文件时，成功回调和失败回调，是通过 error参数来区分
-readFile('d:\\readme.text', function (err, data) {
-    if (error) {
-        console.log('文件读取失败');
-    } else {
-        console.log('文件读取成功');
-    }
-});
-
-// jQuery的 ajax 写法中，成功回调和失败回调，是通过两个回调函数来区分
-$.ajax({
-    url: '/ajax.json',
-    success: function (response) {
-        console.log('文件读取成功');
-    },
-    error: function (err) {
-        console.log('文件读取失败');
-    },
-});
-```
-
-我们可以看到，上面的代码中，成功回调和失败回调，写法不统一，需要单独记忆，容易出错。
-
-**小结**：
-
-在 ES5 中，当进行多层嵌套回调时，会导致代码层次过多，很难进行后续维护和二次开发；而且会导致**回调地狱**的问题。ES6 中的 Promise 就可以解决这些问题。
-
-当然， Promise 的强大功能，不止于此。我们来一探究竟。
 
 ### Promise 的介绍和优点
 
