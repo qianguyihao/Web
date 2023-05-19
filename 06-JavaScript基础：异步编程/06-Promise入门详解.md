@@ -17,13 +17,17 @@ publish: true
 
 ### Promise 的介绍和优点
 
-ES6 中的 Promise 是异步编程的一种方案。从语法上讲，Promise 是一个对象，它可以获取异步操作的消息。
+ES6 中的 Promise 是异步编程的一种很好的方案。
 
 Promise 对象, 可以**用同步的表现形式来书写异步代码**（也就是说，代码看起来是同步的，但本质上的运行过程是异步的）。使用 Promise 主要有以下好处：
 
--   1、可以很好地解决**回调地狱**的问题（避免了层层嵌套的回调函数）。
--   2、语法简洁、可读性强，便于后期维护。
--   3、Promise 对象提供了简洁的 API，使得管理异步操作更加容易。比如**多任务等待合并**。
+-   1、可以很好地解决回调地狱**的问题（避免了层层嵌套的回调函数）。
+-   2、语法简洁、统一规范、可读性强，便于后期维护。
+-   3、Promise 对象提供了简洁的 API，使得管理异步操作更加容易。比如**多任务等待合并**等等。
+
+从语法上讲，Promise 是一个对象，它可以获取异步操作的消息。
+
+从写法规范上讲，**Promise 本质上是处理异步任务的一种编写规范**，要求每个人都按照这种规范来写。异步任务成功了该怎么写、怎么 通知调用者，异步任务失败了该怎么写、怎么通知调用者，这些都有规定的写法。Promise 的目的就是要让每个使用ES6的人都遵守这种写法规范。
 
 Promise 的伪代码结构，大概是这样的：
 
@@ -47,7 +51,77 @@ myPromise()
 是时候展现真正的厨艺了().然后(买菜).然后(做饭).然后(洗碗);
 ```
 
-上面的伪代码可以看出，即便在业务逻辑上是层层嵌套，但是代码写法上，却十分优雅，也没有过多的嵌套。
+上面的伪代码可以看出，即便在业务逻辑上是层层嵌套，但是代码写法上，却十分优雅，没有过多的嵌套。
+
+### 处理异步任务的基本模型（Promise写法）
+
+ES5中，使用传统的回调函数处理异步任务时，其基本模型的写法已在上一篇内容“回调函数”里讲过。
+
+ES6中，有了 Promise之后，我们可以对那段代码进行改进。你会发现，代码简洁规范了很多。
+
+使用 Promise 处理异步任务的基本代码结构如下：
+
+```js
+// 使用 Promise 处理异步任务的基本模型
+
+// 封装异步任务
+function requestData(url) {
+  const promise = new Promise((resolve, reject) => {
+    const res = {
+      retCode: 0,
+      data: 'qiangu yihao`s data',
+      errMsg: 'network is error',
+    };
+    setTimeout(() => {
+      if (res.retCode == 0) {
+        // 网络请求成功
+        resolve(res.data);
+      } else {
+        // 网络请求失败
+        reject(res.errMsg);
+      }
+    }, 1000);
+  });
+  return promise;
+}
+
+
+// 调用异步任务
+requestData('www.qianguyihao/index1').then(data => {
+  console.log('异步任务执行成功:', data);
+}).catch(err=> {
+  console.log('异步任务执行失败:', err);
+})
+
+// 再次调用异步任务
+requestData('www.qianguyihao/index2').then(data => {
+  console.log('异步任务再次执行成功:', data);
+}).catch(err=> {
+  console.log('异步任务再次执行失败:', err);
+})
+
+
+// 调用异步任务（写法2）
+/* 这段代码的写法比较啰嗦。一般推荐上面的写法。
+const myPromise = requestData('www.qianguyihao.com/index1');
+myPromise.then(data => {
+  console.log('异步任务执行成功:', data);
+});
+myPromise.catch(err => {
+  console.log('异步任务执行失败:', err);
+});
+
+const myPromise2 = requestData('www.qianguyihao.com/index2');
+myPromise2.then(data => {
+  console.log('异步任务执行成功:', data);
+});
+myPromise2.catch(err => {
+  console.log('异步任务执行失败:', err);
+});
+*/
+```
+
+虽然现在你可能还不明白 Promise 是怎么用的。不用担心，我们继续往下学习。
 
 ## Promise 对象的用法和状态
 
