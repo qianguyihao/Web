@@ -122,22 +122,30 @@ res3 qianguyihao
 
 此外，then() 被调用多次还有一种**链式调用**的写法，它的打印结果与上面的打印结果不同，想要了解 Promise 的链式调用，需要先学习 then() 方法的返回值，我们继续往下看。
 
-## then() 方法的返回值
+## then() 方法传入回调函数的返回值
 
-> 这一段的知识点稍微难一些，但也很重要。
+> 这一段的知识点略有难度，但也很重要。
 
-### then()方法的默认返回值
+### 默认返回值
 
-then方法默认是有返回值的，它的返回值是一个Promise，所以我们可以进行链式调用。
+then()方法的参数里，是一个回调函数。这个回调函数**默认是有返回值**的，它的返回值是一个**新的Promise**。正是因为这样，我们才可以进行链式调用。
+
+这个新 Promise 的决议时机是等到当前 then() 方法参数里传入的回调函数有返回值时，进行决议。当返回值这行代码执行完毕后，这个 新 Promise 会立即进入 fulfilled 状态，进而触发下一个 then()的执行。同时可以给下一个 then()传递参数。
+
+特殊情况：
+
+当then()方法传入的回调函数抛出一个异常时，那么，这个新 Promise 处于reject状态。
 
 Promise 链式调用的伪代码：
 
  ```js
 // 伪代码
-myPromise.then().then().then()
+myPromise.then().then().catch()
  ```
 
-代码举例：
+上方代码中，因为 myPromise.then() 的返回值本身就是一个 Promise，所以才可以继续调用 then()，继续调用 catch()。
+
+then() 链式调用的代码举例：
 
 ```js
 const myPromise = new Promise((resolve, reject) => {
@@ -148,6 +156,12 @@ myPromise
   .then(res => {
     console.log('成功回调1');
     console.log('res1:', res);
+    /*
+    这里虽然什么都没写，底层默认写了如下代码：
+    return new Promise((resolve, reject) => {
+  		resolve(); // resolve() 的参数是空
+    })
+    */
   })
   .then(res => {
     console.log('成功回调2');
@@ -169,12 +183,122 @@ res1: qianguyihao
 res2: undefined
 
 成功回调3
-undefined
+res3：undefined
 ```
 
-此外，我们也可以手动 return 自己想要的数据类型，可以有以下几种情况。
+代码解释：
 
+第一个 then()里的回调，是由 myPromise 进行决议。第二个then()、第三个then() 也在**等待决议**。
 
+但是，**第二个 then() 的回调是由第一个 then()传入的回调函数，返回的 Promise 进行决议**；第三个 then() 的回调是由第二个 then()传入的回调函数，返回的 Promise 进行决议，以此类推。所以，这两个then()里面的打印参数的结果是 undefined，并没有打印 myPromise 的决议结果。
+
+换句话说，第一个 then() 在等待 myPromise 的决议结果，有决议结果后执行；第二个 then() 在等待第一个 then()参数里返回的新 Promise的决议结果，有决议结果后执行；第三个 then() 在等待第二个 then()参数里返回的新 Promise的决议结果，有决议结果后执行。
+
+此外，我们也可以在 then()的回调函数里，手动 return 自己想要的数据类型，可以有以下几种情况。
+
+### 返回普通值
+
+代码举例：
+
+```js
+const myPromise = new Promise((resolve, reject) => {
+  resolve('1号');
+});
+
+myPromise
+  .then(res => {
+    console.log('res1:', res);
+    return '2号';
+  	/*
+  	上面这行 return，相当于：
+  	return new Promise((resolve, reject)=> {
+  		resolve('2号');
+  	})
+  	*/
+  })
+  .then(res => {
+    console.log('res2:', res);
+  })
+  .then(res => {
+    console.log('res3:', res);
+  });
+```
+
+返回结果：
+
+```
+res1: 1号
+res2: 2号
+res3: undefined
+```
+
+### 返回新的 Promise
+
+代码举例：
+
+```js
+const myPromise = new Promise((resolve, reject) => {
+  resolve('qianguyihao fulfilled 1');
+});
+const myPromise2 = new Promise((resolve, reject) => {
+  resolve('qianguyihao fulfilled 2');
+});
+
+myPromise
+  .then(res => {
+    console.log('res1:', res);
+    return myPromise2;
+  })
+  .then(res => {
+    // 监听 myPromise2 的决议：
+    console.log('res2:', res);
+  })
+  .then(res => {
+    console.log('res3', res);
+  });
+```
+
+打印结果：
+
+```
+res1: qianguyihao fulfilled 1
+res2: qianguyihao fulfilled 2
+res3 undefined
+```
+
+### 返回 thenable 对象
+
+代码举例：
+
+```js
+const myPromise = new Promise((resolve, reject) => {
+  resolve('qianguyihao fulfilled 1');
+});
+
+myPromise
+  .then(res => {
+    console.log('res1:', res);
+    return {
+      then: (resolve, reject) => {
+        resolve('thenable fulfilled');
+      },
+    };
+  })
+  .then(res => {
+    console.log('res2:', res);
+  })
+  .then(res => {
+    console.log('res3', res);
+  });
+```
+
+打印结果：
+
+```
+res1: qianguyihao fulfilled 1
+res2: thenable fulfilled
+res3 undefined
+```
 
 ## Promise 实例的 catch() 方法
 
@@ -204,7 +328,7 @@ promise
 err: qianguyihao reject
 ```
 
-当 Promise 状态为 rejected 时，如果不处理、不捕获异常，行不行呢？不行，会报错。代码举例：
+当 Promise 状态为 rejected 时，如果不写失败的回调，行不行呢？不行，会报错。代码举例：
 
 ```js
       const promise = new Promise((resolve, reject) => {
