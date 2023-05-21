@@ -1,53 +1,82 @@
 ---
-title: 07-Promise的静态方法
-publish: true
+title: 09-Promise类的方法
 ---
 
 <ArticleTopAd></ArticleTopAd>
 
-## Promise 的常用 API 分类
+## Promise 类的方法简介
 
-### Promise 的实例方法
+Promise 的 API 分为两种：
 
-**实例方法**：我们需要先 new 一个 promise 实例对象，然后通过 promise 对象去调用 `then`、`catch`、`finally`方法。这几个方法就是 Promise 的实例方法。
+- Promise 实例的方法（也称为：Promis的实例方法）
+- Promise 类的方法（也称为：Promise的静态方法）
 
-Promise 的自带 API 提供了如下实例方法：
 
--   promise.then()：获取异步任务的正常结果。
 
--   promise.catch()：获取异步任务的异常结果。
+前面几篇文章，讲的都是 Promise **实例**的方法，它们都是存放在在Promise的prototype上的。今天这篇文章，我们来讲一下 Promise **类**的方法。
 
--   promise.finaly()：异步任务无论成功与否，都会执行。
-
-### Promise 的静态方法
-
-前面的几篇文章，讲的都是 Promise 的**实例方法**；今天这篇文章，我们来详细讲一下 Promise 的**静态方法**。
-
-**静态方法**：可以直接通过大写的`Promise.xxx`调用的方法。这里的`xxx`就称之为静态方法。
+Promise **类**的方法：可以直接通过大写的`Promise.xxx`调用的方法。这里的`xxx`就称之为静态方法。
 
 Promise 的自带 API 提供了如下静态方法：
 
 -   `Promise.resolve()`
-
 -   `Promise.reject()`
-
 -   `Promsie.all()`：并发处理多个异步任务，所有任务都执行成功，才算成功（走到 resolve）；只要有一个失败，就会马上走到 reject，整体都算失败。
-
 -   `Promise.race()`：并发处理多个异步任务，返回的是第一个执行完成的 promise，且状态和第一个完成的任务状态保持一致。
-
 -   `Promise.allSettled()`：并发处理多个异步任务，返回所有任务的执行结果（包括成功、失败）。当你有多个彼此不依赖的异步任务执行完成时，或者你想知道每个 promise 的结果时，通常使用它。
-
--   `Promise.all()`
-
 -   `Promise.any()`
 
 ## Promise.resolve() 和 Promise.reject()
 
-当我们在定义一个 promise 的过程中，如果涉及到异步操作，那就需要通过`new Promise`的方式创建一个 Promise 实例。
+### 使用场景
 
-但有些场景下，我们并没有异步操作，但**仍然想调用 promise.then**，此时，我们可以用 `Promise.resolve()` 将其包装成成功的状态。同理，`Promise.reject()`可以包装成失败的状态。
+当我们在定义一个 Promise 的过程中，如果涉及到异步操作，那就需要通过`new Promise`的方式创建一个 Promise 实例。
 
-比如说，有的时候，promise 里面并不涉及异步操作，我只是**单纯地想通过 promise 对象返回一个字符串**（有的业务就是有这样的需求），那就可以通过 `Promise.reslove('字符串')` `Promise.reject('字符串')` 、这种**简写**的方式返回。
+但有些场景下，我们已经有一个**现成的内容**了，希望**将其转成 Promise 来使用**。此时，我们可以用 `Promise.resolve()` 将其封装为成功的状态。同理，用`Promise.reject()`可以封装为失败的状态。
+
+比如说，有时候，promise 里面并没有异步操作，我只是**单纯地想通过 promise 对象返回一个字符串**（有的业务就是有这样的需求），那就可以通过 `Promise.reslove('字符串')` `Promise.reject('字符串')` 、这种**简写**的方式返回。
+
+代码举例：
+
+```js
+Promise.resolve('qianguyihao').then(res => {
+  console.log('res:', res);
+});
+```
+
+### 用法拆解
+
+`Promise.resolve()`的用法相当于new Promise()，并执行resolve()操作。下面这两种写法是等价的：
+
+```js
+// 写法1：Promise 类的 resolve() 方法
+Promise.resolve(params);
+
+// 写法2：Promise 实例的 resolve() 方法
+new Promise((resolve, reject)=> resolve(params));
+```
+
+Promise.reject()的用法同理。下面这两种写法是等价的：
+
+```js
+// 写法1：Promise 类的 reject() 方法
+Promise.reject(params);
+
+// 写法2：Promise 实例的 reject() 方法
+new Promise((resolve, reject)=> reject(params));
+```
+
+### 参数的形态
+
+
+
+
+
+
+
+
+
+
 
 这两种情况，我们来对比看看。
 
@@ -526,10 +555,8 @@ Promise 不仅能解决嵌套异步任务的**回调地域**问题，也可做�
 
 Promise 本身不是异步的，但是它可以封装异步任务，并对异步操作进行良好的状态管理，这便是 Promise 的魅力所在。
 
-## 我的公众号
+## 赞赏作者
 
-想学习**更多技能**？不妨关注我的微信公众号：**千古壹号**。
+创作不易，你的赞赏和认可，是我更新的最大动力：
 
-扫一扫，你将发现另一个全新的世界，而这将是一场美丽的意外：
-
-![](https://img.smyhvae.com/20200102.png)
+![](https://img.smyhvae.com/20220401_1800.jpg)

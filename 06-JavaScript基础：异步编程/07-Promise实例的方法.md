@@ -645,10 +645,6 @@ promise1 决议后都会执行的代码
 promise2 决议后都会执行的代码
 ```
 
-
-
-
-
 ## 处理 rejected 失败状态的两种写法
 
 >  这一段是针对本文知识点的回顾和应用。
@@ -773,4 +769,10 @@ Promise 是⼀个拥有 then ⽅法的对象或函数。任何符合 promise 规
 关于 promise 规范的详细解读，可以看下面这个链接：
 
 -   Promises/A+ 规范：<https://promisesaplus.com/>
+
+## 赞赏作者
+
+创作不易，你的赞赏和认可，是我更新的最大动力：
+
+![](https://img.smyhvae.com/20220401_1800.jpg)
 
