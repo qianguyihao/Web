@@ -19,9 +19,9 @@ Promise 实例提供了如下方法：
 
 ## Promise 实例的 then()方法
 
-###  then()方法的参数
-
 then()方法是 Promise实例上的一个方法。它其实是放在Promise的原型上的 `Promise.prototype.then`。
+
+###  then()方法的参数
 
 then()方法可以接收一个参数，也可以接收两个参数。两个参数时，分别代表两个回调函数，这两个函数一直处于**监听状态**：
 
@@ -132,9 +132,7 @@ then()方法的参数里，是一个回调函数。这个回调函数**默认是
 
 这个新 Promise 的决议时机是等到当前 then() 方法参数里传入的回调函数有返回值时，进行决议。当返回值这行代码执行完毕后，这个 新 Promise 会立即进入 fulfilled 状态，进而触发下一个 then()的执行。同时可以给下一个 then()传递参数。
 
-特殊情况：
-
-当then()方法传入的回调函数抛出一个异常时，那么，这个新 Promise 处于reject状态。
+特殊情况：当then()方法传入的回调函数抛出异常时，那么，这个新 Promise 处于rejected 状态。（后续再讲）
 
 Promise 链式调用的伪代码：
 
@@ -240,6 +238,7 @@ res3: undefined
 const myPromise = new Promise((resolve, reject) => {
   resolve('qianguyihao fulfilled 1');
 });
+
 const myPromise2 = new Promise((resolve, reject) => {
   resolve('qianguyihao fulfilled 2');
 });
@@ -302,6 +301,8 @@ res3 undefined
 
 ## Promise 实例的 catch() 方法
 
+catch()方法是 Promise实例上的一个方法。它其实是放在Promise的原型上的 `Promise.prototype.catch`。
+
 ### catch() 方法的参数
 
 catch()方法可以接收一个参数。这个参数是一直处于**监听状态**的回调函数。当 Promise 的状态为 rejected（任务执行失败）时会立即执行这个回调函数。
@@ -328,7 +329,7 @@ promise
 err: qianguyihao reject
 ```
 
-当 Promise 状态为 rejected 时，如果不写失败的回调，行不行呢？不行，会报错。代码举例：
+当 Promise 状态为 rejected 时，如果不处理失败的回调，行不行呢？不行，会报错。代码举例：
 
 ```js
       const promise = new Promise((resolve, reject) => {
@@ -398,9 +399,92 @@ err3: qianguyihao rejected
 
 当 myPromise 状态为 rejected 时，下面的四个 catch() 方法**都在监听**，所以这四个 catch() 方法都会收到状态确定的通知，进而都会执行。
 
+## catch() 方法传入回调函数的返回值
+
+### 默认返回值
+
+then()方法的参数里，是一个回调函数。这个回调函数**默认也是有返回值**的，它的返回值是一个**新的Promise**。所以，catch() 方法后面，我们可以继续调用 then() 或者 catch()。
+
+这个新 Promise 的决议时机是等到当前 catch() 方法参数里传入的回调函数有返回值时，进行决议。当返回值这行代码执行完毕后，这个 新 Promise 会立即进入 fulfilled 状态，进而触发下一个then/catch 函数的执行。同时可以给下一个 then/catch 传递参数。
+
+代码举例：
+
+```js
+const myPromise = new Promise((resolve, reject) => {
+  reject('qianguyihao rejected');
+});
+
+myPromise
+  .catch(err => {
+    console.log('err:', err);
+    /*
+    这里虽然什么都没写，底层默认写了如下代码：
+    return new Promise((resolve, reject) => {
+      resolve(); // resolve() 的参数是空
+    })
+    */
+  })
+  .then(res => {
+    console.log('res:', res);
+  });
+```
+
+打印结果：
+
+```
+err: qianguyihao rejected
+res: undefined
+```
+
+此外，我们也可以在 catch()的回调函数里，手动 return 自己想要的数据类型，可以有以下几种情况：
+
+- 返回普通值
+- 返回新的 Promise对象
+- 返回 thenable 对象
+
+这些情况的写法与前面讲的 then() 方法类似。接下来我们仅以“返回普通值”作为例子进行代码演示。
+
+### 返回普通值
+
+代码举例：
+
+```js
+const myPromise = new Promise((resolve, reject) => {
+  reject('1号');
+});
+
+myPromise
+  .catch(err => {
+    console.log('err1:', err);
+    return '2号';
+    /*
+    上面这行 return，相当于：
+    return new Promise((resolve, reject)=> {
+      resolve('2号');
+    })
+    */
+  })
+  .then(res => {
+    console.log('res2:', res);
+  })
+  .then(res => {
+    console.log('res3:', res);
+  });
+```
+
+返回结果：
+
+```
+err1: 1号
+res2: 2号
+res3: undefined
+```
 
 
-## 处理 reject 失败状态的两种写法
+
+
+
+## 处理 rejected 失败状态的两种写法
 
 我们有两种写法可以捕获并处理 reject 异常状态：
 
@@ -510,10 +594,6 @@ promiseB()
 ```
 
 **代码解释**：写法 1 和写法 2 的作用是完全等价的。只不过，写法 2 是把 catch 里面的代码作为 then 里面的第二个参数而已。
-
-### 不处理 reject() 异常，会怎么样？
-
-
 
 
 
