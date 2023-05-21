@@ -13,7 +13,7 @@ Promise 的 API 分为两种：
 
 
 
-前面几篇文章，讲的都是 Promise **实例**的方法，它们都是存放在在Promise的prototype上的。今天这篇文章，我们来讲一下 Promise **类**的方法。
+前面几篇文章，讲的都是 Promise **实例**的方法，它们都是存放在Promise的prototype上的。今天这篇文章，我们来讲一下 Promise **类**的方法。
 
 Promise **类**的方法：可以直接通过大写的`Promise.xxx`调用的方法。这里的`xxx`就称之为静态方法。
 
@@ -34,7 +34,7 @@ Promise 的自带 API 提供了如下静态方法：
 
 但有些场景下，我们已经有一个**现成的内容**了，希望**将其转成 Promise 来使用**。此时，我们可以用 `Promise.resolve()` 将其封装为成功的状态。同理，用`Promise.reject()`可以封装为失败的状态。
 
-比如说，有时候，promise 里面并没有异步操作，我只是**单纯地想通过 promise 对象返回一个字符串**（有的业务就是有这样的需求），那就可以通过 `Promise.reslove('字符串')` `Promise.reject('字符串')` 、这种**简写**的方式返回。
+比如说，有时候，promise 里面并没有异步操作，我只是**单纯地想通过 promise 的方式返回一个字符串**（有的业务就是有这样的需求），那就可以通过 `Promise.reslove('字符串')`、 `Promise.reject('字符串')` 这种**简写**的方式返回。
 
 代码举例：
 
@@ -44,41 +44,53 @@ Promise.resolve('qianguyihao').then(res => {
 });
 ```
 
+`Promise.resolve('qianguyihao')` 这种写法似乎过于啰嗦，直接 `return 'qianguyihao'`不行吗？that depands。举个例子，我们在调用别人的方法时，对方如果要求返回值必须是 Promise对象，那么，Promise.resolve() 就能派上用场了。
+
+`Promise.resolve()`和`Promise.reject()`的返回值就是一个 Promise。
+
 ### 用法拆解
 
 `Promise.resolve()`的用法相当于new Promise()，并执行resolve()操作。下面这两种写法是等价的：
 
 ```js
 // 写法1：Promise 类的 resolve() 方法
-Promise.resolve(params);
+const promise = Promise.resolve(params);
 
 // 写法2：Promise 实例的 resolve() 方法
-new Promise((resolve, reject)=> resolve(params));
+const promise = new Promise((resolve, reject)=> resolve(params));
 ```
 
 Promise.reject()的用法同理。下面这两种写法是等价的：
 
 ```js
 // 写法1：Promise 类的 reject() 方法
-Promise.reject(params);
+const promise = Promise.reject(params);
 
 // 写法2：Promise 实例的 reject() 方法
-new Promise((resolve, reject)=> reject(params));
+const promise = new Promise((resolve, reject)=> reject(params));
 ```
 
-### 参数的形态
+写法2显然过于啰嗦，写法1用得更多。
+
+### resolve()的参数
+
+resolve()参数中传入的值，可以有很多种类型：
+
+- 情况1：如果resolve()中传入**普通的值或者普通对象**，那么这个值会作为then()回调的参数。Promise 的状态为fulfilled。
+- 情况2：如果resolve()中传入的是**另外一个新的 Promise**，那么原 Promise 的状态将**交给新的 Promise 决定**。
+- 情况3：如果resolve()中传入的是**thenable** 对象，那就**会执行该then()方法**，并且根据**then()方法的结果来决定Promise的状态**。
+
+我们在前面的文章《Promise入门详解》中针对这三种情况做了详细介绍，在此不再赘述。
+
+reject()的参数中，无论传入什么值，Promise都会直接进入 rejected 状态，并触发 catch() 方法的执行。
 
 
 
 
+## 代码详解
 
 
-
-
-
-
-
-这两种情况，我们来对比看看。
+resolve()、reject()既可以作为 Promise 实例的方法，也可以作为 Promise 类的方法。这两种情况，我们来对比看看。
 
 例 1：
 

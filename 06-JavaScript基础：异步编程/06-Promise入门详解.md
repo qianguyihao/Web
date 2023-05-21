@@ -633,7 +633,7 @@ qianguyihao then
 {"name":"qianguyihao"}
 ```
 
-
+另外，reject()的参数中可以传入什么值呢？无论传入什么值，Promise都会直接进入 rejected 状态，并触发 catch() 方法的执行。
 
 ## 小结
 
