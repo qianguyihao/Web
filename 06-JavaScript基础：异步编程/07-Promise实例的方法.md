@@ -157,7 +157,7 @@ myPromise
     /*
     这里虽然什么都没写，底层默认写了如下代码：
     return new Promise((resolve, reject) => {
-  		resolve(); // resolve() 的参数是空
+  		resolve(); // resolve() 的参数是空，相当于 resolve(undefined)
     })
     */
   })
@@ -329,21 +329,7 @@ promise
 err: qianguyihao reject
 ```
 
-当 Promise 状态为 rejected 时，如果不处理失败的回调，行不行呢？不行，会报错。代码举例：
 
-```js
-      const promise = new Promise((resolve, reject) => {
-        reject('qianguyihao reject');
-      });
-
-      promise.then(res => {
-        console.log('res:', res);
-      });
-```
-
-![image-20230521135912267](https://img.smyhvae.com/image-20230521135912267.png)
-
-这个报错的意思是：未捕获 rejected 失败状态的 Promise 异常。
 
 ### catch() 方法可以被多次调用
 
@@ -594,6 +580,135 @@ promiseB()
 ```
 
 **代码解释**：写法 1 和写法 2 的作用是完全等价的。只不过，写法 2 是把 catch 里面的代码作为 then 里面的第二个参数而已。
+
+## catch() 方法的执行时机
+
+### 找到最近的 catch() 去执行
+
+我们先来看一段代码：
+
+```js
+const myPromise = new Promise((resolve, reject) => {
+  reject('qianguyihao rejected');
+});
+
+myPromise
+  .then(res => {
+    console.log('res1:', res);
+  })
+  .then(res => {
+    console.log('res2:', res);
+  })
+  .catch(err => {
+    console.log('err:', err);
+  });
+```
+
+打印结果：
+
+```
+err: qianguyihao rejected
+```
+
+上方代码中的 catch() 是属于哪个 Promise 实例的方法呢？其实没有严格的界限。myPromise 的状态进入 rejected之后，它会找到**最近的catch()**去执行。这是 Promise的内部机制。
+
+### Promise 抛出 rejected 异常时，一定要捕获并处理
+
+当 Promise 状态为 rejected 时，表示抛出异常，如果不处理失败的回调，行不行呢？不行，会报错。代码举例：
+
+```js
+      const promise = new Promise((resolve, reject) => {
+        // 在这里抛出异常
+        reject('qianguyihao reject');
+      });
+
+      promise.then(res => {
+        console.log('res:', res);
+      });
+```
+
+![image-20230521135912267](https://img.smyhvae.com/image-20230521135912267.png)
+
+这个报错的意思是：未捕获 rejected 失败状态的 Promise 异常。必须要加一个 catch() 进行捕获。
+
+书写 Promise 时，比较好的习惯是，无论如何都要在末尾写一个 catch() 方法。
+
+### 可在 then() 中通过 throw 抛出异常
+
+先来看一段代码：
+
+```js
+const myPromise = new Promise((resolve, reject) => {
+  resolve('aaa');
+});
+
+myPromise
+  .then(res => {
+    console.log('res1:', res);
+   // 如果我想在这里 return 一个失败状态的promise，该怎么做？
+  })
+  .then(res => {
+    console.log('res2:', res);
+  })
+  .catch(err => {
+    console.log('err:', err);
+  });
+```
+
+注意看注释，如果在那个位置return 一个失败状态的promise，该怎么做？
+
+做法1：
+
+```js
+return new Promise((resolve, reject)=> {
+  reject('第二个 promise 执行失败');
+})
+```
+
+做法2：
+
+```js
+throw new Error('第二个 Promise 执行失败');
+```
+
+做法2比做法1更为常用，完整代码如下：
+
+```js
+const myPromise = new Promise((resolve, reject) => {
+  resolve('aaa');
+});
+
+myPromise
+  .then(res => {
+    console.log('res1:', res);
+    throw new Error('第二个 Promise 执行失败');
+  })
+  .then(res => {
+    console.log('res2:', res);
+  })
+  .catch(err => {
+    console.log('err:', err);
+  });
+```
+
+打印结果：
+
+```
+res1: aaa
+err: Error: 第二个 Promise 执行失败
+```
+
+当通过 throw 抛出异常后，当前 then() 里的后续代码会暂停执行，后续的 then() 也会暂停执行，直接往后走到最近的 catch()。
+
+throw 这种写法在实战开发中很常用，需要理解并记住。
+
+
+
+
+
+
+
+
 
 
 
