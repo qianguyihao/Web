@@ -470,117 +470,6 @@ res3: undefined
 
 
 
-## 处理 rejected 失败状态的两种写法
-
-我们有两种写法可以捕获并处理 reject 异常状态：
-
--   写法 1：通过 catch 方法捕获 状态变为已 reject 时的 promise
-
--   写法 2：then 可以传两个参数，第⼀个参数为 resolve 后执⾏，第⼆个参数为 reject 后执⾏。
-
-### 代码格式
-
-这两种写法的**代码格式**如下：
-
-```js
-// 第一步：model层的接口封装
-function promiseA() {
-    return new Promise((resolve, reject) => {
-        // 这里做异步任务（比如 ajax 请求接口，或者定时器）
-				...
-        ...
-    });
-}
-
-const onResolve = function (res) {
-    console.log(res);
-};
-
-const onReject = function (err) {
-    console.log(err);
-};
-
-// 写法1：通过 catch 方法捕获 状态变为已拒绝时的 promise
-promiseA().then(onResolve).catch(onReject);
-
-// 写法2：then 可以传两个参数，第⼀个参数为 resolve 后执⾏，第⼆个参数为 reject 后执⾏
-promiseA().then(onResolve, onReject);
-
-// 【错误写法】写法3：通过 try catch 捕获 状态变为已拒绝时的 promise
-// 这种写法是错误的，因为 try catch只能捕获同步代码里的异常，而  promise.reject() 是异步代码。
-try {
-    promiseA().then(onResolve);
-} catch (e) {
-    // 语法上，catch必须要传入一个参数，否则报错
-    onReject(e);
-}
-```
-
-如注释所述：前面的段落里，我们捕获 reject 异常用的就是写法 1。如果你写法 2 也是可以的。
-
-需要注意的是，上面的写法 3 是错误的。运行之后，控制台会报如下错误：
-
-![](http://img.smyhvae.com/20210430_1553.png)
-
-[解释如下](https://blog.csdn.net/xiaoluodecai/article/details/107297404)：
-
-try-catch 主要用于捕获异常，注意，这里的异常是指**同步**函数的异常。如果 try 里面的异步方法出现了异常，此时 catch 是无法捕获到异常的。
-
-原因是：当异步函数抛出异常时，对于宏任务而言，执行函数时已经将该函数推入栈，此时并不在 try-catch 所在的栈，所以 try-catch 并不能捕获到错误。对于微任务而言（比如 promise）promise 的构造函数的异常只能被自带的 reject 也就是.catch 函数捕获到。
-
-（2）写法 1 中，`promiseA().then().catch()`和`promiseA().catch().then()`区别在于：前者可以捕获到 `then` 里面的异常，后者不可以。
-
-### 代码举例
-
-这两种写法的**代码举例**如下：
-
-```js
-function promiseA() {
-    return new Promise((resolve, reject) => {
-        // 这里做异步任务（比如 ajax 请求接口，或者定时器）
-            ...
-            ...
-    });
-}
-
-// 写法1
-promiseB()
-    .then((res) => {
-        // 从 resolve 获取正常结果
-        console.log('接口请求成功时，走这里');
-        console.log(res);
-    })
-    .catch((err) => {
-        // 从 reject 获取异常结果
-        console.log('接口请求失败时，走这里');
-        console.log(err);
-    })
-    .finally(() => {
-        console.log('无论接口请求成功与否，都会走这里');
-    });
-
-
-// 写法 2：（和写法 1 等价）
-promiseB()
-    .then(
-        (res) => {
-            // 从 resolve 获取正常结果
-            console.log('接口请求成功时，走这里');
-            console.log(res);
-        },
-        (err) => {
-            // 从 reject 获取异常结果
-            console.log('接口请求失败时，走这里');
-            console.log(err);
-        }
-    )
-    .finally(() => {
-        console.log('无论接口请求成功与否，都会走这里');
-    });
-```
-
-**代码解释**：写法 1 和写法 2 的作用是完全等价的。只不过，写法 2 是把 catch 里面的代码作为 then 里面的第二个参数而已。
-
 ## catch() 方法的执行时机
 
 ### 找到最近的 catch() 去执行
@@ -655,7 +544,7 @@ myPromise
   });
 ```
 
-注意看注释，如果在那个位置return 一个失败状态的promise，该怎么做？
+注意看注释，如果在那个位置return 一个失败状态的Promise，该怎么做？
 
 做法1：
 
@@ -681,6 +570,7 @@ const myPromise = new Promise((resolve, reject) => {
 myPromise
   .then(res => {
     console.log('res1:', res);
+    // 抛出异常：相当于 return 一个失败状态的 Promise
     throw new Error('第二个 Promise 执行失败');
   })
   .then(res => {
@@ -704,9 +594,173 @@ throw 这种写法在实战开发中很常用，需要理解并记住。
 
 
 
+## Promise 实例的 finally() 方法
+
+finally() 方法是在ES9（ES 2018）中新增的一个特性，表示 Promise 对象无论变成 fulfilled 状态 还是 rejected 状态，finally() 里传入的回调函数都会被执行。
+
+finally() 里可传入一个参数，这个参数是一个回调函数。回调函数不传参数，因为前面无论是 fulfilled 状态，还是 rejected状态，这个回调函数都会执行。
+
+finally() 方法很实用，可以避免我们写很多重复代码，它的执行时机也有很重要的应用场景。
+
+代码举例：
+
+```js
+const promise1 = new Promise((resolve, reject) => {
+  resolve('promise1 fulfilled');
+});
+
+const promise2 = new Promise((resolve, reject) => {
+  reject('promise2 rejected');
+});
+
+promise1
+  .then(res => {
+    console.log('res1:', res);
+  })
+  .catch(err => {
+    console.log('err1:', err);
+  })
+  .finally(() => {
+    console.log('promise1 决议后都会执行的代码');
+  });
+
+promise2
+  .then(res => {
+    console.log('res2:', res);
+  })
+  .catch(err => {
+    console.log('err2:', err);
+  })
+  .finally(() => {
+    console.log('promise2 决议后都会执行的代码');
+  });
+```
+
+打印结果：
+
+```
+res1: promise1 fulfilled
+err2: promise2 rejected
+promise1 决议后都会执行的代码
+promise2 决议后都会执行的代码
+```
 
 
 
+
+
+## 处理 rejected 失败状态的两种写法
+
+>  这一段是针对本文知识点的回顾和应用。
+
+我们有两种写法可以捕获并处理 reject 异常状态：
+
+-   写法 1：通过 catch 方法捕获 状态变为已 reject 时的 promise
+
+-   写法 2：then 可以传两个参数，第⼀个参数为 resolve 后执⾏，第⼆个参数为 reject 后执⾏。
+
+### 代码格式
+
+这两种写法的**代码格式**如下：
+
+```js
+// 第一步：model层的接口封装
+function promiseA() {
+    return new Promise((resolve, reject) => {
+        // 这里做异步任务（比如 ajax 请求接口，或者定时器）
+				...
+        ...
+    });
+}
+
+const onResolve = function (res) {
+    console.log(res);
+};
+
+const onReject = function (err) {
+    console.log(err);
+};
+
+// 写法1：通过 catch 方法捕获 状态变为已拒绝时的 promise
+promiseA().then(onResolve).catch(onReject);
+
+// 写法2：then 可以传两个参数，第⼀个参数为 resolve 后执⾏，第⼆个参数为 reject 后执⾏
+promiseA().then(onResolve, onReject);
+
+// 【错误写法】写法3：通过 try catch 捕获 状态变为已拒绝时的 promise
+// 这种写法是错误的，因为 try catch只能捕获同步代码里的异常，而  promise.reject() 是异步代码。
+try {
+    promiseA().then(onResolve);
+} catch (e) {
+    // 语法上，catch必须要传入一个参数，否则报错
+    onReject(e);
+}
+```
+
+如注释所述：前面的段落里，我们捕获 reject 异常用的就是写法 1。如果你写法 2 也是可以的。
+
+需要注意的是，上面的写法 3 是错误的。运行之后，控制台会报如下错误：
+
+![](http://img.smyhvae.com/20210430_1553.png)
+
+[解释如下](https://blog.csdn.net/xiaoluodecai/article/details/107297404)：
+
+try-catch 主要用于捕获异常，注意，这里的异常是指**同步**函数的异常。如果 try 里面的异步方法出现了异常，此时 catch 是无法捕获到异常的。
+
+原因是：当异步函数抛出异常时，对于宏任务而言，执行函数时已经将该函数推入栈，此时并不在 try-catch 所在的栈，所以 try-catch 并不能捕获到错误。对于微任务而言（比如 promise）promise 的构造函数的异常只能被自带的 reject 也就是.catch 函数捕获到。
+
+（2）写法 1 中，`promiseA().then().catch()`和`promiseA().catch().then()`区别在于：前者可以捕获到 `then` 里面的异常，后者不可以。
+
+### 代码举例
+
+这两种写法在实战开发中的**代码举例**如下：
+
+```js
+function promiseA() {
+    return new Promise((resolve, reject) => {
+        // 这里做异步任务（比如 ajax 请求接口，或者定时器）
+            ...
+            ...
+    });
+}
+
+// 写法1
+promiseB()
+    .then((res) => {
+        // 从 resolve 获取正常结果
+        console.log('接口请求成功时，走这里');
+        console.log(res);
+    })
+    .catch((err) => {
+        // 从 reject 获取异常结果
+        console.log('接口请求失败时，走这里');
+        console.log(err);
+    })
+    .finally(() => {
+        console.log('无论接口请求成功与否，都会走这里');
+    });
+
+
+// 写法 2：（和写法 1 等价）
+promiseB()
+    .then(
+        (res) => {
+            // 从 resolve 获取正常结果
+            console.log('接口请求成功时，走这里');
+            console.log(res);
+        },
+        (err) => {
+            // 从 reject 获取异常结果
+            console.log('接口请求失败时，走这里');
+            console.log(err);
+        }
+    )
+    .finally(() => {
+        console.log('无论接口请求成功与否，都会走这里');
+    });
+```
+
+**代码解释**：写法 1 和写法 2 的作用是完全等价的。只不过，写法 2 是把 catch 里面的代码作为 then 里面的第二个参数而已。
 
 
 
