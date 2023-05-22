@@ -11,8 +11,6 @@ Promise 的 API 分为两种：
 - Promise 实例的方法（也称为：Promis的实例方法）
 - Promise 类的方法（也称为：Promise的静态方法）
 
-
-
 前面几篇文章，讲的都是 Promise **实例**的方法，它们都是存放在Promise的prototype上的。今天这篇文章，我们来讲一下 Promise **类**的方法。
 
 Promise **类**的方法：可以直接通过大写的`Promise.xxx`调用的方法。这里的`xxx`就称之为静态方法。
@@ -39,9 +37,14 @@ Promise 的自带 API 提供了如下静态方法：
 代码举例：
 
 ```js
-Promise.resolve('qianguyihao').then(res => {
+const promise = Promise.resolve('qianguyihao')
+
+promise.then(res => {
   console.log('res:', res);
 });
+
+// 上方代码如果是连续书写的话，也可以简写成：
+Promise.resolve('qianguyihao').then(res => console.log('res:', res));
 ```
 
 `Promise.resolve('qianguyihao')` 这种写法似乎过于啰嗦，直接 `return 'qianguyihao'`不行吗？that depands。举个例子，我们在调用别人的方法时，对方如果要求返回值必须是 Promise对象，那么，Promise.resolve() 就能派上用场了。
@@ -67,14 +70,17 @@ Promise.reject()的用法同理。下面这两种写法是等价的：
 const promise = Promise.reject(params);
 
 // 写法2：Promise 实例的 reject() 方法
-const promise = new Promise((resolve, reject)=> reject(params));
+// 第一个形参用不到，我们通常用 下划线 表示。这是一种约定俗成的规范写法。
+const promise = new Promise((_, reject)=> reject(params));
 ```
 
 写法2显然过于啰嗦，写法1用得更多。
 
+写法2中，我们可以学到一个写代码的小技巧：如果某个形参我们用不到，但又必须写出来的话，我们通常用**下划线**表示。这是一种约定俗成的规范写法，比较简洁。
+
 ### resolve()的参数
 
-resolve()参数中传入的值，可以有很多种类型：
+resolve()参数中传入的值，可以有很多种类型，进而决定 Promise 的状态：
 
 - 情况1：如果resolve()中传入**普通的值或者普通对象**，那么这个值会作为then()回调的参数。Promise 的状态为fulfilled。
 - 情况2：如果resolve()中传入的是**另外一个新的 Promise**，那么原 Promise 的状态将**交给新的 Promise 决定**。
@@ -84,10 +90,7 @@ resolve()参数中传入的值，可以有很多种类型：
 
 reject()的参数中，无论传入什么值，Promise都会直接进入 rejected 状态，并触发 catch() 方法的执行。
 
-
-
-
-## 代码详解
+### 代码详解
 
 
 resolve()、reject()既可以作为 Promise 实例的方法，也可以作为 Promise 类的方法。这两种情况，我们来对比看看。
@@ -150,7 +153,14 @@ foo(false).catch((err) => {
 
 ## Promise.all()
 
-`Promsie.all([p1, p2, p3])`：并发处理多个异步任务，所有任务都执行成功，才算成功（才会走到 then）；只要有一个任务失败，就会马上走到 catch，整体都算失败。参数里传的是 多个 promise 实例组成的数组。
+Promise.all()的参数是一个数组，数组里可以填写多个 Promise。比如 `Promsie.all([p1, p2, p3])`。它的作用是将p1、p2、p3 等多个 Promise 包裹在一起，**组成一个新的 Promise**。
+
+**新 Promise 的状态**由 p1、p2、p3 所在数组里所有的 Promse **共同决定**：
+
+- 当 p1、p2、p3等所有的 Promise 状态变为 fulfilled 时，新 Promise 的状态变为 fulfilled，并且会将p1、p2、p3 等所有Promise的返回值组成一个数组。
+- 当p1、p2、p3 等 Promise中有一个 Promise 状态为 rejected()时，新 Promise 的状态变为 rejected，并且会将第一个reject的返回值作为catch() 的参数。
+
+Promsie.all([p, p2, p3])`的**使用场景**：并发处理多个异步任务，所有任务都执行成功，才算成功（才会走到 then）；只要有一个任务失败，就会马上走到 catch，整体都算失败。参数里传的是多个 Promise 实例组成的数组。
 
 ### 语法举例
 
@@ -182,7 +192,7 @@ Promise.all([promise1, promise2, promise3])
     .then((res) => {
         // 三个异步任务都执行成功，才会走到这里
         // 这里拿到的 res，是三个成功的返回结果组成的数组
-        console.log(JSON.stringify(res));
+        console.log('res:' + JSON.stringify(res));
     })
     .catch((err) => {
         // 只要有一个异步任务执行失败，就会马上走到这里
@@ -201,7 +211,8 @@ Promise.all([promise1, promise2, promise3])
 
 // 3秒后
 执行 promise3
-["promise 1 成功","promise 2 成功","promise 3 成功"]
+
+res:["promise 1 成功","promise 2 成功","promise 3 成功"]
 ```
 
 **2、异步任务有至少一个执行失败时**：
@@ -256,11 +267,11 @@ Promise.all([promise1, promise2, promise3])
 
 可以看到，当 promise2 执行失败之后，马上就走到了 catch，而且 promise3 里的 resolve 并没有执行。
 
-### Promise.all()举例：多张图片上传
+### Promise.all()案例：多张图片上传
 
 比如说，现在有一个**图片上传**的接口，每次请求接口时只能上传一张图片。需求是：当用户连续上传完九张图片（正好凑齐九宫格）之后，给用户一个“上传成功”的提示。这个时候，我们就可以使用`Promsie.all()`。
 
-代码举例如下：
+1、代码举例如下：
 
 ```js
 const imgArr = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg', '7.jpg', '8.jpg', '9.jpg'];
@@ -288,11 +299,11 @@ Promise.all(promiseArr)
     });
 ```
 
-上方代码解释：
+2、上方代码解释：
 
-1、只有九张图片都上传成功，才会走到 then。
+（1）只有九张图片都上传成功，才会走到 then。
 
-2、按时间顺序来看，假设第一张图片上传成功，第二张图片上传失败，那么，最终的表现是：
+（2）按时间顺序来看，假设第一张图片上传成功，第二张图片上传失败，那么，最终的表现是：
 
 -   对于前端来说，九张图都会走到 reject；整体会走到 catch，不会走到 then。
 
@@ -308,7 +319,7 @@ Promise.all(promiseArr)
 
 4、**思维拓展**：
 
--   拓展 1：如果你希望九张图同时上传，并且想知道哪些图上传成功、哪些图上传失败，则可以这样做：**无论 upload img 接口请求成功与否，全都执行 reslove**。这样的话，最终一定会走到 then，然后再根据接口返回的结果判断九张图片的上传成功与否。
+-   拓展 1：如果你希望九张图同时上传，并且想知道哪些图上传成功、哪些图上传失败，则可以这样做：**无论 upload img 接口请求成功与否，全都执行 resolve**。这样的话，最终一定会走到 then，然后再根据接口返回的结果判断九张图片的上传成功与否。
 
 -   拓展 2：实战开发中，在做多张图片上传时，可能是一张一张地单独上传，各自的上传操作相互独立。此时 `Promise.all`便不再适用，这就得具体需求具体分析了。
 
