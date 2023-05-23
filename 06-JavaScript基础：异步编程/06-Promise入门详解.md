@@ -487,7 +487,7 @@ promiseB
 
 ### 
 
-##  Promise状态进一步理解：resolve() 传入不同的值（重要）
+##  Promise状态进一步理解：resolve() 传入的参数（重要）
 
 执行 resolve()之后，Promise 的状态一定会变成 fulfilled 吗？这是不一定的。
 

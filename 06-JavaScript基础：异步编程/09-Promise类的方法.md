@@ -78,7 +78,7 @@ const promise = new Promise((_, reject)=> reject(params));
 
 写法2中，我们可以学到一个写代码的小技巧：如果某个形参我们用不到，但又必须写出来的话，我们通常用**下划线**表示。这是一种约定俗成的规范写法，比较简洁。
 
-### resolve()的参数
+### resolve()和reject()的参数
 
 resolve()参数中传入的值，可以有很多种类型，进而决定 Promise 的状态：
 
@@ -86,9 +86,9 @@ resolve()参数中传入的值，可以有很多种类型，进而决定 Promise
 - 情况2：如果resolve()中传入的是**另外一个新的 Promise**，那么原 Promise 的状态将**交给新的 Promise 决定**。
 - 情况3：如果resolve()中传入的是**thenable** 对象，那就**会执行该then()方法**，并且根据**then()方法的结果来决定Promise的状态**。
 
-我们在前面的文章《Promise入门详解》中针对这三种情况做了详细介绍，在此不再赘述。
-
 reject()的参数中，无论传入什么值，Promise都会直接进入 rejected 状态，并触发 catch() 方法的执行。
+
+我们在前面的文章《Promise入门详解》中针对这些情况做了详细介绍，在此不再赘述。
 
 ### 代码详解
 
@@ -157,7 +157,7 @@ Promise.all()的参数是一个数组，数组里可以填写多个 Promise；Pr
 
 **新 Promise 的状态**由 p1、p2、p3 这三个 Promse **共同决定**：
 
-- 当 p1、p2、p3等所有的 Promise 状态都变为 fulfilled 时，新的 Promise 将变为 fulfilled 状态，并会将 p1、p2、p3 等所有 Promise 的返回值**组成一个数组**。
+- 当 p1、p2、p3等所有的 Promise 状态都变为 fulfilled 时，新的 Promise 将变为 fulfilled 状态，并会将 p1、p2、p3 等所有 Promise 的返回值**组成一个数组**，作为 then() 的参数。
 - 当p1、p2、p3 等 Promise中有一个 Promise 状态为 rejected 时，新的 Promise 将立马变为 rejected 状态，并会将第一个 reject() 的返回值作为 catch() 的参数。
 
 `Promsie.all([p, p2, p3])` 的**使用场景**：并发处理多个异步任务，所有任务都执行成功，才算成功（才会走到 then）；只要有一个任务失败，就会马上走到 catch，整体都算失败。参数里传的是多个 Promise 实例组成的数组。
@@ -267,11 +267,13 @@ Promise.all([promise1, promise2, promise3])
 执行 promise3
 ```
 
-可以看到，当 promise2 执行失败之后，马上就走到了 catch，而且 promise3 里的 resolve 并没有执行。
+可以看到，当 promise2 执行失败之后，马上就走到了 catch，获取到了 promise2 失败的结果。
+
+要注意的是，promise1、promise3并不会执行 resolve()，它俩状态是 pending，且无法获取它俩的结果。我们只知道整体的任务是失败的，获取了整体的失败结果。
 
 ### Promise.all()案例：多张图片上传
 
-比如说，现在有一个**图片上传**的接口，每次请求接口时只能上传一张图片。需求是：当用户连续上传完九张图片（正好凑齐九宫格）之后，给用户一个“上传成功”的提示。这个时候，我们就可以使用`Promsie.all()`。
+案例：现在有一个**图片上传**的接口，每次请求接口时只能上传一张图片。需求是：当用户连续上传完九张图片（正好凑齐九宫格）之后，给用户一个“上传成功”的提示。这个时候，我们就可以使用`Promsie.all()`。
 
 1、代码举例如下：
 
@@ -325,21 +327,96 @@ Promise.all(promiseArr)
 
 -   拓展 2：实战开发中，在做多张图片上传时，可能是一张一张地单独上传，各自的上传操作相互独立。此时 `Promise.all`便不再适用，这就得具体需求具体分析了。
 
+## Promse.allSettled() 
+
+Promise.all()方法组成的多个Promise中，有个明显的特点是：只要有一个 Promise 元素进入 rejected 状态，则整体的 Promise 会立即进入 rejected 状态。其他 Promise 元素会处于 pending 状态，任务本身是否执行成功，我们在前端代码里无从知晓，因为无法拿到处理结果。我们只知道整体的 Promise 是 fulfilled或者 rejected ，获取整体的成功/失败结果。
+
+如果你认为 Promise.all() 的这一点无法满足你的需求，那么， Promise.allSettled() 可以提供一种新思路。
+
+Promise.allSettled() 是ES11（ES 2020）中提供的新API。它会等待所有的 Promise 元素都有结果（无论是 fulfilled，还是rejected）后，才会有最终的结果（settled），而且状态一定是 fulfilled。
+
+Promise.allSettled() 的状态为 fulfilled，不代表 里面的 Promise 元素都是 fulfilled，这只是在表明，里面的 Promise 元素都已经有了就结果（可能成功、可能失败）。
+
+### 语法举例
+
+```js
+const promise1 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    console.log('执行 promise1');
+    resolve('promise 1 成功');
+  }, 1000);
+});
+
+const promise2 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    console.log('执行 promise2');
+    reject('promise 2 失败');
+  }, 2000);
+});
+
+const promise3 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    console.log('执行 promise3');
+    resolve('promise 3 成功');
+  }, 3000);
+});
+
+Promise.allSettled([promise1, promise2, promise3]).then(res => {
+  // 注意看 res 的返回结果
+  console.log('allSettled:', res);
+});
+```
+
+打印结果：
+
+```
+执行 promise1
+
+执行 promise2
+
+执行 promise3
+
+allSettled:
+
+[
+    {
+        "status": "fulfilled",
+        "value": "promise 1 成功"
+    },
+    {
+        "status": "rejected",
+        "reason": "promise 2 失败"
+    },
+    {
+        "status": "fulfilled",
+        "value": "promise 3 成功"
+    }
+]
+```
+
+打印结果截图：
+
+<img src="https://img.smyhvae.com/image-20230523193237044.png" alt="image-20230523193237044" style="zoom:50%;" />
+
+从上面的打印结果可以看出，Promise.allSettled() 的状态为 fulfilled后，then()的回调函数里，res 是一个数组，数组里存放了每个 Promise 元素的执行结果（包括状态和返回值）。
+
+在实际开发中，Promise.all() 比 Promise.allSettled() 用得更多一些。
+
 ## Promise.race()
 
-`Promise.race([p1, p2, p3])`：并发处理多个异步任务，返回的是第一个执行完成的 promise，且状态和第一个完成的任务状态保持一致。参数里传的是多个 promise 实例组成的数组。
+`Promise.race([p1, p2, p3])`：参数里传的是多个 Promise 元素组成的数组。可以并发处理多个Promise，整体的执行状态取**第一个执行完成的 Promise**的状态，且状态和第一个完成的任务状态保持一致。
 
-上面这句话，第一次读时，可能很绕口。我说的再通俗一点：在多个同时执行的异步任务中，先找出哪个异步任务**最先执行完成**（无论是走到 resolve，还是走到 reject，都算执行完成），整体的状态就跟这个任务保持一致。如果这个任务执行成功，那整体就算成功（走到 then）；如果这个任务执行失败，那整体就算失败（走到 catch）。
+上面这句话，第一次读时，可能很绕口。我以异步任务为例，说的再通俗一点：在多个同时执行的异步任务中，等待哪个任务 **最先执行完成**（无论是走到 resolve，还是走到 reject，都算执行完成），整体的状态就立即跟这个任务保持一致。如果这个任务执行成功，那整体就算成功（走到 then）；如果这个任务执行失败，那整体就算失败（走到 catch）。
 
-`race`的中文翻译，可以理解为“竞赛”。意思是，谁先抢到名额，就认定谁了。无论这个人最终的结局是成功或者失败，整体的结局，都以这个人的结局为准。
+`race`的中文翻译，可以理解为“竞赛”、“竞争”。意思是，谁先抢到名额，就认定谁了。**谁前有结果，就用谁的结果**。无论这个人最终的结局是成功或者失败，整体的结局，都以这个人的结局为准。
 
 我刚开始学 Promise.race()的时候，误以为它的含义是“只要有一个异步**执行成功**，整体就算成功（走到 then）；所有任务都执行失败，整体才算失败（走到 catch）”。现在想来，真是大错特错，过于懵懂。
 
 现在我顿悟了，准确来说，Promise.race()强调的是：只要有一个异步任务**执行完成**，整体就是**完成**的。
 
-Promise.race()的**应用场景**：在众多 Promise 实例中，最终结果只取一个 Promise，**谁返回得最快就用谁的 Promise**。
+Promise.race()的**应用场景**：在众多 Promise 实例中，最终结果只取一个 Promise 的状态，**谁返回得最快就用谁的 Promise **状态。
 
-我们来看看各种场景的打印结果，便能擦干泪水，继续前行。
+我们来看看各种场景的打印结果，继续前行。
 
 ### 语法举例
 
@@ -372,6 +449,7 @@ Promise.race([promise1, promise2, promise3])
         // 第一个完成的任务，如果执行成功，就会走到这里
         // 这里拿到的 res，是第一个成功的 promise 返回的结果，不是数组
         console.log(JSON.stringify(res));
+				console.log('走到then:' + res);  
     })
     .catch((err) => {
         // 第一个完成的任务，如果执行失败，就会走到这里
@@ -384,7 +462,7 @@ Promise.race([promise1, promise2, promise3])
 ```js
 // 1秒后
 执行 promise1
-"promise 1 成功"
+走到then:promise 1 成功
 
 // 2秒后
 执行 promise2
@@ -443,7 +521,7 @@ Promise.race([promise1, promise2, promise3])
 执行 promise3
 ```
 
-可以看出，场景 2 的打印结果和场景 1 的打印结果，是一样的。因为最新执行完成的任务，是成功的，所以整体会马上走到 then，且整体就算成功。
+可以看出，场景 2 的打印结果和场景 1 的打印结果，是一样的。因为第一个执行完成的任务是成功的，所以整体就算成功，马上走到 then()。
 
 **场景 3、第一个任务失败、第二个任务成功时**：
 
@@ -495,9 +573,9 @@ Promise.race([promise1, promise2, promise3])
 执行 promise3
 ```
 
-看清楚了没？场景 3 的最终打印结果，是走到了 catch；任务 2 和任务 3 里的 resolve，并没有继续执行。
+看清楚了没？场景 3 的最终打印结果，是走到了 catch；任务 2 和任务 3 里的 resolve，并没有执行。
 
-场景 3 的代码，一定好好好理解。
+场景 3 的代码，一定要好好理解。
 
 ### Promise.race()举例：图片加载超时
 
@@ -539,7 +617,7 @@ Promise.race([getImg(), timeout()])
     });
 ```
 
-如代码注释所述：采用 Promise.race() 之后，如果 timeout() 的 promise 比 getImg() 的 promise 先执行，说明定时器时间到了，那就算超时。整体的最终结果按失败处理。
+如代码注释所述：采用 Promise.race() 之后，如果 timeout() 的 Promise 比 getImg() 的 Promise 先执行，说明定时器时间到了，那就算超时。整体的最终结果按失败处理。
 
 这个思路很巧妙。用同样的思路，我们还可以处理网络请求超时的问题。如果接口请求时长超过 3 秒，就按超时处理，也就是下面我们要举的例子。
 
@@ -547,7 +625,7 @@ Promise.race([getImg(), timeout()])
 
 现在有这种需求：如果接口请求时长超过 3 秒，就按超时处理。
 
-基于这种需求，我们可以用 Promise.race() 来实现：一个 Promise 用于 请求接口，另一个 Promise 用于执行 setTimeout()。把这两个 Promise 用 Promise.race()组装在一起，谁先执行，那么最终的结果就以谁的为准。
+基于这种需求，我们可以用 Promise.race() 来实现：一个 Promise 用于请求接口，另一个 Promise 用于 setTimeout() 定时器。把这两个 Promise 用 Promise.race() 组装在一起，谁先执行，那么最终的结果就以谁的为准。
 
 代码举例：
 
@@ -573,12 +651,115 @@ query('http://localhost:8899/xxx_url', 3000)
     });
 ```
 
+## Promise.any()
+
+Promise.any() 是 ES12（ES 2021）中推出的新API。它类似于 Promise.race()，但有一个关键的区别：Promise.any() 会等待参数中第一个状态为 fulfilled 的Promise元素，然后立即进入 fulfilled状态。
+
+如果参数中所有的 Promise 元素都进入了 rejected，那么也会等到所有的Promise都变成rejected 状态，最终报错 AggregateError。
+
+### 语法举例
+
+**场景1**、第一个任务失败，第二个任务成功：
+
+```js
+const promise1 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    console.log('执行 promise1');
+    reject('promise 1 失败');
+  }, 1000);
+});
+
+const promise2 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    console.log('执行 promise2');
+    resolve('promise 2 成功');
+  }, 2000);
+});
+
+const promise3 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    console.log('执行 promise3');
+    resolve('promise 3 成功');
+  }, 3000);
+});
+
+Promise.any([promise1, promise2, promise3]).then(res => {
+  console.log('走到then:', res);
+});
+```
+
+打印结果：
+
+```
+// 1秒后
+执行 promise1
+
+// 2秒后
+执行 promise2
+走到then(): promise 2 成功
+
+// 3秒后
+执行 promise3
+```
+
+**场景2**、三个任务都失败：
+
+```js
+const promise1 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    console.log('执行 promise1');
+    reject('promise 1 失败');
+  }, 1000);
+});
+
+const promise2 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    console.log('执行 promise2');
+    reject('promise 3 失败');
+  }, 2000);
+});
+
+const promise3 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    console.log('执行 promise3');
+    reject('promise 3 失败');
+  }, 3000);
+});
+
+Promise.any([promise1, promise2, promise3])
+  .then(res => {
+    console.log('走到then:', res);
+  })
+  .catch(err => {
+    console.log('走到catch:', err);
+  });
+```
+
+打印日志：
+
+```
+// 1秒后
+执行 promise1
+
+// 2秒后
+执行 promise2
+
+// 3秒后
+执行 promise3
+走到catch: AggregateError: All promises were rejected
+```
+
+注意看打印结果中的报错信息。`执行 promise3`这行日志出来之后，报错的那行马上就出来了。
+
+### 兼容性问题
+
+`Promise.any()` 方法依然是实验性的，尚未被所有的浏览器完全支持。它当前处于 [TC39 第四阶段草案（Stage 4）](https://github.com/tc39/proposal-promise-any)。
 
 ## 总结
 
-Promise 不仅能解决嵌套异步任务的**回调地域**问题，也可做多个异步任务的**并发请求**，还可以进行舒适简洁的状态管理。
+Promise 不仅能解决嵌套异步任务的**回调地域**问题，也可做多个异步任务的**并发请求**。
 
-Promise 本身不是异步的，但是它可以封装异步任务，并对异步操作进行良好的状态管理，这便是 Promise 的魅力所在。
+Promise 本身不是异步的，但是它可以封装异步任务，并对异步操作进行良好的、舒适简洁的状态管理，这便是 Promise 的魅力所在。
 
 ## 赞赏作者
 
