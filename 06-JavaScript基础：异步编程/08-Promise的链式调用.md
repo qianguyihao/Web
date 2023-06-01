@@ -6,9 +6,11 @@ title: 06-Promise的链式调用
 
 ## 前言
 
-实际开发中，我们经常需要同时请求多个接口。比如说：在请求完接口 1 的数据`data1`之后，需要根据`data1`的数据，继续请求接口 2，获取`data2`；然后根据`data2`的数据，继续请求接口 3。
+实际开发中，我们经常需要先后请求多个接口：发送第一次网络请求后，等待请求结果；有结果后，然后发送第二次网络请求，等待请求结果；有结果后，然后发送第三次网络请求。以此类推。
 
-换而言之，现在有三个网络请求，请求 2 必须依赖请求 1 的结果，请求 3 必须依赖请求 2 的结果，如果按照往常的写法，会有三层回调，会陷入“回调地狱”。
+比如说：在请求完接口 1 的数据`data1`之后，需要根据`data1`的数据，继续请求接口 2，获取`data2`；然后根据`data2`的数据，继续请求接口 3。换而言之，现在有三个网络请求，请求 2 必须依赖请求 1 的结果，请求 3 必须依赖请求 2 的结果。
+
+如果按照往常的写法，会有三层回调，陷入“回调地狱”的麻烦。
 
 这种场景其实就是接口的多层嵌套调用，在前端的异步编程开发中，经常遇到。有了 Promise 以及更高级的写法之后，我们可以把多层嵌套调用按照**线性**的方式进行书写，非常优雅。也就是说：Promise 等ES6的写法可以把原本的**多层嵌套写法**改进为**链式写法**。
 
@@ -125,12 +127,15 @@ function requestData3(params_3) {
 }
 
 // 【业务层】Promise 调接口的嵌套写法
+// 发送第一次网络请求
 requestData1(params_1).then(res1 => {
   console.log('第一个接口请求成功:' + JSON.stringify(res1));
 
+  // 发送第二次网络请求
   requestData1(params_2).then(res2 => {
     console.log('第二个接口请求成功:' + JSON.stringify(res2));
 
+    // 发送第三次网络请求
     requestData1(params_3).then(res3 => {
       console.log('第三个接口请求成功:' + JSON.stringify(res3));
     })
@@ -140,9 +145,9 @@ requestData1(params_1).then(res1 => {
 
 上方代码非常经典。在真正的实战中，我们往往需要嵌套请求**多个不同的接口**，它们的接口请求地址、要处理的 resolve 和 reject 的时机、业务逻辑往往是不同的，所以需要分开封装不同的 Promise 实例。也就是说，如果要调三个不同的接口，建议单独封装三个不同的 Promise 实例：requestData1、requestData2、requestData3。
 
-这三个 Promise 实例，最终都需要调用底层的公共方法 requestAjax()。每个公司都有这样的底层方法，里面的代码会做一些公共逻辑，比如：封装原生的 ajax请求，用户登录态的校验等等。
+这三个 Promise 实例，最终都需要调用底层的公共方法 requestAjax()。每个公司都有这样的底层方法，里面的代码会做一些公共逻辑，比如：封装原生的 ajax请求，用户登录态的校验等等；如果没有这种公共方法，你就自己写一个，为组织做点贡献。
 
-但是，细心的你可能会发现：上面的最后10行代码不够优雅，因为 Promise 在调接口时出现了嵌套的情况。要怎么改进呢？这就需要用到 Promise的**链式调用**。
+但是，细心的你可能会发现：上面的最后10行代码仍然不够优雅，因为 Promise 在调接口时出现了嵌套的情况，实际开发中如果真这么写的话，是比较挫的，阅读性非常差。要怎么改进呢？这就需要用到 Promise 的**链式调用**。
 
 ### Promise 的链式调用写法【重要】
 
@@ -164,7 +169,7 @@ requestData1(params_1).then(res1 => {
 })
 ```
 
-上面代码中，then 是可以链式调用的，一旦 return 一个新的 promise 实例之后，后面的 then 就可以拿到前面 resolve 出来的数据。这种**扁平化**的写法，更方便维护；并且可以更好的**管理**请求成功和失败的状态。
+上面代码中，then 是可以链式调用的，一旦 return 一个新的 Promise 实例之后，后面的 then 就可以拿到前面 resolve 出来的结果。这种**扁平化**的写法，更方便维护，可读性更好；并且可以更好的**管理**请求成功和失败的状态。
 
 这段代码很经典，你一定要多看几遍，多默写几遍。倒背如流也不过分。
 
@@ -176,9 +181,7 @@ requestData1(params_1).then(res1 => {
 fs.readFile(A, 'utf-8', function (err, data) {
     fs.readFile(B, 'utf-8', function (err, data) {
         fs.readFile(C, 'utf-8', function (err, data) {
-            fs.readFile(D, 'utf-8', function (err, data) {
-                console.log('qianguyihao:' + data);
-            });
+          console.log('qianguyihao:' + data);  
         });
     });
 });
@@ -206,9 +209,6 @@ read(A)
         return read(C);
     })
     .then((data) => {
-        return read(D);
-    })
-    .then((data) => {
         console.log('qianguyihao:' + data);
     })
     .catch((err) => {
@@ -216,7 +216,7 @@ read(A)
     });
 ```
 
-这一段代码可以看出，Promise 很好的处理了回调地狱的问题。下一篇文章，我们会更详细的介绍 Promise 的链式调用。
+
 
 ## 链式调用，如何处理 reject 失败状态
 
@@ -348,7 +348,7 @@ getPromise('a.json')
         });
     })
     .then((res) => {
-        console.log(res);
+        console.log(res);   
     });
 ```
 
