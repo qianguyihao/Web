@@ -1,5 +1,5 @@
 ---
-title: 06-Promise的链式调用
+title: 09-Promise的链式调用
 ---
 
 <ArticleTopAd></ArticleTopAd>
@@ -147,7 +147,7 @@ requestData1(params_1).then(res1 => {
 
 这三个 Promise 实例，最终都需要调用底层的公共方法 requestAjax()。每个公司都有这样的底层方法，里面的代码会做一些公共逻辑，比如：封装原生的 ajax请求，用户登录态的校验等等；如果没有这种公共方法，你就自己写一个，为组织做点贡献。
 
-但是，细心的你可能会发现：上面的最后10行代码仍然不够优雅，因为 Promise 在调接口时出现了嵌套的情况，实际开发中如果真这么写的话，是比较挫的，阅读性非常差。要怎么改进呢？这就需要用到 Promise 的**链式调用**。
+但是，细心的你可能会发现：上面的最后10行代码仍然不够优雅，因为 Promise 在调接口时出现了嵌套的情况，实际开发中如果真这么写的话，是比较挫的，阅读性非常差，我不建议这么写。要怎么改进呢？这就需要用到 Promise 的**链式调用**。
 
 ### Promise 的链式调用写法【重要】
 
@@ -156,12 +156,12 @@ requestData1(params_1).then(res1 => {
 ```js
 requestData1(params_1).then(res1 => {
   console.log('第一个接口请求成功:' + JSON.stringify(res1));
-  // 关键代码
-  return requestData2(params_2);
+  // 【关键代码】继续请求第二个接口。如果有需要，也可以把 res1 的数据传给 requestData2()的参数
+  return requestData2(res1);
 }).then(res2 => {
   console.log('第二个接口请求成功:' + JSON.stringify(res2));
-  // 关键代码
-  return requestData3(params_3);
+  // 【关键代码】继续请求第三个接口。如果有需要，也可以把 res2 的数据传给 requestData3()的参数
+  return requestData3(res2);
 }).then(res3 => {
   console.log('第三个接口请求成功:' + JSON.stringify(res3));
 }).catch(err => {
@@ -169,11 +169,15 @@ requestData1(params_1).then(res1 => {
 })
 ```
 
-上面代码中，then 是可以链式调用的，一旦 return 一个新的 Promise 实例之后，后面的 then 就可以拿到前面 resolve 出来的结果。这种**扁平化**的写法，更方便维护，可读性更好；并且可以更好的**管理**请求成功和失败的状态。
+上面代码中，then 是可以链式调用的，一旦 return 一个新的 Promise 实例之后，后面的 then() 就可以作为这个新 Promise 在成功后的回调函数。这种**扁平化**的写法，更方便维护，可读性更好；并且可以更好的**管理**请求成功和失败的状态。
 
-这段代码很经典，你一定要多看几遍，多默写几遍。倒背如流也不过分。
+这段代码很经典，你一定要多看几遍，多默写几遍，倒背如流也不过分。如果你平时的异步编程代码能写到这个水平，说明你对 Promise 已经入门了，因为绝大多数人都是用的这个写法。
+
+其实还有更高级、更有水平的写法，那就是用生成器、用 async ... await 来写Promise的链式调用。你把它掌握了，编程水平才能更上一层楼。我们稍后会讲。
 
 ## Promise 链式调用：封装 Node.js 的回调方法
+
+代码结构与上面的类似，这里仅做代码举例，不再赘述。
 
 ### 传统写法
 
@@ -181,7 +185,7 @@ requestData1(params_1).then(res1 => {
 fs.readFile(A, 'utf-8', function (err, data) {
     fs.readFile(B, 'utf-8', function (err, data) {
         fs.readFile(C, 'utf-8', function (err, data) {
-          console.log('qianguyihao:' + data);  
+          console.log('qianguyihao:' + data);
         });
     });
 });
@@ -215,6 +219,21 @@ read(A)
         console.log(err);
     });
 ```
+
+
+
+## 用 async ... await 封装链式调用
+
+前面讲的内容是用 then().then().then() 这种
+
+### 
+
+
+
+
+
+
+
 
 
 
@@ -348,7 +367,7 @@ getPromise('a.json')
         });
     })
     .then((res) => {
-        console.log(res);   
+        console.log(res);
     });
 ```
 

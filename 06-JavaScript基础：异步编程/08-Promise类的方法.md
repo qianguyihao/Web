@@ -1,5 +1,5 @@
 ---
-title: 09-Promise类的方法
+title: 08-Promise类的方法
 ---
 
 <ArticleTopAd></ArticleTopAd>
@@ -327,7 +327,7 @@ Promise.all(promiseArr)
 
 -   拓展 2：实战开发中，在做多张图片上传时，可能是一张一张地单独上传，各自的上传操作相互独立。此时 `Promise.all`便不再适用，这就得具体需求具体分析了。
 
-## Promse.allSettled() 
+## Promse.allSettled()
 
 Promise.all()方法组成的多个Promise中，有个明显的特点是：只要有一个 Promise 元素进入 rejected 状态，则整体的 Promise 会立即进入 rejected 状态。其他 Promise 元素会处于 pending 状态，任务本身是否执行成功，我们在前端代码里无从知晓，因为无法拿到处理结果。我们只知道整体的 Promise 是 fulfilled或者 rejected ，获取整体的成功/失败结果。
 
@@ -449,7 +449,7 @@ Promise.race([promise1, promise2, promise3])
         // 第一个完成的任务，如果执行成功，就会走到这里
         // 这里拿到的 res，是第一个成功的 promise 返回的结果，不是数组
         console.log(JSON.stringify(res));
-				console.log('走到then:' + res);  
+				console.log('走到then:' + res);
     })
     .catch((err) => {
         // 第一个完成的任务，如果执行失败，就会走到这里
