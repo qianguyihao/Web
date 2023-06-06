@@ -126,7 +126,7 @@ function requestData3(params_3) {
   });
 }
 
-// 【业务层】Promise 调接口的嵌套写法
+// 【业务层】Promise 调接口的嵌套写法。温馨提示：这段代码在接下来的学习中，会被改进无数次。
 // 发送第一次网络请求
 requestData1(params_1).then(res1 => {
   console.log('第一个接口请求成功:' + JSON.stringify(res1));
@@ -173,7 +173,7 @@ requestData1(params_1).then(res1 => {
 
 这段代码很经典，你一定要多看几遍，多默写几遍，倒背如流也不过分。如果你平时的异步编程代码能写到这个水平，说明你对 Promise 已经入门了，因为绝大多数人都是用的这个写法。
 
-其实还有更高级、更有水平的写法，那就是用生成器、用 async ... await 来写Promise的链式调用。你把它掌握了，编程水平才能更上一层楼。我们稍后会讲。
+其实还有更高级、更有水平的写法，那就是用生成器、用 async ... await 来写Promise的链式调用，也就是改进上面的十几行代码。你把它掌握了，编程水平才能更上一层楼。我们稍后会讲。
 
 ## Promise 链式调用：封装 Node.js 的回调方法
 
@@ -224,9 +224,83 @@ read(A)
 
 ## 用 async ... await 封装链式调用
 
-前面讲的内容是用 then().then().then() 这种
+前面讲的 Promise 链式调用是用 `then().then().then()` 这种写法。其实我们还可以用更高级的写法，也就是用生成器、用 async ... await  改写那段代码。改进之后，代码写起来非常简洁。
 
-### 
+在学习这段内容之前，你需要先去《JavaScript进阶/迭代器和生成器》那篇文章里去学习迭代器、生成器相关的知识。生成器是一种特殊的迭代器，async ... await 是生成器的语法糖。
+
+### 用生成器封装链式调用
+
+代码举例：
+
+```js
+// 封装 Promise 链式请求
+function getData(params_1) {
+  // 【关键代码】
+  const res1 = yield requestData1(params_1);
+  const res2 = yield requestData2(res1);
+  const res3 = yield requestData3(res2);
+}
+
+// 调用 Promise 链式请求
+const generator = getData(params_1);
+
+generator.next().value.then(res1 => {
+  generator.next(res1).value.then(res2 => {
+    generator.next(res2).value.then(res3 => {
+      generator.next(res3);
+    })
+  })
+})
+```
+
+生成器在执行时，是分阶段执行的，每次遇到 next()方法后就会执行一个阶段，遇到 yield 就会结束当前阶段的执行并暂停。 上方代码中，yield 后面的内容是当前阶段产生的 Promise 对象；yield 前面的内容是要传递给下一个阶段的参数。
+
+### 用 async ... await 封装链式调用【重要】
+
+上面的生成器代码有些晦涩难懂，实际开发中，通常不会这么写。我们更喜欢用 async ... await 语法封装 Promise 的链式调用。async ... await  是属于生成器的语法糖，写起来更简洁直观、更容易理解。
+
+代码举例：
+
+```js
+// 封装：用 async ... await 调用 Promise 链式请求
+async function getData() {
+  const res1 = await requestData1(params_1);
+  const res2 = await requestData2(res1);
+  const res3 = await requestData3(res2);
+}
+
+getData();
+```
+
+代码解释：
+
+上面的代码非常简洁。实际开发中也经常用到，非常实用。requestData1()、requestData2()、requestData3() 这三个函数都是一个Promise对象，其内部封装的代码写法已经在前面「Promise 的嵌套写法」这一小段中讲过了。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
