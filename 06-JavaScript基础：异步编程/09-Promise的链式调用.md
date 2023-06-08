@@ -272,11 +272,9 @@ async function getData() {
 getData();
 ```
 
-代码解释：
+代码解释：requestData1()、requestData2()、requestData3() 这三个函数都是一个Promise对象，其内部封装的代码写法已经在前面「Promise 的嵌套写法」这一小段中讲过了。
 
-上面的代码非常简洁。实际开发中也经常用到，非常实用。requestData1()、requestData2()、requestData3() 这三个函数都是一个Promise对象，其内部封装的代码写法已经在前面「Promise 的嵌套写法」这一小段中讲过了。
-
-
+上面的代码非常简洁。实际开发中也经常用到，非常实用。暂时我们先记住用法，下一章我们会学习 async ... await 的详细知识。
 
 
 
