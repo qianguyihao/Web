@@ -1,6 +1,5 @@
 ---
 title: 06-Promise入门详解
-publish: true
 ---
 
 <ArticleTopAd></ArticleTopAd>

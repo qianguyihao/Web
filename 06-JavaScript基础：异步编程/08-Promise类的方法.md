@@ -11,7 +11,7 @@ Promise 的 API 分为两种：
 - Promise 实例的方法（也称为：Promis的实例方法）
 - Promise 类的方法（也称为：Promise的静态方法）
 
-前面几篇文章，讲的都是 Promise **实例**的方法，它们都是存放在Promise的prototype上的。今天这篇文章，我们来讲一下 Promise **类**的方法。
+前面几篇文章，讲的都是 Promise **实例**的方法（需要先将Promise实例化），它们都是存放在Promise的prototype上的。今天这篇文章，我们来讲一下 Promise **类**的方法。
 
 Promise **类**的方法：可以直接通过大写的`Promise.xxx`调用的方法。这里的`xxx`就称之为静态方法。
 
