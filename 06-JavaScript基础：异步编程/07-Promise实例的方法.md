@@ -5,17 +5,17 @@ Promise 的 API 分为两种：
 - Promise 实例的方法（也称为：Promis的实例方法）
 - Promise 类的方法（也称为：Promise的静态方法）
 
-Promise **实例**的方法：我们需要先 new 一个 promise 实例对象，然后通过 promise 实例去调用 `then`、`catch`、`finally`方法。这几个方法就是 Promise 的实例方法。
+Promise **实例**的方法：我们需要实例化 Promise，也就是先 new 一个 Promise 实例对象，然后通过 Promise 实例去调用 `then`、`catch`、`finally`等方法。这几个方法就是 Promise 的实例方法。
 
 Promise 实例提供了如下方法：
 
--   promise.then()：获取异步任务的正常结果。
+-   promise.then()：异步任务成功的回调函数。
 
--   promise.catch()：获取异步任务的异常结果。
+-   promise.catch()：异步任务失败的回调函数。
 
--   promise.finaly()：异步任务无论成功与否，都会执行。
+-   promise.finaly()：异步任务无论成功与否，都会执行的函数。
 
-我们在上一篇文章《Promise入门详解》中，用到的都是Promise实例的方法。本篇文章，我们来把这三个实例方法进一步详细学习一下。
+我们在上一篇文章《Promise入门详解》中，用到的都是Promise实例的方法。本篇文章，我们来把这三个实例方法详细学习一下。
 
 ## Promise 实例的 then()方法
 
@@ -468,7 +468,7 @@ myPromise.then().then().catch().then()
 
 - 情况4：当catch()方法传入的回调函数遇到异常或者手动抛出异常时，那么， Promise 处于rejected 状态。
 
-**小结**：then()方法里，我们可以通过 return **传递结果**给下一个新的Promise。
+**小结**：catch()方法里，我们可以通过 return **传递结果**给下一个新的Promise。
 
 ### 默认返回值
 
