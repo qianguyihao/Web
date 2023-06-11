@@ -205,9 +205,9 @@ Promise是一个类，通过 `new Promise()` 进行**实例化**，构造出一�
 
 2、`then()`方法的括号里面有两个参数，分别代表两个回调函数 **onFulfilled** 和 **onRejected**，这两个函数一直处于**监听状态**：
 
--   参数1：如果 promise 的状态为 fulfilled（意思是：任务执行成功），则触发 onFulfilled 函数的执行。
+-   参数1：**成功的回调函数**。如果 Promise 的状态为 fulfilled（意思是：任务执行成功），则触发 onFulfilled 函数的执行。
 
--   参数2：如果 promise 的状态为 rejected（意思是，任务执行失败），则触发 onRejected 函数的执行。
+-   参数2：**失败的回调函数**。如果 Promise 的状态为 rejected（意思是，任务执行失败），则触发 onRejected 函数的执行。
 
 3、**只有 Promise 的状态被改变之后，才会走到 then() 或者 catch()**。也就是说，在 new Promise() 时，如果没有写 resolve()，则 promise.then() 不执行；如果没有写 reject()，则 promise.catch() 不执行。
 

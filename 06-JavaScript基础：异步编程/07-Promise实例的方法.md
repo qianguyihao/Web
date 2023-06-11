@@ -124,9 +124,9 @@ res3 qianguyihao
 
 ## then() 方法的返回值【重要】
 
-> 这一段的知识点略有难度，但也很重要。
+> 这一段的知识点略有难度，但是非常重要，是我们学习 Promise 链式调用的理论基础。
 
-then()方法本身是有返回值的，它会返回一个新的Promise对象。因为 then()方法的返回值永远是一个 Promise 对象，所以我们才可以对它进行链式调用。
+then()方法本身是有返回值的，它会返回一个新的Promise对象。因为 then()方法的返回值永远是一个 Promise 对象，所以我们才可以对它进行**链式调用**。
 
 Promise 链式调用的伪代码：
 
@@ -141,19 +141,21 @@ myPromise.then().then().catch()
 
 1、当then方法中的回调函数在执行时，那么Promise 处于pending状态。
 
-2、当 then方法中的回调函数中，手动 return 一个返回值时，那么 Promise 的状态取决于返回值的类型。当返回值这行代码执行完毕后， Promise 会立即决议，进入确定的状态。具体情况如下：
+2、当 then方法中的回调函数中，手动 return 一个返回值时，那么 Promise 的状态取决于返回值的类型。当返回值这行代码执行完毕后， Promise 会立即决议，进入确定状态。具体情况如下：
 
-- 情况1：如果返回值是**普通的值或者普通对象**（包括return undefined的情况），那么 Promise 的状态为fulfilled。这个值会作为then()回调的参数。
+- 情况1：如果没有返回值（相当于 return undefined），或者返回值是**普通值/普通对象**，那么 Promise 的状态为fulfilled。这个值会作为then()回调的参数。
 - 情况2：如果返回值是**另外一个新的 Promise**，那么原 Promise 的状态将**交给新的 Promise 决定**。
 - 情况3：如果返回值是一个对象，并且这个对象里有实现then()方法（这种对象称为 **thenable** 对象），那就会执行该then()方法，并且根据**then()方法的结果来决定Promise的状态**。
 
 还有一种特殊情况：
 
-- 情况4：当then()方法传入的回调函数遇到异常或者抛出异常时，那么， Promise 处于rejected 状态。（后续再讲）
+- 情况4：当then()方法传入的回调函数遇到异常或者抛出异常时，那么， Promise 处于rejected 状态。
 
-
+**小结**：then()方法里，我们可以通过 return **传递结果**给下一个新的Promise。
 
 ### 默认返回值
+
+如果then()方法里没写返回值（相当于 return undefined），那么它的返回值是一个新的Promise。新 Promise 的状态为fulfilled，其then()方法里，res的值为 undefined。
 
 then() 链式调用的代码举例：
 
@@ -204,9 +206,9 @@ res3：undefined
 
 换句话说，第一个 then() 在等待 myPromise 的决议结果，有决议结果后执行；第二个 then() 在等待第一个 then()参数里返回的新 Promise的决议结果，有决议结果后执行；第三个 then() 在等待第二个 then()参数里返回的新 Promise的决议结果，有决议结果后执行。
 
-此外，我们也可以在 then()的回调函数里，手动 return 自己想要的数据类型，可以有以下几种情况。
-
 ### 返回普通值
+
+我们也可以在 then()方法里，手动 return 自己想要的数据，比如一个普通值 value1。这个普通值就可以传递给下一个新的Promise。新 Promise 的状态为fulfilled，其then()方法里，res的值为 value1。
 
 代码举例：
 
@@ -218,6 +220,7 @@ const myPromise = new Promise((resolve, reject) => {
 myPromise
   .then(res => {
     console.log('res1:', res);
+    // return一个普通值，把这个值传递给下一个Promise
     return '2号';
   	/*
   	上面这行 return，相当于：
@@ -227,6 +230,7 @@ myPromise
   	*/
   })
   .then(res => {
+  	// res可以接收到上一个 Promise 传递的值
     console.log('res2:', res);
   })
   .then(res => {
@@ -244,7 +248,7 @@ res3: undefined
 
 ### 返回新的 Promise
 
-代码举例：
+1、在 then() 方法中return一个成功的Promise，代码举例：
 
 ```js
 const myPromise = new Promise((resolve, reject) => {
@@ -261,7 +265,7 @@ myPromise
     return myPromise2;
   })
   .then(res => {
-    // 监听 myPromise2 的决议：
+    // 监听 myPromise2 的成功状态
     console.log('res2:', res);
   })
   .then(res => {
@@ -276,6 +280,48 @@ res1: qianguyihao fulfilled 1
 res2: qianguyihao fulfilled 2
 res3 undefined
 ```
+
+2、通过then()的第二个参数走了失败的回调函数后，再走then() 会怎么样？代码举例：
+
+```js
+const myPromise = new Promise((resolve, reject) => {
+  resolve('qianguyihao fulfilled 1');
+});
+
+const myPromise2 = new Promise((resolve, reject) => {
+  reject('qianguyihao rejected 2');
+});
+
+myPromise
+  .then(res => {
+    console.log('res1:', res);
+    return myPromise2;
+  })
+  .then(res => {
+    console.log('res2:', res);
+  }, err => {
+    // 如果 myPromise2 为失败状态，可以通过 then() 的第二个参数（即失败的回调函数）捕获异常，然后就可以继续往下执行其他 Promise
+    console.log('err2:', err);
+   // 这里相当于 return undefined
+  })
+  .then(res => {
+    console.log('res3', res);
+  }, err => {
+    console.log('err3:', err);
+  });
+```
+
+打印结果：
+
+```
+res1: qianguyihao fulfilled 1
+err2: qianguyihao rejected 2
+res3: undefined
+```
+
+上方代码可以看到，最后一个 Promise 走的是成功回调，而不是失败回调。这例子一定要记住。这说明了，在多个Promise的链式调用里，**如果中间的某个Promise 执行失败，还想让剩下的其他 Promise 顺利执行**的话，那就请在中间**那个失败的Promise里加一个失败的回调函数**，捕获异常后，便可继续往下执行其他的Promise。
+
+
 
 ### 返回 thenable 对象
 

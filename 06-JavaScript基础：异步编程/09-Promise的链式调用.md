@@ -151,7 +151,7 @@ requestData1(params_1).then(res1 => {
 
 ### Promise 的链式调用写法【重要】
 
-针对多个不同接口的嵌套调用，采用 Promise 链式调用的写法如下：（将上方代码的最后10行，改进如下）
+针对多个不同接口的嵌套调用，采用 Promise 的**链式调用**写法如下：（将上方代码的最后10行，改进如下）
 
 ```js
 requestData1(params_1).then(res1 => {
@@ -175,11 +175,11 @@ requestData1(params_1).then(res1 => {
 
 其实还有更高级、更有水平的写法，那就是用生成器、用 async ... await 来写Promise的链式调用，也就是改进上面的十几行代码。你把它掌握了，编程水平才能更上一层楼。我们稍后会讲。
 
-## Promise 链式调用：封装 Node.js 的回调方法
+### Promise 链式调用举例：封装 Node.js 的回调方法
 
 代码结构与上面的类似，这里仅做代码举例，不再赘述。
 
-### 传统写法
+传统写法：
 
 ```js
 fs.readFile(A, 'utf-8', function (err, data) {
@@ -193,7 +193,7 @@ fs.readFile(A, 'utf-8', function (err, data) {
 
 上方代码多层嵌套，存在回调地狱的问题。
 
-### Promise 写法
+Promise 写法：
 
 ```js
 function read(url) {
@@ -278,8 +278,9 @@ getData();
 
 
 
+## 链式调用，如何处理失败的情况
 
-## 链式调用，如何处理 reject 失败状态
+
 
 ### 例 1：不处理 reject
 
@@ -384,54 +385,7 @@ getPromise('a.json')
 
 -   a 请求成功，b 请求失败：然后会走到 catch，不执行 c。
 
-## return 的返回值
 
-return 后面的返回值，有两种情况：
-
--   情况 1：返回 Promise 实例对象。返回的该实例对象会调用下一个 then。
-
--   情况 2：返回普通值。返回的普通值会直接传递给下一个 then，通过 then 参数中函数的参数接收该值。
-
-我们针对上面这两种情况，详细解释一下。
-
-### 情况 1：返回 Promise 实例对象
-
-举例如下：
-
-```js
-getPromise('a.json')
-    .then((res) => {
-        // a 请求成功。从 resolve 获取正常结果：接口请求成功后，打印a接口的返回结果
-        console.log(res);
-        // 这里的 return，返回的是 Promise 实例对象
-        return new Promise((resolve, reject) => {
-            resolve('qianguyihao');
-        });
-    })
-    .then((res) => {
-        console.log(res);
-    });
-```
-
-### 情况 2：返回 普通值
-
-```js
-getPromise('a.json')
-    .then((res) => {
-        // a 请求成功。从 resolve 获取正常结果：接口请求成功后，打印a接口的返回结果
-        console.log(res);
-        // 返回普通值
-        return 'qianguyihao';
-    })
-    /*
-        既然上方代码并没有返回 promise，那么，这里的 then 是谁来调用呢？
-        答案是：这里会产生一个新的 默认的 promise实例，来调用这里的then，确保可以继续进行链式操作。
-    */
-    .then((res2) => {
-        // 这里的 res2 接收的是 普通值 'qianguyihao'
-        console.log(res2);
-    });
-```
 
 ## 赞赏作者
 
