@@ -7,7 +7,7 @@ title: 06-Promise入门详解
 ## 前言
 
 
- Promise 是 JavaScript 中特有的语法（中文名翻译为“承诺”，一般不称呼中文名）。可以毫不夸张得说，Promise 是ES6中最重要的语法，没有之一。初学者可能对 Promise 的概念有些陌生，但是不用担心。大多数情况下，使用 Promise 的语法是比较固定的。我们可以先把这些固定语法和结构记下来，多默写几遍；然后在实战开发中逐渐去学习和领悟 Promise 的原理、底层逻辑以及细节知识点，自然就掌握了。
+ Promise 是 JavaScript 中特有的语法。可以毫不夸张得说，Promise 是ES6中最重要的语法，没有之一。初学者可能对 Promise 的概念有些陌生，但是不用担心。大多数情况下，使用 Promise 的语法是比较固定的。我们可以先把这些固定语法和结构记下来，多默写几遍；然后在实战开发中逐渐去学习和领悟 Promise 的原理、底层逻辑以及细节知识点，自然就掌握了。
 
 在了解 Promise 之前，必须要知道什么是回调函数，这是必不可少的前置知识。关于回调函数的知识，已经在上一篇文章中做了讲解。
 
@@ -17,13 +17,13 @@ ES6 中的 Promise 是异步编程的一种很好的方案。
 
 Promise 对象, 可以**用同步的表现形式来书写异步代码**（也就是说，代码看起来是同步的，但本质上的运行过程是异步的）。使用 Promise 主要有以下优点：
 
--   1、可以很好地解决回调地狱**的问题（避免了层层嵌套的回调函数）。
--   2、语法简洁、统一规范、可读性强，便于后期维护。
--   3、Promise 对象提供了简洁的 API，使得管理异步操作更加容易。比如**多任务等待合并**等等。
+-   1、可以很好地解决**回调地狱**的问题（避免了层层嵌套的回调函数）。
+-   2、统一规范、语法简洁、可读性和和可维护性强。
+-   3、Promise 对象提供了简洁的 API，使得管理异步任务更方便，比如**多任务等待合并**等等。
 
 从语法上讲，Promise 是一个对象，它可以获取异步操作的消息。
 
-从写法规范上讲，**Promise 本质上是处理异步任务的一种编写规范**，要求每个人都按照这种规范来写。异步任务成功了该怎么写、怎么 通知调用者，异步任务失败了该怎么写、怎么通知调用者，这些都有规定的写法。Promise 的目的就是要让每个使用ES6的人都遵守这种写法规范。
+从写法规范上讲，**Promise 本质上是处理异步任务的一种编写规范**，要求每个人都按照这种规范来写。异步任务成功了该怎么写、异步任务失败了该怎么写、成功或者失败之后怎么通知调用者，这些都有规定的写法。Promise 的目的就是要让每个使用ES6的人都遵守这种写法规范。
 
 Promise 的伪代码结构，大概是这样的：
 
@@ -47,17 +47,15 @@ myPromise()
 是时候展现真正的厨艺了().然后(买菜).然后(做饭).然后(洗碗);
 ```
 
-上面的伪代码可以看出，即便在业务逻辑上是层层嵌套，但是代码写法上，却十分优雅，没有过多的嵌套。
+上面的伪代码可以看出，业务逻辑上层层递进，但是代码写法上却十分优雅，没有过多的嵌套。
 
-## Promise 处理异步任务的基本模型
+## Promise 的基本使用
 
 ES5中，使用传统的回调函数处理异步任务时，其基本模型的写法已在上一篇内容“回调函数”里讲过。
 
-ES6中，有了 Promise之后，我们可以对那段代码进行改进。你会发现，代码简洁规范了很多。
+ES6中，有了 Promise之后，我们可以对那段代码进行改进（基本模型不变）。你会发现，代码简洁规范了许多。
 
-### 使用 Promise的基本代码结构
-
-使用 Promise 处理异步任务的基本代码结构如下：
+使用 Promise 处理异步任务的**基本代码结构**如下，我们先来认识一下：
 
 ```js
 // 使用 Promise 处理异步任务的基本模型
@@ -69,7 +67,7 @@ function requestData(url) {
     const res = {
       retCode: 0,
       data: 'qiangu yihao`s data',
-      errMsg: 'network is error',
+      errMsg: 'not login',
     };
     setTimeout(() => {
       if (res.retCode == 0) {
@@ -122,53 +120,31 @@ myPromise2.catch(err => {
 
 在日常开发中使用Promise时，80%以上的场景都符合上面的代码结构。你说它重不重要？我们暂且先记下，默写十遍，形成肌肉记忆，然后继续往下边学习边理解。
 
-### 使用 Promise 的基本步骤
+## Promise 的状态和回调函数
 
-Promise可翻译为“承诺”。在需要时给调用者一个承诺。Promise是一个类，通过 `new Promise()` 构造出一个 Promise 实例对象：
-
-（1）Promise 的构造函数中传入一个参数，这个参数是一个回调函数，该函数常用于处理异步任务。在使用 promise时，该函数会被立即执行。
-
-该函数有一个专有名词叫  **executor**，因为**这个回调函数会立即执行**。
-
-可以在该回调函数中传入两个参数：resolve 和 reject，分别表示异步执行成功后的回调函数和异步执行失败后的回调函数。代表着我们需要改变当前 promise 实例的状态到**已完成**或是**已拒绝**。
-
-（2）我们调用 resolve() 回调函数时，会执行 promise对象 的then() 方法里的回调函数，对成功的返回结果进行处理。（这里的 `promise` 指的是 Promise 实例对象）。
-
-（3）当我们调用 reject() 回调函数时，会执行 promise 对象 的catch() 方法里的回调函数，对失败的返回结果进行处理。
-
-我们再来看一下 Promise 有哪些状态。要知道，Promise 的精髓在于**对异步操作的状态管理**。
-
-## Promise 的状态
+Promise的三种状态是我们需要学习的第一个概念，也是最重要的概念，理解它才能理解 Promise的用法。
 
 ### Promise 对象的 3 种状态
 
 在使用  Promise 时，我们可以将它划分为三种状态：
 
--   等待：pending。属于初始状态，既没有被兑现，也没有被拒绝。
+-   `pending`：等待中。属于初始状态，既没有被兑现，也没有被拒绝。
 
--   已兑现：fulfilled。任务操作成功。执行了 resolve() 时，立即处于该状态，表示 Promise已经被兑现，任务执行成功。
+-   `fulfilled`：已兑现/已解决/成功。执行了`resolve()` 时，立即处于该状态，表示 Promise已经被**解决**，任务**执行成功**。
 
--   已拒绝：rejected。任务操作失败。执行了 reject() 时，立即处于该状态，表示 Promise已经被拒绝，任务执行失败。
+-   `rejected`：已拒绝/失败。执行了 `reject()`时，立即处于该状态，表示 Promise已经被**拒绝**，任务**执行失败**。
 
 具体解释：
 
-（1）当 new Promise()执行之后，promise 对象的状态会被初始化为`pending`，这个状态是初始状态。`new Promise()`这行代码，括号里的内容是同步执行的。括号里可以再定义一个 异步任务的 function，function 有两个参数：resolve 和 reject。如下：
+1、Promise 的中文名翻译为“承诺”（一般不称呼中文名）。resolve 的中文翻译为“解决”，reject 的中文翻译为“拒绝”。
 
--   如果异步任务成功了，则执行 resolve()，此时，promise 的状态会被自动修改为 fulfilled。
+2、当 new Promise()执行之后，promise 对象的状态会被初始化为`pending`，这个是初始状态。`new Promise()`这行代码，括号里的内容是同步执行的。括号里可以再定义一 异步任务的 function，function 有两个参数：resolve 和 reject。如下：
 
--   如果异步任务失败了，则执行 reject()，此时，promise 的状态会被自动修改为 rejected。
+-   如果异步任务成功了，请执行 resolve()，此时，promise 的状态会自动变为 fulfilled。
 
-（2）什么时候算成功，什么时候算失败呢？这是你自己定的，需要结合具体需求灵活决定。
+-   如果异步任务失败了，请执行 reject()，此时，promise 的状态会自动变为 rejected。
 
-（3）promise.then()方法：**只有 promise 的状态被改变之后，才会走到 then 或者 catch**。也就是说，在 new Promise()的时候，如果没有写 resolve()，则 promise.then() 不执行；如果没有写 reject()，则 promise.catch() 不执行。
-
-`then()`括号里面有两个参数，分别代表两个回调函数 function1 和 function2，这两个函数一直处于**监听状态**：
-
--   参数1：如果 promise 的状态为 fulfilled（意思是：任务执行成功），则执行 function1 里的内容
-
--   参数2：如果 promise 的状态为 rejected（意思是，任务执行失败），则执行 function2 里的内容
-
-（4）resolve()和 reject()这两个方法，是可以给 promise.then()传递参数的。
+3、什么时候算成功，什么时候算失败呢？这是**你自己定**的，需要结合具体需求和业务逻辑灵活决定。
 
 关于 promise 的状态改变，以及如何处理状态改变，伪代码及详细注释如下：
 
@@ -179,11 +155,11 @@ const promise = new Promise((resolve, reject) => {
   console.log('同步代码'); //这行代码是同步的
   //开始执行异步操作（这里开始，根据具体需求写异步的代码，比如ajax请求 or 开启定时器）
   if (异步的ajax请求成功) {
-    console.log('333');
-    // 如果请求成功了，请写resolve()，此时，promise的状态会被自动修改为fulfilled（成功状态）
+    console.log('233');
+    // 如果请求成功了，请写resolve()，此时，promise的状态会自动变为fulfilled（成功状态）
     resolve('请求成功，并传参');
   } else {
-    // 如果请求失败了，请写reject()，此时，promise的状态会被自动修改为rejected（失败状态）
+    // 如果请求失败了，请写reject()，此时，promise的状态会被自动变为rejected（失败状态）
     reject('请求失败，并传参');
   }
 });
@@ -191,9 +167,9 @@ console.log('qianguyihao');
 
 //调用promise的then()：开始处理成功和失败
 promise.then(
-  successMsg => {
+  successValue => {
     // 处理 promise 的成功状态：如果promise的状态为fulfilled，则执行这里的代码
-    console.log(successMsg, '回调成功了'); // 这里的 successMsg 是前面的 resolve('请求成功，并传参')  传过来的参数
+    console.log(successValue, '回调成功了'); // 这里的 successMsg 是前面的 resolve('请求成功，并传参')  传过来的参数
   },
   errorMsg => {
     //处理 promise 的失败状态：如果promise的状态为rejected，则执行这里的代码
@@ -202,7 +178,72 @@ promise.then(
 );
 ```
 
-上面的注释要多看几遍。以下是针对 Promise 状态的一些补充。
+上面的注释要多看几遍。
+
+### Promise 的回调函数
+
+Promise的回调函数，伪代码如下：
+
+```js
+const promise = new Promise(executor);
+
+// 【划重点】下面这两行代码是等价的，选其中一种写法即可。这两种写法没有区别，只是写法形式上的区别
+promise.then(onFulfilled, onRejected);
+
+promise.then(onFulfilled).catch(onRejected);
+```
+
+Promise是一个类，通过 `new Promise()` 进行**实例化**，构造出一个 Promise 实例对象。
+
+1、Promise 的构造函数中需要传入一个参数，这个参数是一个回调函数，常用于处理异步任务。这个函数有一个专有名词叫  **executor**（执行器），因为在 `new Promise()` 时，这个函数会**立即执行**。
+
+可以在该回调函数中传入两个参数：resolve 和 reject。我们可以在适当的时机执行 resolve()、reject()，用于改变当前 Promise 实例的状态到**成功**或**失败**。
+
+（2）当Promise状态变为成功时，会触发 then() 方法里的回调函数的执行，对成功的返回结果进行处理。
+
+（3）当Promise状态变为失败时，会触发 catch() 方法里的回调函数的执行，，对失败的返回结果进行处理。
+
+2、`then()`方法的括号里面有两个参数，分别代表两个回调函数 **onFulfilled** 和 **onRejected**，这两个函数一直处于**监听状态**：
+
+-   参数1：如果 promise 的状态为 fulfilled（意思是：任务执行成功），则触发 onFulfilled 函数的执行。
+
+-   参数2：如果 promise 的状态为 rejected（意思是，任务执行失败），则触发 onRejected 函数的执行。
+
+3、**只有 Promise 的状态被改变之后，才会走到 then() 或者 catch()**。也就是说，在 new Promise() 时，如果没有写 resolve()，则 promise.then() 不执行；如果没有写 reject()，则 promise.catch() 不执行。
+
+4、resolve()和 reject()这两个方法，可以给 promise.then()、promise.catch()传递参数。
+
+5、then() 可以被多次调用，会按照顺序执行。比如：
+
+```js
+const promise = new Promise(executor);
+
+// then() 可以被多次调用
+promise.then(onFulfilled, onRejected);
+promise.then(onFulfilled, onRejected);
+```
+
+### Promise 的状态一旦改变，就不能再变
+
+Promise 的状态一旦改变，就确定下来了，不能再变。也不能再次执行 resolve()或者 reject()来改变状态。Promise 的状态改变，是不可逆的。
+
+代码举例：
+
+```js
+const p = new Promise((resolve, reject) => {
+    resolve(1); // 代码执行到这里时， promise状态是 fulfilled
+  	resolve(111); // 这行重复代码写了没用，等于没写
+    reject(2); // 尝试修改状态为 rejected，是不行的。因为状态执行到上面的 resolve(1)时，已经被改变了。
+});
+
+p.then((res) => {
+    console.log(res);
+}).catch((err) => {
+    console.log(err);
+});
+```
+
+上方代码的打印结果是 1，而不是 2，详见注释。
 
 ### new Promise() 是同步代码
 
@@ -261,30 +302,6 @@ promise  then
 代码解释：代码 1 是同步代码，所以最先执行。代码 2 是**微任务**里面的代码，所以要先等同步任务（代码 3）先执行完。当写完`resolve();`之后，就会立刻把 `.then()`里面的代码加入到微任务队列当中。
 
 补充知识：异步任务分为“宏任务”、“微任务”两种。我们到后续的章节中再详细讲。
-
-### Promise 的状态一旦改变，就不能再变
-
-Promise 的状态一旦改变，就确定下来了，不能再变。也不能再次执行 resolve()或者 reject()来改变状态。Promise 的状态改变，是不可逆的。
-
-代码举例：
-
-```js
-const p = new Promise((resolve, reject) => {
-    resolve(1); // 代码执行到这里时， promise状态是 fulfilled
-  	resolve(111); // 这行重复代码写了没用，等于没写
-    reject(2); // 尝试修改状态为 rejected，是不行的。因为状态执行到上面的 resolve(1)时，已经被改变了。
-});
-
-p.then((res) => {
-    console.log(res);
-}).catch((err) => {
-    console.log(err);
-});
-```
-
-上方代码的打印结果是 1，而不是 2，详见注释。
-
-
 
 ## Promise 封装定时器
 
@@ -484,37 +501,35 @@ promiseB
 
 注意，如果你用的是写法 1（将 promise 实例定义为函数），则调用 promise 的时候是`promiseA().then()`，如果你用的是写法 2（将 promise 实例定位为函数），则调用的时候用的是`promiseB.then()`。写法 1 多了个括号，不要搞混了。
 
-### 
-
-##  Promise状态进一步理解：resolve() 传入的参数（重要）
+## resolve() 传入的参数（重要）
 
 执行 resolve()之后，Promise 的状态一定会变成 fulfilled 吗？这是不一定的。
 
 严格来说，在我们调用 resolve 时，如果 resolve()的参数中传入的值**本身不是一个Promise**，那么会将该 promise 的状态变成 fulfilled。
 
-resolve()的参数中，可以传入哪些值呢？具体情况如下：
+resolve()的参数中，可以传入哪些值，Promise会进入哪种状态呢？具体情况如下：
 
-- 情况1：如果resolve()中传入**普通的值或者普通对象**（包括 undefined），那么Promise 的状态为fulfilled。这个值会作为then()回调的参数。
+- 情况1：如果resolve()中传入**普通的值或者普通对象**（包括 undefined），那么Promise 的状态为fulfilled。这个值会作为then()回调的参数。这是最常见的情况。
 - 情况2：如果resolve()中传入的是**另外一个新的 Promise**，那么原 Promise 的状态将**交给新的 Promise 决定**。
 - 情况3：如果resolve()中传入的是一个对象，并且这个对象里有实现then()方法（这种对象称为 **thenable** 对象），那就会执行该then()方法，并且根据**then()方法的结果来决定Promise的状态**。
-
-情况1的代码已经在前面反复出现过了，这是最常见的情况。接下来重点讲一下情况2 和情况3。
 
 情况3中，我们通常称这个对象为 thenable 对象。thenable 的意思是，在某个对象或者函数中定义了一个 then() 方法，我们就称其为 thenable 对象/thenable函数。注意，thenable对象里面的那个单词只能写 then，不能写其他的单词；如果写其他的单词，就不是 thenable 对象了，就不符合情况3，而是符合情况1。
 
 扩展一下：reject()的参数中可以传入什么值呢？无论传入什么值，Promise 都会直接进入 rejected 状态，并触发 catch() 方法的执行。
+
+情况1的代码已经在前面反复出现过了，接下来重点讲一下情况2 和情况3。
 
 ### resolve() 中传入新的 Promise
 
 代码举例：
 
 ```js
-const promise2 = new Promise((resolve, reject) => {
-  reject('promise2 的 reject');
-});
-
 const promise1 = new Promise((resolve, reject) => {
   resolve(promise2);
+});
+
+const promise2 = new Promise((resolve, reject) => {
+  reject('promise2 的 reject');
 });
 
 promise1
