@@ -78,8 +78,6 @@ myPromise.then();
 myPromise.then();
 ```
 
-
-
 代码举例：
 
 ```js
@@ -122,7 +120,7 @@ res3 qianguyihao
 
 此外，then() 被调用多次还有一种**链式调用**的写法，它的打印结果与上面的打印结果不同，想要了解 Promise 的链式调用，需要先学习 then() 方法的返回值，我们继续往下看。
 
-## then() 方法的返回值【重要】
+## then() 方法的返回值（重要）
 
 > 这一段的知识点略有难度，但是非常重要，是我们学习 Promise 链式调用的理论基础。
 
@@ -137,11 +135,11 @@ myPromise.then().then().catch()
 
 上方代码中，因为 myPromise.then() 的返回值本身就是一个 Promise，所以才可以继续调用 then()、继续调用 catch()。
 
-那么，then()方法返回的 Promise 对象处于什么状态呢？答案如下：
+那么，**then()方法返回的 Promise 对象处于什么状态呢**？then()方法的参数里，是一个回调函数。这取决于回调函数的返回值是什么。情况如下：
 
-1、当then方法中的回调函数在执行时，那么Promise 处于pending状态。
+1、当then()方法中的回调函数在执行时，那么Promise 处于pending状态。
 
-2、当 then方法中的回调函数中，手动 return 一个返回值时，那么 Promise 的状态取决于返回值的类型。当返回值这行代码执行完毕后， Promise 会立即决议，进入确定状态。具体情况如下：
+2、当 then()方法中的回调函数中，手动 return 一个返回值时，那么 Promise 的状态取决于返回值的类型。当返回值这行代码执行完毕后， Promise 会立即决议，进入确定状态（成功 or 失败）。具体情况如下：
 
 - 情况1：如果没有返回值（相当于 return undefined），或者返回值是**普通值/普通对象**，那么 Promise 的状态为fulfilled。这个值会作为then()回调的参数。
 - 情况2：如果返回值是**另外一个新的 Promise**，那么原 Promise 的状态将**交给新的 Promise 决定**。
@@ -149,13 +147,13 @@ myPromise.then().then().catch()
 
 还有一种特殊情况：
 
-- 情况4：当then()方法传入的回调函数遇到异常或者抛出异常时，那么， Promise 处于rejected 状态。
+- 情况4：当then()方法传入的回调函数遇到异常或者手动抛出异常时，那么， Promise 处于rejected 状态。
 
-**小结**：then()方法里，我们可以通过 return **传递结果**给下一个新的Promise。
+**小结**：then()方法里，我们可以通过 return **传递结果和状态**给下一个新的Promise。
 
 ### 默认返回值
 
-如果then()方法里没写返回值（相当于 return undefined），那么它的返回值是一个新的Promise。新 Promise 的状态为fulfilled，其then()方法里，res的值为 undefined。
+如果then()方法的回调函数里没写返回值（相当于 return undefined），那么then()方法的返回值是一个新的Promise。新 Promise 的状态为fulfilled，其then()方法里，res的值为 undefined。
 
 then() 链式调用的代码举例：
 
@@ -208,7 +206,7 @@ res3：undefined
 
 ### 返回普通值
 
-我们也可以在 then()方法里，手动 return 自己想要的数据，比如一个普通值 value1。这个普通值就可以传递给下一个新的Promise。新 Promise 的状态为fulfilled，其then()方法里，res的值为 value1。
+我们也可以在 then()方法的回调函数里，手动 return 自己想要的数据，比如一个普通值 value1。这个普通值就可以传递给下一个新的Promise。新 Promise 的状态为fulfilled，其then()方法里，res的值为 value1。
 
 代码举例：
 
@@ -443,13 +441,38 @@ err3: qianguyihao rejected
 
 当 myPromise 状态为 rejected 时，下面的四个 catch() 方法**都在监听**，所以这四个 catch() 方法都会收到状态确定的通知，进而都会执行。
 
-## catch() 方法传入回调函数的返回值
+## catch() 方法的返回值（重要）
+
+与 then() 方法类似，catch()方法默认也是有返回值的，它会**返回一个新的Promise对象**。因为 catch()方法的返回值永远是一个 Promise 对象，所以我们才可以对它进行**链式调用**。
+
+Promise 链式调用的伪代码：
+
+ ```js
+// 伪代码
+myPromise.then().then().catch().then()
+ ```
+
+上方代码中，因为 myPromise.catch() 的返回值本身就是一个 Promise，所以才可以继续调用 then()、继续调用 catch()。
+
+与 then() 方法类似，**catch()方法返回的 Promise 对象处于什么状态呢**？catch()方法的参数里，是一个回调函数。这取决于回调函数的返回值是什么。情况如下：
+
+1、当catch()方法中的回调函数在执行时，那么Promise 处于 pending 状态。
+
+2、当 catch方法中的回调函数中，手动 return 一个返回值时，那么 Promise 的状态取决于返回值的类型。当返回值这行代码执行完毕后， Promise 会立即决议，进入确定状态（成功 or 失败），进而触发下一个then/catch 函数的执行。同时可以给下一个 then/catch 传递参数。具体情况如下：
+
+- 情况1：如果没有返回值（相当于 return undefined），或者返回值是**普通值/普通对象**，那么 Promise 的状态为fulfilled。这个值会作为then()回调的参数。
+- 情况2：如果返回值是**另外一个新的 Promise**，那么原 Promise 的状态将**交给新的 Promise 决定**。
+- 情况3：如果返回值是一个对象，并且这个对象里有实现then()方法（这种对象称为 **thenable** 对象），那就会执行该then()方法，并且根据**then()方法的结果来决定Promise的状态**。
+
+还有一种特殊情况：
+
+- 情况4：当catch()方法传入的回调函数遇到异常或者手动抛出异常时，那么， Promise 处于rejected 状态。
+
+**小结**：then()方法里，我们可以通过 return **传递结果**给下一个新的Promise。
 
 ### 默认返回值
 
-then()方法的参数里，是一个回调函数。这个回调函数**默认也是有返回值**的，它的返回值是一个**新的Promise**。所以，catch() 方法后面，我们可以继续调用 then() 或者 catch()。
-
-这个新 Promise 的决议时机是等到当前 catch() 方法参数里传入的回调函数有返回值时，进行决议。当返回值这行代码执行完毕后，这个 新 Promise 会立即进入 fulfilled 状态，进而触发下一个then/catch 函数的执行。同时可以给下一个 then/catch 传递参数。
+如果catch()方法的回调函数里没写返回值（相当于 return undefined），那么catch()方法的返回值是一个新的Promise。新 Promise 的状态为fulfilled，其then()方法里，res的值为 undefined。
 
 代码举例：
 
@@ -480,15 +503,9 @@ err: qianguyihao rejected
 res: undefined
 ```
 
-此外，我们也可以在 catch()的回调函数里，手动 return 自己想要的数据类型，可以有以下几种情况：
-
-- 返回普通值
-- 返回新的 Promise对象
-- 返回 thenable 对象
-
-这些情况的写法与前面讲的 then() 方法类似。接下来我们仅以“返回普通值”作为例子进行代码演示。
-
 ### 返回普通值
+
+我们也可以在 catch()方法的回调函数里，手动 return 自己想要的数据，比如一个普通值 value1。这个普通值就可以传递给下一个新的Promise。新 Promise 的状态为fulfilled，其then()方法里，res的值为 value1。
 
 代码举例：
 
@@ -523,10 +540,6 @@ err1: 1号
 res2: 2号
 res3: undefined
 ```
-
-
-
-
 
 ## catch() 方法的执行时机
 
