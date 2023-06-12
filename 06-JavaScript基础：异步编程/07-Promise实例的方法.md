@@ -318,7 +318,7 @@ err2: qianguyihao rejected 2
 res3: undefined
 ```
 
-上方代码可以看到，第二个Promise走的是失败回调，这很容易理解。重点是，最后一个 Promise 走的是成功回调，这很出人意料。我们稍后学习 catch()方法的返回值后，就能看懂。这例子很经典，一定要记住。
+上方代码可以看到，第二个Promise走的是失败回调，这很容易理解。重点是，最后一个 Promise 走的是成功回调，这很出人意料。我们稍后学习 catch()方法的返回值后，就能看懂。**这例子很经典，一定要记住**。
 
 ### 返回 thenable 对象
 
@@ -353,6 +353,55 @@ res1: qianguyihao fulfilled 1
 res2: thenable fulfilled
 res3 undefined
 ```
+
+### 手动抛出异常
+
+写法1：
+
+```js
+const myPromise = new Promise((resolve, reject) => {
+  resolve('qianguyihao fulfilled 1');
+});
+
+myPromise.then(res => {
+  console.log('res1:', res);
+  // 手动抛出异常
+  throw new Error('qianguyihao rejected 2')
+}).then(res => {
+  console.log('res2:', res);
+}, err => {
+  console.log('err2:', err);
+})
+```
+
+打印结果：
+
+```
+res1: qianguyihao fulfilled 1
+err2: Error: qianguyihao rejected 2
+```
+
+写法2：
+
+```js
+const myPromise = new Promise((resolve, reject) => {
+  resolve('qianguyihao fulfilled');
+});
+
+myPromise.then(res => {
+  console.log('res1:', res);
+  // 手动抛出异常
+  throw new Error('qianguyihao rejected 2')
+}).then(res => {
+  console.log('res2:', res);
+}).catch(err => {
+  console.log('err2:', err);
+})
+```
+
+打印结果不变。
+
+上面两种写法是等价的，都可以捕获到手动抛出的异常。
 
 ## Promise 实例的 catch() 方法
 
@@ -544,35 +593,6 @@ res3: undefined
 
 ## catch() 方法的执行时机
 
-### 找到最近的 catch() 去执行
-
-我们先来看一段代码：
-
-```js
-const myPromise = new Promise((resolve, reject) => {
-  reject('qianguyihao rejected');
-});
-
-myPromise
-  .then(res => {
-    console.log('res1:', res);
-  })
-  .then(res => {
-    console.log('res2:', res);
-  })
-  .catch(err => {
-    console.log('err:', err);
-  });
-```
-
-打印结果：
-
-```
-err: qianguyihao rejected
-```
-
-上方代码中的 catch() 是属于哪个 Promise 实例的方法呢？其实没有严格的界限。myPromise 的状态进入 rejected之后，它会找到**最近的catch()**去执行。这是 Promise的内部机制。
-
 ### Promise 抛出 rejected 异常时，一定要捕获并处理
 
 当 Promise 状态为 rejected 时，表示抛出异常，如果不处理失败的回调，行不行呢？不行，会报错。代码举例：
@@ -593,6 +613,8 @@ err: qianguyihao rejected
 这个报错的意思是：未捕获 rejected 失败状态的 Promise 异常。必须要加一个 catch() 进行捕获。
 
 书写 Promise 时，比较好的习惯是，无论如何都要在末尾写一个 catch() 方法。
+
+
 
 ### 可在 then() 中通过 throw 抛出异常
 
@@ -664,7 +686,165 @@ err: Error: 第二个 Promise 执行失败
 
 throw 这种写法在实战开发中很常用，需要理解并记住。
 
+### 找到最近的 catch() 去执行
 
+我们先来看一段代码：
+
+```js
+const myPromise = new Promise((resolve, reject) => {
+  reject('qianguyihao rejected');
+});
+
+myPromise
+  .then(res => {
+    console.log('res1:', res);
+  })
+  .then(res => {
+    console.log('res2:', res);
+  })
+  .catch(err => {
+    console.log('err:', err);
+  });
+```
+
+打印结果：
+
+```
+err: qianguyihao rejected
+```
+
+上方代码中的 catch() 是属于哪个 Promise 实例的方法呢？其实没有严格的界限。它既可以捕获 myPromise的异常，也可以捕获那两个 then()的异常，就是这么灵活。
+
+再来看一段代码：
+
+```js
+const myPromise = new Promise((resolve, reject) => {
+  resolve('qianguyihao fulfilled');
+});
+
+myPromise
+  .then(res => {
+    console.log('res1:', res);
+    // 遇到异常（或者任务失败）后，会找到最近的 catch() 去执行
+    throw new Error('not login')
+  })
+  .then(res => {
+    console.log('res2:', res);
+  }, err => {
+    console.log('err2:', err);
+  })
+  .catch(err => {
+    console.log('err3:', err);
+  });
+```
+
+打印结果：
+
+```
+res1: qianguyihao fulfilled
+err2: Error: not login
+```
+
+请记住，myPromise 的状态变为失败时，它会找到**最近的**那个失败回调函数并执行。这是 Promise的内部机制。
+
+## 处理失败状态的两种写法
+
+我们有两种写法可以捕获 Promise的失败/异常状态：
+
+-   写法 1：单独写 catch() 方法作为失败的回调函数。
+
+-   写法 2：then()方法里可以传两个参数，第⼀个参数是成功时的回调函数，第⼆个参数是失败时的回调函数。
+
+### 代码格式
+
+这两种写法的**代码格式**如下：
+
+```js
+// 第一步：model层的接口封装
+const myPromise = new Promise((resolve, reject) => {
+  // 这里做异步任务（比如 ajax 请求接口，或者定时器），然后执行 resolve 或者 reject。
+	...
+  ...
+});
+
+const onFulfilled = (res) => {
+  console.log(res);
+};
+
+const onRejected = function (err) {
+  console.log(err);
+};
+
+// 写法1：通过 catch 方法捕获失败状态的Promise
+myPromise.then(onFulfilled).catch(onRejected);
+
+// 写法2：then()方法里可以传两个参数，第⼀个参数是成功时的回调函数，第⼆个参数是失败时的回调函数。
+myPromise.then(onFulfilled, onRejected);
+```
+
+注意事项：
+
+1、上面这两种写法是等价的，选其中一种写法即可。这两种写法几乎没有区别。
+
+2、有一点点区别：
+
+- `myPromise.then(onFulfilled).catch(onRejected)`：既可以捕获到 myPromise 的异常，**也可以捕获到 then() 里面的异常**（划重点）。
+- `myPromise.then(onFulfilled, onRejected)`：只能捕获到 promise的异常，无法捕获then()里面的异常。
+
+知识拓展：`myPromise.catch().then()`这种写法，只能捕获到 myPromise 里面的异常。
+
+
+
+### 代码举例
+
+这两种写法在实战开发中的**代码举例**如下：
+
+```js
+function myPromise() {
+    return new Promise((resolve, reject) => {
+        // 这里做异步任务（比如 ajax 请求接口，或者定时器）
+            ...
+            ...
+    });
+}
+
+// 写法1
+myPromise()
+    .then((res) => {
+        // 从 resolve 获取正常结果
+        console.log('接口请求成功时，走这里');
+        console.log(res);
+    })
+    .catch((err) => {
+        // 从 reject 获取异常结果
+        console.log('接口请求失败时，走这里');
+        console.log(err);
+    })
+    .finally(() => {
+        console.log('无论接口请求成功与否，都会走这里');
+    });
+
+
+// 写法 2：（和写法 1 等价）
+myPromise()
+    .then(
+        (res) => {
+            // 从 resolve 获取正常结果
+            console.log('接口请求成功时，走这里');
+            console.log(res);
+        },
+        (err) => {
+            // 从 reject 获取异常结果
+            console.log('接口请求失败时，走这里');
+            console.log(err);
+        }
+    )
+    .finally(() => {
+        console.log('无论接口请求成功与否，都会走这里');
+    });
+```
+
+**代码解释**：写法 1 和写法 2 的作用是等价的。只不过，写法 2 是把 catch 里面的代码作为 then 里面的第二个参数而已。
 
 ## Promise 实例的 finally() 方法
 
@@ -717,105 +897,9 @@ promise1 决议后都会执行的代码
 promise2 决议后都会执行的代码
 ```
 
-## 处理失败状态的两种写法
+## Promise的其他写法
 
-我们有两种写法可以捕获 Promise的失败/异常状态：
-
--   写法 1：单独写 catch 方法作为失败的回调函数。
-
--   写法 2：then()方法里可以传两个参数，第⼀个参数是成功时的回调函数，第⼆个参数是失败时的回调函数。
-
-
-
-### 代码格式
-
-这两种写法的**代码格式**如下：
-
-```js
-// 第一步：model层的接口封装
-const promise = new Promise((resolve, reject) => {
-  // 这里做异步任务（比如 ajax 请求接口，或者定时器），然后执行 resolve 或者 reject。
-	...
-  ...
-});
-
-const onFulfilled = (res) => {
-  console.log(res);
-};
-
-const onRejected = function (err) {
-  console.log(err);
-};
-
-// 写法1：通过 catch 方法捕获失败状态的Promise
-promise.then(onFulfilled).catch(onRejected);
-
-// 写法2：then()方法里可以传两个参数，第⼀个参数是成功时的回调函数，第⼆个参数是失败时的回调函数。
-promise.then(onFulfilled, onRejected);
-```
-
-注意事项：
-
-1、上面这两种写法是等价的，选其中一种写法即可。这两种写法几乎没有区别。
-
-2、有一点点区别：
-
-- `promise.then(onFulfilled).catch(onRejected)`：既可以捕获到 promise 的异常，**也可以捕获到 then() 里面的异常**。
-- `promise.then(onFulfilled, onRejected)`：只能捕获到 promise的异常。
-- 知识拓展——`promise.catch().then()：只能捕获到 promise 里面的异常。
-
-`promiseA().then().catch()`和`promiseA().catch().then()`区别在于：前者可以捕获到 `then` 里面的异常，后者不可以。
-
-### 代码举例
-
-这两种写法在实战开发中的**代码举例**如下：
-
-```js
-function myPromise() {
-    return new Promise((resolve, reject) => {
-        // 这里做异步任务（比如 ajax 请求接口，或者定时器）
-            ...
-            ...
-    });
-}
-
-// 写法1
-myPromise()
-    .then((res) => {
-        // 从 resolve 获取正常结果
-        console.log('接口请求成功时，走这里');
-        console.log(res);
-    })
-    .catch((err) => {
-        // 从 reject 获取异常结果
-        console.log('接口请求失败时，走这里');
-        console.log(err);
-    })
-    .finally(() => {
-        console.log('无论接口请求成功与否，都会走这里');
-    });
-
-
-// 写法 2：（和写法 1 等价）
-myPromise()
-    .then(
-        (res) => {
-            // 从 resolve 获取正常结果
-            console.log('接口请求成功时，走这里');
-            console.log(res);
-        },
-        (err) => {
-            // 从 reject 获取异常结果
-            console.log('接口请求失败时，走这里');
-            console.log(err);
-        }
-    )
-    .finally(() => {
-        console.log('无论接口请求成功与否，都会走这里');
-    });
-```
-
-**代码解释**：写法 1 和写法 2 的作用是完全等价的。只不过，写法 2 是把 catch 里面的代码作为 then 里面的第二个参数而已。
+### 写法1
 
 
 
