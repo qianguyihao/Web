@@ -280,122 +280,96 @@ getData();
 
 
 
-## 链式调用，如何处理失败的情况
+## 链式调用，如何处理任务失败的情况
 
-在链式调用多个异步任务的Promise时，如果中间有一个任务失败或者异常，要怎么处理呢？是继续往下执行？还是停止执行，直接抛出异常？这取决于你的业务逻辑是怎样的，你可以根据具体情况灵活处理。
+在链式调用多个异步任务的Promise时，如果中间有一个任务失败或者异常，要怎么处理呢？是继续往下执行？还是停止执行，直接抛出异常？这取决于你的业务逻辑是怎样的。
 
-常见的处理方案有以下几种。
+常见的处理方案有以下几种，你可以根据具体情况**按需**选择。
 
-### 
-
-
-
-### 例 1：不处理 reject
-
-```js
-getPromise('a.json')
-    .then(
-        (res) => {
-            console.log(res);
-            return getPromise('b.json'); // 继续请求 b
-        },
-        (err) => {
-            // a 请求失败
-            console.log('a: err');
-        }
-    )
-    .then((res) => {
-        // b 请求成功
-        console.log(res);
-        return getPromise('c.json'); // 继续请求 c
-    })
-    .then((res) => {
-        // c 请求成功
-        console.log('c：success');
-    });
-```
-
-上面的代码中，假设 a 请求失败，那么，后面的代码会怎么走呢？
-
-打印结果：
-
-```
-a: err
-undefined
-c：success
-```
-
-我们可以看到，虽然 a 请求失败，但后续的请求依然会继续执行。
-
-为何打印结果的第二行是 undefined？这是因为，当 a 请求走到 reject 之后，我们并没有做任何处理。这就导致，代码走到第二个 `then`的时候，**其实是在执行一个空的 promise**。
-
-### 例 2：单独处理 reject
-
-```js
-getPromise('a.json')
-    .then(
-        (res) => {
-            console.log(res);
-            return getPromise('b.json'); // 继续请求 b
-        },
-        (err) => {
-            // a 请求失败
-            console.log('a: err');
-            // 【重要】即使 a 请求失败，也依然继续执行 b请求
-            return getPromise('b.json');
-        }
-    )
-    .then((res) => {
-        // b 请求成功
-        console.log(res);
-        return getPromise('c.json'); // 继续请求 c
-    })
-    .then((res) => {
-        // c 请求成功
-        console.log('c：success');
-    });
-```
-
-跟例 1 相比，例 2 在 reject 中增加了一行`return getPromise('b.json')`，意味着，即使 a 请求失败，也要继续执行 b。
-
-这段代码，我们是单独处理了 a 请求失败的情况。
-
-
-
-### 统一处理 reject
+### 统一处理失败的情况，不继续往下走
 
 针对 a、b、c 这三个请求，不管哪个请求失败，我都希望做统一处理。这种代码要怎么写呢?我们可以在最后面写一个 catch。
 
-代码举例如下：
-
-```js
-getPromise('a.json')
-    .then((res) => {
-        console.log(res);
-        return getPromise('b.json'); // 继续请求 b
-    })
-    .then((res) => {
-        // b 请求成功
-        console.log(res);
-        return getPromise('c.json'); // 继续请求 c
-    })
-    .then((res) => {
-        // c 请求成功
-        console.log('c：success');
-    })
-    .catch((err) => {
-        // 统一处理请求失败
-        console.log(err);
-    });
-```
-
-上面的代码中，由于是统一处理多个请求的异常，所以**只要有一个请求失败了，就会马上走到 catch**，剩下的请求就不会继续执行了。比如说：
+由于是统一处理多个请求的异常，所以**只要有一个请求失败了，就会马上走到 catch**，剩下的请求就不会继续执行。比如说：
 
 -   a 请求失败：然后会走到 catch，不执行 b 和 c
 
 -   a 请求成功，b 请求失败：然后会走到 catch，不执行 c。
 
-### 中间的Promise失败后，如何继续往下走？
+代码举例如下：
+
+```js
+getPromise('a.json')
+  .then((res) => {
+    console.log(res);
+    return getPromise('b.json'); // 继续请求 b
+  })
+  .then((res) => {
+    // b 请求成功
+    console.log(res);
+    return getPromise('c.json'); // 继续请求 c
+  })
+  .then((res) => {
+    // c 请求成功
+    console.log('c：success');
+  })
+  .catch((err) => {
+    // 统一处理请求失败
+    console.log(err);
+  });
+```
+
+### 中间的任务失败后，如何继续往下走？
+
+在多个Promise的链式调用中，**如果中间的某个Promise 执行失败，还想让剩下的其他 Promise 顺利执行**的话，那就请在中间**那个失败的Promise里加一个失败的回调函数**（可以写到then函数的第二个参数里，也可以写到catch函数里）。捕获异常后，便可继续往下执行其他的Promise。
+
+代码举例：
+
+```js
+const promise1 = new Promise((resolve, reject) => {
+  resolve('qianguyihao fulfilled 1');
+});
+
+const promise2 = new Promise((resolve, reject) => {
+  reject('qianguyihao rejected 2');
+});
+
+const promise3 = new Promise((resolve, reject) => {
+  resolve('qianguyihao fulfilled 3');
+});
+
+
+promise1
+  .then(res => {
+    console.log('res1:', res);
+    // return 一个 失败的 Promise
+    return promise2;
+  })
+  .then(res => {
+    console.log('res2:', res);
+    return promise3;
+  }, err => {
+    // 如果 promise2 为失败状态，可以通过 then() 的第二个参数（即失败的回调函数）捕获异常，然后就可以继续往下执行其他 Promise
+    console.log('err2:', err);
+    // 关键代码：即便 promise2 失败了，也要继续执行 Promise3
+    return promise3;
+  })
+  .then(res => {
+    console.log('res3', res);
+  }, err => {
+    console.log('err3:', err);
+  });
+```
+
+打印结果：
+
+```
+res1: qianguyihao fulfilled 1
+err2: qianguyihao rejected 2
+res3 qianguyihao fulfilled 3
+```
+
+上方代码中，我们单独处理了 promise2 失败的情况。不管promise2 成功还是失败，我们都想让后续的 promise3 正常执行。
 
 
 
