@@ -354,7 +354,64 @@ res2: thenable fulfilled
 res3 undefined
 ```
 
-### 手动抛出异常
+### then() 中抛出异常
+
+当then()方法传入的回调函数遇到异常或者手动抛出异常时，那么，then()所返回的**新的 Promise 会进入rejected 状态**，进而触发新Promise 的 catch() 方法的执行。
+
+**场景1**：当then()方法传入的回调函数里，如果代码**在执行时遇到异常**，系统会**自动抛出异常**。此时我们需要在 catch() 里**手动捕获异常**，否则会报错。
+
+代码举例：（代码在执行时遇到异常，却没有捕获异常，所以系统会报错）
+
+```js
+const myPromise = new Promise((resolve, reject) => {
+  resolve('qianguyihao fulfilled');
+});
+
+myPromise.then(res => {
+  console.log('res1:', res);
+  // 显然，person 并没有 forEach()方法。所以，代码在执行时，会遇到异常。
+  const person = { name: 'qianguyihao2' };
+  person.forEach(item => {
+    console.log('item:', item);
+  })
+  // 这行代码不会执行
+  console.log('qianguyihao3');
+}).then(res => {
+  console.log('res2:', res);
+})
+
+
+```
+
+运行结果：
+
+![image-20230614073528339](https://img.smyhvae.com/image-20230614073528339.png)
+
+代码举例：（代码在执行时遇到异常，此时我们捕获异常，所以系统不会报错，这才是推荐的写法）
+
+```js
+const myPromise = new Promise((resolve, reject) => {
+  resolve('qianguyihao fulfilled');
+});
+
+myPromise.then(res => {
+  console.log('res1:', res);
+  // 显然，person 并没有 forEach()方法。所以，代码在执行时，会遇到异常。
+  const person = { name: 'qianguyihao2' };
+  person.forEach(item => {
+    console.log('item:', item);
+  })
+}).then(res => {
+  console.log('res2:', res);
+}).catch(err => {
+  // 在 catch()方法传入的会调函数里，捕获异常
+  console.log('err2:', err);
+})
+```
+
+
+
+
 
 写法1：
 
@@ -370,6 +427,7 @@ myPromise.then(res => {
 }).then(res => {
   console.log('res2:', res);
 }, err => {
+  // 在then()的第二个参数里传入回调函数，捕获异常
   console.log('err2:', err);
 })
 ```
@@ -395,6 +453,7 @@ myPromise.then(res => {
 }).then(res => {
   console.log('res2:', res);
 }).catch(err => {
+  // 在 catch()方法传入的会调函数里，捕获异常
   console.log('err2:', err);
 })
 ```
