@@ -375,11 +375,12 @@ async function getData() {
     // requestData1 在执行时，遇到异常
     await requestData1();
     /*
-    由于上面的代码在执行是遇到异常，所以，这里虽然什么都没写，底层默认写了如下代码：
+    由于上面的代码在执行是遇到异常，当前任务立即终止，所以，这里虽然什么都没写，底层默认写了如下代码：
     return Promise.reject('任务1失败');
     */
 
-    // 下面这行代码不会再走了
+    // 下面这两代码不会再走了
+    console.log('qianguyihao1');
     await requestData2();
   }
   catch (err) {
@@ -389,21 +390,25 @@ async function getData() {
 }
 
 getData();
+console.log('qianguyihao2');
+
 ```
 
 打印结果：
 
 ```
+qianguyihao2
 err1: 任务1失败
 ```
-
-后面的章节中，我们会详细介绍 try catch的使用。
-
-
-
 ## 参考链接
 
 - [js async await 终极异步解决方案](https://www.cnblogs.com/CandyManPing/p/9384104.html)
 
 - [理解 JavaScript 的 async/await](https://segmentfault.com/a/1190000007535316)
+
+## 赞赏作者
+
+创作不易，你的赞赏和认可，是我更新的最大动力：
+
+![](https://img.smyhvae.com/20220401_1800.jpg)
 

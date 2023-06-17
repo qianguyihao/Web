@@ -358,40 +358,43 @@ res3 undefined
 
 当then()方法传入的回调函数遇到异常或者手动抛出异常时，那么，then()所返回的**新的 Promise 会进入rejected 状态**，进而触发新Promise 的 catch() 方法的执行。
 
-**场景1**：当then()方法传入的回调函数里，如果代码**在执行时遇到异常**，系统会**自动抛出异常**。此时我们需要在 catch() 里**手动捕获异常**，否则会报错。
+**场景1**：在then()方法传入的回调函数中，如果代码**在执行时遇到异常**，系统会**自动抛出异常**。此时我们需要在 catch() 里**手动捕获异常**，否则会报错。
 
 代码举例：（代码在执行时遇到异常，却没有捕获异常，所以系统会报错）
 
 ```js
 const myPromise = new Promise((resolve, reject) => {
-  resolve('qianguyihao fulfilled');
+  resolve('qianguyihao1 fulfilled');
 });
 
 myPromise.then(res => {
   console.log('res1:', res);
   // 显然，person 并没有 forEach()方法。所以，代码在执行时，会遇到异常。
-  const person = { name: 'qianguyihao2' };
+  const person = { name: 'vae' };
   person.forEach(item => {
     console.log('item:', item);
   })
-  // 这行代码不会执行
-  console.log('qianguyihao3');
+  // 这行代码不会执行，因为上面的代码报错了
+  console.log('qianguyihao2');
 }).then(res => {
   console.log('res2:', res);
 })
 
-
+// 定时器里的代码正常实行
+setTimeout(() => {
+  console.log('qianguyihao3');
+}, 100)
 ```
 
 运行结果：
 
-![image-20230614073528339](https://img.smyhvae.com/image-20230614073528339.png)
+![image-20230615090007932](https://img.smyhvae.com/image-20230615090007932.png)
 
 代码举例：（代码在执行时遇到异常，此时我们捕获异常，所以系统不会报错，这才是推荐的写法）
 
 ```js
 const myPromise = new Promise((resolve, reject) => {
-  resolve('qianguyihao fulfilled');
+  resolve('qianguyihao1 fulfilled');
 });
 
 myPromise.then(res => {
