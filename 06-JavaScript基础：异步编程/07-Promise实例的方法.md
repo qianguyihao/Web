@@ -204,7 +204,7 @@ res3：undefined
 
 换句话说，第一个 then() 在等待 myPromise 的决议结果，有决议结果后执行；第二个 then() 在等待第一个 then()参数里返回的新 Promise的决议结果，有决议结果后执行；第三个 then() 在等待第二个 then()参数里返回的新 Promise的决议结果，有决议结果后执行。
 
-### 返回普通值
+### 返回普通值：通过 return 传递数据结果
 
 我们也可以在 then()方法的回调函数里，手动 return 自己想要的数据，比如一个普通值 value1。这个普通值就可以传递给下一个新的Promise。新 Promise 的状态为fulfilled，其then()方法里，res的值为 value1。
 
@@ -246,7 +246,7 @@ res3: undefined
 
 ### 返回新的 Promise
 
-情况1、在 then() 方法的回调函数中 return 一个成功的Promise，代码举例：
+情况1、在 then() 方法的回调函数中 return 一个成功的新 Promise，相当于把新Promise的成功结果传递出去。代码举例：
 
 ```js
 const promise1 = new Promise((resolve, reject) => {
@@ -263,7 +263,7 @@ promise1
     return promise2;
   })
   .then(res => {
-    // 监听 myPromise2 的成功状态
+    // 监听 promise2 的成功状态
     console.log('res2:', res);
   })
   .then(res => {
@@ -279,7 +279,7 @@ res2: qianguyihao fulfilled 2
 res3 undefined
 ```
 
-情况2、在 then() 方法的回调函数中 return 一个失败的 Promise，再继续往下走，会怎么样？代码举例：
+情况2、在 then() 方法的回调函数中 return 一个失败的新 Promise，再继续往下走，会怎么样？相当于把新Promise 的失败原因传递出去。代码举例：
 
 ```js
 const promise1 = new Promise((resolve, reject) => {
@@ -356,114 +356,11 @@ res3 undefined
 
 ### then() 中抛出异常
 
-当then()方法传入的回调函数遇到异常或者手动抛出异常时，那么，then()所返回的**新的 Promise 会进入rejected 状态**，进而触发新Promise 的 catch() 方法的执行。
+当then()方法传入的回调函数遇到异常或者手动抛出异常时，那么，then()所返回的**新的 Promise 会进入rejected 状态**，进而触发新Promise 的 catch() 方法的执行，做异常捕获。
 
-**场景1**：在then()方法传入的回调函数中，如果代码**在执行时遇到异常**，系统会**自动抛出异常**。此时我们需要在 catch() 里**手动捕获异常**，否则会报错。
-
-代码举例：（代码在执行时遇到异常，却没有捕获异常，所以系统会报错）
-
-```js
-const myPromise = new Promise((resolve, reject) => {
-  resolve('qianguyihao1 fulfilled');
-});
-
-myPromise.then(res => {
-  console.log('res1:', res);
-  // 显然，person 并没有 forEach()方法。所以，代码在执行时，会遇到异常。
-  const person = { name: 'vae' };
-  person.forEach(item => {
-    console.log('item:', item);
-  })
-  // 这行代码不会执行，因为上面的代码报错了
-  console.log('qianguyihao2');
-}).then(res => {
-  console.log('res2:', res);
-})
-
-// 定时器里的代码正常实行
-setTimeout(() => {
-  console.log('qianguyihao3');
-}, 100)
-```
-
-运行结果：
-
-![image-20230615090007932](https://img.smyhvae.com/image-20230615090007932.png)
-
-代码举例：（代码在执行时遇到异常，此时我们捕获异常，所以系统不会报错，这才是推荐的写法）
-
-```js
-const myPromise = new Promise((resolve, reject) => {
-  resolve('qianguyihao1 fulfilled');
-});
-
-myPromise.then(res => {
-  console.log('res1:', res);
-  // 显然，person 并没有 forEach()方法。所以，代码在执行时，会遇到异常。
-  const person = { name: 'qianguyihao2' };
-  person.forEach(item => {
-    console.log('item:', item);
-  })
-}).then(res => {
-  console.log('res2:', res);
-}).catch(err => {
-  // 在 catch()方法传入的会调函数里，捕获异常
-  console.log('err2:', err);
-})
-```
+这方面的内容，我们在后续的文章《异常处理方案》中会详细讲解。
 
 
-
-
-
-写法1：
-
-```js
-const myPromise = new Promise((resolve, reject) => {
-  resolve('qianguyihao fulfilled 1');
-});
-
-myPromise.then(res => {
-  console.log('res1:', res);
-  // 手动抛出异常
-  throw new Error('qianguyihao rejected 2')
-}).then(res => {
-  console.log('res2:', res);
-}, err => {
-  // 在then()的第二个参数里传入回调函数，捕获异常
-  console.log('err2:', err);
-})
-```
-
-打印结果：
-
-```
-res1: qianguyihao fulfilled 1
-err2: Error: qianguyihao rejected 2
-```
-
-写法2：
-
-```js
-const myPromise = new Promise((resolve, reject) => {
-  resolve('qianguyihao fulfilled');
-});
-
-myPromise.then(res => {
-  console.log('res1:', res);
-  // 手动抛出异常
-  throw new Error('qianguyihao rejected 2')
-}).then(res => {
-  console.log('res2:', res);
-}).catch(err => {
-  // 在 catch()方法传入的会调函数里，捕获异常
-  console.log('err2:', err);
-})
-```
-
-打印结果不变。
-
-上面两种写法是等价的，都可以捕获到手动抛出的异常。
 
 ## Promise 实例的 catch() 方法
 
