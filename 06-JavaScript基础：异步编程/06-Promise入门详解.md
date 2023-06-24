@@ -255,16 +255,29 @@ p.then((res) => {
 
 `new Promise()`这行代码本身是同步的。promise 如果没有使用 resolve 或 reject 更改状态时，状态为 pending，里面的代码是同步代码。
 
-**举例 1**：
+**举例 1**：（重要）
 
 ```js
-const promiseA = new Promise((resolve, reject) => {});
-console.log(promiseA); // 此时 promise 的状态为 pending（准备阶段）
+// 会立即创建 Promise 实例
+const promise1 = new Promise((resolve, reject) => {
+  // 这行代码会立即执行
+  console.log('qianguyihao1');
+})
+
+console.log(promise1); // 此时 promise1 的状态为 pending（准备阶段）
+
+// 需要调用 promise2函数，才会创建 Promise 实例
+function promise2() {
+  return new Promise((resolve, reject) => {
+    // 这行代码不会立即执行
+    console.log('qianguyihao2');
+  })
+}
 ```
 
-上面的代码中，我既没有写 reslove()，也没有写 reject()。也就是说，这个 promise 一直处于准备阶段。
+上面的代码中，我既没有写 reslove()，也没有写 reject()。那么，Promise 一直处于准备阶段。
 
-当完成异步任务之后，状态分为成功或失败，此时我们就可以用 reslove() 和 reject() 来修改 promise 的状态。
+此外，需要特别注意的是，promise1 中的 console.log() 会**立即执行**，因为**Promise的执行器函数在创建 Promise 实例时就会被调用，并立即开始执行其中的代码逻辑**。
 
 **举例 2**：
 
@@ -305,7 +318,11 @@ promise1
 promise  then
 ```
 
-代码解释：代码 1 是同步代码，所以最先执行。代码 2 是**微任务**里面的代码，所以要先等同步任务（代码 3）先执行完。当写完`resolve();`之后，就会立刻把 `.then()`里面的代码加入到微任务队列当中。
+代码解释：
+
+当完成异步任务之后，状态分为成功或失败，此时我们就可以用 reslove() 和 reject() 来修改 promise 的状态。
+
+代码 1 是同步代码，所以最先执行。代码 2 是**微任务**里面的代码，所以要先等同步任务（代码 3）先执行完。当写完`resolve();`之后，就会立刻把 `.then()`里面的代码加入到微任务队列当中。
 
 补充知识：异步任务分为“宏任务”、“微任务”两种。我们到后续的章节中再详细讲。
 
@@ -656,27 +673,6 @@ promise1
 qianguyihao then
 {"name":"qianguyihao"}
 ```
-
-## 	Node.js 中的util.promisify()方法
-
-Node.js 中有一个内置的方法 util.promisify()，它可以很方便地将 ES5回调函数写法的方法，转成Promise写法的方法。就不需要我们手动封装Promise了。
-
-代码举例：
-
-```js
-// 引入 util 模块
-const util = require('util');
-// 引入 fs 模块
-const fs = require('fs');
-
-// 返回一个新的函数，这个函数是一个 Promise 对象
-const readFilePromise = util.promisify(fs.readFile);
-readFilePromise('readme.txt').then(res => {
-  console.log('res:', res.toString());
-});
-```
-
-
 
 
 
