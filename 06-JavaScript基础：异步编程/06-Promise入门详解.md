@@ -7,19 +7,19 @@ title: 06-Promise入门详解
 ## 前言
 
 
- Promise 是 JavaScript 中特有的语法。可以毫不夸张得说，Promise 是ES6中最重要的语法，没有之一。初学者可能对 Promise 的概念有些陌生，但是不用担心。大多数情况下，使用 Promise 的语法是比较固定的。我们可以先把这些固定语法和结构记下来，多默写几遍；然后在实战开发中逐渐去学习和领悟 Promise 的原理、底层逻辑以及细节知识点，自然就掌握了。
+ Promise 是 JavaScript 中特有的语法。可以毫不夸张得说，Promise 是ES6中最重要的语法，没有之一。初学者可能对 Promise 的概念有些陌生，但是不用担心。大多数情况下，使用 Promise 的语法是比较固定的。我们可以先把这些固定语法和结构记下来，多默写几遍；然后在实战开发中逐渐去学习和领悟 Promise 的原理、底层逻辑以及细节知识点，自然就慢慢掌握了。
 
 在了解 Promise 之前，必须要知道什么是回调函数，这是必不可少的前置知识。关于回调函数的知识，已经在上一篇文章中做了讲解。
 
 ## Promise 的介绍和优点（为什么需要 Promise？）
 
-ES6 中的 Promise 是异步编程的一种很好的方案。
+Promise 是异步编程的一种解决方案和规范。ES6将其写进了语言标准，统一了用法，原生提供了Promise对象。
 
 Promise 对象, 可以**用同步的表现形式来书写异步代码**（也就是说，代码看起来是同步的，但本质上的运行过程是异步的）。使用 Promise 主要有以下优点：
 
 -   1、可以很好地解决**回调地狱**的问题（避免了层层嵌套的回调函数）。
 -   2、统一规范、语法简洁、可读性和和可维护性强。
--   3、Promise 对象提供了简洁的 API，使得管理异步任务更方便，比如**多任务等待合并**等等。
+-   3、Promise 对象提供了简洁的 API，使得管理异步任务更方便、更灵活。
 
 从语法上讲，Promise 是一个对象，它可以获取异步操作的消息。
 
@@ -223,6 +223,12 @@ promise.then(onFulfilled, onRejected);
 promise.then(onFulfilled, onRejected);
 ```
 
+### Promise的状态图
+
+![image-20230624100254023](https://img.smyhvae.com/image-20230624100254023.png)
+
+上面的Promise状态图很经典，需要反复研读，了然于胸。
+
 ### Promise 的状态一旦改变，就不能再变
 
 Promise 的状态一旦改变，就确定下来了，不能再变。也不能再次执行 resolve()或者 reject()来改变状态。Promise 的状态改变，是不可逆的。
@@ -302,6 +308,8 @@ promise  then
 代码解释：代码 1 是同步代码，所以最先执行。代码 2 是**微任务**里面的代码，所以要先等同步任务（代码 3）先执行完。当写完`resolve();`之后，就会立刻把 `.then()`里面的代码加入到微任务队列当中。
 
 补充知识：异步任务分为“宏任务”、“微任务”两种。我们到后续的章节中再详细讲。
+
+
 
 ## Promise 封装定时器
 
@@ -662,7 +670,9 @@ qianguyihao then
 
 -   [当面试官问你 Promise 的时候，他究竟想听到什么？](https://zhuanlan.zhihu.com/p/29235579)
 
--   [手写一个 Promise/A+,完美通过官方 872 个测试用例](https://www.cnblogs.com/dennisj/p/12660388.html)
+- [手写一个 Promise/A+,完美通过官方 872 个测试用例](https://www.cnblogs.com/dennisj/p/12660388.html)
+
+-   [从 Promises/A+ 看异步流控制 - Liu Bowen](https://set.sh/post/200215-how-promise-works)
 
 ## 赞赏作者
 

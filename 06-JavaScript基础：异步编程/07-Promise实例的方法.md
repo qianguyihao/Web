@@ -124,7 +124,7 @@ res3 qianguyihao
 
 > 这一段的知识点略有难度，但是非常重要，是我们学习 Promise 链式调用的理论基础。
 
-then()方法本身是有返回值的，它会返回一个新的Promise对象。因为 then()方法的返回值永远是一个 Promise 对象，所以我们才可以对它进行**链式调用**。
+then()方法本身是有返回值的，它会返回一个**新的Promise对象**。因为 then()方法的返回值永远是一个 Promise 对象，所以我们才可以对它进行**链式调用**。
 
 Promise 链式调用的伪代码：
 
@@ -450,7 +450,7 @@ err3: qianguyihao rejected
 
 ## catch() 方法的返回值（重要）
 
-与 then() 方法类似，catch()方法默认也是有返回值的，它会**返回一个新的Promise对象**。因为 catch()方法的返回值永远是一个 Promise 对象，所以我们才可以对它进行**链式调用**。
+与 then() 方法类似，catch()方法默认也是有返回值的，它会返回一个**新的Promise对象**。因为 catch()方法的返回值永远是一个 Promise 对象，所以我们才可以对它进行**链式调用**。
 
 Promise 链式调用的伪代码：
 
@@ -704,7 +704,7 @@ res1: qianguyihao fulfilled
 err2: Error: not login
 ```
 
-请记住，myPromise 的状态变为失败时，它会找到**最近的**那个失败回调函数并执行。这是 Promise的内部机制。
+请记住，myPromise 的状态变为失败时，它会找到**最近的**那个**失败回调函数**并执行。这是 Promise的内部机制。
 
 ## 处理失败状态的两种写法
 
@@ -751,6 +751,12 @@ myPromise.then(onFulfilled, onRejected);
 - `myPromise.then(onFulfilled, onRejected)`：只能捕获到 promise的异常，无法捕获then()里面的异常。
 
 知识拓展：`myPromise.catch().then()`这种写法，只能捕获到 myPromise 里面的异常。
+
+
+
+
+
+
 
 
 
