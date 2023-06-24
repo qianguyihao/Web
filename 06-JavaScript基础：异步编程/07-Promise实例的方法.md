@@ -141,13 +141,13 @@ myPromise.then().then().catch()
 
 2、当 then()方法中的回调函数中，手动 return 一个返回值时，那么 Promise 的状态取决于返回值的类型。当返回值这行代码执行完毕后， Promise 会立即决议，进入确定状态（成功 or 失败）。具体情况如下：
 
-- 情况1：如果没有返回值（相当于 return undefined），或者返回值是**普通值/普通对象**，那么 Promise 的状态为fulfilled。这个值会作为then()回调的参数。
-- 情况2：如果返回值是**另外一个新的 Promise**，那么原 Promise 的状态将**交给新的 Promise 决定**。
+- 情况1：如果没有返回值（相当于 return undefined），或者返回值是**普通值/普通对象**，那么 Promise 的状态为fulfilled。这个值会作为fulfilled 状态的回调函数的参数值。
+- 情况2：如果返回值是**另外一个新的 Promise**，那么原 Promise 的状态将**交给新的 Promise 决定**，这两个Promise 的状态一致。
 - 情况3：如果返回值是一个对象，并且这个对象里有实现then()方法（这种对象称为 **thenable** 对象），那就会执行该then()方法，并且根据**then()方法的结果来决定Promise的状态**。
 
 还有一种特殊情况：
 
-- 情况4：当then()方法传入的回调函数遇到异常或者手动抛出异常时，那么， Promise 处于rejected 状态。
+- 情况4：当then()方法传入的回调函数遇到异常或者手动抛出异常时，那么， Promise 处于rejected 状态，并将抛出的错误作为 rejected 状态的回调函数的参数值。
 
 **小结**：then()方法里，我们可以通过 return **传递结果和状态**给下一个新的Promise。
 
@@ -246,7 +246,7 @@ res3: undefined
 
 ### 返回新的 Promise
 
-情况1、在 then() 方法的回调函数中 return 一个成功的新 Promise，相当于把新Promise的成功结果传递出去。代码举例：
+情况1、在 then() 方法的回调函数中 return 一个成功的新 Promise，那么，then()返回的Promise 也是成功状态。相当于把新Promise的成功结果传递出去。代码举例：
 
 ```js
 const promise1 = new Promise((resolve, reject) => {
@@ -279,7 +279,7 @@ res2: qianguyihao fulfilled 2
 res3 undefined
 ```
 
-情况2、在 then() 方法的回调函数中 return 一个失败的新 Promise，再继续往下走，会怎么样？相当于把新Promise 的失败原因传递出去。代码举例：
+情况2、在 then() 方法的回调函数中 return 一个失败的新 Promise，那么，then()返回的Promise 也是失败状态。再继续往下走，会怎么样？相当于把新Promise 的失败原因传递出去。代码举例：
 
 ```js
 const promise1 = new Promise((resolve, reject) => {
@@ -320,6 +320,8 @@ res3: undefined
 
 上方代码可以看到，第二个Promise走的是失败回调，这很容易理解。重点是，最后一个 Promise 走的是成功回调，这很出人意料。我们稍后学习 catch()方法的返回值后，就能看懂。**这例子很经典，一定要记住**。
 
+情况3：在 then() 方法的回调函数中 return 一个 pending 状态的新 Promise，那么 then() 返回的Promise状态也是 pending。
+
 ### 返回 thenable 对象
 
 代码举例：
@@ -359,6 +361,37 @@ res3 undefined
 当then()方法传入的回调函数遇到异常或者手动抛出异常时，那么，then()所返回的**新的 Promise 会进入rejected 状态**，进而触发新Promise 的 catch() 方法的执行，做异常捕获。
 
 这方面的内容，我们在后续的文章《异常处理方案》中会详细讲解。
+
+### 特殊情况：then() 中传入非函数时，会发生值穿透
+
+在Promise的`then()`方法中，如果传入一个非函数作为参数，JS 会将其忽略，并且将前一个 Promise 的结果值传递给下一个`then()`方法。这意味着如果你在`then()`中传入非函数参数，它将被视为一个空操作，而不会对Promise链产生任何影响。
+
+“值穿透”的意思是，传入的非函数值会被忽略。
+
+代码举例：
+
+```js
+const myPromise = new Promise((resolve, reject) => {
+  resolve('Hello');
+});
+
+myPromise
+  .then('Invalid Argument')
+  .then(res1 => {
+    console.log('res1:', res1);
+    return 'World';
+  })
+  .then(res2 => {
+    console.log('res2:', res2);
+  });
+```
+
+打印结果：
+
+```
+res1: Hello
+res2: World
+```
 
 
 
@@ -468,7 +501,7 @@ myPromise.then().then().catch().then()
 2、当 catch方法中的回调函数中，手动 return 一个返回值时，那么 Promise 的状态取决于返回值的类型。当返回值这行代码执行完毕后， Promise 会立即决议，进入确定状态（成功 or 失败），进而触发下一个then/catch 函数的执行。同时可以给下一个 then/catch 传递参数。具体情况如下：
 
 - 情况1：如果没有返回值（相当于 return undefined），或者返回值是**普通值/普通对象**，那么 Promise 的状态为fulfilled。这个值会作为then()回调的参数。
-- 情况2：如果返回值是**另外一个新的 Promise**，那么原 Promise 的状态将**交给新的 Promise 决定**。
+- 情况2：如果返回值是**另外一个新的 Promise**，那么原 Promise 的状态将**交给新的 Promise 决定**。这两个Promise 的状态一致。
 - 情况3：如果返回值是一个对象，并且这个对象里有实现then()方法（这种对象称为 **thenable** 对象），那就会执行该then()方法，并且根据**then()方法的结果来决定Promise的状态**。
 
 还有一种特殊情况：
