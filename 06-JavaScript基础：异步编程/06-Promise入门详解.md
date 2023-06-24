@@ -13,15 +13,15 @@ title: 06-Promise入门详解
 
 ## Promise 的介绍和优点（为什么需要 Promise？）
 
-Promise 是异步编程的一种解决方案和规范。ES6将其写进了语言标准，统一了用法，原生提供了Promise对象。
+Promise 是异步编程的一种**新的解决方案和规范**。ES6将其写进了语言标准，统一了用法，原生提供了Promise对象。
 
 Promise 对象, 可以**用同步的表现形式来书写异步代码**（也就是说，代码看起来是同步的，但本质上的运行过程是异步的）。使用 Promise 主要有以下优点：
 
--   1、可以很好地解决**回调地狱**的问题（避免了层层嵌套的回调函数）。
+-   1、可以很好地解决ES5中的**回调地狱**的问题（避免了层层嵌套的回调函数）。
 -   2、统一规范、语法简洁、可读性和和可维护性强。
 -   3、Promise 对象提供了简洁的 API，使得管理异步任务更方便、更灵活。
 
-从语法上讲，Promise 是一个对象，它可以获取异步操作的消息。
+从语法上讲，Promise 是一个构造函数。从功能上来说，Promise 对象用于封装一个异步操作，并获取其成功/ 失败的结果值。
 
 从写法规范上讲，**Promise 本质上是处理异步任务的一种编写规范**，要求每个人都按照这种规范来写。异步任务成功了该怎么写、异步任务失败了该怎么写、成功或者失败之后怎么通知调用者，这些都有规定的写法。Promise 的目的就是要让每个使用ES6的人都遵守这种写法规范。
 
@@ -195,7 +195,7 @@ promise.then(onFulfilled).catch(onRejected);
 
 Promise是一个类，通过 `new Promise()` 进行**实例化**，构造出一个 Promise 实例对象。
 
-1、Promise 的构造函数中需要传入一个参数，这个参数是一个回调函数，常用于处理异步任务。这个函数有一个专有名词叫  **executor**（执行器），因为在 `new Promise()` 时，这个函数会**立即执行**。
+1、Promise 的构造函数中需要传入一个参数，这个参数是一个回调函数，常用于处理异步任务。这个回调函数有一个专有名词叫  **executor**（执行器），因为在 `new Promise()` 时，这个函数会**立即执行**。
 
 可以在该回调函数中传入两个参数：resolve 和 reject。我们可以在适当的时机执行 resolve()、reject()，用于改变当前 Promise 实例的状态到**成功**或**失败**。
 
@@ -656,6 +656,27 @@ promise1
 qianguyihao then
 {"name":"qianguyihao"}
 ```
+
+## 	Node.js 中的util.promisify()方法
+
+Node.js 中有一个内置的方法 util.promisify()，它可以很方便地将 ES5回调函数写法的方法，转成Promise写法的方法。就不需要我们手动封装Promise了。
+
+代码举例：
+
+```js
+// 引入 util 模块
+const util = require('util');
+// 引入 fs 模块
+const fs = require('fs');
+
+// 返回一个新的函数，这个函数是一个 Promise 对象
+const readFilePromise = util.promisify(fs.readFile);
+readFilePromise('readme.txt').then(res => {
+  console.log('res:', res.toString());
+});
+```
+
+
 
 
 
