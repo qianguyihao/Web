@@ -143,7 +143,7 @@ foo().then(res => {
 
 async/await 是在 ES8(即ES 2017）中引入的新语法，是另外一种异步编程解决方案。
 
-async/await 本质是 生成器 Generator 的语法糖。什么是语法糖呢？语法糖就是让语法变得更加简洁、更加舒服，有一种甜甜的感觉。
+async/await 本质是 生成器 Generator 的语法糖，是对Generator的封装。什么是语法糖呢？语法糖就是让语法变得更加简洁、更加舒服，有一种甜甜的感觉。
 
 async/await 的写法使得编写异步代码更加直观和易于管理，避免了使用回调函数或Promise链的复杂性。认识到这一点，非常重要。
 
@@ -400,6 +400,10 @@ console.log('qianguyihao2');
 qianguyihao2
 err1: 任务1失败
 ```
+## 总结
+
+在 async 函数中，不是所有的 异步任务都需要 await。如果两个任务在业务上没有**依赖关系**，则不需要 await；也就是说，可以并发执行，不需要线性执行，避免无用的等待。
+
 ## 参考链接
 
 - [js async await 终极异步解决方案](https://www.cnblogs.com/CandyManPing/p/9384104.html)
