@@ -17,12 +17,16 @@ Promise **类**的方法：可以直接通过大写的`Promise.xxx`调用的方�
 
 Promise 的自带 API 提供了如下静态方法：
 
--   `Promise.resolve()`
--   `Promise.reject()`
--   `Promsie.all()`：并发处理多个异步任务，所有任务都执行成功，才算成功（走到 resolve）；只要有一个失败，就会马上走到 reject，整体都算失败。
--   `Promise.race()`：并发处理多个异步任务，返回的是第一个执行完成的 promise，且状态和第一个完成的任务状态保持一致。
--   `Promise.allSettled()`：并发处理多个异步任务，返回所有任务的执行结果（包括成功、失败）。当你有多个彼此不依赖的异步任务执行完成时，或者你想知道每个 promise 的结果时，通常使用它。
--   `Promise.any()`
+| Promise 的静态方法   | 含义                                                         | 版本    |
+| -------------------- | ------------------------------------------------------------ | ------- |
+| Promise.resolve()    | 返回一个成功状态的 Promise 对象                              | ES 2015 |
+| Promise.reject()     | 返回一个失败状态的 Promise 对象                              | ES 2015 |
+| Promsie.all()        | 所有 Promise 都执行成功才算成功；或者任意一个 Promise 执行失败，就算失败 | ES 2015 |
+| Proimse.allSettled() | 不论成功与失败，把所有Promise的执行结果全部返回              | ES 2020 |
+| Promise.race()       | Promise集合中，返回第一个执行完成（无论成功与失败）的 Promise | ES 2015 |
+| Promise.any()        | Promise集合中，返回第一个执行成功的Promise                   | ES 2021 |
+
+
 
 ## Promise.resolve() 和 Promise.reject()
 

@@ -234,7 +234,7 @@ read(A)
 
 ```js
 // 封装 Promise 链式请求
-function getData(params_1) {
+function* getData(params_1) {
   // 【关键代码】
   const res1 = yield requestData1(params_1);
   const res2 = yield requestData2(res1);
