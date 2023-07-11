@@ -1,5 +1,5 @@
 ---
-title: 09-Promise的链式调用
+title: 08-Promise的链式调用
 ---
 
 <ArticleTopAd></ArticleTopAd>

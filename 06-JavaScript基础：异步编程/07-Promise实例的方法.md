@@ -910,6 +910,7 @@ Promise 是⼀个拥有 then ⽅法的对象或函数。任何符合 promise 规
 关于 promise 规范的详细解读，可以看下面这个链接：
 
 -   Promises/A+ 规范：<https://promisesaplus.com/>
+-   【翻译】Promises/A+规范：https://www.ituring.com.cn/article/66566
 
 ## 赞赏作者
 

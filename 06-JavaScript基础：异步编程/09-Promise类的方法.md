@@ -1,5 +1,5 @@
 ---
-title: 08-Promise类的方法
+title: 09-Promise类的方法
 ---
 
 <ArticleTopAd></ArticleTopAd>
