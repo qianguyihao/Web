@@ -1,3 +1,9 @@
+---
+title: 07-Promise实例的方法
+---
+
+<ArticleTopAd></ArticleTopAd>
+
 ## Promise 实例的方法简介
 
 Promise 的 API 分为两种：
