@@ -161,7 +161,7 @@ async 后面可以跟一个 Promise 实例对象。代码举例如下：
 
 ```js
 const request1 = function () {
-  const promise = new Promise(resolve => {
+  const promise = new Promise((resolve, reject) => {
     requestAjax('https://www.baidu.com/xxx_url', (res) => {
       if (res.retCode == 200) {
         // 这里的 res 是接口1的返回结果
