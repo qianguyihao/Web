@@ -11,13 +11,13 @@ publish: true
 
 我们可以在 Navicat Premium 软件中，创建数据库和表，然后输入查询命令来查询数据。选择菜单栏「查询->新建查询->输入 sql 命令->运行」即可，效果如下：
 
-![](https://github.com/qianguyihao/Web/blob/master/img/20200417_1750.png)
+![](https://img.smyhvae.com/20200417_1750.png)
 
 我们还可以直接在终端输入命令行来操作。
 
 注意，在 Mac 终端执行 sql 命令时，命令的末尾必须加上`;`（英文格式的分号）。效果如下：
 
-![](https://github.com/qianguyihao/Web/blob/master/img/20200417_1700.png)
+![](https://img.smyhvae.com/20200417_1700.png)
 
 MySQL 命令行的一些简单命令如下。
 
@@ -225,8 +225,7 @@ SELECT * FROM author INNER JOIN book;
 
 查询结果：
 
-
-![](https://github.com/qianguyihao/Web/blob/master/img/20200418_2300.png)
+![](https://img.smyhvae.com/20200418_2300.png)
 
 
 上面这种查询，没有意义，因为没有加任何查询条件。
@@ -239,8 +238,7 @@ SELECT * FROM author INNER JOIN book ON author.authorId = book.authorId;
 
 查询结果：
 
-![](https://github.com/qianguyihao/Web/blob/master/img/20200418_2305.png)
-
+![](https://img.smyhvae.com/20200418_2305.png)
 
 上面这行命令，跟下面这行命令等价：
 
@@ -256,7 +254,7 @@ SELECT * FROM author LEFT JOIN book ON author.authorId = book.authorId;
 
 查询结果：
 
-![](https://github.com/qianguyihao/Web/blob/master/img/20200418_2310.png)
+![](https://img.smyhvae.com/20200418_2310.png)
 
 **情况 3**：（right join）
 
@@ -266,7 +264,7 @@ SELECT * FROM author RIGHT JOIN book ON author.authorId = book.authorId;
 
 查询结果：
 
-![](https://github.com/qianguyihao/Web/blob/master/img/20200418_2315.png)
+![](https://img.smyhvae.com/20200418_2315.png)
 
 ### 参考链接
 
@@ -281,8 +279,6 @@ SELECT * FROM author RIGHT JOIN book ON author.authorId = book.authorId;
 ## 子查询
 
 当一个查询结果是另一个查询的条件时，这个查询称之为子查询。
-
-
 
 
 
