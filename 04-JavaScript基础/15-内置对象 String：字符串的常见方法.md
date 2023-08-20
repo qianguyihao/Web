@@ -130,7 +130,7 @@ var num = 0;
 while (index !== -1) {
     console.log(index);
     num++; // 每打印一次，就计数一次
-    index = str.indexOf('o', index + 1);
+    index = str.indexOf('a', index + 1);
 }
 
 console.log('a 出现的次数是: ' + num);
