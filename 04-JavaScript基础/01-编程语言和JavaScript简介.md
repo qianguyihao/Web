@@ -189,29 +189,39 @@ Java 语言是属于半编译半解释型语言。翻译过程：
 
 1、JavaScript 诞生于**1995 年**，是由**网景**公司（Netscape）的员工 Brendan Eich（兰登 • 艾奇，1961 年～）发明，最初命名为 LiveScript。1995 年 12 月与 SUN 公司合作，因市场宣传需要，为了蹭 Java 的热度，改名为 JavaScript。
 
-发明这个语言的背景是这样的：1994 年网景公司发布历史上第一个比较成熟的浏览器（Navigator 0.9）, 但是只能浏览不能**交互**。1995 年为了解决表单有效性验证就要与服务器进行多次地往返交互问题，网景公司录用 Brendan Eich（兰登 • 艾奇），他只用了 10 天就设计并研发出 一种网页脚本语言——LiveScript 语言的第一版。
+发明这个语言的[背景](https://www.ruanyifeng.com/blog/2011/06/birth_of_javascript.html)是这样的：1994 年网景公司发布历史上第一个比较成熟的浏览器（Navigator 0.9）, 但是只能浏览不能**交互**。1995 年为了解决表单有效性验证就要与服务器进行多次地往返交互问题，网景公司录用 Brendan Eich（兰登 • 艾奇），他只用了 10 天就设计并研发出 一种网页脚本语言——LiveScript 语言的第一版。
 
-由于 Sun 公司当时的 Java 语言特别火，所以为了傍大牌，就借势改名为 JavaScript。如同“北大”和“北大青鸟”的关系，“北大青鸟”就是傍“北大”的大牌。
+由于 Sun 公司当时的 Java 语言特别火，所以为了傍大牌，就借势改名为 JavaScript。Java 和 JavaScript 的关系，就好比：雷锋和雷峰塔的关系、老婆和老婆饼的关系、北大和北大青鸟的关系。“北大青鸟”就是傍“北大”的大牌。
 
-同时期还有其他的网页语言，比如 VBScript、JScript 等等，但是后来都被 JavaScript 打败了，所以现在的浏览器中，只运行一种脚本语言就是 JavaScript。
+JavaScript 是 Sun 公司注册并授权给 Netscape 使用的商标。后来 Sun 公司被 Oracle 收购，JavaScript 版权归 Oracle 所有。
 
-2、JavaScript 是 Sun 公司注册并授权给 Netscape 使用的商标。后来 Sun 公司被 Oracle 收购，JavaScript 版权归 Oracle 所有。
+1996 年，微软为了抢占市场，推出了`JScript`在 IE3.0 中使用。
 
-3、1996 年，微软为了抢占市场，推出了`JScript`在 IE3.0 中使用。
+1996 年 11 月网景公司向 ECMA（European Computer Manufacturers Association，欧洲电脑制造商协会，属于国际标准化组织）提交了 JS的语言标准，将其成为国际标准，以此对抗微软。
 
-4、1996 年 11 月网景公司将 JS 提交给 ECMA(国际标准化组织)成为国际标准，用于对抗微软。
+- ECMA 的技术委员负责制定和审核这个标准，成员由业内的大公司派出的工程师组成。该委员会定期开会，所有的邮件讨论和会议记录，都是公开的。
 
-5、Brendan Eich 只用1几天
+- 1997年7月，ECMA 组织发布262号标准文件（ECMA-262）的第一版，规定了浏览器脚本语言的标准，并将这种语言规范称为 ECMAScript，这个版本就是 ECMAScript 1.0 版。简而言之，ECMA-262是一份标准文件，定义了 ECMAScript 这个语言规范。
+- JavaScript 成为了 ECMAScript最著名的实现之一。ECMAScript 和 JavaScript 的关系是，前者是后者的语法规范，后者是前者的一种实现。
+- 除此之外，ActionScript 和 JScript 也是遵守 ECMAScript 规范的语言。
+- ECMAScript 只用来标准化 JavaScript 这种语言的基本语法。与部署环境相关的标准则由其他标准规定，比如 DOM 的标准就是由 W3C组织（World Wide Web Consortium）制定的。
 
-补充：
+同时期还有其他的网页语言，比如 VBScript、JScript 等等，但是后来都被 JavaScript 打败了，所以现在的浏览器中，只运行一种脚本语言就是 JavaScript。JavaScript 是世界上用的最多的**脚本语言**。
 
-> JavaScript 是世界上用的最多的**脚本语言**。
+### JavaScript语言是个大杂烩
 
-> Java 和 JavaScript 的关系，就好比：雷锋和雷峰塔的关系、老婆和老婆饼的关系、北大和北大青鸟的关系。
+Brendan Eich 这位天才只用了10天就设计出了 JS，但这门语言当时更像是一个[大杂烩](https://wangdoc.com/javascript/basic/history)：
 
-推荐阅读链接：
+- 基本语法：借鉴 C 语言和 Java 语言。
+-  数据类型和数据结构：借鉴 Java 语言，包括将值分成原始值和对象两大类。
+- 函数：借鉴 Scheme 语言和 Awk 语言，将函数当作第一等公民，并引入闭包。
+- 基于原型的继承机制：借鉴 Self 语言（Smalltalk 的一种变种）。
+- 正则表达式：借鉴 Perl 语言。
+- 字符串和数组处理：借鉴 Python 语言。
 
--   [网道 | JavaScript 语言的历史](https://wangdoc.com/javascript/basic/history.html)
+由于设计时间太短，语言的一些细节考虑得不够严谨，导致后来很长一段时间，Javascript写出来的程序混乱不堪。所以，Javascript语言实际上是两种语言风格的混合体：（简化的）函数式编程+（简化的）面向对象编程。这是由Brendan Eich（函数式编程）与网景公司（面向对象编程）共同决定的。
+
+十八世纪英国文学家约翰逊博士有一句名言说得好：“它是好的，也是原创的，它的优秀之处并非原创，它的原创之处并不优秀。”'（It is both good and original; but the part that is good is not original, and the part that is original is not good.）"
 
 ### JavaScript 的发展：蒸蒸日上
 
