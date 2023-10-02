@@ -183,33 +183,25 @@ Java 语言是属于半编译半解释型语言。翻译过程：
 
 （2）执行：`.class`文件再通过 jvm 虚拟机，解释执行。有了 jvm 的存在， java 就可以跨平台了。
 
-## JavaScript 历史和发展
-
-Web 前端有三层：
-
--   HTML：从语义的角度，描述页面**结构**
-
--   CSS：从审美的角度，描述**样式**（美化页面）
-
--   JavaScript（简称 JS）：从交互的角度，描述**行为**（实现业务逻辑和页面控制）
+## JavaScript 的历史和发展
 
 ### JavaScript 的历史
 
 1、JavaScript 诞生于**1995 年**，是由**网景**公司（Netscape）的员工 Brendan Eich（兰登 • 艾奇，1961 年～）发明，最初命名为 LiveScript。1995 年 12 月与 SUN 公司合作，因市场宣传需要，为了蹭 Java 的热度，改名为 JavaScript。
 
-补充：
+发明这个语言的背景是这样的：1994 年网景公司发布历史上第一个比较成熟的浏览器（Navigator 0.9）, 但是只能浏览不能**交互**。1995 年为了解决表单有效性验证就要与服务器进行多次地往返交互问题，网景公司录用 Brendan Eich（兰登 • 艾奇），他只用了 10 天就设计并研发出 一种网页脚本语言——LiveScript 语言的第一版。
 
-> 1994 年网景公司发布历史上第一个比较成熟的浏览器(Navigator 0.9), 但是只能浏览不能**交互**。1995 年为了解决表单有效性验证就要与服务器进行多次地往返交互问题，网景公司录用 Brendan Eich（兰登 • 艾奇），他只用了 10 天就开发出 LiveScript 语言的第一版。
+由于 Sun 公司当时的 Java 语言特别火，所以为了傍大牌，就借势改名为 JavaScript。如同“北大”和“北大青鸟”的关系，“北大青鸟”就是傍“北大”的大牌。
 
-> 由于 Sun 公司当时的 Java 语言特别火，所以为了傍大牌，就借势改名为 JavaScript。如同“北大”和“北大青鸟”的关系，“北大青鸟”就是傍“北大”的大牌。
+同时期还有其他的网页语言，比如 VBScript、JScript 等等，但是后来都被 JavaScript 打败了，所以现在的浏览器中，只运行一种脚本语言就是 JavaScript。
 
-> 同时期还有其他的网页语言，比如 VBScript、JScript 等等，但是后来都被 JavaScript 打败了，所以现在的浏览器中，只运行一种脚本语言就是 JavaScript。
-
-2、JavaScript 是 Sun 注册并授权给 Netscape 使用的商标。后来 Sun 公司 被 Oracle 收购，JavaScript 版权归 Oracle 所有。
+2、JavaScript 是 Sun 公司注册并授权给 Netscape 使用的商标。后来 Sun 公司被 Oracle 收购，JavaScript 版权归 Oracle 所有。
 
 3、1996 年，微软为了抢占市场，推出了`JScript`在 IE3.0 中使用。
 
 4、1996 年 11 月网景公司将 JS 提交给 ECMA(国际标准化组织)成为国际标准，用于对抗微软。
+
+5、Brendan Eich 只用1几天
 
 补充：
 
@@ -221,7 +213,7 @@ Web 前端有三层：
 
 -   [网道 | JavaScript 语言的历史](https://wangdoc.com/javascript/basic/history.html)
 
-###JavaScript 的发展：蒸蒸日上
+### JavaScript 的发展：蒸蒸日上
 
 2003 年之前，JavaScript 被认为“牛皮鲜”，用来制作页面上的广告，弹窗、漂浮的广告。什么东西让人烦，什么东西就是 JavaScript 开发的。所以很多浏览器就推出了屏蔽广告功能。
 
