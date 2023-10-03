@@ -167,13 +167,17 @@ int main(int argc, char const *argv[])
 
 ### 2、解释型语言
 
-- 定义：在运行过程中（runtime）通过解释器**边翻译边执行**（也就是逐行翻译：翻译一行，执行一行），不需要事先一次性翻译。
+- 定义：在运行过程中（runtime）通过解释器**边翻译边执行**，也就是逐行翻译。不需要事先一次性翻译，而是在运行时，边翻译变执行（翻译一行，执行一行）。
 
 - 优点：移植性好，跨平台。
 
 - 缺点：运行速度不如编译型语言。
 
 - 解释型语言举例：JavaScript、PHP、Python。
+
+为什么 JS 是解释型语言呢？这和浏览器的工作原理有关。浏览器中有一个专门的“JS 解析器”可以让 JS 边解析边执行。
+
+由于少了事先编译这一步骤，所以解释型语言开发起来尤为方便，但是解释型语言运行较慢也是它的劣势。不过解释型语言中使用了 JIT 技术，使得运行速度得以改善。
 
 ### Java 语言
 
@@ -197,6 +201,10 @@ JavaScript 是 Sun 公司注册并授权给 Netscape 使用的商标。后来 Su
 
 1996 年，微软为了抢占市场，推出了`JScript`在 IE3.0 中使用。
 
+### ECMAScript 标准
+
+ECMAScript 是一种由 ECMA 组织制定和发布的脚本语言规范。
+
 1996 年 11 月网景公司向 ECMA（European Computer Manufacturers Association，欧洲电脑制造商协会，属于国际标准化组织）提交了 JS的语言标准，将其成为国际标准，以此对抗微软。
 
 - ECMA 的技术委员负责制定和审核这个标准，成员由业内的大公司派出的工程师组成。该委员会定期开会，所有的邮件讨论和会议记录，都是公开的。
@@ -207,6 +215,12 @@ JavaScript 是 Sun 公司注册并授权给 Netscape 使用的商标。后来 Su
 - ECMAScript 只用来标准化 JavaScript 这种语言的基本语法。与部署环境相关的标准则由其他标准规定，比如 DOM 的标准就是由 W3C组织（World Wide Web Consortium）制定的。
 
 同时期还有其他的网页语言，比如 VBScript、JScript 等等，但是后来都被 JavaScript 打败了，所以现在的浏览器中，只运行一种脚本语言就是 JavaScript。JavaScript 是世界上用的最多的**脚本语言**。
+
+JavaScript 是由公司开发而成的，问题是不便于其他的公司拓展和使用。所以 ECMA 组织，牵头制定了 JavaScript 的标准，取名为 ECMAScript。
+
+简单来说，**ECMAScript 不是一门语言，而是一个标准**。ECMAScript 规定了 JS 的编程语法和基础核心知识，是所有浏览器厂商共同遵守的一套 JS 语法工业标准。
+
+ECMAScript 在 2015 年 6 月，发布了 ECMAScript 6 版本（ES6），语言的能力更强，包含了很多新特性。
 
 ### JavaScript语言是个大杂烩
 
@@ -221,7 +235,10 @@ Brendan Eich 这位天才只用了10天就设计出了 JS，但这门语言当�
 
 由于设计时间太短，语言的一些细节考虑得不够严谨，导致后来很长一段时间，Javascript写出来的程序混乱不堪。所以，Javascript语言实际上是两种语言风格的混合体：（简化的）函数式编程+（简化的）面向对象编程。这是由Brendan Eich（函数式编程）与网景公司（面向对象编程）共同决定的。
 
-十八世纪英国文学家约翰逊博士有一句名言说得好：“它是好的，也是原创的，它的优秀之处并非原创，它的原创之处并不优秀。”'（It is both good and original; but the part that is good is not original, and the part that is original is not good.）"
+十八世纪英国文学家约翰逊博士有一句名言说得好：“这个作品是好的，也是原创的，它的优秀之处并非原创，它的原创之处并不优秀。”（It is both good and original; but the part that is good is not original, and the part that is original is not good.）
+
+
+后来，随着ES6语法的不断改进，JS语言越来越优秀。ECMA 和 ECMAScript 赋予了 JavaScript 新的能力和活力。
 
 ### JavaScript 的发展：蒸蒸日上
 
@@ -284,8 +301,8 @@ boolean a;
 var a;
 
 // ES6 写法
-const a;
-let a;
+const b;
+let c;
 ```
 
 ### JavaScript 既是前端语言，又是后端语言
@@ -308,31 +325,12 @@ JavaScript 基础分为三个部分：
 
 通俗理解就是：ECMAScript 是 JS 的语法；DOM 和 BOM 是浏览器运行环境为 JS 提供的 API。
 
-## JavaScript 的特点
+### JavaScript 的特点
 
-### 特点 1：解释型语言
+1、解释型语言。
+2、遵守ECMAScript 标准。
+3、单线程。
 
-JavaScript 简称 JS，是前端开发的一门脚本语言（解释型语言）。
-
-**解释型语言**的意思是：程序执行之前，不需要事先被翻译为机器码；而是在运行时，边翻译边执行（翻译一行，执行一行）。关于解释型语言的详细介绍，上一篇文章有介绍。
-
-为什么 JS 是解释型语言呢？这和浏览器的工作原理有关。浏览器中有一个专门的“JS 解析器”可以让 JS 边解析边执行。
-
-由于少了事先编译这一步骤，所以解释型语言开发起来尤为方便，但是解释型语言运行较慢也是它的劣势。不过解释型语言中使用了 JIT 技术，使得运行速度得以改善。
-
-### 特点 2：单线程
-
-### 特点 3：ECMAScript 标准
-
-ECMAScript 是一种由 ECMA 国际（前身为欧洲计算机制造商协会,英文名称是 European Computer Manufacturers Association）制定和发布的脚本语言规范。
-
-JavaScript 是由公司开发而成的，问题是不便于其他的公司拓展和使用。所以欧洲的这个 ECMA 的组织，牵头制定 JavaScript 的标准，取名为 ECMAScript。
-
-简单来说，**ECMAScript 不是一门语言，而是一个标准**。ECMAScript 规定了 JS 的编程语法和基础核心知识，是所有浏览器厂商共同遵守的一套 JS 语法工业标准。
-
-ECMAScript 在 2015 年 6 月，发布了 ECMAScript 6 版本（ES6），语言的能力更强，包含了很多新特性），但也要考虑它的浏览器兼容性问题。
-
-ECMA 赋予了 JavaScript 新的能力和活力。
 
 ## 参考链接
 
