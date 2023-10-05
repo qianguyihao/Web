@@ -285,7 +285,7 @@ JS正在越来越多的场景和环境中得到应用，具体包括：
 - PC客户端/桌面应用开发：Electron 框架。比如 VS Code、Typora等软件就是基于 Electron 框架进行开发的。
 - 后端开发：Node.js
 
-## JavaScript 介绍
+## JavaScript语言的介绍
 
 ### JavaScript 入门易学性
 
