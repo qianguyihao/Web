@@ -227,7 +227,7 @@ ECMAScript 在 2015 年 6 月，发布了 ECMAScript 6 版本（ES6），语言�
 Brendan Eich 这位天才只用了10天就设计出了 JS，但这门语言当时更像是一个[大杂烩](https://wangdoc.com/javascript/basic/history)：
 
 - 基本语法：借鉴 C 语言和 Java 语言。
--  数据类型和数据结构：借鉴 Java 语言，包括将值分成原始值和对象两大类。
+- 数据类型和数据结构：借鉴 Java 语言，包括将值分成原始值和对象两大类。
 - 函数：借鉴 Scheme 语言和 Awk 语言，将函数当作第一等公民，并引入闭包。
 - 基于原型的继承机制：借鉴 Self 语言（Smalltalk 的一种变种）。
 - 正则表达式：借鉴 Perl 语言。
@@ -236,7 +236,6 @@ Brendan Eich 这位天才只用了10天就设计出了 JS，但这门语言当�
 由于设计时间太短，语言的一些细节考虑得不够严谨，导致后来很长一段时间，Javascript写出来的程序混乱不堪。所以，Javascript语言实际上是两种语言风格的混合体：（简化的）函数式编程+（简化的）面向对象编程。这是由Brendan Eich（函数式编程）与网景公司（面向对象编程）共同决定的。
 
 十八世纪英国文学家约翰逊博士有一句名言说得好：“这个作品是好的，也是原创的，它的优秀之处并非原创，它的原创之处并不优秀。”（It is both good and original; but the part that is good is not original, and the part that is original is not good.）
-
 
 后来，随着ES6语法的不断改进，JS语言越来越优秀。ECMA 和 ECMAScript 赋予了 JavaScript 新的能力和活力。
 
@@ -289,11 +288,11 @@ JS正在越来越多的场景和环境中得到应用，具体包括：
 
 ### JavaScript 入门易学性
 
--   JavaScript 对初学者比较友好。可以使用任何文本编辑工具编写，只需要浏览器就可以执行程序。
+- JavaScript 对初学者比较友好。可以使用任何文本编辑工具编写，只需要浏览器就可以执行程序。
 
--   JavaScript 是有界面效果的（相比之下，C 语言只有白底黑字）。
+- JavaScript 是有界面效果的（相比之下，C 语言只有白底黑字）。
 
--   JavaScript 的入门较简单（进阶不易）。比如，JS 是**弱变量类型**的语言，变量只需要用 var/let/const 来声明。而 Java 中变量的声明，要根据变量的类型来定义。
+- JavaScript 的入门较简单（进阶不易）。比如，JS 是**弱变量类型**的语言，变量只需要用 var/let/const 来声明。而 Java 中变量的声明，要根据变量的类型来定义。
 
 Java 中需要这样定义变量：
 
@@ -328,11 +327,11 @@ let c;
 
 JavaScript 基础分为三个部分：
 
--   **ECMAScript**：JavaScript 的**语法标准**。包括变量、表达式、运算符、函数、if 语句、for 语句等。
+- **ECMAScript**：JavaScript 的**语法标准**。包括变量、表达式、运算符、函数、if 语句、for 语句等。
 
--   **DOM**：Document Object Model（文档对象模型），JS 操作**页面上的元素**（标签）的 API。比如让盒子移动、变色、改变大小、轮播图等等。
+- **DOM**：Document Object Model（文档对象模型），JS 操作**页面上的元素**（标签）的 API。比如让盒子移动、变色、改变大小、轮播图等等。
 
--   **BOM**：Browser Object Model（浏览器对象模型），JS 操作**浏览器部分功能**的 API。通过 BOM 可以操作浏览器窗口，比如弹框、控制浏览器跳转、获取浏览器分辨率等等。
+- **BOM**：Browser Object Model（浏览器对象模型），JS 操作**浏览器部分功能**的 API。通过 BOM 可以操作浏览器窗口，比如弹框、控制浏览器跳转、获取浏览器分辨率等等。
 
 通俗理解就是：ECMAScript 是 JS 的语法；DOM 和 BOM 是浏览器运行环境为 JS 提供的 API。
 
@@ -341,7 +340,6 @@ JavaScript 基础分为三个部分：
 1、解释型语言。
 2、遵守ECMAScript 标准。
 3、单线程。
-
 
 ## 参考链接
 
@@ -352,7 +350,6 @@ JavaScript 基础分为三个部分：
 - [编程语言70年：谁是世界上最好的编程语言？](https://zhuanlan.zhihu.com/p/611924622)
 
 ![img](https://img.smyhvae.com/v2-fcdbef5c589522df3960e4cea9825a71_1440w.png)
-
 
 - [汇编语言(转) | Xian Rong](https://xianrong.github.io/2017/11/14/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%28%E8%BD%AC%29/)
 

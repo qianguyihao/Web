@@ -579,7 +579,18 @@ VS Code 会根据你所打开的文件来决定该使用空格还是制表。也
 
 打开设置项，搜索`files.trimTrailingWhitespace`，将选项勾选，即可在保存文件时自动删除行尾的空格。
 
+#### 17、突出显示成对的括号
 
+我们可以用不同颜色显示代码中成对的括号，并用连线标注括号范围。简称**彩虹括号**。
+
+最早是通过`Bracket Pair Colorizer 2`插件支持的，但是这个插件已经被废弃了，，因为 VS Code 已经内置了该功能。我们可以通过 VS Code的如下配置项，达到效果：
+
+```json
+{
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs":"active"
+}
+```
 
 
 > 接下来，我们来讲一些更高级的操作。
@@ -1236,16 +1247,10 @@ ES6 语法智能提示，支持快速输入。
 
 ### 4、代码显示增强插件
 
-#### Bracket Pair Colorizer 2：突出显示成对的括号【荐】
 
-`Bracket Pair Colorizer 2`插件：以不同颜色显示成对的括号，并用连线标注括号范围。简称**彩虹括号**。
+#### highlight-icemode：选中相同的代码时，让高亮显示更加明显
 
-另外，还有个`Rainbow Brackets`插件，也可以突出显示成对的括号。
-
-
-#### highlight-icemode：选中相同的代码时，让高亮显示更加明显【荐】
-
-VSCode 自带的高亮显示，实在是不够显眼。用插件支持一下吧。
+VSCode 自带的高亮显示，实在是不够显眼。可以用插件支持一下。
 
 所用了这个插件之后，VS Code 自带的高亮就可以关掉了：
 
