@@ -250,6 +250,8 @@ VS Code 用得熟不熟，首先就看你是否会用快捷键。以下列出的
 
 ![](http://img.smyhvae.com/20190329_2120.png)
 
+此外，如果你输入这个快捷键后没起作用，那有可能是与其他软件（比如 PicGo 软件）的快捷键冲突了，请检查一下。
+
 ### 11、快捷键列表
 
 你可以点击 VS Code 左下角的齿轮按钮，效果如下：
@@ -701,6 +703,13 @@ source ~/.bash_profile
 参考链接：
 
 - [mac通过终端code 命令打开vscode](https://blog.csdn.net/logan_LG/article/details/106800904)
+
+当然，还可以通过命令面板，一键设置环境变量。具体做法是：输入快捷键「Cmd + shift + P」打开命令面板，然后选择 `shell 命令：从 PATH 中卸载 “code”命令`：
+
+![](https://img.smyhvae.com/202310201605408.png)
+
+
+完成后就可以在终端输入命令+文件路径来启动 VS Code 了。
 
 ### 3、从终端 code 命令启动 VS Code（Windows电脑）
 
