@@ -38,27 +38,16 @@
 
 ![](https://img.smyhvae.com/20220401_1800.jpg)
 
-## 关于作者
-
-- 即刻App：@[千古壹号](https://web.okjike.com/u/smyhvae) ，我会在即刻上发一些有意思的动态，欢迎关注。
-
-- [小报童专栏](https://xiaobot.net/p/qianguyihao/)：记录日常思考，分享小而美的事物，还有一些压箱底的好东西。可以在微信端打开订阅。
-
-- 公众号：千古壹号
-
-- 博客：<https://www.qianguyihao.com/>
-
-- GitHub：<https://github.com/qianguyihao>
 
 ## 学习交流
 
-在公众号「千古壹号」里回复“**前端学习**”，拉你进微信交流群：
+扫码加我，请先主动做自我介绍，然后拉你进微信交流群：
 
-- 进群暗号：前端学习
+- 添加暗号：前端学习
 
-- 进群要求：少提问、少闲聊、多分享（不适合长期潜水）。
+- 进群要求：少闲聊、多分享（不适合长期潜水）。
 
-![](https://img.smyhvae.com/20210329_1930.png)
+![](https://img.smyhvae.com/202401081613034.jpg)
 
 
 ## LICENSE
