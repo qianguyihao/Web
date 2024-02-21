@@ -585,7 +585,7 @@ VS Code 会根据你所打开的文件来决定该使用空格还是制表。也
 
 我们可以用不同颜色显示代码中成对的括号，并用连线标注括号范围。简称**彩虹括号**。
 
-最早是通过`Bracket Pair Colorizer 2`插件支持的，但是这个插件已经被废弃了，，因为 VS Code 已经内置了该功能。我们可以通过 VS Code的如下配置项，达到效果：
+最早是通过`Bracket Pair Colorizer 2`插件支持的，但是这个插件已经被废弃了，因为 VS Code 已经内置了该功能。我们可以通过 VS Code的如下配置项，达到效果：
 
 ```json
 {
@@ -593,7 +593,6 @@ VS Code 会根据你所打开的文件来决定该使用空格还是制表。也
   "editor.guides.bracketPairs":"active"
 }
 ```
-
 
 ### 18、自动换行
 
@@ -1229,9 +1228,13 @@ GitLens 在 Git 管理上有很多强大的功能，比如：
 #### Vetur
 
 Vue 多功能集成插件，包括：语法高亮，智能提示，emmet，错误提示，格式化，自动补全，debugger。VS Code 官方钦定 Vue 插件，Vue 开发者必备。
+
 #### ES7 React/Redux/GraphQL/React-Native snippets
 
 React/Redux/react-router 的语法智能提示。
+
+安装该插件后，在代码中只需要输入`clg`即可自动补全`console.log()`这行代码。
+
 #### JavaScript(ES6) code snippets
 
 ES6 语法智能提示，支持快速输入。
