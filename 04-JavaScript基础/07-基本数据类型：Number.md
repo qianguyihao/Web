@@ -18,27 +18,26 @@ console.log(typeof a);
 
 上方代码的输出结果为：
 
-```
+```bash
 number
-
 number
 ```
 
-再次补充：在 JS 中，只要是数，就是 Number 数值型的。无论整浮、浮点数（即小数）、无论大小、无论正负，都是 Number 类型的。
+再次补充：在 JS 中，只要是数，就是 Number 数值型的。无论整浮、浮点数（即小数）、无论大小、无论正负，都是 Number 类型的。包括接下来要讲的Infinity、-Infinity、NaN 等特殊数值也是 Number 类型的。
 
 ### 数值范围
 
-由于内存的限制，ECMAScript 并不能保存世界上所有的数值。
+ECMAScript 并不能表示世界上所有的数值。
 
--   最大值：`Number.MAX_VALUE`，这个值为： 1.7976931348623157e+308
+-   最大正数值：`Number.MAX_VALUE`，这个值为： 1.7976931348623157e+308
 
--   最小值：`Number.MIN_VALUE`，这个值为： 5e-324
+-   最小正数值：`Number.MIN_VALUE`，这个值为： 5e-324 ，或者 2的负1074 次方。它是能够在浮点精度范围内表示的最小正数（**不是最小负数**）。小于这个数的正数会被转成0。
 
 如果使用 Number 表示的变量超过了最大值，则会返回 Infinity。
 
--   无穷大（正无穷）：Infinity
+-   `Infinity`：无穷大（正无穷）。比如 1/0 的值就是无穷大。
 
--   无穷小（负无穷）：-Infinity
+-   `-Infinity`：无穷小（负无穷）
 
 注意：`typeof Infinity`的返回结果是 number。
 
@@ -60,16 +59,16 @@ console.log('abc' * 'abcd'); //按理说，字符串相乘是没有结果的，�
 
 2. **Undefined 和任何数值计算的结果为 NaN。NaN 与任何值都不相等，包括 NaN 本身。**
 
-3. 关于 isNaN() 函数，可以看后续的文章《JavaScript基础/typeof和数据类型转换》。
+3. 关于 isNaN() 函数，可以看后续要将的内容——数据类型转换。
 
 ### 连字符和加号的区别
 
 键盘上的`+`可能是连字符，也可能是数字的加号。如下：
 
-```
-console.log("我" + "爱" + "你");	//连字符，把三个独立的汉字，连接在一起了
-console.log("我+爱+你");			//原样输出
-console.log(1+2+3);				//输出6
+```js
+console.log("我" + "爱" + "你");	// 连字符，把三个独立的汉字，连接在一起了
+console.log("我+爱+你");			// 原样输出
+console.log(1+2+3);				// 输出6
 ```
 
 输出：
@@ -132,7 +131,17 @@ console.log(a);
 
 虽然程序可以对`-`、`*`、`/`、`%``这几个符号自动进行“隐式转换”；但作为程序员，我们最好自己完成转换，方便程序的可读性。
 
-关于隐式转换的详细内容，可以看后续的文章《JavaScript基础/typeof和数据类型转换》。
+关于隐式转换的详细知识，可以看后续的内容——和数据类型转换。
+
+### 其他进制的数字
+
+数字不仅有10进制，也有其他进制。
+
+-   16 进制的数字，以`0x`开头
+
+-   8 进制的数字，以`0`开头
+
+-   2 进制的数字，`0b`开头（不是所有的浏览器都支持：chrome 和火狐支持，IE 不支持）
 
 ## 浮点数的运算
 
@@ -168,39 +177,39 @@ console.log(a); //打印结果十分意外：0.30000000000000004
 ```html
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
-    </head>
-    <body>
-        <script src="https://cdn.bootcdn.net/ajax/libs/decimal.js/10.2.0/decimal.min.js"></script>
-        <script>
-            console.log('加法：');
-            var a = 0.1;
-            var b = 0.2;
-            console.log(a + b);
-            console.log(new Decimal(a).add(new Decimal(b)).toNumber());
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="https://cdn.bootcdn.net/ajax/libs/decimal.js/10.2.0/decimal.min.js"></script>
+    <script>
+      console.log('加法：');
+      var a = 0.1;
+      var b = 0.2;
+      console.log(a + b);
+      console.log(new Decimal(a).add(new Decimal(b)).toNumber());
 
-            console.log('减法：');
-            var a = 1.0;
-            var b = 0.7;
-            console.log(a - b);
-            console.log(new Decimal(a).sub(new Decimal(b)).toNumber());
+      console.log('减法：');
+      var a = 1.0;
+      var b = 0.7;
+      console.log(a - b);
+      console.log(new Decimal(a).sub(new Decimal(b)).toNumber());
 
-            console.log('乘法：');
-            var a = 1.01;
-            var b = 1.003;
-            console.log(a * b);
-            console.log(new Decimal(a).mul(new Decimal(b)).toNumber());
+      console.log('乘法：');
+      var a = 1.01;
+      var b = 1.003;
+      console.log(a * b);
+      console.log(new Decimal(a).mul(new Decimal(b)).toNumber());
 
-            console.log('除法：');
-            var a = 0.029;
-            var b = 10;
-            console.log(a / b);
-            console.log(new Decimal(a).div(new Decimal(b)).toNumber());
-        </script>
-    </body>
+      console.log('除法：');
+      var a = 0.029;
+      var b = 10;
+      console.log(a / b);
+      console.log(new Decimal(a).div(new Decimal(b)).toNumber());
+    </script>
+  </body>
 </html>
 ```
 
@@ -242,12 +251,12 @@ a = b;
 
 将等号右边的值，赋给左边的变量；等号右边的变量，值不变。
 
-来做几个题目。
+来做几个题目，看看数字是如何参与运算的。
 
 举例 1：
 
 ```js
-// a		b       c
+           // a		  b       c
 var a = 1; // 1
 var b = 2; // 1     2
 var c = 3; // 1     2       3
@@ -270,7 +279,7 @@ console.log(c);
 举例 2：
 
 ```js
-//a    b     c
+           // a    b     c
 var a = 1;
 var b = 2;
 var c = 3; // 1     2     3
@@ -293,7 +302,7 @@ console.log(c); // 8
 举例 3：
 
 ```js
-//a       b
+            //a       b
 var a = '1';
 var b = 2; // "1"     2
 a = a + b; // "12"    2
@@ -312,7 +321,7 @@ console.log(b); // 输出212
 举例 4：
 
 ```js
-//a         b
+           //a         b
 var a = '1';
 var b = 2;
 a = b + a; //"21"       2
