@@ -12,9 +12,9 @@ Undefined 类型的值只有一个，就是 undefind。比如 `var a = undefined
 
 使用 typeof 检查一个 undefined 值时，会返回 undefined。
 
-undefined 的使用有下面这几种场景。
+undefined 的出现有以下几种情况。
 
-### case1：变量已声明，未赋值时
+### case1：变量已声明，未赋值（未初始化）
 
 一个变量如果只**声明**了，但没有**赋值**，此时它的值就是 `undefined`。举例：
 
@@ -50,7 +50,7 @@ var d = null; // 空对象，可以初始化为 null
 
 
 
-### case2：变量未声明（未定义）时
+### case2：变量未声明（未定义）
 
 如果你从未声明一个变量，就去使用它，则会报错（这个大家都知道）；此时，如果用 `typeof` 检查这个变量时，会返回 `undefined`。举例：
 
