@@ -1,4 +1,4 @@
-Copyright (c) 2019 千古壹号
+Copyright (c) 2025 千古壹号
 
 # Attribution-NonCommercial-ShareAlike 4.0 International
 
