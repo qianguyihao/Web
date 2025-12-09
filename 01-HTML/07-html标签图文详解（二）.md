@@ -545,7 +545,7 @@ style="border-collapse:collapse;"
 
 内嵌框架用`<iframe>`表示。`<iframe>`是`<body>`的子标记。
 
-内嵌框架inner frame：嵌入在一个页面上的框架(仅仅IE、新版google浏览器支持，可能有其他浏览器也支持，暂时我不清楚)。
+内嵌框架inner frame：嵌入在一个页面上的框架，现代主流浏览器（包括IE、Chrome、Firefox、Safari、Edge等）都支持。
 
 **属性：**
 
@@ -580,6 +580,10 @@ style="border-collapse:collapse;"
 效果演示：
 ![](http://img.smyhvae.com/2015-10-02-cnblogs_html_GIF.gif)
 
+注意：
+
+- 出于安全考虑，跨域的 iframe 内容在脚本中访问会受到限制。
+- 部分网站为了防止嵌套，会通过 X-Frame-Options 响应头禁用 iframe 加载。
 
 ## 表单标签
 
