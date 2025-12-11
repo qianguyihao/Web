@@ -16,7 +16,7 @@ publish: true
 
 ### 特殊字符（转义字符）
 
-- `&nbsp;`：空格	（non-breaking spacing，不断打空格）
+- `&nbsp;`：空格	（non-breaking spacing，不打断空格）
 - `&lt;`：小于号`<`（less than）
 -  `&gt;`：大于号`>`（greater than）
 - `&amp;`：符号`&`
@@ -82,13 +82,11 @@ http://img.smyhvae.com/2015-10-01-cnblogs_html_13.png)
 
 
 
-### 粗体标签`<b>`或`<strong>`（已废弃）
+### 粗体标签 `<b>`或`<strong>`
 
 效果：
 
 ![Paste_Image.png](http://img.smyhvae.com/2015-10-01-cnblogs_html_14.png)
-
-
 
 
 

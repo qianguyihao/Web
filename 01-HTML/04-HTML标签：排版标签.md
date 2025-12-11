@@ -10,7 +10,7 @@ publish: true
 
 排版标签：
 
-- `<h1>`
+- `<h1>~<h6>`
 
 - `<p>`
 
@@ -21,8 +21,6 @@ publish: true
 - `<div>`
 
 - `<span>`
-
-- `<center>`
 
 - `<pre>`
 
@@ -225,14 +223,6 @@ div举例：
 
 我们亲切地称这种模式叫做“**div+css**”：**div标签负责布局、结构、分块，css负责样式**。
 
-## 内容居中标签 `<center>`
-
-此时center代表是一个标签，而不是一个属性值了。只要是在这个标签里面的内容，都会居于浏览器的中间。
-效果演示：
-
-![Paste_Image.png](http://img.smyhvae.com/2015-10-01-cnblogs_html_06.png)
-
-到了HTML5里面，center标签不建议使用，建议使用css布局来实现。
 
 ## 预定义（预格式化）标签`<pre>`
 
